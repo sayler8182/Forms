@@ -7,6 +7,10 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <Anchor/Anchor-Swift.h>
+#import <Injector/Injector-Swift.h>
+#import <Utils/Utils-Swift.h>
+#import <Validators/Validators-Swift.h>
 #import <Forms/Forms-Swift.h>
 
 //! Project version number for FormsDemo.

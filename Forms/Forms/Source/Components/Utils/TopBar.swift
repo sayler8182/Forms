@@ -65,7 +65,7 @@ open class TopBar: Component {
     
     private var topBarItems: [TopBarItemProtocol] = []
     private var selectedIndex: Int? = nil
-    private let defaultCellIdentifier: String = "cell"
+    private let defaultCellIdentifier: String = "_cell"
     
     public var onSelect: TopBarItemOnSelect? = nil
     
@@ -172,13 +172,13 @@ open class TopBar: Component {
         let toRatio: CGFloat = 1 - fromRatio
         guard let fromCell = self.collectionView.cellForItem(at: IndexPath(row: from, section: 0)) else { return }
         guard let toCell = self.collectionView.cellForItem(at: IndexPath(row: to, section: 0)) else {
-            self.animate(animated, duration: 0.2) {
+            self.animation(animated, duration: 0.2) {
                 self.underlineView.frame.size.width = fromCell.frame.width * 0.9
                 self.underlineView.center.x = fromCell.center.x - self.collectionView.contentOffset.x
             }
             return
         }
-        self.animate(animated, duration: 0.2) {
+        self.animation(animated, duration: 0.2) {
             self.underlineView.frame.size.width = (fromCell.frame.width * fromRatio + toCell.frame.width * toRatio) * 0.9
             self.underlineView.center.x = (fromCell.center.x * fromRatio + toCell.center.x * toRatio) - self.collectionView.contentOffset.x
         }

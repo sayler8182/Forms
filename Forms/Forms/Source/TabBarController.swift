@@ -177,7 +177,7 @@ public extension TabBarController {
     func showTabBar(animated: Bool = true,
                     completion: ((Bool) -> Void)? = nil) {
         self.tabBar.isHidden = false
-        self.view.animate(
+        self.view.animation(
             animated,
             duration: 0.3,
             animations: {
@@ -191,7 +191,7 @@ public extension TabBarController {
     
     func hideTabBar(animated: Bool = true,
                     completion: ((Bool) -> Void)? = nil) {
-        self.view.animate(
+        self.view.animation(
             animated,
             duration: 0.3,
             animations: {

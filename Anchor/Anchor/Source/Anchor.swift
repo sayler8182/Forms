@@ -247,9 +247,57 @@ public extension Anchor {
         return anchor
     }
     
+    var centerXToLeading: Anchor {
+        var anchor: Anchor = self
+        anchor.positions.append(.centerXToLeading)
+        return anchor
+    }
+    
+    var centerXToTrailing: Anchor {
+        var anchor: Anchor = self
+        anchor.positions.append(.centerXToTrailing)
+        return anchor
+    }
+    
+    var leadingToCenterX: Anchor {
+        var anchor: Anchor = self
+        anchor.positions.append(.leadingToCenterX)
+        return anchor
+    }
+    
+    var trailingToCenterX: Anchor {
+        var anchor: Anchor = self
+        anchor.positions.append(.trailingToCenterX)
+        return anchor
+    }
+    
     var centerY: Anchor {
         var anchor: Anchor = self
         anchor.positions.append(.centerY)
+        return anchor
+    }
+    
+    var centerYToTop: Anchor {
+        var anchor: Anchor = self
+        anchor.positions.append(.centerYToTop)
+        return anchor
+    }
+    
+    var centerYToBottom: Anchor {
+        var anchor: Anchor = self
+        anchor.positions.append(.centerYToBottom)
+        return anchor
+    }
+    
+    var topToCenterY: Anchor {
+        var anchor: Anchor = self
+        anchor.positions.append(.topToCenterY)
+        return anchor
+    }
+    
+    var bottomToCenterY: Anchor {
+        var anchor: Anchor = self
+        anchor.positions.append(.bottomToCenterY)
         return anchor
     }
     
@@ -281,6 +329,13 @@ public extension Anchor {
         var anchor: Anchor = self
         anchor.positions.append(.size(.width(size)))
         anchor.positions.append(.size(.height(size)))
+        return anchor
+    }
+    
+    func size(_ size: CGSize) -> Anchor {
+        var anchor: Anchor = self
+        anchor.positions.append(.size(.width(size.width)))
+        anchor.positions.append(.size(.height(size.height)))
         return anchor
     }
 }
@@ -627,7 +682,7 @@ extension UIView {
                 from: view.trailingAnchor,
                 to: anchorLayoutGuide.centerXAnchor,
                 relation: relation,
-                constant: offset)
+                constant: -offset)
             
         case .centerYToTop:
             return self.constraint(
@@ -652,7 +707,7 @@ extension UIView {
                 from: view.bottomAnchor,
                 to: anchorLayoutGuide.centerYAnchor,
                 relation: relation,
-                constant: offset)
+                constant: -offset)
             
         case .width:
             return self.constraint(

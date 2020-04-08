@@ -47,8 +47,17 @@ public extension Focusable {
 // MARK: Inputable
 public protocol Inputable: Focusable { }
 
+// MARK: Componentable
+public protocol Componentable {
+    func setupView()
+    func setupActions()
+    func setTheme()
+    func setLanguage()
+    func componentHeight() -> CGFloat
+}
+
 // MARK: Component
-open class Component: UIView {
+open class Component: UIView, Componentable {
     public weak var table: TableProtocol?
     
     override public init(frame: CGRect) {
@@ -58,6 +67,7 @@ open class Component: UIView {
     
     public required init?(coder: NSCoder) {
         super.init(coder: coder)
+        self.setupView()
     }
     
     public init() {

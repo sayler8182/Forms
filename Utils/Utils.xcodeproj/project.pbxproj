@@ -32,6 +32,7 @@
 		713B9BD9243D07BC001F6E3A /* UIStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 713B9BC9243D07BC001F6E3A /* UIStackView.swift */; };
 		719469BF243DA86C00CAD09B /* Injector.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 719469BE243DA86C00CAD09B /* Injector.framework */; };
 		719469C0243DA86C00CAD09B /* Injector.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 719469BE243DA86C00CAD09B /* Injector.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		719469C6243DB21D00CAD09B /* UIImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 719469C5243DB21D00CAD09B /* UIImageView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -86,6 +87,7 @@
 		713B9BC9243D07BC001F6E3A /* UIStackView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIStackView.swift; sourceTree = "<group>"; };
 		713B9BDE243D084C001F6E3A /* Utils.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Utils.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		719469BE243DA86C00CAD09B /* Injector.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Injector.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		719469C5243DB21D00CAD09B /* UIImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -162,6 +164,7 @@
 				713B9BC4243D07BC001F6E3A /* UIColor.swift */,
 				713B9BBE243D07BB001F6E3A /* UIEdgeInset.swift */,
 				713B9BC5243D07BC001F6E3A /* UIImage.swift */,
+				719469C5243DB21D00CAD09B /* UIImageView.swift */,
 				713B9BC6243D07BC001F6E3A /* UILabel.swift */,
 				713B9BC8243D07BC001F6E3A /* UITableView.swift */,
 				713B9BBD243D07BB001F6E3A /* UIResponder.swift */,
@@ -309,6 +312,7 @@
 				713B9BB5243D06C3001F6E3A /* Bool.swift in Sources */,
 				713B9BD5243D07BC001F6E3A /* UIImage.swift in Sources */,
 				713B9BCD243D07BC001F6E3A /* UIResponder.swift in Sources */,
+				719469C6243DB21D00CAD09B /* UIImageView.swift in Sources */,
 				713B9BB6243D06C3001F6E3A /* Optional.swift in Sources */,
 				713B9BD8243D07BC001F6E3A /* UITableView.swift in Sources */,
 				713B9BD9243D07BC001F6E3A /* UIStackView.swift in Sources */,

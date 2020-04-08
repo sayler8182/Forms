@@ -87,7 +87,7 @@ private class TitleModalView: ModalView {
         guard let coverView = self.coverView else { return }
         coverView.backgroundView.alpha = 0
         self.frame.origin.x = coverView.frame.width
-        self.animate(
+        self.animation(
             animated,
             duration: 0.3,
             animations: {
@@ -99,7 +99,7 @@ private class TitleModalView: ModalView {
     override  func hide(animated: Bool,
                         completion: ((Bool) -> Void)? = nil) {
         guard let coverView = self.coverView else { return }
-        self.animate(
+        self.animation(
             animated,
             duration: 0.3,
             animations: {

@@ -211,7 +211,7 @@ open class Button: Component, Clickable {
                           animated: Bool,
                           force: Bool = false) {
         guard self.state != state || force else { return }
-        self.animate(animated, duration: self.animationTime) {
+        self.animation(animated, duration: self.animationTime) {
             self.backgroundView.backgroundColor = self.backgroundColors.value(for: state)
             self.titleLabel.textColor = self.titleColors.value(for: state)
             self.titleLabel.font = self.titleFonts.value(for: state)

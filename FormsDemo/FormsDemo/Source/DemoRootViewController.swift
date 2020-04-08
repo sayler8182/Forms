@@ -31,6 +31,8 @@ private enum Demo {
         case utilsLoader
         case utilsModal
         case utilsToast
+        case utilsShimmer
+        case utilsShimmerTable
         case utilsValidators
     }
     
@@ -88,6 +90,8 @@ private enum Demo {
                     Row(type: .utilsLoader, title: "Loader"),
                     Row(type: .utilsModal, title: "Modal"),
                     Row(type: .utilsToast, title: "Toast"),
+                    Row(type: .utilsShimmer, title: "Shimmer"),
+                    Row(type: .utilsShimmerTable, title: "Shimmer Table"),
                     Row(type: .utilsValidators, title: "Validators")
                 ])
             ]
@@ -118,7 +122,7 @@ private class DemoListViewController: ViewController {
         style: .plain)
     
     private var items: [Demo.Section] = []
-    private let defaultCellIdentifier: String = "cell"
+    private let defaultCellIdentifier: String = "_cell"
      
     required init?(coder: NSCoder) {
         super.init(coder: coder)
@@ -152,8 +156,7 @@ private class DemoListViewController: ViewController {
         self.tableView.alwaysBounceVertical = false
         self.tableView.register(UITableViewCell.self, forCellReuseIdentifier: self.defaultCellIdentifier)
         self.view.addSubview(self.tableView, with: [
-            Anchor.to(self.view).vertical.safeArea,
-            Anchor.to(self.view).horizontal.safeArea
+            Anchor.to(self.view).fill,
         ])
     }
     
@@ -191,6 +194,8 @@ private class DemoListViewController: ViewController {
         case .utilsLoader:                              return DemoLoaderViewController()
         case .utilsModal:                               return DemoModalViewController()
         case .utilsToast:                               return DemoToastViewController()
+        case .utilsShimmer:                             return DemoShimmerViewController()
+        case .utilsShimmerTable:                        return DemoShimmerTableViewController()
         case .utilsValidators:                          return DemoValidatorsViewController()
         default:                                        return nil
         }

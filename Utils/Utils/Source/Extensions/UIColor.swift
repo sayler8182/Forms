@@ -14,6 +14,10 @@ public extension UIColor {
         return self.withAlphaComponent(0.0)
     }
     
+    var image: UIImage? {
+        return UIImage(color: self)
+    }
+    
     convenience init(_ rgb: Int,
                      _ alpha: Int = 100) {
         self.init(

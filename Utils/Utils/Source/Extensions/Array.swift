@@ -8,6 +8,7 @@
 
 import Foundation
 
+// MARK: Collection
 public extension Collection {
     subscript(safe index: Index) -> Element? {
         return self.indices.contains(index) ? self[index] : nil
@@ -37,5 +38,22 @@ public extension Collection {
 extension Collection where Element: Equatable {
     func doNotContains(_ element: Element) -> Bool {
         return !self.contains(element)
+    }
+}
+
+// MARK: Arrray
+public extension Array {
+    func last(count: Int) -> Array {
+        var value = self
+        let result = (0..<count)
+            .compactMap { _ in return value.popLast() }
+        return result.reversed()
+    }
+    
+    func first(count: Int) -> Array {
+        return self
+            .enumerated()
+            .filter { (i, _) in return i < count }
+            .compactMap { return $0.element }
     }
 }

@@ -45,7 +45,7 @@ open class PagerController: ViewController {
     
     private var items: [PagerItem] = []
     private var selectedIndex: Int? = nil
-    private let defaultCellIdentifier: String = "cell"
+    private let defaultCellIdentifier: String = "_cell"
     
     open var bounces: Bool = true {
         didSet { self.collectionView.bounces = self.bounces }
@@ -212,7 +212,7 @@ public extension PagerController {
                     completion: ((Bool) -> Void)? = nil) {
         self.collectionView.performBatchUpdates({
             self.topBar.isHidden = false
-            self.view.animate(
+            self.view.animation(
                 animated,
                 duration: 0.3,
                 animations: {
@@ -226,7 +226,7 @@ public extension PagerController {
     func hideTopBar(animated: Bool = true,
                     completion: ((Bool) -> Void)? = nil) {
         self.collectionView.performBatchUpdates({
-            self.view.animate(
+            self.view.animation(
                 animated,
                 duration: 0.3,
                 animations: {
@@ -247,7 +247,7 @@ public extension PagerController {
                          completion: ((Bool) -> Void)? = nil) {
         self.collectionView.performBatchUpdates({
             self.pageControl.isHidden = false
-            self.view.animate(
+            self.view.animation(
                 animated,
                 duration: 0.3,
                 animations: {
@@ -261,7 +261,7 @@ public extension PagerController {
     func hidePageControl(animated: Bool = true,
                          completion: ((Bool) -> Void)? = nil) {
         self.collectionView.performBatchUpdates({
-            self.view.animate(
+            self.view.animation(
                 animated,
                 duration: 0.3,
                 animations: {

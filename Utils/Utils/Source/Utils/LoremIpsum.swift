@@ -8,103 +8,66 @@
 
 import Foundation
 
-extension Array {
-    func last(number: Int) -> Array {
-        var a = self
-        let result = (0..<number).compactMap { _ in return a.popLast() }
-        return result.reversed()
-    }
-    
-    func first(number: Int) -> Array {
-        return self
-            .enumerated()
-            .filter { idx, _ in return idx < number }
-            .compactMap { return $0.element }
-    }
-}
-
+// MARK: LoremIpsum
 public enum LoremIpsum {
     private static var randomGenerator = SystemRandomNumberGenerator()
     
-    public static func firstSentence() -> String {
-        return LoremIpsum.sentencify(arrayOfWords: self.words.first(number: self.numberOfWordsInVeryFirstSentence))
+    public static var firstSentence: String {
+        let words: [String] = self.words.first(count: 8)
+        return LoremIpsum.sentencify(words: words)
     }
     
-    public static func word() -> String {
+    public static var word: String {
         return self.words.randomElement(using: &self.randomGenerator) ?? ""
     }
     
-    public static func sentence() -> String {
-        let length = Int(LoremIpsum.randomNormalLikeDistributedNumber(mean: 8, std_dev: 4))
+    public static var sentence: String {
+        let length: Int = LoremIpsum.randomNumber(5, 16)
         var words: [String] = []
-        stride(from: 1, to: length, by: 1).forEach { _ in
-            var w = word()
-            while words.last(number: 2).contains(w) {
-                w = word()
-            }
-            words.append(w)
+        for _ in 0..<length {
+            var word = self.word
+            while words.last(count: 2).contains(word) { word = self.word }
+            words.append(word)
         }
-        return LoremIpsum.sentencify(arrayOfWords: LoremIpsum.commify(arrayOfWords: words))
+        let wordsWithCommas: [String] = LoremIpsum.commify(words: words)
+        return LoremIpsum.sentencify(words: wordsWithCommas)
     }
     
-    public static func paragraph(sentences: Int? = nil) -> String {
-        var length: Int = sentences.or(Int(randomNormalLikeDistributedNumber(mean: 30, std_dev: 19)))
-        if length <= 1 { length = 2 }
-        return stride(from: 1, to: length, by: 1).map { _ in return LoremIpsum.sentence() }.joined(separator: " ")
-    }
-    
-    private static func generateParagraphsAsString(numberOfParagraphs: Int,
-                                                   includingVeryFirstSentence: Bool) -> String {
-        return generateParagraphs(numberOfParagraphs: numberOfParagraphs, includingVeryFirstSentence: includingVeryFirstSentence)
-            .joined(separator: "\n\n")
-    }
-    
-    private static func generateParagraphs(numberOfParagraphs: Int,
-                                           includingVeryFirstSentence: Bool) -> [String] {
-        guard numberOfParagraphs > 0 else { return [] }
-        return stride(from: 1, through: numberOfParagraphs, by: 1).map { idx in
-            var par = LoremIpsum.paragraph()
-            if idx == 1 && includingVeryFirstSentence {
-                par = LoremIpsum.firstSentence() + " " + par
-            }
-            return par
+    public static func paragraph(sentences: Int = 1) -> String {
+        let length: Int = sentences
+        var sentences: [String] = []
+        for _ in 0..<length {
+            sentences.append(self.sentence)
         }
+        return sentences.joined(separator: " ")
+    }
+     
+    private static func sentencify(words: [String]) -> String {
+        guard let firstWord: String = words.first else { return "" }
+        var words: [String] = words
+        words[0] = firstWord.prefix(1).uppercased() + firstWord.dropFirst()
+        return words.joined(separator: " ") + "."
     }
     
-    private static func sentencify(arrayOfWords: [String]) -> String {
-        guard let firstWord = arrayOfWords.first else { return "" }
-        var array = arrayOfWords
-        array[0] = firstWord.prefix(1).uppercased() + firstWord.dropFirst()
-        
-        return array.joined(separator: " ") + "."
-    }
-    
-    private static func commify(arrayOfWords: [String]) -> [String] {
-        let sentenceLength = arrayOfWords.count
-        var array = arrayOfWords
-        if sentenceLength > 4 {
-            let mean = log(Double(sentenceLength))
-            let std_dev = mean / 6
-            let commas = Int(randomNormalLikeDistributedNumber(mean: mean, std_dev: std_dev))
-            stride(from: 1, to: commas, by: 1).forEach { idx in
-                let wrd = Int(idx * sentenceLength / (commas + 1))
-                if wrd < sentenceLength - 1 && wrd > 0 {
-                    array[wrd] = array[wrd] + ","
-                }
+    private static func commify(words: [String]) -> [String] {
+        let length = words.count
+        guard length > 4 else { return words }
+        var words: [String] = words
+        let commasCount: Int = LoremIpsum.randomNumber(3, length)
+        for i in 0..<commasCount {
+            let wordIndex: Int = Int(i * length / (commasCount + 1))
+            if wordIndex < length - 1 && wordIndex > 0 {
+                words[wordIndex] = words[wordIndex] + ","
             }
         }
         
-        return array
+        return words
     }
     
-    private static func randomNormalLikeDistributedNumber(mean: Double, std_dev: Double) -> Double {
-        let x = Double.random(in: ClosedRange(uncheckedBounds: (0, 1)), using: &LoremIpsum.randomGenerator)
-        let y = Double.random(in: ClosedRange(uncheckedBounds: (0, 1)), using: &LoremIpsum.randomGenerator)
-        let z = sqrt(-2 * log(x)) * cos(2 * Double.pi * y)
-        return z * std_dev + mean
+    private static func randomNumber(_ from: Int, _ to: Int) -> Int {
+        return Int.random(in: from...to)
     }
     
-    private static let numberOfWordsInVeryFirstSentence: Int = 8
     private static let words: [String] = [
         "lorem", "ipsum", "dolor", "sit", "amet", "consectetur", "adipiscing", "elit",
         "a", "ac", "accumsan", "ad", "aenean", "aliquam", "aliquet", "ante",
@@ -136,4 +99,32 @@ public enum LoremIpsum {
         "venenatis", "vestibulum", "vitae", "vivamus", "viverra", "volutpat",
         "vulputate"
     ]
+}
+
+// MARK:
+public extension LoremIpsum {
+    private static let scale: Int = 16
+    static var emptyVeryShort: String {
+        return LoremIpsum.empty(chars: LoremIpsum.scale)
+    }
+    static var emptyShort: String {
+        return LoremIpsum.empty(chars: LoremIpsum.scale * 2)
+    }
+    static var emptyMedium: String {
+        return LoremIpsum.empty(chars: LoremIpsum.scale * 4)
+    }
+    static var emptyLong: String {
+        return LoremIpsum.empty(chars: LoremIpsum.scale * 8)
+    }
+    static var emptyVeryLong: String {
+        return LoremIpsum.empty(chars: LoremIpsum.scale * 16)
+    }
+    
+    static func empty(chars: Int) -> String {
+        return String(repeating: " ", count: chars)
+    }
+    
+    static func empty(lines: Int) -> String {
+        return String(repeating: "\n", count: lines)
+    }
 }

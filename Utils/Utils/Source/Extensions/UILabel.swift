@@ -22,6 +22,10 @@ public extension UILabel {
         self.textAlignment = textAlignment
         return self
     }
+    func with(text: String?) -> Self {
+        self.text = text
+        return self
+    }
     func with(textColor: UIColor?) -> Self {
         self.textColor = textColor
         return self

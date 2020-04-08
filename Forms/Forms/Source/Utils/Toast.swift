@@ -210,7 +210,7 @@ open class ToastView: Component {
             endPosition = CGPoint(x: 0, y: context.frame.height - self.frame.height)
         }
         self.frame.origin = startPosition
-        self.animate(
+        self.animation(
             animated,
             duration: 0.3,
             animations: {
@@ -227,7 +227,7 @@ open class ToastView: Component {
         case .bottom:
             endPosition = CGPoint(x: 0, y: self.frame.origin.y + self.frame.height)
         }
-        self.animate(
+        self.animation(
             animated,
             duration: 0.3,
             animations: {

@@ -329,7 +329,7 @@ open class TextField: Component {
                           animated: Bool,
                           force: Bool = false) {
         guard self.state != state || force else { return }
-        self.animate(animated, duration: self.animationTime) {
+        self.animation(animated, duration: self.animationTime) {
             self.backgroundView.backgroundColor = self.backgroundColors.value(for: state)
             self.errorLabel.textColor = self.errorColor
             self.errorLabel.font = self.errorFont

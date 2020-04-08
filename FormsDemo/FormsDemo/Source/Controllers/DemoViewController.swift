@@ -19,9 +19,17 @@ class DemoViewController: ViewController {
     
     override func setupContent() {
         super.setupContent()
+        self.setupCenterView()
+        self.setupBottomView()
+    }
+    
+    private func setupCenterView() {
         self.view.addSubview(self.centerView, with: [
             Anchor.to(self.view).center(300, 44)
         ])
+    }
+    
+    private func setupBottomView() {
         self.view.addSubview(self.bottomView, with: [
             Anchor.to(self.centerView).topToBottom.offset(16),
             Anchor.to(self.centerView).horizontal,

@@ -217,7 +217,7 @@ private class DefaultLoaderView: LoaderView {
     override func show(animated: Bool,
                        completion: ((Bool) -> Void)? = nil) {
         self.coverView?.backgroundView.alpha = 0
-        self.animate(
+        self.animation(
             animated,
             duration: 0.3,
             animations: {
@@ -228,7 +228,7 @@ private class DefaultLoaderView: LoaderView {
     
     override func hide(animated: Bool,
                        completion: ((Bool) -> Void)? = nil) {
-        self.animate(
+        self.animation(
             animated,
             duration: 0.3,
             animations: {

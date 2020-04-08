@@ -33,27 +33,21 @@ class DemoLoaderViewController: TableViewController {
         super.setupActions()
         self.defaultLoaderButton.onClick = { [unowned self] in
             Loader.show(in: self.navigationController)
-            self.hideLoaderAfterSomeTime()
+            Utils.delay(2.0) { Loader.hide(in: self.navigationController) }
         }
         self.titleShortLoaderButton.onClick = { [unowned self] in
             let loaderView: TitleLoaderView? = Loader.show(
                 in: self.navigationController,
                 of: TitleLoaderView.self)
             loaderView?.setTitle("Short text")
-            self.hideLoaderAfterSomeTime()
+            Utils.delay(2.0) { Loader.hide(in: self.navigationController) }
         }
         self.titleLongLoaderButton.onClick = { [unowned self] in
             let loaderView: TitleLoaderView? = Loader.show(
                 in: self.navigationController,
                 of: TitleLoaderView.self)
             loaderView?.setTitle(LoremIpsum.paragraph(sentences: 4))
-            self.hideLoaderAfterSomeTime()
-        }
-    }
-    
-    private func hideLoaderAfterSomeTime() {
-        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 2) {
-            Loader.hide(in: self.navigationController)
+            Utils.delay(2.0) { Loader.hide(in: self.navigationController) }
         }
     }
 }
@@ -112,7 +106,7 @@ private class TitleLoaderView: LoaderView {
         guard let coverView = self.coverView else { return }
         coverView.backgroundView.alpha = 0
         self.frame.origin.y = coverView.frame.height
-        self.animate(
+        self.animation(
             animated,
             duration: 0.3,
             animations: {
@@ -124,7 +118,7 @@ private class TitleLoaderView: LoaderView {
     override func hide(animated: Bool,
                        completion: ((Bool) -> Void)? = nil) {
         guard let coverView = self.coverView else { return }
-        self.animate(
+        self.animation(
             animated,
             duration: 0.3,
             animations: {

@@ -25,6 +25,17 @@
 		713B9C8A243D0964001F6E3A /* DemoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 713B9C7B243D0964001F6E3A /* DemoViewController.swift */; };
 		713B9C8B243D0964001F6E3A /* DemoTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 713B9C7C243D0964001F6E3A /* DemoTabBarController.swift */; };
 		713B9C8C243D0964001F6E3A /* DemoTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 713B9C7D243D0964001F6E3A /* DemoTableViewController.swift */; };
+		719469C4243DB01D00CAD09B /* DemoShimmerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 719469C3243DB01D00CAD09B /* DemoShimmerViewController.swift */; };
+		719469C8243DB66A00CAD09B /* Anchor.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 719469C7243DB66A00CAD09B /* Anchor.framework */; };
+		719469C9243DB66A00CAD09B /* Anchor.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 719469C7243DB66A00CAD09B /* Anchor.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		719469CB243DB66E00CAD09B /* Injector.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 719469CA243DB66E00CAD09B /* Injector.framework */; };
+		719469CC243DB66E00CAD09B /* Injector.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 719469CA243DB66E00CAD09B /* Injector.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		719469CE243DB67100CAD09B /* Utils.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 719469CD243DB67100CAD09B /* Utils.framework */; };
+		719469CF243DB67100CAD09B /* Utils.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 719469CD243DB67100CAD09B /* Utils.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		719469D1243DB67400CAD09B /* Validators.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 719469D0243DB67400CAD09B /* Validators.framework */; };
+		719469D2243DB67400CAD09B /* Validators.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 719469D0243DB67400CAD09B /* Validators.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		719469D4243DBC6800CAD09B /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 719469D3243DBC6800CAD09B /* Utils.swift */; };
+		719469D6243DC11000CAD09B /* DemoShimmerTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 719469D5243DC11000CAD09B /* DemoShimmerTableViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,7 +55,11 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				719469CF243DB67100CAD09B /* Utils.framework in Embed Frameworks */,
 				713B9C66243D0947001F6E3A /* Forms.framework in Embed Frameworks */,
+				719469D2243DB67400CAD09B /* Validators.framework in Embed Frameworks */,
+				719469C9243DB66A00CAD09B /* Anchor.framework in Embed Frameworks */,
+				719469CC243DB66E00CAD09B /* Injector.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -72,6 +87,13 @@
 		713B9C7B243D0964001F6E3A /* DemoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DemoViewController.swift; sourceTree = "<group>"; };
 		713B9C7C243D0964001F6E3A /* DemoTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DemoTabBarController.swift; sourceTree = "<group>"; };
 		713B9C7D243D0964001F6E3A /* DemoTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DemoTableViewController.swift; sourceTree = "<group>"; };
+		719469C3243DB01D00CAD09B /* DemoShimmerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoShimmerViewController.swift; sourceTree = "<group>"; };
+		719469C7243DB66A00CAD09B /* Anchor.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Anchor.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		719469CA243DB66E00CAD09B /* Injector.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Injector.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		719469CD243DB67100CAD09B /* Utils.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Utils.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		719469D0243DB67400CAD09B /* Validators.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Validators.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		719469D3243DBC6800CAD09B /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
+		719469D5243DC11000CAD09B /* DemoShimmerTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoShimmerTableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,7 +101,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				719469CE243DB67100CAD09B /* Utils.framework in Frameworks */,
 				713B9C65243D0947001F6E3A /* Forms.framework in Frameworks */,
+				719469D1243DB67400CAD09B /* Validators.framework in Frameworks */,
+				719469C8243DB66A00CAD09B /* Anchor.framework in Frameworks */,
+				719469CB243DB66E00CAD09B /* Injector.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -120,6 +146,7 @@
 				713B9C79243D0964001F6E3A /* Controllers */,
 				713B9C68243D0964001F6E3A /* Components */,
 				713B9C73243D0964001F6E3A /* Utils */,
+				719469D3243DBC6800CAD09B /* Utils.swift */,
 			);
 			path = Source;
 			sourceTree = "<group>";
@@ -127,6 +154,10 @@
 		713B9C63243D0947001F6E3A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				719469D0243DB67400CAD09B /* Validators.framework */,
+				719469CD243DB67100CAD09B /* Utils.framework */,
+				719469CA243DB66E00CAD09B /* Injector.framework */,
+				719469C7243DB66A00CAD09B /* Anchor.framework */,
 				713B9C64243D0947001F6E3A /* Forms.framework */,
 			);
 			name = Frameworks;
@@ -183,6 +214,8 @@
 				713B9C78243D0964001F6E3A /* DemoLoaderViewController.swift */,
 				713B9C74243D0964001F6E3A /* DemoModalViewController.swift */,
 				713B9C75243D0964001F6E3A /* DemoToastViewController.swift */,
+				719469C3243DB01D00CAD09B /* DemoShimmerViewController.swift */,
+				719469D5243DC11000CAD09B /* DemoShimmerTableViewController.swift */,
 				713B9C76243D0964001F6E3A /* DemoValidatorsViewController.swift */,
 			);
 			path = Utils;
@@ -313,11 +346,14 @@
 				713B9C84243D0964001F6E3A /* DemoModalViewController.swift in Sources */,
 				713B9C81243D0964001F6E3A /* DemoLabelsViewController.swift in Sources */,
 				713B9C7F243D0964001F6E3A /* DemoNavigationBarWithBackOrCloseViewController.swift in Sources */,
+				719469C4243DB01D00CAD09B /* DemoShimmerViewController.swift in Sources */,
 				713B9C80243D0964001F6E3A /* DemoNavigationBarViewController.swift in Sources */,
 				713B9C89243D0964001F6E3A /* DemoPagerController.swift in Sources */,
 				713B9C8C243D0964001F6E3A /* DemoTableViewController.swift in Sources */,
 				713B9C7E243D0964001F6E3A /* DemoPrimaryButtonViewController.swift in Sources */,
+				719469D6243DC11000CAD09B /* DemoShimmerTableViewController.swift in Sources */,
 				713B9C8B243D0964001F6E3A /* DemoTabBarController.swift in Sources */,
+				719469D4243DBC6800CAD09B /* Utils.swift in Sources */,
 				713B9C8A243D0964001F6E3A /* DemoViewController.swift in Sources */,
 				713B9C88243D0964001F6E3A /* DemoLoaderViewController.swift in Sources */,
 				713B9C86243D0964001F6E3A /* DemoValidatorsViewController.swift in Sources */,

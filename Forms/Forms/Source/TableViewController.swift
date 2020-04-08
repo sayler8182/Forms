@@ -11,26 +11,29 @@ import UIKit
 // MARK: TableProtocol
 public protocol TableProtocol: class {
     func refreshTableView()
-    func refreshTableView(animated animate: Bool)
+    func refreshTableView(animated: Bool)
 }
 
 // MARK: TableViewController
-open class TableViewController: ViewController, UITableViewDelegate, UITableViewDataSource, TableProtocol {
+open class TableViewController: ViewController, UITableViewDelegate, UITableViewDataSource, TableDataSourceDelegateProtocol, TableProtocol {
     private let tableUpdatesQueue: DispatchQueue = DispatchQueue(
         label: "tableUpdatesQueue",
         target: DispatchQueue.main)
     private let headerView: UIView = UIView(width: 320, height: 44)
     private let footerView: UIStackView = UIStackView()
-    private let defaultCellIdentifier: String = "cell"
+    private let defaultCellIdentifier: String = "_cell"
     
     private var views: [Component] = []
     private let tableView: UITableView = UITableView(
         frame: CGRect(width: 320, height: 44),
         style: .plain)
+    private var shimmerDataSource: ShimmerDataSource? = nil
     
     open var headerBackgroundColor: UIColor = UIColor.white {
         didSet { self.headerView.backgroundColor = self.headerBackgroundColor }
     }
+    open var isBottomToSafeArea: Bool = true
+    open var isTopToSafeArea: Bool = true
     open var tableAlwaysBounceVertical: Bool = false {
         didSet { self.tableView.alwaysBounceVertical = self.tableAlwaysBounceVertical }
     }
@@ -57,11 +60,45 @@ open class TableViewController: ViewController, UITableViewDelegate, UITableView
         super.setupView()
         self.setupHeaderView()
         self.setupTableView()
+        self.setupDataSource()
         self.setupFooterView()
         
         // HOOKS
         self.setupHeader()   
         self.setupFooter()
+    }
+    
+    override public func startShimmering(animated: Bool = false) {
+        let shimmerDataSource = ShimmerDataSource()
+            .with(rowType: ShimmerTableViewCell.self, count: 20)
+        self.startShimmering(
+            shimmerDataSource,
+            animated: animated)
+    }
+    
+    public func startShimmering(_ shimmerDataSource: ShimmerDataSource,
+                                animated: Bool = false) {
+        shimmerDataSource.prepare(for: self.tableView)
+        self.shimmerDataSource = shimmerDataSource
+        self.setDataSource(
+            dataSource: shimmerDataSource,
+            animated: animated)
+    }
+    
+    override public func stopShimmering(animated: Bool = false) {
+        self.shimmerDataSource = nil
+        self.setDataSource(
+            dataSource: self,
+            animated: animated)
+    }
+    
+    public func stopShimmering(newDataSource: TableDataSource,
+                               animated: Bool = false) {
+        self.shimmerDataSource = nil
+        newDataSource.prepare(for: self.tableView)
+        self.setDataSource(
+            dataSource: newDataSource,
+            animated: animated)
     }
     
     public func build(_ components: [Component?],
@@ -88,8 +125,9 @@ open class TableViewController: ViewController, UITableViewDelegate, UITableView
     
     private func setupHeaderView() {
         self.headerView.backgroundColor = self.headerBackgroundColor
+        let layoutGuide: LayoutGuide = self.isTopToSafeArea ? .safeArea : .normal
         self.view.addSubview(self.headerView, with: [
-            Anchor.to(self.view).top.safeArea,
+            Anchor.to(self.view).top.layoutGuide(layoutGuide),
             Anchor.to(self.view).horizontal,
             Anchor.to(self.headerView).height(0.0).lowPriority
         ])
@@ -117,9 +155,10 @@ open class TableViewController: ViewController, UITableViewDelegate, UITableView
         self.footerView.axis = NSLayoutConstraint.Axis.vertical
         self.footerView.distribution = UIStackView.Distribution.equalSpacing
         self.footerView.spacing = self.footerSpacing
+        let layoutGuide: LayoutGuide = self.isBottomToSafeArea ? .safeArea : .normal
         self.view.addSubview(self.footerView, with: [
             Anchor.to(self.tableView).topToBottom,
-            Anchor.to(self.view).bottom.safeArea.connect(self.bottomAnchor),
+            Anchor.to(self.view).bottom.layoutGuide(layoutGuide).connect(self.bottomAnchor),
             Anchor.to(self.view).horizontal,
             Anchor.to(self.footerView).height(0.0).lowPriority
         ])
@@ -136,8 +175,16 @@ open class TableViewController: ViewController, UITableViewDelegate, UITableView
         // HOOK
     }
     
+    open func setupDataSource() {
+        // HOOK
+    }
+    
     open func setupFooter() {
         // HOOK
+    }
+    
+    open func setupCell(data: Any, cell: TableViewCell, indexPath: IndexPath) {
+        
     }
 }
 
@@ -305,10 +352,10 @@ public extension TableViewController {
 
 // MARK: TableView
 public extension TableViewController {
-    func updateTableView(animated animate: Bool = true,
+    func updateTableView(animated: Bool = true,
                          update: (() -> Void)? = nil) {
         self.tableUpdatesQueue.async {
-            self.tableView.shouldAnimate(animate) {
+            self.tableView.shouldAnimate(animated) {
                 self.tableView.beginUpdates()
                 update?()
                 self.tableView.endUpdates()
@@ -320,14 +367,28 @@ public extension TableViewController {
         self.refreshTableView(animated: true)
     }
     
-    func refreshTableView(animated animate: Bool) {
+    func refreshTableView(animated: Bool) {
         self.tableUpdatesQueue.async {
             self.tableView.setNeedsLayout()
             self.tableView.layoutIfNeeded()
-            self.tableView.shouldAnimate(animate) {
+            self.tableView.shouldAnimate(animated) {
                 self.tableView.beginUpdates()
                 self.tableView.endUpdates()
             }
+        }
+    }
+    
+    func setDataSource(dataSource: UITableViewDelegate & UITableViewDataSource,
+                       animated: Bool,
+                       completion: ((Bool) -> Void)? = nil) {
+        self.tableUpdatesQueue.async {
+            self.tableView.delegate = dataSource
+            self.tableView.dataSource = dataSource
+            self.tableView.transition(
+                animated,
+                duration: 0.3,
+                animations: self.tableView.reloadData,
+                completion: completion)
         }
     }
 }

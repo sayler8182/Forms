@@ -23,7 +23,7 @@ open class ViewController: UIViewController, UIGestureRecognizerDelegate {
     }
     
     open func setupView() {
-        self.view.backgroundColor = UIColor.white
+        self.setupConfiguration()
         self.setupResizerOnKeyboard()
         self.setupKeyboardWhenTappedAround()
         self.setupSlideToPop()
@@ -35,7 +35,20 @@ open class ViewController: UIViewController, UIGestureRecognizerDelegate {
         self.setupOther()
     }
     
+    public func startShimmering(animated: Bool = false) {
+        self.view.startShimmering()
+    }
+    
+    public func stopShimmering(animated: Bool = false) {
+        self.view.stopShimmering()
+    }
+    
     // MARK: HOOKS
+    open func setupConfiguration() {
+        self.view.backgroundColor = UIColor.white
+        // HOOK
+    }
+    
     open func setupNavigationBar() {
         // HOOK
     }

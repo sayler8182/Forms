@@ -59,7 +59,7 @@ public extension UIView {
                   duration: TimeInterval = 0.0,
                   animated: Bool = true,
                   completion: ((Bool) -> Void)? = nil) {
-        self.animate(
+        self.animation(
             animated,
             duration: duration,
             animations: { self.alpha = alpha },
@@ -98,12 +98,12 @@ public extension UIView {
         self.layer.rasterizationScale = scale ? UIScreen.main.scale : 1
     }
     
-    func animate(_ animated: Bool,
-                 duration: TimeInterval = 0.0,
-                 delay: TimeInterval = 0.0,
-                 options: UIView.AnimationOptions = [],
-                 animations: @escaping (() -> Void)) {
-        self.animate(
+    func animation(_ animated: Bool,
+                   duration: TimeInterval = 0.0,
+                   delay: TimeInterval = 0.0,
+                   options: UIView.AnimationOptions = [],
+                   animations: @escaping (() -> Void)) {
+        self.animation(
             animated,
             duration: duration,
             delay: delay,
@@ -112,12 +112,12 @@ public extension UIView {
             completion: nil)
     }
     
-    func animate(_ animated: Bool,
-                 duration: TimeInterval = 0.0,
-                 delay: TimeInterval = 0.0,
-                 options: UIView.AnimationOptions = [],
-                 animations: @escaping (() -> Void) = { },
-                 completion: ((Bool) -> Void)? = nil) {
+    func animation(_ animated: Bool,
+                   duration: TimeInterval = 0.0,
+                   delay: TimeInterval = 0.0,
+                   options: UIView.AnimationOptions = [],
+                   animations: @escaping (() -> Void) = { },
+                   completion: ((Bool) -> Void)? = nil) {
         guard animated else {
             animations()
             return
@@ -126,6 +126,36 @@ public extension UIView {
         UIView.animate(
             withDuration: duration,
             delay: delay,
+            options: options,
+            animations: animations,
+            completion: completion)
+    }
+    
+    func transition(_ animated: Bool,
+                    duration: TimeInterval = 0.0,
+                    options: UIView.AnimationOptions = .transitionCrossDissolve,
+                    animations: @escaping (() -> Void)) {
+        self.transition(
+            animated,
+            duration: duration,
+            options: options,
+            animations: animations,
+            completion: nil)
+    }
+    
+    func transition(_ animated: Bool,
+                    duration: TimeInterval = 0.0,
+                    options: UIView.AnimationOptions = .transitionCrossDissolve,
+                    animations: @escaping (() -> Void) = { },
+                    completion: ((Bool) -> Void)? = nil) {
+        guard animated else {
+            animations()
+            return
+        }
+        
+        UIView.transition(
+            with: self,
+            duration: duration,
             options: options,
             animations: animations,
             completion: completion)
@@ -150,8 +180,21 @@ public extension Array where Element == UIView {
 // MARK: Builder
 extension UIView {
     @objc
+    open func rounded() -> Self {
+        let cornerRadius: CGFloat = min(self.bounds.width, self.bounds.height)
+        self.setCornerRadius(radius: cornerRadius)
+        return self
+    }
+    
+    @objc
     open func with(backgroundColor: UIColor?) -> Self {
         self.backgroundColor = backgroundColor
+        return self
+    }
+    
+    @objc
+    open func with(cornerRadius: CGFloat) -> Self {
+        self.setCornerRadius(radius: cornerRadius)
         return self
     }
     

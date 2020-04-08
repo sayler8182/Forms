@@ -48,6 +48,9 @@
 		719469B9243DA7D200CAD09B /* Utils.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 719469B7243DA7D200CAD09B /* Utils.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		719469BB243DA7D500CAD09B /* Validators.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 719469BA243DA7D500CAD09B /* Validators.framework */; };
 		719469BC243DA7D500CAD09B /* Validators.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 719469BA243DA7D500CAD09B /* Validators.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		719469C2243DAB6500CAD09B /* Shimmer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 719469C1243DAB6500CAD09B /* Shimmer.swift */; };
+		719469D8243DD04700CAD09B /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 719469D7243DD04700CAD09B /* TableViewCell.swift */; };
+		719469DC243DDB7600CAD09B /* TableDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 719469DB243DDB7600CAD09B /* TableDataSource.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -118,6 +121,9 @@
 		719469B4243DA7CF00CAD09B /* Injector.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Injector.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		719469B7243DA7D200CAD09B /* Utils.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Utils.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		719469BA243DA7D500CAD09B /* Validators.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Validators.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		719469C1243DAB6500CAD09B /* Shimmer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Shimmer.swift; sourceTree = "<group>"; };
+		719469D7243DD04700CAD09B /* TableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewCell.swift; sourceTree = "<group>"; };
+		719469DB243DDB7600CAD09B /* TableDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableDataSource.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -167,12 +173,13 @@
 			children = (
 				7194696F243DA7BE00CAD09B /* Components */,
 				71946962243DA7BE00CAD09B /* ComponentsList */,
-				71946984243DA7BE00CAD09B /* Delegates */,
+				71946984243DA7BE00CAD09B /* DelegatesAndDataSources */,
 				71946969243DA7BE00CAD09B /* Utils */,
 				71946983243DA7BE00CAD09B /* Component.swift */,
 				71946961243DA7BE00CAD09B /* Forms.swift */,
 				71946982243DA7BE00CAD09B /* PagerController.swift */,
 				7194698B243DA7BE00CAD09B /* TabBarController.swift */,
+				719469D7243DD04700CAD09B /* TableViewCell.swift */,
 				71946981243DA7BE00CAD09B /* TableViewController.swift */,
 				71946960243DA7BE00CAD09B /* ViewController.swift */,
 			);
@@ -195,11 +202,12 @@
 		71946969243DA7BE00CAD09B /* Utils */ = {
 			isa = PBXGroup;
 			children = (
-				7194696A243DA7BE00CAD09B /* Modal.swift */,
+				7194696E243DA7BE00CAD09B /* Configuration.swift */,
 				7194696B243DA7BE00CAD09B /* Loader.swift */,
+				7194696A243DA7BE00CAD09B /* Modal.swift */,
 				7194696C243DA7BE00CAD09B /* Theme.swift */,
 				7194696D243DA7BE00CAD09B /* Toast.swift */,
-				7194696E243DA7BE00CAD09B /* Configuration.swift */,
+				719469C1243DAB6500CAD09B /* Shimmer.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -260,17 +268,13 @@
 			path = Inputs;
 			sourceTree = "<group>";
 		};
-		71946984243DA7BE00CAD09B /* Delegates */ = {
+		71946984243DA7BE00CAD09B /* DelegatesAndDataSources */ = {
 			isa = PBXGroup;
 			children = (
-				71946985243DA7BE00CAD09B /* TextFieldEmailDelegate.swift */,
-				71946986243DA7BE00CAD09B /* TextFieldPeselDelegate.swift */,
-				71946987243DA7BE00CAD09B /* TextFieldAmountDelegate.swift */,
-				71946988243DA7BE00CAD09B /* TextFieldDelegate.swift */,
-				71946989243DA7BE00CAD09B /* TextFieldDelegates.swift */,
-				7194698A243DA7BE00CAD09B /* TextFieldPhoneDelegate.swift */,
+				719469DA243DDB6400CAD09B /* TableView */,
+				719469D9243DDB5C00CAD09B /* TextField */,
 			);
-			path = Delegates;
+			path = DelegatesAndDataSources;
 			sourceTree = "<group>";
 		};
 		719469AF243DA7CC00CAD09B /* Frameworks */ = {
@@ -282,6 +286,27 @@
 				719469B0243DA7CC00CAD09B /* Anchor.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		719469D9243DDB5C00CAD09B /* TextField */ = {
+			isa = PBXGroup;
+			children = (
+				71946985243DA7BE00CAD09B /* TextFieldEmailDelegate.swift */,
+				71946986243DA7BE00CAD09B /* TextFieldPeselDelegate.swift */,
+				71946987243DA7BE00CAD09B /* TextFieldAmountDelegate.swift */,
+				71946988243DA7BE00CAD09B /* TextFieldDelegate.swift */,
+				71946989243DA7BE00CAD09B /* TextFieldDelegates.swift */,
+				7194698A243DA7BE00CAD09B /* TextFieldPhoneDelegate.swift */,
+			);
+			path = TextField;
+			sourceTree = "<group>";
+		};
+		719469DA243DDB6400CAD09B /* TableView */ = {
+			isa = PBXGroup;
+			children = (
+				719469DB243DDB7600CAD09B /* TableDataSource.swift */,
+			);
+			path = TableView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -394,6 +419,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				719469DC243DDB7600CAD09B /* TableDataSource.swift in Sources */,
 				71946991243DA7BE00CAD09B /* ComponentsUtils.swift in Sources */,
 				719469A2243DA7BE00CAD09B /* TextField.swift in Sources */,
 				71946998243DA7BE00CAD09B /* Toast.swift in Sources */,
@@ -404,6 +430,7 @@
 				719469AA243DA7BE00CAD09B /* TextFieldDelegate.swift in Sources */,
 				71946993243DA7BE00CAD09B /* Components.swift in Sources */,
 				719469A0243DA7BE00CAD09B /* Divider.swift in Sources */,
+				719469C2243DAB6500CAD09B /* Shimmer.swift in Sources */,
 				71946997243DA7BE00CAD09B /* Theme.swift in Sources */,
 				71946996243DA7BE00CAD09B /* Loader.swift in Sources */,
 				7194699E243DA7BE00CAD09B /* TabBar.swift in Sources */,
@@ -424,6 +451,7 @@
 				719469A5243DA7BE00CAD09B /* PagerController.swift in Sources */,
 				719469A8243DA7BE00CAD09B /* TextFieldPeselDelegate.swift in Sources */,
 				719469A1243DA7BE00CAD09B /* TitleTextField.swift in Sources */,
+				719469D8243DD04700CAD09B /* TableViewCell.swift in Sources */,
 				71946995243DA7BE00CAD09B /* Modal.swift in Sources */,
 				71946994243DA7BE00CAD09B /* ComponentsButtons.swift in Sources */,
 			);
