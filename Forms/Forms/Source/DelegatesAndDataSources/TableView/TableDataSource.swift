@@ -9,102 +9,232 @@
 import UIKit
 
 // MARK: TableSection
-public struct TableSection {
+public class TableSection {
+    public let isShimmering: Bool
     public let data: Any
-    public let rows: [TableRow]
+    public fileprivate (set) var rows: [TableRow]
     
-    public init(data: Any = Optional<Any>.none as Any,
+    public init(isShimmering: Bool = false,
+                data: Any = TableDataSource.Empty,
                 rows: [TableRow]) {
+        self.isShimmering = isShimmering
         self.data = data
         self.rows = rows
     }
 }
 
 // MARK: TableRow
-public typealias TableRowConfigure = ((Any, TableViewCell, IndexPath) -> Void)
+public typealias TableRowConfigure = ((TableRowData, TableViewCell, IndexPath) -> Void)
 
-public struct TableRow {
+public class TableRowData {
+    public let type: AnyClass
     public let data: Any
     public let identifier: String
-    public let type: AnyClass
-    public let height: CGFloat
     
-    public init(data: Any = Optional<Any>.none as Any,
-                of type: TableViewCell.Type,
-                height: CGFloat = UITableView.automaticDimension) {
+    public init(of type: TableViewCell.Type,
+                data: Any = TableDataSource.Empty) {
         self.data = data
-        self.identifier = type.identifier
         self.type = type
-        self.height = height
+        self.identifier = type.identifier
+    }
+}
+
+public class TableRow {
+    public let data: TableRowData
+    
+    public init(of type: TableViewCell.Type,
+                data: Any = TableDataSource.Empty) {
+        self.data = TableRowData(of: type, data: data)
+    }
+    
+    public init(data: TableRowData) {
+        self.data = data
     }
 }
 
 // MARK: TableDataSourceProtocol
-public protocol TableDataSourceDelegateProtocol {
-    func setupCell(data: Any, cell: TableViewCell, indexPath: IndexPath)
+public protocol TableDataSourceDelegateProtocol: class {
+    func setupCell(data: TableRowData, cell: TableViewCell, indexPath: IndexPath)
+    func selectCell(data: TableRowData, cell: TableViewCell, indexPath: IndexPath)
 }
 
 // MARK: TableDataSource
-open class TableDataSource: NSObject, UITableViewDelegate, UITableViewDataSource {
-    private var items: [TableSection]
-    public var onConfigure: TableRowConfigure?
+open class TableDataSource: NSObject {
+    public static var Empty = ((Optional<Any>.none) as Any)
+    
+    public private (set) var sections: [TableSection]
+    private weak var tableView: UITableView? 
+    private var tableUpdatesQueue: DispatchQueue = .main
+    private weak var scrollDelegate: UIScrollViewDelegate?
+    private weak var delegate: TableDataSourceDelegateProtocol?
     
     override public init() {
-        self.items = []
+        self.sections = []
     }
     
-    public func setItems(rowType: TableViewCell.Type,
-                         data: [Any]) {
-        let sectionData: Any = Optional<Any>.none as Any
-        var rows: [TableRow] = []
-        for rowData in data {
-            rows.append(TableRow(data: rowData, of: rowType))
+    public func reset(animated: Bool = true) {
+        let sections: [TableSection] = []
+        self.setItems(sections, animated: animated)
+    }
+    
+    public func prepare(for tableView: UITableView,
+                        queue tableUpdatesQueue: DispatchQueue,
+                        scrollDelegate: UIScrollViewDelegate) {
+            self.tableView = tableView
+            self.tableUpdatesQueue = tableUpdatesQueue
+            self.scrollDelegate = scrollDelegate
+    }
+    
+    public func prepareDataSource(_ sections: [TableSection]) {
+        let rows: [TableRow] = sections.flatMap { $0.rows }
+        self.prepareDataSource(rows)
+    }
+    
+    public func prepareDataSource(_ rows: [TableRow]) {
+        guard let tableView = self.tableView else { return }
+        for row in rows {
+            tableView.register(row.data.type, forCellReuseIdentifier: row.data.identifier)
         }
-        self.setItems([TableSection(data: sectionData, rows: rows)])
-    }
-     
-    public func setItems(_ items: [TableRow]) {
-        self.items = [TableSection(rows: items)]
     }
     
-    public func setItems(_ items: [TableSection]) {
-        self.items = items
+    public func setItems(_ sections: [TableSection],
+                         animated: Bool = true) {
+        guard let tableView = self.tableView else { return }
+        self.prepareDataSource(sections)
+        self.sections = sections
+        tableView.transition(
+            animated,
+            duration: 0.3,
+            animations: tableView.reloadData)
     }
     
-    public func prepare(for tableView: UITableView) {
-        for section in self.items {
-            for row in section.rows {
-                tableView.register(row.type, forCellReuseIdentifier: row.identifier)
+    public func setItems(_ rows: [TableRow],
+                         animated: Bool = true) {
+        let section = TableSection(
+            data: TableDataSource.Empty,
+            rows: rows)
+        self.setItems([section], animated: animated)
+    }
+    
+    public func append(_ sections: [TableSection],
+                       animated: UITableView.RowAnimation = .none) {
+        self.prepareDataSource(sections)
+        self.appendToTable(sections, animated: animated)
+    }
+    
+    public func append(_ rows: [TableRow],
+                       animated: UITableView.RowAnimation = .top) {
+        let sections: [TableSection] = self.sections.filter { !$0.isShimmering }
+        if sections.isNotEmpty {
+            self.prepareDataSource(rows)
+            self.appendToTable(rows, animated: animated)
+        } else {
+            let section = TableSection(rows: rows)
+            self.append([section], animated: animated)
+        }
+    }
+}
+
+// MARK: Updates
+extension TableDataSource {
+    internal func removeFromTable(_ sections: [TableSection],
+                                  animated: UITableView.RowAnimation) {
+        guard let tableView = self.tableView else { return }
+        guard sections.isNotEmpty else { return }
+        self.tableUpdatesQueue.async {
+            tableView.animated(animated) {
+                self.sections = self.sections.filter { (section) in !sections.contains(where: { $0 === section }) }
+                tableView.transition(
+                    animated != .none,
+                    duration: 0.3,
+                    animations: tableView.reloadData)
             }
         }
     }
-     
+    
+    internal func appendToTable(_ sections: [TableSection],
+                               animated: UITableView.RowAnimation) {
+        guard let tableView = self.tableView else { return }
+        guard sections.isNotEmpty else { return }
+        self.tableUpdatesQueue.async {
+            tableView.animated(animated) {
+                if !self.sections.isEmpty {
+                    let startIndex: Int = self.sections.count
+                    let endIndex: Int = startIndex.advanced(by: sections.count)
+                    let set: IndexSet = IndexSet(startIndex..<endIndex)
+                    self.sections.append(contentsOf: sections)
+                    tableView.performBatchUpdates({
+                        tableView.insertSections(set, with: animated)
+                    })
+                } else {
+                    self.sections.append(contentsOf: sections)
+                    tableView.transition(
+                        animated != .none,
+                        duration: 0.3,
+                        animations: tableView.reloadData)
+                }
+            }
+        }
+    }
+    
+    internal func appendToTable(_ rows: [TableRow],
+                               animated: UITableView.RowAnimation) {
+        guard let tableView = self.tableView else { return }
+        guard rows.isNotEmpty else { return }
+        self.tableUpdatesQueue.async {
+            tableView.animated(animated) {
+                let sectionIndex: Int = self.sections.count - 1
+                self.sections[sectionIndex].rows.append(contentsOf: rows)
+                tableView.reloadData()
+            }
+        }
+    }
+}
+
+// MARK: UITableViewDelegate, UITableViewDataSource
+extension TableDataSource: UITableViewDelegate, UITableViewDataSource {
     public func numberOfSections(in tableView: UITableView) -> Int {
-        return self.items.count
+        return self.sections.count
     }
     
     public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.items[section].rows.count
+        return self.sections[section].rows.count
+    }
+    
+    public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let section: TableSection = self.sections[indexPath.section]
+        guard !section.isShimmering else { return }
+        let row: TableRow = section.rows[indexPath.row]
+        let cell = tableView.cellForRow(at: indexPath) as! TableViewCell
+        self.delegate?.selectCell(data: row.data, cell: cell, indexPath: indexPath)
     }
     
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let section: TableSection = self.items[indexPath.section]
-        let item: TableRow = section.rows[indexPath.row]
-        let cell = tableView.dequeueReusableCell(withIdentifier: item.identifier, for: indexPath) as! TableViewCell
+        let section: TableSection = self.sections[indexPath.section]
+        let row: TableRow = section.rows[indexPath.row]
+        let cell = tableView.dequeueReusableCell(withIdentifier: row.data.identifier, for: indexPath) as! TableViewCell
+        cell.selectionStyle = .none
         cell.stopShimmering()
-        self.onConfigure?(item.data, cell, indexPath)
+        self.delegate?.setupCell(data: row.data, cell: cell, indexPath: indexPath)
         return cell
     }
     
     public func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return self.items[indexPath.section].rows[indexPath.row].height
+        return UITableView.automaticDimension
+    }
+}
+
+// MARK: UIScrollViewDelegate
+public extension TableDataSource {
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        self.scrollDelegate?.scrollViewDidScroll?(scrollView)
     }
 }
 
 // MARK: Builder
 public extension TableDataSource { 
     func with(delegate: TableDataSourceDelegateProtocol?) -> Self {
-        self.onConfigure = delegate?.setupCell
+        self.delegate = delegate
         return self
     }
 }

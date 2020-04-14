@@ -10,6 +10,7 @@ import UIKit
 
 // MARK: Shimmerable
 public protocol Shimmerable: class {
+    var isShimmering: Bool { get }
     func startShimmering()
     func stopShimmering()
 }
@@ -20,6 +21,17 @@ public class UnShimmerableButton: UIButton, UnShimmerable { }
 
 // MARK: Shimmer - UIView
 public extension UIView {
+    var isShimmering: Bool {
+        if self.subviews.count == 0,
+            self is ShimmerPlaceholderView {
+            return true
+        }
+        for view in self.subviews {
+            guard !view.isShimmering else { return true }
+        }
+        return false
+    }
+    
     @objc
     func startShimmering() {
         self.setShimmer(in: self)
@@ -130,25 +142,45 @@ public struct ShimmerRowGenerator {
 
 // MARK: ShimmerDataSource
 open class ShimmerDataSource: TableDataSource {
-    public func setItems(rowType: TableViewCell.Type,
-                         count: Int) {
-        let data: [Any] = [Any](repeating: Optional<Any>.none as Any, count: count)
-        self.setItems(rowType: rowType, data: [data])
+    private var generators: [ShimmerRowGenerator] = []
+    
+    override public func prepare(for tableView: UITableView,
+                                 queue tableUpdatesQueue: DispatchQueue,
+                                 scrollDelegate: UIScrollViewDelegate) {
+        super.prepare(
+            for: tableView,
+            queue: tableUpdatesQueue,
+            scrollDelegate: scrollDelegate)
     }
     
-    public func setItems(generators: [ShimmerRowGenerator]) {
-        let data: Any = Optional<Any>.none as Any
+    public func prepareGenerators() {
+        self.append(self.generators)
+    }
+    
+    public func stopShimmering(animated: Bool) {
+        let sections: [TableSection] = self.sections.filter { $0.isShimmering }
+        self.removeFromTable(
+            sections,
+            animated: animated ? .fade : .none)
+    }
+    
+    private func append(_ generators: [ShimmerRowGenerator]) {
+        var sections: [TableSection] = []
         var rows: [TableRow] = []
         for generator in generators {
             for _ in 0..<generator.count {
-                rows.append(TableRow(data: data, of: generator.type))
+                let data = TableRowData(of: generator.type)
+                rows.append(TableRow(data: data))
             }
         }
-        self.setItems([TableSection(data: data, rows: rows)])
+        sections.append(TableSection(isShimmering: true, rows: rows))
+        self.append(sections)
     }
     
     public override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = super.tableView(tableView, cellForRowAt: indexPath) as! TableViewCell
+        let section: TableSection = self.sections[indexPath.section]
+        guard section.isShimmering else { return cell }
         cell.prepareForShimmering()
         cell.startShimmering()
         return cell
@@ -190,15 +222,11 @@ public class ShimmerTableViewCell: TableViewCell {
     }
 }
 
+
 // MARK: Builder
 public extension ShimmerDataSource {
-    func with(rowType: TableViewCell.Type,
-              count: Int) -> Self {
-        self.setItems(rowType: rowType, count: count)
-        return self
-    }
     func with(generators: [ShimmerRowGenerator]) -> Self {
-        self.setItems(generators: generators)
+        self.generators = generators
         return self
     }
 }

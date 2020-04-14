@@ -101,7 +101,7 @@ public extension UIView {
     func animation(_ animated: Bool,
                    duration: TimeInterval = 0.0,
                    delay: TimeInterval = 0.0,
-                   options: UIView.AnimationOptions = [],
+                   options: UIView.AnimationOptions = .allowUserInteraction,
                    animations: @escaping (() -> Void)) {
         self.animation(
             animated,
@@ -115,7 +115,7 @@ public extension UIView {
     func animation(_ animated: Bool,
                    duration: TimeInterval = 0.0,
                    delay: TimeInterval = 0.0,
-                   options: UIView.AnimationOptions = [],
+                   options: UIView.AnimationOptions = .allowUserInteraction,
                    animations: @escaping (() -> Void) = { },
                    completion: ((Bool) -> Void)? = nil) {
         guard animated else {
@@ -133,7 +133,7 @@ public extension UIView {
     
     func transition(_ animated: Bool,
                     duration: TimeInterval = 0.0,
-                    options: UIView.AnimationOptions = .transitionCrossDissolve,
+                    options: UIView.AnimationOptions = [.allowUserInteraction, .transitionCrossDissolve],
                     animations: @escaping (() -> Void)) {
         self.transition(
             animated,
@@ -145,7 +145,7 @@ public extension UIView {
     
     func transition(_ animated: Bool,
                     duration: TimeInterval = 0.0,
-                    options: UIView.AnimationOptions = .transitionCrossDissolve,
+                    options: UIView.AnimationOptions = [.allowUserInteraction, .transitionCrossDissolve],
                     animations: @escaping (() -> Void) = { },
                     completion: ((Bool) -> Void)? = nil) {
         guard animated else {

@@ -49,8 +49,8 @@ open class TabBarController: ViewController {
         didSet { return self.tabBar.titleSelectedFont = self.tabBarTitleSelectedFont }
     }
     
-    public var onSelect: TabBarItemOnSelect? = nil
-    public var shouldSelect: (TabBarItemShouldSelect) = { _ in true }
+    public var onSelect: TabBar.OnSelect? = nil
+    public var shouldSelect: (TabBar.ShouldSelect) = { _ in true }
     
     override public func setupContent() {
         super.setupContent()

@@ -25,6 +25,7 @@
 		713B9C8A243D0964001F6E3A /* DemoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 713B9C7B243D0964001F6E3A /* DemoViewController.swift */; };
 		713B9C8B243D0964001F6E3A /* DemoTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 713B9C7C243D0964001F6E3A /* DemoTabBarController.swift */; };
 		713B9C8C243D0964001F6E3A /* DemoTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 713B9C7D243D0964001F6E3A /* DemoTableViewController.swift */; };
+		715692B9243E58E700B4613C /* DemoShimmerPaginationTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 715692B8243E58E700B4613C /* DemoShimmerPaginationTableViewController.swift */; };
 		719469C4243DB01D00CAD09B /* DemoShimmerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 719469C3243DB01D00CAD09B /* DemoShimmerViewController.swift */; };
 		719469C8243DB66A00CAD09B /* Anchor.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 719469C7243DB66A00CAD09B /* Anchor.framework */; };
 		719469C9243DB66A00CAD09B /* Anchor.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 719469C7243DB66A00CAD09B /* Anchor.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -87,6 +88,7 @@
 		713B9C7B243D0964001F6E3A /* DemoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DemoViewController.swift; sourceTree = "<group>"; };
 		713B9C7C243D0964001F6E3A /* DemoTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DemoTabBarController.swift; sourceTree = "<group>"; };
 		713B9C7D243D0964001F6E3A /* DemoTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DemoTableViewController.swift; sourceTree = "<group>"; };
+		715692B8243E58E700B4613C /* DemoShimmerPaginationTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoShimmerPaginationTableViewController.swift; sourceTree = "<group>"; };
 		719469C3243DB01D00CAD09B /* DemoShimmerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoShimmerViewController.swift; sourceTree = "<group>"; };
 		719469C7243DB66A00CAD09B /* Anchor.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Anchor.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		719469CA243DB66E00CAD09B /* Injector.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Injector.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -210,12 +212,11 @@
 		713B9C73243D0964001F6E3A /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				71D39CCE244455F1006BED33 /* Shimmer */,
 				713B9C77243D0964001F6E3A /* DemoAttributedStringViewController.swift */,
 				713B9C78243D0964001F6E3A /* DemoLoaderViewController.swift */,
 				713B9C74243D0964001F6E3A /* DemoModalViewController.swift */,
 				713B9C75243D0964001F6E3A /* DemoToastViewController.swift */,
-				719469C3243DB01D00CAD09B /* DemoShimmerViewController.swift */,
-				719469D5243DC11000CAD09B /* DemoShimmerTableViewController.swift */,
 				713B9C76243D0964001F6E3A /* DemoValidatorsViewController.swift */,
 			);
 			path = Utils;
@@ -230,6 +231,16 @@
 				713B9C7D243D0964001F6E3A /* DemoTableViewController.swift */,
 			);
 			path = Controllers;
+			sourceTree = "<group>";
+		};
+		71D39CCE244455F1006BED33 /* Shimmer */ = {
+			isa = PBXGroup;
+			children = (
+				715692B8243E58E700B4613C /* DemoShimmerPaginationTableViewController.swift */,
+				719469C3243DB01D00CAD09B /* DemoShimmerViewController.swift */,
+				719469D5243DC11000CAD09B /* DemoShimmerTableViewController.swift */,
+			);
+			path = Shimmer;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -355,6 +366,7 @@
 				713B9C8B243D0964001F6E3A /* DemoTabBarController.swift in Sources */,
 				719469D4243DBC6800CAD09B /* Utils.swift in Sources */,
 				713B9C8A243D0964001F6E3A /* DemoViewController.swift in Sources */,
+				715692B9243E58E700B4613C /* DemoShimmerPaginationTableViewController.swift in Sources */,
 				713B9C88243D0964001F6E3A /* DemoLoaderViewController.swift in Sources */,
 				713B9C86243D0964001F6E3A /* DemoValidatorsViewController.swift in Sources */,
 				713B9C87243D0964001F6E3A /* DemoAttributedStringViewController.swift in Sources */,

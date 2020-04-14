@@ -22,10 +22,10 @@ public extension UIEdgeInsets {
         return self.top + self.bottom
     }
     
-    init(top: CGFloat,
-         leading: CGFloat,
-         bottom: CGFloat,
-         trailing: CGFloat) {
+    init(top: CGFloat = 0,
+         leading: CGFloat = 0,
+         bottom: CGFloat = 0,
+         trailing: CGFloat = 0) {
         if UIView.isRightToLeft {
             self.init(top: top, left: trailing, bottom: bottom, right: leading)
         } else {

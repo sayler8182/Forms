@@ -9,11 +9,11 @@
 import UIKit
 
 // MARK: PagerItem
-public typealias PagerItemOnSelect = ((PagerItem) -> Void)
-
 open class PagerItem: TopBarItem {
+    public typealias OnSelect = ((PagerItem) -> Void)
+    
     private var _viewControllerFactory: () -> UIViewController
-    public let onSelect: PagerItemOnSelect?
+    public let onSelect: OnSelect?
     
     private var _viewController: UIViewController?
     public var viewController: UIViewController {
@@ -25,7 +25,7 @@ open class PagerItem: TopBarItem {
     
     public init(viewController: @escaping () -> UIViewController,
                 title: String? = nil,
-                onSelect: PagerItemOnSelect? = nil) {
+                onSelect: OnSelect? = nil) {
         self._viewControllerFactory = viewController
         self.onSelect = onSelect
         super.init(title: title)
@@ -96,7 +96,7 @@ open class PagerController: ViewController {
         didSet { self.topBar.underlineColor = self.topBarUnderlineColor }
     }
     
-    public var onSelect: PagerItemOnSelect? = nil
+    public var onSelect: PagerItem.OnSelect? = nil
     
     override open func setupView() {
         super.setupView()

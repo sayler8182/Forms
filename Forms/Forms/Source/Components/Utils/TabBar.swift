@@ -8,9 +8,6 @@
 
 import UIKit
 
-public typealias TabBarItemOnSelect = ((TabBarItem) -> Void)
-public typealias TabBarItemShouldSelect = ((TabBarItem) -> Bool)
-
 // MARK: TabBarKey
 public protocol TabBarKey {
     var rawValue: String { get }
@@ -39,7 +36,7 @@ open class TabBarItem {
     public let selectedImage: UIImage?
     public let title: String?
     public let isTranslucent: Bool
-    public let onSelect: TabBarItemOnSelect?
+    public let onSelect: TabBar.OnSelect?
     
     private var _viewController: UIViewController?
     public var viewController: UIViewController {
@@ -55,7 +52,7 @@ open class TabBarItem {
                 selectedImage: UIImage? = nil,
                 title: String? = nil,
                 isTranslucent: Bool = false,
-                onSelect: TabBarItemOnSelect? = nil) {
+                onSelect: TabBar.OnSelect? = nil) {
         self.itemKey = itemKey
         self._viewControllerFactory = viewController
         self.image = image
@@ -76,6 +73,9 @@ open class TabBarItem {
 
 // MARK: TabBar
 open class TabBar: UITabBar {
+    public typealias OnSelect = ((TabBarItem) -> Void)
+    public typealias ShouldSelect = ((TabBarItem) -> Bool)
+    
     private let contentView = UIView()
     private let stackView = UIStackView()
     
@@ -101,7 +101,7 @@ open class TabBar: UITabBar {
     private var tabBarItems: [TabBarItem] = []
     private var selectedIndex: Int? = nil
     
-    public var onSelect: TabBarItemOnSelect? = nil
+    public var onSelect: OnSelect? = nil
     
     override init(frame: CGRect) {
         super.init(frame: frame)

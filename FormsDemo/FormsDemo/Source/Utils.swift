@@ -15,4 +15,13 @@ internal class Utils {
             action()
         }
     }
+    
+    static func delay<T: AnyObject>(_ delay: Double,
+                         _ target: T,
+                         _ action: @escaping (T) -> Void) {
+        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + delay) { [weak target] in
+            guard let target: T = target else { return }
+            action(target)
+        }
+    }
 }

@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		710624F624404C9D00C267FE /* IndexPath.swift in Sources */ = {isa = PBXBuildFile; fileRef = 710624F524404C9D00C267FE /* IndexPath.swift */; };
+		710624FF24408AA900C267FE /* UIScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 710624FE24408AA900C267FE /* UIScrollView.swift */; };
 		713B9B98243D0696001F6E3A /* Utils.h in Headers */ = {isa = PBXBuildFile; fileRef = 713B9B8A243D0695001F6E3A /* Utils.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		713B9BAE243D06BD001F6E3A /* LoremIpsum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 713B9BAD243D06BD001F6E3A /* LoremIpsum.swift */; };
 		713B9BB4243D06C3001F6E3A /* Array.swift in Sources */ = {isa = PBXBuildFile; fileRef = 713B9BB0243D06C3001F6E3A /* Array.swift */; };
@@ -60,6 +62,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		710624F524404C9D00C267FE /* IndexPath.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IndexPath.swift; sourceTree = "<group>"; };
+		710624FE24408AA900C267FE /* UIScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIScrollView.swift; sourceTree = "<group>"; };
 		713B9B8A243D0695001F6E3A /* Utils.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Utils.h; sourceTree = "<group>"; };
 		713B9B8B243D0695001F6E3A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		713B9BAD243D06BD001F6E3A /* LoremIpsum.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoremIpsum.swift; sourceTree = "<group>"; };
@@ -155,6 +159,7 @@
 				713B9BBC243D07BB001F6E3A /* Bundle.swift */,
 				713B9BC2243D07BC001F6E3A /* CGRect.swift */,
 				713B9BC3243D07BC001F6E3A /* CGSize.swift */,
+				710624F524404C9D00C267FE /* IndexPath.swift */,
 				713B9BBB243D07BB001F6E3A /* Number.swift */,
 				713B9BB2243D06C3001F6E3A /* Optional.swift */,
 				713B9BB3243D06C3001F6E3A /* String.swift */,
@@ -168,6 +173,7 @@
 				713B9BC6243D07BC001F6E3A /* UILabel.swift */,
 				713B9BC8243D07BC001F6E3A /* UITableView.swift */,
 				713B9BBD243D07BB001F6E3A /* UIResponder.swift */,
+				710624FE24408AA900C267FE /* UIScrollView.swift */,
 				713B9BC9243D07BC001F6E3A /* UIStackView.swift */,
 				713B9BC7243D07BC001F6E3A /* UIView.swift */,
 				713B9BC1243D07BC001F6E3A /* UIViewController.swift */,
@@ -300,8 +306,10 @@
 				713B9BB9243D07A8001F6E3A /* AttributedString.swift in Sources */,
 				713B9BCF243D07BC001F6E3A /* UIAlertViewController.swift in Sources */,
 				713B9BAE243D06BD001F6E3A /* LoremIpsum.swift in Sources */,
+				710624F624404C9D00C267FE /* IndexPath.swift in Sources */,
 				713B9BD4243D07BC001F6E3A /* UIColor.swift in Sources */,
 				713B9BD6243D07BC001F6E3A /* UILabel.swift in Sources */,
+				710624FF24408AA900C267FE /* UIScrollView.swift in Sources */,
 				713B9BD0243D07BC001F6E3A /* UIActivityIndicatorView.swift in Sources */,
 				713B9BD2243D07BC001F6E3A /* CGRect.swift in Sources */,
 				713B9BCA243D07BC001F6E3A /* UICollectionView.swift in Sources */,

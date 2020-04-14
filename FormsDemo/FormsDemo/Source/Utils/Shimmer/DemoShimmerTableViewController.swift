@@ -15,13 +15,12 @@ class DemoShimmerTableViewController: TableViewController {
             ShimmerRowGenerator(type: ShimmerShortDemoTableViewCell.self, count: 6),
             ShimmerRowGenerator(type: ShimmerLongDemoTableViewCell.self, count: 3)
         ])
-    private lazy var dataSource = TableDataSource()
         .with(delegate: self)
     
     override func setupContent() {
         super.setupContent()
         self.startShimmering(self.shimmerDataSource)
-        Utils.delay(2.5) { self.updateDataSource() }
+        Utils.delay(2.5, self) { $0.updateDataSource() }
     }
     
     override func setupConfiguration() {
@@ -30,7 +29,7 @@ class DemoShimmerTableViewController: TableViewController {
         self.isTopToSafeArea = false
     }
     
-    override func setupCell(data: Any, cell: TableViewCell, indexPath: IndexPath) {
+    override func setupCell(data: TableRowData, cell: TableViewCell, indexPath: IndexPath) {
         super.setupCell(data: data, cell: cell, indexPath: indexPath)
         cell.cast(data: data, of: DemoCellModel.self, to: DemoTableViewCell.self) { (newData, newCell) in
             newCell.fill(newData)
@@ -39,9 +38,7 @@ class DemoShimmerTableViewController: TableViewController {
     
     private func updateDataSource() {
         self.updateDataSourceItems()
-        self.stopShimmering(
-            newDataSource: self.dataSource,
-            animated: true)
+        self.stopShimmering()
     }
     
     private func updateDataSourceItems() {
@@ -62,7 +59,8 @@ class DemoShimmerTableViewController: TableViewController {
                 subtitle: "Blue subtitle",
                 info: LoremIpsum.paragraph(sentences: 4))
         ]
-        self.dataSource.setItems(rowType: DemoTableViewCell.self, data: data)
+        let rows: [TableRow] = data.map { TableRow(of: DemoTableViewCell.self, data: $0) }
+        self.shimmerDataSource.setItems(rows)
     }
 }
 

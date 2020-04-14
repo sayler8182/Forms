@@ -16,6 +16,7 @@ public protocol TableProtocol: class {
 
 // MARK: TableViewController
 open class TableViewController: ViewController, UITableViewDelegate, UITableViewDataSource, TableDataSourceDelegateProtocol, TableProtocol {
+    
     private let tableUpdatesQueue: DispatchQueue = DispatchQueue(
         label: "tableUpdatesQueue",
         target: DispatchQueue.main)
@@ -27,25 +28,9 @@ open class TableViewController: ViewController, UITableViewDelegate, UITableView
     private let tableView: UITableView = UITableView(
         frame: CGRect(width: 320, height: 44),
         style: .plain)
+    private var refreshControl: UIRefreshControl? = nil
     private var shimmerDataSource: ShimmerDataSource? = nil
     
-    open var headerBackgroundColor: UIColor = UIColor.white {
-        didSet { self.headerView.backgroundColor = self.headerBackgroundColor }
-    }
-    open var isBottomToSafeArea: Bool = true
-    open var isTopToSafeArea: Bool = true
-    open var tableAlwaysBounceVertical: Bool = false {
-        didSet { self.tableView.alwaysBounceVertical = self.tableAlwaysBounceVertical }
-    }
-    open var tableBackgroundColor: UIColor = UIColor.clear {
-        didSet { self.tableView.backgroundColor = self.tableBackgroundColor }
-    }
-    open var tableEstimatedRowHeight: CGFloat = 44.0 {
-        didSet { self.tableView.estimatedRowHeight = self.tableEstimatedRowHeight }
-    }
-    open var tableRowHeight: CGFloat = UITableView.automaticDimension {
-        didSet { self.tableView.rowHeight = self.tableRowHeight }
-    }
     open var cellBackgroundColor: UIColor = UIColor.white {
         didSet { self.tableView.reloadData() }
     }
@@ -54,6 +39,37 @@ open class TableViewController: ViewController, UITableViewDelegate, UITableView
     }
     open var footerSpacing: CGFloat = 8 {
         didSet { self.footerView.spacing = self.footerSpacing }
+    }
+    open var headerBackgroundColor: UIColor = UIColor.white {
+        didSet { self.headerView.backgroundColor = self.headerBackgroundColor }
+    }
+    open var isBottomToSafeArea: Bool = true
+    open var isTopToSafeArea: Bool = true
+    open var paginationDelayExpiration: TimeInterval = 0
+    open var paginationIsAutostart: Bool = true
+    open var paginationIsLoading: Bool = false
+    open var paginationIsEnabled: Bool = false
+    open var paginationIsFinished: Bool = false
+    open var paginationOffset: CGFloat = 0
+    open var pullToRefreshIsLoading: Bool = false
+    open var pullToRefreshIsEnabled: Bool = false
+    open var tableAllowsSelection: Bool = false {
+        didSet { self.tableView.allowsSelection = self.tableAllowsSelection }
+    }
+    open var tableAlwaysBounceVertical: Bool = false {
+        didSet { self.tableView.alwaysBounceVertical = self.tableAlwaysBounceVertical }
+    }
+    open var tableBackgroundColor: UIColor = UIColor.clear {
+        didSet { self.tableView.backgroundColor = self.tableBackgroundColor }
+    }
+    open var tableContentInset: UIEdgeInsets = UIEdgeInsets(0) {
+        didSet { self.tableView.contentInset = self.tableContentInset }
+    }
+    open var tableEstimatedRowHeight: CGFloat = 44.0 {
+        didSet { self.tableView.estimatedRowHeight = self.tableEstimatedRowHeight }
+    }
+    open var tableRowHeight: CGFloat = UITableView.automaticDimension {
+        didSet { self.tableView.rowHeight = self.tableRowHeight }
     }
     
     override open func setupView() {
@@ -66,39 +82,46 @@ open class TableViewController: ViewController, UITableViewDelegate, UITableView
         // HOOKS
         self.setupHeader()   
         self.setupFooter()
+        self.setupPagination()
+        self.setupPullToRefresh()
     }
-    
-    override public func startShimmering(animated: Bool = false) {
+     
+    override public func startShimmering(animated: Bool = true) {
         let shimmerDataSource = ShimmerDataSource()
-            .with(rowType: ShimmerTableViewCell.self, count: 20)
+            .with(generators: [ShimmerRowGenerator(type: ShimmerTableViewCell.self, count: 20)])
         self.startShimmering(
             shimmerDataSource,
             animated: animated)
     }
     
     public func startShimmering(_ shimmerDataSource: ShimmerDataSource,
-                                animated: Bool = false) {
-        shimmerDataSource.prepare(for: self.tableView)
+                                animated: Bool = true) {
+        shimmerDataSource.prepare(
+            for: self.tableView,
+            queue: self.tableUpdatesQueue,
+            scrollDelegate: self)
+        shimmerDataSource.prepareGenerators()
         self.shimmerDataSource = shimmerDataSource
         self.setDataSource(
-            dataSource: shimmerDataSource,
-            animated: animated)
+            delegate: shimmerDataSource,
+            dataSource: shimmerDataSource)
     }
     
-    override public func stopShimmering(animated: Bool = false) {
-        self.shimmerDataSource = nil
-        self.setDataSource(
-            dataSource: self,
-            animated: animated)
+    override public func stopShimmering(animated: Bool = true) {
+        self.shimmerDataSource?.stopShimmering(animated: animated)
     }
     
-    public func stopShimmering(newDataSource: TableDataSource,
-                               animated: Bool = false) {
+    public func stopShimmering(newDataSource: TableDataSource?,
+                               animated: Bool = true) {
+        self.shimmerDataSource?.stopShimmering(animated: animated)
         self.shimmerDataSource = nil
-        newDataSource.prepare(for: self.tableView)
+        newDataSource?.prepare(
+            for: self.tableView,
+            queue: self.tableUpdatesQueue,
+            scrollDelegate: self)
         self.setDataSource(
-            dataSource: newDataSource,
-            animated: animated)
+            delegate: newDataSource,
+            dataSource: newDataSource)
     }
     
     public func build(_ components: [Component?],
@@ -140,8 +163,9 @@ open class TableViewController: ViewController, UITableViewDelegate, UITableView
         self.tableView.rowHeight = self.tableRowHeight
         self.tableView.backgroundColor = self.tableBackgroundColor
         self.tableView.separatorStyle = UITableViewCell.SeparatorStyle.none
-        self.tableView.allowsSelection = false
+        self.tableView.allowsSelection = self.tableAllowsSelection
         self.tableView.alwaysBounceVertical = self.tableAlwaysBounceVertical
+        self.tableView.contentInset = self.tableContentInset
         self.tableView.register(UITableViewCell.self, forCellReuseIdentifier: self.defaultCellIdentifier)
         self.view.addSubview(self.tableView, with: [
             Anchor.to(self.headerView).topToBottom,
@@ -183,8 +207,36 @@ open class TableViewController: ViewController, UITableViewDelegate, UITableView
         // HOOK
     }
     
-    open func setupCell(data: Any, cell: TableViewCell, indexPath: IndexPath) {
-        
+    open func setupCell(data: TableRowData,
+                        cell: TableViewCell,
+                        indexPath: IndexPath) {
+        // HOOK
+    }
+    
+    open func selectCell(data: TableRowData,
+                         cell: TableViewCell,
+                         indexPath: IndexPath) {
+        // HOOK
+    }
+    
+    open func setupPagination() {
+        guard self.paginationIsAutostart else { return }
+        self.paginationRaise()
+        // HOOK
+    }
+    
+    open func paginationNext() {
+        // HOOK
+    }
+    
+    open func setupPullToRefresh() {
+        guard self.pullToRefreshIsEnabled else { return }
+        self.setPullToRefresh()
+        // HOOK
+    }
+    
+    open func pullToRefresh() {
+        // HOOK
     }
 }
 
@@ -378,18 +430,92 @@ public extension TableViewController {
         }
     }
     
-    func setDataSource(dataSource: UITableViewDelegate & UITableViewDataSource,
-                       animated: Bool,
-                       completion: ((Bool) -> Void)? = nil) {
+    func setDataSource(delegate: UITableViewDelegate?,
+                       dataSource: UITableViewDataSource?) {
         self.tableUpdatesQueue.async {
-            self.tableView.delegate = dataSource
+            self.tableView.delegate = delegate
             self.tableView.dataSource = dataSource
-            self.tableView.transition(
-                animated,
-                duration: 0.3,
-                animations: self.tableView.reloadData,
-                completion: completion)
         }
+    }
+}
+
+// MARK: Pagination
+public extension TableViewController {
+    func paginationSuccess(delay: TimeInterval = 0.5,
+                           isLast: Bool = false) {
+        self.paginationIsLoading = false
+        self.paginationIsFinished = isLast
+        self.paginationDelayExpiration = Date().timeIntervalSince1970 + delay
+    }
+    
+    func paginationError(delay: TimeInterval = 5.0,
+                         isLast: Bool = false) {
+        self.paginationIsLoading = false
+        self.paginationIsFinished = isLast
+        self.paginationDelayExpiration = Date().timeIntervalSince1970 + delay
+    }
+    
+    private func paginationShouldLoadNext(_ scrollView: UIScrollView) -> Bool {
+        return scrollView.shouldLoadNext(offset: self.paginationOffset)
+    }
+    
+    private func paginationRaise() {
+        guard self.paginationIsEnabled else { return }
+        guard !self.paginationIsFinished else { return }
+        guard !self.paginationIsLoading else { return }
+        guard !self.pullToRefreshIsLoading else { return }
+        guard self.paginationDelayExpiration < Date().timeIntervalSince1970 else { return }
+        guard self.paginationShouldLoadNext(self.tableView) else { return }
+        self.paginationIsLoading = true
+        self.paginationNext()
+    }
+}
+
+// MARK: PullToRefresh
+public extension TableViewController {
+    func setPullToRefresh(_ view: UIView) {
+        let refreshControl = UIRefreshControl()
+        refreshControl.addSubview(view)
+        self.refreshControl = refreshControl
+        self.pullToRefreshConfigure(refreshControl)
+        self.tableView.refreshControl = refreshControl
+    }
+    
+    func setPullToRefresh(_ refreshControl: UIRefreshControl) {
+        self.refreshControl = refreshControl
+        self.pullToRefreshConfigure(refreshControl)
+        self.tableView.refreshControl = refreshControl
+    }
+    
+    func setPullToRefresh() {
+        let refreshControl = UIRefreshControl()
+        self.refreshControl = refreshControl
+        self.pullToRefreshConfigure(refreshControl)
+        self.tableView.refreshControl = refreshControl
+    }
+    
+    func pullToRefreshFinish() {
+        self.refreshControl?.endRefreshing()
+        self.pullToRefreshIsLoading = false
+    }
+    
+    private func pullToRefreshConfigure(_ refreshControl: UIRefreshControl) {
+        refreshControl.addTarget(self, action: #selector(pullToRefresh(_:)), for: .valueChanged)
+    }
+    
+    @objc
+    private func pullToRefresh(_ refreshControl: UIRefreshControl) {
+        self.pullToRefreshIsLoading = true
+        DispatchQueue.main.async {
+            guard !self.paginationIsLoading else {
+                self.pullToRefreshIsLoading = false
+                return refreshControl.endRefreshing()
+            }
+            self.tableView.panGestureRecognizer.isEnabled = false
+            self.tableView.panGestureRecognizer.isEnabled = true
+            self.pullToRefresh()
+        }
+        // HOOK
     }
 }
 
@@ -405,6 +531,7 @@ public extension TableViewController {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: self.defaultCellIdentifier, for: indexPath)
+        cell.selectionStyle = .none
         cell.backgroundColor = self.cellBackgroundColor
         cell.contentView.subviews.removeFromSuperview()
         let view: Component = self.views[indexPath.row]
@@ -420,6 +547,13 @@ public extension TableViewController {
     }
 }
 
+// MARK: UIScrollViewDelegate
+public extension TableViewController {
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        self.paginationRaise()
+    }
+}
+    
 // MARK: Scroll
 public extension TableViewController {
     func scroll(to component: Component,

@@ -8,16 +8,16 @@
 
 import UIKit
 
-public typealias AttributedStringAction = (() -> Void)
-
 // MARK: Part
 public extension AttributedString {
+    typealias Action = (() -> Void)
+    
     class Part {
         public let position: NSRange
-        public let onClick: AttributedStringAction?
+        public let onClick: Action?
         
         init(position: NSRange,
-             onClick: AttributedStringAction?) {
+             onClick: Action?) {
             self.position = position
             self.onClick = onClick
         }
@@ -62,7 +62,7 @@ public class AttributedString {
     public init() { }
     
     private func savePart(string: NSAttributedString?,
-                          onClick: AttributedStringAction? = nil) {
+                          onClick: Action? = nil) {
         guard let string: NSAttributedString = string else { return }
         let part: Part = Part(
             position: NSRange(location: self.string.length, length: string.length),
@@ -72,7 +72,7 @@ public class AttributedString {
     }
     
     private func savePart(string: String?,
-                          onClick: AttributedStringAction? = nil) {
+                          onClick: Action? = nil) {
         guard let string: String = string else { return }
         let part: Part = Part(
             position: NSRange(location: self.string.length, length: string.count),
@@ -82,7 +82,7 @@ public class AttributedString {
     }
     
     private func savePart(attachment: NSTextAttachment?,
-                          onClick: AttributedStringAction? = nil) {
+                          onClick: Action? = nil) {
         let part: Part = Part(
             position: NSRange(location: self.string.length, length: 0),
             onClick: onClick
@@ -91,7 +91,7 @@ public class AttributedString {
     }
     
     public func with(string: String?,
-                     onClick: AttributedStringAction? = nil) -> AttributedString {
+                     onClick: Action? = nil) -> AttributedString {
         guard let string: String = string else { return self }
         let style: Style = self.nextStyle ?? self.style
         let attributedString = NSMutableAttributedString(string: string)
@@ -106,7 +106,7 @@ public class AttributedString {
     }
     
     public func with(string: NSAttributedString?,
-                     onClick: AttributedStringAction? = nil) -> AttributedString {
+                     onClick: Action? = nil) -> AttributedString {
         guard let string: NSAttributedString = string else { return self }
         self.savePart(string: string, onClick: onClick)
         self.string = self.string.with(string: string)
@@ -120,7 +120,7 @@ public class AttributedString {
     }
     
     public func with(attachment: NSTextAttachment?,
-                     onClick: AttributedStringAction? = nil) -> AttributedString {
+                     onClick: Action? = nil) -> AttributedString {
         self.savePart(attachment: attachment, onClick: onClick)
         self.string.with(attachment: attachment)
         return self

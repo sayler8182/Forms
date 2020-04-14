@@ -32,6 +32,8 @@ private enum Demo {
         case utilsModal
         case utilsToast
         case utilsShimmer
+        case utilsShimmerPaginationTable
+        case utilsShimmerShimmer
         case utilsShimmerTable
         case utilsValidators
     }
@@ -90,8 +92,16 @@ private enum Demo {
                     Row(type: .utilsLoader, title: "Loader"),
                     Row(type: .utilsModal, title: "Modal"),
                     Row(type: .utilsToast, title: "Toast"),
-                    Row(type: .utilsShimmer, title: "Shimmer"),
-                    Row(type: .utilsShimmerTable, title: "Shimmer Table"),
+                    Row(
+                        type: .utilsShimmer,
+                        title: "Shimmer",
+                        sections: [
+                            Section(rows: [
+                                Row(type: .utilsShimmerPaginationTable, title: "Pagination Table"),
+                                Row(type: .utilsShimmerShimmer, title: "Shimmer"),
+                                Row(type: .utilsShimmerTable, title: "Shimmer Table")
+                            ])
+                    ]),
                     Row(type: .utilsValidators, title: "Validators")
                 ])
             ]
@@ -194,7 +204,8 @@ private class DemoListViewController: ViewController {
         case .utilsLoader:                              return DemoLoaderViewController()
         case .utilsModal:                               return DemoModalViewController()
         case .utilsToast:                               return DemoToastViewController()
-        case .utilsShimmer:                             return DemoShimmerViewController()
+        case .utilsShimmerPaginationTable:              return DemoShimmerPaginationTableViewController()
+        case .utilsShimmerShimmer:                      return DemoShimmerViewController()
         case .utilsShimmerTable:                        return DemoShimmerTableViewController()
         case .utilsValidators:                          return DemoValidatorsViewController()
         default:                                        return nil

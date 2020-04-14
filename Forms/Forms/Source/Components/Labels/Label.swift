@@ -24,6 +24,7 @@ open class Label: Component, Clickable {
         didSet {
             self.attributedText?.label = self.textLabel
             self.textLabel.attributedText = self.attributedText?.string
+            self.textGestureRecognizer.isEnabled = true
         }
     }
     override open var backgroundColor: UIColor? {
@@ -64,7 +65,9 @@ open class Label: Component, Clickable {
         set { self.textLabel.text = newValue }
     }
     
-    public var onClick: (() -> Void)? = nil
+    public var onClick: (() -> Void)? = nil {
+        didSet { self.textGestureRecognizer.isEnabled = self.onClick.isNotNil }
+    }
     
     override open func setupView() {
         self.setupComponentView()
@@ -80,6 +83,7 @@ open class Label: Component, Clickable {
     override open func setupActions() {
         self.textGestureRecognizer.minimumPressDuration = 0.0
         self.textGestureRecognizer.addTarget(self, action: #selector(handleGesture))
+        self.textGestureRecognizer.isEnabled = false
         self.textLabel.addGestureRecognizer(self.textGestureRecognizer)
     }
     

@@ -8,8 +8,6 @@
 
 import UIKit
 
-public typealias TopBarItemOnSelect = ((TopBarItemProtocol) -> Void)
-
 // MARK: TopBarItem
 public protocol TopBarItemProtocol {
     var index: Int { get }
@@ -27,6 +25,9 @@ open class TopBarItem: TopBarItemProtocol {
 
 // MARK: TopBar
 open class TopBar: Component {
+    public typealias OnSelect = ((TopBarItemProtocol) -> Void)
+
+    
     private let contentView = UIView()
     private let collectionView = UICollectionView(frame: CGRect.zero, collectionViewLayout: TopBarFlowLayout())
     private let separatorView = UIView()
@@ -67,7 +68,7 @@ open class TopBar: Component {
     private var selectedIndex: Int? = nil
     private let defaultCellIdentifier: String = "_cell"
     
-    public var onSelect: TopBarItemOnSelect? = nil
+    public var onSelect: OnSelect? = nil
     
     override open func setupView() {
         super.setupView()

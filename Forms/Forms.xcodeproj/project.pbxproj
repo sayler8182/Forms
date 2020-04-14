@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		715692BB243E5A2A00B4613C /* Pagination.swift in Sources */ = {isa = PBXBuildFile; fileRef = 715692BA243E5A2A00B4613C /* Pagination.swift */; };
 		7194694D243DA7A800CAD09B /* Forms.h in Headers */ = {isa = PBXBuildFile; fileRef = 7194693F243DA7A800CAD09B /* Forms.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		7194698C243DA7BE00CAD09B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71946960243DA7BE00CAD09B /* ViewController.swift */; };
 		7194698E243DA7BE00CAD09B /* Forms.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71946961243DA7BE00CAD09B /* Forms.swift */; };
@@ -81,6 +82,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		715692BA243E5A2A00B4613C /* Pagination.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pagination.swift; sourceTree = "<group>"; };
 		7194693F243DA7A800CAD09B /* Forms.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Forms.h; sourceTree = "<group>"; };
 		71946940243DA7A800CAD09B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		71946960243DA7BE00CAD09B /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -208,6 +210,7 @@
 				7194696C243DA7BE00CAD09B /* Theme.swift */,
 				7194696D243DA7BE00CAD09B /* Toast.swift */,
 				719469C1243DAB6500CAD09B /* Shimmer.swift */,
+				715692BA243E5A2A00B4613C /* Pagination.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -452,6 +455,7 @@
 				719469A8243DA7BE00CAD09B /* TextFieldPeselDelegate.swift in Sources */,
 				719469A1243DA7BE00CAD09B /* TitleTextField.swift in Sources */,
 				719469D8243DD04700CAD09B /* TableViewCell.swift in Sources */,
+				715692BB243E5A2A00B4613C /* Pagination.swift in Sources */,
 				71946995243DA7BE00CAD09B /* Modal.swift in Sources */,
 				71946994243DA7BE00CAD09B /* ComponentsButtons.swift in Sources */,
 			);

@@ -55,7 +55,7 @@ open class TableViewCell: UITableViewCell, Componentable, ShimmerableTableViewCe
 
 // MARK: DataSource
 public extension TableViewCell {
-    func cast<D, C: TableViewCell>(data: Any,
+    func cast<D, C: TableViewCell>(data: TableRowData,
                                    of dataType: D.Type,
                                    to cellType: C.Type,
                                    success: (D, C) -> Void) {
@@ -67,12 +67,12 @@ public extension TableViewCell {
             fail: { })
     }
     
-    func cast<D, C: TableViewCell>(data: Any,
+    func cast<D, C: TableViewCell>(data: TableRowData,
                                    of dataType: D.Type,
                                    to cellType: C.Type,
                                    success: (D, C) -> Void,
                                    fail: () -> Void) {
-        guard let data: D = data as? D,
+        guard let data: D = data.data as? D,
             let cell: C = self as? C else {
                 return fail()
         }

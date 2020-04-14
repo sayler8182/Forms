@@ -23,7 +23,7 @@ class DemoShimmerViewController: ViewController {
         super.setupContent()
         self.setupTitleView()
         self.startShimmering()
-        Utils.delay(10.0) { self.stopShimmering() }
+        Utils.delay(10.0, self) { $0.stopShimmering() }
     }
     
     private func setupTitleView() {

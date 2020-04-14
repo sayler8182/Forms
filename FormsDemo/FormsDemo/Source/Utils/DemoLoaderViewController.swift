@@ -33,21 +33,21 @@ class DemoLoaderViewController: TableViewController {
         super.setupActions()
         self.defaultLoaderButton.onClick = { [unowned self] in
             Loader.show(in: self.navigationController)
-            Utils.delay(2.0) { Loader.hide(in: self.navigationController) }
+            Utils.delay(2.0, self) { Loader.hide(in: $0.navigationController) }
         }
         self.titleShortLoaderButton.onClick = { [unowned self] in
             let loaderView: TitleLoaderView? = Loader.show(
                 in: self.navigationController,
                 of: TitleLoaderView.self)
             loaderView?.setTitle("Short text")
-            Utils.delay(2.0) { Loader.hide(in: self.navigationController) }
+            Utils.delay(2.0, self) { Loader.hide(in: $0.navigationController) }
         }
         self.titleLongLoaderButton.onClick = { [unowned self] in
             let loaderView: TitleLoaderView? = Loader.show(
                 in: self.navigationController,
                 of: TitleLoaderView.self)
             loaderView?.setTitle(LoremIpsum.paragraph(sentences: 4))
-            Utils.delay(2.0) { Loader.hide(in: self.navigationController) }
+            Utils.delay(2.0, self) { Loader.hide(in: $0.navigationController) }
         }
     }
 }

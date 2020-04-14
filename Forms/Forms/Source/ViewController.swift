@@ -13,6 +13,10 @@ open class ViewController: UIViewController, UIGestureRecognizerDelegate {
     public var bottomAnchor: AnchorConnection = AnchorConnection()
     open var resizeOnKeybord: Bool = true
     
+    open var isShimmering: Bool {
+        return self.view.isShimmering
+    }
+    
     override open func viewDidLoad() {
         super.viewDidLoad()
         self.setupView()
