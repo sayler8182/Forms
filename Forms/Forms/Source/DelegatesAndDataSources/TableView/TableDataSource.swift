@@ -153,7 +153,7 @@ extension TableDataSource {
     }
     
     internal func appendToTable(_ sections: [TableSection],
-                               animated: UITableView.RowAnimation) {
+                                animated: UITableView.RowAnimation) {
         guard let tableView = self.tableView else { return }
         guard sections.isNotEmpty else { return }
         self.tableUpdatesQueue.async {
@@ -178,7 +178,7 @@ extension TableDataSource {
     }
     
     internal func appendToTable(_ rows: [TableRow],
-                               animated: UITableView.RowAnimation) {
+                                animated: UITableView.RowAnimation) {
         guard let tableView = self.tableView else { return }
         guard rows.isNotEmpty else { return }
         self.tableUpdatesQueue.async {

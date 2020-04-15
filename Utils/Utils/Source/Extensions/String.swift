@@ -38,6 +38,10 @@ public extension String {
         return !self.isEmpty
     }
     
+    var url: URL! {
+        return URL(string: self)
+    }
+    
     func shouldChangeCharactersIn(_ range: NSRange,
                                   replacementString string: String) -> String {
         var text: String = self

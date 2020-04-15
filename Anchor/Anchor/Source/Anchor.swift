@@ -106,6 +106,7 @@ public extension UILayoutPriority {
 
 public class AnchorConnection {
     public var constraint: Constraint?
+    
     public init() { }
 }
 

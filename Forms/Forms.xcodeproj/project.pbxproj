@@ -52,6 +52,11 @@
 		719469C2243DAB6500CAD09B /* Shimmer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 719469C1243DAB6500CAD09B /* Shimmer.swift */; };
 		719469D8243DD04700CAD09B /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 719469D7243DD04700CAD09B /* TableViewCell.swift */; };
 		719469DC243DDB7600CAD09B /* TableDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 719469DB243DDB7600CAD09B /* TableDataSource.swift */; };
+		71BB627F2445F729002BB31F /* ImagesManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71BB627E2445F729002BB31F /* ImagesManager.swift */; };
+		71BB62852445FAE7002BB31F /* Networking.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71BB62842445FAE7002BB31F /* Networking.framework */; };
+		71BB62862445FAE7002BB31F /* Networking.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 71BB62842445FAE7002BB31F /* Networking.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		71BB62882445FAED002BB31F /* Logger.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71BB62872445FAED002BB31F /* Logger.framework */; };
+		71BB62892445FAED002BB31F /* Logger.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 71BB62872445FAED002BB31F /* Logger.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -71,9 +76,11 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				71BB62892445FAED002BB31F /* Logger.framework in Embed Frameworks */,
 				719469B6243DA7CF00CAD09B /* Injector.framework in Embed Frameworks */,
 				719469BC243DA7D500CAD09B /* Validators.framework in Embed Frameworks */,
 				719469B9243DA7D200CAD09B /* Utils.framework in Embed Frameworks */,
+				71BB62862445FAE7002BB31F /* Networking.framework in Embed Frameworks */,
 				719469B2243DA7CC00CAD09B /* Anchor.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
@@ -126,6 +133,9 @@
 		719469C1243DAB6500CAD09B /* Shimmer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Shimmer.swift; sourceTree = "<group>"; };
 		719469D7243DD04700CAD09B /* TableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewCell.swift; sourceTree = "<group>"; };
 		719469DB243DDB7600CAD09B /* TableDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableDataSource.swift; sourceTree = "<group>"; };
+		71BB627E2445F729002BB31F /* ImagesManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagesManager.swift; sourceTree = "<group>"; };
+		71BB62842445FAE7002BB31F /* Networking.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Networking.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		71BB62872445FAED002BB31F /* Logger.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Logger.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -133,9 +143,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				71BB62882445FAED002BB31F /* Logger.framework in Frameworks */,
 				719469B5243DA7CF00CAD09B /* Injector.framework in Frameworks */,
 				719469BB243DA7D500CAD09B /* Validators.framework in Frameworks */,
 				719469B8243DA7D200CAD09B /* Utils.framework in Frameworks */,
+				71BB62852445FAE7002BB31F /* Networking.framework in Frameworks */,
 				719469B1243DA7CC00CAD09B /* Anchor.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -179,6 +191,7 @@
 				71946969243DA7BE00CAD09B /* Utils */,
 				71946983243DA7BE00CAD09B /* Component.swift */,
 				71946961243DA7BE00CAD09B /* Forms.swift */,
+				71BB627E2445F729002BB31F /* ImagesManager.swift */,
 				71946982243DA7BE00CAD09B /* PagerController.swift */,
 				7194698B243DA7BE00CAD09B /* TabBarController.swift */,
 				719469D7243DD04700CAD09B /* TableViewCell.swift */,
@@ -283,6 +296,8 @@
 		719469AF243DA7CC00CAD09B /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				71BB62872445FAED002BB31F /* Logger.framework */,
+				71BB62842445FAE7002BB31F /* Networking.framework */,
 				719469BA243DA7D500CAD09B /* Validators.framework */,
 				719469B7243DA7D200CAD09B /* Utils.framework */,
 				719469B4243DA7CF00CAD09B /* Injector.framework */,
@@ -445,6 +460,7 @@
 				719469AB243DA7BE00CAD09B /* TextFieldDelegates.swift in Sources */,
 				7194699F243DA7BE00CAD09B /* TopBar.swift in Sources */,
 				719469AC243DA7BE00CAD09B /* TextFieldPhoneDelegate.swift in Sources */,
+				71BB627F2445F729002BB31F /* ImagesManager.swift in Sources */,
 				719469A6243DA7BE00CAD09B /* Component.swift in Sources */,
 				719469A7243DA7BE00CAD09B /* TextFieldEmailDelegate.swift in Sources */,
 				719469AD243DA7BE00CAD09B /* TabBarController.swift in Sources */,

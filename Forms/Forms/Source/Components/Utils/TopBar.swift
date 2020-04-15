@@ -27,7 +27,6 @@ open class TopBarItem: TopBarItemProtocol {
 open class TopBar: Component {
     public typealias OnSelect = ((TopBarItemProtocol) -> Void)
 
-    
     private let contentView = UIView()
     private let collectionView = UICollectionView(frame: CGRect.zero, collectionViewLayout: TopBarFlowLayout())
     private let separatorView = UIView()

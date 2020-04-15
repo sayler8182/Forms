@@ -16,7 +16,6 @@ public protocol TableProtocol: class {
 
 // MARK: TableViewController
 open class TableViewController: ViewController, UITableViewDelegate, UITableViewDataSource, TableDataSourceDelegateProtocol, TableProtocol {
-    
     private let tableUpdatesQueue: DispatchQueue = DispatchQueue(
         label: "tableUpdatesQueue",
         target: DispatchQueue.main)

@@ -87,6 +87,20 @@
 			remoteGlobalIDString = 713B9BFC243D08E0001F6E3A;
 			remoteInfo = FormsDemoTests;
 		};
+		715B7AF4244701BD00754EDB /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 71BB62652445E7C5002BB31F /* Logger.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 715B7A902446F05B00754EDB;
+			remoteInfo = LoggerTests;
+		};
+		715B7AF8244701BD00754EDB /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 71BB62182445DD16002BB31F /* Networking.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 715B7A912446F05B00754EDB;
+			remoteInfo = NetworkingTests;
+		};
 		7194695B243DA7A900CAD09B /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 71946956243DA7A800CAD09B /* Forms.xcodeproj */;
@@ -100,6 +114,20 @@
 			proxyType = 2;
 			remoteGlobalIDString = 71946945243DA7A800CAD09B;
 			remoteInfo = FormsTests;
+		};
+		71BB621D2445DD17002BB31F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 71BB62182445DD16002BB31F /* Networking.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 71BB61FE2445DD16002BB31F;
+			remoteInfo = Networking;
+		};
+		71BB626A2445E7C6002BB31F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 71BB62652445E7C5002BB31F /* Logger.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 71BB624B2445E7C5002BB31F;
+			remoteInfo = Logger;
 		};
 		71EBA888243D02AE0045AE40 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -138,7 +166,19 @@
 		713B9B55243D050E001F6E3A /* Validators.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Validators.xcodeproj; path = ../Validators/Validators.xcodeproj; sourceTree = "<group>"; };
 		713B9BA1243D0696001F6E3A /* Utils.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Utils.xcodeproj; path = ../Utils/Utils.xcodeproj; sourceTree = "<group>"; };
 		713B9C0D243D08E0001F6E3A /* FormsDemo.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = FormsDemo.xcodeproj; path = ../FormsDemo/FormsDemo.xcodeproj; sourceTree = "<group>"; };
+		715B7AFF244701DC00754EDB /* TemplateIcon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "TemplateIcon@2x.png"; sourceTree = "<group>"; };
+		715B7B00244701DC00754EDB /* ___FILEBASENAME___Presenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "___FILEBASENAME___Presenter.swift"; sourceTree = "<group>"; };
+		715B7B01244701DC00754EDB /* ___FILEBASENAME___Worker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "___FILEBASENAME___Worker.swift"; sourceTree = "<group>"; };
+		715B7B02244701DC00754EDB /* ___FILEBASENAME___Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "___FILEBASENAME___Router.swift"; sourceTree = "<group>"; };
+		715B7B03244701DC00754EDB /* ___FILEBASENAME___Models.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "___FILEBASENAME___Models.swift"; sourceTree = "<group>"; };
+		715B7B04244701DC00754EDB /* ___FILEBASENAME___ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "___FILEBASENAME___ViewController.swift"; sourceTree = "<group>"; };
+		715B7B05244701DC00754EDB /* ___FILEBASENAME___Assembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "___FILEBASENAME___Assembly.swift"; sourceTree = "<group>"; };
+		715B7B06244701DC00754EDB /* ___FILEBASENAME___Interactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "___FILEBASENAME___Interactor.swift"; sourceTree = "<group>"; };
+		715B7B07244701DC00754EDB /* TemplateIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = TemplateIcon.png; sourceTree = "<group>"; };
+		715B7B08244701DC00754EDB /* TemplateInfo.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = TemplateInfo.plist; sourceTree = "<group>"; };
 		71946956243DA7A800CAD09B /* Forms.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Forms.xcodeproj; path = ../Forms/Forms.xcodeproj; sourceTree = "<group>"; };
+		71BB62182445DD16002BB31F /* Networking.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Networking.xcodeproj; path = ../Networking/Networking.xcodeproj; sourceTree = "<group>"; };
+		71BB62652445E7C5002BB31F /* Logger.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Logger.xcodeproj; path = ../Logger/Logger.xcodeproj; sourceTree = "<group>"; };
 		71C7418D2431DBC800A79E8B /* FormsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormsTests.swift; sourceTree = "<group>"; };
 		71C7418F2431DBC800A79E8B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		71EBA881243D02AD0045AE40 /* Anchor.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Anchor.xcodeproj; path = ../Anchor/Anchor.xcodeproj; sourceTree = "<group>"; };
@@ -168,6 +208,8 @@
 			children = (
 				71EBA881243D02AD0045AE40 /* Anchor.xcodeproj */,
 				713B9B11243D0416001F6E3A /* Injector.xcodeproj */,
+				71BB62652445E7C5002BB31F /* Logger.xcodeproj */,
+				71BB62182445DD16002BB31F /* Networking.xcodeproj */,
 				713B9BA1243D0696001F6E3A /* Utils.xcodeproj */,
 				713B9B55243D050E001F6E3A /* Validators.xcodeproj */,
 				71946956243DA7A800CAD09B /* Forms.xcodeproj */,
@@ -211,6 +253,7 @@
 		71228E2A2431CF9800D08B20 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				715B7AE9244701BD00754EDB /* Templates */,
 				71228E112431CF8100D08B20 /* Assets.xcassets */,
 				71228E2B2431CFBF00D08B20 /* LaunchScreen.storyboard */,
 			);
@@ -285,11 +328,54 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		715B7AE9244701BD00754EDB /* Templates */ = {
+			isa = PBXGroup;
+			children = (
+				715B7AFE244701DC00754EDB /* CleanSwift.xctemplate */,
+			);
+			path = Templates;
+			sourceTree = "<group>";
+		};
+		715B7AFE244701DC00754EDB /* CleanSwift.xctemplate */ = {
+			isa = PBXGroup;
+			children = (
+				715B7AFF244701DC00754EDB /* TemplateIcon@2x.png */,
+				715B7B00244701DC00754EDB /* ___FILEBASENAME___Presenter.swift */,
+				715B7B01244701DC00754EDB /* ___FILEBASENAME___Worker.swift */,
+				715B7B02244701DC00754EDB /* ___FILEBASENAME___Router.swift */,
+				715B7B03244701DC00754EDB /* ___FILEBASENAME___Models.swift */,
+				715B7B04244701DC00754EDB /* ___FILEBASENAME___ViewController.swift */,
+				715B7B05244701DC00754EDB /* ___FILEBASENAME___Assembly.swift */,
+				715B7B06244701DC00754EDB /* ___FILEBASENAME___Interactor.swift */,
+				715B7B07244701DC00754EDB /* TemplateIcon.png */,
+				715B7B08244701DC00754EDB /* TemplateInfo.plist */,
+			);
+			path = CleanSwift.xctemplate;
+			sourceTree = "<group>";
+		};
 		71946957243DA7A800CAD09B /* Products */ = {
 			isa = PBXGroup;
 			children = (
 				7194695C243DA7A900CAD09B /* Forms.framework */,
 				7194695E243DA7A900CAD09B /* FormsTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		71BB62192445DD16002BB31F /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				71BB621E2445DD17002BB31F /* Networking.framework */,
+				715B7AF9244701BD00754EDB /* NetworkingTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		71BB62662445E7C5002BB31F /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				71BB626B2445E7C6002BB31F /* Logger.framework */,
+				715B7AF5244701BD00754EDB /* LoggerTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -323,6 +409,7 @@
 				71228E022431CF7F00D08B20 /* Frameworks */,
 				71228E032431CF7F00D08B20 /* Resources */,
 				71228EF52431D61000D08B20 /* Embed Frameworks */,
+				716992012445A98E00A8FA79 /* Lint */,
 			);
 			buildRules = (
 			);
@@ -397,6 +484,14 @@
 				{
 					ProductGroup = 713B9B12243D0416001F6E3A /* Products */;
 					ProjectRef = 713B9B11243D0416001F6E3A /* Injector.xcodeproj */;
+				},
+				{
+					ProductGroup = 71BB62662445E7C5002BB31F /* Products */;
+					ProjectRef = 71BB62652445E7C5002BB31F /* Logger.xcodeproj */;
+				},
+				{
+					ProductGroup = 71BB62192445DD16002BB31F /* Products */;
+					ProjectRef = 71BB62182445DD16002BB31F /* Networking.xcodeproj */;
 				},
 				{
 					ProductGroup = 713B9BA2243D0696001F6E3A /* Products */;
@@ -479,6 +574,20 @@
 			remoteRef = 713B9C14243D08E1001F6E3A /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
+		715B7AF5244701BD00754EDB /* LoggerTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = LoggerTests.xctest;
+			remoteRef = 715B7AF4244701BD00754EDB /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		715B7AF9244701BD00754EDB /* NetworkingTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = NetworkingTests.xctest;
+			remoteRef = 715B7AF8244701BD00754EDB /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
 		7194695C243DA7A900CAD09B /* Forms.framework */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.framework;
@@ -491,6 +600,20 @@
 			fileType = wrapper.cfbundle;
 			path = FormsTests.xctest;
 			remoteRef = 7194695D243DA7A900CAD09B /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		71BB621E2445DD17002BB31F /* Networking.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = Networking.framework;
+			remoteRef = 71BB621D2445DD17002BB31F /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		71BB626B2445E7C6002BB31F /* Logger.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = Logger.framework;
+			remoteRef = 71BB626A2445E7C6002BB31F /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 		71EBA889243D02AE0045AE40 /* AnchorTests.xctest */ = {
@@ -520,6 +643,27 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		716992012445A98E00A8FA79 /* Lint */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = Lint;
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if which swiftlint >/dev/null; then\n  cd ..\n  swiftlint\nelse\n  echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		71228E012431CF7F00D08B20 /* Sources */ = {

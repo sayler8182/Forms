@@ -11,8 +11,9 @@ import UIKit
 // MARK: Shimmerable
 public protocol Shimmerable: class {
     var isShimmering: Bool { get }
-    func startShimmering()
-    func stopShimmering()
+    
+    func startShimmering(animated: Bool)
+    func stopShimmering(animated: Bool)
 }
 public protocol UnShimmerable: class { }
 public class UnShimmerableLabel: UILabel, UnShimmerable { }
@@ -22,7 +23,7 @@ public class UnShimmerableButton: UIButton, UnShimmerable { }
 // MARK: Shimmer - UIView
 public extension UIView {
     var isShimmering: Bool {
-        if self.subviews.count == 0,
+        if self.subviews.isEmpty,
             self is ShimmerPlaceholderView {
             return true
         }
@@ -33,23 +34,24 @@ public extension UIView {
     }
     
     @objc
-    func startShimmering() {
-        self.setShimmer(in: self)
+    func startShimmering(animated: Bool = true) {
+        self.setShimmer(in: self, animated: animated)
     }
     
     @objc
-    func stopShimmering() {
-        self.removeShimmer(from: self)
+    func stopShimmering(animated: Bool = true) {
+        self.removeShimmer(from: self, animated: animated)
         if self is UnShimmerable { return }
         if self is ShimmerPlaceholderView { return }
         self.isUserInteractionEnabled = true
     }
     
-    private func setShimmer(in view: UIView) {
-        if view.subviews.count == 0 {
+    private func setShimmer(in view: UIView,
+                            animated: Bool) {
+        if view.subviews.isEmpty {
             if view is UnShimmerable { return }
             if view is ShimmerPlaceholderView { return }
-            self.putPlaceholder(in: view)
+            self.putPlaceholder(in: view, animated: animated)
             self.isUserInteractionEnabled = true
         }
         for subview in self.subviews {
@@ -57,22 +59,28 @@ public extension UIView {
         }
     }
     
-    private func removeShimmer(from view: UIView) {
+    private func removeShimmer(from view: UIView,
+                               animated: Bool) {
         if view is ShimmerPlaceholderView {
-            view.removeFromSuperview()
+            self.animation(
+                animated,
+                duration: 0.3,
+                animations: { view.alpha = 0 },
+                completion: { (_) in view.removeFromSuperview() })
         }
         for subview in view.subviews {
             subview.stopShimmering()
         }
     }
     
-    private func putPlaceholder(in view: UIView) {
+    private func putPlaceholder(in view: UIView,
+                                animated: Bool) {
         let placeholderView = ShimmerPlaceholderView()
         view.addSubview(placeholderView, with: [
             Anchor.to(view).fill
         ])
         placeholderView.backgroundColor = .lightGray
-        placeholderView.startShimmering()
+        placeholderView.startShimmering(animated: animated)
     }
 }
 
@@ -89,7 +97,7 @@ private class ShimmerPlaceholderView: UIView {
         self.gradient.frame = self.bounds
     }
     
-    override func startShimmering() {
+    override func startShimmering(animated: Bool) {
         self.gradient.startPoint = CGPoint(x: -1.0 + self.gradientWidth, y: 0)
         self.gradient.endPoint = CGPoint(x: 1.0 + self.gradientWidth, y: 0)
         
@@ -98,7 +106,7 @@ private class ShimmerPlaceholderView: UIView {
             self.gradientFirstStop.cgColor,
             self.gradientSecondStop.cgColor,
             self.gradientFirstStop.cgColor,
-            self.backgroundFadedGray.cgColor,
+            self.backgroundFadedGray.cgColor
         ]
         
         let startLocations: [NSNumber] = [
@@ -116,7 +124,7 @@ private class ShimmerPlaceholderView: UIView {
             NSNumber(value: Double(1.0)),
             NSNumber(value: Double(1.0)),
             NSNumber(value: Double(1.0 + self.gradientWidth - 0.1)),
-            NSNumber(value: Double(1.0 + self.gradientWidth)),
+            NSNumber(value: Double(1.0 + self.gradientWidth))
         ]
         animation.repeatCount = HUGE
         animation.fillMode = .forwards
@@ -177,7 +185,7 @@ open class ShimmerDataSource: TableDataSource {
         self.append(sections)
     }
     
-    public override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    override public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = super.tableView(tableView, cellForRowAt: indexPath) as! TableViewCell
         let section: TableSection = self.sections[indexPath.section]
         guard section.isShimmering else { return cell }
@@ -202,7 +210,7 @@ public class ShimmerTableViewCell: TableViewCell {
     private let subtitleLabel = UILabel()
         .with(text: " ")
     
-    public override func setupView() {
+    override public func setupView() {
         super.setupView()
         self.contentView.addSubview(self.iconView, with: [
             Anchor.to(self.contentView).vertical.offset(8),
@@ -221,7 +229,6 @@ public class ShimmerTableViewCell: TableViewCell {
         ])
     }
 }
-
 
 // MARK: Builder
 public extension ShimmerDataSource {

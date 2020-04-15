@@ -30,12 +30,18 @@ private enum Demo {
         case utilsAttributedString
         case utilsLoader
         case utilsModal
+        case utilsNetwork
+        case utilsNetworkGet
+        case utilsNetworkImage
         case utilsToast
         case utilsShimmer
         case utilsShimmerPaginationTable
         case utilsShimmerShimmer
         case utilsShimmerTable
         case utilsValidators
+        // Architectures
+        case architectures
+        case architecturesClean
     }
     
     struct Row {
@@ -91,6 +97,15 @@ private enum Demo {
                     Row(type: .utilsAttributedString, title: "AttributedString"),
                     Row(type: .utilsLoader, title: "Loader"),
                     Row(type: .utilsModal, title: "Modal"),
+                    Row(
+                        type: .utilsNetwork,
+                        title: "Network",
+                        sections: [
+                            Section(rows: [
+                                Row(type: .utilsNetworkGet, title: "Network Get"),
+                                Row(type: .utilsNetworkImage, title: "Network Image")
+                            ])
+                    ]),
                     Row(type: .utilsToast, title: "Toast"),
                     Row(
                         type: .utilsShimmer,
@@ -103,6 +118,9 @@ private enum Demo {
                             ])
                     ]),
                     Row(type: .utilsValidators, title: "Validators")
+                ]),
+                Section(title: "Architectures", rows: [
+                    Row(type: .architecturesClean, title: "Clean Swift")
                 ])
             ]
         }()
@@ -113,7 +131,10 @@ private enum Demo {
 public class DemoRootViewController: UINavigationController {
     override public func viewDidLoad() {
         super.viewDidLoad()
-        Forms.initialize(Injector.main)
+        Forms.initialize(Injector.main, [
+            DemoArchitecturesCleanAssembly(),
+            DemoArchitecturesCleanSummaryAssembly()
+        ])
         self.setupView()
     }
     
@@ -133,7 +154,8 @@ private class DemoListViewController: ViewController {
     
     private var items: [Demo.Section] = []
     private let defaultCellIdentifier: String = "_cell"
-     
+    private let injector: Injector = Injector.main
+    
     required init?(coder: NSCoder) {
         super.init(coder: coder)
         self.items = Demo.Section.default
@@ -166,7 +188,7 @@ private class DemoListViewController: ViewController {
         self.tableView.alwaysBounceVertical = false
         self.tableView.register(UITableViewCell.self, forCellReuseIdentifier: self.defaultCellIdentifier)
         self.view.addSubview(self.tableView, with: [
-            Anchor.to(self.view).fill,
+            Anchor.to(self.view).fill
         ])
     }
     
@@ -203,11 +225,15 @@ private class DemoListViewController: ViewController {
         case .utilsAttributedString:                    return DemoAttributedStringViewController()
         case .utilsLoader:                              return DemoLoaderViewController()
         case .utilsModal:                               return DemoModalViewController()
+        case .utilsNetworkGet:                          return DemoNetworkGetViewController()
+        case .utilsNetworkImage:                        return DemoNetworkImageViewController()
         case .utilsToast:                               return DemoToastViewController()
         case .utilsShimmerPaginationTable:              return DemoShimmerPaginationTableViewController()
         case .utilsShimmerShimmer:                      return DemoShimmerViewController()
         case .utilsShimmerTable:                        return DemoShimmerTableViewController()
         case .utilsValidators:                          return DemoValidatorsViewController()
+        // architectures
+        case .architecturesClean:                       return self.injector.resolve(DemoArchitecturesCleanViewController.self)
         default:                                        return nil
         }
     }

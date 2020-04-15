@@ -14,8 +14,8 @@ public class AmountValidator: Validator {
     private let maxAmount: Double?
     
     public init(minAmount: Double,
-         currency: String? = nil,
-         isRequired: Bool = true) {
+                currency: String? = nil,
+                isRequired: Bool = true) {
         self.minAmount = minAmount
         self.maxAmount = nil
         self.currency = currency
@@ -23,8 +23,8 @@ public class AmountValidator: Validator {
     }
     
     public init(maxAmount: Double,
-         currency: String? = nil,
-         isRequired: Bool = true) {
+                currency: String? = nil,
+                isRequired: Bool = true) {
         self.minAmount = nil
         self.maxAmount = maxAmount
         self.currency = currency
@@ -32,9 +32,9 @@ public class AmountValidator: Validator {
     }
     
     public init(minAmount: Double,
-         maxAmount: Double,
-         currency: String? = nil,
-         isRequired: Bool = true) {
+                maxAmount: Double,
+                currency: String? = nil,
+                isRequired: Bool = true) {
         self.minAmount = minAmount
         self.maxAmount = maxAmount
         self.currency = currency

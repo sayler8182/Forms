@@ -13,13 +13,19 @@ public struct Forms {
     
     private init() { }
     
-    public static func initialize(_ injector: Injector) {
+    public static func initialize(_ injector: Injector,
+                                  _ assemblies: [Assembly]) {
         Forms.injector = injector
-        self.initializeBase(injector: injector)
-        self.initializeConfigurations(injector: injector)
+        Forms.initializeBase(injector)
+        Forms.initializeConfigurations(injector)
+        Forms.initializeAssemblies(injector, assemblies)
     }
     
-    private static func initializeBase(injector: Injector) {
+    private static func initializeBase(_ injector: Injector) {
+        // logger
+        injector.register(LoggerProtocol.self) { _ in
+            Logger()
+        }
         // validators
         injector.register(ValidatorTranslatorProtocol.self) { _ in
             ValidatorTranslator()
@@ -35,7 +41,7 @@ public struct Forms {
             Theme()
         }
     }
-    private static func initializeConfigurations(injector: Injector) {
+    private static func initializeConfigurations(_ injector: Injector) {
         // loader
         injector.register(ConfigurationLoaderProtocol.self) { _ in
             Configuration.Loader()
@@ -54,5 +60,10 @@ public struct Forms {
                     error: theme.redColor)
             )
         }
+    }
+    
+    private static  func initializeAssemblies(_ injector: Injector,
+                                              _ assemblies: [Assembly]) {
+        injector.assemble(assemblies)
     }
 }

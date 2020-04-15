@@ -35,7 +35,7 @@ class DemoShimmerPaginationTableViewController: TableViewController {
     
     override func selectCell(data: TableRowData, cell: TableViewCell, indexPath: IndexPath) {
         super.selectCell(data: data, cell: cell, indexPath: indexPath)
-        cell.cast(data: data, of: DemoCellModel.self, to: DemoTableViewCell.self) { [unowned self] (newData, newCell) in
+        cell.cast(data: data, of: DemoCellModel.self, to: DemoTableViewCell.self) { [unowned self] (newData, _) in
             UIAlertController()
                 .with(title: newData.title)
                 .with(message: newData.subtitle)
@@ -193,7 +193,7 @@ private class DemoTableViewCell: TableViewCell {
         .with(font: UIFont.systemFont(ofSize: 10))
         .with(numberOfLines: 3)
     
-    public override func setupView() {
+    override func setupView() {
         super.setupView()
         self.contentView.addSubview(self.iconView, with: [
             Anchor.to(self.contentView).top.offset(8),
@@ -214,7 +214,7 @@ private class DemoTableViewCell: TableViewCell {
             Anchor.to(self.iconView).topToBottom.offset(4),
             Anchor.to(self.contentView).leading.offset(16),
             Anchor.to(self.contentView).trailing.offset(16),
-            Anchor.to(self.contentView).bottom.offset(8).priority(.defaultHigh),
+            Anchor.to(self.contentView).bottom.offset(8).priority(.defaultHigh)
         ])
     }
      
@@ -228,7 +228,7 @@ private class DemoTableViewCell: TableViewCell {
 
 // MARK: DemoTableViewCell
 private class ShimmerDemoTableViewCell: DemoTableViewCell {
-    override public func prepareForShimmering() {
+    override func prepareForShimmering() {
         self.titleLabel.text = LoremIpsum.emptyVeryShort
         self.subtitleLabel.text = LoremIpsum.emptyShort
         self.infoLabel.text = LoremIpsum.emptyMedium

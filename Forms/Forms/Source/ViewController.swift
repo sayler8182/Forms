@@ -39,12 +39,12 @@ open class ViewController: UIViewController, UIGestureRecognizerDelegate {
         self.setupOther()
     }
     
-    public func startShimmering(animated: Bool = false) {
-        self.view.startShimmering()
+    public func startShimmering(animated: Bool = true) {
+        self.view.startShimmering(animated: animated)
     }
     
-    public func stopShimmering(animated: Bool = false) {
-        self.view.stopShimmering()
+    public func stopShimmering(animated: Bool = true) {
+        self.view.stopShimmering(animated: animated)
     }
     
     // MARK: HOOKS

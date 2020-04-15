@@ -14,6 +14,11 @@ public protocol Resolver {
     func resolve<Service>(_ serviceType: Service.Type, name: String?) -> Service!
 }
 
+// MARK: Assembly
+public protocol Assembly {
+     func assemble(injector: Injector)
+}
+
 // MARK: Injector
 public class Injector {
     public static let main: Injector = Injector()
@@ -31,6 +36,12 @@ public class Injector {
         self.parent = parent
         self.scope = scope
         registering(self)
+    }
+    
+    public func assemble(_ assemblies: [Assembly]) {
+        for assembly in assemblies {
+            assembly.assemble(injector: self)
+        }
     }
     
     @discardableResult
@@ -96,6 +107,10 @@ extension Injector {
 
 // MARK: Resolver
 extension Injector: Resolver {
+    public func resolve<Service>() -> Service! {
+        return self.resolve(Service.self, name: nil)
+    }
+    
     public func resolve<Service>(_ serviceType: Service.Type) -> Service! {
         return self.resolve(serviceType, name: nil)
     }

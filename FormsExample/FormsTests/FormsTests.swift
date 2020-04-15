@@ -6,7 +6,7 @@
 //  Copyright © 2020 Limbo. All rights reserved.
 //
 
-import XCTest
 @testable import Forms
+import XCTest
 
 class FormsTests: XCTestCase {}

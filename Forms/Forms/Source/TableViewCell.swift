@@ -13,6 +13,7 @@ open class TableViewCell: UITableViewCell, Componentable, ShimmerableTableViewCe
     open class var identifier: String {
         return "\(self)"
     }
+    
     override public init(style: UITableViewCell.CellStyle,
                          reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)

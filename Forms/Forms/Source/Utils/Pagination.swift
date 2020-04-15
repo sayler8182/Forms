@@ -10,12 +10,12 @@ import Foundation
 
 // MARK: Pagination
 public class Pagination<ID, D> {
-    public typealias OnNextPageId = (Pagination<ID,D>, Page<ID,D>?) -> ID?
+    public typealias OnNextPageId = (Pagination<ID, D>, Page<ID, D>?) -> ID?
     
     public let firstPageId: ID?
     public let limit: Int
     public private(set) var nextPageId: ID?
-    public private(set) var pages: [Page<ID,D>]
+    public private(set) var pages: [Page<ID, D>]
     public private(set) var isLoading: Bool
     
     public var onNextPageId: OnNextPageId?
@@ -23,7 +23,7 @@ public class Pagination<ID, D> {
     public var lastPageId: ID? {
         return self.lastPage?.pageId
     }
-    public var lastPage: Page<ID,D>? {
+    public var lastPage: Page<ID, D>? {
         return self.pages.last
     }
     public var data: [D] {
@@ -33,7 +33,7 @@ public class Pagination<ID, D> {
     public init(of type: D.Type,
                 firstPageId: ID? = nil,
                 limit: Int = 20,
-                pages: [Page<ID,D>] = [],
+                pages: [Page<ID, D>] = [],
                 onNextPageId: OnNextPageId? = nil) {
         self.firstPageId = firstPageId
         self.limit = limit
@@ -62,7 +62,7 @@ public class Pagination<ID, D> {
 }
 
 // MARK: Page
-public class Page<ID,D> {
+public class Page<ID, D> {
     public let pageId: ID?
     public let data: [D]
     public let isLast: Bool

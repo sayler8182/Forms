@@ -8,7 +8,7 @@
 
 import Foundation
 
-internal class Utils {
+internal enum Utils {
     static func delay(_ delay: Double,
                       _ action: @escaping () -> Void) {
         DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + delay) {
@@ -17,8 +17,8 @@ internal class Utils {
     }
     
     static func delay<T: AnyObject>(_ delay: Double,
-                         _ target: T,
-                         _ action: @escaping (T) -> Void) {
+                                    _ target: T,
+                                    _ action: @escaping (T) -> Void) {
         DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + delay) { [weak target] in
             guard let target: T = target else { return }
             action(target)

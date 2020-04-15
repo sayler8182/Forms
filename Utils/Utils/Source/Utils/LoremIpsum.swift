@@ -101,7 +101,7 @@ public enum LoremIpsum {
     ]
 }
 
-// MARK:
+// MARK: Empty
 public extension LoremIpsum {
     private static let scale: Int = 16
     static var emptyVeryShort: String {

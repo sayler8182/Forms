@@ -86,6 +86,21 @@ public enum Toast {
         return Toast.configuration.toastView()
     }
     
+    public static func info() -> ToastView {
+        return Toast.new()
+            .with(style: .info)
+    }
+    
+    public static func error() -> ToastView {
+        return Toast.new()
+            .with(style: .error)
+    }
+    
+    public static func success() -> ToastView {
+        return Toast.new()
+            .with(style: .success)
+    }
+     
     public static func new<T: ToastView>(of type: T.Type) -> T {
         return T()
     }
