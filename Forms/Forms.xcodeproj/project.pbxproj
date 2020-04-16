@@ -37,7 +37,7 @@
 		719469A2243DA7BE00CAD09B /* TextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7194697D243DA7BE00CAD09B /* TextField.swift */; };
 		719469A4243DA7BE00CAD09B /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71946981243DA7BE00CAD09B /* TableViewController.swift */; };
 		719469A5243DA7BE00CAD09B /* PagerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71946982243DA7BE00CAD09B /* PagerController.swift */; };
-		719469A6243DA7BE00CAD09B /* Component.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71946983243DA7BE00CAD09B /* Component.swift */; };
+		719469A6243DA7BE00CAD09B /* FormComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71946983243DA7BE00CAD09B /* FormComponent.swift */; };
 		719469A7243DA7BE00CAD09B /* TextFieldEmailDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71946985243DA7BE00CAD09B /* TextFieldEmailDelegate.swift */; };
 		719469A8243DA7BE00CAD09B /* TextFieldPeselDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71946986243DA7BE00CAD09B /* TextFieldPeselDelegate.swift */; };
 		719469A9243DA7BE00CAD09B /* TextFieldAmountDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71946987243DA7BE00CAD09B /* TextFieldAmountDelegate.swift */; };
@@ -124,7 +124,7 @@
 		7194697D243DA7BE00CAD09B /* TextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextField.swift; sourceTree = "<group>"; };
 		71946981243DA7BE00CAD09B /* TableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewController.swift; sourceTree = "<group>"; };
 		71946982243DA7BE00CAD09B /* PagerController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PagerController.swift; sourceTree = "<group>"; };
-		71946983243DA7BE00CAD09B /* Component.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Component.swift; sourceTree = "<group>"; };
+		71946983243DA7BE00CAD09B /* FormComponent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FormComponent.swift; sourceTree = "<group>"; };
 		71946985243DA7BE00CAD09B /* TextFieldEmailDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextFieldEmailDelegate.swift; sourceTree = "<group>"; };
 		71946986243DA7BE00CAD09B /* TextFieldPeselDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextFieldPeselDelegate.swift; sourceTree = "<group>"; };
 		71946987243DA7BE00CAD09B /* TextFieldAmountDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextFieldAmountDelegate.swift; sourceTree = "<group>"; };
@@ -206,7 +206,7 @@
 				71946962243DA7BE00CAD09B /* ComponentsList */,
 				71946984243DA7BE00CAD09B /* DelegatesAndDataSources */,
 				71946969243DA7BE00CAD09B /* Utils */,
-				71946983243DA7BE00CAD09B /* Component.swift */,
+				71946983243DA7BE00CAD09B /* FormComponent.swift */,
 				71946961243DA7BE00CAD09B /* Forms.swift */,
 				71BB627E2445F729002BB31F /* ImagesManager.swift */,
 				71946982243DA7BE00CAD09B /* PagerController.swift */,
@@ -482,7 +482,7 @@
 				7194699F243DA7BE00CAD09B /* TopBar.swift in Sources */,
 				719469AC243DA7BE00CAD09B /* TextFieldPhoneDelegate.swift in Sources */,
 				71BB627F2445F729002BB31F /* ImagesManager.swift in Sources */,
-				719469A6243DA7BE00CAD09B /* Component.swift in Sources */,
+				719469A6243DA7BE00CAD09B /* FormComponent.swift in Sources */,
 				719469A7243DA7BE00CAD09B /* TextFieldEmailDelegate.swift in Sources */,
 				714848D3244858FF00455560 /* ComponentsOther.swift in Sources */,
 				719469AD243DA7BE00CAD09B /* TabBarController.swift in Sources */,

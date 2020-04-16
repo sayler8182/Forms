@@ -14,7 +14,7 @@ public struct ComponentsUtils: ComponentsList {
     public static func divider() -> Divider {
         let component = Divider()
         component.height = 1
-        component.color = UIColor.white
+        component.color = UIColor.systemBackground
         return component
     }
 }

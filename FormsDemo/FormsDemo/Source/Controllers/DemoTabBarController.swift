@@ -156,9 +156,8 @@ private class ContentViewController: TableViewController {
     var onClickFirst: (() -> Void)? = nil
     var onClickSecond: (() -> Void)? = nil
     
-    override func setupView() {
-        super.setupView()
-        
+    override func setupContent() {
+        super.setupContent()
         self.build([
             self.divider,
             self.onClickFirst.isNotNil ? self.firstButton : nil,

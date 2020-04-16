@@ -147,7 +147,6 @@ public class DemoRootViewController: UINavigationController {
     }
     
     public func setupView() {
-        self.view.backgroundColor = UIColor.white
         let controller: UIViewController = DemoListViewController(items: Demo.Section.default)
         controller.title = "Demo"
         self.viewControllers = [controller]
@@ -190,7 +189,7 @@ private class DemoListViewController: ViewController {
         self.tableView.dataSource = self
         self.tableView.estimatedRowHeight = 44
         self.tableView.rowHeight = UITableView.automaticDimension
-        self.tableView.backgroundColor = UIColor.white
+        self.tableView.backgroundColor = UIColor.systemBackground
         self.tableView.separatorStyle = UITableViewCell.SeparatorStyle.none
         self.tableView.allowsSelection = true
         self.tableView.alwaysBounceVertical = false

@@ -21,11 +21,11 @@ public extension Configuration {
     struct Toast: ConfigurationToastProtocol {
         public var lifeTime: TimeInterval = 3
         public var backgroundColor = ToastStyle(
-            info: UIColor.black,
+            info: UIColor.systemBackground,
             success: UIColor.green,
             error: UIColor.red)
         public var titleColor = ToastStyle(
-            info: UIColor.white,
+            info: UIColor.label,
             success: UIColor.black,
             error: UIColor.white)
         public var titleFont = ToastStyle(UIFont.boldSystemFont(ofSize: 14))
@@ -107,7 +107,7 @@ public enum Toast {
 }
 
 // MARK: ToastView
-open class ToastView: Component {
+open class ToastView: FormComponent {
     public let titleLabel = UILabel()
     public let contentView = UIView()
     private let gestureRecognizer = UITapGestureRecognizer()

@@ -44,7 +44,7 @@ public struct ComponentsInputs: ComponentsList {
     public static func titleTextField() -> TitleTextField {
         let component = TitleTextField()
         component.animationTime = 0.1
-        component.backgroundColors = TextField.State<UIColor?>(UIColor.white)
+        component.backgroundColors = TextField.State<UIColor?>(UIColor.systemBackground)
         component.edgeInset = UIEdgeInsets(0)
         component.error = nil
         component.errorColor = self.theme.errorColor

@@ -39,7 +39,7 @@ open class TransitionNavigationController: UINavigationController {
     }
     
     open func setupContent() {
-        self.view.backgroundColor = UIColor.white
+        self.view.backgroundColor = UIColor.systemBackground
         // HOOK
     }
     

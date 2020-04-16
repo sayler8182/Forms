@@ -126,7 +126,7 @@ public enum Loader {
 }
 
 // MARK: LoaderCoverView
-public class LoaderCoverView: Component {
+public class LoaderCoverView: FormComponent {
     public let backgroundView: UIView = UIView()
     public weak var loaderView: LoaderView?
     
@@ -154,7 +154,7 @@ public class LoaderCoverView: Component {
 }
 
 // MARK: LoaderView
-open class LoaderView: Component {
+open class LoaderView: FormComponent {
     public var coverView: LoaderCoverView? {
         return self.superview as? LoaderCoverView
     }
@@ -197,7 +197,7 @@ private class DefaultLoaderView: LoaderView {
     
     override func setupView() {
         super.setupView()
-        self.backgroundColor = UIColor.white
+        self.backgroundColor = UIColor.secondarySystemBackground
         self.layer.cornerRadius = 8
         self.layer.shadowColor = UIColor.black.cgColor
     }

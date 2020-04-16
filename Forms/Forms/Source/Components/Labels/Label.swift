@@ -9,7 +9,7 @@
 import UIKit
 
 // MARK: Label
-open class Label: Component, Clickable {
+open class Label: FormComponent, Clickable {
     public let backgroundView = UIView()
     public let textLabel = UILabel()
         .with(isUserInteractionEnabled: true)

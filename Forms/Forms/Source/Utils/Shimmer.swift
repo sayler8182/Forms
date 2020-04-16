@@ -88,9 +88,21 @@ public extension UIView {
 private class ShimmerPlaceholderView: UIView {
     private let gradient = CAGradientLayer()
     private let gradientWidth: CGFloat = 0.17
-    private let backgroundFadedGray = UIColor(0xF6F7F8)
-    private let gradientFirstStop = UIColor(0xEDEDED)
-    private let gradientSecondStop = UIColor(0xDDDDDD)
+    private let backgroundFadedGray = UIColor { (trait) -> UIColor in
+        return trait.userInterfaceStyle == .dark
+            ? UIColor(0x161718)
+            : UIColor(0xF6F7F8)
+    }
+    private let gradientFirstStop = UIColor { (trait) -> UIColor in
+        return trait.userInterfaceStyle == .dark
+            ? UIColor(0x2D2D2D)
+            : UIColor(0xEDEDED)
+    }
+    private let gradientSecondStop = UIColor { (trait) -> UIColor in
+        return trait.userInterfaceStyle == .dark
+            ? UIColor(0x3D3D3D)
+            : UIColor(0xDDDDDD)
+    }
     
     override func layoutSubviews() {
         super.layoutSubviews()
@@ -203,7 +215,7 @@ public protocol ShimmerableTableViewCell: Shimmerable {
 public class ShimmerTableViewCell: TableViewCell {
     private let iconView = UIImageView()
         .with(width: 48.0, height: 48.0)
-        .with(image: UIColor.white.transparent)
+        .with(image: UIColor.systemBackground.transparent)
         .rounded()
     private let titleLabel = UILabel()
         .with(text: " ")

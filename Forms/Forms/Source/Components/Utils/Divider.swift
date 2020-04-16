@@ -9,7 +9,7 @@
 import UIKit
 
 // MARK: Divider
-open class Divider: Component {
+open class Divider: FormComponent {
     open var color: UIColor? {
         get { return self.backgroundColor }
         set { self.backgroundColor = newValue }

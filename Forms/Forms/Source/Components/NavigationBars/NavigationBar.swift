@@ -55,7 +55,7 @@ private class EmptyBarItem: BackBarItem {
 }
 
 // MARK: NavigationBar
-open class NavigationBar: Component {
+open class NavigationBar: FormComponent {
     private var navigationBar: UINavigationBar?
     private var navigationItem: UINavigationItem?
     

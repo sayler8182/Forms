@@ -14,10 +14,6 @@ class DemoNavigationBarWithBackOrCloseViewController: TableViewController {
         .with(backImage: { UIImage(systemName: "chevron.compact.left") })
         .with(closeImage: { UIImage(systemName: "xmark.square") })
     
-    override func setupView() {
-        super.setupView()
-    }
-    
     override func setupNavigationBar() {
         super.setupNavigationBar()
         self.setNavigationBar(self.navigationBar)

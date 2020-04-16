@@ -9,7 +9,7 @@
 import UIKit
 
 // MARK: ActivityIndicator
-open class ActivityIndicator: Component {
+open class ActivityIndicator: FormComponent {
     public let backgroundView = UIView()
     public let activityIndicator = UIActivityIndicatorView()
         .with(isUserInteractionEnabled: true)

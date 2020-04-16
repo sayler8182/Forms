@@ -55,7 +55,7 @@ public struct Forms {
             let theme: ThemeProtocol = r.resolve(ThemeProtocol.self)
             return Configuration.Toast(
                 backgroundColor: .init(
-                    info: UIColor.black,
+                    info: UIColor.systemBackground,
                     success: theme.greenColor,
                     error: theme.redColor)
             )

@@ -44,14 +44,14 @@ public extension Button {
 }
 
 // MARK: Button
-open class Button: Component, Clickable {
+open class Button: FormComponent, Clickable {
     public let backgroundView = UIView()
         .with(isUserInteractionEnabled: true)
     public let titleLabel = UILabel()
     public let gestureRecognizer = UILongPressGestureRecognizer()
     
     open var animationTime: TimeInterval = 0.2
-    open var backgroundColors: State<UIColor?> = State<UIColor?>(UIColor.white) {
+    open var backgroundColors: State<UIColor?> = State<UIColor?>(UIColor.systemBackground) {
         didSet { self.updateState() }
     }
     open var edgeInset: UIEdgeInsets = UIEdgeInsets(0) {
@@ -72,7 +72,7 @@ open class Button: Component, Clickable {
         get { return self.titleLabel.text }
         set { self.titleLabel.text = newValue }
     }
-    open var titleColors: State<UIColor?> = State<UIColor?>(UIColor.black) {
+    open var titleColors: State<UIColor?> = State<UIColor?>(UIColor.label) {
         didSet { self.updateState() }
     }
     open var titleEdgeInset: UIEdgeInsets = UIEdgeInsets(0) {

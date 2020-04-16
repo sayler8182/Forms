@@ -66,7 +66,7 @@ open class UITextFieldWithoutPadding: UITextField {
 }
 
 // MARK: TextField
-open class TextField: Component {
+open class TextField: FormComponent {
     public let backgroundView = UIView()
         .with(width: 320, height: 85)
     public let titleLabel = UILabel()
@@ -89,7 +89,7 @@ open class TextField: Component {
         get { return self.textField.autocorrectionType }
         set { self.textField.autocorrectionType = newValue }
     }
-    open var backgroundColors: State<UIColor?> = State<UIColor?>(UIColor.white) {
+    open var backgroundColors: State<UIColor?> = State<UIColor?>(UIColor.systemBackground) {
         didSet { self.updateState() }
     }
     open var edgeInset: UIEdgeInsets = UIEdgeInsets(0) {
@@ -141,7 +141,7 @@ open class TextField: Component {
         get { return self.textField.text }
         set { self.textField.text = newValue }
     }
-    open var textColors: State<UIColor?> = State<UIColor?>(UIColor.black) {
+    open var textColors: State<UIColor?> = State<UIColor?>(UIColor.label) {
         didSet { self.updateState() }
     }
     private var _textFieldDelegate: UITextFieldDelegate? // swiftlint:disable:this weak_delegate
@@ -159,7 +159,7 @@ open class TextField: Component {
         get { return self.titleLabel.text }
         set { self.titleLabel.text = newValue }
     }
-    open var titleColors: State<UIColor?> = State<UIColor?>(UIColor.black) {
+    open var titleColors: State<UIColor?> = State<UIColor?>(UIColor.label) {
         didSet { self.updateState() }
     }
     open var titleFonts: State<UIFont> = State<UIFont>(UIFont.systemFont(ofSize: 10)) {

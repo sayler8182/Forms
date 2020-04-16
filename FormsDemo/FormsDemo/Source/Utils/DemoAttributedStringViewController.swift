@@ -22,7 +22,7 @@ class DemoAttributedStringViewController: TableViewController {
         .with(height: 5.0)
     
     private lazy var attributedLabelString = AttributedString()
-        .with(color: UIColor.black)
+        .with(color: UIColor.label)
         .with(font: UIFont.systemFont(ofSize: 14))
         .with(string: "Attributed label\n")
         .switchStyle()
@@ -34,7 +34,7 @@ class DemoAttributedStringViewController: TableViewController {
         .with(string: "Is centered\n")
         .with(string: "Is still centered\n")
     private lazy var clickableAttributedLabelString = AttributedString()
-        .with(color: UIColor.black)
+        .with(color: UIColor.label)
         .with(font: UIFont.systemFont(ofSize: 16))
         .with(string: "Attributed label\n")
         .switchStyle()

@@ -183,7 +183,7 @@ private class DemoTableViewCell: TableViewCell {
         .with(width: 48.0, height: 48.0)
         .rounded()
     fileprivate let titleLabel = Components.label.label()
-        .with(color: UIColor.black)
+        .with(color: UIColor.label)
         .with(font: UIFont.systemFont(ofSize: 14))
     fileprivate let subtitleLabel = Components.label.label()
         .with(color: UIColor.darkGray)

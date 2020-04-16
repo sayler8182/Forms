@@ -49,7 +49,6 @@ open class ViewController: UIViewController, UIGestureRecognizerDelegate {
     
     // MARK: HOOKS
     open func setupConfiguration() {
-        self.view.backgroundColor = UIColor.white
         // HOOK
     }
     
@@ -58,7 +57,7 @@ open class ViewController: UIViewController, UIGestureRecognizerDelegate {
     }
     
     open func setupContent() {
-        self.view.backgroundColor = UIColor.white
+        self.view.backgroundColor = UIColor.systemBackground
         // HOOK
     }
     

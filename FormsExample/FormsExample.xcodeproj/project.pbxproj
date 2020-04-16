@@ -180,6 +180,7 @@
 		713B9B55243D050E001F6E3A /* Validators.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Validators.xcodeproj; path = ../Validators/Validators.xcodeproj; sourceTree = "<group>"; };
 		713B9BA1243D0696001F6E3A /* Utils.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Utils.xcodeproj; path = ../Utils/Utils.xcodeproj; sourceTree = "<group>"; };
 		713B9C0D243D08E0001F6E3A /* FormsDemo.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = FormsDemo.xcodeproj; path = ../FormsDemo/FormsDemo.xcodeproj; sourceTree = "<group>"; };
+		714848DD2448618600455560 /* FormsExample.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = FormsExample.entitlements; sourceTree = "<group>"; };
 		715B7AFF244701DC00754EDB /* TemplateIcon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "TemplateIcon@2x.png"; sourceTree = "<group>"; };
 		715B7B00244701DC00754EDB /* ___FILEBASENAME___Presenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "___FILEBASENAME___Presenter.swift"; sourceTree = "<group>"; };
 		715B7B01244701DC00754EDB /* ___FILEBASENAME___Worker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "___FILEBASENAME___Worker.swift"; sourceTree = "<group>"; };
@@ -194,8 +195,6 @@
 		71946956243DA7A800CAD09B /* Forms.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Forms.xcodeproj; path = ../Forms/Forms.xcodeproj; sourceTree = "<group>"; };
 		71BB62182445DD16002BB31F /* Networking.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Networking.xcodeproj; path = ../Networking/Networking.xcodeproj; sourceTree = "<group>"; };
 		71BB62652445E7C5002BB31F /* Logger.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Logger.xcodeproj; path = ../Logger/Logger.xcodeproj; sourceTree = "<group>"; };
-		71C7418D2431DBC800A79E8B /* FormsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormsTests.swift; sourceTree = "<group>"; };
-		71C7418F2431DBC800A79E8B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		71EBA881243D02AD0045AE40 /* Anchor.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Anchor.xcodeproj; path = ../Anchor/Anchor.xcodeproj; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -233,7 +232,6 @@
 				71228E072431CF7F00D08B20 /* FormsExample */,
 				71228E2A2431CF9800D08B20 /* Resources */,
 				71228E1E2431CF8200D08B20 /* FormsExampleTests */,
-				71C7418C2431DBC800A79E8B /* FormsTests */,
 				71228E062431CF7F00D08B20 /* Products */,
 				71228EE42431D26C00D08B20 /* Frameworks */,
 			);
@@ -271,6 +269,7 @@
 			children = (
 				715B7AE9244701BD00754EDB /* Templates */,
 				71228E112431CF8100D08B20 /* Assets.xcassets */,
+				714848DD2448618600455560 /* FormsExample.entitlements */,
 				71228E2B2431CFBF00D08B20 /* LaunchScreen.storyboard */,
 			);
 			path = Resources;
@@ -403,15 +402,6 @@
 				715B7AF5244701BD00754EDB /* LoggerTests.xctest */,
 			);
 			name = Products;
-			sourceTree = "<group>";
-		};
-		71C7418C2431DBC800A79E8B /* FormsTests */ = {
-			isa = PBXGroup;
-			children = (
-				71C7418D2431DBC800A79E8B /* FormsTests.swift */,
-				71C7418F2431DBC800A79E8B /* Info.plist */,
-			);
-			path = FormsTests;
 			sourceTree = "<group>";
 		};
 		71EBA882243D02AD0045AE40 /* Products */ = {
@@ -855,6 +845,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = Resources/FormsExample.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = KB85VH6WG5;
 				INFOPLIST_FILE = FormsExample/SupportingFiles/Config/Info.plist;
@@ -866,6 +857,7 @@
 				MARKETING_VERSION = 0.0.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.limbo.FormsExample;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTS_MACCATALYST = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -875,6 +867,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = Resources/FormsExample.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = KB85VH6WG5;
 				INFOPLIST_FILE = FormsExample/SupportingFiles/Config/Info.plist;
@@ -886,6 +879,7 @@
 				MARKETING_VERSION = 0.0.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.limbo.FormsExample;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTS_MACCATALYST = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

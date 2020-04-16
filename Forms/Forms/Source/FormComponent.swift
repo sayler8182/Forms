@@ -1,5 +1,5 @@
 //
-//  Component.swift
+//  FormComponent.swift
 //  Table
 //
 //  Created by Konrad on 3/27/20.
@@ -56,8 +56,8 @@ public protocol Componentable {
     func componentHeight() -> CGFloat
 }
 
-// MARK: Component
-open class Component: UIView, Componentable {
+// MARK: FormComponent
+open class FormComponent: UIView, Componentable {
     public weak var table: TableProtocol?
     
     override public init(frame: CGRect) {
@@ -154,7 +154,7 @@ public struct SeparatorStyle: OptionSet {
 }
 
 // MARK: XibComponent
-open class XibComponent: Component {
+open class XibComponent: FormComponent {
     override open func setupView() {
         let view: UIView = Bundle.main.instantiate(with: self)
         view.frame = self.bounds
@@ -165,7 +165,7 @@ open class XibComponent: Component {
 }
 
 // MARK: Builder
-public extension Component {
+public extension FormComponent {
     func with(componentColor: UIColor?) -> Self {
         self.backgroundColor = componentColor
         return self

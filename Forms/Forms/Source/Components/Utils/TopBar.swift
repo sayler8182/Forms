@@ -24,7 +24,7 @@ open class TopBarItem: TopBarItemProtocol {
 }
 
 // MARK: TopBar
-open class TopBar: Component {
+open class TopBar: FormComponent {
     public typealias OnSelect = ((TopBarItemProtocol) -> Void)
 
     private let contentView = UIView()
@@ -44,7 +44,7 @@ open class TopBar: Component {
     open var separatorColor: UIColor? = UIColor.lightGray {
         didSet { self.separatorView.backgroundColor = self.separatorColor }
     }
-    open var titleColor: UIColor? = UIColor.black {
+    open var titleColor: UIColor? = UIColor.label {
         didSet { self.collectionView.reloadData() }
     }
     open var titleEdgeInset: UIEdgeInsets = UIEdgeInsets(vertical: 8, horizontal: 16) {
@@ -53,13 +53,13 @@ open class TopBar: Component {
     open var titleFont: UIFont = UIFont.systemFont(ofSize: 14) {
         didSet { self.collectionView.reloadData() }
     }
-    open var titleSelectedColor: UIColor? = UIColor.black {
+    open var titleSelectedColor: UIColor? = UIColor.label {
         didSet { self.collectionView.reloadData() }
     }
     open var titleSelectedFont: UIFont = UIFont.boldSystemFont(ofSize: 14) {
         didSet { self.collectionView.reloadData() }
     }
-    open var underlineColor: UIColor? = UIColor.black {
+    open var underlineColor: UIColor? = UIColor.label {
         didSet { self.underlineView.backgroundColor = self.underlineColor }
     }
     

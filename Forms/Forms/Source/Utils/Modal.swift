@@ -119,7 +119,7 @@ public enum Modal {
 }
 
 // MARK: ModalCoverView
-public class ModalCoverView: Component {
+public class ModalCoverView: FormComponent {
     public let backgroundView: UIView = UIView()
         .with(isUserInteractionEnabled: true)
     private let gestureRecognizer = UITapGestureRecognizer()
@@ -169,7 +169,7 @@ public class ModalCoverView: Component {
 }
 
 // MARK: ModalView
-open class ModalView: Component {
+open class ModalView: FormComponent {
     public var isDismissable: Bool = true
     
     public var onDismiss: ((ModalView) -> Void)? = nil

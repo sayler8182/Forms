@@ -9,7 +9,7 @@
 import UIKit
 
 // MARK: DemoComponent
-private class DemoComponent: Component {
+private class DemoComponent: FormComponent {
     override func componentHeight() -> CGFloat {
         return 44.0
     }
@@ -46,7 +46,7 @@ class DemoTableViewController: TableViewController {
         DispatchQueue.main.async {
             for i in 0..<2 {
                 let color: UIColor = i.isMultiple(of: 2) ? UIColor.systemPink : UIColor.systemGreen
-                let view: Component = DemoComponent()
+                let view: FormComponent = DemoComponent()
                     .with(backgroundColor: color)
                 self.add(view, animated: .none)
             }
@@ -55,7 +55,7 @@ class DemoTableViewController: TableViewController {
         DispatchQueue.main.async {
             for i in 0..<10 {
                 let color: UIColor = i.isMultiple(of: 2) ? UIColor.orange : UIColor.yellow
-                let view: Component = DemoComponent()
+                let view: FormComponent = DemoComponent()
                     .with(backgroundColor: color)
                 self.add(view, animated: .automatic)
             }
