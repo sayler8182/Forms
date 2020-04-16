@@ -36,11 +36,11 @@ class DemoModalViewController: TableViewController {
 
 // TitleModalView
 private class TitleModalView: ModalView {
-    private let titleLabel = UILabel()
-        .with(font: UIFont.boldSystemFont(ofSize: 14))
+    private let titleLabel = Components.label.label()
+        .with(alignment: .center)
+        .with(color: UIColor.red)
         .with(numberOfLines: 3)
-        .with(textAlignment: .center)
-        .with(textColor: UIColor.red)
+        .with(font: UIFont.boldSystemFont(ofSize: 14))
     
     required init() {
         super.init()

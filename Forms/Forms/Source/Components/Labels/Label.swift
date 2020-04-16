@@ -124,8 +124,6 @@ open class Label: Component, Clickable {
     
     private func setupTextLabel() {
         self.textLabel.frame = self.backgroundView.bounds
-        self.textLabel.textAlignment = self.alignment
-        self.textLabel.numberOfLines = self.numberOfLines
         self.backgroundView.addSubview(self.textLabel, with: [
             Anchor.to(self.backgroundView).fill
         ])
@@ -173,7 +171,7 @@ public extension Label {
     func with(attributedText: AttributedString?) -> Self {
         self.attributedText = attributedText
         return self
-    }
+    } 
     func with(color: UIColor?) -> Self {
         self.color = color
         return self

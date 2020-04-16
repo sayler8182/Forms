@@ -620,7 +620,7 @@ extension UIView {
                 from: view.bottomAnchor,
                 to: anchorLayoutGuide.topAnchor,
                 relation: relation,
-                constant: offset)
+                constant: -offset)
             
         case .leading:
             return self.constraint(

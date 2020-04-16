@@ -7,7 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		714848D3244858FF00455560 /* ComponentsOther.swift in Sources */ = {isa = PBXBuildFile; fileRef = 714848D2244858FF00455560 /* ComponentsOther.swift */; };
+		714848D62448598600455560 /* ActivityIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 714848D52448598600455560 /* ActivityIndicator.swift */; };
 		715692BB243E5A2A00B4613C /* Pagination.swift in Sources */ = {isa = PBXBuildFile; fileRef = 715692BA243E5A2A00B4613C /* Pagination.swift */; };
+		715B7B4224474D8A00754EDB /* Transition.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 715B7B4124474D8A00754EDB /* Transition.framework */; };
+		715B7B4324474D8A00754EDB /* Transition.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 715B7B4124474D8A00754EDB /* Transition.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		7194694D243DA7A800CAD09B /* Forms.h in Headers */ = {isa = PBXBuildFile; fileRef = 7194693F243DA7A800CAD09B /* Forms.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		7194698C243DA7BE00CAD09B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71946960243DA7BE00CAD09B /* ViewController.swift */; };
 		7194698E243DA7BE00CAD09B /* Forms.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71946961243DA7BE00CAD09B /* Forms.swift */; };
@@ -81,6 +85,7 @@
 				719469BC243DA7D500CAD09B /* Validators.framework in Embed Frameworks */,
 				719469B9243DA7D200CAD09B /* Utils.framework in Embed Frameworks */,
 				71BB62862445FAE7002BB31F /* Networking.framework in Embed Frameworks */,
+				715B7B4324474D8A00754EDB /* Transition.framework in Embed Frameworks */,
 				719469B2243DA7CC00CAD09B /* Anchor.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
@@ -89,7 +94,10 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		714848D2244858FF00455560 /* ComponentsOther.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComponentsOther.swift; sourceTree = "<group>"; };
+		714848D52448598600455560 /* ActivityIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityIndicator.swift; sourceTree = "<group>"; };
 		715692BA243E5A2A00B4613C /* Pagination.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pagination.swift; sourceTree = "<group>"; };
+		715B7B4124474D8A00754EDB /* Transition.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Transition.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7194693F243DA7A800CAD09B /* Forms.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Forms.h; sourceTree = "<group>"; };
 		71946940243DA7A800CAD09B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		71946960243DA7BE00CAD09B /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -148,6 +156,7 @@
 				719469BB243DA7D500CAD09B /* Validators.framework in Frameworks */,
 				719469B8243DA7D200CAD09B /* Utils.framework in Frameworks */,
 				71BB62852445FAE7002BB31F /* Networking.framework in Frameworks */,
+				715B7B4224474D8A00754EDB /* Transition.framework in Frameworks */,
 				719469B1243DA7CC00CAD09B /* Anchor.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -162,6 +171,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		714848D42448597B00455560 /* Other */ = {
+			isa = PBXGroup;
+			children = (
+				714848D52448598600455560 /* ActivityIndicator.swift */,
+			);
+			path = Other;
+			sourceTree = "<group>";
+		};
 		71946932243DA7A800CAD09B = {
 			isa = PBXGroup;
 			children = (
@@ -204,12 +221,13 @@
 		71946962243DA7BE00CAD09B /* ComponentsList */ = {
 			isa = PBXGroup;
 			children = (
-				71946963243DA7BE00CAD09B /* ComponentsInputs.swift */,
-				71946964243DA7BE00CAD09B /* ComponentsLabels.swift */,
-				71946965243DA7BE00CAD09B /* ComponentsUtils.swift */,
-				71946966243DA7BE00CAD09B /* ComponentsNavigationBars.swift */,
 				71946967243DA7BE00CAD09B /* Components.swift */,
 				71946968243DA7BE00CAD09B /* ComponentsButtons.swift */,
+				71946963243DA7BE00CAD09B /* ComponentsInputs.swift */,
+				71946964243DA7BE00CAD09B /* ComponentsLabels.swift */,
+				71946966243DA7BE00CAD09B /* ComponentsNavigationBars.swift */,
+				714848D2244858FF00455560 /* ComponentsOther.swift */,
+				71946965243DA7BE00CAD09B /* ComponentsUtils.swift */,
 			);
 			path = ComponentsList;
 			sourceTree = "<group>";
@@ -220,10 +238,10 @@
 				7194696E243DA7BE00CAD09B /* Configuration.swift */,
 				7194696B243DA7BE00CAD09B /* Loader.swift */,
 				7194696A243DA7BE00CAD09B /* Modal.swift */,
+				715692BA243E5A2A00B4613C /* Pagination.swift */,
+				719469C1243DAB6500CAD09B /* Shimmer.swift */,
 				7194696C243DA7BE00CAD09B /* Theme.swift */,
 				7194696D243DA7BE00CAD09B /* Toast.swift */,
-				719469C1243DAB6500CAD09B /* Shimmer.swift */,
-				715692BA243E5A2A00B4613C /* Pagination.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -235,6 +253,7 @@
 				7194697B243DA7BE00CAD09B /* Inputs */,
 				71946975243DA7BE00CAD09B /* Labels */,
 				71946973243DA7BE00CAD09B /* NavigationBars */,
+				714848D42448597B00455560 /* Other */,
 				71946977243DA7BE00CAD09B /* Utils */,
 			);
 			path = Components;
@@ -296,6 +315,7 @@
 		719469AF243DA7CC00CAD09B /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				715B7B4124474D8A00754EDB /* Transition.framework */,
 				71BB62872445FAED002BB31F /* Logger.framework */,
 				71BB62842445FAE7002BB31F /* Networking.framework */,
 				719469BA243DA7D500CAD09B /* Validators.framework */,
@@ -441,6 +461,7 @@
 				71946991243DA7BE00CAD09B /* ComponentsUtils.swift in Sources */,
 				719469A2243DA7BE00CAD09B /* TextField.swift in Sources */,
 				71946998243DA7BE00CAD09B /* Toast.swift in Sources */,
+				714848D62448598600455560 /* ActivityIndicator.swift in Sources */,
 				71946992243DA7BE00CAD09B /* ComponentsNavigationBars.swift in Sources */,
 				7194699C243DA7BE00CAD09B /* NavigationBar.swift in Sources */,
 				7194698F243DA7BE00CAD09B /* ComponentsInputs.swift in Sources */,
@@ -463,6 +484,7 @@
 				71BB627F2445F729002BB31F /* ImagesManager.swift in Sources */,
 				719469A6243DA7BE00CAD09B /* Component.swift in Sources */,
 				719469A7243DA7BE00CAD09B /* TextFieldEmailDelegate.swift in Sources */,
+				714848D3244858FF00455560 /* ComponentsOther.swift in Sources */,
 				719469AD243DA7BE00CAD09B /* TabBarController.swift in Sources */,
 				719469A9243DA7BE00CAD09B /* TextFieldAmountDelegate.swift in Sources */,
 				719469A4243DA7BE00CAD09B /* TableViewController.swift in Sources */,

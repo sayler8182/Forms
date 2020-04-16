@@ -25,6 +25,8 @@
 		713B9C8A243D0964001F6E3A /* DemoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 713B9C7B243D0964001F6E3A /* DemoViewController.swift */; };
 		713B9C8B243D0964001F6E3A /* DemoTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 713B9C7C243D0964001F6E3A /* DemoTabBarController.swift */; };
 		713B9C8C243D0964001F6E3A /* DemoTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 713B9C7D243D0964001F6E3A /* DemoTableViewController.swift */; };
+		714848DA24485CCA00455560 /* DemoOthersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 714848D924485CCA00455560 /* DemoOthersViewController.swift */; };
+		714848DC24485CE500455560 /* DemoUtilsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 714848DB24485CE500455560 /* DemoUtilsViewController.swift */; };
 		715260682446E93900119B0A /* DemoArchitecturesCleanRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 715260672446E93900119B0A /* DemoArchitecturesCleanRouter.swift */; };
 		715692B9243E58E700B4613C /* DemoShimmerPaginationTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 715692B8243E58E700B4613C /* DemoShimmerPaginationTableViewController.swift */; };
 		715891122446377D003200C7 /* DemoArchitecturesCleanViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 715891112446377D003200C7 /* DemoArchitecturesCleanViewController.swift */; };
@@ -40,6 +42,7 @@
 		715B7AE62446FD1500754EDB /* DemoArchitecturesCleanSummaryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 715B7ADF2446FD1500754EDB /* DemoArchitecturesCleanSummaryViewController.swift */; };
 		715B7AE72446FD1500754EDB /* DemoArchitecturesCleanSummaryAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 715B7AE02446FD1500754EDB /* DemoArchitecturesCleanSummaryAssembly.swift */; };
 		715B7AE82446FD1500754EDB /* DemoArchitecturesCleanSummaryInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 715B7AE12446FD1500754EDB /* DemoArchitecturesCleanSummaryInteractor.swift */; };
+		715B7B0C2447379200754EDB /* DemoTransitionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 715B7B0B2447379200754EDB /* DemoTransitionViewController.swift */; };
 		719469C4243DB01D00CAD09B /* DemoShimmerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 719469C3243DB01D00CAD09B /* DemoShimmerViewController.swift */; };
 		719469C8243DB66A00CAD09B /* Anchor.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 719469C7243DB66A00CAD09B /* Anchor.framework */; };
 		719469C9243DB66A00CAD09B /* Anchor.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 719469C7243DB66A00CAD09B /* Anchor.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -110,6 +113,8 @@
 		713B9C7B243D0964001F6E3A /* DemoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DemoViewController.swift; sourceTree = "<group>"; };
 		713B9C7C243D0964001F6E3A /* DemoTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DemoTabBarController.swift; sourceTree = "<group>"; };
 		713B9C7D243D0964001F6E3A /* DemoTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DemoTableViewController.swift; sourceTree = "<group>"; };
+		714848D924485CCA00455560 /* DemoOthersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoOthersViewController.swift; sourceTree = "<group>"; };
+		714848DB24485CE500455560 /* DemoUtilsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoUtilsViewController.swift; sourceTree = "<group>"; };
 		715260672446E93900119B0A /* DemoArchitecturesCleanRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoArchitecturesCleanRouter.swift; sourceTree = "<group>"; };
 		715692B8243E58E700B4613C /* DemoShimmerPaginationTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoShimmerPaginationTableViewController.swift; sourceTree = "<group>"; };
 		715891112446377D003200C7 /* DemoArchitecturesCleanViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoArchitecturesCleanViewController.swift; sourceTree = "<group>"; };
@@ -125,6 +130,7 @@
 		715B7ADF2446FD1500754EDB /* DemoArchitecturesCleanSummaryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoArchitecturesCleanSummaryViewController.swift; sourceTree = "<group>"; };
 		715B7AE02446FD1500754EDB /* DemoArchitecturesCleanSummaryAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoArchitecturesCleanSummaryAssembly.swift; sourceTree = "<group>"; };
 		715B7AE12446FD1500754EDB /* DemoArchitecturesCleanSummaryInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoArchitecturesCleanSummaryInteractor.swift; sourceTree = "<group>"; };
+		715B7B0B2447379200754EDB /* DemoTransitionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoTransitionViewController.swift; sourceTree = "<group>"; };
 		716991FE2445A76D00A8FA79 /* Api.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Api.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		719469C3243DB01D00CAD09B /* DemoShimmerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoShimmerViewController.swift; sourceTree = "<group>"; };
 		719469C7243DB66A00CAD09B /* Anchor.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Anchor.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -231,6 +237,8 @@
 				713B9C70243D0964001F6E3A /* Inputs */,
 				713B9C6E243D0964001F6E3A /* Labels */,
 				713B9C6B243D0964001F6E3A /* NavigationBars */,
+				714848D724485C9E00455560 /* Others */,
+				714848D824485CB600455560 /* Utils */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -277,6 +285,7 @@
 				713B9C78243D0964001F6E3A /* DemoLoaderViewController.swift */,
 				713B9C74243D0964001F6E3A /* DemoModalViewController.swift */,
 				713B9C75243D0964001F6E3A /* DemoToastViewController.swift */,
+				715B7B0B2447379200754EDB /* DemoTransitionViewController.swift */,
 				713B9C76243D0964001F6E3A /* DemoValidatorsViewController.swift */,
 			);
 			path = Utils;
@@ -291,6 +300,22 @@
 				713B9C7D243D0964001F6E3A /* DemoTableViewController.swift */,
 			);
 			path = Controllers;
+			sourceTree = "<group>";
+		};
+		714848D724485C9E00455560 /* Others */ = {
+			isa = PBXGroup;
+			children = (
+				714848D924485CCA00455560 /* DemoOthersViewController.swift */,
+			);
+			path = Others;
+			sourceTree = "<group>";
+		};
+		714848D824485CB600455560 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				714848DB24485CE500455560 /* DemoUtilsViewController.swift */,
+			);
+			path = Utils;
 			sourceTree = "<group>";
 		};
 		715260692446EEC100119B0A /* DemoArchitecturesClean */ = {
@@ -453,6 +478,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				715B7AE82446FD1500754EDB /* DemoArchitecturesCleanSummaryInteractor.swift in Sources */,
+				714848DC24485CE500455560 /* DemoUtilsViewController.swift in Sources */,
 				71589114244639F2003200C7 /* DemoArchitecturesCleanAssembly.swift in Sources */,
 				713B9C84243D0964001F6E3A /* DemoModalViewController.swift in Sources */,
 				713B9C81243D0964001F6E3A /* DemoLabelsViewController.swift in Sources */,
@@ -477,6 +503,7 @@
 				71BB61EF2445C6E7002BB31F /* DemoNetworkGetViewController.swift in Sources */,
 				715B7AE52446FD1500754EDB /* DemoArchitecturesCleanSummaryModels.swift in Sources */,
 				713B9C8A243D0964001F6E3A /* DemoViewController.swift in Sources */,
+				714848DA24485CCA00455560 /* DemoOthersViewController.swift in Sources */,
 				715260682446E93900119B0A /* DemoArchitecturesCleanRouter.swift in Sources */,
 				715692B9243E58E700B4613C /* DemoShimmerPaginationTableViewController.swift in Sources */,
 				713B9C88243D0964001F6E3A /* DemoLoaderViewController.swift in Sources */,
@@ -484,6 +511,7 @@
 				713B9C87243D0964001F6E3A /* DemoAttributedStringViewController.swift in Sources */,
 				7158911A24463C2F003200C7 /* DemoArchitecturesCleanPresenter.swift in Sources */,
 				713B9C82243D0964001F6E3A /* DemoTitleTextFieldViewController.swift in Sources */,
+				715B7B0C2447379200754EDB /* DemoTransitionViewController.swift in Sources */,
 				715B7AAE2446FA7900754EDB /* DemoArchitecturesCleanWorker.swift in Sources */,
 				713B9C83243D0964001F6E3A /* DemoRootViewController.swift in Sources */,
 				713B9C85243D0964001F6E3A /* DemoToastViewController.swift in Sources */,

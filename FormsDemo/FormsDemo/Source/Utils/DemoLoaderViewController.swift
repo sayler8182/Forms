@@ -54,15 +54,13 @@ class DemoLoaderViewController: TableViewController {
 
 // MARK: TitleLoaderView
 private class TitleLoaderView: LoaderView {
-    private let activityIndicatorView = UIActivityIndicatorView()
+    private let activityIndicatorView = Components.other.activityIndicator()
         .with(color: UIColor.red)
-        .with(isAnimating: true)
-        .with(style: .medium)
-    private let titleLabel = UILabel()
+    private let titleLabel = Components.label.label()
+        .with(alignment: .center)
+        .with(color: UIColor.red)
         .with(font: UIFont.boldSystemFont(ofSize: 14))
         .with(numberOfLines: 3)
-        .with(textAlignment: .center)
-        .with(textColor: UIColor.red)
     
     required init() {
         super.init()

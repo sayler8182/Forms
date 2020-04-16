@@ -101,6 +101,20 @@
 			remoteGlobalIDString = 715B7A912446F05B00754EDB;
 			remoteInfo = NetworkingTests;
 		};
+		715B7B3624474C4700754EDB /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 715B7B3124474C4600754EDB /* Transition.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 715B7B1724474C4600754EDB;
+			remoteInfo = Transition;
+		};
+		715B7B3824474C4700754EDB /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 715B7B3124474C4600754EDB /* Transition.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 715B7B2024474C4600754EDB;
+			remoteInfo = TransitionTests;
+		};
 		7194695B243DA7A900CAD09B /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 71946956243DA7A800CAD09B /* Forms.xcodeproj */;
@@ -176,6 +190,7 @@
 		715B7B06244701DC00754EDB /* ___FILEBASENAME___Interactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "___FILEBASENAME___Interactor.swift"; sourceTree = "<group>"; };
 		715B7B07244701DC00754EDB /* TemplateIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = TemplateIcon.png; sourceTree = "<group>"; };
 		715B7B08244701DC00754EDB /* TemplateInfo.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = TemplateInfo.plist; sourceTree = "<group>"; };
+		715B7B3124474C4600754EDB /* Transition.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Transition.xcodeproj; path = ../Transition/Transition.xcodeproj; sourceTree = "<group>"; };
 		71946956243DA7A800CAD09B /* Forms.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Forms.xcodeproj; path = ../Forms/Forms.xcodeproj; sourceTree = "<group>"; };
 		71BB62182445DD16002BB31F /* Networking.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Networking.xcodeproj; path = ../Networking/Networking.xcodeproj; sourceTree = "<group>"; };
 		71BB62652445E7C5002BB31F /* Logger.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Logger.xcodeproj; path = ../Logger/Logger.xcodeproj; sourceTree = "<group>"; };
@@ -210,6 +225,7 @@
 				713B9B11243D0416001F6E3A /* Injector.xcodeproj */,
 				71BB62652445E7C5002BB31F /* Logger.xcodeproj */,
 				71BB62182445DD16002BB31F /* Networking.xcodeproj */,
+				715B7B3124474C4600754EDB /* Transition.xcodeproj */,
 				713B9BA1243D0696001F6E3A /* Utils.xcodeproj */,
 				713B9B55243D050E001F6E3A /* Validators.xcodeproj */,
 				71946956243DA7A800CAD09B /* Forms.xcodeproj */,
@@ -353,6 +369,15 @@
 			path = CleanSwift.xctemplate;
 			sourceTree = "<group>";
 		};
+		715B7B3224474C4600754EDB /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				715B7B3724474C4700754EDB /* Transition.framework */,
+				715B7B3924474C4700754EDB /* TransitionTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		71946957243DA7A800CAD09B /* Products */ = {
 			isa = PBXGroup;
 			children = (
@@ -494,6 +519,10 @@
 					ProjectRef = 71BB62182445DD16002BB31F /* Networking.xcodeproj */;
 				},
 				{
+					ProductGroup = 715B7B3224474C4600754EDB /* Products */;
+					ProjectRef = 715B7B3124474C4600754EDB /* Transition.xcodeproj */;
+				},
+				{
 					ProductGroup = 713B9BA2243D0696001F6E3A /* Products */;
 					ProjectRef = 713B9BA1243D0696001F6E3A /* Utils.xcodeproj */;
 				},
@@ -586,6 +615,20 @@
 			fileType = wrapper.cfbundle;
 			path = NetworkingTests.xctest;
 			remoteRef = 715B7AF8244701BD00754EDB /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		715B7B3724474C4700754EDB /* Transition.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = Transition.framework;
+			remoteRef = 715B7B3624474C4700754EDB /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		715B7B3924474C4700754EDB /* TransitionTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = TransitionTests.xctest;
+			remoteRef = 715B7B3824474C4700754EDB /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 		7194695C243DA7A900CAD09B /* Forms.framework */ = {

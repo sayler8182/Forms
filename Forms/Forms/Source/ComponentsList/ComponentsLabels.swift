@@ -13,7 +13,6 @@ public struct ComponentsLabels: ComponentsList {
     
     public static func label() -> Label {
         let component = Label()
-        
         component.alignment = .natural
         component.animationTime = 0.2
         component.attributedText = nil

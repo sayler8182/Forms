@@ -11,20 +11,24 @@ import UIKit
 private enum Demo {
     enum RowType {
         // Controllers
+        case controller
         case pagerController
         case tabBarController
         case tableViewController
         case viewController
         // Components
-        case buttons
-        case buttonsPrimaryButton
-        case inputs
-        case inputsTitleTextField
-        case labels
-        case navigationBars
-        case navigationBarsNavigationBar
-        case navigationBarsNavigationBarWithBack
-        case navigationBarsNavigationBarWithClose
+        case components
+        case componentsButtons
+        case componentsButtonsPrimaryButton
+        case componentsInputs
+        case componentsInputsTitleTextField
+        case componentsLabels
+        case componentsNavigationBars
+        case componentsNavigationBarsNavigationBar
+        case componentsNavigationBarsNavigationBarWithBack
+        case componentsNavigationBarsNavigationBarWithClose
+        case componentsOthers
+        case componentsUtils
         // Utils
         case utils
         case utilsAttributedString
@@ -34,6 +38,7 @@ private enum Demo {
         case utilsNetworkGet
         case utilsNetworkImage
         case utilsToast
+        case utilsTransition
         case utilsShimmer
         case utilsShimmerPaginationTable
         case utilsShimmerShimmer
@@ -66,32 +71,34 @@ private enum Demo {
                 ]),
                 Section(title: "Components", rows: [
                     Row(
-                        type: .buttons,
+                        type: .componentsButtons,
                         title: "Buttons",
                         sections: [
                             Section(rows: [
-                                Row(type: .buttonsPrimaryButton, title: "PrimaryButton")
+                                Row(type: .componentsButtonsPrimaryButton, title: "PrimaryButton")
                             ])
                     ]),
                     Row(
-                        type: .inputs,
+                        type: .componentsInputs,
                         title: "Inputs",
                         sections: [
                             Section(rows: [
-                                Row(type: .inputsTitleTextField, title: "TitleTextField")
+                                Row(type: .componentsInputsTitleTextField, title: "TitleTextField")
                             ])
                     ]),
-                    Row(type: .labels, title: "Labels"),
+                    Row(type: .componentsLabels, title: "Labels"),
                     Row(
-                        type: .navigationBars,
+                        type: .componentsNavigationBars,
                         title: "NavigationBars",
                         sections: [
                             Section(rows: [
-                                Row(type: .navigationBarsNavigationBar, title: "NavigationBar"),
-                                Row(type: .navigationBarsNavigationBarWithBack, title: "NavigationBar with back"),
-                                Row(type: .navigationBarsNavigationBarWithClose, title: "NavigationBar with close", shouldPresent: true)
+                                Row(type: .componentsNavigationBarsNavigationBar, title: "NavigationBar"),
+                                Row(type: .componentsNavigationBarsNavigationBarWithBack, title: "NavigationBar with back"),
+                                Row(type: .componentsNavigationBarsNavigationBarWithClose, title: "NavigationBar with close", shouldPresent: true)
                             ])
-                    ])
+                    ]),
+                    Row(type: .componentsOthers, title: "Others"),
+                    Row(type: .componentsUtils, title: "Utils")
                 ]),
                 Section(title: "Utils", rows: [
                     Row(type: .utilsAttributedString, title: "AttributedString"),
@@ -107,6 +114,7 @@ private enum Demo {
                             ])
                     ]),
                     Row(type: .utilsToast, title: "Toast"),
+                    Row(type: .utilsTransition, title: "Transition", shouldPresent: true),
                     Row(
                         type: .utilsShimmer,
                         title: "Shimmer",
@@ -210,28 +218,32 @@ private class DemoListViewController: ViewController {
     private func rowController(row: Demo.Row) -> UIViewController? {
         switch row.type {
         // controllers
-        case .pagerController:                          return DemoPagerController()
-        case .tabBarController:                         return DemoTabBarController()
-        case .tableViewController:                      return DemoTableViewController()
-        case .viewController:                           return DemoViewController()
+        case .pagerController:                                  return DemoPagerController()
+        case .tabBarController:                                 return DemoTabBarController()
+        case .tableViewController:                              return DemoTableViewController()
+        case .viewController:                                   return DemoViewController()
         // components
-        case .buttonsPrimaryButton:                     return DemoPrimaryButtonViewController()
-        case .inputsTitleTextField:                     return DemoTitleTextFieldViewController()
-        case .labels:                                   return DemoLabelsViewController()
-        case .navigationBarsNavigationBar:              return DemoNavigationBarViewController()
-        case .navigationBarsNavigationBarWithBack:      return DemoNavigationBarWithBackOrCloseViewController()
-        case .navigationBarsNavigationBarWithClose:     return DemoNavigationBarWithBackOrCloseViewController().with(navigationController: UINavigationController())
+        case .componentsButtonsPrimaryButton:                   return DemoPrimaryButtonViewController()
+        case .componentsInputsTitleTextField:                   return DemoTitleTextFieldViewController()
+        case .componentsLabels:                                 return DemoLabelsViewController()
+        case .componentsNavigationBarsNavigationBar:            return DemoNavigationBarViewController()
+        case .componentsNavigationBarsNavigationBarWithBack:    return DemoNavigationBarWithBackOrCloseViewController()
+        case .componentsNavigationBarsNavigationBarWithClose:   return DemoNavigationBarWithBackOrCloseViewController()
+.with(navigationController: UINavigationController())
+        case .componentsOthers:                                 return DemoOthersViewController()
+        case .componentsUtils:                                  return DemoUtilsViewController()
         // utils
-        case .utilsAttributedString:                    return DemoAttributedStringViewController()
-        case .utilsLoader:                              return DemoLoaderViewController()
-        case .utilsModal:                               return DemoModalViewController()
-        case .utilsNetworkGet:                          return DemoNetworkGetViewController()
-        case .utilsNetworkImage:                        return DemoNetworkImageViewController()
-        case .utilsToast:                               return DemoToastViewController()
-        case .utilsShimmerPaginationTable:              return DemoShimmerPaginationTableViewController()
-        case .utilsShimmerShimmer:                      return DemoShimmerViewController()
-        case .utilsShimmerTable:                        return DemoShimmerTableViewController()
-        case .utilsValidators:                          return DemoValidatorsViewController()
+        case .utilsAttributedString:                            return DemoAttributedStringViewController()
+        case .utilsLoader:                                      return DemoLoaderViewController()
+        case .utilsModal:                                       return DemoModalViewController()
+        case .utilsNetworkGet:                                  return DemoNetworkGetViewController()
+        case .utilsNetworkImage:                                return DemoNetworkImageViewController()
+        case .utilsToast:                                       return DemoToastViewController()
+        case .utilsTransition:                                  return DemoTransitionViewController()
+        case .utilsShimmerPaginationTable:                      return DemoShimmerPaginationTableViewController()
+        case .utilsShimmerShimmer:                              return DemoShimmerViewController()
+        case .utilsShimmerTable:                                return DemoShimmerTableViewController()
+        case .utilsValidators:                                  return DemoValidatorsViewController()
         // architectures
         case .architecturesClean:                       return self.injector.resolve(DemoArchitecturesCleanViewController.self)
         default:                                        return nil

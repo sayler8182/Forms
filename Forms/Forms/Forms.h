@@ -11,6 +11,7 @@
 #import <Injector/Injector-Swift.h>
 #import <Logger/Logger-Swift.h>
 #import <Networking/Networking-Swift.h>
+#import <Transition/Transition-Swift.h>
 #import <Utils/Utils-Swift.h>
 #import <Validators/Validators-Swift.h>
 

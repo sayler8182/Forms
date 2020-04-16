@@ -76,7 +76,7 @@ public enum Loader {
         guard let context: UIView = context else { return nil }
         let coverView = LoaderCoverView(frame: context.bounds)
         coverView.backgroundView.backgroundColor = Loader.configuration.backgroundColor
-        let loaderView = T()
+        let loaderView = loaderType.init()
         coverView.add(
             in: context,
             with: loaderView,
@@ -185,10 +185,7 @@ open class LoaderView: Component {
 
 // MARK: DefaultLoaderView
 private class DefaultLoaderView: LoaderView {
-    let activityIndicatorView = UIActivityIndicatorView()
-        .with(color: UIColor.lightGray)
-        .with(isAnimating: true)
-        .with(style: .medium)
+    private let activityIndicatorView = Components.other.activityIndicator()
     
     required init() {
         super.init()

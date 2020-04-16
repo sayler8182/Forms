@@ -102,7 +102,7 @@ public enum Toast {
     }
      
     public static func new<T: ToastView>(of type: T.Type) -> T {
-        return T()
+        return type.init()
     }
 }
 

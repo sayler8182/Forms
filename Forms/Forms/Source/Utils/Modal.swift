@@ -53,7 +53,7 @@ public enum Modal {
         guard let context: UIView = context else { return nil }
         let coverView = ModalCoverView(frame: context.bounds)
         coverView.backgroundView.backgroundColor = Loader.configuration.backgroundColor
-        let modalView = T()
+        let modalView = modalType.init()
         coverView.add(
             in: context,
             of: modalView,

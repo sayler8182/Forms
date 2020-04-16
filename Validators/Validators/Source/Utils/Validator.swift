@@ -166,10 +166,10 @@ public protocol ValidatorTranslatorProtocol {
     func translate(_ type: ValidationErrorTypeProtocol,
                    _ parameters: [Any]) -> String?
 }
-public class ValidatorTranslator: ValidatorTranslatorProtocol {
+open class ValidatorTranslator: ValidatorTranslatorProtocol {
     public init() { }
-    public func translate(_ type: ValidationErrorTypeProtocol,
-                          _ parameters: [Any]) -> String? {
+    open func translate(_ type: ValidationErrorTypeProtocol,
+                        _ parameters: [Any]) -> String? {
         switch type.rawValue {
         case ValidationErrorType.unknown.rawValue:
             return "Validator internal error"

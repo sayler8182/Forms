@@ -164,8 +164,6 @@ open class Button: Component, Clickable {
     
     private func setupTitleLabel() {
         self.titleLabel.frame = self.backgroundView.bounds
-        self.titleLabel.textAlignment = self.titleTextAlignment
-        self.titleLabel.numberOfLines = self.titleNumberOfLines
         self.backgroundView.addSubview(self.titleLabel, with: [
             Anchor.to(self.backgroundView).fill
         ])
