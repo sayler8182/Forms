@@ -6,13 +6,7 @@ Utils is a collection of extension and useful classes
 
 ```swift
 import Utils
-```
-
-or 
-
-```swift
-import Utils
-```
+``` 
 
 ## Injections
 

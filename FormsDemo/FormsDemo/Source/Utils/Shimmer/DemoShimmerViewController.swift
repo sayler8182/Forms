@@ -15,9 +15,9 @@ class DemoShimmerViewController: ViewController {
         .with(width: 48.0, height: 48.0)
         .with(image: UIColor.lightGray)
         .rounded()
-    private let titleLabel = Components.label.label()
+    private let titleLabel = Components.label.default()
         .with(text: "Title label")
-    private let subtitleLabel = Components.label.label()
+    private let subtitleLabel = Components.label.default()
         .with(text: "Subtitle label")
     
     override func setupContent() {

@@ -11,11 +11,11 @@ import UIKit
 
 // MARK: DemoLoaderViewController
 class DemoLoaderViewController: TableViewController {
-    private let defaultLoaderButton = Components.button.primary()
+    private let defaultLoaderButton = Components.button.default()
         .with(title: "Default loader")
-    private let titleShortLoaderButton = Components.button.primary()
+    private let titleShortLoaderButton = Components.button.default()
         .with(title: "Custom title short loader")
-    private let titleLongLoaderButton = Components.button.primary()
+    private let titleLongLoaderButton = Components.button.default()
         .with(title: "Custom title long loader")
     
     private let divider = Components.utils.divider()
@@ -57,7 +57,7 @@ class DemoLoaderViewController: TableViewController {
 private class TitleLoaderView: LoaderView {
     private let activityIndicatorView = Components.other.activityIndicator()
         .with(color: UIColor.red)
-    private let titleLabel = Components.label.label()
+    private let titleLabel = Components.label.default()
         .with(alignment: .center)
         .with(color: UIColor.red)
         .with(font: UIFont.boldSystemFont(ofSize: 14))

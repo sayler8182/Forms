@@ -51,7 +51,6 @@
 		71BB61EF2445C6E7002BB31F /* DemoNetworkGetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71BB61EE2445C6E7002BB31F /* DemoNetworkGetViewController.swift */; };
 		71BB62812445F7C7002BB31F /* DemoNetworkImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71BB62802445F7C7002BB31F /* DemoNetworkImageViewController.swift */; };
 		71C1F0022449E8B000FFC999 /* Forms.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71C1F0012449E8B000FFC999 /* Forms.framework */; };
-		71C1F0052449E8B300FFC999 /* SocialKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71C1F0042449E8B300FFC999 /* SocialKit.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -112,7 +111,6 @@
 		71BB61EE2445C6E7002BB31F /* DemoNetworkGetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoNetworkGetViewController.swift; sourceTree = "<group>"; };
 		71BB62802445F7C7002BB31F /* DemoNetworkImageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoNetworkImageViewController.swift; sourceTree = "<group>"; };
 		71C1F0012449E8B000FFC999 /* Forms.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Forms.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		71C1F0042449E8B300FFC999 /* SocialKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = SocialKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -120,7 +118,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				71C1F0052449E8B300FFC999 /* SocialKit.framework in Frameworks */,
 				71C1F0022449E8B000FFC999 /* Forms.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -190,7 +187,6 @@
 		713B9C63243D0947001F6E3A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				71C1F0042449E8B300FFC999 /* SocialKit.framework */,
 				71C1F0012449E8B000FFC999 /* Forms.framework */,
 			);
 			name = Frameworks;

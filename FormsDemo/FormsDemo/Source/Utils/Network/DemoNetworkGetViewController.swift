@@ -11,7 +11,7 @@ import UIKit
 
 // MARK: DemoNetworkGetViewController
 class DemoNetworkGetViewController: ViewController {
-    private let statusLabel = Components.label.label()
+    private let statusLabel = Components.label.default()
         .with(text: " ")
     
     private lazy var provider = DemoProvider(delegate: self)

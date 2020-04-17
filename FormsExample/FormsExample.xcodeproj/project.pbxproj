@@ -13,7 +13,34 @@
 		71228E202431CF8200D08B20 /* FormsExampleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71228E1F2431CF8200D08B20 /* FormsExampleTests.swift */; };
 		71228E2C2431CFBF00D08B20 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 71228E2B2431CFBF00D08B20 /* LaunchScreen.storyboard */; };
 		71929BA12449873C00AB93F1 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 71929BA02449873C00AB93F1 /* GoogleService-Info.plist */; };
-		719468AC243DA26200CAD09B /* FormsDemo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 713B9C13243D08E1001F6E3A /* FormsDemo.framework */; };
+		71EA6EB12449FC1B00ACB5EE /* Anchor.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 713B9B17243D0417001F6E3A /* Anchor.framework */; };
+		71EA6EB22449FC1B00ACB5EE /* Anchor.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 713B9B17243D0417001F6E3A /* Anchor.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		71EA6EB32449FC1B00ACB5EE /* Forms.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7194695C243DA7A900CAD09B /* Forms.framework */; };
+		71EA6EB42449FC1B00ACB5EE /* Forms.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 7194695C243DA7A900CAD09B /* Forms.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		71EA6EB52449FC1B00ACB5EE /* Injector.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 713B9B1E243D0417001F6E3A /* Injector.framework */; };
+		71EA6EB62449FC1B00ACB5EE /* Injector.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 713B9B1E243D0417001F6E3A /* Injector.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		71EA6EB72449FC1B00ACB5EE /* Logger.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71BB626B2445E7C6002BB31F /* Logger.framework */; };
+		71EA6EB82449FC1B00ACB5EE /* Logger.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 71BB626B2445E7C6002BB31F /* Logger.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		71EA6EB92449FC1B00ACB5EE /* Networking.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71BB621E2445DD17002BB31F /* Networking.framework */; };
+		71EA6EBA2449FC1C00ACB5EE /* Networking.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 71BB621E2445DD17002BB31F /* Networking.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		71EA6EBB2449FC1C00ACB5EE /* SocialKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7132962D24487AC3006935C0 /* SocialKit.framework */; };
+		71EA6EBC2449FC1C00ACB5EE /* SocialKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 7132962D24487AC3006935C0 /* SocialKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		71EA6EBD2449FC1C00ACB5EE /* Transition.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 715B7B3724474C4700754EDB /* Transition.framework */; };
+		71EA6EBE2449FC1C00ACB5EE /* Transition.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 715B7B3724474C4700754EDB /* Transition.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		71EA6EBF2449FC1C00ACB5EE /* Utils.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 713B9BA7243D0696001F6E3A /* Utils.framework */; };
+		71EA6EC02449FC1C00ACB5EE /* Utils.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 713B9BA7243D0696001F6E3A /* Utils.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		71EA6EC12449FC1C00ACB5EE /* Validators.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 713B9B5B243D050F001F6E3A /* Validators.framework */; };
+		71EA6EC22449FC1C00ACB5EE /* Validators.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 713B9B5B243D050F001F6E3A /* Validators.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		71EA6EC62449FC3300ACB5EE /* FormsDemo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 713B9C13243D08E1001F6E3A /* FormsDemo.framework */; };
+		71EA6EC72449FC3300ACB5EE /* FormsDemo.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 713B9C13243D08E1001F6E3A /* FormsDemo.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		71EA6ECE2449FC4B00ACB5EE /* GTMSessionFetcher.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71EA6EC82449FC4B00ACB5EE /* GTMSessionFetcher.framework */; };
+		71EA6ED12449FC4B00ACB5EE /* AppAuth.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71EA6ECB2449FC4B00ACB5EE /* AppAuth.framework */; };
+		71EA6ED22449FC4B00ACB5EE /* GoogleSignIn.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71EA6ECC2449FC4B00ACB5EE /* GoogleSignIn.framework */; };
+		71EA6ED32449FC4B00ACB5EE /* GTMAppAuth.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71EA6ECD2449FC4B00ACB5EE /* GTMAppAuth.framework */; };
+		71EA6ED42449FC5E00ACB5EE /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71EA6EC92449FC4B00ACB5EE /* FBSDKCoreKit.framework */; };
+		71EA6ED52449FC5E00ACB5EE /* FBSDKCoreKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 71EA6EC92449FC4B00ACB5EE /* FBSDKCoreKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		71EA6ED62449FC5F00ACB5EE /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71EA6ECA2449FC4B00ACB5EE /* FBSDKLoginKit.framework */; };
+		71EA6ED72449FC5F00ACB5EE /* FBSDKLoginKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 71EA6ECA2449FC4B00ACB5EE /* FBSDKLoginKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -166,6 +193,31 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		71EA6EC32449FC1C00ACB5EE /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				71EA6EB82449FC1B00ACB5EE /* Logger.framework in Embed Frameworks */,
+				71EA6EB42449FC1B00ACB5EE /* Forms.framework in Embed Frameworks */,
+				71EA6ED72449FC5F00ACB5EE /* FBSDKLoginKit.framework in Embed Frameworks */,
+				71EA6EBC2449FC1C00ACB5EE /* SocialKit.framework in Embed Frameworks */,
+				71EA6ED52449FC5E00ACB5EE /* FBSDKCoreKit.framework in Embed Frameworks */,
+				71EA6EB22449FC1B00ACB5EE /* Anchor.framework in Embed Frameworks */,
+				71EA6EC02449FC1C00ACB5EE /* Utils.framework in Embed Frameworks */,
+				71EA6EBA2449FC1C00ACB5EE /* Networking.framework in Embed Frameworks */,
+				71EA6EBE2449FC1C00ACB5EE /* Transition.framework in Embed Frameworks */,
+				71EA6EC72449FC3300ACB5EE /* FormsDemo.framework in Embed Frameworks */,
+				71EA6EB62449FC1B00ACB5EE /* Injector.framework in Embed Frameworks */,
+				71EA6EC22449FC1C00ACB5EE /* Validators.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		71228E052431CF7F00D08B20 /* FormsExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FormsExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		71228E082431CF7F00D08B20 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -197,6 +249,12 @@
 		71946956243DA7A800CAD09B /* Forms.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Forms.xcodeproj; path = ../Forms/Forms.xcodeproj; sourceTree = "<group>"; };
 		71BB62182445DD16002BB31F /* Networking.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Networking.xcodeproj; path = ../Networking/Networking.xcodeproj; sourceTree = "<group>"; };
 		71BB62652445E7C5002BB31F /* Logger.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Logger.xcodeproj; path = ../Logger/Logger.xcodeproj; sourceTree = "<group>"; };
+		71EA6EC82449FC4B00ACB5EE /* GTMSessionFetcher.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GTMSessionFetcher.framework; sourceTree = "<group>"; };
+		71EA6EC92449FC4B00ACB5EE /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKCoreKit.framework; sourceTree = "<group>"; };
+		71EA6ECA2449FC4B00ACB5EE /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKLoginKit.framework; sourceTree = "<group>"; };
+		71EA6ECB2449FC4B00ACB5EE /* AppAuth.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AppAuth.framework; sourceTree = "<group>"; };
+		71EA6ECC2449FC4B00ACB5EE /* GoogleSignIn.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GoogleSignIn.framework; sourceTree = "<group>"; };
+		71EA6ECD2449FC4B00ACB5EE /* GTMAppAuth.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GTMAppAuth.framework; sourceTree = "<group>"; };
 		71EBA881243D02AD0045AE40 /* Anchor.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Anchor.xcodeproj; path = ../Anchor/Anchor.xcodeproj; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -205,7 +263,22 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				719468AC243DA26200CAD09B /* FormsDemo.framework in Frameworks */,
+				71EA6ED12449FC4B00ACB5EE /* AppAuth.framework in Frameworks */,
+				71EA6EB52449FC1B00ACB5EE /* Injector.framework in Frameworks */,
+				71EA6ECE2449FC4B00ACB5EE /* GTMSessionFetcher.framework in Frameworks */,
+				71EA6ED22449FC4B00ACB5EE /* GoogleSignIn.framework in Frameworks */,
+				71EA6EBF2449FC1C00ACB5EE /* Utils.framework in Frameworks */,
+				71EA6EBB2449FC1C00ACB5EE /* SocialKit.framework in Frameworks */,
+				71EA6EBD2449FC1C00ACB5EE /* Transition.framework in Frameworks */,
+				71EA6EB92449FC1B00ACB5EE /* Networking.framework in Frameworks */,
+				71EA6EB12449FC1B00ACB5EE /* Anchor.framework in Frameworks */,
+				71EA6ED32449FC4B00ACB5EE /* GTMAppAuth.framework in Frameworks */,
+				71EA6EC12449FC1C00ACB5EE /* Validators.framework in Frameworks */,
+				71EA6EC62449FC3300ACB5EE /* FormsDemo.framework in Frameworks */,
+				71EA6ED42449FC5E00ACB5EE /* FBSDKCoreKit.framework in Frameworks */,
+				71EA6EB32449FC1B00ACB5EE /* Forms.framework in Frameworks */,
+				71EA6ED62449FC5F00ACB5EE /* FBSDKLoginKit.framework in Frameworks */,
+				71EA6EB72449FC1B00ACB5EE /* Logger.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -236,6 +309,7 @@
 				71228E2A2431CF9800D08B20 /* Resources */,
 				71228E1E2431CF8200D08B20 /* FormsExampleTests */,
 				71228E062431CF7F00D08B20 /* Products */,
+				71EA6E9E2449FC1B00ACB5EE /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -316,6 +390,12 @@
 		713296C22448B84D006935C0 /* Dependencies */ = {
 			isa = PBXGroup;
 			children = (
+				71EA6ECB2449FC4B00ACB5EE /* AppAuth.framework */,
+				71EA6EC92449FC4B00ACB5EE /* FBSDKCoreKit.framework */,
+				71EA6ECA2449FC4B00ACB5EE /* FBSDKLoginKit.framework */,
+				71EA6ECC2449FC4B00ACB5EE /* GoogleSignIn.framework */,
+				71EA6ECD2449FC4B00ACB5EE /* GTMAppAuth.framework */,
+				71EA6EC82449FC4B00ACB5EE /* GTMSessionFetcher.framework */,
 			);
 			name = Dependencies;
 			path = ../../Dependencies;
@@ -418,6 +498,13 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		71EA6E9E2449FC1B00ACB5EE /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		71EBA882243D02AD0045AE40 /* Products */ = {
 			isa = PBXGroup;
 			children = (
@@ -438,6 +525,7 @@
 				71228E022431CF7F00D08B20 /* Frameworks */,
 				71228E032431CF7F00D08B20 /* Resources */,
 				716992012445A98E00A8FA79 /* Lint */,
+				71EA6EC32449FC1C00ACB5EE /* Embed Frameworks */,
 			);
 			buildRules = (
 			);

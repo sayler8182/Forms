@@ -11,13 +11,13 @@ import UIKit
 public struct ComponentsLabels: ComponentsList {
     private init() { }
     
-    public static func label() -> Label {
+    public static func `default`() -> Label {
         let component = Label()
         component.alignment = .natural
         component.animationTime = 0.2
         component.attributedText = nil
         component.backgroundColor = UIColor.systemBackground
-        component.color = self.theme.textPrimaryColor
+        component.color = UIColor.label
         component.edgeInset = UIEdgeInsets(0)
         component.font = UIFont.systemFont(ofSize: 16)
         component.height = UITableView.automaticDimension

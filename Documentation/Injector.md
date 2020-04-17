@@ -1,17 +1,11 @@
 # Injector
 
-Injector is a Dependency Injection microservice based on [Swinject](https://github.com/Swinject/Swinject).
+Injector is a Dependency Injection micro service based on [Swinject](https://github.com/Swinject/Swinject).
 
 ## Import
 
 ```swift
 import Injector
-```
-
-or 
-
-```swift
-import Forms
 ```
 
 ## Usage

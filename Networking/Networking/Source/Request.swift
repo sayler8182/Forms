@@ -20,7 +20,11 @@ public enum ApiError: Equatable {
 
 // MARK: ApiTask
 public struct ApiTask {
-    let task: URLSessionDataTask?
+    public let task: URLSessionDataTask?
+    
+    public func cancel() {
+        self.task?.cancel()
+    }
 }
 
 public extension ApiError {

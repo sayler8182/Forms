@@ -12,7 +12,7 @@ import UIKit
 
 // MARK: DemoTransitionViewController
 class DemoTransitionViewController: TransitionNavigationController {
-    private let changeButton = Components.button.primary()
+    private let changeButton = Components.button.default()
         .with(title: "Change")
     
     override func setupConfiguration() {
@@ -46,10 +46,10 @@ private class FirstController: ViewController {
     private let contentView = UIView()
         .with(backgroundColor: UIColor.red)
         .with(viewKey: "contentView")
-    private let titleLabel = Components.label.label()
+    private let titleLabel = Components.label.default()
         .with(alignment: .center)
         .with(text: "First title")
-    private let detailsLabel = Components.label.label()
+    private let detailsLabel = Components.label.default()
         .with(color: .lightGray)
         .with(font: UIFont.systemFont(ofSize: 12))
         .with(alignment: .center)
@@ -78,10 +78,10 @@ private class SecondController: ViewController {
         .with(backgroundColor: UIColor.green)
         .with(cornerRadius: 16)
         .with(viewKey: "contentView")
-    private let titleLabel = Components.label.label()
+    private let titleLabel = Components.label.default()
         .with(alignment: .center)
         .with(text: "Second title")
-    private let detailsLabel = Components.label.label()
+    private let detailsLabel = Components.label.default()
         .with(color: .lightGray)
         .with(font: UIFont.systemFont(ofSize: 12))
         .with(alignment: .center)

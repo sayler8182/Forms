@@ -55,13 +55,12 @@ public struct Forms {
             Configuration.Modal()
         }
         // toast
-        injector.register(ConfigurationToastProtocol.self) { r in
-            let theme: ThemeProtocol = r.resolve(ThemeProtocol.self)
+        injector.register(ConfigurationToastProtocol.self) { _ in
             return Configuration.Toast(
                 backgroundColor: .init(
                     info: UIColor.systemBackground,
-                    success: theme.greenColor,
-                    error: theme.redColor)
+                    success: UIColor.systemGreen,
+                    error: UIColor.systemRed)
             )
         }
     }

@@ -11,7 +11,7 @@ import UIKit
 
 // MARK: DemoModalViewController
 class DemoModalViewController: TableViewController {
-    private let titleShortModalButton = Components.button.primary()
+    private let titleShortModalButton = Components.button.default()
         .with(title: "Title short modal")
     
     private let divider = Components.utils.divider()
@@ -37,7 +37,7 @@ class DemoModalViewController: TableViewController {
 
 // TitleModalView
 private class TitleModalView: ModalView {
-    private let titleLabel = Components.label.label()
+    private let titleLabel = Components.label.default()
         .with(alignment: .center)
         .with(color: UIColor.red)
         .with(numberOfLines: 3)

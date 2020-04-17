@@ -8,10 +8,11 @@ Validators is a collection of validators
 import Validators
 ```
 
-or 
+## Dependencies
 
-```swift
-import Validators
+```
+Injector.framework
+Utils.framework
 ```
 
 ## Validators
@@ -20,7 +21,7 @@ import Validators
 AmountValidator(
     minAmount: 100, 
     maxAmount: 20_000, 
-    currency: "PLN")
+    currency: "$")
 EmailValidator()
 LengthValidator(
     minLength: 1, 

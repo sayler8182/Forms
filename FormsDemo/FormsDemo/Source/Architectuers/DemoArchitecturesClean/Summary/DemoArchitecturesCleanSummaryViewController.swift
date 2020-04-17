@@ -19,10 +19,10 @@ class DemoArchitecturesCleanSummaryViewController: ViewController {
     var interactor: DemoArchitecturesCleanSummaryBusinessLogic!
     var router: (DemoArchitecturesCleanSummaryRoutingLogic & DemoArchitecturesCleanSummaryDataPassing)!
 
-    private let titleLabel = Components.label.label()
+    private let titleLabel = Components.label.default()
         .with(alignment: .center)
         .with(text: "Summary")
-    private let summaryLabel = Components.label.label()
+    private let summaryLabel = Components.label.default()
         .with(alignment: .center)
     
     override func setupView() {

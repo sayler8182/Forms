@@ -11,13 +11,13 @@ import UIKit
 public struct ComponentsButtons: ComponentsList {
     private init() { }
     
-    public static func primary() -> PrimaryButton {
+    public static func `default`() -> PrimaryButton {
         let component = PrimaryButton()
         component.animationTime = 0.1
         component.backgroundColors = Button.State<UIColor?>(
-            active: self.theme.primaryColor,
-            selected: self.theme.primaryLightColor,
-            disabled: self.theme.dividerColor
+            active: UIColor.systemBlue,
+            selected: UIColor.systemBlue,
+            disabled: UIColor.systemGray
         )
         component.edgeInset = UIEdgeInsets(0)
         component.height = UITableView.automaticDimension
@@ -25,7 +25,7 @@ public struct ComponentsButtons: ComponentsList {
         component.minHeight = 44.0
         component.maxHeight = CGFloat.greatestConstraintConstant
         component.title = nil
-        component.titleColors = Button.State<UIColor?>(self.theme.primaryTextColor)
+        component.titleColors = Button.State<UIColor?>(UIColor.white)
         component.titleEdgeInset = UIEdgeInsets(
             vertical: 5,
             horizontal: 16

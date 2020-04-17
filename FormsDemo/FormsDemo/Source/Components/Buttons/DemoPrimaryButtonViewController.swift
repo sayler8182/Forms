@@ -11,14 +11,14 @@ import UIKit
 
 // MARK: DemoPrimaryButtonViewController
 class DemoPrimaryButtonViewController: TableViewController {
-    private let activeButton = Components.button.primary()
+    private let activeButton = Components.button.default()
         .with(title: "Tap me")
-    private let inactiveButton = Components.button.primary()
+    private let inactiveButton = Components.button.default()
         .with(isEnabled: false)
         .with(title: "Can't tap me")
-    private let longTitleButton = Components.button.primary()
+    private let longTitleButton = Components.button.default()
         .with(title: LoremIpsum.paragraph(sentences: 2))
-    private let veryLongTitleButton = Components.button.primary()
+    private let veryLongTitleButton = Components.button.default()
         .with(title: LoremIpsum.paragraph(sentences: 15))
     
     private let divider = Components.utils.divider()

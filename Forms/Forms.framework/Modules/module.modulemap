@@ -1,0 +1,11 @@
+framework module Forms {
+  umbrella header "Forms.h"
+
+  export *
+  module * { export * }
+}
+
+module Forms.Swift {
+    header "Forms-Swift.h"
+    requires objc
+}

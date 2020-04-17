@@ -8,6 +8,12 @@ FormsDemo is all features demo.
 import FormsDemo
 ```
 
+## Dependencies
+
+```
+Forms.framework
+```
+
 ## Usage
 
 ```Swift

@@ -25,10 +25,14 @@
 
 import Foundation
 #if canImport(FBSDKLoginKit)
+import FBSDKCoreKit
 import FBSDKLoginKit
 #endif
 #if canImport(GoogleSignIn)
+import AppAuth
 import GoogleSignIn
+import GTMAppAuth
+import GTMSessionFetcher
 #endif
 
 public enum SocialKit {

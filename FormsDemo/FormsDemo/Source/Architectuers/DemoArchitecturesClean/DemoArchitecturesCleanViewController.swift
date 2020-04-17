@@ -19,10 +19,10 @@ class DemoArchitecturesCleanViewController: ViewController {
     var interactor: DemoArchitecturesCleanBusinessLogic!
     var router: DemoArchitecturesCleanRoutingLogic!
     
-    private let titleLabel = Components.label.label()
+    private let titleLabel = Components.label.default()
         .with(alignment: .center)
         .with(text: "Random number generator")
-    private let generateButton = Components.button.primary()
+    private let generateButton = Components.button.default()
         .with(title: "Generate")
     
     override func setupContent() {

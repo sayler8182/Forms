@@ -1,6 +1,6 @@
 # Forms
 
-Forms is All In One iOS framework
+Forms is all in one iOS framework
 
 ## Import
 

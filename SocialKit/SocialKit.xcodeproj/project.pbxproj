@@ -24,9 +24,7 @@
 		71C1EFD32449E2B200FFC999 /* GTMAppAuth.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71C1EFB22449E1C900FFC999 /* GTMAppAuth.framework */; settings = {ATTRIBUTES = (Required, ); }; };
 		71C1EFD42449E2B200FFC999 /* AppAuth.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71C1EFB42449E1C900FFC999 /* AppAuth.framework */; settings = {ATTRIBUTES = (Required, ); }; };
 		71C1EFF22449E62D00FFC999 /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71C1EFB52449E1C900FFC999 /* FBSDKCoreKit.framework */; };
-		71C1EFF32449E62D00FFC999 /* FBSDKCoreKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 71C1EFB52449E1C900FFC999 /* FBSDKCoreKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		71C1EFF52449E62E00FFC999 /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71C1EFB02449E1C900FFC999 /* FBSDKLoginKit.framework */; };
-		71C1EFF62449E62E00FFC999 /* FBSDKLoginKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 71C1EFB02449E1C900FFC999 /* FBSDKLoginKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,21 +36,6 @@
 			remoteInfo = SocialKit;
 		};
 /* End PBXContainerItemProxy section */
-
-/* Begin PBXCopyFilesBuildPhase section */
-		71C1EFF42449E62D00FFC999 /* Embed Frameworks */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 10;
-			files = (
-				71C1EFF62449E62E00FFC999 /* FBSDKLoginKit.framework in Embed Frameworks */,
-				71C1EFF32449E62D00FFC999 /* FBSDKCoreKit.framework in Embed Frameworks */,
-			);
-			name = "Embed Frameworks";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		7132960D24487AC2006935C0 /* SocialKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SocialKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -216,7 +199,6 @@
 				7132960924487AC2006935C0 /* Sources */,
 				7132960A24487AC2006935C0 /* Frameworks */,
 				7132960B24487AC2006935C0 /* Resources */,
-				71C1EFF42449E62D00FFC999 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);

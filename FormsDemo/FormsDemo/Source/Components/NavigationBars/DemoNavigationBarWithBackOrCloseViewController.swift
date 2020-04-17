@@ -11,7 +11,7 @@ import UIKit
 
 // MARK: DemoNavigationBarWithBackOrCloseViewController
 class DemoNavigationBarWithBackOrCloseViewController: TableViewController {
-    private lazy var navigationBar = Components.navigationBar.navigationBar()
+    private lazy var navigationBar = Components.navigationBar.default()
         .with(backImage: { UIImage(systemName: "chevron.compact.left") })
         .with(closeImage: { UIImage(systemName: "xmark.square") })
     

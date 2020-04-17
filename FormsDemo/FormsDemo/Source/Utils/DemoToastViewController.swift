@@ -11,9 +11,9 @@ import UIKit
 
 // MARK: DemoToastViewController
 class DemoToastViewController: TableViewController {
-    private let defaultToastTopButton = Components.button.primary()
+    private let defaultToastTopButton = Components.button.default()
         .with(title: "Default toast top")
-    private let defaultToastBottomButton = Components.button.primary()
+    private let defaultToastBottomButton = Components.button.default()
         .with(title: "Default toast bottom")
     
     private let divider = Components.utils.divider()

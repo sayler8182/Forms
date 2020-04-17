@@ -131,11 +131,11 @@ class DemoTabBarController: TabBarController {
 
 // MARK: ContentViewController
 private class ContentViewController: TableViewController {
-    private lazy var navigationBar = Components.navigationBar.navigationBar()
+    private lazy var navigationBar = Components.navigationBar.default()
     
-    private let firstButton = Components.button.primary()
+    private let firstButton = Components.button.default()
         .with(title: "Tap me")
-    private let secondButton = Components.button.primary()
+    private let secondButton = Components.button.default()
         .with(title: "Tap me")
     
     private let divider = Components.utils.divider()

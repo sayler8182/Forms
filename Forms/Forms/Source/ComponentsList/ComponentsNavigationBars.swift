@@ -11,7 +11,7 @@ import UIKit
 public struct ComponentsNavigationBars: ComponentsList {
     private init() { }
         
-    public static func navigationBar() -> NavigationBar {
+    public static func `default`() -> NavigationBar {
         let component = NavigationBar()
         component.backgroundColor = nil
         component.backImage = { UIImage(systemName: "chevron.left") }

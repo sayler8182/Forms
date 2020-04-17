@@ -1,17 +1,11 @@
 # Logger
 
-Logger is an injectable logger microservice.
+Logger is an injectable logger micro service.
 
 ## Import
 
 ```swift
 import Logger
-```
-
-or 
-
-```swift
-import Forms
 ```
 
 ## Custom logger

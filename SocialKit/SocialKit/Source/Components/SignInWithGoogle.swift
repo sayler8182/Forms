@@ -8,8 +8,11 @@
 
 #if canImport(GoogleSignIn)
 
+import AppAuth
 import Forms
 import GoogleSignIn
+import GTMAppAuth
+import GTMSessionFetcher
 import UIKit
 
 // MARK: SignInWithGoogle

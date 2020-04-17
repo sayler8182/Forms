@@ -11,10 +11,10 @@ import UIKit
 
 // MARK: DemoAttributedStringViewController
 class DemoAttributedStringViewController: TableViewController {
-    private lazy var attributedLabel = Components.label.label()
+    private lazy var attributedLabel = Components.label.default()
         .with(attributedText: self.attributedLabelString)
         .with(paddingEdgeInset: UIEdgeInsets(16))
-    private lazy var clickableAttributedLabel = Components.label.label()
+    private lazy var clickableAttributedLabel = Components.label.default()
         .with(attributedText: self.clickableAttributedLabelString)
         .with(backgroundColor: UIColor.lightGray)
         .with(paddingEdgeInset: UIEdgeInsets(16))
