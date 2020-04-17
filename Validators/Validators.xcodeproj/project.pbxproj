@@ -16,9 +16,7 @@
 		713B9B7B243D05FA001F6E3A /* PeselValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 713B9B75243D05FA001F6E3A /* PeselValidator.swift */; };
 		713B9B7C243D05FA001F6E3A /* PhoneValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 713B9B76243D05FA001F6E3A /* PhoneValidator.swift */; };
 		713B9BE3243D08A2001F6E3A /* Injector.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 713B9BE2243D08A2001F6E3A /* Injector.framework */; };
-		713B9BE4243D08A2001F6E3A /* Injector.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 713B9BE2243D08A2001F6E3A /* Injector.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		713B9BE7243D08A6001F6E3A /* Utils.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 713B9BE6243D08A6001F6E3A /* Utils.framework */; };
-		713B9BE8243D08A6001F6E3A /* Utils.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 713B9BE6243D08A6001F6E3A /* Utils.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -30,21 +28,6 @@
 			remoteInfo = Validators;
 		};
 /* End PBXContainerItemProxy section */
-
-/* Begin PBXCopyFilesBuildPhase section */
-		713B9BE5243D08A2001F6E3A /* Embed Frameworks */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 10;
-			files = (
-				713B9BE8243D08A6001F6E3A /* Utils.framework in Embed Frameworks */,
-				713B9BE4243D08A2001F6E3A /* Injector.framework in Embed Frameworks */,
-			);
-			name = "Embed Frameworks";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		713B9B3E243D050E001F6E3A /* Validators.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Validators.h; sourceTree = "<group>"; };
@@ -163,7 +146,6 @@
 				713B9B37243D050E001F6E3A /* Sources */,
 				713B9B38243D050E001F6E3A /* Frameworks */,
 				713B9B39243D050E001F6E3A /* Resources */,
-				713B9BE5243D08A2001F6E3A /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -408,6 +390,10 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/../Dependencies",
+				);
 				INFOPLIST_FILE = Validators/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
@@ -417,6 +403,7 @@
 					"@loader_path/Frameworks",
 				);
 				MARKETING_VERSION = 0.0.0;
+				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_BUNDLE_IDENTIFIER = com.limbo.Validators;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
@@ -434,6 +421,10 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/../Dependencies",
+				);
 				INFOPLIST_FILE = Validators/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;

@@ -104,7 +104,6 @@ private class DemoProvider {
     
     func loadNextPage() {
         let pageId = self.pagination.startLoading()
-        print("Load \(pageId ?? 0)")
         self.loadItems(
             pageId: pageId,
             limit: self.pagination.limit,
@@ -117,7 +116,6 @@ private class DemoProvider {
                     isLast: pageId == 2)
                 self.delegate?.loadItemsPageSuccess(page)
                 self.pagination.stopLoading(page)
-                print("Success \(pageId ?? 0)\n")
         }, fail: { [weak self] (error) in
             guard let `self` = self else { return }
             let page = Page(
@@ -126,7 +124,6 @@ private class DemoProvider {
                 error: error)
             self.delegate?.loadItemsPageError(page)
             self.pagination.stopLoading(page)
-            print("Error \(pageId ?? 0)\n")
         })
     }
 }

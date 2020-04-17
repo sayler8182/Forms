@@ -37,12 +37,17 @@ private enum Demo {
         case utilsNetwork
         case utilsNetworkGet
         case utilsNetworkImage
-        case utilsToast
-        case utilsTransition
         case utilsShimmer
         case utilsShimmerPaginationTable
         case utilsShimmerShimmer
         case utilsShimmerTable
+        case utilsSocialKit
+        case utilsSocialKitAll
+        case utilsSocialKitApple
+        case utilsSocialKitFacebook
+        case utilsSocialKitGoogle
+        case utilsToast
+        case utilsTransition
         case utilsValidators
         // Architectures
         case architectures
@@ -113,8 +118,6 @@ private enum Demo {
                                 Row(type: .utilsNetworkImage, title: "Network Image")
                             ])
                     ]),
-                    Row(type: .utilsToast, title: "Toast"),
-                    Row(type: .utilsTransition, title: "Transition", shouldPresent: true),
                     Row(
                         type: .utilsShimmer,
                         title: "Shimmer",
@@ -125,6 +128,19 @@ private enum Demo {
                                 Row(type: .utilsShimmerTable, title: "Shimmer Table")
                             ])
                     ]),
+                    Row(
+                        type: .utilsSocialKit,
+                        title: "SocialKit",
+                        sections: [
+                            Section(rows: [
+                                Row(type: .utilsSocialKitAll, title: "SocialKit All"),
+                                Row(type: .utilsSocialKitApple, title: "SocialKit Apple"),
+                                Row(type: .utilsSocialKitFacebook, title: "SocialKit Facebook"),
+                                Row(type: .utilsSocialKitGoogle, title: "SocialKit Google")
+                            ])
+                    ]),
+                    Row(type: .utilsToast, title: "Toast"),
+                    Row(type: .utilsTransition, title: "Transition", shouldPresent: true),
                     Row(type: .utilsValidators, title: "Validators")
                 ]),
                 Section(title: "Architectures", rows: [
@@ -237,11 +253,15 @@ private class DemoListViewController: ViewController {
         case .utilsModal:                                       return DemoModalViewController()
         case .utilsNetworkGet:                                  return DemoNetworkGetViewController()
         case .utilsNetworkImage:                                return DemoNetworkImageViewController()
-        case .utilsToast:                                       return DemoToastViewController()
-        case .utilsTransition:                                  return DemoTransitionViewController()
         case .utilsShimmerPaginationTable:                      return DemoShimmerPaginationTableViewController()
         case .utilsShimmerShimmer:                              return DemoShimmerViewController()
         case .utilsShimmerTable:                                return DemoShimmerTableViewController()
+        case .utilsSocialKitAll:                                return DemoSocialKitAllTableViewController()
+        case .utilsSocialKitApple:                              return DemoSocialKitAppleTableViewController()
+        case .utilsSocialKitFacebook:                           return DemoSocialKitFacebookTableViewController()
+        case .utilsSocialKitGoogle:                             return DemoSocialKitGoogleTableViewController()
+        case .utilsToast:                                       return DemoToastViewController()
+        case .utilsTransition:                                  return DemoTransitionViewController()
         case .utilsValidators:                                  return DemoValidatorsViewController()
         // architectures
         case .architecturesClean:                       return self.injector.resolve(DemoArchitecturesCleanViewController.self)

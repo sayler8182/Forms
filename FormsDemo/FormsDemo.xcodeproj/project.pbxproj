@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7132963124487ADC006935C0 /* SocialKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7132963024487ADC006935C0 /* SocialKit.framework */; };
+		7132963224487ADC006935C0 /* SocialKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 7132963024487ADC006935C0 /* SocialKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		7132964724487ED0006935C0 /* DemoSocialKitAppleTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7132964624487ED0006935C0 /* DemoSocialKitAppleTableViewController.swift */; };
+		7132968A24489F8F006935C0 /* DemoSocialKitFacebookTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7132968924489F8F006935C0 /* DemoSocialKitFacebookTableViewController.swift */; };
+		7132969B2448A609006935C0 /* DemoSocialKitAllTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7132969A2448A609006935C0 /* DemoSocialKitAllTableViewController.swift */; };
 		713B9C04243D08E0001F6E3A /* FormsDemo.h in Headers */ = {isa = PBXBuildFile; fileRef = 713B9BF6243D08E0001F6E3A /* FormsDemo.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		713B9C65243D0947001F6E3A /* Forms.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 713B9C64243D0947001F6E3A /* Forms.framework */; };
 		713B9C66243D0947001F6E3A /* Forms.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 713B9C64243D0947001F6E3A /* Forms.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -43,6 +48,7 @@
 		715B7AE72446FD1500754EDB /* DemoArchitecturesCleanSummaryAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 715B7AE02446FD1500754EDB /* DemoArchitecturesCleanSummaryAssembly.swift */; };
 		715B7AE82446FD1500754EDB /* DemoArchitecturesCleanSummaryInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 715B7AE12446FD1500754EDB /* DemoArchitecturesCleanSummaryInteractor.swift */; };
 		715B7B0C2447379200754EDB /* DemoTransitionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 715B7B0B2447379200754EDB /* DemoTransitionViewController.swift */; };
+		71929C0724499DD400AB93F1 /* DemoSocialKitGoogleTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71929C0624499DD400AB93F1 /* DemoSocialKitGoogleTableViewController.swift */; };
 		719469C4243DB01D00CAD09B /* DemoShimmerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 719469C3243DB01D00CAD09B /* DemoShimmerViewController.swift */; };
 		719469C8243DB66A00CAD09B /* Anchor.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 719469C7243DB66A00CAD09B /* Anchor.framework */; };
 		719469C9243DB66A00CAD09B /* Anchor.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 719469C7243DB66A00CAD09B /* Anchor.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -81,6 +87,7 @@
 			files = (
 				719469CF243DB67100CAD09B /* Utils.framework in Embed Frameworks */,
 				71BB627A2445EA7F002BB31F /* Logger.framework in Embed Frameworks */,
+				7132963224487ADC006935C0 /* SocialKit.framework in Embed Frameworks */,
 				713B9C66243D0947001F6E3A /* Forms.framework in Embed Frameworks */,
 				71BB62402445DD9F002BB31F /* Networking.framework in Embed Frameworks */,
 				719469D2243DB67400CAD09B /* Validators.framework in Embed Frameworks */,
@@ -93,6 +100,10 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		7132963024487ADC006935C0 /* SocialKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = SocialKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		7132964624487ED0006935C0 /* DemoSocialKitAppleTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoSocialKitAppleTableViewController.swift; sourceTree = "<group>"; };
+		7132968924489F8F006935C0 /* DemoSocialKitFacebookTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoSocialKitFacebookTableViewController.swift; sourceTree = "<group>"; };
+		7132969A2448A609006935C0 /* DemoSocialKitAllTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoSocialKitAllTableViewController.swift; sourceTree = "<group>"; };
 		713B9BF6243D08E0001F6E3A /* FormsDemo.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FormsDemo.h; sourceTree = "<group>"; };
 		713B9BF7243D08E0001F6E3A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		713B9C2E243D0906001F6E3A /* FormsDemoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FormsDemoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -132,6 +143,7 @@
 		715B7AE12446FD1500754EDB /* DemoArchitecturesCleanSummaryInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoArchitecturesCleanSummaryInteractor.swift; sourceTree = "<group>"; };
 		715B7B0B2447379200754EDB /* DemoTransitionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoTransitionViewController.swift; sourceTree = "<group>"; };
 		716991FE2445A76D00A8FA79 /* Api.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Api.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		71929C0624499DD400AB93F1 /* DemoSocialKitGoogleTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoSocialKitGoogleTableViewController.swift; sourceTree = "<group>"; };
 		719469C3243DB01D00CAD09B /* DemoShimmerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoShimmerViewController.swift; sourceTree = "<group>"; };
 		719469C7243DB66A00CAD09B /* Anchor.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Anchor.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		719469CA243DB66E00CAD09B /* Injector.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Injector.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -154,6 +166,7 @@
 			files = (
 				719469CE243DB67100CAD09B /* Utils.framework in Frameworks */,
 				71BB62792445EA7F002BB31F /* Logger.framework in Frameworks */,
+				7132963124487ADC006935C0 /* SocialKit.framework in Frameworks */,
 				713B9C65243D0947001F6E3A /* Forms.framework in Frameworks */,
 				71BB623F2445DD9F002BB31F /* Networking.framework in Frameworks */,
 				719469D1243DB67400CAD09B /* Validators.framework in Frameworks */,
@@ -178,6 +191,17 @@
 				715260692446EEC100119B0A /* DemoArchitecturesClean */,
 			);
 			path = Architectuers;
+			sourceTree = "<group>";
+		};
+		7132964524487EC5006935C0 /* SocialKit */ = {
+			isa = PBXGroup;
+			children = (
+				7132969A2448A609006935C0 /* DemoSocialKitAllTableViewController.swift */,
+				7132964624487ED0006935C0 /* DemoSocialKitAppleTableViewController.swift */,
+				7132968924489F8F006935C0 /* DemoSocialKitFacebookTableViewController.swift */,
+				71929C0624499DD400AB93F1 /* DemoSocialKitGoogleTableViewController.swift */,
+			);
+			path = SocialKit;
 			sourceTree = "<group>";
 		};
 		713B9BE9243D08E0001F6E3A = {
@@ -216,6 +240,7 @@
 		713B9C63243D0947001F6E3A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				7132963024487ADC006935C0 /* SocialKit.framework */,
 				71BB62782445EA7F002BB31F /* Logger.framework */,
 				71BB623E2445DD9F002BB31F /* Networking.framework */,
 				71BB61EA2445C651002BB31F /* Network.framework */,
@@ -281,6 +306,7 @@
 			children = (
 				71BB61ED2445C6DD002BB31F /* Network */,
 				71D39CCE244455F1006BED33 /* Shimmer */,
+				7132964524487EC5006935C0 /* SocialKit */,
 				713B9C77243D0964001F6E3A /* DemoAttributedStringViewController.swift */,
 				713B9C78243D0964001F6E3A /* DemoLoaderViewController.swift */,
 				713B9C74243D0964001F6E3A /* DemoModalViewController.swift */,
@@ -478,6 +504,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				715B7AE82446FD1500754EDB /* DemoArchitecturesCleanSummaryInteractor.swift in Sources */,
+				71929C0724499DD400AB93F1 /* DemoSocialKitGoogleTableViewController.swift in Sources */,
 				714848DC24485CE500455560 /* DemoUtilsViewController.swift in Sources */,
 				71589114244639F2003200C7 /* DemoArchitecturesCleanAssembly.swift in Sources */,
 				713B9C84243D0964001F6E3A /* DemoModalViewController.swift in Sources */,
@@ -487,11 +514,13 @@
 				719469C4243DB01D00CAD09B /* DemoShimmerViewController.swift in Sources */,
 				713B9C80243D0964001F6E3A /* DemoNavigationBarViewController.swift in Sources */,
 				713B9C89243D0964001F6E3A /* DemoPagerController.swift in Sources */,
+				7132968A24489F8F006935C0 /* DemoSocialKitFacebookTableViewController.swift in Sources */,
 				715B7AE72446FD1500754EDB /* DemoArchitecturesCleanSummaryAssembly.swift in Sources */,
 				715B7AE62446FD1500754EDB /* DemoArchitecturesCleanSummaryViewController.swift in Sources */,
 				713B9C8C243D0964001F6E3A /* DemoTableViewController.swift in Sources */,
 				713B9C7E243D0964001F6E3A /* DemoPrimaryButtonViewController.swift in Sources */,
 				719469D6243DC11000CAD09B /* DemoShimmerTableViewController.swift in Sources */,
+				7132969B2448A609006935C0 /* DemoSocialKitAllTableViewController.swift in Sources */,
 				7158911624463B18003200C7 /* DemoArchitecturesCleanInteractor.swift in Sources */,
 				7158911824463B86003200C7 /* DemoArchitecturesCleanModels.swift in Sources */,
 				71BB62812445F7C7002BB31F /* DemoNetworkImageViewController.swift in Sources */,
@@ -509,6 +538,7 @@
 				713B9C88243D0964001F6E3A /* DemoLoaderViewController.swift in Sources */,
 				713B9C86243D0964001F6E3A /* DemoValidatorsViewController.swift in Sources */,
 				713B9C87243D0964001F6E3A /* DemoAttributedStringViewController.swift in Sources */,
+				7132964724487ED0006935C0 /* DemoSocialKitAppleTableViewController.swift in Sources */,
 				7158911A24463C2F003200C7 /* DemoArchitecturesCleanPresenter.swift in Sources */,
 				713B9C82243D0964001F6E3A /* DemoTitleTextFieldViewController.swift in Sources */,
 				715B7B0C2447379200754EDB /* DemoTransitionViewController.swift in Sources */,
@@ -666,6 +696,10 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/../Dependencies",
+				);
 				INFOPLIST_FILE = FormsDemo/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
@@ -675,6 +709,8 @@
 					"@loader_path/Frameworks",
 				);
 				MARKETING_VERSION = 0.0.0;
+				ONLY_ACTIVE_ARCH = NO;
+				OTHER_LDFLAGS = "";
 				PRODUCT_BUNDLE_IDENTIFIER = com.limbo.FormsDemo;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
@@ -694,6 +730,10 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/../Dependencies",
+				);
 				INFOPLIST_FILE = FormsDemo/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
@@ -703,6 +743,7 @@
 					"@loader_path/Frameworks",
 				);
 				MARKETING_VERSION = 0.0.0;
+				OTHER_LDFLAGS = "";
 				PRODUCT_BUNDLE_IDENTIFIER = com.limbo.FormsDemo;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;

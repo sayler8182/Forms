@@ -57,7 +57,7 @@ open class ActivityIndicator: FormComponent {
     
     private func setupActivityIndicator() {
         self.activityIndicator.frame = self.bounds
-        self.addSubview(self.activityIndicator, with: [
+        self.backgroundView.addSubview(self.activityIndicator, with: [
             Anchor.to(self.backgroundView).fill
         ])
     }

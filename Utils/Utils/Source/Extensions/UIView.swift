@@ -193,7 +193,7 @@ extension UIView {
     }
     
     @objc
-    open func with(cornerRadius: CGFloat, asPath: Bool = true) -> Self {
+    open func with(cornerRadius: CGFloat, asPath: Bool = false) -> Self {
         if asPath {
             self.setCornerRadius(radius: cornerRadius)
         } else {

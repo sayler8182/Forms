@@ -74,7 +74,7 @@ private class FirstController: ViewController {
 private class SecondController: ViewController {
     private let contentView = UIView()
         .with(backgroundColor: UIColor.green)
-        .with(cornerRadius: 16, asPath: false)
+        .with(cornerRadius: 16)
         .with(viewKey: "contentView")
     private let titleLabel = Components.label.label()
         .with(alignment: .center)

@@ -122,6 +122,11 @@ open class FormComponent: UIView, Componentable {
         }
     }
     
+    override open func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+        super.traitCollectionDidChange(previousTraitCollection)
+        self.setTheme()
+    }
+    
     // MARK: HOOKS
     open func setupActions() {
         // HOOK

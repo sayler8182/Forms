@@ -14,9 +14,7 @@
 		71BB623C2445DD62002BB31F /* Parser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71BB62372445DD62002BB31F /* Parser.swift */; };
 		71BB623D2445DD62002BB31F /* SSLPinning.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71BB62382445DD62002BB31F /* SSLPinning.swift */; };
 		71BB62752445EA79002BB31F /* Logger.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71BB62742445EA79002BB31F /* Logger.framework */; };
-		71BB62762445EA79002BB31F /* Logger.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 71BB62742445EA79002BB31F /* Logger.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		71BB627C2445EB58002BB31F /* Injector.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71BB627B2445EB58002BB31F /* Injector.framework */; };
-		71BB627D2445EB58002BB31F /* Injector.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 71BB627B2445EB58002BB31F /* Injector.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		71BB628B24460437002BB31F /* Cache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71BB628A24460437002BB31F /* Cache.swift */; };
 /* End PBXBuildFile section */
 
@@ -30,25 +28,10 @@
 		};
 /* End PBXContainerItemProxy section */
 
-/* Begin PBXCopyFilesBuildPhase section */
-		71BB62772445EA79002BB31F /* Embed Frameworks */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 10;
-			files = (
-				71BB627D2445EB58002BB31F /* Injector.framework in Embed Frameworks */,
-				71BB62762445EA79002BB31F /* Logger.framework in Embed Frameworks */,
-			);
-			name = "Embed Frameworks";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXCopyFilesBuildPhase section */
-
 /* Begin PBXFileReference section */
+		713295EF2448643F006935C0 /* NetworkingTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NetworkingTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		71BB62012445DD16002BB31F /* Networking.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Networking.h; sourceTree = "<group>"; };
 		71BB62022445DD16002BB31F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		71BB62072445DD16002BB31F /* NetworkingTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; name = NetworkingTests.xctest; path = "/Users/konrad/Documents/Forms/Networking/build/Debug-iphoneos/NetworkingTests.xctest"; sourceTree = "<absolute>"; };
 		71BB62342445DD62002BB31F /* Network.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
 		71BB62352445DD62002BB31F /* Reachability.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Reachability.swift; sourceTree = "<group>"; };
 		71BB62362445DD62002BB31F /* Request.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Request.swift; sourceTree = "<group>"; };
@@ -86,6 +69,7 @@
 				71BB62002445DD16002BB31F /* Networking */,
 				71BB62722445EA60002BB31F /* Networking.framework */,
 				71BB62732445EA79002BB31F /* Frameworks */,
+				713295EF2448643F006935C0 /* NetworkingTests.xctest */,
 			);
 			sourceTree = "<group>";
 		};
@@ -143,7 +127,6 @@
 				71BB61FA2445DD16002BB31F /* Sources */,
 				71BB61FB2445DD16002BB31F /* Frameworks */,
 				71BB61FC2445DD16002BB31F /* Resources */,
-				71BB62772445EA79002BB31F /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -169,7 +152,7 @@
 			);
 			name = NetworkingTests;
 			productName = NetworkingTests;
-			productReference = 71BB62072445DD16002BB31F /* NetworkingTests.xctest */;
+			productReference = 713295EF2448643F006935C0 /* NetworkingTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
@@ -387,6 +370,10 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/../Dependencies",
+				);
 				INFOPLIST_FILE = Networking/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
@@ -396,6 +383,7 @@
 					"@loader_path/Frameworks",
 				);
 				MARKETING_VERSION = 0.0.0;
+				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_BUNDLE_IDENTIFIER = com.limbo.Networking;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
@@ -413,6 +401,10 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/../Dependencies",
+				);
 				INFOPLIST_FILE = Networking/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;

@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		710624F624404C9D00C267FE /* IndexPath.swift in Sources */ = {isa = PBXBuildFile; fileRef = 710624F524404C9D00C267FE /* IndexPath.swift */; };
 		710624FF24408AA900C267FE /* UIScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 710624FE24408AA900C267FE /* UIScrollView.swift */; };
+		713296992448A510006935C0 /* UIButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 713296982448A510006935C0 /* UIButton.swift */; };
 		713B9B98243D0696001F6E3A /* Utils.h in Headers */ = {isa = PBXBuildFile; fileRef = 713B9B8A243D0695001F6E3A /* Utils.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		713B9BAE243D06BD001F6E3A /* LoremIpsum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 713B9BAD243D06BD001F6E3A /* LoremIpsum.swift */; };
 		713B9BB4243D06C3001F6E3A /* Array.swift in Sources */ = {isa = PBXBuildFile; fileRef = 713B9BB0243D06C3001F6E3A /* Array.swift */; };
@@ -33,7 +34,6 @@
 		713B9BD8243D07BC001F6E3A /* UITableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 713B9BC8243D07BC001F6E3A /* UITableView.swift */; };
 		713B9BD9243D07BC001F6E3A /* UIStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 713B9BC9243D07BC001F6E3A /* UIStackView.swift */; };
 		719469BF243DA86C00CAD09B /* Injector.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 719469BE243DA86C00CAD09B /* Injector.framework */; };
-		719469C0243DA86C00CAD09B /* Injector.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 719469BE243DA86C00CAD09B /* Injector.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		719469C6243DB21D00CAD09B /* UIImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 719469C5243DB21D00CAD09B /* UIImageView.swift */; };
 /* End PBXBuildFile section */
 
@@ -47,23 +47,10 @@
 		};
 /* End PBXContainerItemProxy section */
 
-/* Begin PBXCopyFilesBuildPhase section */
-		713B9BDF243D084C001F6E3A /* Embed Frameworks */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 10;
-			files = (
-				719469C0243DA86C00CAD09B /* Injector.framework in Embed Frameworks */,
-			);
-			name = "Embed Frameworks";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXCopyFilesBuildPhase section */
-
 /* Begin PBXFileReference section */
 		710624F524404C9D00C267FE /* IndexPath.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IndexPath.swift; sourceTree = "<group>"; };
 		710624FE24408AA900C267FE /* UIScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIScrollView.swift; sourceTree = "<group>"; };
+		713296982448A510006935C0 /* UIButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIButton.swift; sourceTree = "<group>"; };
 		713B9B8A243D0695001F6E3A /* Utils.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Utils.h; sourceTree = "<group>"; };
 		713B9B8B243D0695001F6E3A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		713B9BAD243D06BD001F6E3A /* LoremIpsum.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoremIpsum.swift; sourceTree = "<group>"; };
@@ -165,6 +152,7 @@
 				713B9BB3243D06C3001F6E3A /* String.swift */,
 				713B9BC0243D07BC001F6E3A /* UIActivityIndicatorView.swift */,
 				713B9BBF243D07BC001F6E3A /* UIAlertViewController.swift */,
+				713296982448A510006935C0 /* UIButton.swift */,
 				713B9BBA243D07BB001F6E3A /* UICollectionView.swift */,
 				713B9BC4243D07BC001F6E3A /* UIColor.swift */,
 				713B9BBE243D07BB001F6E3A /* UIEdgeInset.swift */,
@@ -211,7 +199,6 @@
 				713B9B83243D0695001F6E3A /* Sources */,
 				713B9B84243D0695001F6E3A /* Frameworks */,
 				713B9B85243D0695001F6E3A /* Resources */,
-				713B9BDF243D084C001F6E3A /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -300,6 +287,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				713B9BD7243D07BC001F6E3A /* UIView.swift in Sources */,
+				713296992448A510006935C0 /* UIButton.swift in Sources */,
 				713B9BD1243D07BC001F6E3A /* UIViewController.swift in Sources */,
 				713B9BCB243D07BC001F6E3A /* Number.swift in Sources */,
 				713B9BCC243D07BC001F6E3A /* Bundle.swift in Sources */,
@@ -474,6 +462,10 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/../Dependencies",
+				);
 				INFOPLIST_FILE = Utils/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
@@ -483,6 +475,7 @@
 					"@loader_path/Frameworks",
 				);
 				MARKETING_VERSION = 0.0.0;
+				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_BUNDLE_IDENTIFIER = com.limbo.Utils;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
@@ -500,6 +493,10 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/../Dependencies",
+				);
 				INFOPLIST_FILE = Utils/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
