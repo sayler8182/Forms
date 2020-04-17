@@ -6,7 +6,9 @@
 //  Copyright © 2020 Limbo. All rights reserved.
 //
 
-import AppAuth
+#if canImport(GoogleSignIn)
+
+import Forms
 import GoogleSignIn
 import UIKit
 
@@ -116,3 +118,5 @@ public extension SignInWithGoogle {
         return self
     }
 }
+
+#endif

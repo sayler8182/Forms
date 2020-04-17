@@ -15,8 +15,8 @@
 		713B9B7A243D05FA001F6E3A /* LengthValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 713B9B74243D05FA001F6E3A /* LengthValidator.swift */; };
 		713B9B7B243D05FA001F6E3A /* PeselValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 713B9B75243D05FA001F6E3A /* PeselValidator.swift */; };
 		713B9B7C243D05FA001F6E3A /* PhoneValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 713B9B76243D05FA001F6E3A /* PhoneValidator.swift */; };
-		713B9BE3243D08A2001F6E3A /* Injector.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 713B9BE2243D08A2001F6E3A /* Injector.framework */; };
 		713B9BE7243D08A6001F6E3A /* Utils.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 713B9BE6243D08A6001F6E3A /* Utils.framework */; };
+		71C1F0072449E90300FFC999 /* Injector.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 713B9BE2243D08A2001F6E3A /* Injector.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -50,8 +50,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				71C1F0072449E90300FFC999 /* Injector.framework in Frameworks */,
 				713B9BE7243D08A6001F6E3A /* Utils.framework in Frameworks */,
-				713B9BE3243D08A2001F6E3A /* Injector.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -7,7 +7,6 @@
 //
 
 #import <Foundation/Foundation.h>
-#import <Injector/Injector-Swift.h>
 
 //! Project version number for Utils.
 FOUNDATION_EXPORT double UtilsVersionNumber;

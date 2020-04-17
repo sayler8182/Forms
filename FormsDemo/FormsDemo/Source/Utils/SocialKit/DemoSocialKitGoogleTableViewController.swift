@@ -6,25 +6,29 @@
 //  Copyright © 2020 Limbo. All rights reserved.
 //
 
+#if canImport(SocialKit) && canImport(GoogleSignIn)
+
+import Forms
+import SocialKit
 import UIKit
 
 // MARK: DemoSocialKitGoogleTableViewController
 class DemoSocialKitGoogleTableViewController: TableViewController {
     private let signInWithGoogle = Components.social.signInWithGoogle()
         .with(paddingEdgeInset: UIEdgeInsets(16))
-    
+
     private let divider = Components.utils.divider()
         .with(height: 5.0)
-    
+
     private lazy var signInWithGoogleProvider = SignInWithGoogleProvider(context: self)
-    
+
     override func setupContent() {
         super.setupContent()
         self.build([
             self.signInWithGoogle
         ], divider: self.divider)
     }
-    
+
     override func setupActions() {
         super.setupActions()
         self.signInWithGoogle.onClick = { [unowned self] in
@@ -53,3 +57,4 @@ extension DemoSocialKitGoogleTableViewController {
     }
 }
  
+#endif

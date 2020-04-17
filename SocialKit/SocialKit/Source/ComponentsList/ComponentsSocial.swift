@@ -6,6 +6,7 @@
 //  Copyright © 2020 Limbo. All rights reserved.
 //
 
+import Forms
 import UIKit
 
 public struct ComponentsSocial: ComponentsList {
@@ -19,6 +20,7 @@ public struct ComponentsSocial: ComponentsList {
         return component
     }
     
+    #if canImport(FBSDKLoginKit)
     public static func signInWithFacebook() -> SignInWithFacebook {
         let component = SignInWithFacebook()
         component.edgeInset = UIEdgeInsets(0)
@@ -27,7 +29,9 @@ public struct ComponentsSocial: ComponentsList {
         component.paddingEdgeInset = UIEdgeInsets(0)
         return component
     }
+    #endif
     
+    #if canImport(GoogleSignIn)
     public static func signInWithGoogle() -> SignInWithGoogle {
         let component = SignInWithGoogle()
         component.edgeInset = UIEdgeInsets(0)
@@ -36,4 +40,5 @@ public struct ComponentsSocial: ComponentsList {
         component.paddingEdgeInset = UIEdgeInsets(0)
         return component
     }
+    #endif
 }

@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import Utils
 
 public class AmountValidator: Validator {
     private let currency: String?

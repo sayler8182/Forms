@@ -6,6 +6,8 @@
 //  Copyright © 2020 Limbo. All rights reserved.
 //
 
+#if canImport(FBSDKLoginKit)
+
 import FBSDKCoreKit
 import FBSDKLoginKit
 import UIKit
@@ -25,7 +27,7 @@ public struct SignInWithFacebookData {
 
 // MARK: SignInWithFacebookProvider
 public class SignInWithFacebookProvider: NSObject {
-    private let context: UIViewController
+    private weak var context: UIViewController!
     
     private lazy var loginManager: LoginManager = LoginManager()
     private var inProgress: Bool = false
@@ -125,3 +127,5 @@ extension SignInWithFacebookProvider {
         }
     }
 }
+
+#endif

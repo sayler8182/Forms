@@ -33,7 +33,6 @@
 		713B9BD7243D07BC001F6E3A /* UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 713B9BC7243D07BC001F6E3A /* UIView.swift */; };
 		713B9BD8243D07BC001F6E3A /* UITableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 713B9BC8243D07BC001F6E3A /* UITableView.swift */; };
 		713B9BD9243D07BC001F6E3A /* UIStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 713B9BC9243D07BC001F6E3A /* UIStackView.swift */; };
-		719469BF243DA86C00CAD09B /* Injector.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 719469BE243DA86C00CAD09B /* Injector.framework */; };
 		719469C6243DB21D00CAD09B /* UIImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 719469C5243DB21D00CAD09B /* UIImageView.swift */; };
 /* End PBXBuildFile section */
 
@@ -77,7 +76,6 @@
 		713B9BC8243D07BC001F6E3A /* UITableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITableView.swift; sourceTree = "<group>"; };
 		713B9BC9243D07BC001F6E3A /* UIStackView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIStackView.swift; sourceTree = "<group>"; };
 		713B9BDE243D084C001F6E3A /* Utils.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Utils.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		719469BE243DA86C00CAD09B /* Injector.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Injector.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		719469C5243DB21D00CAD09B /* UIImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -86,7 +84,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				719469BF243DA86C00CAD09B /* Injector.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -106,7 +103,6 @@
 				713B9B89243D0695001F6E3A /* Utils */,
 				713B9BAF243D06BD001F6E3A /* UtilsTests.xctest */,
 				713B9BDE243D084C001F6E3A /* Utils.framework */,
-				719469BD243DA86C00CAD09B /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -167,14 +163,6 @@
 				713B9BC1243D07BC001F6E3A /* UIViewController.swift */,
 			);
 			path = Extensions;
-			sourceTree = "<group>";
-		};
-		719469BD243DA86C00CAD09B /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				719469BE243DA86C00CAD09B /* Injector.framework */,
-			);
-			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

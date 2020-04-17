@@ -18,11 +18,15 @@
 		7132967124489650006935C0 /* SignInWithFacebookProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 713296702448964F006935C0 /* SignInWithFacebookProvider.swift */; };
 		71929BA7244987AA00AB93F1 /* SignInWithGoogle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71929BA6244987AA00AB93F1 /* SignInWithGoogle.swift */; };
 		71929BA9244987E200AB93F1 /* SignInWithGoogleProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71929BA8244987E200AB93F1 /* SignInWithGoogleProvider.swift */; };
-		71929BEA244995F700AB93F1 /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71929BD7244995F600AB93F1 /* FBSDKCoreKit.framework */; };
-		71929BEB244995F700AB93F1 /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71929BD8244995F600AB93F1 /* FBSDKLoginKit.framework */; };
-		71929BEE244995F700AB93F1 /* GoogleSignIn.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71929BDB244995F600AB93F1 /* GoogleSignIn.framework */; };
-		71929BF92449992F00AB93F1 /* AppAuth.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71929BF82449992F00AB93F1 /* AppAuth.framework */; };
-		71929BFB2449994600AB93F1 /* GTMAppAuth.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71929BFA2449994600AB93F1 /* GTMAppAuth.framework */; };
+		71929C0E2449D72200AB93F1 /* SocialKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71929C0D2449D72200AB93F1 /* SocialKit.swift */; };
+		71C1EFBD2449E1C900FFC999 /* GoogleSignIn.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71C1EFB62449E1C900FFC999 /* GoogleSignIn.framework */; settings = {ATTRIBUTES = (Required, ); }; };
+		71C1EFD22449E2B200FFC999 /* GTMSessionFetcher.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71C1EFB12449E1C900FFC999 /* GTMSessionFetcher.framework */; settings = {ATTRIBUTES = (Required, ); }; };
+		71C1EFD32449E2B200FFC999 /* GTMAppAuth.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71C1EFB22449E1C900FFC999 /* GTMAppAuth.framework */; settings = {ATTRIBUTES = (Required, ); }; };
+		71C1EFD42449E2B200FFC999 /* AppAuth.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71C1EFB42449E1C900FFC999 /* AppAuth.framework */; settings = {ATTRIBUTES = (Required, ); }; };
+		71C1EFF22449E62D00FFC999 /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71C1EFB52449E1C900FFC999 /* FBSDKCoreKit.framework */; };
+		71C1EFF32449E62D00FFC999 /* FBSDKCoreKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 71C1EFB52449E1C900FFC999 /* FBSDKCoreKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		71C1EFF52449E62E00FFC999 /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71C1EFB02449E1C900FFC999 /* FBSDKLoginKit.framework */; };
+		71C1EFF62449E62E00FFC999 /* FBSDKLoginKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 71C1EFB02449E1C900FFC999 /* FBSDKLoginKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -34,6 +38,21 @@
 			remoteInfo = SocialKit;
 		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		71C1EFF42449E62D00FFC999 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				71C1EFF62449E62E00FFC999 /* FBSDKLoginKit.framework in Embed Frameworks */,
+				71C1EFF32449E62D00FFC999 /* FBSDKCoreKit.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		7132960D24487AC2006935C0 /* SocialKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SocialKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -49,11 +68,13 @@
 		713296702448964F006935C0 /* SignInWithFacebookProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInWithFacebookProvider.swift; sourceTree = "<group>"; };
 		71929BA6244987AA00AB93F1 /* SignInWithGoogle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInWithGoogle.swift; sourceTree = "<group>"; };
 		71929BA8244987E200AB93F1 /* SignInWithGoogleProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInWithGoogleProvider.swift; sourceTree = "<group>"; };
-		71929BD7244995F600AB93F1 /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKCoreKit.framework; sourceTree = "<group>"; };
-		71929BD8244995F600AB93F1 /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKLoginKit.framework; sourceTree = "<group>"; };
-		71929BDB244995F600AB93F1 /* GoogleSignIn.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GoogleSignIn.framework; sourceTree = "<group>"; };
-		71929BF82449992F00AB93F1 /* AppAuth.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AppAuth.framework; sourceTree = "<group>"; };
-		71929BFA2449994600AB93F1 /* GTMAppAuth.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GTMAppAuth.framework; sourceTree = "<group>"; };
+		71929C0D2449D72200AB93F1 /* SocialKit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocialKit.swift; sourceTree = "<group>"; };
+		71C1EFB02449E1C900FFC999 /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKLoginKit.framework; sourceTree = "<group>"; };
+		71C1EFB12449E1C900FFC999 /* GTMSessionFetcher.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GTMSessionFetcher.framework; sourceTree = "<group>"; };
+		71C1EFB22449E1C900FFC999 /* GTMAppAuth.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GTMAppAuth.framework; sourceTree = "<group>"; };
+		71C1EFB42449E1C900FFC999 /* AppAuth.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AppAuth.framework; sourceTree = "<group>"; };
+		71C1EFB52449E1C900FFC999 /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKCoreKit.framework; sourceTree = "<group>"; };
+		71C1EFB62449E1C900FFC999 /* GoogleSignIn.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GoogleSignIn.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,12 +82,13 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				71929BEA244995F700AB93F1 /* FBSDKCoreKit.framework in Frameworks */,
-				71929BFB2449994600AB93F1 /* GTMAppAuth.framework in Frameworks */,
-				71929BF92449992F00AB93F1 /* AppAuth.framework in Frameworks */,
-				71929BEB244995F700AB93F1 /* FBSDKLoginKit.framework in Frameworks */,
+				71C1EFD22449E2B200FFC999 /* GTMSessionFetcher.framework in Frameworks */,
+				71C1EFBD2449E1C900FFC999 /* GoogleSignIn.framework in Frameworks */,
+				71C1EFD42449E2B200FFC999 /* AppAuth.framework in Frameworks */,
+				71C1EFF22449E62D00FFC999 /* FBSDKCoreKit.framework in Frameworks */,
+				71C1EFF52449E62E00FFC999 /* FBSDKLoginKit.framework in Frameworks */,
+				71C1EFD32449E2B200FFC999 /* GTMAppAuth.framework in Frameworks */,
 				713296622448934B006935C0 /* Forms.framework in Frameworks */,
-				71929BEE244995F700AB93F1 /* GoogleSignIn.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -102,7 +124,7 @@
 		7132960F24487AC2006935C0 /* SocialKit */ = {
 			isa = PBXGroup;
 			children = (
-				713296BD2448B837006935C0 /* Dependencies */,
+				71C1EFAF2449E1C900FFC999 /* Dependencies */,
 				7132963324487AFA006935C0 /* Source */,
 				7132961024487AC2006935C0 /* SocialKit.h */,
 				7132961124487AC2006935C0 /* Info.plist */,
@@ -116,6 +138,7 @@
 				7132963C24487BB2006935C0 /* Components */,
 				7132963D24487BCC006935C0 /* ComponentsList */,
 				7132963424487B03006935C0 /* Providers */,
+				71929C0D2449D72200AB93F1 /* SocialKit.swift */,
 			);
 			path = Source;
 			sourceTree = "<group>";
@@ -157,18 +180,19 @@
 			path = ComponentsList;
 			sourceTree = "<group>";
 		};
-		713296BD2448B837006935C0 /* Dependencies */ = {
+		71C1EFAF2449E1C900FFC999 /* Dependencies */ = {
 			isa = PBXGroup;
 			children = (
-				71929BFA2449994600AB93F1 /* GTMAppAuth.framework */,
-				71929BF82449992F00AB93F1 /* AppAuth.framework */,
-				71929BD7244995F600AB93F1 /* FBSDKCoreKit.framework */,
-				71929BD8244995F600AB93F1 /* FBSDKLoginKit.framework */,
-				71929BDB244995F600AB93F1 /* GoogleSignIn.framework */,
+				71C1EFB02449E1C900FFC999 /* FBSDKLoginKit.framework */,
+				71C1EFB12449E1C900FFC999 /* GTMSessionFetcher.framework */,
+				71C1EFB22449E1C900FFC999 /* GTMAppAuth.framework */,
+				71C1EFB42449E1C900FFC999 /* AppAuth.framework */,
+				71C1EFB52449E1C900FFC999 /* FBSDKCoreKit.framework */,
+				71C1EFB62449E1C900FFC999 /* GoogleSignIn.framework */,
 			);
 			name = Dependencies;
-			path = ../Dependencies;
-			sourceTree = SOURCE_ROOT;
+			path = ../../Dependencies;
+			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
@@ -192,6 +216,7 @@
 				7132960924487AC2006935C0 /* Sources */,
 				7132960A24487AC2006935C0 /* Frameworks */,
 				7132960B24487AC2006935C0 /* Resources */,
+				71C1EFF42449E62D00FFC999 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -285,6 +310,7 @@
 				7132964424487C8E006935C0 /* SignInWithApple.swift in Sources */,
 				7132964024487BDD006935C0 /* Components.swift in Sources */,
 				71929BA7244987AA00AB93F1 /* SignInWithGoogle.swift in Sources */,
+				71929C0E2449D72200AB93F1 /* SocialKit.swift in Sources */,
 				71929BA9244987E200AB93F1 /* SignInWithGoogleProvider.swift in Sources */,
 				7132967124489650006935C0 /* SignInWithFacebookProvider.swift in Sources */,
 				7132966F24489539006935C0 /* SignInWithFacebook.swift in Sources */,

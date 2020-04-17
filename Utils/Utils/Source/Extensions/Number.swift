@@ -6,6 +6,9 @@
 //  Copyright © 2020 Limbo. All rights reserved.
 //
 
+#if canImport(Injector)
+import Injector
+#endif
 import UIKit
 
 // MARK: NumberFormatProtocol
@@ -54,11 +57,16 @@ public extension Number {
     func currencyNotation(with currency: String? = nil,
                           groupingSeparator: String? = nil,
                           decimalSeparator: String? = nil) -> String {
-        let numberFormat: NumberFormatProtocol? = Injector.main.resolve(NumberFormatProtocol.self)
         let value: NSNumber = self.asDouble as NSNumber
         let formatter: NumberFormatter = NumberFormatter()
+        #if canImport(Injector)
+        let numberFormat: NumberFormatProtocol? = Injector.main.resolve(NumberFormatProtocol.self)
         formatter.groupingSeparator = groupingSeparator ?? numberFormat?.groupingSeparator ?? ","
         formatter.decimalSeparator = decimalSeparator ?? numberFormat?.decimalSeparator ?? ","
+        #else
+        formatter.groupingSeparator = groupingSeparator ?? ","
+        formatter.decimalSeparator = decimalSeparator ?? ","
+        #endif
         formatter.numberStyle = .decimal
         formatter.minimumFractionDigits = 2
         formatter.maximumFractionDigits = 2

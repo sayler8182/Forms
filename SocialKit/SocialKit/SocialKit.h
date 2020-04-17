@@ -7,7 +7,6 @@
 //
 
 #import <Foundation/Foundation.h>
-#import <Forms/Forms-Swift.h>
 
 //! Project version number for SocialKit.
 FOUNDATION_EXPORT double SocialKitVersionNumber;

@@ -24,7 +24,7 @@ public struct SignInWithAppleData {
 
 // MARK: SignInWithAppleProvider
 public class SignInWithAppleProvider: NSObject {
-    private let context: UIViewController
+    private weak var context: UIViewController!
     
     private var inProgress: Bool = false
     

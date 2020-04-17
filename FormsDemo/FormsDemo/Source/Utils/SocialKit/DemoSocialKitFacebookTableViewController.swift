@@ -6,6 +6,10 @@
 //  Copyright © 2020 Limbo. All rights reserved.
 //
 
+#if canImport(SocialKit) && canImport(FBSDKLoginKit)
+
+import Forms
+import SocialKit
 import UIKit
 
 // MARK: DemoSocialKitFacebookTableViewController
@@ -53,3 +57,4 @@ extension DemoSocialKitFacebookTableViewController {
     }
 }
  
+#endif

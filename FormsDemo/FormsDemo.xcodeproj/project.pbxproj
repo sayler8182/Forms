@@ -7,14 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		7132963124487ADC006935C0 /* SocialKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7132963024487ADC006935C0 /* SocialKit.framework */; };
-		7132963224487ADC006935C0 /* SocialKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 7132963024487ADC006935C0 /* SocialKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		7132964724487ED0006935C0 /* DemoSocialKitAppleTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7132964624487ED0006935C0 /* DemoSocialKitAppleTableViewController.swift */; };
 		7132968A24489F8F006935C0 /* DemoSocialKitFacebookTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7132968924489F8F006935C0 /* DemoSocialKitFacebookTableViewController.swift */; };
 		7132969B2448A609006935C0 /* DemoSocialKitAllTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7132969A2448A609006935C0 /* DemoSocialKitAllTableViewController.swift */; };
 		713B9C04243D08E0001F6E3A /* FormsDemo.h in Headers */ = {isa = PBXBuildFile; fileRef = 713B9BF6243D08E0001F6E3A /* FormsDemo.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		713B9C65243D0947001F6E3A /* Forms.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 713B9C64243D0947001F6E3A /* Forms.framework */; };
-		713B9C66243D0947001F6E3A /* Forms.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 713B9C64243D0947001F6E3A /* Forms.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		713B9C7E243D0964001F6E3A /* DemoPrimaryButtonViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 713B9C6A243D0964001F6E3A /* DemoPrimaryButtonViewController.swift */; };
 		713B9C7F243D0964001F6E3A /* DemoNavigationBarWithBackOrCloseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 713B9C6C243D0964001F6E3A /* DemoNavigationBarWithBackOrCloseViewController.swift */; };
 		713B9C80243D0964001F6E3A /* DemoNavigationBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 713B9C6D243D0964001F6E3A /* DemoNavigationBarViewController.swift */; };
@@ -50,22 +46,12 @@
 		715B7B0C2447379200754EDB /* DemoTransitionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 715B7B0B2447379200754EDB /* DemoTransitionViewController.swift */; };
 		71929C0724499DD400AB93F1 /* DemoSocialKitGoogleTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71929C0624499DD400AB93F1 /* DemoSocialKitGoogleTableViewController.swift */; };
 		719469C4243DB01D00CAD09B /* DemoShimmerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 719469C3243DB01D00CAD09B /* DemoShimmerViewController.swift */; };
-		719469C8243DB66A00CAD09B /* Anchor.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 719469C7243DB66A00CAD09B /* Anchor.framework */; };
-		719469C9243DB66A00CAD09B /* Anchor.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 719469C7243DB66A00CAD09B /* Anchor.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		719469CB243DB66E00CAD09B /* Injector.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 719469CA243DB66E00CAD09B /* Injector.framework */; };
-		719469CC243DB66E00CAD09B /* Injector.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 719469CA243DB66E00CAD09B /* Injector.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		719469CE243DB67100CAD09B /* Utils.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 719469CD243DB67100CAD09B /* Utils.framework */; };
-		719469CF243DB67100CAD09B /* Utils.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 719469CD243DB67100CAD09B /* Utils.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		719469D1243DB67400CAD09B /* Validators.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 719469D0243DB67400CAD09B /* Validators.framework */; };
-		719469D2243DB67400CAD09B /* Validators.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 719469D0243DB67400CAD09B /* Validators.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		719469D4243DBC6800CAD09B /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 719469D3243DBC6800CAD09B /* Utils.swift */; };
 		719469D6243DC11000CAD09B /* DemoShimmerTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 719469D5243DC11000CAD09B /* DemoShimmerTableViewController.swift */; };
 		71BB61EF2445C6E7002BB31F /* DemoNetworkGetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71BB61EE2445C6E7002BB31F /* DemoNetworkGetViewController.swift */; };
-		71BB623F2445DD9F002BB31F /* Networking.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71BB623E2445DD9F002BB31F /* Networking.framework */; };
-		71BB62402445DD9F002BB31F /* Networking.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 71BB623E2445DD9F002BB31F /* Networking.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		71BB62792445EA7F002BB31F /* Logger.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71BB62782445EA7F002BB31F /* Logger.framework */; };
-		71BB627A2445EA7F002BB31F /* Logger.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 71BB62782445EA7F002BB31F /* Logger.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		71BB62812445F7C7002BB31F /* DemoNetworkImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71BB62802445F7C7002BB31F /* DemoNetworkImageViewController.swift */; };
+		71C1F0022449E8B000FFC999 /* Forms.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71C1F0012449E8B000FFC999 /* Forms.framework */; };
+		71C1F0052449E8B300FFC999 /* SocialKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71C1F0042449E8B300FFC999 /* SocialKit.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -78,29 +64,7 @@
 		};
 /* End PBXContainerItemProxy section */
 
-/* Begin PBXCopyFilesBuildPhase section */
-		713B9C67243D0948001F6E3A /* Embed Frameworks */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 10;
-			files = (
-				719469CF243DB67100CAD09B /* Utils.framework in Embed Frameworks */,
-				71BB627A2445EA7F002BB31F /* Logger.framework in Embed Frameworks */,
-				7132963224487ADC006935C0 /* SocialKit.framework in Embed Frameworks */,
-				713B9C66243D0947001F6E3A /* Forms.framework in Embed Frameworks */,
-				71BB62402445DD9F002BB31F /* Networking.framework in Embed Frameworks */,
-				719469D2243DB67400CAD09B /* Validators.framework in Embed Frameworks */,
-				719469C9243DB66A00CAD09B /* Anchor.framework in Embed Frameworks */,
-				719469CC243DB66E00CAD09B /* Injector.framework in Embed Frameworks */,
-			);
-			name = "Embed Frameworks";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXCopyFilesBuildPhase section */
-
 /* Begin PBXFileReference section */
-		7132963024487ADC006935C0 /* SocialKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = SocialKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7132964624487ED0006935C0 /* DemoSocialKitAppleTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoSocialKitAppleTableViewController.swift; sourceTree = "<group>"; };
 		7132968924489F8F006935C0 /* DemoSocialKitFacebookTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoSocialKitFacebookTableViewController.swift; sourceTree = "<group>"; };
 		7132969A2448A609006935C0 /* DemoSocialKitAllTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoSocialKitAllTableViewController.swift; sourceTree = "<group>"; };
@@ -108,7 +72,6 @@
 		713B9BF7243D08E0001F6E3A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		713B9C2E243D0906001F6E3A /* FormsDemoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FormsDemoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		713B9C3D243D093D001F6E3A /* FormsDemo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = FormsDemo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		713B9C64243D0947001F6E3A /* Forms.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Forms.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		713B9C6A243D0964001F6E3A /* DemoPrimaryButtonViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DemoPrimaryButtonViewController.swift; sourceTree = "<group>"; };
 		713B9C6C243D0964001F6E3A /* DemoNavigationBarWithBackOrCloseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DemoNavigationBarWithBackOrCloseViewController.swift; sourceTree = "<group>"; };
 		713B9C6D243D0964001F6E3A /* DemoNavigationBarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DemoNavigationBarViewController.swift; sourceTree = "<group>"; };
@@ -142,21 +105,14 @@
 		715B7AE02446FD1500754EDB /* DemoArchitecturesCleanSummaryAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoArchitecturesCleanSummaryAssembly.swift; sourceTree = "<group>"; };
 		715B7AE12446FD1500754EDB /* DemoArchitecturesCleanSummaryInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoArchitecturesCleanSummaryInteractor.swift; sourceTree = "<group>"; };
 		715B7B0B2447379200754EDB /* DemoTransitionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoTransitionViewController.swift; sourceTree = "<group>"; };
-		716991FE2445A76D00A8FA79 /* Api.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Api.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		71929C0624499DD400AB93F1 /* DemoSocialKitGoogleTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoSocialKitGoogleTableViewController.swift; sourceTree = "<group>"; };
 		719469C3243DB01D00CAD09B /* DemoShimmerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoShimmerViewController.swift; sourceTree = "<group>"; };
-		719469C7243DB66A00CAD09B /* Anchor.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Anchor.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		719469CA243DB66E00CAD09B /* Injector.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Injector.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		719469CD243DB67100CAD09B /* Utils.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Utils.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		719469D0243DB67400CAD09B /* Validators.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Validators.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		719469D3243DBC6800CAD09B /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 		719469D5243DC11000CAD09B /* DemoShimmerTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoShimmerTableViewController.swift; sourceTree = "<group>"; };
-		71BB61EA2445C651002BB31F /* Network.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Network.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		71BB61EE2445C6E7002BB31F /* DemoNetworkGetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoNetworkGetViewController.swift; sourceTree = "<group>"; };
-		71BB61F22445DC59002BB31F /* Network.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Network.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk/System/Library/Frameworks/Network.framework; sourceTree = DEVELOPER_DIR; };
-		71BB623E2445DD9F002BB31F /* Networking.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Networking.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		71BB62782445EA7F002BB31F /* Logger.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Logger.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		71BB62802445F7C7002BB31F /* DemoNetworkImageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoNetworkImageViewController.swift; sourceTree = "<group>"; };
+		71C1F0012449E8B000FFC999 /* Forms.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Forms.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		71C1F0042449E8B300FFC999 /* SocialKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = SocialKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -164,14 +120,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				719469CE243DB67100CAD09B /* Utils.framework in Frameworks */,
-				71BB62792445EA7F002BB31F /* Logger.framework in Frameworks */,
-				7132963124487ADC006935C0 /* SocialKit.framework in Frameworks */,
-				713B9C65243D0947001F6E3A /* Forms.framework in Frameworks */,
-				71BB623F2445DD9F002BB31F /* Networking.framework in Frameworks */,
-				719469D1243DB67400CAD09B /* Validators.framework in Frameworks */,
-				719469C8243DB66A00CAD09B /* Anchor.framework in Frameworks */,
-				719469CB243DB66E00CAD09B /* Injector.framework in Frameworks */,
+				71C1F0052449E8B300FFC999 /* SocialKit.framework in Frameworks */,
+				71C1F0022449E8B000FFC999 /* Forms.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -240,17 +190,8 @@
 		713B9C63243D0947001F6E3A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				7132963024487ADC006935C0 /* SocialKit.framework */,
-				71BB62782445EA7F002BB31F /* Logger.framework */,
-				71BB623E2445DD9F002BB31F /* Networking.framework */,
-				71BB61EA2445C651002BB31F /* Network.framework */,
-				71BB61F22445DC59002BB31F /* Network.framework */,
-				716991FE2445A76D00A8FA79 /* Api.framework */,
-				719469D0243DB67400CAD09B /* Validators.framework */,
-				719469CD243DB67100CAD09B /* Utils.framework */,
-				719469CA243DB66E00CAD09B /* Injector.framework */,
-				719469C7243DB66A00CAD09B /* Anchor.framework */,
-				713B9C64243D0947001F6E3A /* Forms.framework */,
+				71C1F0042449E8B300FFC999 /* SocialKit.framework */,
+				71C1F0012449E8B000FFC999 /* Forms.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -414,7 +355,6 @@
 				713B9BEF243D08E0001F6E3A /* Sources */,
 				713B9BF0243D08E0001F6E3A /* Frameworks */,
 				713B9BF1243D08E0001F6E3A /* Resources */,
-				713B9C67243D0948001F6E3A /* Embed Frameworks */,
 			);
 			buildRules = (
 			);

@@ -6,6 +6,8 @@
 //  Copyright © 2020 Limbo. All rights reserved.
 //
 
+#if canImport(GoogleSignIn)
+
 import GoogleSignIn
 import UIKit
 
@@ -26,7 +28,7 @@ public struct SignInWithGoogleData {
 
 // MARK: SignInWithGoogleProvider
 public class SignInWithGoogleProvider: NSObject {
-    private let context: UIViewController
+    private weak var context: UIViewController!
     
     private var inProgress: Bool = false
     private var onSuccess: ((SignInWithGoogleData) -> Void)? = nil
@@ -105,3 +107,5 @@ extension SignInWithGoogleProvider: GIDSignInDelegate {
         }
     }
 }
+
+#endif

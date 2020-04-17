@@ -6,7 +6,7 @@
 //  Copyright © 2020 Limbo. All rights reserved.
 //
 
-import Foundation
+import Forms
 
 // MARK: DemoArchitecturesCleanAssembly
 struct DemoArchitecturesCleanAssembly: Assembly {

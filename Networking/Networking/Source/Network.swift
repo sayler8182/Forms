@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import Logger
 
 // MARK: NetworkError
 internal enum NetworkError {

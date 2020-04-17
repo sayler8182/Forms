@@ -7,6 +7,10 @@
 //
 
 import Foundation
+#if canImport(Injector)
+import Injector
+#endif
+import Utils
 
 // MARK: Validator
 open class Validator: Equatable {
@@ -148,7 +152,11 @@ public class ValidationError {
     private let type: ValidationErrorTypeProtocol
     private let parameters: [Any]
     private lazy var translator: ValidatorTranslatorProtocol = {
+        #if canImport(Injector)
         return Injector.main.resolve(ValidatorTranslatorProtocol.self)
+        #else
+        return ValidatorTranslator()
+        #endif
     }()
     
     public init(_ type: ValidationErrorTypeProtocol,

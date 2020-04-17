@@ -7,8 +7,6 @@
 //
 
 #import <Foundation/Foundation.h>
-#import <Injector/Injector-Swift.h>
-#import <Logger/Logger-Swift.h>
 
 //! Project version number for Networking.
 FOUNDATION_EXPORT double NetworkingVersionNumber;

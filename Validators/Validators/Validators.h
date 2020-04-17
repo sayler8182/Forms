@@ -6,9 +6,7 @@
 //  Copyright © 2020 Limbo. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
-#import <Injector/Injector-Swift.h>
-#import <Utils/Utils-Swift.h>
+#import <Foundation/Foundation.h> 
 
 //! Project version number for Validators.
 FOUNDATION_EXPORT double ValidatorsVersionNumber;

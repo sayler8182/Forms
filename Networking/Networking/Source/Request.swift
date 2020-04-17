@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import Logger
 
 // MARK: ApiError
 public enum ApiError: Equatable {

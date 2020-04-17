@@ -6,8 +6,11 @@
 //  Copyright © 2020 Limbo. All rights reserved.
 //
 
+#if canImport(FBSDKLoginKit)
+
 import FBSDKCoreKit
 import FBSDKLoginKit
+import Forms
 import UIKit
 
 // MARK: SignInWithFacebook
@@ -116,3 +119,5 @@ public extension SignInWithFacebook {
         return self
     }
 }
+
+#endif

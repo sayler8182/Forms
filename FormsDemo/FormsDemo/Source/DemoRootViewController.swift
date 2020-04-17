@@ -6,6 +6,7 @@
 //  Copyright © 2020 Limbo. All rights reserved.
 //
 
+import Forms
 import UIKit
 
 private enum Demo {
@@ -146,7 +147,14 @@ private enum Demo {
                 Section(title: "Architectures", rows: [
                     Row(type: .architecturesClean, title: "Clean Swift")
                 ])
-            ]
+                ]
+                .map { section in
+                    var section: Section = section
+                    #if !canImport(SocialKit)
+                    section.rows = section.rows.filter { $0.type != .utilsSocialKit }
+                    #endif
+                    return section
+            }
         }()
     }
 }
@@ -244,7 +252,7 @@ private class DemoListViewController: ViewController {
         case .componentsNavigationBarsNavigationBar:            return DemoNavigationBarViewController()
         case .componentsNavigationBarsNavigationBarWithBack:    return DemoNavigationBarWithBackOrCloseViewController()
         case .componentsNavigationBarsNavigationBarWithClose:   return DemoNavigationBarWithBackOrCloseViewController()
-.with(navigationController: UINavigationController())
+            .with(navigationController: UINavigationController())
         case .componentsOthers:                                 return DemoOthersViewController()
         case .componentsUtils:                                  return DemoUtilsViewController()
         // utils
@@ -256,10 +264,16 @@ private class DemoListViewController: ViewController {
         case .utilsShimmerPaginationTable:                      return DemoShimmerPaginationTableViewController()
         case .utilsShimmerShimmer:                              return DemoShimmerViewController()
         case .utilsShimmerTable:                                return DemoShimmerTableViewController()
+            #if canImport(SocialKit)
         case .utilsSocialKitAll:                                return DemoSocialKitAllTableViewController()
         case .utilsSocialKitApple:                              return DemoSocialKitAppleTableViewController()
+            #if canImport(FBSDKLoginKit)
         case .utilsSocialKitFacebook:                           return DemoSocialKitFacebookTableViewController()
+            #endif
+            #if canImport(GoogleSignIn)
         case .utilsSocialKitGoogle:                             return DemoSocialKitGoogleTableViewController()
+            #endif
+            #endif
         case .utilsToast:                                       return DemoToastViewController()
         case .utilsTransition:                                  return DemoTransitionViewController()
         case .utilsValidators:                                  return DemoValidatorsViewController()

@@ -7,7 +7,9 @@
 //
 
 import FormsDemo
-import GoogleSignIn
+#if canImport(SocialKit)
+import SocialKit
+#endif
 import UIKit
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
@@ -18,7 +20,11 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
                options connectionOptions: UIScene.ConnectionOptions) {
         guard let windowScene = (scene as? UIWindowScene) else { return }
         
-        GIDSignIn.sharedInstance().clientID = "513688149579-fhj79mgkeq2rp689dpmfnn7nlkadnf31.apps.googleusercontent.com"
+        #if canImport(SocialKit)
+        SocialKit.configure(
+            googleClientID: "513688149579-fhj79mgkeq2rp689dpmfnn7nlkadnf31.apps.googleusercontent.com"
+        )
+        #endif
         
         let window: UIWindow = UIWindow(windowScene: windowScene)
         window.rootViewController = DemoRootViewController()

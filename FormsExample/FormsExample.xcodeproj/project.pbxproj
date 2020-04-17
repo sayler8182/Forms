@@ -12,32 +12,8 @@
 		71228E122431CF8100D08B20 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 71228E112431CF8100D08B20 /* Assets.xcassets */; };
 		71228E202431CF8200D08B20 /* FormsExampleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71228E1F2431CF8200D08B20 /* FormsExampleTests.swift */; };
 		71228E2C2431CFBF00D08B20 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 71228E2B2431CFBF00D08B20 /* LaunchScreen.storyboard */; };
-		7132964824488DB7006935C0 /* Anchor.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 713B9B17243D0417001F6E3A /* Anchor.framework */; };
-		7132964924488DB7006935C0 /* Anchor.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 713B9B17243D0417001F6E3A /* Anchor.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		7132964A24488DBC006935C0 /* Forms.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7194695C243DA7A900CAD09B /* Forms.framework */; };
-		7132964B24488DBC006935C0 /* Forms.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 7194695C243DA7A900CAD09B /* Forms.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		7132964C24488DC0006935C0 /* Injector.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 713B9B1E243D0417001F6E3A /* Injector.framework */; };
-		7132964D24488DC0006935C0 /* Injector.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 713B9B1E243D0417001F6E3A /* Injector.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		7132964E24488DC3006935C0 /* Logger.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71BB626B2445E7C6002BB31F /* Logger.framework */; };
-		7132964F24488DC3006935C0 /* Logger.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 71BB626B2445E7C6002BB31F /* Logger.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		7132965024488DC6006935C0 /* Networking.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71BB621E2445DD17002BB31F /* Networking.framework */; };
-		7132965124488DC6006935C0 /* Networking.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 71BB621E2445DD17002BB31F /* Networking.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		7132965224488DD2006935C0 /* SocialKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7132962D24487AC3006935C0 /* SocialKit.framework */; };
-		7132965324488DD2006935C0 /* SocialKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 7132962D24487AC3006935C0 /* SocialKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		7132965424488DD5006935C0 /* Transition.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 715B7B3724474C4700754EDB /* Transition.framework */; };
-		7132965524488DD5006935C0 /* Transition.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 715B7B3724474C4700754EDB /* Transition.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		7132965624488DDA006935C0 /* Utils.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 713B9BA7243D0696001F6E3A /* Utils.framework */; };
-		7132965724488DDA006935C0 /* Utils.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 713B9BA7243D0696001F6E3A /* Utils.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		7132965824488DDE006935C0 /* Validators.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 713B9B5B243D050F001F6E3A /* Validators.framework */; };
-		7132965924488DDE006935C0 /* Validators.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 713B9B5B243D050F001F6E3A /* Validators.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		71929BA12449873C00AB93F1 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 71929BA02449873C00AB93F1 /* GoogleService-Info.plist */; };
-		71929BFD244999F600AB93F1 /* GoogleSignIn.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 71929BFC244999F600AB93F1 /* GoogleSignIn.bundle */; };
-		71929C0224499A4700AB93F1 /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71929BFE24499A2C00AB93F1 /* FBSDKCoreKit.framework */; };
-		71929C0324499A4700AB93F1 /* FBSDKCoreKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 71929BFE24499A2C00AB93F1 /* FBSDKCoreKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		71929C0424499A4900AB93F1 /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71929BFF24499A2C00AB93F1 /* FBSDKLoginKit.framework */; };
-		71929C0524499A4900AB93F1 /* FBSDKLoginKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 71929BFF24499A2C00AB93F1 /* FBSDKLoginKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		719468AC243DA26200CAD09B /* FormsDemo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 713B9C13243D08E1001F6E3A /* FormsDemo.framework */; };
-		719468AD243DA26200CAD09B /* FormsDemo.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 713B9C13243D08E1001F6E3A /* FormsDemo.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -190,31 +166,6 @@
 		};
 /* End PBXContainerItemProxy section */
 
-/* Begin PBXCopyFilesBuildPhase section */
-		71228EF52431D61000D08B20 /* Embed Frameworks */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 10;
-			files = (
-				7132964D24488DC0006935C0 /* Injector.framework in Embed Frameworks */,
-				7132965724488DDA006935C0 /* Utils.framework in Embed Frameworks */,
-				71929C0524499A4900AB93F1 /* FBSDKLoginKit.framework in Embed Frameworks */,
-				7132965324488DD2006935C0 /* SocialKit.framework in Embed Frameworks */,
-				71929C0324499A4700AB93F1 /* FBSDKCoreKit.framework in Embed Frameworks */,
-				719468AD243DA26200CAD09B /* FormsDemo.framework in Embed Frameworks */,
-				7132965524488DD5006935C0 /* Transition.framework in Embed Frameworks */,
-				7132965124488DC6006935C0 /* Networking.framework in Embed Frameworks */,
-				7132964924488DB7006935C0 /* Anchor.framework in Embed Frameworks */,
-				7132965924488DDE006935C0 /* Validators.framework in Embed Frameworks */,
-				7132964B24488DBC006935C0 /* Forms.framework in Embed Frameworks */,
-				7132964F24488DC3006935C0 /* Logger.framework in Embed Frameworks */,
-			);
-			name = "Embed Frameworks";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXCopyFilesBuildPhase section */
-
 /* Begin PBXFileReference section */
 		71228E052431CF7F00D08B20 /* FormsExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FormsExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		71228E082431CF7F00D08B20 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -231,9 +182,6 @@
 		713B9BA1243D0696001F6E3A /* Utils.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Utils.xcodeproj; path = ../Utils/Utils.xcodeproj; sourceTree = "<group>"; };
 		713B9C0D243D08E0001F6E3A /* FormsDemo.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = FormsDemo.xcodeproj; path = ../FormsDemo/FormsDemo.xcodeproj; sourceTree = "<group>"; };
 		714848DD2448618600455560 /* FormsExample.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = FormsExample.entitlements; sourceTree = "<group>"; };
-		7152487D2448C1F9001F8A86 /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk/usr/lib/libsqlite3.tbd; sourceTree = DEVELOPER_DIR; };
-		7152487F2448C223001F8A86 /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk/usr/lib/libz.tbd; sourceTree = DEVELOPER_DIR; };
-		715248812448C230001F8A86 /* libc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.tbd"; path = "Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk/usr/lib/libc++.tbd"; sourceTree = DEVELOPER_DIR; };
 		715B7AFF244701DC00754EDB /* TemplateIcon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "TemplateIcon@2x.png"; sourceTree = "<group>"; };
 		715B7B00244701DC00754EDB /* ___FILEBASENAME___Presenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "___FILEBASENAME___Presenter.swift"; sourceTree = "<group>"; };
 		715B7B01244701DC00754EDB /* ___FILEBASENAME___Worker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "___FILEBASENAME___Worker.swift"; sourceTree = "<group>"; };
@@ -245,11 +193,7 @@
 		715B7B07244701DC00754EDB /* TemplateIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = TemplateIcon.png; sourceTree = "<group>"; };
 		715B7B08244701DC00754EDB /* TemplateInfo.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = TemplateInfo.plist; sourceTree = "<group>"; };
 		715B7B3124474C4600754EDB /* Transition.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Transition.xcodeproj; path = ../Transition/Transition.xcodeproj; sourceTree = "<group>"; };
-		71929B762449854100AB93F1 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk/System/Library/Frameworks/StoreKit.framework; sourceTree = DEVELOPER_DIR; };
 		71929BA02449873C00AB93F1 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
-		71929BFC244999F600AB93F1 /* GoogleSignIn.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = GoogleSignIn.bundle; sourceTree = "<group>"; };
-		71929BFE24499A2C00AB93F1 /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKCoreKit.framework; sourceTree = "<group>"; };
-		71929BFF24499A2C00AB93F1 /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKLoginKit.framework; sourceTree = "<group>"; };
 		71946956243DA7A800CAD09B /* Forms.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Forms.xcodeproj; path = ../Forms/Forms.xcodeproj; sourceTree = "<group>"; };
 		71BB62182445DD16002BB31F /* Networking.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Networking.xcodeproj; path = ../Networking/Networking.xcodeproj; sourceTree = "<group>"; };
 		71BB62652445E7C5002BB31F /* Logger.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Logger.xcodeproj; path = ../Logger/Logger.xcodeproj; sourceTree = "<group>"; };
@@ -261,18 +205,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7132964C24488DC0006935C0 /* Injector.framework in Frameworks */,
-				7132965624488DDA006935C0 /* Utils.framework in Frameworks */,
-				7132965224488DD2006935C0 /* SocialKit.framework in Frameworks */,
-				71929C0424499A4900AB93F1 /* FBSDKLoginKit.framework in Frameworks */,
 				719468AC243DA26200CAD09B /* FormsDemo.framework in Frameworks */,
-				7132965424488DD5006935C0 /* Transition.framework in Frameworks */,
-				7132965024488DC6006935C0 /* Networking.framework in Frameworks */,
-				7132964824488DB7006935C0 /* Anchor.framework in Frameworks */,
-				7132965824488DDE006935C0 /* Validators.framework in Frameworks */,
-				71929C0224499A4700AB93F1 /* FBSDKCoreKit.framework in Frameworks */,
-				7132964A24488DBC006935C0 /* Forms.framework in Frameworks */,
-				7132964E24488DC3006935C0 /* Logger.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -303,7 +236,6 @@
 				71228E2A2431CF9800D08B20 /* Resources */,
 				71228E1E2431CF8200D08B20 /* FormsExampleTests */,
 				71228E062431CF7F00D08B20 /* Products */,
-				71228EE42431D26C00D08B20 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -372,17 +304,6 @@
 			path = Source;
 			sourceTree = "<group>";
 		};
-		71228EE42431D26C00D08B20 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				71929B762449854100AB93F1 /* StoreKit.framework */,
-				715248812448C230001F8A86 /* libc++.tbd */,
-				7152487F2448C223001F8A86 /* libz.tbd */,
-				7152487D2448C1F9001F8A86 /* libsqlite3.tbd */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
 		7132962824487AC2006935C0 /* Products */ = {
 			isa = PBXGroup;
 			children = (
@@ -395,9 +316,6 @@
 		713296C22448B84D006935C0 /* Dependencies */ = {
 			isa = PBXGroup;
 			children = (
-				71929BFE24499A2C00AB93F1 /* FBSDKCoreKit.framework */,
-				71929BFF24499A2C00AB93F1 /* FBSDKLoginKit.framework */,
-				71929BFC244999F600AB93F1 /* GoogleSignIn.bundle */,
 			);
 			name = Dependencies;
 			path = ../../Dependencies;
@@ -519,7 +437,6 @@
 				71228E012431CF7F00D08B20 /* Sources */,
 				71228E022431CF7F00D08B20 /* Frameworks */,
 				71228E032431CF7F00D08B20 /* Resources */,
-				71228EF52431D61000D08B20 /* Embed Frameworks */,
 				716992012445A98E00A8FA79 /* Lint */,
 			);
 			buildRules = (
@@ -777,7 +694,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				71929BFD244999F600AB93F1 /* GoogleSignIn.bundle in Resources */,
 				71228E2C2431CFBF00D08B20 /* LaunchScreen.storyboard in Resources */,
 				71228E122431CF8100D08B20 /* Assets.xcassets in Resources */,
 				71929BA12449873C00AB93F1 /* GoogleService-Info.plist in Resources */,

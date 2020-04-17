@@ -7,6 +7,7 @@
 //
 
 import AuthenticationServices
+import Forms
 import UIKit
 
 // MARK: SignInWithApple
