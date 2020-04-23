@@ -9,26 +9,22 @@
 import Forms
 import UIKit
 
-// MARK: DemoComponent
-private class DemoComponent: FormComponent {
-    override func componentHeight() -> CGFloat {
-        return 44.0
-    }
-}
-
 // MARK: DemoTableViewController
 class DemoTableViewController: TableViewController {
-    private let headerRedView = UIView()
+    private let headerRedView = Components.container.view()
         .with(backgroundColor: UIColor.red)
-    private let contentRedView = DemoComponent()
+    private let contentRedView = Components.container.view()
         .with(backgroundColor: UIColor.red)
-    private let contentGreenView = DemoComponent()
+        .with(height: 44.0)
+    private let contentGreenView = Components.container.view()
         .with(backgroundColor: UIColor.green)
-    private let contentBlueView = DemoComponent()
+        .with(height: 44.0)
+    private let contentBlueView = Components.container.view()
         .with(backgroundColor: UIColor.blue)
-    private let footerRedView = UIView()
+        .with(height: 44.0)
+    private let footerRedView = Components.container.view()
         .with(backgroundColor: UIColor.red)
-    private let footerGreenView = UIView()
+    private let footerGreenView = Components.container.view()
         .with(backgroundColor: UIColor.green)
     
     override func setupHeader() {
@@ -47,7 +43,7 @@ class DemoTableViewController: TableViewController {
         DispatchQueue.main.async {
             for i in 0..<2 {
                 let color: UIColor = i.isMultiple(of: 2) ? UIColor.systemPink : UIColor.systemGreen
-                let view: FormComponent = DemoComponent()
+                let view: FormComponent = Components.container.view()
                     .with(backgroundColor: color)
                 self.add(view, animated: .none)
             }
@@ -56,7 +52,7 @@ class DemoTableViewController: TableViewController {
         DispatchQueue.main.async {
             for i in 0..<10 {
                 let color: UIColor = i.isMultiple(of: 2) ? UIColor.orange : UIColor.yellow
-                let view: FormComponent = DemoComponent()
+                let view: FormComponent = Components.container.view()
                     .with(backgroundColor: color)
                 self.add(view, animated: .automatic)
             }

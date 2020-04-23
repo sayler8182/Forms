@@ -45,6 +45,10 @@
 		715B7AE82446FD1500754EDB /* DemoArchitecturesCleanSummaryInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 715B7AE12446FD1500754EDB /* DemoArchitecturesCleanSummaryInteractor.swift */; };
 		715B7B0C2447379200754EDB /* DemoTransitionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 715B7B0B2447379200754EDB /* DemoTransitionViewController.swift */; };
 		71929C0724499DD400AB93F1 /* DemoSocialKitGoogleTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71929C0624499DD400AB93F1 /* DemoSocialKitGoogleTableViewController.swift */; };
+		7193E34E2451B5B7006238C5 /* DemoAppStoreReviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7193E34D2451B5B7006238C5 /* DemoAppStoreReviewViewController.swift */; };
+		7193E3502451D258006238C5 /* DemoStorageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7193E34F2451D258006238C5 /* DemoStorageViewController.swift */; };
+		7193E3582451E051006238C5 /* DemoScrollContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7193E3572451E051006238C5 /* DemoScrollContainerViewController.swift */; };
+		7193E3682451F3AF006238C5 /* DemoStackContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7193E3672451F3AF006238C5 /* DemoStackContainerViewController.swift */; };
 		719469C4243DB01D00CAD09B /* DemoShimmerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 719469C3243DB01D00CAD09B /* DemoShimmerViewController.swift */; };
 		719469D4243DBC6800CAD09B /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 719469D3243DBC6800CAD09B /* Utils.swift */; };
 		719469D6243DC11000CAD09B /* DemoShimmerTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 719469D5243DC11000CAD09B /* DemoShimmerTableViewController.swift */; };
@@ -105,6 +109,10 @@
 		715B7AE12446FD1500754EDB /* DemoArchitecturesCleanSummaryInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoArchitecturesCleanSummaryInteractor.swift; sourceTree = "<group>"; };
 		715B7B0B2447379200754EDB /* DemoTransitionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoTransitionViewController.swift; sourceTree = "<group>"; };
 		71929C0624499DD400AB93F1 /* DemoSocialKitGoogleTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoSocialKitGoogleTableViewController.swift; sourceTree = "<group>"; };
+		7193E34D2451B5B7006238C5 /* DemoAppStoreReviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoAppStoreReviewViewController.swift; sourceTree = "<group>"; };
+		7193E34F2451D258006238C5 /* DemoStorageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoStorageViewController.swift; sourceTree = "<group>"; };
+		7193E3572451E051006238C5 /* DemoScrollContainerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoScrollContainerViewController.swift; sourceTree = "<group>"; };
+		7193E3672451F3AF006238C5 /* DemoStackContainerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoStackContainerViewController.swift; sourceTree = "<group>"; };
 		719469C3243DB01D00CAD09B /* DemoShimmerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoShimmerViewController.swift; sourceTree = "<group>"; };
 		719469D3243DBC6800CAD09B /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 		719469D5243DC11000CAD09B /* DemoShimmerTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoShimmerTableViewController.swift; sourceTree = "<group>"; };
@@ -196,6 +204,7 @@
 			isa = PBXGroup;
 			children = (
 				713B9C69243D0964001F6E3A /* Buttons */,
+				7193E3542451DF61006238C5 /* Containers */,
 				713B9C70243D0964001F6E3A /* Inputs */,
 				713B9C6E243D0964001F6E3A /* Labels */,
 				713B9C6B243D0964001F6E3A /* NavigationBars */,
@@ -244,9 +253,11 @@
 				71BB61ED2445C6DD002BB31F /* Network */,
 				71D39CCE244455F1006BED33 /* Shimmer */,
 				7132964524487EC5006935C0 /* SocialKit */,
+				7193E34D2451B5B7006238C5 /* DemoAppStoreReviewViewController.swift */,
 				713B9C77243D0964001F6E3A /* DemoAttributedStringViewController.swift */,
 				713B9C78243D0964001F6E3A /* DemoLoaderViewController.swift */,
 				713B9C74243D0964001F6E3A /* DemoModalViewController.swift */,
+				7193E34F2451D258006238C5 /* DemoStorageViewController.swift */,
 				713B9C75243D0964001F6E3A /* DemoToastViewController.swift */,
 				715B7B0B2447379200754EDB /* DemoTransitionViewController.swift */,
 				713B9C76243D0964001F6E3A /* DemoValidatorsViewController.swift */,
@@ -308,6 +319,15 @@
 				715B7ADC2446FD1500754EDB /* DemoArchitecturesCleanSummaryWorker.swift */,
 			);
 			path = Summary;
+			sourceTree = "<group>";
+		};
+		7193E3542451DF61006238C5 /* Containers */ = {
+			isa = PBXGroup;
+			children = (
+				7193E3572451E051006238C5 /* DemoScrollContainerViewController.swift */,
+				7193E3672451F3AF006238C5 /* DemoStackContainerViewController.swift */,
+			);
+			path = Containers;
 			sourceTree = "<group>";
 		};
 		71BB61ED2445C6DD002BB31F /* Network */ = {
@@ -439,6 +459,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7193E3582451E051006238C5 /* DemoScrollContainerViewController.swift in Sources */,
 				715B7AE82446FD1500754EDB /* DemoArchitecturesCleanSummaryInteractor.swift in Sources */,
 				71929C0724499DD400AB93F1 /* DemoSocialKitGoogleTableViewController.swift in Sources */,
 				714848DC24485CE500455560 /* DemoUtilsViewController.swift in Sources */,
@@ -454,6 +475,7 @@
 				715B7AE72446FD1500754EDB /* DemoArchitecturesCleanSummaryAssembly.swift in Sources */,
 				715B7AE62446FD1500754EDB /* DemoArchitecturesCleanSummaryViewController.swift in Sources */,
 				713B9C8C243D0964001F6E3A /* DemoTableViewController.swift in Sources */,
+				7193E3502451D258006238C5 /* DemoStorageViewController.swift in Sources */,
 				713B9C7E243D0964001F6E3A /* DemoPrimaryButtonViewController.swift in Sources */,
 				719469D6243DC11000CAD09B /* DemoShimmerTableViewController.swift in Sources */,
 				7132969B2448A609006935C0 /* DemoSocialKitAllTableViewController.swift in Sources */,
@@ -478,7 +500,9 @@
 				7158911A24463C2F003200C7 /* DemoArchitecturesCleanPresenter.swift in Sources */,
 				713B9C82243D0964001F6E3A /* DemoTitleTextFieldViewController.swift in Sources */,
 				715B7B0C2447379200754EDB /* DemoTransitionViewController.swift in Sources */,
+				7193E3682451F3AF006238C5 /* DemoStackContainerViewController.swift in Sources */,
 				715B7AAE2446FA7900754EDB /* DemoArchitecturesCleanWorker.swift in Sources */,
+				7193E34E2451B5B7006238C5 /* DemoAppStoreReviewViewController.swift in Sources */,
 				713B9C83243D0964001F6E3A /* DemoRootViewController.swift in Sources */,
 				713B9C85243D0964001F6E3A /* DemoToastViewController.swift in Sources */,
 			);

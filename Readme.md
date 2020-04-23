@@ -4,7 +4,7 @@ Forms
 
 [![Swift Version](https://img.shields.io/badge/Swift-5.1-F16D39.svg?style=flat)](https://developer.apple.com/swift)
 
-Forms is All In One iOS framework
+Forms is all in one iOS framework
 
 ## Features
 
@@ -14,6 +14,7 @@ Forms is All In One iOS framework
 - [x] [Dependency Injection](./Documentation/Injector.md)
 - [x] [Logger](./Documentation/Logger.md)
 - [x] [Networking](./Documentation/Networking.md)
+- [x] [SocialKit](./Documentation/SocialKit.md) Sign in with exteranal services
 - [x] [Utils and extensions](./Documentation/Utils.md)
 - [x] [Validators](./Documentation/Validators.md)
 - [x] [Forms](./Documentation/Forms.md)
@@ -27,8 +28,45 @@ Forms is All In One iOS framework
 
 ## Installation
 
-Compile from source and copy dynamic framework
+Compile from source and copy dynamic framework.
+1. Select Forms target
+2. Build for iPhone and simulator
+3. Select Forms-Universal target
+4. Build
+5. Copy generated frameworks
 
+```
+Anchor.framework
+Forms.framework
+Injector.framework
+Logger.framework
+Networking.framework
+SocialKit.framework
+Transition.framework
+Utils.framework
+Validators.framework
+```
+
+## External dependencies
+
+[./Dependencies](./Dependencies) contains external dependencies
+
+```
+AppAuth.framework
+FBSDKCoreKit.framework
+FBSDKLoginKit.framework
+GTMAppAuth.framework
+GTMSessionFetcher.framework
+GoogleSignIn.framework
+```
+
+To update dependencies You should use 
+
+```
+carthage bootstrap
+```
+
+and copy downloaded framework to ./Dependencies folder
 
 ## Contribution Guide or Questions
 

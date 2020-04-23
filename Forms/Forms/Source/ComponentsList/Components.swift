@@ -12,6 +12,7 @@ public struct Components {
     private init() { }
     
     public typealias button = ComponentsButtons
+    public typealias container = ComponentsContainers
     public typealias input = ComponentsInputs
     public typealias label = ComponentsLabels
     public typealias navigationBar = ComponentsNavigationBars

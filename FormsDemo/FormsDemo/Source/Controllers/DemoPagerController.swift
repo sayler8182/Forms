@@ -38,7 +38,7 @@ class DemoPagerController: PagerController {
                     return controller
                 },
                 title: "First",
-                onSelect: { [unowned self] (_) in
+                onSelect: { [unowned self] _ in
                     self.isTranslucent = false
             }),
             PagerItem(
@@ -55,7 +55,7 @@ class DemoPagerController: PagerController {
                     return controller
                 },
                 title: "Second is longer",
-                onSelect: { [unowned self] (_) in
+                onSelect: { [unowned self] _ in
                     self.isTranslucent = true
             }),
             PagerItem(

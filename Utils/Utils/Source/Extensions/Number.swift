@@ -51,6 +51,8 @@ public extension String {
 public protocol Number: Comparable {
     var asDouble: Double { get }
     var asNumber: NSNumber { get }
+    
+    func inRange(_ range: Range<Self>) -> Bool
 }
 
 public extension Number {
@@ -106,12 +108,24 @@ public extension Optional where Wrapped == String {
 extension CGFloat: Number {
     public var asDouble: Double { Double(self) }
     public var asNumber: NSNumber { self as NSNumber }
+    
+    public func inRange(_ range: Range<Self>) -> Bool {
+        return range.contains(self)
+    }
 }
 extension Double: Number {
     public var asDouble: Double { self }
     public var asNumber: NSNumber { self as NSNumber }
+    
+    public func inRange(_ range: Range<Self>) -> Bool {
+        return range.contains(self)
+    }
 }
 extension Int: Number {
     public var asDouble: Double { Double(self) }
     public var asNumber: NSNumber { self as NSNumber }
+    
+    public func inRange(_ range: Range<Self>) -> Bool {
+        return range.contains(self)
+    }
 }

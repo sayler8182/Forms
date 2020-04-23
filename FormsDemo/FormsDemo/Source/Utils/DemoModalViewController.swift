@@ -60,7 +60,7 @@ private class TitleModalView: ModalView {
     
     override func setupActions() {
         super.setupActions()
-        self.onDismiss = { [unowned self] (_) in
+        self.onDismiss = { [unowned self] _ in
             Modal.hide(in: self.context, of: TitleModalView.self)
         }
     }

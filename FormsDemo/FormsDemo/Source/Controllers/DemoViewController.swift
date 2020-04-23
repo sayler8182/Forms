@@ -11,12 +11,12 @@ import UIKit
 
 // MARK: DemoViewViewController
 class DemoViewController: ViewController {
-    private let centerView = UIView()
-        .with(width: 320, height: 44)
+    private let centerView = Components.container.view()
         .with(backgroundColor: UIColor.red)
-    private let bottomView = UIView()
-        .with(width: 320, height: 44)
+        .with(height: 44)
+    private let bottomView = Components.container.view()
         .with(backgroundColor: UIColor.green)
+        .with(height: 44)
     
     override func setupContent() {
         super.setupContent()

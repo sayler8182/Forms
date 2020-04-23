@@ -9,6 +9,12 @@
 import UIKit
 
 public extension UIStackView {
+    func addArrangedSubviews(_ views: [UIView]) {
+        for view in views {
+            self.addArrangedSubview(view)
+        }
+    }
+    
     func removeArrangedSubviews() {
         self.arrangedSubviews.forEach {
             self.removeArrangedSubview($0)

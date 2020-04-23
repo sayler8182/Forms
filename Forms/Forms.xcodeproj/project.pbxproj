@@ -26,6 +26,12 @@
 		714848D62448598600455560 /* ActivityIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 714848D52448598600455560 /* ActivityIndicator.swift */; };
 		715692BB243E5A2A00B4613C /* Pagination.swift in Sources */ = {isa = PBXBuildFile; fileRef = 715692BA243E5A2A00B4613C /* Pagination.swift */; };
 		715B7B4224474D8A00754EDB /* Transition.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 715B7B4124474D8A00754EDB /* Transition.framework */; };
+		7193E34A2451AC0E006238C5 /* AppStoreReview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7193E3492451AC0E006238C5 /* AppStoreReview.swift */; };
+		7193E34C2451B047006238C5 /* Storage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7193E34B2451B047006238C5 /* Storage.swift */; };
+		7193E3532451DEF7006238C5 /* ScrollContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7193E3522451DEF7006238C5 /* ScrollContainer.swift */; };
+		7193E3562451DF77006238C5 /* ComponentsContainers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7193E3552451DF77006238C5 /* ComponentsContainers.swift */; };
+		7193E35A2451E89D006238C5 /* View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7193E3592451E89D006238C5 /* View.swift */; };
+		7193E3662451F1BA006238C5 /* StackContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7193E3652451F1BA006238C5 /* StackContainer.swift */; };
 		7194694D243DA7A800CAD09B /* Forms.h in Headers */ = {isa = PBXBuildFile; fileRef = 7194693F243DA7A800CAD09B /* Forms.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		7194698C243DA7BE00CAD09B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71946960243DA7BE00CAD09B /* ViewController.swift */; };
 		7194698E243DA7BE00CAD09B /* Forms.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71946961243DA7BE00CAD09B /* Forms.swift */; };
@@ -93,6 +99,12 @@
 		714848D52448598600455560 /* ActivityIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityIndicator.swift; sourceTree = "<group>"; };
 		715692BA243E5A2A00B4613C /* Pagination.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pagination.swift; sourceTree = "<group>"; };
 		715B7B4124474D8A00754EDB /* Transition.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Transition.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		7193E3492451AC0E006238C5 /* AppStoreReview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppStoreReview.swift; sourceTree = "<group>"; };
+		7193E34B2451B047006238C5 /* Storage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Storage.swift; sourceTree = "<group>"; };
+		7193E3522451DEF7006238C5 /* ScrollContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrollContainer.swift; sourceTree = "<group>"; };
+		7193E3552451DF77006238C5 /* ComponentsContainers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComponentsContainers.swift; sourceTree = "<group>"; };
+		7193E3592451E89D006238C5 /* View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = View.swift; sourceTree = "<group>"; };
+		7193E3652451F1BA006238C5 /* StackContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StackContainer.swift; sourceTree = "<group>"; };
 		7194693F243DA7A800CAD09B /* Forms.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Forms.h; sourceTree = "<group>"; };
 		71946940243DA7A800CAD09B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		71946960243DA7BE00CAD09B /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -174,6 +186,16 @@
 			path = Other;
 			sourceTree = "<group>";
 		};
+		7193E3512451DECC006238C5 /* Containers */ = {
+			isa = PBXGroup;
+			children = (
+				7193E3522451DEF7006238C5 /* ScrollContainer.swift */,
+				7193E3652451F1BA006238C5 /* StackContainer.swift */,
+				7193E3592451E89D006238C5 /* View.swift */,
+			);
+			path = Containers;
+			sourceTree = "<group>";
+		};
 		71946932243DA7A800CAD09B = {
 			isa = PBXGroup;
 			children = (
@@ -218,6 +240,7 @@
 			children = (
 				71946967243DA7BE00CAD09B /* Components.swift */,
 				71946968243DA7BE00CAD09B /* ComponentsButtons.swift */,
+				7193E3552451DF77006238C5 /* ComponentsContainers.swift */,
 				71946963243DA7BE00CAD09B /* ComponentsInputs.swift */,
 				71946964243DA7BE00CAD09B /* ComponentsLabels.swift */,
 				71946966243DA7BE00CAD09B /* ComponentsNavigationBars.swift */,
@@ -230,11 +253,13 @@
 		71946969243DA7BE00CAD09B /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				7193E3492451AC0E006238C5 /* AppStoreReview.swift */,
 				7194696E243DA7BE00CAD09B /* Configuration.swift */,
 				7194696B243DA7BE00CAD09B /* Loader.swift */,
 				7194696A243DA7BE00CAD09B /* Modal.swift */,
 				715692BA243E5A2A00B4613C /* Pagination.swift */,
 				719469C1243DAB6500CAD09B /* Shimmer.swift */,
+				7193E34B2451B047006238C5 /* Storage.swift */,
 				7194696C243DA7BE00CAD09B /* Theme.swift */,
 				7194696D243DA7BE00CAD09B /* Toast.swift */,
 			);
@@ -245,6 +270,7 @@
 			isa = PBXGroup;
 			children = (
 				71946970243DA7BE00CAD09B /* Buttons */,
+				7193E3512451DECC006238C5 /* Containers */,
 				7194697B243DA7BE00CAD09B /* Inputs */,
 				71946975243DA7BE00CAD09B /* Labels */,
 				71946973243DA7BE00CAD09B /* NavigationBars */,
@@ -492,8 +518,10 @@
 				71946996243DA7BE00CAD09B /* Loader.swift in Sources */,
 				7194699E243DA7BE00CAD09B /* TabBar.swift in Sources */,
 				71946999243DA7BE00CAD09B /* Configuration.swift in Sources */,
+				7193E3532451DEF7006238C5 /* ScrollContainer.swift in Sources */,
 				7194698C243DA7BE00CAD09B /* ViewController.swift in Sources */,
 				7194699B243DA7BE00CAD09B /* Button.swift in Sources */,
+				7193E35A2451E89D006238C5 /* View.swift in Sources */,
 				71946990243DA7BE00CAD09B /* ComponentsLabels.swift in Sources */,
 				7194698E243DA7BE00CAD09B /* Forms.swift in Sources */,
 				719469AB243DA7BE00CAD09B /* TextFieldDelegates.swift in Sources */,
@@ -506,8 +534,12 @@
 				719469AD243DA7BE00CAD09B /* TabBarController.swift in Sources */,
 				719469A9243DA7BE00CAD09B /* TextFieldAmountDelegate.swift in Sources */,
 				719469A4243DA7BE00CAD09B /* TableViewController.swift in Sources */,
+				7193E3662451F1BA006238C5 /* StackContainer.swift in Sources */,
+				7193E34A2451AC0E006238C5 /* AppStoreReview.swift in Sources */,
 				7194699D243DA7BE00CAD09B /* Label.swift in Sources */,
+				7193E34C2451B047006238C5 /* Storage.swift in Sources */,
 				719469A5243DA7BE00CAD09B /* PagerController.swift in Sources */,
+				7193E3562451DF77006238C5 /* ComponentsContainers.swift in Sources */,
 				719469A8243DA7BE00CAD09B /* TextFieldPeselDelegate.swift in Sources */,
 				719469A1243DA7BE00CAD09B /* TitleTextField.swift in Sources */,
 				719469D8243DD04700CAD09B /* TableViewCell.swift in Sources */,

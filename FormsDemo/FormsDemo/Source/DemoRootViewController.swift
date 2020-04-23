@@ -21,6 +21,9 @@ private enum Demo {
         case components
         case componentsButtons
         case componentsButtonsPrimaryButton
+        case componentsContainers
+        case componentsContainersScroll
+        case componentsContainersStack
         case componentsInputs
         case componentsInputsTitleTextField
         case componentsLabels
@@ -32,6 +35,7 @@ private enum Demo {
         case componentsUtils
         // Utils
         case utils
+        case utilsAppStoreReview
         case utilsAttributedString
         case utilsLoader
         case utilsModal
@@ -47,6 +51,7 @@ private enum Demo {
         case utilsSocialKitApple
         case utilsSocialKitFacebook
         case utilsSocialKitGoogle
+        case utilsStorage
         case utilsToast
         case utilsTransition
         case utilsValidators
@@ -85,6 +90,15 @@ private enum Demo {
                             ])
                     ]),
                     Row(
+                        type: .componentsContainers,
+                        title: "Containers",
+                        sections: [
+                            Section(rows: [
+                                Row(type: .componentsContainersScroll, title: "ScrollContainer"),
+                                Row(type: .componentsContainersStack, title: "StackContainer")
+                            ])
+                    ]),
+                    Row(
                         type: .componentsInputs,
                         title: "Inputs",
                         sections: [
@@ -107,6 +121,7 @@ private enum Demo {
                     Row(type: .componentsUtils, title: "Utils")
                 ]),
                 Section(title: "Utils", rows: [
+                    Row(type: .utilsAppStoreReview, title: "AppStoreReview"),
                     Row(type: .utilsAttributedString, title: "AttributedString"),
                     Row(type: .utilsLoader, title: "Loader"),
                     Row(type: .utilsModal, title: "Modal"),
@@ -140,6 +155,7 @@ private enum Demo {
                                 Row(type: .utilsSocialKitGoogle, title: "SocialKit Google")
                             ])
                     ]),
+                    Row(type: .utilsStorage, title: "Storage"),
                     Row(type: .utilsToast, title: "Toast"),
                     Row(type: .utilsTransition, title: "Transition", shouldPresent: true),
                     Row(type: .utilsValidators, title: "Validators")
@@ -247,6 +263,8 @@ private class DemoListViewController: ViewController {
         case .viewController:                                   return DemoViewController()
         // components
         case .componentsButtonsPrimaryButton:                   return DemoPrimaryButtonViewController()
+        case .componentsContainersScroll:                       return DemoScrollContainerViewController()
+        case .componentsContainersStack:                        return DemoStackContainerViewController()
         case .componentsInputsTitleTextField:                   return DemoTitleTextFieldViewController()
         case .componentsLabels:                                 return DemoLabelsViewController()
         case .componentsNavigationBarsNavigationBar:            return DemoNavigationBarViewController()
@@ -256,6 +274,7 @@ private class DemoListViewController: ViewController {
         case .componentsOthers:                                 return DemoOthersViewController()
         case .componentsUtils:                                  return DemoUtilsViewController()
         // utils
+        case .utilsAppStoreReview:                              return DemoAppStoreReviewViewController()
         case .utilsAttributedString:                            return DemoAttributedStringViewController()
         case .utilsLoader:                                      return DemoLoaderViewController()
         case .utilsModal:                                       return DemoModalViewController()
@@ -275,6 +294,7 @@ private class DemoListViewController: ViewController {
             #endif
             #endif
         case .utilsToast:                                       return DemoToastViewController()
+        case .utilsStorage:                                     return DemoStorageViewController()
         case .utilsTransition:                                  return DemoTransitionViewController()
         case .utilsValidators:                                  return DemoValidatorsViewController()
         // architectures

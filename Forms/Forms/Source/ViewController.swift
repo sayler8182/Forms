@@ -18,6 +18,17 @@ open class ViewController: UIViewController, UIGestureRecognizerDelegate {
         return self.view.isShimmering
     }
     
+    override public init(nibName nibNameOrNil: String?,
+                         bundle nibBundleOrNil: Bundle?) {
+        super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
+        self.postInit()
+    }
+    
+    public required init?(coder: NSCoder) {
+        super.init(coder: coder)
+        self.postInit()
+    }
+    
     override open func viewDidLoad() {
         super.viewDidLoad()
         self.setupView()
@@ -49,6 +60,10 @@ open class ViewController: UIViewController, UIGestureRecognizerDelegate {
     }
     
     // MARK: HOOKS
+    open func postInit() {
+        // HOOK
+    }
+    
     open func setupConfiguration() {
         // HOOK
     }

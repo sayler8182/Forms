@@ -55,7 +55,7 @@ class DemoNavigationBarViewController: TableViewController {
     private lazy var image2BarItem = BarItem()
         .with(imageSystemName: "square.and.arrow.up")
     
-    private lazy var navigationBarTitleView = UIView()
+    private lazy var navigationBarTitleView = Components.container.view()
         .with(backgroundColor: UIColor.red)
     
     private let divider = Components.utils.divider()

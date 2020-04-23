@@ -102,7 +102,7 @@ open class PagerController: ViewController {
     override open func setupView() {
         super.setupView()
         self.setupTopBar()
-        self.setupCollection()
+        self.setupCollectionView()
         self.setupPageControl()
         self.setupItems()
     }
@@ -132,7 +132,7 @@ open class PagerController: ViewController {
         }
     }
     
-    open func setupCollection() {
+    open func setupCollectionView() {
         self.collectionView.bounces = self.bounces
         self.collectionView.clipsToBounds = true
         self.collectionView.contentInsetAdjustmentBehavior = .never
@@ -157,6 +157,7 @@ open class PagerController: ViewController {
     open func setupPageControl() {
         self.pageControl.clipsToBounds = true
         self.pageControl.isUserInteractionEnabled = false
+        self.pageControl.numberOfPages = 0
         self.pageControl.backgroundColor = self.pageBackgroundColor
         self.pageControl.pageIndicatorTintColor = self.pageIndicatorTintColor
         self.pageControl.currentPageIndicatorTintColor = self.pageCurrentPageIndicatorTintColor
@@ -325,6 +326,7 @@ extension PagerController: UIScrollViewDelegate {
         let x: CGFloat = scrollView.contentOffset.x
         let index: Int = Int(round(x / width))
         self.topBar.selectIndex(x / width)
+        guard index.inRange(0..<self.items.count) else { return }
         guard index != self.selectedIndex else { return }
         self.selectedIndex = index
         self.pageControl.currentPage = index

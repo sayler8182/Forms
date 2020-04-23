@@ -43,7 +43,7 @@ class DemoTransitionViewController: TransitionNavigationController {
 
 // MARK: FirstController
 private class FirstController: ViewController {
-    private let contentView = UIView()
+    private let contentView = Components.container.view()
         .with(backgroundColor: UIColor.red)
         .with(viewKey: "contentView")
     private let titleLabel = Components.label.default()
@@ -74,7 +74,7 @@ private class FirstController: ViewController {
 
 // MARK: SecondController
 private class SecondController: ViewController {
-    private let contentView = UIView()
+    private let contentView = Components.container.view()
         .with(backgroundColor: UIColor.green)
         .with(cornerRadius: 16)
         .with(viewKey: "contentView")

@@ -16,5 +16,5 @@ public struct ComponentsUtils: ComponentsList {
         component.height = 1
         component.color = UIColor.systemBackground
         return component
-    }
+    } 
 }

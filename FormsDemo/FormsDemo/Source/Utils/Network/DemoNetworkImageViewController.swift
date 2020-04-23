@@ -68,7 +68,7 @@ private class DemoProvider {
                 DispatchQueue.main.async {
                     self.delegate?.displayContent(image)
                 }
-        }, onError: { [weak self] (_) in
+        }, onError: { [weak self] _ in
             guard let `self` = self else { return }
             DispatchQueue.main.async {
                 self.delegate?.displayContentError()
