@@ -1,42 +1,66 @@
 //
-//  DemoShimmerPaginationTableViewController.swift
+//  DemoShimmerPaginationCollectionViewController.swift
 //  FormsDemo
 //
-//  Created by Konrad on 4/8/20.
+//  Created by Konrad on 4/24/20.
 //  Copyright © 2020 Limbo. All rights reserved.
 //
 
 import Forms
 import UIKit
 
-// MARK: DemoShimmerPaginationTableViewController
-class DemoShimmerPaginationTableViewController: TableViewController {
-    private lazy var shimmerDataSource = ShimmerTableDataSource()
-        .with(generators: [ShimmerRowGenerator(type: ShimmerDemoTableViewCell.self, count: 3)])
+// MARK: DemoShimmerPaginationCollectionViewController
+class DemoShimmerPaginationCollectionViewController: CollectionViewController {
+    private lazy var navigationBar = Components.navigationBar.default()
+        .with(rightBarButtonItems: [self.changeDirectionBarItem])
+    
+    private lazy var changeDirectionBarItem = BarItem()
+        .with(imageSystemName: "arrow.clockwise")
+    
+    private lazy var shimmerDataSource = ShimmerCollectionDataSource()
+        .with(generators: [ShimmerItemGenerator(type: ShimmerDemoCollectionViewCell.self, count: 3)])
         .with(delegate: self)
-
+    
     private lazy var provider = DemoProvider(delegate: self)
     
     override func setupConfiguration() {
         super.setupConfiguration()
-        self.isBottomToSafeArea = false
+        self.isBottomToSafeArea = true
         self.paginationIsEnabled = true
         self.paginationOffset = 300
-        self.pullToRefreshIsEnabled = true
-        self.tableAllowsSelection = true
-        self.tableContentInset = UIEdgeInsets(top: 8, bottom: 300)
+        self.pullToRefreshIsEnabled = false
+        self.collectionAllowsSelection = true
+        self.collectionContentInset = UIEdgeInsets(top: 8, leading: 8, bottom: 8, trailing: 8)
+        self.collectionColumnsCount = 2
+        self.collectionColumnsHorizontalDistance = 8
+        self.collectionColumnsVerticalDistance = 8
     }
-     
-    override func setupCell(row: TableRow, cell: TableViewCell, indexPath: IndexPath) {
-        super.setupCell(row: row, cell: cell, indexPath: indexPath)
-        cell.cast(row: row, of: DemoCellModel.self, to: DemoTableViewCell.self) { (newData, newCell) in
+    
+    override func setupNavigationBar() {
+        super.setupNavigationBar()
+        self.setNavigationBar(self.navigationBar)
+    }
+    
+    override func setupActions() {
+        super.setupActions()
+        self.changeDirectionBarItem.onClick = { [unowned self] in
+            self.collectionColumnsCount = self.collectionScrollDirection == .vertical ? 6 : 2
+            self.collectionScrollDirection = self.collectionScrollDirection == .vertical
+                ? UICollectionView.ScrollDirection.horizontal
+                : UICollectionView.ScrollDirection.vertical
+        }
+    }
+    
+    override func setupCell(item: CollectionItem, cell: CollectionViewCell, indexPath: IndexPath) {
+        super.setupCell(item: item, cell: cell, indexPath: indexPath)
+        cell.cast(item: item, of: DemoCellModel.self, to: DemoCollectionViewCell.self) { (newData, newCell) in
             newCell.fill(newData)
         }
     }
     
-    override func selectCell(row: TableRow, cell: TableViewCell, indexPath: IndexPath) {
-        super.selectCell(row: row, cell: cell, indexPath: indexPath)
-        cell.cast(row: row, of: DemoCellModel.self, to: DemoTableViewCell.self) { [unowned self] (newData, _) in
+    override func selectCell(item: CollectionItem, cell: CollectionViewCell, indexPath: IndexPath) {
+        super.selectCell(item: item, cell: cell, indexPath: indexPath)
+        cell.cast(item: item, of: DemoCellModel.self, to: DemoCollectionViewCell.self) { [unowned self] (newData, _) in
             UIAlertController()
                 .with(title: newData.title)
                 .with(message: newData.subtitle)
@@ -59,11 +83,11 @@ class DemoShimmerPaginationTableViewController: TableViewController {
 }
 
 // MARK: DemoProviderDelegate
-extension DemoShimmerPaginationTableViewController: DemoProviderDelegate {
+extension DemoShimmerPaginationCollectionViewController: DemoProviderDelegate {
     fileprivate func loadItemsPageSuccess(_ page: Page<Int, DemoCellModel>) {
-        let rows: [TableRow] = page.data.map { TableRow(of: DemoTableViewCell.self, data: $0) }
+        let items: [CollectionItem] = page.data.map { CollectionItem(of: DemoCollectionViewCell.self, data: $0) }
         self.stopShimmering()
-        self.shimmerDataSource.append(rows)
+        self.shimmerDataSource.append(items)
         self.paginationSuccess(delay: 0.5, isLast: page.isLast)
         self.pullToRefreshFinish()
     }
@@ -117,14 +141,14 @@ private class DemoProvider {
                     isLast: pageId == 2)
                 self.delegate?.loadItemsPageSuccess(page)
                 self.pagination.stopLoading(page)
-        }, fail: { [weak self] (error) in
-            guard let `self` = self else { return }
-            let page = Page(
-                pageId: pageId,
-                data: [DemoCellModel](),
-                error: error)
-            self.delegate?.loadItemsPageError(page)
-            self.pagination.stopLoading(page)
+            }, fail: { [weak self] (error) in
+                guard let `self` = self else { return }
+                let page = Page(
+                    pageId: pageId,
+                    data: [DemoCellModel](),
+                    error: error)
+                self.delegate?.loadItemsPageError(page)
+                self.pagination.stopLoading(page)
         })
     }
 }
@@ -175,8 +199,8 @@ private struct DemoCellModel {
     let info: String
 }
 
-// MARK: DemoTableViewCell
-private class DemoTableViewCell: TableViewCell {
+// MARK: DemoCollectionViewCell
+private class DemoCollectionViewCell: CollectionViewCell {
     fileprivate let iconView = UIImageView()
         .with(width: 48.0, height: 48.0)
         .rounded()
@@ -195,40 +219,74 @@ private class DemoTableViewCell: TableViewCell {
         super.setupView()
         self.contentView.addSubview(self.iconView, with: [
             Anchor.to(self.contentView).top,
-            Anchor.to(self.contentView).leading.leading.offset(8),
+            Anchor.to(self.contentView).leading,
             Anchor.to(self.iconView).size(self.iconView.bounds.size)
         ])
         self.contentView.addSubview(self.titleLabel, with: [
             Anchor.to(self.iconView).leadingToTrailing.offset(8),
-            Anchor.to(self.contentView).trailing.lessThanOrEqual.offset(8),
+            Anchor.to(self.contentView).trailing.lessThanOrEqual,
             Anchor.to(self.iconView).bottomToCenterY.offset(1)
         ])
         self.contentView.addSubview(self.subtitleLabel, with: [
             Anchor.to(self.iconView).leadingToTrailing.offset(8),
-            Anchor.to(self.contentView).trailing.lessThanOrEqual.offset(8),
+            Anchor.to(self.contentView).trailing.lessThanOrEqual,
             Anchor.to(self.iconView).topToCenterY.offset(1)
         ])
         self.contentView.addSubview(self.infoLabel, with: [
             Anchor.to(self.iconView).topToBottom.offset(4),
-            Anchor.to(self.contentView).leading.offset(8),
-            Anchor.to(self.contentView).trailing.offset(8),
-            Anchor.to(self.contentView).bottom.offset(8).priority(.defaultHigh)
+            Anchor.to(self.contentView).leading,
+            Anchor.to(self.contentView).trailing
         ])
     }
-     
+    
     func fill(_ source: DemoCellModel) {
         self.iconView.image = source.color.image
         self.titleLabel.text = source.title
         self.subtitleLabel.text = source.subtitle
         self.infoLabel.text = source.info
     }
+    
+    override class func componentHeight(_ source: Any,
+                                        _ collectionView: UICollectionView,
+                                        _ itemWidth: CGFloat) -> CGFloat? {
+        guard let source = source as? DemoCellModel else { return nil }
+        let infoHeight: CGFloat = Components.label.default()
+            .with(font: UIFont.systemFont(ofSize: 10))
+            .with(numberOfLines: 3)
+            .with(text: source.info)
+            .height(for: itemWidth)
+        return 8.0 + 48.0 + 4.0 + infoHeight + 8.0
+    }
+    
+    override class func componentWidth(_ source: Any,
+                                       _ collectionView: UICollectionView,
+                                       _ itemWidth: CGFloat) -> CGFloat? {
+        return 300.0
+    }
 }
 
-// MARK: DemoTableViewCell
-private class ShimmerDemoTableViewCell: DemoTableViewCell {
+// MARK: DemoCollectionViewCell
+private class ShimmerDemoCollectionViewCell: DemoCollectionViewCell {
     override func prepareForShimmering() {
         self.titleLabel.text = LoremIpsum.emptyVeryShort
         self.subtitleLabel.text = LoremIpsum.emptyShort
         self.infoLabel.text = LoremIpsum.emptyMedium
+    }
+    
+    override class func componentHeight(_ source: Any,
+                                        _ collectionView: UICollectionView,
+                                        _ itemWidth: CGFloat) -> CGFloat {
+        let infoHeight: CGFloat = Components.label.default()
+            .with(font: UIFont.systemFont(ofSize: 10))
+            .with(numberOfLines: 3)
+            .with(text: LoremIpsum.emptyMedium)
+            .height(for: itemWidth)
+        return 8.0 + 48.0 + 4.0 + infoHeight + 8.0
+    }
+    
+    override class func componentWidth(_ source: Any,
+                                       _ collectionView: UICollectionView,
+                                       _ itemWidth: CGFloat) -> CGFloat? {
+        return 300.0
     }
 }

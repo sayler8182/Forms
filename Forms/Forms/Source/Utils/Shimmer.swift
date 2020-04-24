@@ -36,51 +36,49 @@ public extension UIView {
     
     @objc
     func startShimmering(animated: Bool = true) {
-        self.setShimmer(in: self, animated: animated)
+        self.setShimmer(animated: animated)
     }
     
     @objc
     func stopShimmering(animated: Bool = true) {
-        self.removeShimmer(from: self, animated: animated)
+        self.removeShimmer(animated: animated)
         if self is UnShimmerable { return }
         if self is ShimmerPlaceholderView { return }
         self.isUserInteractionEnabled = true
     }
     
-    private func setShimmer(in view: UIView,
-                            animated: Bool) {
-        if view.subviews.isEmpty {
-            if view is UnShimmerable { return }
-            if view is ShimmerPlaceholderView { return }
-            self.putPlaceholder(in: view, animated: animated)
+    private func setShimmer(animated: Bool) {
+        let placeholders = self.subviews.filter({ $0 is ShimmerPlaceholderView })
+        placeholders.removeFromSuperview()
+        if self.subviews.isEmpty {
+            if self is UnShimmerable { return }
+            self.putPlaceholder(animated: animated)
             self.isUserInteractionEnabled = true
         }
         for subview in self.subviews {
-            subview.startShimmering()
+            subview.startShimmering(animated: animated)
         }
     }
     
-    private func removeShimmer(from view: UIView,
-                               animated: Bool) {
-        if view is ShimmerPlaceholderView {
+    private func removeShimmer(animated: Bool) {
+        if self is ShimmerPlaceholderView {
             self.animation(
                 animated,
                 duration: 0.3,
-                animations: { view.alpha = 0 },
-                completion: { (_) in view.removeFromSuperview() })
+                animations: { self.alpha = 0 },
+                completion: { _ in self.removeFromSuperview() })
         }
-        for subview in view.subviews {
+        for subview in self.subviews {
             subview.stopShimmering()
         }
     }
     
-    private func putPlaceholder(in view: UIView,
-                                animated: Bool) {
+    private func putPlaceholder(animated: Bool) {
         let placeholderView = ShimmerPlaceholderView()
-        view.addSubview(placeholderView, with: [
-            Anchor.to(view).fill
+        self.addSubview(placeholderView, with: [
+            Anchor.to(self).fill
         ])
-        placeholderView.backgroundColor = .lightGray
+        placeholderView.backgroundColor = .clear
         placeholderView.startShimmering(animated: animated)
     }
 }
@@ -161,8 +159,20 @@ public struct ShimmerRowGenerator {
     }
 }
 
-// MARK: ShimmerDataSource
-open class ShimmerDataSource: TableDataSource {
+// MARK: ShimmerItemGenerator
+public struct ShimmerItemGenerator {
+    public let type: CollectionViewCell.Type
+    public let count: Int
+    
+    public init(type: CollectionViewCell.Type,
+                count: Int = 1) {
+        self.type = type
+        self.count = count
+    }
+}
+
+// MARK: ShimmerTableDataSource
+open class ShimmerTableDataSource: TableDataSource {
     private var generators: [ShimmerRowGenerator] = []
     
     override public func prepare(for tableView: UITableView,
@@ -190,8 +200,8 @@ open class ShimmerDataSource: TableDataSource {
         var rows: [TableRow] = []
         for generator in generators {
             for _ in 0..<generator.count {
-                let data = TableRowData(of: generator.type)
-                rows.append(TableRow(data: data))
+                let row = TableRow(of: generator.type)
+                rows.append(row)
             }
         }
         sections.append(TableSection(isShimmering: true, rows: rows))
@@ -208,7 +218,54 @@ open class ShimmerDataSource: TableDataSource {
     }
 }
 
-public protocol ShimmerableTableViewCell: Shimmerable {
+// MARK: ShimmerCollectionDataSource
+open class ShimmerCollectionDataSource: CollectionDataSource {
+    private var generators: [ShimmerItemGenerator] = []
+    
+    override public func prepare(for collectionView: UICollectionView,
+                                 queue collectionUpdatesQueue: DispatchQueue,
+                                 scrollDelegate: UIScrollViewDelegate) {
+        super.prepare(
+            for: collectionView,
+            queue: collectionUpdatesQueue,
+            scrollDelegate: scrollDelegate)
+    }
+    
+    public func prepareGenerators() {
+        self.append(self.generators)
+    }
+    
+    public func stopShimmering(animated: Bool) {
+        let sections: [CollectionSection] = self.sections.filter { $0.isShimmering }
+        self.removeFromCollection(
+            sections,
+            animated: animated)
+    }
+    
+    private func append(_ generators: [ShimmerItemGenerator]) {
+        var sections: [CollectionSection] = []
+        var items: [CollectionItem] = []
+        for generator in generators {
+            for _ in 0..<generator.count {
+                let item = CollectionItem(of: generator.type)
+                items.append(item)
+            }
+        }
+        sections.append(CollectionSection(isShimmering: true, items: items))
+        self.append(sections)
+    }
+    
+    override public func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = super.collectionView(collectionView, cellForItemAt: indexPath) as! CollectionViewCell
+        let section: CollectionSection = self.sections[indexPath.section]
+        guard section.isShimmering else { return cell }
+        cell.prepareForShimmering()
+        cell.startShimmering()
+        return cell
+    }
+}
+
+public protocol ShimmerableViewCell: Shimmerable {
     func prepareForShimmering()
 }
 
@@ -243,9 +300,48 @@ public class ShimmerTableViewCell: TableViewCell {
     }
 }
 
+// MARK: ShimmerCollectionViewCell
+public class ShimmerCollectionViewCell: CollectionViewCell {
+    private let iconView = UIImageView()
+        .with(width: 48.0, height: 48.0)
+        .with(image: UIColor.systemBackground.transparent)
+        .rounded()
+    private let titleLabel = UILabel()
+        .with(text: " ")
+    private let subtitleLabel = UILabel()
+        .with(text: " ")
+    
+    override public func setupView() {
+        super.setupView()
+        self.contentView.addSubview(self.iconView, with: [
+            Anchor.to(self.contentView).vertical.offset(8),
+            Anchor.to(self.contentView).leading.offset(16),
+            Anchor.to(self.iconView).size(self.iconView.bounds.size)
+        ])
+        self.contentView.addSubview(self.titleLabel, with: [
+            Anchor.to(self.iconView).leadingToTrailing.offset(8),
+            Anchor.to(self.contentView).trailing.offset(16),
+            Anchor.to(self.iconView).bottomToCenterY.offset(2)
+        ])
+        self.contentView.addSubview(self.subtitleLabel, with: [
+            Anchor.to(self.iconView).leadingToTrailing.offset(8),
+            Anchor.to(self.contentView).trailing.offset(16),
+            Anchor.to(self.iconView).topToCenterY.offset(2)
+        ])
+    }
+}
+
 // MARK: Builder
-public extension ShimmerDataSource {
+public extension ShimmerTableDataSource {
     func with(generators: [ShimmerRowGenerator]) -> Self {
+        self.generators = generators
+        return self
+    }
+}
+
+// MARK: Builder
+public extension ShimmerCollectionDataSource {
+    func with(generators: [ShimmerItemGenerator]) -> Self {
         self.generators = generators
         return self
     }

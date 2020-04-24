@@ -6,7 +6,7 @@
 //  Copyright © 2020 Limbo. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 public extension String {
     subscript(_ range: CountableRange<Int>) -> String {
@@ -32,6 +32,10 @@ public extension String {
             let indexMax: Index = self.index(self.startIndex, offsetBy: newValue.count)
             self.replaceSubrange(indexMin..<indexMax, with: newValue)
         }
+    }
+    
+    static var empty: String {
+        return ""
     }
     
     var isNotEmpty: Bool {
@@ -78,5 +82,34 @@ public extension Optional where Wrapped == String {
     
     var isNotNilOrEmpty: Bool {
         return !self.isNilOrEmpty
+    }
+}
+
+// MARK: Size
+public extension String {
+    func height(for width: CGFloat,
+                font: UIFont) -> CGFloat {
+        let size: CGSize = CGSize(
+            width: width,
+            height: .greatestFiniteMagnitude)
+        let boundingBox: CGRect = self.boundingRect(
+            with: size,
+            options: .usesLineFragmentOrigin,
+            attributes: [NSAttributedString.Key.font: font],
+            context: nil)
+        return ceil(boundingBox.height)
+    }
+    
+    func width(for height: CGFloat,
+               font: UIFont) -> CGFloat {
+        let size: CGSize = CGSize(
+            width: .greatestFiniteMagnitude,
+            height: height)
+        let boundingBox: CGRect = self.boundingRect(
+            with: size,
+            options: .usesLineFragmentOrigin,
+            attributes: [NSAttributedString.Key.font: font],
+            context: nil)
+        return ceil(boundingBox.width)
     }
 }

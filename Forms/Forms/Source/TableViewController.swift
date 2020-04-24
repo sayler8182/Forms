@@ -30,7 +30,7 @@ open class TableViewController: ViewController, UITableViewDelegate, UITableView
         frame: CGRect(width: 320, height: 44),
         style: .plain)
     private var refreshControl: UIRefreshControl? = nil
-    private var shimmerDataSource: ShimmerDataSource? = nil
+    private var shimmerDataSource: ShimmerTableDataSource? = nil
     
     open var cellBackgroundColor: UIColor = UIColor.systemBackground {
         didSet { self.tableView.reloadData() }
@@ -88,14 +88,14 @@ open class TableViewController: ViewController, UITableViewDelegate, UITableView
     }
      
     override public func startShimmering(animated: Bool = true) {
-        let shimmerDataSource = ShimmerDataSource()
+        let shimmerDataSource = ShimmerTableDataSource()
             .with(generators: [ShimmerRowGenerator(type: ShimmerTableViewCell.self, count: 20)])
         self.startShimmering(
             shimmerDataSource,
             animated: animated)
     }
     
-    public func startShimmering(_ shimmerDataSource: ShimmerDataSource,
+    public func startShimmering(_ shimmerDataSource: ShimmerTableDataSource,
                                 animated: Bool = true) {
         shimmerDataSource.prepare(
             for: self.tableView,
@@ -208,13 +208,13 @@ open class TableViewController: ViewController, UITableViewDelegate, UITableView
         // HOOK
     }
     
-    open func setupCell(data: TableRowData,
+    open func setupCell(row: TableRow,
                         cell: TableViewCell,
                         indexPath: IndexPath) {
         // HOOK
     }
     
-    open func selectCell(data: TableRowData,
+    open func selectCell(row: TableRow,
                          cell: TableViewCell,
                          indexPath: IndexPath) {
         // HOOK
@@ -405,13 +405,22 @@ public extension TableViewController {
 
 // MARK: TableView
 public extension TableViewController {
+    func reloadData(animated: Bool = true) {
+        self.tableUpdatesQueue.async {
+            self.tableView.transition(
+                animated,
+                duration: 0.3,
+                animations: self.tableView.reloadData)
+        }
+    }
+        
     func updateTableView(animated: Bool = true,
                          update: (() -> Void)? = nil) {
         self.tableUpdatesQueue.async {
             self.tableView.shouldAnimate(animated) {
-                self.tableView.beginUpdates()
-                update?()
-                self.tableView.endUpdates()
+                self.tableView.performBatchUpdates({
+                    update?()
+                })
             }
         }
     }
@@ -425,17 +434,26 @@ public extension TableViewController {
             self.tableView.setNeedsLayout()
             self.tableView.layoutIfNeeded()
             self.tableView.shouldAnimate(animated) {
-                self.tableView.beginUpdates()
-                self.tableView.endUpdates()
+                self.tableView.performBatchUpdates({})
             }
         }
+    }
+    
+    func setDataSource(_ dataSource: TableDataSource?) {
+        dataSource?.prepare(
+            for: self.tableView,
+            queue: self.tableUpdatesQueue,
+            scrollDelegate: self)
+        self.setDataSource(
+            delegate: dataSource,
+            dataSource: dataSource)
     }
     
     func setDataSource(delegate: UITableViewDelegate?,
                        dataSource: UITableViewDataSource?) {
         self.tableUpdatesQueue.async {
-            self.tableView.delegate = delegate
-            self.tableView.dataSource = dataSource
+            self.tableView.delegate = delegate ?? self
+            self.tableView.dataSource = dataSource ?? self
         }
     }
 }
@@ -527,7 +545,7 @@ public extension TableViewController {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        self.views.count
+        return self.views.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -561,7 +579,7 @@ public extension TableViewController {
                 at position: UITableView.ScrollPosition = UITableView.ScrollPosition.middle,
                 animated: Bool = true) {
         guard let index: Int = self.views.firstIndex(of: component) else { return }
-        self.scroll(to: index, animated: animated)
+        self.scroll(to: index, at: position, animated: animated)
     }
     
     func scroll(to index: Int,
@@ -569,7 +587,7 @@ public extension TableViewController {
                 animated: Bool = true) {
         self.tableUpdatesQueue.async {
             let indexPath: IndexPath = IndexPath(row: index, section: 0)
-            self.tableView.scrollToRow(at: indexPath, at: UITableView.ScrollPosition.middle, animated: animated)
+            self.tableView.scrollToRow(at: indexPath, at: position, animated: animated)
         }
     }
 }

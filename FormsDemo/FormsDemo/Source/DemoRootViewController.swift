@@ -13,6 +13,7 @@ private enum Demo {
     enum RowType {
         // Controllers
         case controller
+        case collectionViewController
         case pagerController
         case tabBarController
         case tableViewController
@@ -43,7 +44,9 @@ private enum Demo {
         case utilsNetworkGet
         case utilsNetworkImage
         case utilsShimmer
+        case utilsShimmerPaginationCollection
         case utilsShimmerPaginationTable
+        case utilsShimmerCollection
         case utilsShimmerShimmer
         case utilsShimmerTable
         case utilsSocialKit
@@ -75,6 +78,7 @@ private enum Demo {
         static var `default`: [Section] = {
             return [
                 Section(title: "Controllers", rows: [
+                    Row(type: .collectionViewController, title: "CollectionViewController"),
                     Row(type: .pagerController, title: "PagerController"),
                     Row(type: .tabBarController, title: "TabBarController", shouldPresent: true),
                     Row(type: .tableViewController, title: "TableViewController"),
@@ -139,7 +143,9 @@ private enum Demo {
                         title: "Shimmer",
                         sections: [
                             Section(rows: [
+                                Row(type: .utilsShimmerPaginationCollection, title: "Pagination Collection"),
                                 Row(type: .utilsShimmerPaginationTable, title: "Pagination Table"),
+                                Row(type: .utilsShimmerCollection, title: "Shimmer Collection"),
                                 Row(type: .utilsShimmerShimmer, title: "Shimmer"),
                                 Row(type: .utilsShimmerTable, title: "Shimmer Table")
                             ])
@@ -257,6 +263,7 @@ private class DemoListViewController: ViewController {
     private func rowController(row: Demo.Row) -> UIViewController? {
         switch row.type {
         // controllers
+        case .collectionViewController:                         return DemoCollectionViewController()
         case .pagerController:                                  return DemoPagerController()
         case .tabBarController:                                 return DemoTabBarController()
         case .tableViewController:                              return DemoTableViewController()
@@ -280,7 +287,9 @@ private class DemoListViewController: ViewController {
         case .utilsModal:                                       return DemoModalViewController()
         case .utilsNetworkGet:                                  return DemoNetworkGetViewController()
         case .utilsNetworkImage:                                return DemoNetworkImageViewController()
+        case .utilsShimmerPaginationCollection:                 return DemoShimmerPaginationCollectionViewController()
         case .utilsShimmerPaginationTable:                      return DemoShimmerPaginationTableViewController()
+        case .utilsShimmerCollection:                           return DemoShimmerCollectionViewController()
         case .utilsShimmerShimmer:                              return DemoShimmerViewController()
         case .utilsShimmerTable:                                return DemoShimmerTableViewController()
             #if canImport(SocialKit)

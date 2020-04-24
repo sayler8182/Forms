@@ -1,20 +1,20 @@
 //
-//  DemoShimmerTableViewController.swift
+//  DemoShimmerCollectionViewController.swift
 //  FormsDemo
 //
-//  Created by Konrad on 4/8/20.
+//  Created by Konrad on 4/24/20.
 //  Copyright © 2020 Limbo. All rights reserved.
 //
 
 import Forms
 import UIKit
 
-// MARK: DemoShimmerTableViewController
-class DemoShimmerTableViewController: TableViewController {
-    private lazy var shimmerDataSource = ShimmerTableDataSource()
+// MARK: DemoShimmerCollectionViewController
+class DemoShimmerCollectionViewController: CollectionViewController {
+    private lazy var shimmerDataSource = ShimmerCollectionDataSource()
         .with(generators: [
-            ShimmerRowGenerator(type: ShimmerShortDemoTableViewCell.self, count: 6),
-            ShimmerRowGenerator(type: ShimmerLongDemoTableViewCell.self, count: 3)
+            ShimmerItemGenerator(type: ShimmerShortDemoCollectionViewCell.self, count: 6),
+            ShimmerItemGenerator(type: ShimmerLongDemoCollectionViewCell.self, count: 3)
         ])
         .with(delegate: self)
     
@@ -28,11 +28,15 @@ class DemoShimmerTableViewController: TableViewController {
         super.setupConfiguration()
         self.isBottomToSafeArea = false
         self.isTopToSafeArea = false
+        self.collectionContentInset = UIEdgeInsets(top: 8, leading: 8, bottom: 8, trailing: 8)
+        self.collectionColumnsCount = 2
+        self.collectionColumnsHorizontalDistance = 8
+        self.collectionColumnsVerticalDistance = 8
     }
     
-    override func setupCell(row: TableRow, cell: TableViewCell, indexPath: IndexPath) {
-        super.setupCell(row: row, cell: cell, indexPath: indexPath)
-        cell.cast(row: row, of: DemoCellModel.self, to: DemoTableViewCell.self) { (newData, newCell) in
+    override func setupCell(item: CollectionItem, cell: CollectionViewCell, indexPath: IndexPath) {
+        super.setupCell(item: item, cell: cell, indexPath: indexPath)
+        cell.cast(item: item, of: DemoCellModel.self, to: DemoCollectionViewCell.self) { (newData, newCell) in
             newCell.fill(newData)
         }
     }
@@ -60,8 +64,8 @@ class DemoShimmerTableViewController: TableViewController {
                 subtitle: "Blue subtitle",
                 info: LoremIpsum.paragraph(sentences: 4))
         ]
-        let rows: [TableRow] = data.map { TableRow(of: DemoTableViewCell.self, data: $0) }
-        self.shimmerDataSource.setItems(rows)
+        let items: [CollectionItem] = data.map { CollectionItem(of: DemoCollectionViewCell.self, data: $0) }
+        self.shimmerDataSource.setItems(items)
     }
 }
 
@@ -73,8 +77,8 @@ private struct DemoCellModel {
     let info: String
 }
 
-// MARK: DemoTableViewCell
-private class DemoTableViewCell: TableViewCell {
+// MARK: DemoCollectionViewCell
+private class DemoCollectionViewCell: CollectionViewCell {
     fileprivate let iconView = UIImageView()
         .with(width: 48.0, height: 48.0)
         .rounded()
@@ -92,25 +96,24 @@ private class DemoTableViewCell: TableViewCell {
     override func setupView() {
         super.setupView()
         self.contentView.addSubview(self.iconView, with: [
-            Anchor.to(self.contentView).top.offset(8),
-            Anchor.to(self.contentView).leading.offset(16),
+            Anchor.to(self.contentView).top,
+            Anchor.to(self.contentView).leading,
             Anchor.to(self.iconView).size(self.iconView.bounds.size)
         ])
         self.contentView.addSubview(self.titleLabel, with: [
             Anchor.to(self.iconView).leadingToTrailing.offset(8),
-            Anchor.to(self.contentView).trailing.lessThanOrEqual.offset(16),
+            Anchor.to(self.contentView).trailing.lessThanOrEqual,
             Anchor.to(self.iconView).bottomToCenterY.offset(1)
         ])
         self.contentView.addSubview(self.subtitleLabel, with: [
             Anchor.to(self.iconView).leadingToTrailing.offset(8),
-            Anchor.to(self.contentView).trailing.lessThanOrEqual.offset(16),
+            Anchor.to(self.contentView).trailing.lessThanOrEqual,
             Anchor.to(self.iconView).topToCenterY.offset(1)
         ])
         self.contentView.addSubview(self.infoLabel, with: [
             Anchor.to(self.iconView).topToBottom.offset(4),
-            Anchor.to(self.contentView).leading.offset(16),
-            Anchor.to(self.contentView).trailing.offset(16),
-            Anchor.to(self.contentView).bottom.offset(8)
+            Anchor.to(self.contentView).leading,
+            Anchor.to(self.contentView).trailing
         ])
     }
      
@@ -120,22 +123,56 @@ private class DemoTableViewCell: TableViewCell {
         self.subtitleLabel.text = source.subtitle
         self.infoLabel.text = source.info
     }
+    
+    override class func componentHeight(_ source: Any,
+                                        _ collectionView: UICollectionView,
+                                        _ itemWidth: CGFloat) -> CGFloat? {
+        guard let source = source as? DemoCellModel else { return nil }
+        let infoHeight: CGFloat = Components.label.default()
+            .with(font: UIFont.systemFont(ofSize: 10))
+            .with(numberOfLines: 3)
+            .with(text: source.info)
+            .height(for: itemWidth)
+        return 8.0 + 48.0 + 4.0 + infoHeight + 8.0
+    }
 }
 
-// MARK: DemoTableViewCell
-private class ShimmerShortDemoTableViewCell: DemoTableViewCell {
+// MARK: DemoCollectionViewCell
+private class ShimmerShortDemoCollectionViewCell: DemoCollectionViewCell {
     override func prepareForShimmering() {
         self.titleLabel.text = LoremIpsum.emptyVeryShort
         self.subtitleLabel.text = LoremIpsum.emptyShort
         self.infoLabel.text = LoremIpsum.emptyMedium
     }
+    
+    override class func componentHeight(_ source: Any,
+                                        _ collectionView: UICollectionView,
+                                        _ itemWidth: CGFloat) -> CGFloat? {
+        let infoHeight: CGFloat = Components.label.default()
+            .with(font: UIFont.systemFont(ofSize: 10))
+            .with(numberOfLines: 3)
+            .with(text: LoremIpsum.emptyMedium)
+            .height(for: itemWidth)
+        return 8.0 + 48.0 + 4.0 + infoHeight + 8.0
+    }
 }
 
-// MARK: DemoTableViewCell
-private class ShimmerLongDemoTableViewCell: DemoTableViewCell {
+// MARK: DemoCollectionViewCell
+private class ShimmerLongDemoCollectionViewCell: DemoCollectionViewCell {
     override func prepareForShimmering() {
         self.titleLabel.text = LoremIpsum.emptyLong
         self.subtitleLabel.text = LoremIpsum.emptyLong
         self.infoLabel.text = LoremIpsum.empty(lines: 3)
+    }
+    
+    override class func componentHeight(_ source: Any,
+                                        _ collectionView: UICollectionView,
+                                        _ itemWidth: CGFloat) -> CGFloat? {
+        let infoHeight: CGFloat = Components.label.default()
+            .with(font: UIFont.systemFont(ofSize: 10))
+            .with(numberOfLines: 3)
+            .with(text: LoremIpsum.empty(lines: 3))
+            .height(for: itemWidth)
+        return 8.0 + 48.0 + 4.0 + infoHeight + 8.0
     }
 }

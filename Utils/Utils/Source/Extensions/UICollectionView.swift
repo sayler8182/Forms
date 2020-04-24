@@ -8,4 +8,16 @@
 
 import UIKit
 
-public extension UICollectionView { }
+// MARK: UICollectionView
+public extension UICollectionView {
+    func animated(_ animated: Bool,
+                  action: () -> Void) {
+        animated != false
+            ? action()
+            : UIView.performWithoutAnimation(action)
+    }
+    
+    func flowLayout<T: UICollectionViewFlowLayout>(of type: T.Type) -> T? {
+        return self.collectionViewLayout as? T
+    }
+}

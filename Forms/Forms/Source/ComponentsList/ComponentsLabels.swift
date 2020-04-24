@@ -24,7 +24,7 @@ public struct ComponentsLabels: ComponentsList {
         component.isUserInteractionEnabled = true
         component.minHeight = 0.0
         component.maxHeight = CGFloat.greatestConstraintConstant
-        component.numberOfLines = 0
+        component.numberOfLines = 1
         component.paddingEdgeInset = UIEdgeInsets(0)
         component.text = nil
         return component

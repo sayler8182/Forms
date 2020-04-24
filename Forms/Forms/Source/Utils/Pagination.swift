@@ -24,7 +24,7 @@ public class Pagination<ID, D> {
         return self.lastPage?.pageId
     }
     public var lastPage: Page<ID, D>? {
-        return self.pages.last
+        return self.pages.last(where: { $0.error.isNil })
     }
     public var data: [D] {
         return self.pages.flatMap { $0.data }

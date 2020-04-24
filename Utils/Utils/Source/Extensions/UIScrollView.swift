@@ -14,12 +14,38 @@ public extension UIScrollView {
         let contentHeight: CGFloat = self.contentSize.height
         let contentOffset: CGFloat = self.contentOffset.y
         let height: CGFloat = self.frame.size.height
-        
         guard contentHeight != 0 else { return true }
         guard contentOffset != 0 else { return false }
         let offsetExceed: Bool = contentOffset + height + offset >= contentHeight
         guard offsetExceed else { return false }
         return true
+    }
+    
+    @discardableResult
+    func shouldLoadNext(offset: CGFloat = 0,
+                        scrollDirection: UICollectionView.ScrollDirection) -> Bool {
+        switch scrollDirection {
+        case .vertical:
+            let contentHeight: CGFloat = self.contentSize.height
+            let contentOffset: CGFloat = self.contentOffset.y
+            let height: CGFloat = self.frame.size.height
+            guard contentHeight != 0 else { return true }
+            guard contentOffset != 0 else { return false }
+            let offsetExceed: Bool = contentOffset + height + offset >= contentHeight
+            guard offsetExceed else { return false }
+            return true
+        case .horizontal:
+            let contentWidth: CGFloat = self.contentSize.width
+            let contentOffset: CGFloat = self.contentOffset.x
+            let width: CGFloat = self.frame.size.width
+            guard contentWidth != 0 else { return true }
+            guard contentOffset != 0 else { return false }
+            let offsetExceed: Bool = contentOffset + width + offset >= contentWidth
+            guard offsetExceed else { return false }
+            return true
+        default:
+            return false
+        }
     }
     
     func scrollToTop(animated: Bool) {

@@ -24,9 +24,9 @@ public class TableSection {
 }
 
 // MARK: TableRow
-public typealias TableRowConfigure = ((TableRowData, TableViewCell, IndexPath) -> Void)
-
-public class TableRowData {
+public typealias TableRowConfigure = ((TableRow, TableViewCell, IndexPath) -> Void)
+ 
+public class TableRow {
     public let type: AnyClass
     public let data: Any
     public let identifier: String
@@ -39,23 +39,10 @@ public class TableRowData {
     }
 }
 
-public class TableRow {
-    public let data: TableRowData
-    
-    public init(of type: TableViewCell.Type,
-                data: Any = TableDataSource.Empty) {
-        self.data = TableRowData(of: type, data: data)
-    }
-    
-    public init(data: TableRowData) {
-        self.data = data
-    }
-}
-
 // MARK: TableDataSourceProtocol
 public protocol TableDataSourceDelegateProtocol: class {
-    func setupCell(data: TableRowData, cell: TableViewCell, indexPath: IndexPath)
-    func selectCell(data: TableRowData, cell: TableViewCell, indexPath: IndexPath)
+    func setupCell(row: TableRow, cell: TableViewCell, indexPath: IndexPath)
+    func selectCell(row: TableRow, cell: TableViewCell, indexPath: IndexPath)
 }
 
 // MARK: TableDataSource
@@ -80,9 +67,9 @@ open class TableDataSource: NSObject {
     public func prepare(for tableView: UITableView,
                         queue tableUpdatesQueue: DispatchQueue,
                         scrollDelegate: UIScrollViewDelegate) {
-            self.tableView = tableView
-            self.tableUpdatesQueue = tableUpdatesQueue
-            self.scrollDelegate = scrollDelegate
+        self.tableView = tableView
+        self.tableUpdatesQueue = tableUpdatesQueue
+        self.scrollDelegate = scrollDelegate
     }
     
     public func prepareDataSource(_ sections: [TableSection]) {
@@ -93,7 +80,7 @@ open class TableDataSource: NSObject {
     public func prepareDataSource(_ rows: [TableRow]) {
         guard let tableView = self.tableView else { return }
         for row in rows {
-            tableView.register(row.data.type, forCellReuseIdentifier: row.data.identifier)
+            tableView.register(row.type, forCellReuseIdentifier: row.identifier)
         }
     }
     
@@ -102,10 +89,12 @@ open class TableDataSource: NSObject {
         guard let tableView = self.tableView else { return }
         self.prepareDataSource(sections)
         self.sections = sections
-        tableView.transition(
-            animated,
-            duration: 0.3,
-            animations: tableView.reloadData)
+        self.tableUpdatesQueue.async {
+            tableView.transition(
+                animated,
+                duration: 0.3,
+                animations: tableView.reloadData)
+        }
     }
     
     public func setItems(_ rows: [TableRow],
@@ -206,21 +195,24 @@ extension TableDataSource: UITableViewDelegate, UITableViewDataSource {
         guard !section.isShimmering else { return }
         let row: TableRow = section.rows[indexPath.row]
         let cell = tableView.cellForRow(at: indexPath) as! TableViewCell
-        self.delegate?.selectCell(data: row.data, cell: cell, indexPath: indexPath)
+        self.delegate?.selectCell(row: row, cell: cell, indexPath: indexPath)
     }
     
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let section: TableSection = self.sections[indexPath.section]
         let row: TableRow = section.rows[indexPath.row]
-        let cell = tableView.dequeueReusableCell(withIdentifier: row.data.identifier, for: indexPath) as! TableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: row.identifier, for: indexPath) as! TableViewCell
         cell.selectionStyle = .none
         cell.stopShimmering()
-        self.delegate?.setupCell(data: row.data, cell: cell, indexPath: indexPath)
+        self.delegate?.setupCell(row: row, cell: cell, indexPath: indexPath)
         return cell
     }
     
     public func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return UITableView.automaticDimension
+        let section: TableSection = self.sections[indexPath.section]
+        let row: TableRow = section.rows[indexPath.row]
+        guard let type = row.type as? TableViewCell.Type else { return UITableView.automaticDimension }
+        return type.componentHeight(row.data, tableView)
     }
 }
 

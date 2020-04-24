@@ -54,7 +54,6 @@ public protocol Componentable {
     func setupActions()
     func setTheme()
     func setLanguage()
-    func componentHeight() -> CGFloat
 }
 
 // MARK: FormComponent

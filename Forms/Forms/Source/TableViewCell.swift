@@ -9,7 +9,7 @@
 import UIKit
 
 // MARK: TableViewCell
-open class TableViewCell: UITableViewCell, Componentable, ShimmerableTableViewCell {
+open class TableViewCell: UITableViewCell, Componentable, ShimmerableViewCell {
     open class var identifier: String {
         return "\(self)"
     }
@@ -29,7 +29,7 @@ open class TableViewCell: UITableViewCell, Componentable, ShimmerableTableViewCe
         self.setupActions()
         self.setTheme()
         self.setLanguage()
-    }
+    } 
     
     // MARK: HOOKS
     open func setupActions() {
@@ -42,38 +42,39 @@ open class TableViewCell: UITableViewCell, Componentable, ShimmerableTableViewCe
     
     open func setLanguage() {
         // HOOK
-    }
-    
-    open func componentHeight() -> CGFloat {
-        // HOOK
-        return UITableView.automaticDimension
-    }
+    } 
     
     open func prepareForShimmering() {
         // HOOK
+    }
+    
+    open class func componentHeight(_ source: Any,
+                                    _ tableView: UITableView) -> CGFloat {
+        // HOOK
+        return UITableView.automaticDimension
     }
 }
 
 // MARK: DataSource
 public extension TableViewCell {
-    func cast<D, C: TableViewCell>(data: TableRowData,
+    func cast<D, C: TableViewCell>(row: TableRow,
                                    of dataType: D.Type,
                                    to cellType: C.Type,
                                    success: (D, C) -> Void) {
         self.cast(
-            data: data,
+            row: row,
             of: dataType,
             to: cellType,
             success: success,
             fail: { })
     }
     
-    func cast<D, C: TableViewCell>(data: TableRowData,
+    func cast<D, C: TableViewCell>(row: TableRow,
                                    of dataType: D.Type,
                                    to cellType: C.Type,
                                    success: (D, C) -> Void,
                                    fail: () -> Void) {
-        guard let data: D = data.data as? D,
+        guard let data: D = row.data as? D,
             let cell: C = self as? C else {
                 return fail()
         }

@@ -26,7 +26,7 @@ open class Label: FormComponent, Clickable {
         didSet {
             self.attributedText?.label = self.textLabel
             self.textLabel.attributedText = self.attributedText?.string
-            self.textGestureRecognizer.isEnabled = true
+            self.textGestureRecognizer.isEnabled = self.attributedText.isNotNil
         }
     }
     override open var backgroundColor: UIColor? {
@@ -157,6 +157,19 @@ open class Label: FormComponent, Clickable {
     private func updateMinHeight() {
         let minHeight: CGFloat = self.minHeight
         self.constraint(position: .height, relation: .greaterThanOrEqual)?.constant = minHeight
+    }
+}
+
+// MARK: Label
+public extension Label {
+    func height(for width: CGFloat) -> CGFloat {
+        let height: CGFloat = self.textLabel.height(for: width)
+        let maxHeight: CGFloat = String.empty.height(for: width, font: self.textLabel.font) * CGFloat(self.numberOfLines)
+        return min(min(maxHeight, height), self.maxHeight)
+    }
+    
+    func width(for height: CGFloat) -> CGFloat {
+        return self.textLabel.width(for: height)
     }
 }
 

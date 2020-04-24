@@ -254,7 +254,7 @@ private class TopBarFlowLayout: UICollectionViewFlowLayout {
     }
     
     override func shouldInvalidateLayout(forBoundsChange newBounds: CGRect) -> Bool {
-        return true
+        return false
     }
     
     override func prepare() {

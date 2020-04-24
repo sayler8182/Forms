@@ -22,6 +22,7 @@
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
+		7138D3A72452C98F00CC7345 /* CollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7138D3A62452C98F00CC7345 /* CollectionViewController.swift */; };
 		714848D3244858FF00455560 /* ComponentsOther.swift in Sources */ = {isa = PBXBuildFile; fileRef = 714848D2244858FF00455560 /* ComponentsOther.swift */; };
 		714848D62448598600455560 /* ActivityIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 714848D52448598600455560 /* ActivityIndicator.swift */; };
 		715692BB243E5A2A00B4613C /* Pagination.swift in Sources */ = {isa = PBXBuildFile; fileRef = 715692BA243E5A2A00B4613C /* Pagination.swift */; };
@@ -32,6 +33,8 @@
 		7193E3562451DF77006238C5 /* ComponentsContainers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7193E3552451DF77006238C5 /* ComponentsContainers.swift */; };
 		7193E35A2451E89D006238C5 /* View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7193E3592451E89D006238C5 /* View.swift */; };
 		7193E3662451F1BA006238C5 /* StackContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7193E3652451F1BA006238C5 /* StackContainer.swift */; };
+		7193E36A24520C1C006238C5 /* CollectionDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7193E36924520C1C006238C5 /* CollectionDataSource.swift */; };
+		7193E36D24520C75006238C5 /* CollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7193E36C24520C75006238C5 /* CollectionViewCell.swift */; };
 		7194694D243DA7A800CAD09B /* Forms.h in Headers */ = {isa = PBXBuildFile; fileRef = 7194693F243DA7A800CAD09B /* Forms.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		7194698C243DA7BE00CAD09B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71946960243DA7BE00CAD09B /* ViewController.swift */; };
 		7194698E243DA7BE00CAD09B /* Forms.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71946961243DA7BE00CAD09B /* Forms.swift */; };
@@ -95,6 +98,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		7138D3A62452C98F00CC7345 /* CollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewController.swift; sourceTree = "<group>"; };
 		714848D2244858FF00455560 /* ComponentsOther.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComponentsOther.swift; sourceTree = "<group>"; };
 		714848D52448598600455560 /* ActivityIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityIndicator.swift; sourceTree = "<group>"; };
 		715692BA243E5A2A00B4613C /* Pagination.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pagination.swift; sourceTree = "<group>"; };
@@ -105,6 +109,8 @@
 		7193E3552451DF77006238C5 /* ComponentsContainers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComponentsContainers.swift; sourceTree = "<group>"; };
 		7193E3592451E89D006238C5 /* View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = View.swift; sourceTree = "<group>"; };
 		7193E3652451F1BA006238C5 /* StackContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StackContainer.swift; sourceTree = "<group>"; };
+		7193E36924520C1C006238C5 /* CollectionDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionDataSource.swift; sourceTree = "<group>"; };
+		7193E36C24520C75006238C5 /* CollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewCell.swift; sourceTree = "<group>"; };
 		7194693F243DA7A800CAD09B /* Forms.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Forms.h; sourceTree = "<group>"; };
 		71946940243DA7A800CAD09B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		71946960243DA7BE00CAD09B /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -196,6 +202,14 @@
 			path = Containers;
 			sourceTree = "<group>";
 		};
+		7193E36B24520C20006238C5 /* CollectionView */ = {
+			isa = PBXGroup;
+			children = (
+				7193E36924520C1C006238C5 /* CollectionDataSource.swift */,
+			);
+			path = CollectionView;
+			sourceTree = "<group>";
+		};
 		71946932243DA7A800CAD09B = {
 			isa = PBXGroup;
 			children = (
@@ -223,6 +237,8 @@
 				71946962243DA7BE00CAD09B /* ComponentsList */,
 				71946984243DA7BE00CAD09B /* DelegatesAndDataSources */,
 				71946969243DA7BE00CAD09B /* Utils */,
+				7193E36C24520C75006238C5 /* CollectionViewCell.swift */,
+				7138D3A62452C98F00CC7345 /* CollectionViewController.swift */,
 				71946983243DA7BE00CAD09B /* FormComponent.swift */,
 				71946961243DA7BE00CAD09B /* Forms.swift */,
 				71BB627E2445F729002BB31F /* ImagesManager.swift */,
@@ -327,6 +343,7 @@
 		71946984243DA7BE00CAD09B /* DelegatesAndDataSources */ = {
 			isa = PBXGroup;
 			children = (
+				7193E36B24520C20006238C5 /* CollectionView */,
 				719469DA243DDB6400CAD09B /* TableView */,
 				719469D9243DDB5C00CAD09B /* TextField */,
 			);
@@ -505,6 +522,7 @@
 				71946991243DA7BE00CAD09B /* ComponentsUtils.swift in Sources */,
 				719469A2243DA7BE00CAD09B /* TextField.swift in Sources */,
 				71946998243DA7BE00CAD09B /* Toast.swift in Sources */,
+				7193E36A24520C1C006238C5 /* CollectionDataSource.swift in Sources */,
 				714848D62448598600455560 /* ActivityIndicator.swift in Sources */,
 				71946992243DA7BE00CAD09B /* ComponentsNavigationBars.swift in Sources */,
 				7194699C243DA7BE00CAD09B /* NavigationBar.swift in Sources */,
@@ -531,10 +549,12 @@
 				719469A6243DA7BE00CAD09B /* FormComponent.swift in Sources */,
 				719469A7243DA7BE00CAD09B /* TextFieldEmailDelegate.swift in Sources */,
 				714848D3244858FF00455560 /* ComponentsOther.swift in Sources */,
+				7193E36D24520C75006238C5 /* CollectionViewCell.swift in Sources */,
 				719469AD243DA7BE00CAD09B /* TabBarController.swift in Sources */,
 				719469A9243DA7BE00CAD09B /* TextFieldAmountDelegate.swift in Sources */,
 				719469A4243DA7BE00CAD09B /* TableViewController.swift in Sources */,
 				7193E3662451F1BA006238C5 /* StackContainer.swift in Sources */,
+				7138D3A72452C98F00CC7345 /* CollectionViewController.swift in Sources */,
 				7193E34A2451AC0E006238C5 /* AppStoreReview.swift in Sources */,
 				7194699D243DA7BE00CAD09B /* Label.swift in Sources */,
 				7193E34C2451B047006238C5 /* Storage.swift in Sources */,

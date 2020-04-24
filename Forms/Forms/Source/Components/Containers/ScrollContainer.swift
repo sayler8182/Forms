@@ -16,7 +16,7 @@ open class ScrollContainer: FormComponent {
     public lazy var collectionView = UICollectionView(frame: CGRect.zero, collectionViewLayout: self.flowLayout)
     public let pageControl = UIPageControl()
     
-    private lazy var flowLayout = ScrollContainerFlowLayout()
+    private var flowLayout = ScrollContainerFlowLayout()
     private var items: [FormComponent] = []
     private var selectedIndex: Int? = nil
     private let defaultCellIdentifier: String = "_cell"

@@ -168,7 +168,7 @@ open class ToastView: FormComponent {
                 Anchor.to(parent).horizontal
             ])
             self.addSubview(self.contentView, with: [
-                Anchor.to(self).top.offset(max(16, UIView.safeArea.top)),
+                Anchor.to(self).top.offset(max(20, UIView.safeArea.top)),
                 Anchor.to(self).horizontal.offset(16),
                 Anchor.to(self).bottom.offset(16)
             ])

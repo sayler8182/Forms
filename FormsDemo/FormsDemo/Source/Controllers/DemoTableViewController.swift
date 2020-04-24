@@ -24,8 +24,10 @@ class DemoTableViewController: TableViewController {
         .with(height: 44.0)
     private let footerRedView = Components.container.view()
         .with(backgroundColor: UIColor.red)
-    private let footerGreenView = Components.container.view()
-        .with(backgroundColor: UIColor.green)
+    private let changeSourceButton = Components.button.default()
+        .with(title: "Change source")
+    
+    private var dataSource: TableDataSource?
     
     override func setupHeader() {
         super.setupHeader()
@@ -63,7 +65,45 @@ class DemoTableViewController: TableViewController {
         super.setupFooter()
         self.addToFooter([
             self.footerRedView,
-            self.footerGreenView
+            self.changeSourceButton
         ], height: 44.0)
+    }
+    
+    override func setupActions() {
+        super.setupActions()
+        self.changeSourceButton.onClick = { [unowned self] in
+            self.changeSource()
+        }
+    }
+    
+    private func changeSource() {
+        guard self.dataSource.isNil else {
+            self.dataSource = nil
+            self.setDataSource(nil)
+            self.reloadData()
+            return
+        }
+        let items: [TableRow] = [
+            TableRow(of: DemoTableViewCell.self),
+            TableRow(of: DemoTableViewCell.self),
+            TableRow(of: DemoTableViewCell.self)
+        ]
+        let dataSource = TableDataSource()
+        self.dataSource = dataSource
+        self.setDataSource(self.dataSource)
+        dataSource.setItems(items)
+    }
+}
+
+// MARK: DemoTableViewCell
+private class DemoTableViewCell: TableViewCell {
+    override func setupView() {
+        super.setupView()
+        self.backgroundColor = UIColor.green
+    }
+    
+    override class func componentHeight(_ source: Any,
+                                        _ tableView: UITableView) -> CGFloat {
+        return 44.0
     }
 }
