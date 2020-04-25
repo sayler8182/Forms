@@ -38,6 +38,8 @@ private enum Demo {
         case utils
         case utilsAppStoreReview
         case utilsAttributedString
+        case utilsDeveloperTools
+        case utilsDeveloperToolsLifetime
         case utilsLoader
         case utilsModal
         case utilsNetwork
@@ -127,6 +129,14 @@ private enum Demo {
                 Section(title: "Utils", rows: [
                     Row(type: .utilsAppStoreReview, title: "AppStoreReview"),
                     Row(type: .utilsAttributedString, title: "AttributedString"),
+                    Row(
+                        type: .utilsDeveloperTools,
+                        title: "DeveloperTools",
+                        sections: [
+                            Section(rows: [
+                                Row(type: .utilsDeveloperToolsLifetime, title: "Lifetime")
+                            ])
+                    ]),
                     Row(type: .utilsLoader, title: "Loader"),
                     Row(type: .utilsModal, title: "Modal"),
                     Row(
@@ -172,12 +182,30 @@ private enum Demo {
                 ]
                 .map { section in
                     var section: Section = section
+                    #if !canImport(DeveloperTools)
+                    section.rows = section.rows.filter { $0.type != .utilsDeveloperTools }
+                    #endif
                     #if !canImport(SocialKit)
                     section.rows = section.rows.filter { $0.type != .utilsSocialKit }
                     #endif
                     return section
             }
         }()
+    }
+}
+
+// MARK: [Demo.Section]
+fileprivate extension Array where Element == Demo.Section {
+    func row(for type: Demo.RowType,
+             from sections: [Demo.Section]) -> Demo.Row? {
+        for section in sections {
+            for row in section.rows {
+                if row.type == type { return row }
+                guard let result = self.row(for: type, from: row.sections) else { continue }
+                return result
+            }
+        }
+        return nil
     }
 }
 
@@ -193,9 +221,18 @@ public class DemoRootViewController: UINavigationController {
     }
     
     public func setupView() {
-        let controller: UIViewController = DemoListViewController(items: Demo.Section.default)
+        let controller = DemoListViewController(items: Demo.Section.default)
         controller.title = "Demo"
         self.viewControllers = [controller]
+        self.autoroute(to: nil, in: controller)
+    }
+    
+    private func autoroute(to rowType: Demo.RowType?,
+                           in controller: DemoListViewController) {
+        guard let rowType: Demo.RowType = rowType else { return }
+        let sections: [Demo.Section] = Demo.Section.default
+        guard let row: Demo.Row = Demo.Section.default.row(for: rowType, from: sections) else { return }
+        controller.select(row: row)
     }
 }
 
@@ -235,7 +272,6 @@ private class DemoListViewController: ViewController {
         self.tableView.dataSource = self
         self.tableView.estimatedRowHeight = 44
         self.tableView.rowHeight = UITableView.automaticDimension
-        self.tableView.backgroundColor = UIColor.systemBackground
         self.tableView.separatorStyle = UITableViewCell.SeparatorStyle.none
         self.tableView.allowsSelection = true
         self.tableView.alwaysBounceVertical = false
@@ -245,7 +281,7 @@ private class DemoListViewController: ViewController {
         ])
     }
     
-    private func select(row: Demo.Row) {
+    fileprivate func select(row: Demo.Row) {
         if !row.sections.isEmpty {
             let controller = DemoListViewController(row: row)
             self.show(controller, sender: nil)
@@ -283,6 +319,9 @@ private class DemoListViewController: ViewController {
         // utils
         case .utilsAppStoreReview:                              return DemoAppStoreReviewViewController()
         case .utilsAttributedString:                            return DemoAttributedStringViewController()
+            #if canImport(DeveloperTools)
+        case .utilsDeveloperToolsLifetime:                      return DemoDeveloperToolsLifetimeViewController()
+            #endif
         case .utilsLoader:                                      return DemoLoaderViewController()
         case .utilsModal:                                       return DemoModalViewController()
         case .utilsNetworkGet:                                  return DemoNetworkGetViewController()

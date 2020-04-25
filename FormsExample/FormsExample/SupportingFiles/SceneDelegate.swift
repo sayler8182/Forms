@@ -6,6 +6,9 @@
 //  Copyright © 2020 Limbo. All rights reserved.
 //
 
+#if canImport(DeveloperTools)
+import DeveloperTools
+#endif
 import FormsDemo
 #if canImport(SocialKit)
 import SocialKit
@@ -24,6 +27,10 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         SocialKit.configure(
             googleClientID: "513688149579-fhj79mgkeq2rp689dpmfnn7nlkadnf31.apps.googleusercontent.com"
         )
+        #endif
+        
+        #if canImport(DeveloperTools)
+        LifetimeTracker.configure(LifetimeTrackerManager(visibility: .alwaysVisible).refresh)
         #endif
         
         let window: UIWindow = UIWindow(windowScene: windowScene)
