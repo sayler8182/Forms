@@ -63,6 +63,8 @@
 		71C1F0022449E8B000FFC999 /* Forms.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71C1F0012449E8B000FFC999 /* Forms.framework */; };
 		71DB5C912457280F00B16145 /* SocialKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71DB5C902457280F00B16145 /* SocialKit.framework */; };
 		71DB5C9524575B6300B16145 /* DemoTitleSearchBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71DB5C9424575B6300B16145 /* DemoTitleSearchBarViewController.swift */; };
+		71DB5CC72457647F00B16145 /* DemoAnalyticsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71DB5CC62457647F00B16145 /* DemoAnalyticsViewController.swift */; };
+		71DB6539245769A700B16145 /* Analytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71DB6538245769A700B16145 /* Analytics.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -135,6 +137,8 @@
 		71C1F0012449E8B000FFC999 /* Forms.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Forms.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		71DB5C902457280F00B16145 /* SocialKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = SocialKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		71DB5C9424575B6300B16145 /* DemoTitleSearchBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoTitleSearchBarViewController.swift; sourceTree = "<group>"; };
+		71DB5CC62457647F00B16145 /* DemoAnalyticsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoAnalyticsViewController.swift; sourceTree = "<group>"; };
+		71DB6538245769A700B16145 /* Analytics.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Analytics.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -145,6 +149,7 @@
 				71C1F0022449E8B000FFC999 /* Forms.framework in Frameworks */,
 				7178029D245448C50057E848 /* DeveloperTools.framework in Frameworks */,
 				71DB5C912457280F00B16145 /* SocialKit.framework in Frameworks */,
+				71DB6539245769A700B16145 /* Analytics.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -213,6 +218,7 @@
 		713B9C63243D0947001F6E3A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				71DB6538245769A700B16145 /* Analytics.framework */,
 				71DB5C902457280F00B16145 /* SocialKit.framework */,
 				7178029C245448C50057E848 /* DeveloperTools.framework */,
 				71C1F0012449E8B000FFC999 /* Forms.framework */,
@@ -275,6 +281,7 @@
 				71BB61ED2445C6DD002BB31F /* Network */,
 				71D39CCE244455F1006BED33 /* Shimmer */,
 				7132964524487EC5006935C0 /* SocialKit */,
+				71DB5CC62457647F00B16145 /* DemoAnalyticsViewController.swift */,
 				7193E34D2451B5B7006238C5 /* DemoAppStoreReviewViewController.swift */,
 				713B9C77243D0964001F6E3A /* DemoAttributedStringViewController.swift */,
 				713B9C78243D0964001F6E3A /* DemoLoaderViewController.swift */,
@@ -508,6 +515,7 @@
 				713B9C80243D0964001F6E3A /* DemoNavigationBarViewController.swift in Sources */,
 				713B9C89243D0964001F6E3A /* DemoPagerController.swift in Sources */,
 				7132968A24489F8F006935C0 /* DemoSocialKitFacebookTableViewController.swift in Sources */,
+				71DB5CC72457647F00B16145 /* DemoAnalyticsViewController.swift in Sources */,
 				7138D3AB2452E19300CC7345 /* DemoShimmerPaginationCollectionViewController.swift in Sources */,
 				715B7AE72446FD1500754EDB /* DemoArchitecturesCleanSummaryAssembly.swift in Sources */,
 				715B7AE62446FD1500754EDB /* DemoArchitecturesCleanSummaryViewController.swift in Sources */,

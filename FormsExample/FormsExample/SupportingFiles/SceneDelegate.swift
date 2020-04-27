@@ -6,6 +6,9 @@
 //  Copyright © 2020 Limbo. All rights reserved.
 //
 
+#if canImport(Analytics)
+import Analytics
+#endif
 #if canImport(DeveloperTools)
 import DeveloperTools
 #endif
@@ -24,10 +27,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
                options connectionOptions: UIScene.ConnectionOptions) {
         guard let windowScene = (scene as? UIWindowScene) else { return }
         
-        #if canImport(SocialKit)
-        SocialKit.configure(
-            googleClientID: "513688149579-fhj79mgkeq2rp689dpmfnn7nlkadnf31.apps.googleusercontent.com"
-        )
+        #if canImport(Analytics)
+        Analytics.configure()
         #endif
         
         #if canImport(DeveloperTools)
@@ -37,6 +38,12 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             onSelect: DemoDeveloperToolsManager.onSelect)
         let trackerManager = LifetimeTrackerManager()
         LifetimeTracker.configure(trackerManager.refresh)
+        #endif
+        
+        #if canImport(SocialKit)
+        SocialKit.configure(
+            googleClientID: "513688149579-fhj79mgkeq2rp689dpmfnn7nlkadnf31.apps.googleusercontent.com"
+        )
         #endif
         
         let window: UIWindow = UIWindow(windowScene: windowScene)

@@ -37,6 +37,7 @@ private enum Demo {
         case componentsUtils
         // Utils
         case utils
+        case utilsAnalytics
         case utilsAppStoreReview
         case utilsAttributedString
         case utilsDeveloperTools
@@ -130,6 +131,7 @@ private enum Demo {
                     Row(type: .componentsUtils, title: "Utils")
                 ]),
                 Section(title: "Utils", rows: [
+                    Row(type: .utilsAnalytics, title: "Analytics"),
                     Row(type: .utilsAppStoreReview, title: "AppStoreReview"),
                     Row(type: .utilsAttributedString, title: "AttributedString"),
                     Row(
@@ -186,6 +188,9 @@ private enum Demo {
                 ]
                 .map { section in
                     var section: Section = section
+                    #if !canImport(Analytics)
+                    section.rows = section.rows.filter { $0.type != .utilsAnalytics }
+                    #endif
                     #if !canImport(DeveloperTools)
                     section.rows = section.rows.filter { $0.type != .utilsDeveloperTools }
                     #endif
@@ -322,6 +327,9 @@ private class DemoListViewController: ViewController {
         case .componentsOthers:                                 return DemoOthersViewController()
         case .componentsUtils:                                  return DemoUtilsViewController()
         // utils
+            #if canImport(Analytics)
+        case .utilsAnalytics:                                   return DemoAnalyticsViewController()
+            #endif
         case .utilsAppStoreReview:                              return DemoAppStoreReviewViewController()
         case .utilsAttributedString:                            return DemoAttributedStringViewController()
             #if canImport(DeveloperTools)

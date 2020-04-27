@@ -10,7 +10,9 @@ Forms is all in one iOS framework
 
 - [x] Pure Swift Type Support
 - [x] Modular
+- [x] [Analytics](./Documentation/Analytics.md)
 - [x] [DSL to make Auto Layout](./Documentation/Anchor.md)
+- [x] [DeveloperTools](./Documentation/DeveloperTools.md)
 - [x] [Dependency Injection](./Documentation/Injector.md)
 - [x] [Logger](./Documentation/Logger.md)
 - [x] [Networking](./Documentation/Networking.md)
@@ -55,9 +57,20 @@ Validators.framework
 AppAuth.framework
 FBSDKCoreKit.framework
 FBSDKLoginKit.framework
+FirebaseAnalytics.framework
+FirebaseCore.framework
+FirebaseCoreDiagnostics.framework
+FirebaseInstallations.framework
 GTMAppAuth.framework
 GTMSessionFetcher.framework
+GoogleAppMeasurement.framework
+GoogleDataTransport.framework
+GoogleDataTransportCCTSupport.framework
 GoogleSignIn.framework
+GoogleUtilities.framework
+PromisesObjC.framework
+nanopb.framework
+
 ```
 
 To update dependencies You should use 
