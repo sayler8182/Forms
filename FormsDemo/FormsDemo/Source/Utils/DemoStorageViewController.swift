@@ -17,16 +17,16 @@ private enum StorageKeys: String, StorageKey {
 
 // MARK: DemoStorageViewController
 class DemoStorageViewController: TableViewController {
-    private lazy var storageNameTextField = Components.input.defaultTextField()
+    private lazy var storageNameTextField = Components.input.textField.default()
         .with(text: self.storageName)
         .with(title: "Name")
-    private lazy var storageEmailTextField = Components.input.defaultEmailTextField()
+    private lazy var storageEmailTextField = Components.input.textField.email.default()
         .with(text: self.storageEmail)
         .with(title: "Email")
-    private lazy var storageKeychainNameTextField = Components.input.defaultTextField()
+    private lazy var storageKeychainNameTextField = Components.input.textField.default()
         .with(text: self.storageKeychainName)
         .with(title: "Name")
-    private lazy var storageKeychainEmailTextField = Components.input.defaultEmailTextField()
+    private lazy var storageKeychainEmailTextField = Components.input.textField.email.default()
         .with(text: self.storageKeychainEmail)
         .with(title: "Email")
     private let clearButton = Components.button.default()

@@ -15,7 +15,7 @@ import UIKit
 // MARK: DemoSocialKitGoogleTableViewController
 class DemoSocialKitGoogleTableViewController: TableViewController {
     private let signInWithGoogle = Components.social.signInWithGoogle()
-        .with(paddingEdgeInset: UIEdgeInsets(16))
+        .with(padding: 16)
 
     private let divider = Components.utils.divider()
         .with(height: 5.0)

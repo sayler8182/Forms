@@ -19,7 +19,7 @@ public struct ComponentsButtons: ComponentsList {
             selected: UIColor.systemBlue,
             disabled: UIColor.systemGray
         )
-        component.edgeInset = UIEdgeInsets(0)
+        component.marginEdgeInset = UIEdgeInsets(0)
         component.height = UITableView.automaticDimension
         component.isEnabled = true
         component.minHeight = 44.0

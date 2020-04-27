@@ -18,8 +18,8 @@ public struct ComponentsLabels: ComponentsList {
         component.attributedText = nil
         component.backgroundColor = UIColor.systemBackground
         component.color = UIColor.label
-        component.edgeInset = UIEdgeInsets(0)
-        component.font = UIFont.systemFont(ofSize: 16)
+        component.marginEdgeInset = UIEdgeInsets(0)
+        component.font = UIFont.systemFont(ofSize: 14)
         component.height = UITableView.automaticDimension
         component.isUserInteractionEnabled = true
         component.minHeight = 0.0

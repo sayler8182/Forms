@@ -176,3 +176,49 @@ public extension FormComponent {
         return self
     }
 }
+
+// MARK: FormComponentWithMarginEdgeInset
+public protocol FormComponentWithMarginEdgeInset: class {
+    var marginEdgeInset: UIEdgeInsets { get set }
+}
+public extension FormComponentWithMarginEdgeInset {
+    func with(margin: CGFloat) -> Self {
+        self.marginEdgeInset = UIEdgeInsets(margin)
+        return self
+    }
+    func with(marginEdgeInset: UIEdgeInsets) -> Self {
+        self.marginEdgeInset = marginEdgeInset
+        return self
+    }
+    func with(marginHorizontal: CGFloat) -> Self {
+        self.marginEdgeInset = UIEdgeInsets(horizontal: marginHorizontal)
+        return self
+    }
+    func with(marginVertical: CGFloat) -> Self {
+        self.marginEdgeInset = UIEdgeInsets(vertical: marginVertical)
+        return self
+    }
+}
+
+// MARK: FormComponentWithPaddingEdgeInset
+public protocol FormComponentWithPaddingEdgeInset: class {
+    var paddingEdgeInset: UIEdgeInsets { get set }
+}
+public extension FormComponentWithPaddingEdgeInset {
+    func with(padding: CGFloat) -> Self {
+        self.paddingEdgeInset = UIEdgeInsets(padding)
+        return self
+    }
+    func with(paddingEdgeInset: UIEdgeInsets) -> Self {
+        self.paddingEdgeInset = paddingEdgeInset
+        return self
+    }
+    func with(paddingHorizontal: CGFloat) -> Self {
+        self.paddingEdgeInset = UIEdgeInsets(horizontal: paddingHorizontal)
+        return self
+    }
+    func with(paddingVertical: CGFloat) -> Self {
+        self.paddingEdgeInset = UIEdgeInsets(vertical: paddingVertical)
+        return self
+    }
+}

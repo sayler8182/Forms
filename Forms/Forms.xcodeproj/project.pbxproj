@@ -23,6 +23,7 @@
 
 /* Begin PBXBuildFile section */
 		7138D3A72452C98F00CC7345 /* CollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7138D3A62452C98F00CC7345 /* CollectionViewController.swift */; };
+		71458F6624571FAD001B774B /* SearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71458F6524571FAD001B774B /* SearchBar.swift */; };
 		714848D3244858FF00455560 /* ComponentsOther.swift in Sources */ = {isa = PBXBuildFile; fileRef = 714848D2244858FF00455560 /* ComponentsOther.swift */; };
 		714848D62448598600455560 /* ActivityIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 714848D52448598600455560 /* ActivityIndicator.swift */; };
 		715692BB243E5A2A00B4613C /* Pagination.swift in Sources */ = {isa = PBXBuildFile; fileRef = 715692BA243E5A2A00B4613C /* Pagination.swift */; };
@@ -99,6 +100,7 @@
 
 /* Begin PBXFileReference section */
 		7138D3A62452C98F00CC7345 /* CollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewController.swift; sourceTree = "<group>"; };
+		71458F6524571FAD001B774B /* SearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBar.swift; sourceTree = "<group>"; };
 		714848D2244858FF00455560 /* ComponentsOther.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComponentsOther.swift; sourceTree = "<group>"; };
 		714848D52448598600455560 /* ActivityIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityIndicator.swift; sourceTree = "<group>"; };
 		715692BA243E5A2A00B4613C /* Pagination.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pagination.swift; sourceTree = "<group>"; };
@@ -334,6 +336,7 @@
 		7194697B243DA7BE00CAD09B /* Inputs */ = {
 			isa = PBXGroup;
 			children = (
+				71458F6524571FAD001B774B /* SearchBar.swift */,
 				7194697D243DA7BE00CAD09B /* TextField.swift */,
 				7194697C243DA7BE00CAD09B /* TitleTextField.swift */,
 			);
@@ -525,6 +528,7 @@
 				7193E36A24520C1C006238C5 /* CollectionDataSource.swift in Sources */,
 				714848D62448598600455560 /* ActivityIndicator.swift in Sources */,
 				71946992243DA7BE00CAD09B /* ComponentsNavigationBars.swift in Sources */,
+				71458F6624571FAD001B774B /* SearchBar.swift in Sources */,
 				7194699C243DA7BE00CAD09B /* NavigationBar.swift in Sources */,
 				7194698F243DA7BE00CAD09B /* ComponentsInputs.swift in Sources */,
 				7194699A243DA7BE00CAD09B /* PrimaryButton.swift in Sources */,
@@ -816,6 +820,7 @@
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = KB85VH6WG5;
+				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;

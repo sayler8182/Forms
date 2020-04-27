@@ -24,7 +24,7 @@ class DemoScrollContainerViewController: TableViewController {
         .with(height: 200)
         .with(isAutomatic: true)
         .with(items: [self.secondRedView, self.secondGreenView, self.secondOrangeView])
-        .with(paddingEdgeInset: UIEdgeInsets(horizontal: 8))
+        .with(paddingHorizontal: 8)
         .with(pageIsHidden: true)
         .with(scrollDirection: .vertical)
     private let secondRedView = Components.container.view()

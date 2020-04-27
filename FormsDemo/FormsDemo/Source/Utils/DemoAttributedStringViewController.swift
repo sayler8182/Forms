@@ -13,11 +13,11 @@ import UIKit
 class DemoAttributedStringViewController: TableViewController {
     private lazy var attributedLabel = Components.label.default()
         .with(attributedText: self.attributedLabelString)
-        .with(paddingEdgeInset: UIEdgeInsets(16))
+        .with(padding: 16)
     private lazy var clickableAttributedLabel = Components.label.default()
         .with(attributedText: self.clickableAttributedLabelString)
         .with(backgroundColor: UIColor.lightGray)
-        .with(paddingEdgeInset: UIEdgeInsets(16))
+        .with(padding: 16)
     
     private let divider = Components.utils.divider()
         .with(height: 5.0)

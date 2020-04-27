@@ -12,6 +12,7 @@ import UIKit
 struct EntryGroupModel {
     let groups: [GroupModel]
     let leaksCount: Int
+    let groupLeaksCount: Int
 }
     
 // MARK: EntryModel
@@ -32,10 +33,10 @@ struct GroupModel {
 
 // MARK: LifetimeTrackerManager
 public class LifetimeTrackerManager: NSObject {
-    public var visibility: Visibility = .visibleWithIssues
-    
-    private lazy var lifetimeTrackerView: UIViewController & LifetimeTrackerViewable = {
-        return LifetimeTrackerDashboardViewController()
+    public var visibility: Visibility
+    private var viewType: (UIViewController & LifetimeTrackerView).Type
+    private lazy var lifetimeTrackerView: UIViewController & LifetimeTrackerView = {
+        return self.viewType.init()
     }()
 
     public static var scene: UIWindowScene! {
@@ -49,18 +50,21 @@ public class LifetimeTrackerManager: NSObject {
         return window
     }()
     
-    public convenience init(visibility: Visibility) {
-        self.init()
+    public init(visibility: Visibility = .visibleWithIssues,
+                of viewType: (UIViewController & LifetimeTrackerView).Type = LifetimeTrackerDashboardViewController.self) {
+        self.viewType = viewType
         self.visibility = visibility
-    }
-
+        super.init()
+        self.refresh([:])
+    } 
+    
     public func refresh(_ trackedGroups: [String: LifetimeEntriesGroup]) {
         DispatchQueue.main.async {
             let hasIssues: Bool = self.hasIssues(in: trackedGroups)
             let entries = self.entries(from: trackedGroups)
             let dashboard = LifetimeTrackerDashboard(
                 leaksCount: entries.leaksCount,
-                summary: self.summary(from: trackedGroups),
+                groupLeaksCount: entries.groupLeaksCount,
                 sections: entries.groups)
             let isEnabled: Bool = !self.visibility.isHidden(hasIssues: hasIssues)
             self.lifetimeTrackerView.update(
@@ -69,32 +73,18 @@ public class LifetimeTrackerManager: NSObject {
                 isEnabled: isEnabled)
         }
     }
-    
-    private func summary(from groups: [String: LifetimeEntriesGroup]) -> NSAttributedString {
-        let names: [String] = groups.keys.sorted(by: >)
-        let summaries: String = names
-            .filter { groups[$0]?.lifetimeState == .leaky }
-            .compactMap { groups[$0] }
-            .map { $0.debugDescription }
-            .joined(separator: ", ")
-        let color: UIColor = summaries.isEmpty
-            ? UIColor.green
-            : UIColor.red
-        let summary: String = summaries.isEmpty
-            ? "Detected: \(summaries)"
-            : "No issues detected"
-        return NSAttributedString(
-            string: summary,
-            attributes: [NSAttributedString.Key.foregroundColor: color])
-    }
-    
+     
     private func entries(from trackedGroups: [String: LifetimeEntriesGroup]) -> EntryGroupModel {
         var groups: [GroupModel] = []
         var leaksCount: Int = 0
+        var groupLeaksCount: Int = 0
         trackedGroups
             .filter { !$0.value.isEmpty }
             .sorted { ($0.value.maxCount - $0.value.count) < ($1.value.maxCount - $1.value.count) }
             .forEach { (name: String, group: LifetimeEntriesGroup) in
+                if group.lifetimeState == .leaky {
+                    groupLeaksCount += group.count - group.maxCount
+                }
                 var entries: [EntryModel] = []
                 group.entries
                     .sorted { $0.value.count > $1.value.count }
@@ -117,7 +107,8 @@ public class LifetimeTrackerManager: NSObject {
         }
         return EntryGroupModel(
             groups: groups,
-            leaksCount: leaksCount)
+            leaksCount: leaksCount,
+            groupLeaksCount: groupLeaksCount)
     }
     
     private func hasIssues(in trackedGroups: [String: LifetimeEntriesGroup]) -> Bool {
@@ -164,7 +155,7 @@ enum LifetimeHideOption {
         guard let old: LifetimeTrackerDashboard = old else { return true }
         switch self {
         case .untilMoreIssue:
-            return old.leaksCount < new.leaksCount
+            return old.leaksCount < new.leaksCount || old.groupLeaksCount < new.groupLeaksCount
         case .untilNewIssueType:
             var oldSet = Set<String>()
             for item in old.sections {

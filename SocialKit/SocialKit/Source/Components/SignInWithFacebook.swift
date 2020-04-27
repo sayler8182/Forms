@@ -14,7 +14,7 @@ import Forms
 import UIKit
 
 // MARK: SignInWithFacebook
-open class SignInWithFacebook: FormComponent, Clickable {
+open class SignInWithFacebook: FormComponent, Clickable, FormComponentWithMarginEdgeInset, FormComponentWithPaddingEdgeInset {
     public let backgroundView = UIView()
         .with(isUserInteractionEnabled: true)
     public let signInWithFacebook = UIButton()
@@ -27,8 +27,8 @@ open class SignInWithFacebook: FormComponent, Clickable {
         get { return self.backgroundView.backgroundColor }
         set { self.backgroundView.backgroundColor = newValue }
     }
-    open var edgeInset: UIEdgeInsets = UIEdgeInsets(0) {
-        didSet { self.updateEdgeInset() }
+    open var marginEdgeInset: UIEdgeInsets = UIEdgeInsets(0) {
+        didSet { self.updateMarginEdgeInset() }
     }
     open var height: CGFloat = UITableView.automaticDimension
     open var title: String? {
@@ -84,8 +84,8 @@ open class SignInWithFacebook: FormComponent, Clickable {
         ])
     }
     
-    private func updateEdgeInset() {
-        let edgeInset: UIEdgeInsets = self.edgeInset
+    private func updateMarginEdgeInset() {
+        let edgeInset: UIEdgeInsets = self.marginEdgeInset
         self.backgroundView.frame = self.bounds.with(inset: edgeInset)
         self.backgroundView.constraint(to: self, position: .top)?.constant = edgeInset.top
         self.backgroundView.constraint(to: self, position: .bottom)?.constant = -edgeInset.bottom
@@ -105,17 +105,9 @@ open class SignInWithFacebook: FormComponent, Clickable {
 
 // MARK: Builder
 public extension SignInWithFacebook {
-    func with(edgeInset: UIEdgeInsets) -> Self {
-        self.edgeInset = edgeInset
-        return self
-    }
     @objc
     override func with(height: CGFloat) -> Self {
         self.height = height
-        return self
-    }
-    func with(paddingEdgeInset: UIEdgeInsets) -> Self {
-        self.paddingEdgeInset = paddingEdgeInset
         return self
     }
 }

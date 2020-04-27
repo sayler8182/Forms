@@ -37,8 +37,8 @@ public struct Forms {
         // number format
         injector.register(NumberFormatProtocol.self) { _ in
             NumberFormat(
-                groupingSeparator: " ",
-                decimalSeparator: ",")
+                groupingSeparator: "-",
+                decimalSeparator: "_")
         }
         // theme
         injector.register(ThemeProtocol.self) { _ in

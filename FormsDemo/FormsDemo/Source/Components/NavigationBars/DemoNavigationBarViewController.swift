@@ -32,6 +32,9 @@ class DemoNavigationBarViewController: TableViewController {
     private lazy var navigationBarWithoutShadow = Components.navigationBar.default()
         .with(isShadow: false)
         .with(title: "Navigation bar without shadow") 
+    private lazy var navigationBarWithSearchBar = Components.navigationBar.default()
+        .with(titleView: self.navigationBarSearchBar)
+        .with(rightBarButtonItems: [self.cancelBarItem])
     
     private let defaultNavigationBarButton = Components.button.default()
         .with(title: "Default navigation bar")
@@ -45,6 +48,8 @@ class DemoNavigationBarViewController: TableViewController {
         .with(title: "Navigation bar with title view")
     private var navigationBarWithoutShadowButton = Components.button.default()
         .with(title: "Navigation bar without shadow")
+    private var navigationBarWithSearchBarButton = Components.button.default()
+        .with(title: "Navigation bar with search bar")
     
     private lazy var text1BarItem = BarItem()
         .with(title: "Item 1")
@@ -54,9 +59,12 @@ class DemoNavigationBarViewController: TableViewController {
         .with(imageSystemName: "heart.fill")
     private lazy var image2BarItem = BarItem()
         .with(imageSystemName: "square.and.arrow.up")
+    private lazy var cancelBarItem = BarItem()
+        .with(title: "Cancel")
     
     private lazy var navigationBarTitleView = Components.container.view()
         .with(backgroundColor: UIColor.red)
+    private lazy var navigationBarSearchBar = Components.input.searchBar.default()
     
     private let divider = Components.utils.divider()
         .with(height: 5.0)
@@ -75,7 +83,8 @@ class DemoNavigationBarViewController: TableViewController {
             self.navigationBarWithLeftAndRightBarButton,
             self.navigationBarWithLeftAndRightBarsButton,
             self.navigationBarWithTitleViewButton,
-            self.navigationBarWithoutShadowButton
+            self.navigationBarWithoutShadowButton,
+            self.navigationBarWithSearchBarButton
         ], divider: self.divider)
         
         self.navigationBarTitleView.anchors([
@@ -91,12 +100,16 @@ class DemoNavigationBarViewController: TableViewController {
             self.navigationBarWithLeftAndRightBarButton: self.navigationBarWithLeftAndRightBar,
             self.navigationBarWithLeftAndRightBarsButton: self.navigationBarWithLeftAndRightBars,
             self.navigationBarWithTitleViewButton: self.navigationBarWithTitleView,
-            self.navigationBarWithoutShadowButton: self.navigationBarWithoutShadow
+            self.navigationBarWithoutShadowButton: self.navigationBarWithoutShadow,
+            self.navigationBarWithSearchBarButton: self.navigationBarWithSearchBar
         ]
         for item in map {
             item.key.onClick = { [unowned self] in
                 self.setNavigationBar(item.value)
             }
+        }
+        self.cancelBarItem.onClick = { [unowned self] in
+            self.navigationBarSearchBar.endEditing(true)
         }
     }
 }

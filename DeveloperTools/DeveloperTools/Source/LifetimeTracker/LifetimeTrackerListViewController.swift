@@ -69,15 +69,21 @@ class LifetimeTrackerListViewController: UIViewController {
     func show() {
         let window = UIWindow(windowScene: LifetimeTrackerManager.scene)
         window.windowLevel = UIWindow.Level.statusBar + 1
-        window.rootViewController = UINavigationController(rootViewController: self)
+        let rootViewController = UIViewController()
+        window.rootViewController = rootViewController
         window.isHidden = false
         self.window = window
+        let navigationController = UINavigationController(rootViewController: self)
+        navigationController.modalPresentationStyle = .fullScreen
+        rootViewController.present(navigationController, animated: true, completion: nil)
     }
     
     @objc
     private func closeBarButtonClick(_ sender: UIBarButtonItem) {
-        self.window?.isHidden = true
-        self.window = nil
+        self.dismiss(animated: true) {
+            self.window?.isHidden = true
+            self.window = nil
+        }
     }
 }
 
@@ -92,6 +98,10 @@ extension LifetimeTrackerListViewController: UITableViewDelegate, UITableViewDat
         guard let dashboard = self.dashboard else { return 0 }
         guard section < dashboard.sections.count else { return 0 }
         return dashboard.sections[section].entries.count
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
@@ -142,7 +152,7 @@ class LifetimeTrackerDashboardHeaderView: UITableViewHeaderFooterView {
     }
     
     private func setupView() {
-        self.backgroundColor = UIColor.tertiarySystemBackground
+        self.backgroundView?.backgroundColor = UIColor.tertiarySystemBackground
         self.indicatorView.translatesAutoresizingMaskIntoConstraints = false
         self.indicatorView.backgroundColor = UIColor.clear
         self.addSubview(self.indicatorView)

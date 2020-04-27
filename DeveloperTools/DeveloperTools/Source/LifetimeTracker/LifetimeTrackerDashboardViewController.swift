@@ -9,15 +9,15 @@
 import UIKit
 
 // MARK: LifetimeTrackerDashboardViewController
-class LifetimeTrackerDashboardViewController: UIViewController, LifetimeTrackerViewable {
+public class LifetimeTrackerDashboardViewController: UIViewController, LifetimeTrackerView {
     private let roundView: UIView = UIView()
     private let leaksCountLabel: UILabel = UILabel()
     private let leaksTitleLabel: UILabel = UILabel()
-
+    
     private weak var listController: LifetimeTrackerListViewController?
     private var hideOption: LifetimeHideOption = .none
     private var dashboard: LifetimeTrackerDashboard?
-
+    
     private let size: CGFloat = 70.0
     private var dragOffset: CGSize = CGSize.zero {
         didSet { self.relayout() }
@@ -34,13 +34,13 @@ class LifetimeTrackerDashboardViewController: UIViewController, LifetimeTrackerV
         return window
     }()
     
-    override func viewDidLoad() {
+    override public func viewDidLoad() {
         super.viewDidLoad()
         self.setupRoundView()
         self.setupActions()
     }
     
-    override func viewDidAppear(_ animated: Bool) {
+    override public func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         self.dragOffset = CGSize(width: UIScreen.main.bounds.size.width - self.size * 0.6, height: self.size)
     }
@@ -61,11 +61,10 @@ class LifetimeTrackerDashboardViewController: UIViewController, LifetimeTrackerV
         ).cgPath
         self.view.addSubview(self.roundView)
         NSLayoutConstraint.activate([
-            self.roundView.widthAnchor.constraint(equalTo: self.view.widthAnchor),
-            self.roundView.heightAnchor.constraint(equalTo: self.view.heightAnchor)
+            self.roundView.widthAnchor.constraint(greaterThanOrEqualToConstant: self.size),
+            self.roundView.heightAnchor.constraint(equalToConstant: self.size)
         ])
         self.leaksCountLabel.translatesAutoresizingMaskIntoConstraints = false
-        self.leaksCountLabel.font = UIFont.systemFont(ofSize: 24)
         self.leaksCountLabel.textAlignment = .center
         self.roundView.addSubview(self.leaksCountLabel)
         NSLayoutConstraint.activate([
@@ -94,7 +93,7 @@ class LifetimeTrackerDashboardViewController: UIViewController, LifetimeTrackerV
         let longPressGestureRecognizer = UILongPressGestureRecognizer(target: self, action: #selector(handleLongPress))
         self.view.addGestureRecognizer(longPressGestureRecognizer)
     }
-
+    
     @objc
     func handlePan(recognizer: UIPanGestureRecognizer) {
         switch recognizer.state {
@@ -124,7 +123,7 @@ class LifetimeTrackerDashboardViewController: UIViewController, LifetimeTrackerV
         controller.show()
         self.listController = controller
     }
-
+    
     @objc
     func handleLongPress(recognizer: UILongPressGestureRecognizer) {
         guard recognizer.state == .began else { return }
@@ -133,18 +132,16 @@ class LifetimeTrackerDashboardViewController: UIViewController, LifetimeTrackerV
             self.mainWindow?.isHidden = option != .none
         }
     }
-
-    func update(with dashboard: LifetimeTrackerDashboard,
-                on mainWindow: UIWindow,
-                isEnabled: Bool) {
+    
+    public func update(with dashboard: LifetimeTrackerDashboard,
+                       on mainWindow: UIWindow,
+                       isEnabled: Bool) {
         self.mainWindow = mainWindow
         let oldDashboard: LifetimeTrackerDashboard? = self.dashboard
         self.dashboard = dashboard
-        self.leaksCountLabel.text = "\(dashboard.leaksCount)"
-        self.leaksCountLabel.textColor = dashboard.leaksCount == 0
-            ? UIColor.green
-            : UIColor.red
+        self.updateView(with: dashboard)
         self.listController?.update(dashboard: dashboard)
+        self.view.layoutIfNeeded()
         self.relayout()
         
         let isVisible = self.hideOption.isVisible(
@@ -156,12 +153,33 @@ class LifetimeTrackerDashboardViewController: UIViewController, LifetimeTrackerV
         }
     }
     
+    private func updateView(with dashboard: LifetimeTrackerDashboard) {
+        let leaksColor: UIColor = dashboard.leaksCount == 0 ? UIColor.green : UIColor.red
+        let groupLeaksColor: UIColor = dashboard.groupLeaksCount == 0 ? UIColor.green : UIColor.red
+        let attributedText = NSMutableAttributedString()
+        attributedText.append(NSAttributedString(
+            string: "\(dashboard.leaksCount)",
+            attributes: [
+                NSAttributedString.Key.font: UIFont.systemFont(ofSize: 24),
+                NSAttributedString.Key.foregroundColor: leaksColor
+        ])
+        )
+        attributedText.append(NSAttributedString(
+            string: "/\(dashboard.groupLeaksCount)",
+            attributes: [
+                NSAttributedString.Key.font: UIFont.systemFont(ofSize: 12),
+                NSAttributedString.Key.foregroundColor: groupLeaksColor
+        ])
+        )
+        self.leaksCountLabel.attributedText = attributedText
+    }
+    
     private func relayout() {
         self.view.window?.frame = CGRect(
             x: self.dragOffset.width,
             y: self.dragOffset.height,
-            width: self.size,
-            height: self.size)
+            width: self.roundView.frame.width,
+            height: self.roundView.frame.height)
     }
     
     private func clampDragOffset() {
@@ -171,7 +189,7 @@ class LifetimeTrackerDashboardViewController: UIViewController, LifetimeTrackerV
         } else if self.dragOffset.width > UIScreen.main.bounds.width - view.frame.size.width + maxHiddenWidth {
             self.dragOffset.width = UIScreen.main.bounds.width - view.frame.size.width + maxHiddenWidth
         }
-
+        
         let maxHiddenHeight = view.frame.size.height * 0.4
         if self.dragOffset.height < -maxHiddenHeight {
             self.dragOffset.height = -maxHiddenHeight
@@ -180,15 +198,3 @@ class LifetimeTrackerDashboardViewController: UIViewController, LifetimeTrackerV
         }
     }
 } 
-
-// MARK: UIPopoverPresentationControllerDelegate
-extension LifetimeTrackerDashboardViewController: UIPopoverPresentationControllerDelegate {
-    func adaptivePresentationStyle(for controller: UIPresentationController) -> UIModalPresentationStyle {
-        return .none
-    }
-
-    func prepareForPopoverPresentation(_ popoverPresentationController: UIPopoverPresentationController) {
-        popoverPresentationController.permittedArrowDirections = .any
-        popoverPresentationController.sourceView = self.roundView
-    }
-}

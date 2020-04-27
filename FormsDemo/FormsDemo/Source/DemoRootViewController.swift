@@ -26,6 +26,7 @@ private enum Demo {
         case componentsContainersScroll
         case componentsContainersStack
         case componentsInputs
+        case componentsInputsSearchBar
         case componentsInputsTitleTextField
         case componentsLabels
         case componentsNavigationBars
@@ -40,6 +41,7 @@ private enum Demo {
         case utilsAttributedString
         case utilsDeveloperTools
         case utilsDeveloperToolsLifetime
+        case utilsDeveloperToolsMenu
         case utilsLoader
         case utilsModal
         case utilsNetwork
@@ -109,6 +111,7 @@ private enum Demo {
                         title: "Inputs",
                         sections: [
                             Section(rows: [
+                                Row(type: .componentsInputsSearchBar, title: "SearchBar"),
                                 Row(type: .componentsInputsTitleTextField, title: "TitleTextField")
                             ])
                     ]),
@@ -134,7 +137,8 @@ private enum Demo {
                         title: "DeveloperTools",
                         sections: [
                             Section(rows: [
-                                Row(type: .utilsDeveloperToolsLifetime, title: "Lifetime")
+                                Row(type: .utilsDeveloperToolsLifetime, title: "Lifetime"),
+                                Row(type: .utilsDeveloperToolsMenu, title: "Menu")
                             ])
                     ]),
                     Row(type: .utilsLoader, title: "Loader"),
@@ -308,6 +312,7 @@ private class DemoListViewController: ViewController {
         case .componentsButtonsPrimaryButton:                   return DemoPrimaryButtonViewController()
         case .componentsContainersScroll:                       return DemoScrollContainerViewController()
         case .componentsContainersStack:                        return DemoStackContainerViewController()
+        case .componentsInputsSearchBar:                        return DemoTitleSearchBarViewController()
         case .componentsInputsTitleTextField:                   return DemoTitleTextFieldViewController()
         case .componentsLabels:                                 return DemoLabelsViewController()
         case .componentsNavigationBarsNavigationBar:            return DemoNavigationBarViewController()
@@ -321,6 +326,7 @@ private class DemoListViewController: ViewController {
         case .utilsAttributedString:                            return DemoAttributedStringViewController()
             #if canImport(DeveloperTools)
         case .utilsDeveloperToolsLifetime:                      return DemoDeveloperToolsLifetimeViewController()
+        case .utilsDeveloperToolsMenu:                          return DemoDeveloperToolsMenuViewController()
             #endif
         case .utilsLoader:                                      return DemoLoaderViewController()
         case .utilsModal:                                       return DemoModalViewController()

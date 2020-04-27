@@ -8,16 +8,16 @@
 
 import Foundation
 
-struct LifetimeTrackerDashboard {
+public struct LifetimeTrackerDashboard {
     let leaksCount: Int
-    let summary: NSAttributedString?
+    let groupLeaksCount: Int
     let sections: [GroupModel]
 
     init(leaksCount: Int,
-         summary: NSAttributedString? = nil,
+         groupLeaksCount: Int,
          sections: [GroupModel]) {
         self.leaksCount = leaksCount
-        self.summary = summary
+        self.groupLeaksCount = groupLeaksCount
         self.sections = sections
     }
 }

@@ -45,7 +45,7 @@ public extension Button {
 }
 
 // MARK: Button
-open class Button: FormComponent, Clickable {
+open class Button: FormComponent, Clickable, FormComponentWithMarginEdgeInset {
     public let backgroundView = UIView()
         .with(isUserInteractionEnabled: true)
     public let titleLabel = UILabel()
@@ -55,8 +55,8 @@ open class Button: FormComponent, Clickable {
     open var backgroundColors: State<UIColor?> = State<UIColor?>(UIColor.systemBackground) {
         didSet { self.updateState() }
     }
-    open var edgeInset: UIEdgeInsets = UIEdgeInsets(0) {
-        didSet { self.updateEdgeInset() }
+    open var marginEdgeInset: UIEdgeInsets = UIEdgeInsets(0) {
+        didSet { self.updateMarginEdgeInset() }
     }
     open var height: CGFloat = UITableView.automaticDimension
     open var isEnabled: Bool {
@@ -170,8 +170,8 @@ open class Button: FormComponent, Clickable {
         ])
     }
     
-    private func updateEdgeInset() {
-        let edgeInset: UIEdgeInsets = self.edgeInset
+    private func updateMarginEdgeInset() {
+        let edgeInset: UIEdgeInsets = self.marginEdgeInset
         self.backgroundView.frame = self.bounds.with(inset: edgeInset)
         self.backgroundView.constraint(to: self, position: .top)?.constant = edgeInset.top
         self.backgroundView.constraint(to: self, position: .bottom)?.constant = -edgeInset.bottom
@@ -232,10 +232,6 @@ public extension Button {
     }
     func with(backgroundColors: State<UIColor?>) -> Self {
         self.backgroundColors = backgroundColors
-        return self
-    }
-    func with(edgeInset: UIEdgeInsets) -> Self {
-        self.edgeInset = edgeInset
         return self
     }
     @objc

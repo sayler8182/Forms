@@ -1,5 +1,5 @@
 //
-//  LifetimeTrackerViewable.swift
+//  LifetimeTrackerView.swift
 //  DeveloperTools
 //
 //  Created by Konrad on 4/25/20.
@@ -8,9 +8,8 @@
 
 import UIKit
 
-// MARK: LifetimeTrackerViewable
-protocol LifetimeTrackerViewable {
-    init() 
+// MARK: LifetimeTrackerView
+public protocol LifetimeTrackerView: class {
     func update(with dashboard: LifetimeTrackerDashboard,
                 on mainWindow: UIWindow,
                 isEnabled: Bool)

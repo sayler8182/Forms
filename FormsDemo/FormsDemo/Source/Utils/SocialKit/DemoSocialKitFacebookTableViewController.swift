@@ -15,7 +15,7 @@ import UIKit
 // MARK: DemoSocialKitFacebookTableViewController
 class DemoSocialKitFacebookTableViewController: TableViewController {
     private let signInWithFacebook = Components.social.signInWithFacebook()
-        .with(paddingEdgeInset: UIEdgeInsets(16))
+        .with(padding: 16)
     
     private let divider = Components.utils.divider()
         .with(height: 5.0)

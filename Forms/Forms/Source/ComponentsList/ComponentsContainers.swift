@@ -16,7 +16,7 @@ public struct ComponentsContainers: ComponentsList {
         component.automaticInterval = 5.0
         component.backgroundColor = UIColor.systemBackground
         component.bounces = true
-        component.edgeInset = UIEdgeInsets(0)
+        component.marginEdgeInset = UIEdgeInsets(0)
         component.height = 100
         component.isAutomatic = false
         component.isPagingEnabled = true
@@ -35,7 +35,7 @@ public struct ComponentsContainers: ComponentsList {
         component.axis = .horizontal
         component.backgroundColor = UIColor.systemBackground
         component.distribution = .fillEqually
-        component.edgeInset = UIEdgeInsets(0)
+        component.marginEdgeInset = UIEdgeInsets(0)
         component.height = 100
         component.paddingEdgeInset = UIEdgeInsets(0)
         return component

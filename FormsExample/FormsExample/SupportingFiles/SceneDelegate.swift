@@ -15,9 +15,10 @@ import SocialKit
 #endif
 import UIKit
 
+// MARK: SceneDelegate
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     var window: UIWindow?
-
+    
     func scene(_ scene: UIScene,
                willConnectTo session: UISceneSession,
                options connectionOptions: UIScene.ConnectionOptions) {
@@ -30,7 +31,12 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         #endif
         
         #if canImport(DeveloperTools)
-        LifetimeTracker.configure(LifetimeTrackerManager(visibility: .alwaysVisible).refresh)
+        DeveloperTools.configure(
+            features: DemoDeveloperFeatureKeys.allCases,
+            featuresFlags: DemoDeveloperFeatureFlagKeys.allCases,
+            onSelect: DemoDeveloperToolsManager.onSelect)
+        let trackerManager = LifetimeTrackerManager()
+        LifetimeTracker.configure(trackerManager.refresh)
         #endif
         
         let window: UIWindow = UIWindow(windowScene: windowScene)
@@ -38,4 +44,4 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         self.window = window
         window.makeKeyAndVisible()
     }
-} 
+}

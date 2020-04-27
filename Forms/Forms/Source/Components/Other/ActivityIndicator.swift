@@ -10,7 +10,7 @@ import Anchor
 import UIKit
 
 // MARK: ActivityIndicator
-open class ActivityIndicator: FormComponent {
+open class ActivityIndicator: FormComponent, FormComponentWithMarginEdgeInset, FormComponentWithPaddingEdgeInset {
     public let backgroundView = UIView()
     public let activityIndicator = UIActivityIndicatorView()
         .with(isUserInteractionEnabled: true)
@@ -23,8 +23,8 @@ open class ActivityIndicator: FormComponent {
         get { return self.activityIndicator.color }
         set { self.activityIndicator.color = newValue }
     }
-    open var edgeInset: UIEdgeInsets = UIEdgeInsets(0) {
-        didSet { self.updateEdgeInset() }
+    open var marginEdgeInset: UIEdgeInsets = UIEdgeInsets(0) {
+        didSet { self.updateMarginEdgeInset() }
     }
     open var height: CGFloat = UITableView.automaticDimension
     open var isAnimating: Bool {
@@ -63,8 +63,8 @@ open class ActivityIndicator: FormComponent {
         ])
     }
     
-    private func updateEdgeInset() {
-        let edgeInset: UIEdgeInsets = self.edgeInset
+    private func updateMarginEdgeInset() {
+        let edgeInset: UIEdgeInsets = self.marginEdgeInset
         self.backgroundView.frame = self.bounds.with(inset: edgeInset)
         self.backgroundView.constraint(to: self, position: .top)?.constant = edgeInset.top
         self.backgroundView.constraint(to: self, position: .bottom)?.constant = -edgeInset.bottom
@@ -88,10 +88,6 @@ public extension ActivityIndicator {
         self.color = color
         return self
     }
-    func with(edgeInset: UIEdgeInsets) -> Self {
-        self.edgeInset = edgeInset
-        return self
-    }
     @objc
     override func with(height: CGFloat) -> Self {
         self.height = height
@@ -99,10 +95,6 @@ public extension ActivityIndicator {
     }
     func with(isAnimating: Bool) -> Self {
         self.isAnimating = isAnimating
-        return self
-    }
-    func with(paddingEdgeInset: UIEdgeInsets) -> Self {
-        self.paddingEdgeInset = paddingEdgeInset
         return self
     }
     func with(style: UIActivityIndicatorView.Style) -> Self {

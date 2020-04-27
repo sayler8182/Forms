@@ -9,7 +9,7 @@
 import UIKit
 
 // MARK: StackContainer
-open class StackContainer: FormComponent {
+open class StackContainer: FormComponent, FormComponentWithMarginEdgeInset, FormComponentWithPaddingEdgeInset {
     public let backgroundView = UIView()
     public let stackView = UIStackView()
     
@@ -31,8 +31,8 @@ open class StackContainer: FormComponent {
         get { return self.stackView.distribution }
         set { self.stackView.distribution = newValue }
     }
-    open var edgeInset: UIEdgeInsets = UIEdgeInsets(0) {
-        didSet { self.updateEdgeInset() }
+    open var marginEdgeInset: UIEdgeInsets = UIEdgeInsets(0) {
+        didSet { self.updateMarginEdgeInset() }
     }
     open var height: CGFloat = UITableView.automaticDimension
     open var paddingEdgeInset: UIEdgeInsets = UIEdgeInsets(0) {
@@ -68,8 +68,8 @@ open class StackContainer: FormComponent {
         ])
     }
     
-    private func updateEdgeInset() {
-        let edgeInset: UIEdgeInsets = self.edgeInset
+    private func updateMarginEdgeInset() {
+        let edgeInset: UIEdgeInsets = self.marginEdgeInset
         self.backgroundView.frame = self.bounds.with(inset: edgeInset)
         self.backgroundView.constraint(to: self, position: .top)?.constant = edgeInset.top
         self.backgroundView.constraint(to: self, position: .bottom)?.constant = -edgeInset.bottom
@@ -103,10 +103,6 @@ public extension StackContainer {
         self.axis = axis
         return self
     }
-    func with(edgeInset: UIEdgeInsets) -> Self {
-        self.edgeInset = edgeInset
-        return self
-    }
     func with(distribution: UIStackView.Distribution) -> Self {
         self.distribution = distribution
         return self
@@ -118,10 +114,6 @@ public extension StackContainer {
     }
     func with(items: [FormComponent]) -> Self {
         self.setItems(items)
-        return self
-    }
-    func with(paddingEdgeInset: UIEdgeInsets) -> Self {
-        self.paddingEdgeInset = paddingEdgeInset
         return self
     }
 }

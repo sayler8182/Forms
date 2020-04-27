@@ -11,7 +11,7 @@ import UIKit
 import Utils
 
 // MARK: Label
-open class Label: FormComponent, Clickable {
+open class Label: FormComponent, Clickable, FormComponentWithMarginEdgeInset, FormComponentWithPaddingEdgeInset {
     public let backgroundView = UIView()
     public let textLabel = UILabel()
         .with(isUserInteractionEnabled: true)
@@ -37,8 +37,8 @@ open class Label: FormComponent, Clickable {
         get { return self.textLabel.textColor }
         set { self.textLabel.textColor = newValue }
     }
-    open var edgeInset: UIEdgeInsets = UIEdgeInsets(0) {
-        didSet { self.updateEdgeInset() }
+    open var marginEdgeInset: UIEdgeInsets = UIEdgeInsets(0) {
+        didSet { self.updateMarginEdgeInset() }
     }
     open var font: UIFont? {
         get { return self.textLabel.font }
@@ -131,8 +131,8 @@ open class Label: FormComponent, Clickable {
         ])
     }
     
-    private func updateEdgeInset() {
-        let edgeInset: UIEdgeInsets = self.edgeInset
+    private func updateMarginEdgeInset() {
+        let edgeInset: UIEdgeInsets = self.marginEdgeInset
         self.backgroundView.frame = self.bounds.with(inset: edgeInset)
         self.backgroundView.constraint(to: self, position: .top)?.constant = edgeInset.top
         self.backgroundView.constraint(to: self, position: .bottom)?.constant = -edgeInset.bottom
@@ -191,10 +191,6 @@ public extension Label {
         self.color = color
         return self
     }
-    func with(edgeInset: UIEdgeInsets) -> Self {
-        self.edgeInset = edgeInset
-        return self
-    }
     func with(font: UIFont?) -> Self {
         self.font = font
         return self
@@ -219,10 +215,6 @@ public extension Label {
     }
     func with(numberOfLines: Int) -> Self {
         self.numberOfLines = numberOfLines
-        return self
-    }
-    func with(paddingEdgeInset: UIEdgeInsets) -> Self {
-        self.paddingEdgeInset = paddingEdgeInset
         return self
     }
     func with(text: String?) -> Self {

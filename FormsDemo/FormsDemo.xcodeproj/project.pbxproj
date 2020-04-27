@@ -57,9 +57,12 @@
 		719469C4243DB01D00CAD09B /* DemoShimmerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 719469C3243DB01D00CAD09B /* DemoShimmerViewController.swift */; };
 		719469D4243DBC6800CAD09B /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 719469D3243DBC6800CAD09B /* Utils.swift */; };
 		719469D6243DC11000CAD09B /* DemoShimmerTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 719469D5243DC11000CAD09B /* DemoShimmerTableViewController.swift */; };
+		719F8C7B24570358004F5A27 /* DemoDeveloperToolsMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 719F8C7A24570358004F5A27 /* DemoDeveloperToolsMenuViewController.swift */; };
 		71BB61EF2445C6E7002BB31F /* DemoNetworkGetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71BB61EE2445C6E7002BB31F /* DemoNetworkGetViewController.swift */; };
 		71BB62812445F7C7002BB31F /* DemoNetworkImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71BB62802445F7C7002BB31F /* DemoNetworkImageViewController.swift */; };
 		71C1F0022449E8B000FFC999 /* Forms.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71C1F0012449E8B000FFC999 /* Forms.framework */; };
+		71DB5C912457280F00B16145 /* SocialKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71DB5C902457280F00B16145 /* SocialKit.framework */; };
+		71DB5C9524575B6300B16145 /* DemoTitleSearchBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71DB5C9424575B6300B16145 /* DemoTitleSearchBarViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -126,9 +129,12 @@
 		719469C3243DB01D00CAD09B /* DemoShimmerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoShimmerViewController.swift; sourceTree = "<group>"; };
 		719469D3243DBC6800CAD09B /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 		719469D5243DC11000CAD09B /* DemoShimmerTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoShimmerTableViewController.swift; sourceTree = "<group>"; };
+		719F8C7A24570358004F5A27 /* DemoDeveloperToolsMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoDeveloperToolsMenuViewController.swift; sourceTree = "<group>"; };
 		71BB61EE2445C6E7002BB31F /* DemoNetworkGetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoNetworkGetViewController.swift; sourceTree = "<group>"; };
 		71BB62802445F7C7002BB31F /* DemoNetworkImageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoNetworkImageViewController.swift; sourceTree = "<group>"; };
 		71C1F0012449E8B000FFC999 /* Forms.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Forms.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		71DB5C902457280F00B16145 /* SocialKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = SocialKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		71DB5C9424575B6300B16145 /* DemoTitleSearchBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoTitleSearchBarViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -138,6 +144,7 @@
 			files = (
 				71C1F0022449E8B000FFC999 /* Forms.framework in Frameworks */,
 				7178029D245448C50057E848 /* DeveloperTools.framework in Frameworks */,
+				71DB5C912457280F00B16145 /* SocialKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -206,6 +213,7 @@
 		713B9C63243D0947001F6E3A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				71DB5C902457280F00B16145 /* SocialKit.framework */,
 				7178029C245448C50057E848 /* DeveloperTools.framework */,
 				71C1F0012449E8B000FFC999 /* Forms.framework */,
 			);
@@ -237,8 +245,8 @@
 		713B9C6B243D0964001F6E3A /* NavigationBars */ = {
 			isa = PBXGroup;
 			children = (
-				713B9C6C243D0964001F6E3A /* DemoNavigationBarWithBackOrCloseViewController.swift */,
 				713B9C6D243D0964001F6E3A /* DemoNavigationBarViewController.swift */,
+				713B9C6C243D0964001F6E3A /* DemoNavigationBarWithBackOrCloseViewController.swift */,
 			);
 			path = NavigationBars;
 			sourceTree = "<group>";
@@ -254,6 +262,7 @@
 		713B9C70243D0964001F6E3A /* Inputs */ = {
 			isa = PBXGroup;
 			children = (
+				71DB5C9424575B6300B16145 /* DemoTitleSearchBarViewController.swift */,
 				713B9C71243D0964001F6E3A /* DemoTitleTextFieldViewController.swift */,
 			);
 			path = Inputs;
@@ -339,6 +348,7 @@
 			isa = PBXGroup;
 			children = (
 				717802BC245449E30057E848 /* DemoDeveloperToolsLifetimeViewController.swift */,
+				719F8C7A24570358004F5A27 /* DemoDeveloperToolsMenuViewController.swift */,
 			);
 			path = DeveloperTools;
 			sourceTree = "<group>";
@@ -485,6 +495,7 @@
 			files = (
 				7193E3582451E051006238C5 /* DemoScrollContainerViewController.swift in Sources */,
 				715B7AE82446FD1500754EDB /* DemoArchitecturesCleanSummaryInteractor.swift in Sources */,
+				71DB5C9524575B6300B16145 /* DemoTitleSearchBarViewController.swift in Sources */,
 				71929C0724499DD400AB93F1 /* DemoSocialKitGoogleTableViewController.swift in Sources */,
 				717802BD245449E30057E848 /* DemoDeveloperToolsLifetimeViewController.swift in Sources */,
 				714848DC24485CE500455560 /* DemoUtilsViewController.swift in Sources */,
@@ -513,6 +524,7 @@
 				715B7AE42446FD1500754EDB /* DemoArchitecturesCleanSummaryRouter.swift in Sources */,
 				719469D4243DBC6800CAD09B /* Utils.swift in Sources */,
 				715891122446377D003200C7 /* DemoArchitecturesCleanViewController.swift in Sources */,
+				719F8C7B24570358004F5A27 /* DemoDeveloperToolsMenuViewController.swift in Sources */,
 				71BB61EF2445C6E7002BB31F /* DemoNetworkGetViewController.swift in Sources */,
 				715B7AE52446FD1500754EDB /* DemoArchitecturesCleanSummaryModels.swift in Sources */,
 				713B9C8A243D0964001F6E3A /* DemoViewController.swift in Sources */,

@@ -1,8 +1,8 @@
 //
-//  TextField.swift
+//  SearchBar.swift
 //  Forms
 //
-//  Created by Konrad on 3/28/20.
+//  Created by Konrad on 4/27/20.
 //  Copyright © 2020 Limbo. All rights reserved.
 //
 
@@ -11,32 +11,28 @@ import UIKit
 import Validators
 
 // MARK: State
-public extension TextField {
+public extension SearchBar {
     enum StateType {
         case active
         case selected
         case disabled
-        case error
     }
     
     struct State<T> {
         let active: T
         let selected: T
         let disabled: T
-        let error: T
         
         init(_ value: T) {
             self.active = value
             self.selected = value
             self.disabled = value
-            self.error = value
         }
         
-        init(active: T, selected: T, disabled: T, error: T) {
+        init(active: T, selected: T, disabled: T) {
             self.active = active
             self.selected = selected
             self.disabled = disabled
-            self.error = error
         }
         
         func value(for state: StateType) -> T {
@@ -44,52 +40,26 @@ public extension TextField {
             case .active: return self.active
             case .selected: return self.selected
             case .disabled: return self.disabled
-            case .error: return self.error
             }
         }
     }
 }
 
-// TextField
-open class UITextFieldWithoutPadding: UITextField {
-    private let padding: UIEdgeInsets = UIEdgeInsets(0)
-    
-    override open func textRect(forBounds bounds: CGRect) -> CGRect {
-        return bounds.inset(by: self.padding)
-    }
-    
-    override open func placeholderRect(forBounds bounds: CGRect) -> CGRect {
-        return bounds.inset(by: self.padding)
-    }
-    
-    override open func editingRect(forBounds bounds: CGRect) -> CGRect {
-        return bounds.inset(by: self.padding)
-    }
-}
-
-// MARK: TextField
-open class TextField: FormComponent, FormComponentWithMarginEdgeInset, FormComponentWithPaddingEdgeInset {
+// MARK: SearchBar
+open class SearchBar: FormComponent, FormComponentWithMarginEdgeInset, FormComponentWithPaddingEdgeInset {
     public let backgroundView = UIView()
         .with(width: 320, height: 85)
-    public let titleLabel = UILabel()
-        .with(width: 320, height: 20)
-    public let textField = UITextFieldWithoutPadding()
+    public let searchBar = UISearchBar()
         .with(width: 320, height: 44)
-    public let underscoreView = UIView()
-        .with(width: 320, height: 1)
-    public let errorLabel = UILabel()
-        .with(width: 320, height: 20)
-    public let infoLabel = UILabel()
-        .with(width: 320, height: 20)
     
     open var animationTime: TimeInterval = 0.2
     open var autocapitalizationType: UITextAutocapitalizationType {
-        get { return self.textField.autocapitalizationType }
-        set { self.textField.autocapitalizationType = newValue }
+        get { return self.searchBar.autocapitalizationType }
+        set { self.searchBar.autocapitalizationType = newValue }
     }
     open var autocorrectionType: UITextAutocorrectionType {
-        get { return self.textField.autocorrectionType }
-        set { self.textField.autocorrectionType = newValue }
+        get { return self.searchBar.autocorrectionType }
+        set { self.searchBar.autocorrectionType = newValue }
     }
     open var backgroundColors: State<UIColor?> = State<UIColor?>(UIColor.systemBackground) {
         didSet { self.updateState() }
@@ -97,51 +67,28 @@ open class TextField: FormComponent, FormComponentWithMarginEdgeInset, FormCompo
     open var marginEdgeInset: UIEdgeInsets = UIEdgeInsets(0) {
         didSet { self.updateMarginEdgeInset() }
     }
-    open var error: String? {
-        didSet { self.updateError() }
-    }
-    open var errorColor: UIColor = UIColor.red {
-        didSet { self.updateState() }
-    }
-    open var errorFont: UIFont = UIFont.systemFont(ofSize: 10) {
-        didSet { self.updateState() }
-    }
-    open var info: String? {
-        get { return self.infoLabel.text }
-        set { self.infoLabel.text = newValue }
-    }
-    open var infoColor: UIColor = UIColor.lightGray {
-        didSet { self.updateState() }
-    }
-    open var infoFont: UIFont = UIFont.systemFont(ofSize: 10) {
-        didSet { self.updateState() }
-    }
     open var isEnabled: Bool {
         get { return self.isUserInteractionEnabled }
         set { newValue ? self.enable(animated: false) : self.disable(animated: false) }
     }
-    open var isSecureTextEntry: Bool {
-        get { return self.textField.isSecureTextEntry }
-        set { self.textField.isSecureTextEntry = newValue }
-    }
     open var keyboardType: UIKeyboardType {
-        get { return self.textField.keyboardType }
-        set { self.textField.keyboardType = newValue }
+        get { return self.searchBar.keyboardType }
+        set { self.searchBar.keyboardType = newValue }
     }
     open var paddingEdgeInset: UIEdgeInsets = UIEdgeInsets(0) {
         didSet { self.updatePaddingEdgeInset() }
     }
     open var placeholder: String? {
-        get { return self.textField.placeholder }
-        set { self.textField.placeholder = newValue }
+        get { return self.searchBar.placeholder }
+        set { self.searchBar.placeholder = newValue }
     }
     open var smartQuotesType: UITextSmartQuotesType {
-        get { return self.textField.smartQuotesType }
-        set { self.textField.smartQuotesType = newValue }
+        get { return self.searchBar.smartQuotesType }
+        set { self.searchBar.smartQuotesType = newValue }
     }
     open var text: String? {
-        get { return self.textField.text }
-        set { self.textField.text = newValue }
+        get { return self.searchBar.text }
+        set { self.searchBar.text = newValue }
     }
     open var textColors: State<UIColor?> = State<UIColor?>(UIColor.label) {
         didSet { self.updateState() }
@@ -151,23 +98,10 @@ open class TextField: FormComponent, FormComponentWithMarginEdgeInset, FormCompo
         get { return self._textFieldDelegate }
         set {
             self._textFieldDelegate = newValue
-            self.textField.delegate = newValue
+            self.searchBar.searchTextField.delegate = newValue
         }
     }
     open var textFonts: State<UIFont> = State<UIFont>(UIFont.systemFont(ofSize: 14)) {
-        didSet { self.updateState() }
-    }
-    open var title: String? {
-        get { return self.titleLabel.text }
-        set { self.titleLabel.text = newValue }
-    }
-    open var titleColors: State<UIColor?> = State<UIColor?>(UIColor.label) {
-        didSet { self.updateState() }
-    }
-    open var titleFonts: State<UIFont> = State<UIFont>(UIFont.systemFont(ofSize: 10)) {
-        didSet { self.updateState() }
-    }
-    open var underscoreColor: UIColor = UIColor.lightGray {
         didSet { self.updateState() }
     }
     
@@ -186,21 +120,21 @@ open class TextField: FormComponent, FormComponentWithMarginEdgeInset, FormCompo
     
     private (set) var state: StateType = StateType.active
     
+    override open var intrinsicContentSize: CGSize {
+      return UIView.layoutFittingExpandedSize
+    }
+    
     override open func setupView() {
         self.setupBackgroundView()
-        self.setupTitleLabel()
-        self.setupTextField()
-        self.setupUnderscoreView()
-        self.setupErrorLabel()
-        self.setupInfoLabel()
+        self.setupSearchBar()
         super.setupView()
     }
     
     override open func setupActions() {
         super.setupActions()
-        self.textField.addTarget(self, action: #selector(handleOnBeginEditing), for: .editingDidBegin)
-        self.textField.addTarget(self, action: #selector(handleOnEndEditing), for: .editingDidEnd)
-        self.textField.addTarget(self, action: #selector(handleOnTextChanged), for: .editingChanged)
+        self.searchBar.searchTextField.addTarget(self, action: #selector(handleOnBeginEditing), for: .editingDidBegin)
+        self.searchBar.searchTextField.addTarget(self, action: #selector(handleOnEndEditing), for: .editingDidEnd)
+        self.searchBar.searchTextField.addTarget(self, action: #selector(handleOnTextChanged), for: .editingChanged)
     }
     
     override open func enable(animated: Bool) {
@@ -261,36 +195,26 @@ open class TextField: FormComponent, FormComponentWithMarginEdgeInset, FormCompo
         }
     }
     
-    // MARK: HOOKS - setup
     open func setupBackgroundView() {
-        // HOOK
+        self.addSubview(self.backgroundView, with: [
+            Anchor.to(self).top,
+            Anchor.to(self).horizontal,
+            Anchor.to(self).bottom
+        ])
     }
     
-    open func setupTitleLabel() {
-        // HOOK
-    }
-    
-    open func setupTextField() {
-        // HOOK
-    }
-    
-    open func setupUnderscoreView() {
-        // HOOK
-    }
-    
-    open func setupErrorLabel() {
-        self.errorLabel.numberOfLines = 0
-        // HOOK
-    }
-    
-    open func setupInfoLabel() {
-        self.infoLabel.numberOfLines = 0
-        // HOOK
-    }
-    
-    open func updateError() {
-        self.errorLabel.text = self.error
-        self.updateState(animated: true)
+    open func setupSearchBar() {
+        self.searchBar.backgroundImage = UIImage()
+        self.searchBar.searchTextField.anchors([
+            Anchor.to(self.searchBar).fill,
+            Anchor.to(self.searchBar.searchTextField).height(36)
+        ])
+        self.backgroundView.addSubview(self.searchBar, with: [
+            Anchor.to(self.backgroundView).top.offset(self.paddingEdgeInset.top),
+            Anchor.to(self.backgroundView).bottom.offset(self.paddingEdgeInset.bottom),
+            Anchor.to(self.backgroundView).leading.offset(self.paddingEdgeInset.leading),
+            Anchor.to(self.backgroundView).trailing.offset(self.paddingEdgeInset.trailing)
+        ])
     }
     
     open func updateMarginEdgeInset() {
@@ -303,13 +227,15 @@ open class TextField: FormComponent, FormComponentWithMarginEdgeInset, FormCompo
     }
     
     open func updatePaddingEdgeInset() {
-        // HOOK
+        let edgeInset: UIEdgeInsets = self.paddingEdgeInset
+        self.searchBar.constraint(to: self.backgroundView, position: .top)?.constant = edgeInset.top
+        self.searchBar.constraint(to: self.backgroundView, position: .bottom)?.constant = -edgeInset.bottom
+        self.searchBar.constraint(to: self.backgroundView, position: .leading)?.constant = edgeInset.leading
+        self.searchBar.constraint(to: self.backgroundView, position: .trailing)?.constant = -edgeInset.trailing
     }
     
     private func updateState(animated: Bool) {
-        if self.error.isNotNilOrEmpty {
-            self.setState(.error, animated: animated)
-        } else if self.isEnabled.not {
+        if self.isEnabled.not {
             self.setState(.disabled, animated: animated)
         } else if self.isFirstResponder {
             self.setState(.selected, animated: animated)
@@ -323,7 +249,6 @@ open class TextField: FormComponent, FormComponentWithMarginEdgeInset, FormCompo
         case .active: self.setState(.active, animated: false, force: true)
         case .selected: self.setState(.selected, animated: false, force: true)
         case .disabled: self.setState(.disabled, animated: false, force: true)
-        case .error: self.setState(.error, animated: false, force: true)
         }
     }
     
@@ -333,42 +258,33 @@ open class TextField: FormComponent, FormComponentWithMarginEdgeInset, FormCompo
         guard self.state != state || force else { return }
         self.animation(animated, duration: self.animationTime) {
             self.backgroundView.backgroundColor = self.backgroundColors.value(for: state)
-            self.errorLabel.textColor = self.errorColor
-            self.errorLabel.font = self.errorFont
-            self.infoLabel.textColor = self.infoColor
-            self.infoLabel.font = self.infoFont
-            self.textField.textColor = self.textColors.value(for: state)
-            self.textField.font = self.textFonts.value(for: state)
-            self.titleLabel.textColor = self.titleColors.value(for: state)
-            self.titleLabel.font = self.titleFonts.value(for: state)
-            self.underscoreView.backgroundColor = self.underscoreColor
+            self.searchBar.searchTextField.textColor = self.textColors.value(for: state)
+            self.searchBar.searchTextField.font = self.textFonts.value(for: state)
         }
         self.state = state
     }
 }
 
 // MARK: Validadble
-extension TextField: Validable {
+extension SearchBar: Validable {
     public func validate(_ validator: Validator) -> Bool {
-        let result = validator.validate(self.text)
-        self.error = self.validatorTriggered ? result.description : nil
-        return result.isValid
+        return validator.validate(self.text).isValid
     }
 }
 
 // MARK: Inputable
-extension TextField: Inputable {
+extension SearchBar: Inputable {
     public func focus(animated: Bool) {
-        self.textField.becomeFirstResponder()
+        self.searchBar.becomeFirstResponder()
     }
     
     public func lostFocus(animated: Bool) {
-        self.textField.resignFirstResponder()
+        self.searchBar.resignFirstResponder()
     }
 }
 
 // MARK: Builder
-public extension TextField {
+public extension SearchBar {
     func with(animationTime: TimeInterval) -> Self {
         self.animationTime = animationTime
         return self
@@ -390,42 +306,14 @@ public extension TextField {
         self.backgroundColors = backgroundColors
         return self
     }
-    func with(error: String?) -> Self {
-        self.error = error
-        return self
-    }
-    func with(errorColor: UIColor) -> Self {
-        self.errorColor = errorColor
-        return self
-    }
-    func with(errorFont: UIFont) -> Self {
-        self.errorFont = errorFont
-        return self
-    }
-    func with(info: String?) -> Self {
-        self.info = info
-        return self
-    }
-    func with(infoColor: UIColor) -> Self {
-        self.infoColor = infoColor
-        return self
-    }
-    func with(infoFont: UIFont) -> Self {
-        self.infoFont = infoFont
-        return self
-    }
     func with(isEnabled: Bool) -> Self {
         self.isEnabled = isEnabled
-        return self
-    }
-    func with(isSecureTextEntry: Bool) -> Self {
-        self.isSecureTextEntry = isSecureTextEntry
         return self
     }
     func with(keyboardType: UIKeyboardType) -> Self {
         self.keyboardType = keyboardType
         return self
-    } 
+    }
     func with(placeholder: String?) -> Self {
         self.placeholder = placeholder
         return self
@@ -456,30 +344,6 @@ public extension TextField {
     }
     func with(textFonts: State<UIFont>) -> Self {
         self.textFonts = textFonts
-        return self
-    }
-    func with(title: String?) -> Self {
-        self.title = title
-        return self
-    }
-    func with(titleColor: UIColor?) -> Self {
-        self.titleColors = State<UIColor?>(titleColor)
-        return self
-    }
-    func with(titleColors: State<UIColor?>) -> Self {
-        self.titleColors = titleColors
-        return self
-    }
-    func with(titleFont: UIFont) -> Self {
-        self.titleFonts = State<UIFont>(titleFont)
-        return self
-    }
-    func with(titleFonts: State<UIFont>) -> Self {
-        self.titleFonts = titleFonts
-        return self
-    }
-    func with(underscoreColor: UIColor) -> Self {
-        self.underscoreColor = underscoreColor
         return self
     }
     func with(validateOnBeginEditing: Bool) -> Self {

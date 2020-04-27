@@ -240,7 +240,7 @@
 		71228E082431CF7F00D08B20 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		71228E0A2431CF7F00D08B20 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		71228E112431CF8100D08B20 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		71228E162431CF8100D08B20 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Info.plist; path = ../Info.plist; sourceTree = "<group>"; };
+		71228E162431CF8100D08B20 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		71228E1B2431CF8200D08B20 /* FormsExampleTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FormsExampleTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		71228E1F2431CF8200D08B20 /* FormsExampleTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormsExampleTests.swift; sourceTree = "<group>"; };
 		71228E212431CF8200D08B20 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -555,6 +555,7 @@
 				71228E032431CF7F00D08B20 /* Resources */,
 				716992012445A98E00A8FA79 /* Lint */,
 				71EA6EC32449FC1C00ACB5EE /* Embed Frameworks */,
+				719F8C7D245712DB004F5A27 /* CFBuildDate */,
 			);
 			buildRules = (
 			);
@@ -863,6 +864,24 @@
 			shellPath = /bin/sh;
 			shellScript = "if which swiftlint >/dev/null; then\n  cd ..\n  swiftlint\nelse\n  echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
 		};
+		719F8C7D245712DB004F5A27 /* CFBuildDate */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = CFBuildDate;
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "date=`date`\n/usr/libexec/PlistBuddy -c \"Remove :CFBuildDate\" ${INFOPLIST_FILE}\n/usr/libexec/PlistBuddy -c \"Add :CFBuildDate string ${date}\" ${INFOPLIST_FILE}\n";
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -1028,6 +1047,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 0.0.0;
+				ONLY_ACTIVE_ARCH = NO;
 				OTHER_LDFLAGS = "";
 				PRODUCT_BUNDLE_IDENTIFIER = com.limbo.FormsExample;
 				PRODUCT_NAME = "$(TARGET_NAME)";

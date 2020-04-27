@@ -12,8 +12,11 @@
 		717802D32454556E0057E848 /* LifetimeTrackerListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 717802C02454556E0057E848 /* LifetimeTrackerListViewController.swift */; };
 		717802DC2454556E0057E848 /* LifetimeTrackerDashboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 717802CC2454556E0057E848 /* LifetimeTrackerDashboardViewController.swift */; };
 		717802DE2454556E0057E848 /* LifetimeTrackerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 717802CE2454556E0057E848 /* LifetimeTrackerManager.swift */; };
-		717802E4245469310057E848 /* LifetimeTrackerViewable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 717802E3245469310057E848 /* LifetimeTrackerViewable.swift */; };
+		717802E4245469310057E848 /* LifetimeTrackerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 717802E3245469310057E848 /* LifetimeTrackerView.swift */; };
 		717802E6245469BE0057E848 /* LifetimeTrackerDashboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 717802E5245469BE0057E848 /* LifetimeTrackerDashboard.swift */; };
+		71ED4F5824558B100072ACA3 /* DeveloperTools.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71ED4F5724558B100072ACA3 /* DeveloperTools.swift */; };
+		71ED4F5A24558BB60072ACA3 /* DeveloperToolsMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71ED4F5924558BB60072ACA3 /* DeveloperToolsMenu.swift */; };
+		71ED4F5C24558C820072ACA3 /* DeveloperToolsMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71ED4F5B24558C820072ACA3 /* DeveloperToolsMenuViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -35,8 +38,11 @@
 		717802C02454556E0057E848 /* LifetimeTrackerListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LifetimeTrackerListViewController.swift; sourceTree = "<group>"; };
 		717802CC2454556E0057E848 /* LifetimeTrackerDashboardViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LifetimeTrackerDashboardViewController.swift; sourceTree = "<group>"; };
 		717802CE2454556E0057E848 /* LifetimeTrackerManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LifetimeTrackerManager.swift; sourceTree = "<group>"; };
-		717802E3245469310057E848 /* LifetimeTrackerViewable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LifetimeTrackerViewable.swift; sourceTree = "<group>"; };
+		717802E3245469310057E848 /* LifetimeTrackerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LifetimeTrackerView.swift; sourceTree = "<group>"; };
 		717802E5245469BE0057E848 /* LifetimeTrackerDashboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LifetimeTrackerDashboard.swift; sourceTree = "<group>"; };
+		71ED4F5724558B100072ACA3 /* DeveloperTools.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeveloperTools.swift; sourceTree = "<group>"; };
+		71ED4F5924558BB60072ACA3 /* DeveloperToolsMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeveloperToolsMenu.swift; sourceTree = "<group>"; };
+		71ED4F5B24558C820072ACA3 /* DeveloperToolsMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeveloperToolsMenuViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,6 +85,7 @@
 		7178027C24543D8E0057E848 /* Source */ = {
 			isa = PBXGroup;
 			children = (
+				71ED4F5624558AFB0072ACA3 /* DeveloperTools */,
 				717802BE2454556E0057E848 /* LifetimeTracker */,
 			);
 			path = Source;
@@ -87,7 +94,7 @@
 		717802BE2454556E0057E848 /* LifetimeTracker */ = {
 			isa = PBXGroup;
 			children = (
-				717802E3245469310057E848 /* LifetimeTrackerViewable.swift */,
+				717802E3245469310057E848 /* LifetimeTrackerView.swift */,
 				717802E5245469BE0057E848 /* LifetimeTrackerDashboard.swift */,
 				717802CC2454556E0057E848 /* LifetimeTrackerDashboardViewController.swift */,
 				717802C02454556E0057E848 /* LifetimeTrackerListViewController.swift */,
@@ -95,6 +102,16 @@
 				7178029A24543F3F0057E848 /* LifetimeTracker.swift */,
 			);
 			path = LifetimeTracker;
+			sourceTree = "<group>";
+		};
+		71ED4F5624558AFB0072ACA3 /* DeveloperTools */ = {
+			isa = PBXGroup;
+			children = (
+				71ED4F5924558BB60072ACA3 /* DeveloperToolsMenu.swift */,
+				71ED4F5B24558C820072ACA3 /* DeveloperToolsMenuViewController.swift */,
+				71ED4F5724558B100072ACA3 /* DeveloperTools.swift */,
+			);
+			path = DeveloperTools;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -209,10 +226,13 @@
 			files = (
 				717802E6245469BE0057E848 /* LifetimeTrackerDashboard.swift in Sources */,
 				717802D32454556E0057E848 /* LifetimeTrackerListViewController.swift in Sources */,
+				71ED4F5824558B100072ACA3 /* DeveloperTools.swift in Sources */,
 				717802DC2454556E0057E848 /* LifetimeTrackerDashboardViewController.swift in Sources */,
+				71ED4F5C24558C820072ACA3 /* DeveloperToolsMenuViewController.swift in Sources */,
 				717802DE2454556E0057E848 /* LifetimeTrackerManager.swift in Sources */,
-				717802E4245469310057E848 /* LifetimeTrackerViewable.swift in Sources */,
+				717802E4245469310057E848 /* LifetimeTrackerView.swift in Sources */,
 				7178029B24543F3F0057E848 /* LifetimeTracker.swift in Sources */,
+				71ED4F5A24558BB60072ACA3 /* DeveloperToolsMenu.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
