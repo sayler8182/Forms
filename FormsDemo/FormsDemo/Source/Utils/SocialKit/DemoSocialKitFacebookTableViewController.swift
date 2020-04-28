@@ -37,7 +37,7 @@ class DemoSocialKitFacebookTableViewController: TableViewController {
     }
 }
 
-// MARK: SignInWithApple
+// MARK: SignInWithFacebook
 extension DemoSocialKitFacebookTableViewController {
     func signInWithFacebookAuthorization() {
         self.signInWithFacebookProvider.authorization(

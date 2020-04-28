@@ -30,7 +30,7 @@ NS_ASSUME_NONNULL_BEGIN
 API_UNAVAILABLE(macCatalyst)
 @interface OIDExternalUserAgentIOS : NSObject<OIDExternalUserAgent>
 
-- (nullable instancetype)init API_AVAILABLE(ios(11))
+- (_Null_unspecified instancetype)init API_AVAILABLE(ios(11))
     __deprecated_msg("This method will not work on iOS 13, use "
                      "initWithPresentingViewController:presentingViewController");
 

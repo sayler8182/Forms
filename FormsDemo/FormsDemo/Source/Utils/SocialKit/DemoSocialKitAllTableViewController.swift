@@ -15,9 +15,11 @@ import UIKit
 // MARK: DemoSocialKitAllTableViewController
 class DemoSocialKitAllTableViewController: TableViewController {
     private let signInWithApple = Components.social.signInWithApple()
-        .with(paddingHorizontal: 16)
+        .with(paddingEdgeInset: UIEdgeInsets(top: 16, leading: 16, bottom: 0, trailing: 16))
+    #if canImport(FBSDKLoginKit)
     private let signInWithFacebook = Components.social.signInWithFacebook()
         .with(paddingHorizontal: 16)
+    #endif
     #if canImport(GoogleSignIn)
     private let signInWithGoogle = Components.social.signInWithGoogle()
         .with(paddingHorizontal: 16)

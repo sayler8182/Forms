@@ -112,6 +112,10 @@ public extension SignInWithGoogle {
         self.height = height
         return self
     }
+    func with(title: String?) -> Self {
+        self.title = title
+        return self
+    }
 }
 
 #endif

@@ -37,7 +37,7 @@ class DemoSocialKitGoogleTableViewController: TableViewController {
     }
 }
 
-// MARK: SignInWithApple
+// MARK: SignInWithGoogle
 extension DemoSocialKitGoogleTableViewController {
     func signInWithGoogleAuthorization() {
         self.signInWithGoogleProvider.authorization(

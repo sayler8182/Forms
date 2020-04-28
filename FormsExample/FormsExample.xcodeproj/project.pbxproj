@@ -10,7 +10,6 @@
 		71228E092431CF7F00D08B20 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71228E082431CF7F00D08B20 /* AppDelegate.swift */; };
 		71228E0B2431CF7F00D08B20 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71228E0A2431CF7F00D08B20 /* SceneDelegate.swift */; };
 		71228E122431CF8100D08B20 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 71228E112431CF8100D08B20 /* Assets.xcassets */; };
-		71228E202431CF8200D08B20 /* FormsExampleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71228E1F2431CF8200D08B20 /* FormsExampleTests.swift */; };
 		71228E2C2431CFBF00D08B20 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 71228E2B2431CFBF00D08B20 /* LaunchScreen.storyboard */; };
 		717802A4245448EA0057E848 /* DeveloperTools.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7178026824543D2C0057E848 /* DeveloperTools.framework */; };
 		717802A5245448EA0057E848 /* DeveloperTools.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 7178026824543D2C0057E848 /* DeveloperTools.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -212,6 +211,20 @@
 			remoteGlobalIDString = 71DB5CA92457609000B16145;
 			remoteInfo = AnalyticsTests;
 		};
+		71DB65962458023B00B16145 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 71DB65912458023A00B16145 /* FormsIntegration.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 71DB656C2458023700B16145;
+			remoteInfo = FormsIntegration;
+		};
+		71DB65982458023B00B16145 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 71DB65912458023A00B16145 /* FormsIntegration.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 71DB65822458023A00B16145;
+			remoteInfo = FormsIntegrationTests;
+		};
 		71EBA888243D02AE0045AE40 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 71EBA881243D02AD0045AE40 /* Anchor.xcodeproj */;
@@ -255,8 +268,6 @@
 		71228E112431CF8100D08B20 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		71228E162431CF8100D08B20 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		71228E1B2431CF8200D08B20 /* FormsExampleTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FormsExampleTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		71228E1F2431CF8200D08B20 /* FormsExampleTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormsExampleTests.swift; sourceTree = "<group>"; };
-		71228E212431CF8200D08B20 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		71228E2B2431CFBF00D08B20 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		7132962724487AC2006935C0 /* SocialKit.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = SocialKit.xcodeproj; path = ../SocialKit/SocialKit.xcodeproj; sourceTree = "<group>"; };
 		713B9B11243D0416001F6E3A /* Injector.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Injector.xcodeproj; path = ../Injector/Injector.xcodeproj; sourceTree = "<group>"; };
@@ -281,6 +292,7 @@
 		71BB62652445E7C5002BB31F /* Logger.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Logger.xcodeproj; path = ../Logger/Logger.xcodeproj; sourceTree = "<group>"; };
 		71DB5CBA2457609000B16145 /* Analytics.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Analytics.xcodeproj; path = ../Analytics/Analytics.xcodeproj; sourceTree = "<group>"; };
 		71DB65592457729800B16145 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		71DB65912458023A00B16145 /* FormsIntegration.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = FormsIntegration.xcodeproj; path = ../FormsIntegration/FormsIntegration.xcodeproj; sourceTree = "<group>"; };
 		71EA6EC92449FC4B00ACB5EE /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKCoreKit.framework; sourceTree = "<group>"; };
 		71EA6ECA2449FC4B00ACB5EE /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKLoginKit.framework; sourceTree = "<group>"; };
 		71EBA881243D02AD0045AE40 /* Anchor.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Anchor.xcodeproj; path = ../Anchor/Anchor.xcodeproj; sourceTree = "<group>"; };
@@ -335,9 +347,9 @@
 				713B9C0D243D08E0001F6E3A /* FormsDemo.xcodeproj */,
 				71228E072431CF7F00D08B20 /* FormsExample */,
 				71228E2A2431CF9800D08B20 /* Resources */,
-				71228E1E2431CF8200D08B20 /* FormsExampleTests */,
 				71228E062431CF7F00D08B20 /* Products */,
 				71EA6E9E2449FC1B00ACB5EE /* Frameworks */,
+				71DB65912458023A00B16145 /* FormsIntegration.xcodeproj */,
 			);
 			sourceTree = "<group>";
 		};
@@ -359,23 +371,11 @@
 			path = FormsExample;
 			sourceTree = "<group>";
 		};
-		71228E1E2431CF8200D08B20 /* FormsExampleTests */ = {
-			isa = PBXGroup;
-			children = (
-				71228E1F2431CF8200D08B20 /* FormsExampleTests.swift */,
-				71228E212431CF8200D08B20 /* Info.plist */,
-			);
-			path = FormsExampleTests;
-			sourceTree = "<group>";
-		};
 		71228E2A2431CF9800D08B20 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
 				713296C22448B84D006935C0 /* Dependencies */,
 				715B7AE9244701BD00754EDB /* Templates */,
-				71228E112431CF8100D08B20 /* Assets.xcassets */,
-				714848DD2448618600455560 /* FormsExample.entitlements */,
-				71228E2B2431CFBF00D08B20 /* LaunchScreen.storyboard */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -385,6 +385,8 @@
 			children = (
 				71228E2E2431CFD500D08B20 /* Config */,
 				71228E082431CF7F00D08B20 /* AppDelegate.swift */,
+				71228E112431CF8100D08B20 /* Assets.xcassets */,
+				71228E2B2431CFBF00D08B20 /* LaunchScreen.storyboard */,
 				71228E0A2431CF7F00D08B20 /* SceneDelegate.swift */,
 			);
 			path = SupportingFiles;
@@ -393,6 +395,7 @@
 		71228E2E2431CFD500D08B20 /* Config */ = {
 			isa = PBXGroup;
 			children = (
+				714848DD2448618600455560 /* FormsExample.entitlements */,
 				71DB65592457729800B16145 /* GoogleService-Info.plist */,
 				71228E162431CF8100D08B20 /* Info.plist */,
 			);
@@ -540,6 +543,15 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		71DB65922458023A00B16145 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				71DB65972458023B00B16145 /* FormsIntegration.app */,
+				71DB65992458023B00B16145 /* FormsIntegrationTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		71EA6E9E2449FC1B00ACB5EE /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -647,6 +659,10 @@
 				{
 					ProductGroup = 713B9C0E243D08E0001F6E3A /* Products */;
 					ProjectRef = 713B9C0D243D08E0001F6E3A /* FormsDemo.xcodeproj */;
+				},
+				{
+					ProductGroup = 71DB65922458023A00B16145 /* Products */;
+					ProjectRef = 71DB65912458023A00B16145 /* FormsIntegration.xcodeproj */;
 				},
 				{
 					ProductGroup = 713B9B12243D0416001F6E3A /* Products */;
@@ -847,6 +863,20 @@
 			remoteRef = 71DB5CC12457609100B16145 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
+		71DB65972458023B00B16145 /* FormsIntegration.app */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.application;
+			path = FormsIntegration.app;
+			remoteRef = 71DB65962458023B00B16145 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		71DB65992458023B00B16145 /* FormsIntegrationTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = FormsIntegrationTests.xctest;
+			remoteRef = 71DB65982458023B00B16145 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
 		71EBA889243D02AE0045AE40 /* AnchorTests.xctest */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.cfbundle;
@@ -929,7 +959,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				71228E202431CF8200D08B20 /* FormsExampleTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1062,7 +1091,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_ENTITLEMENTS = Resources/FormsExample.entitlements;
+				CODE_SIGN_ENTITLEMENTS = FormsExample/SupportingFiles/Config/FormsExample.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = KB85VH6WG5;
 				ENABLE_BITCODE = NO;
@@ -1092,7 +1121,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_ENTITLEMENTS = Resources/FormsExample.entitlements;
+				CODE_SIGN_ENTITLEMENTS = FormsExample/SupportingFiles/Config/FormsExample.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = KB85VH6WG5;
 				ENABLE_BITCODE = NO;

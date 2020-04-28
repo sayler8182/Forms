@@ -1,0 +1,562 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 52;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		71DB65AE245803F800B16145 /* Forms.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71DB65A2245803F800B16145 /* Forms.framework */; platformFilter = ios; };
+		71DB65B2245803F800B16145 /* Analytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71DB65A6245803F800B16145 /* Analytics.framework */; platformFilter = ios; };
+		71DB65C62458064F00B16145 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71DB65BF2458064F00B16145 /* SceneDelegate.swift */; };
+		71DB65C82458064F00B16145 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 71DB65C32458064F00B16145 /* Assets.xcassets */; };
+		71DB65C92458064F00B16145 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71DB65C42458064F00B16145 /* AppDelegate.swift */; };
+		71DB65CA2458064F00B16145 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 71DB65C52458064F00B16145 /* LaunchScreen.storyboard */; };
+		71DB65CC245806AF00B16145 /* FormsIntegrationSocialKitGoogleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71DB65CB245806AF00B16145 /* FormsIntegrationSocialKitGoogleViewController.swift */; };
+		71DB65D2245809B800B16145 /* SocialKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71DB65CF245809B800B16145 /* SocialKit.framework */; platformFilter = ios; };
+		71DB65D3245809C100B16145 /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71DB65CE245809B800B16145 /* FBSDKLoginKit.framework */; platformFilter = ios; };
+		71DB65D4245809C100B16145 /* FBSDKLoginKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 71DB65CE245809B800B16145 /* FBSDKLoginKit.framework */; platformFilter = ios; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		71DB65D6245809C200B16145 /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71DB65CD245809B800B16145 /* FBSDKCoreKit.framework */; platformFilter = ios; };
+		71DB65D7245809C200B16145 /* FBSDKCoreKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 71DB65CD245809B800B16145 /* FBSDKCoreKit.framework */; platformFilter = ios; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		71DB65DA24580C8500B16145 /* FormsIntegrationRootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71DB65D924580C8500B16145 /* FormsIntegrationRootViewController.swift */; };
+		71DB65DC245817CD00B16145 /* FormsIntegrationSocialKitAppleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71DB65DB245817CD00B16145 /* FormsIntegrationSocialKitAppleViewController.swift */; };
+		71DB65DE245817DC00B16145 /* FormsIntegrationSocialKitFacebookViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71DB65DD245817DC00B16145 /* FormsIntegrationSocialKitFacebookViewController.swift */; };
+		71DB65E0245818F700B16145 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 71DB65DF245818F700B16145 /* GoogleService-Info.plist */; };
+		71DB65E324581AE200B16145 /* FormsIntegrationAnalyticsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71DB65E224581AE200B16145 /* FormsIntegrationAnalyticsViewController.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		71DB65832458023A00B16145 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 71DB65642458023700B16145 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 71DB656B2458023700B16145;
+			remoteInfo = FormsIntegration;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		71DB65D5245809C100B16145 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				71DB65D4245809C100B16145 /* FBSDKLoginKit.framework in Embed Frameworks */,
+				71DB65D7245809C200B16145 /* FBSDKCoreKit.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		71DB656C2458023700B16145 /* FormsIntegration.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FormsIntegration.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		71DB65822458023A00B16145 /* FormsIntegrationTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FormsIntegrationTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		71DB65A2245803F800B16145 /* Forms.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Forms.framework; sourceTree = "<group>"; };
+		71DB65A6245803F800B16145 /* Analytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Analytics.framework; sourceTree = "<group>"; };
+		71DB65BF2458064F00B16145 /* SceneDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		71DB65C12458064F00B16145 /* FormsIntegration.entitlements */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.entitlements; path = FormsIntegration.entitlements; sourceTree = "<group>"; };
+		71DB65C22458064F00B16145 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		71DB65C32458064F00B16145 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		71DB65C42458064F00B16145 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		71DB65C52458064F00B16145 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
+		71DB65CB245806AF00B16145 /* FormsIntegrationSocialKitGoogleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormsIntegrationSocialKitGoogleViewController.swift; sourceTree = "<group>"; };
+		71DB65CD245809B800B16145 /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKCoreKit.framework; sourceTree = "<group>"; };
+		71DB65CE245809B800B16145 /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKLoginKit.framework; sourceTree = "<group>"; };
+		71DB65CF245809B800B16145 /* SocialKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SocialKit.framework; sourceTree = "<group>"; };
+		71DB65D924580C8500B16145 /* FormsIntegrationRootViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormsIntegrationRootViewController.swift; sourceTree = "<group>"; };
+		71DB65DB245817CD00B16145 /* FormsIntegrationSocialKitAppleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormsIntegrationSocialKitAppleViewController.swift; sourceTree = "<group>"; };
+		71DB65DD245817DC00B16145 /* FormsIntegrationSocialKitFacebookViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormsIntegrationSocialKitFacebookViewController.swift; sourceTree = "<group>"; };
+		71DB65DF245818F700B16145 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		71DB65E224581AE200B16145 /* FormsIntegrationAnalyticsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormsIntegrationAnalyticsViewController.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		71DB65692458023700B16145 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				71DB65B2245803F800B16145 /* Analytics.framework in Frameworks */,
+				71DB65D3245809C100B16145 /* FBSDKLoginKit.framework in Frameworks */,
+				71DB65D6245809C200B16145 /* FBSDKCoreKit.framework in Frameworks */,
+				71DB65D2245809B800B16145 /* SocialKit.framework in Frameworks */,
+				71DB65AE245803F800B16145 /* Forms.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		71DB657F2458023A00B16145 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		71DB65632458023700B16145 = {
+			isa = PBXGroup;
+			children = (
+				71DB656E2458023700B16145 /* FormsIntegration */,
+				71DB656D2458023700B16145 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		71DB656D2458023700B16145 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				71DB656C2458023700B16145 /* FormsIntegration.app */,
+				71DB65822458023A00B16145 /* FormsIntegrationTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		71DB656E2458023700B16145 /* FormsIntegration */ = {
+			isa = PBXGroup;
+			children = (
+				71DB659B245803CC00B16145 /* Dependencies */,
+				71DB65BD2458060500B16145 /* Source */,
+				71DB65BE2458060F00B16145 /* SupportingFiles */,
+			);
+			path = FormsIntegration;
+			sourceTree = "<group>";
+		};
+		71DB659B245803CC00B16145 /* Dependencies */ = {
+			isa = PBXGroup;
+			children = (
+				71DB65A6245803F800B16145 /* Analytics.framework */,
+				71DB65CD245809B800B16145 /* FBSDKCoreKit.framework */,
+				71DB65CE245809B800B16145 /* FBSDKLoginKit.framework */,
+				71DB65A2245803F800B16145 /* Forms.framework */,
+				71DB65CF245809B800B16145 /* SocialKit.framework */,
+			);
+			path = Dependencies;
+			sourceTree = "<group>";
+		};
+		71DB65BD2458060500B16145 /* Source */ = {
+			isa = PBXGroup;
+			children = (
+				71DB65D924580C8500B16145 /* FormsIntegrationRootViewController.swift */,
+				71DB65E124581ACA00B16145 /* Analytics */,
+				71DB65D824580C4C00B16145 /* SocialKit */,
+			);
+			path = Source;
+			sourceTree = "<group>";
+		};
+		71DB65BE2458060F00B16145 /* SupportingFiles */ = {
+			isa = PBXGroup;
+			children = (
+				71DB65C02458064F00B16145 /* Config */,
+				71DB65C42458064F00B16145 /* AppDelegate.swift */,
+				71DB65C32458064F00B16145 /* Assets.xcassets */,
+				71DB65C52458064F00B16145 /* LaunchScreen.storyboard */,
+				71DB65BF2458064F00B16145 /* SceneDelegate.swift */,
+			);
+			path = SupportingFiles;
+			sourceTree = "<group>";
+		};
+		71DB65C02458064F00B16145 /* Config */ = {
+			isa = PBXGroup;
+			children = (
+				71DB65C12458064F00B16145 /* FormsIntegration.entitlements */,
+				71DB65DF245818F700B16145 /* GoogleService-Info.plist */,
+				71DB65C22458064F00B16145 /* Info.plist */,
+			);
+			path = Config;
+			sourceTree = "<group>";
+		};
+		71DB65D824580C4C00B16145 /* SocialKit */ = {
+			isa = PBXGroup;
+			children = (
+				71DB65DB245817CD00B16145 /* FormsIntegrationSocialKitAppleViewController.swift */,
+				71DB65DD245817DC00B16145 /* FormsIntegrationSocialKitFacebookViewController.swift */,
+				71DB65CB245806AF00B16145 /* FormsIntegrationSocialKitGoogleViewController.swift */,
+			);
+			path = SocialKit;
+			sourceTree = "<group>";
+		};
+		71DB65E124581ACA00B16145 /* Analytics */ = {
+			isa = PBXGroup;
+			children = (
+				71DB65E224581AE200B16145 /* FormsIntegrationAnalyticsViewController.swift */,
+			);
+			path = Analytics;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		71DB656B2458023700B16145 /* FormsIntegration */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 71DB658B2458023A00B16145 /* Build configuration list for PBXNativeTarget "FormsIntegration" */;
+			buildPhases = (
+				71DB65682458023700B16145 /* Sources */,
+				71DB65692458023700B16145 /* Frameworks */,
+				71DB656A2458023700B16145 /* Resources */,
+				71DB65D5245809C100B16145 /* Embed Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = FormsIntegration;
+			productName = FormsIntegration;
+			productReference = 71DB656C2458023700B16145 /* FormsIntegration.app */;
+			productType = "com.apple.product-type.application";
+		};
+		71DB65812458023A00B16145 /* FormsIntegrationTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 71DB658E2458023A00B16145 /* Build configuration list for PBXNativeTarget "FormsIntegrationTests" */;
+			buildPhases = (
+				71DB657E2458023A00B16145 /* Sources */,
+				71DB657F2458023A00B16145 /* Frameworks */,
+				71DB65802458023A00B16145 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				71DB65842458023A00B16145 /* PBXTargetDependency */,
+			);
+			name = FormsIntegrationTests;
+			productName = FormsIntegrationTests;
+			productReference = 71DB65822458023A00B16145 /* FormsIntegrationTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		71DB65642458023700B16145 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1140;
+				LastUpgradeCheck = 1140;
+				ORGANIZATIONNAME = Limbo;
+				TargetAttributes = {
+					71DB656B2458023700B16145 = {
+						CreatedOnToolsVersion = 11.4;
+					};
+					71DB65812458023A00B16145 = {
+						CreatedOnToolsVersion = 11.4;
+						TestTargetID = 71DB656B2458023700B16145;
+					};
+				};
+			};
+			buildConfigurationList = 71DB65672458023700B16145 /* Build configuration list for PBXProject "FormsIntegration" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 71DB65632458023700B16145;
+			productRefGroup = 71DB656D2458023700B16145 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				71DB656B2458023700B16145 /* FormsIntegration */,
+				71DB65812458023A00B16145 /* FormsIntegrationTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		71DB656A2458023700B16145 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				71DB65C82458064F00B16145 /* Assets.xcassets in Resources */,
+				71DB65CA2458064F00B16145 /* LaunchScreen.storyboard in Resources */,
+				71DB65E0245818F700B16145 /* GoogleService-Info.plist in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		71DB65802458023A00B16145 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		71DB65682458023700B16145 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				71DB65C92458064F00B16145 /* AppDelegate.swift in Sources */,
+				71DB65DA24580C8500B16145 /* FormsIntegrationRootViewController.swift in Sources */,
+				71DB65CC245806AF00B16145 /* FormsIntegrationSocialKitGoogleViewController.swift in Sources */,
+				71DB65C62458064F00B16145 /* SceneDelegate.swift in Sources */,
+				71DB65DC245817CD00B16145 /* FormsIntegrationSocialKitAppleViewController.swift in Sources */,
+				71DB65E324581AE200B16145 /* FormsIntegrationAnalyticsViewController.swift in Sources */,
+				71DB65DE245817DC00B16145 /* FormsIntegrationSocialKitFacebookViewController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		71DB657E2458023A00B16145 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		71DB65842458023A00B16145 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 71DB656B2458023700B16145 /* FormsIntegration */;
+			targetProxy = 71DB65832458023A00B16145 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		71DB65892458023A00B16145 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		71DB658A2458023A00B16145 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		71DB658C2458023A00B16145 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = FormsIntegration/SupportingFiles/Config/FormsIntegration.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = KB85VH6WG5;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/FormsIntegration/Dependencies",
+				);
+				INFOPLIST_FILE = FormsIntegration/SupportingFiles/Config/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 0.0.0;
+				ONLY_ACTIVE_ARCH = NO;
+				PRODUCT_BUNDLE_IDENTIFIER = com.limbo.FormsIntegration;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTS_MACCATALYST = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		71DB658D2458023A00B16145 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = FormsIntegration/SupportingFiles/Config/FormsIntegration.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = KB85VH6WG5;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/FormsIntegration/Dependencies",
+				);
+				INFOPLIST_FILE = FormsIntegration/SupportingFiles/Config/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 0.0.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.limbo.FormsIntegration;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTS_MACCATALYST = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		71DB658F2458023A00B16145 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = KB85VH6WG5;
+				INFOPLIST_FILE = FormsIntegrationTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.limbo.FormsIntegrationTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/FormsIntegration.app/FormsIntegration";
+			};
+			name = Debug;
+		};
+		71DB65902458023A00B16145 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = KB85VH6WG5;
+				INFOPLIST_FILE = FormsIntegrationTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.limbo.FormsIntegrationTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/FormsIntegration.app/FormsIntegration";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		71DB65672458023700B16145 /* Build configuration list for PBXProject "FormsIntegration" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				71DB65892458023A00B16145 /* Debug */,
+				71DB658A2458023A00B16145 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		71DB658B2458023A00B16145 /* Build configuration list for PBXNativeTarget "FormsIntegration" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				71DB658C2458023A00B16145 /* Debug */,
+				71DB658D2458023A00B16145 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		71DB658E2458023A00B16145 /* Build configuration list for PBXNativeTarget "FormsIntegrationTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				71DB658F2458023A00B16145 /* Debug */,
+				71DB65902458023A00B16145 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 71DB65642458023700B16145 /* Project object */;
+}

@@ -18,7 +18,7 @@ public struct Forms {
     private init() { }
     
     public static func initialize(_ injector: Injector,
-                                  _ assemblies: [Assembly]) {
+                                  _ assemblies: [Assembly] = []) {
         Forms.injector = injector
         Forms.initializeBase(injector)
         Forms.initializeConfigurations(injector)

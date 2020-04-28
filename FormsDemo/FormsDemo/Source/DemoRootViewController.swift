@@ -231,7 +231,7 @@ public class DemoRootViewController: UINavigationController {
     
     public func setupView() {
         let controller = DemoListViewController(items: Demo.Section.default)
-        controller.title = "Demo"
+        controller.title = "FormsDemo"
         self.viewControllers = [controller]
         self.autoroute(to: nil, in: controller)
     }

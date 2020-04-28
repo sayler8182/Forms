@@ -6,8 +6,8 @@
 //  Copyright © 2020 Limbo. All rights reserved.
 //
 
-import FirebaseCore
 import FirebaseAnalytics
+import FirebaseCore
 
 // MARK: AnalyticsTag
 public protocol AnalyticsTag {

@@ -1,0 +1,11 @@
+framework module SocialKit {
+  umbrella header "SocialKit.h"
+
+  export *
+  module * { export * }
+}
+
+module SocialKit.Swift {
+    header "SocialKit-Swift.h"
+    requires objc
+}

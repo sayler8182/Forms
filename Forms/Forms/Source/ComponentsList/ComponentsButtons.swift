@@ -16,7 +16,7 @@ public struct ComponentsButtons: ComponentsList {
         component.animationTime = 0.1
         component.backgroundColors = Button.State<UIColor?>(
             active: UIColor.systemBlue,
-            selected: UIColor.systemBlue,
+            selected: UIColor.systemBlue.withAlphaComponent(0.7),
             disabled: UIColor.systemGray
         )
         component.marginEdgeInset = UIEdgeInsets(0)
