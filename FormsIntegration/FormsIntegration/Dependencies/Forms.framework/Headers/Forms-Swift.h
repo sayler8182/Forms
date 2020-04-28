@@ -262,13 +262,13 @@ SWIFT_CLASS("_TtC5Forms20CollectionDataSource")
 - (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
 @end
 
+
+
 @class UIScrollView;
 
 @interface CollectionDataSource (SWIFT_EXTENSION(Forms))
 - (void)scrollViewDidScroll:(UIScrollView * _Nonnull)scrollView;
 @end
-
-
 
 
 
@@ -297,56 +297,6 @@ SWIFT_CLASS("_TtC5Forms20CollectionFlowLayout")
 @end
 
 
-SWIFT_CLASS("_TtC5Forms18CollectionViewCell")
-@interface CollectionViewCell : UICollectionViewCell
-- (nonnull instancetype)initWithFrame:(CGRect)frame OBJC_DESIGNATED_INITIALIZER;
-- (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)coder OBJC_DESIGNATED_INITIALIZER;
-@end
-
-
-
-@class NSBundle;
-
-SWIFT_CLASS("_TtC5Forms14ViewController")
-@interface ViewController : UIViewController <UIGestureRecognizerDelegate>
-- (nonnull instancetype)initWithNibName:(NSString * _Nullable)nibNameOrNil bundle:(NSBundle * _Nullable)nibBundleOrNil OBJC_DESIGNATED_INITIALIZER;
-- (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)coder OBJC_DESIGNATED_INITIALIZER;
-- (void)viewDidLoad;
-@end
-
-
-SWIFT_CLASS("_TtC5Forms24CollectionViewController")
-@interface CollectionViewController : ViewController <UICollectionViewDataSource, UICollectionViewDelegate>
-- (nonnull instancetype)initWithNibName:(NSString * _Nullable)nibNameOrNil bundle:(NSBundle * _Nullable)nibBundleOrNil OBJC_DESIGNATED_INITIALIZER;
-- (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)coder OBJC_DESIGNATED_INITIALIZER;
-@end
-
-
-
-
-
-
-
-
-@interface CollectionViewController (SWIFT_EXTENSION(Forms))
-- (void)scrollViewDidScroll:(UIScrollView * _Nonnull)scrollView;
-@end
-
-
-@interface CollectionViewController (SWIFT_EXTENSION(Forms))
-- (NSInteger)collectionView:(UICollectionView * _Nonnull)collectionView numberOfItemsInSection:(NSInteger)section SWIFT_WARN_UNUSED_RESULT;
-- (UICollectionViewCell * _Nonnull)collectionView:(UICollectionView * _Nonnull)collectionView cellForItemAtIndexPath:(NSIndexPath * _Nonnull)indexPath SWIFT_WARN_UNUSED_RESULT;
-@end
-
-
-
-
-
-
-
-
-
-
 SWIFT_CLASS("_TtC5Forms7Divider")
 @interface Divider : FormComponent
 - (nonnull instancetype)initWithFrame:(CGRect)frame OBJC_DESIGNATED_INITIALIZER;
@@ -361,6 +311,155 @@ SWIFT_CLASS("_TtC5Forms7Divider")
 
 
 
+
+
+SWIFT_CLASS("_TtC5Forms23FormsCollectionViewCell")
+@interface FormsCollectionViewCell : UICollectionViewCell
+- (nonnull instancetype)initWithFrame:(CGRect)frame OBJC_DESIGNATED_INITIALIZER;
+- (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)coder OBJC_DESIGNATED_INITIALIZER;
+@end
+
+
+
+@class NSBundle;
+
+SWIFT_CLASS("_TtC5Forms19FormsViewController")
+@interface FormsViewController : UIViewController <UIGestureRecognizerDelegate>
+- (nonnull instancetype)initWithNibName:(NSString * _Nullable)nibNameOrNil bundle:(NSBundle * _Nullable)nibBundleOrNil OBJC_DESIGNATED_INITIALIZER;
+- (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)coder OBJC_DESIGNATED_INITIALIZER;
+- (void)viewDidLoad;
+@end
+
+
+SWIFT_CLASS("_TtC5Forms29FormsCollectionViewController")
+@interface FormsCollectionViewController : FormsViewController <UICollectionViewDataSource, UICollectionViewDelegate>
+- (nonnull instancetype)initWithNibName:(NSString * _Nullable)nibNameOrNil bundle:(NSBundle * _Nullable)nibBundleOrNil OBJC_DESIGNATED_INITIALIZER;
+- (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)coder OBJC_DESIGNATED_INITIALIZER;
+@end
+
+
+
+
+
+
+
+
+@interface FormsCollectionViewController (SWIFT_EXTENSION(Forms))
+- (void)scrollViewDidScroll:(UIScrollView * _Nonnull)scrollView;
+@end
+
+
+@interface FormsCollectionViewController (SWIFT_EXTENSION(Forms))
+- (NSInteger)collectionView:(UICollectionView * _Nonnull)collectionView numberOfItemsInSection:(NSInteger)section SWIFT_WARN_UNUSED_RESULT;
+- (UICollectionViewCell * _Nonnull)collectionView:(UICollectionView * _Nonnull)collectionView cellForItemAtIndexPath:(NSIndexPath * _Nonnull)indexPath SWIFT_WARN_UNUSED_RESULT;
+@end
+
+
+
+
+
+
+
+
+
+
+SWIFT_CLASS("_TtC5Forms20FormsPagerController")
+@interface FormsPagerController : FormsViewController
+- (nonnull instancetype)initWithNibName:(NSString * _Nullable)nibNameOrNil bundle:(NSBundle * _Nullable)nibBundleOrNil OBJC_DESIGNATED_INITIALIZER;
+- (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)coder OBJC_DESIGNATED_INITIALIZER;
+@end
+
+
+@interface FormsPagerController (SWIFT_EXTENSION(Forms)) <UIScrollViewDelegate>
+- (void)scrollViewDidScroll:(UIScrollView * _Nonnull)scrollView;
+@end
+
+
+
+
+
+@class UICollectionViewLayout;
+
+@interface FormsPagerController (SWIFT_EXTENSION(Forms)) <UICollectionViewDataSource, UICollectionViewDelegateFlowLayout>
+- (NSInteger)numberOfSectionsInCollectionView:(UICollectionView * _Nonnull)collectionView SWIFT_WARN_UNUSED_RESULT;
+- (NSInteger)collectionView:(UICollectionView * _Nonnull)collectionView numberOfItemsInSection:(NSInteger)section SWIFT_WARN_UNUSED_RESULT;
+- (UICollectionViewCell * _Nonnull)collectionView:(UICollectionView * _Nonnull)collectionView cellForItemAtIndexPath:(NSIndexPath * _Nonnull)indexPath SWIFT_WARN_UNUSED_RESULT;
+- (void)collectionView:(UICollectionView * _Nonnull)collectionView willDisplayCell:(UICollectionViewCell * _Nonnull)cell forItemAtIndexPath:(NSIndexPath * _Nonnull)indexPath;
+- (void)collectionView:(UICollectionView * _Nonnull)collectionView didEndDisplayingCell:(UICollectionViewCell * _Nonnull)cell forItemAtIndexPath:(NSIndexPath * _Nonnull)indexPath;
+- (CGSize)collectionView:(UICollectionView * _Nonnull)collectionView layout:(UICollectionViewLayout * _Nonnull)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath * _Nonnull)indexPath SWIFT_WARN_UNUSED_RESULT;
+@end
+
+
+SWIFT_CLASS("_TtC5Forms21FormsTabBarController")
+@interface FormsTabBarController : FormsViewController
+- (nonnull instancetype)initWithNibName:(NSString * _Nullable)nibNameOrNil bundle:(NSBundle * _Nullable)nibBundleOrNil OBJC_DESIGNATED_INITIALIZER;
+- (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)coder OBJC_DESIGNATED_INITIALIZER;
+@end
+
+
+
+
+SWIFT_CLASS("_TtC5Forms18FormsTableViewCell")
+@interface FormsTableViewCell : UITableViewCell
+- (nonnull instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString * _Nullable)reuseIdentifier OBJC_DESIGNATED_INITIALIZER;
+- (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)coder OBJC_DESIGNATED_INITIALIZER;
+@end
+
+
+
+
+SWIFT_CLASS("_TtC5Forms24FormsTableViewController")
+@interface FormsTableViewController : FormsViewController <UITableViewDataSource, UITableViewDelegate>
+- (nonnull instancetype)initWithNibName:(NSString * _Nullable)nibNameOrNil bundle:(NSBundle * _Nullable)nibBundleOrNil OBJC_DESIGNATED_INITIALIZER;
+- (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)coder OBJC_DESIGNATED_INITIALIZER;
+@end
+
+
+
+
+
+
+
+
+@interface FormsTableViewController (SWIFT_EXTENSION(Forms))
+- (void)scrollViewDidScroll:(UIScrollView * _Nonnull)scrollView;
+@end
+
+
+
+
+
+@class UITableView;
+
+@interface FormsTableViewController (SWIFT_EXTENSION(Forms))
+- (NSInteger)numberOfSectionsInTableView:(UITableView * _Nonnull)tableView SWIFT_WARN_UNUSED_RESULT;
+- (NSInteger)tableView:(UITableView * _Nonnull)tableView numberOfRowsInSection:(NSInteger)section SWIFT_WARN_UNUSED_RESULT;
+- (UITableViewCell * _Nonnull)tableView:(UITableView * _Nonnull)tableView cellForRowAtIndexPath:(NSIndexPath * _Nonnull)indexPath SWIFT_WARN_UNUSED_RESULT;
+- (CGFloat)tableView:(UITableView * _Nonnull)tableView heightForRowAtIndexPath:(NSIndexPath * _Nonnull)indexPath SWIFT_WARN_UNUSED_RESULT;
+@end
+
+
+
+
+
+
+
+
+
+
+
+
+@class UIGestureRecognizer;
+
+@interface FormsViewController (SWIFT_EXTENSION(Forms))
+- (BOOL)gestureRecognizerShouldBegin:(UIGestureRecognizer * _Nonnull)gestureRecognizer SWIFT_WARN_UNUSED_RESULT;
+@end
+
+
+@interface FormsViewController (SWIFT_EXTENSION(Forms))
+- (void)keyboarWillShowForResizingWithNotification:(NSNotification * _Nonnull)notification;
+- (void)keyboarWillHideForResizingWithNotification:(NSNotification * _Nonnull)notification;
+@end
 
 
 SWIFT_CLASS("_TtC5Forms5Label")
@@ -425,33 +524,6 @@ SWIFT_CLASS("_TtC5Forms13NavigationBar")
 
 @interface NavigationBar (SWIFT_EXTENSION(Forms))
 - (nonnull instancetype)withBackgroundColor:(UIColor * _Nullable)backgroundColor SWIFT_WARN_UNUSED_RESULT;
-@end
-
-
-SWIFT_CLASS("_TtC5Forms15PagerController")
-@interface PagerController : ViewController
-- (nonnull instancetype)initWithNibName:(NSString * _Nullable)nibNameOrNil bundle:(NSBundle * _Nullable)nibBundleOrNil OBJC_DESIGNATED_INITIALIZER;
-- (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)coder OBJC_DESIGNATED_INITIALIZER;
-@end
-
-
-@interface PagerController (SWIFT_EXTENSION(Forms)) <UIScrollViewDelegate>
-- (void)scrollViewDidScroll:(UIScrollView * _Nonnull)scrollView;
-@end
-
-
-
-
-
-@class UICollectionViewLayout;
-
-@interface PagerController (SWIFT_EXTENSION(Forms)) <UICollectionViewDataSource, UICollectionViewDelegateFlowLayout>
-- (NSInteger)numberOfSectionsInCollectionView:(UICollectionView * _Nonnull)collectionView SWIFT_WARN_UNUSED_RESULT;
-- (NSInteger)collectionView:(UICollectionView * _Nonnull)collectionView numberOfItemsInSection:(NSInteger)section SWIFT_WARN_UNUSED_RESULT;
-- (UICollectionViewCell * _Nonnull)collectionView:(UICollectionView * _Nonnull)collectionView cellForItemAtIndexPath:(NSIndexPath * _Nonnull)indexPath SWIFT_WARN_UNUSED_RESULT;
-- (void)collectionView:(UICollectionView * _Nonnull)collectionView willDisplayCell:(UICollectionViewCell * _Nonnull)cell forItemAtIndexPath:(NSIndexPath * _Nonnull)indexPath;
-- (void)collectionView:(UICollectionView * _Nonnull)collectionView didEndDisplayingCell:(UICollectionViewCell * _Nonnull)cell forItemAtIndexPath:(NSIndexPath * _Nonnull)indexPath;
-- (CGSize)collectionView:(UICollectionView * _Nonnull)collectionView layout:(UICollectionViewLayout * _Nonnull)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath * _Nonnull)indexPath SWIFT_WARN_UNUSED_RESULT;
 @end
 
 
@@ -531,7 +603,7 @@ SWIFT_CLASS("_TtC5Forms27ShimmerCollectionDataSource")
 
 
 SWIFT_CLASS("_TtC5Forms25ShimmerCollectionViewCell")
-@interface ShimmerCollectionViewCell : CollectionViewCell
+@interface ShimmerCollectionViewCell : FormsCollectionViewCell
 - (nonnull instancetype)initWithFrame:(CGRect)frame OBJC_DESIGNATED_INITIALIZER;
 - (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)coder OBJC_DESIGNATED_INITIALIZER;
 @end
@@ -542,8 +614,6 @@ SWIFT_CLASS("_TtC5Forms15TableDataSource")
 - (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
 @end
 
-@class UITableView;
-@class UITableViewCell;
 
 SWIFT_CLASS("_TtC5Forms22ShimmerTableDataSource")
 @interface ShimmerTableDataSource : TableDataSource
@@ -554,15 +624,8 @@ SWIFT_CLASS("_TtC5Forms22ShimmerTableDataSource")
 
 
 
-SWIFT_CLASS("_TtC5Forms13TableViewCell")
-@interface TableViewCell : UITableViewCell
-- (nonnull instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString * _Nullable)reuseIdentifier OBJC_DESIGNATED_INITIALIZER;
-- (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)coder OBJC_DESIGNATED_INITIALIZER;
-@end
-
-
 SWIFT_CLASS("_TtC5Forms20ShimmerTableViewCell")
-@interface ShimmerTableViewCell : TableViewCell
+@interface ShimmerTableViewCell : FormsTableViewCell
 - (nonnull instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString * _Nullable)reuseIdentifier OBJC_DESIGNATED_INITIALIZER;
 - (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)coder OBJC_DESIGNATED_INITIALIZER;
 @end
@@ -589,15 +652,6 @@ SWIFT_CLASS("_TtC5Forms6TabBar")
 @end
 
 
-SWIFT_CLASS("_TtC5Forms16TabBarController")
-@interface TabBarController : ViewController
-- (nonnull instancetype)initWithNibName:(NSString * _Nullable)nibNameOrNil bundle:(NSBundle * _Nullable)nibBundleOrNil OBJC_DESIGNATED_INITIALIZER;
-- (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)coder OBJC_DESIGNATED_INITIALIZER;
-@end
-
-
-
-
 
 @interface TableDataSource (SWIFT_EXTENSION(Forms))
 - (void)scrollViewDidScroll:(UIScrollView * _Nonnull)scrollView;
@@ -615,47 +669,6 @@ SWIFT_CLASS("_TtC5Forms16TabBarController")
 - (UITableViewCell * _Nonnull)tableView:(UITableView * _Nonnull)tableView cellForRowAtIndexPath:(NSIndexPath * _Nonnull)indexPath SWIFT_WARN_UNUSED_RESULT;
 - (CGFloat)tableView:(UITableView * _Nonnull)tableView heightForRowAtIndexPath:(NSIndexPath * _Nonnull)indexPath SWIFT_WARN_UNUSED_RESULT;
 @end
-
-
-
-
-
-SWIFT_CLASS("_TtC5Forms19TableViewController")
-@interface TableViewController : ViewController <UITableViewDataSource, UITableViewDelegate>
-- (nonnull instancetype)initWithNibName:(NSString * _Nullable)nibNameOrNil bundle:(NSBundle * _Nullable)nibBundleOrNil OBJC_DESIGNATED_INITIALIZER;
-- (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)coder OBJC_DESIGNATED_INITIALIZER;
-@end
-
-
-
-
-
-
-@interface TableViewController (SWIFT_EXTENSION(Forms))
-- (void)scrollViewDidScroll:(UIScrollView * _Nonnull)scrollView;
-@end
-
-
-
-
-
-
-@interface TableViewController (SWIFT_EXTENSION(Forms))
-- (NSInteger)numberOfSectionsInTableView:(UITableView * _Nonnull)tableView SWIFT_WARN_UNUSED_RESULT;
-- (NSInteger)tableView:(UITableView * _Nonnull)tableView numberOfRowsInSection:(NSInteger)section SWIFT_WARN_UNUSED_RESULT;
-- (UITableViewCell * _Nonnull)tableView:(UITableView * _Nonnull)tableView cellForRowAtIndexPath:(NSIndexPath * _Nonnull)indexPath SWIFT_WARN_UNUSED_RESULT;
-- (CGFloat)tableView:(UITableView * _Nonnull)tableView heightForRowAtIndexPath:(NSIndexPath * _Nonnull)indexPath SWIFT_WARN_UNUSED_RESULT;
-@end
-
-
-
-
-
-
-
-
-
-
 
 
 SWIFT_CLASS("_TtC5Forms9TextField")
@@ -805,21 +818,6 @@ SWIFT_CLASS("_TtC5Forms4View")
 
 @interface View (SWIFT_EXTENSION(Forms))
 - (nonnull instancetype)withHeight:(CGFloat)height SWIFT_WARN_UNUSED_RESULT;
-@end
-
-
-
-
-@class UIGestureRecognizer;
-
-@interface ViewController (SWIFT_EXTENSION(Forms))
-- (BOOL)gestureRecognizerShouldBegin:(UIGestureRecognizer * _Nonnull)gestureRecognizer SWIFT_WARN_UNUSED_RESULT;
-@end
-
-
-@interface ViewController (SWIFT_EXTENSION(Forms))
-- (void)keyboarWillShowForResizingWithNotification:(NSNotification * _Nonnull)notification;
-- (void)keyboarWillHideForResizingWithNotification:(NSNotification * _Nonnull)notification;
 @end
 
 

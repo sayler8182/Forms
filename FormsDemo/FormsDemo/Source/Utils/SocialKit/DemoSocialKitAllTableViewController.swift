@@ -6,8 +6,6 @@
 //  Copyright © 2020 Limbo. All rights reserved.
 //
 
-#if canImport(SocialKit)
-
 import Forms
 import SocialKit
 import UIKit
@@ -16,14 +14,10 @@ import UIKit
 class DemoSocialKitAllTableViewController: FormsTableViewController {
     private let signInWithApple = Components.social.signInWithApple()
         .with(paddingEdgeInset: UIEdgeInsets(top: 16, leading: 16, bottom: 0, trailing: 16))
-    #if canImport(FBSDKLoginKit)
     private let signInWithFacebook = Components.social.signInWithFacebook()
         .with(paddingHorizontal: 16)
-    #endif
-    #if canImport(GoogleSignIn)
     private let signInWithGoogle = Components.social.signInWithGoogle()
         .with(paddingHorizontal: 16)
-    #endif
     
     private let divider = Components.utils.divider()
         .with(height: 5.0)
@@ -31,24 +25,10 @@ class DemoSocialKitAllTableViewController: FormsTableViewController {
     override func setupContent() {
         super.setupContent()
         self.build([
-            self.signInWithApple
+            self.signInWithApple,
+            self.signInWithFacebook,
+            self.signInWithGoogle
         ], divider: self.divider)
-        
-        DispatchQueue.main.async {
-            #if canImport(FBSDKLoginKit)
-            self.add([
-                self.signInWithFacebook,
-                self.divider
-            ])
-            #endif
-            
-            #if canImport(GoogleSignIn)
-            self.add([
-                self.signInWithGoogle,
-                self.divider
-            ])
-            #endif
-        }
     }
     
     override func setupConfiguration() {
@@ -56,5 +36,3 @@ class DemoSocialKitAllTableViewController: FormsTableViewController {
         self.tableContentInset = UIEdgeInsets(vertical: 16)
     }
 }
-
-#endif

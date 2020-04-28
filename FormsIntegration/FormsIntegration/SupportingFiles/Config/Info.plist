@@ -37,10 +37,16 @@
 	</array>
 	<key>CFBundleVersion</key>
 	<string>1</string>
+	<key>FacebookAdvertiserIDCollectionEnabled</key>
+	<string>NO</string>
 	<key>FacebookAppID</key>
 	<string>1234</string>
+	<key>FacebookAutoLogAppEventsEnabled</key>
+	<string>NO</string>
 	<key>FacebookDisplayName</key>
 	<string>FormsIntegration]</string>
+	<key>FirebaseScreenReportingEnabled</key>
+	<string>NO</string>
 	<key>LSApplicationCategoryType</key>
 	<string>public.app-category.developer-tools</string>
 	<key>LSApplicationQueriesSchemes</key>

@@ -2,7 +2,7 @@
 //  DemoScrollContainerViewController.swift
 //  FormsDemo
 //
-//  Created by Konrad on 4/23/20.
+//  Created by Konrad on 4/28/20.
 //  Copyright © 2020 Limbo. All rights reserved.
 //
 
@@ -10,38 +10,55 @@ import Forms
 import UIKit
 
 // MARK: DemoScrollContainerViewController
-class DemoScrollContainerViewController: FormsTableViewController {
-    private lazy var firstContainer = Components.container.scroll()
-        .with(height: 200)
-        .with(items: [self.firstRedView, self.firstGreenView])
-    private let firstRedView = Components.container.view()
-        .with(backgroundColor: UIColor.red)
-    private let firstGreenView = Components.container.view()
-        .with(backgroundColor: UIColor.green)
-    private lazy var secondContainer = Components.container.scroll()
-        .with(bounces: false)
-        .with(automaticInterval: 2.0)
-        .with(height: 200)
-        .with(isAutomatic: true)
-        .with(items: [self.secondRedView, self.secondGreenView, self.secondOrangeView])
+class DemoScrollContainerViewController: FormsViewController {
+    private let horizontalScroll = Components.container.scroll()
         .with(paddingHorizontal: 8)
-        .with(pageIsHidden: true)
+        .with(scrollDirection: .horizontal)
+        .with(spacing: 8)
+    private let verticalScroll = Components.container.scroll()
+        .with(paddingBottom: 24)
         .with(scrollDirection: .vertical)
-    private let secondRedView = Components.container.view()
-        .with(backgroundColor: UIColor.red)
-    private let secondGreenView = Components.container.view()
-        .with(backgroundColor: UIColor.green)
-    private let secondOrangeView = Components.container.view()
-        .with(backgroundColor: UIColor.orange)
-    
-    private let divider = Components.utils.divider()
-        .with(height: 5.0)
+        .with(spacing: 8)
     
     override func setupContent() {
         super.setupContent()
-        self.build([
-            self.firstContainer,
-            self.secondContainer
-        ], divider: self.divider)
+        self.view.addSubview(self.horizontalScroll, with: [
+            Anchor.to(self.view).top.safeArea.offset(8),
+            Anchor.to(self.view).horizontal,
+            Anchor.to(self.horizontalScroll).height(100)
+        ])
+        self.view.addSubview(self.verticalScroll, with: [
+            Anchor.to(self.horizontalScroll).topToBottom.offset(8),
+            Anchor.to(self.view).centerX,
+            Anchor.to(self.view).width(200),
+            Anchor.to(self.view).bottom
+        ])
+        
+        self.setupHorizontalItems(count: 10)
+        self.setupVerticalItems(count: 10)
+    }
+    
+    private func setupHorizontalItems(count: Int) {
+        let items: [FormComponent] = (0..<count).map { _ in
+            return Components.container.view()
+                .with(backgroundColor: .red)
+                .with(anchors: {[
+                    Anchor.to($0).width(100),
+                    Anchor.to($0).height(100)
+                    ]})
+        }
+        self.horizontalScroll.setItems(items)
+    }
+    
+    private func setupVerticalItems(count: Int) {
+        let items: [FormComponent] = (0..<count).map { _ in
+            return Components.container.view()
+                .with(backgroundColor: .green)
+                .with(anchors: {[
+                    Anchor.to($0).width(200),
+                    Anchor.to($0).height(100)
+                    ]})
+        }
+        self.verticalScroll.setItems(items)
     }
 }

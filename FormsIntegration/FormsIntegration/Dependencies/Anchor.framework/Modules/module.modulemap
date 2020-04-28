@@ -1,0 +1,11 @@
+framework module Anchor {
+  umbrella header "Anchor.h"
+
+  export *
+  module * { export * }
+}
+
+module Anchor.Swift {
+    header "Anchor-Swift.h"
+    requires objc
+}

@@ -6,8 +6,6 @@
 //  Copyright © 2020 Limbo. All rights reserved.
 //
 
-#if canImport(DeveloperTools)
-
 import DeveloperTools
 import Forms
 import UIKit
@@ -76,5 +74,3 @@ class DemoDeveloperToolsMenuSecondFeatureViewController: FormsTableViewControlle
         ])
     }
 }
-
-#endif

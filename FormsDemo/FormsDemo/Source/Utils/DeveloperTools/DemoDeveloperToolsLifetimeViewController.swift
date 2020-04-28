@@ -5,7 +5,6 @@
 //  Created by Konrad on 4/25/20.
 //  Copyright © 2020 Limbo. All rights reserved.
 //
-#if canImport(DeveloperTools)
 
 import DeveloperTools
 import Forms
@@ -93,5 +92,3 @@ private class Demo3Item2: DemoItem2 {
         return super.lifetimeConfiguration.with(maxCount: 1)
     }
 }
-
-#endif

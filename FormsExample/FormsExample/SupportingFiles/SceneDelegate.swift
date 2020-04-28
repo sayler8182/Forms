@@ -6,16 +6,10 @@
 //  Copyright © 2020 Limbo. All rights reserved.
 //
 
-#if canImport(Analytics)
 import Analytics
-#endif
-#if canImport(DeveloperTools)
 import DeveloperTools
-#endif
 import FormsDemo
-#if canImport(SocialKit)
 import SocialKit
-#endif
 import UIKit
 
 // MARK: SceneDelegate
@@ -27,24 +21,15 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
                options connectionOptions: UIScene.ConnectionOptions) {
         guard let windowScene = (scene as? UIWindowScene) else { return }
         
-        #if canImport(Analytics)
         Analytics.configure()
-        #endif
-        
-        #if canImport(DeveloperTools)
         DeveloperTools.configure(
             features: DemoDeveloperFeatureKeys.allCases,
             featuresFlags: DemoDeveloperFeatureFlagKeys.allCases,
             onSelect: DemoDeveloperToolsManager.onSelect)
-        let trackerManager = LifetimeTrackerManager()
-        LifetimeTracker.configure(trackerManager.refresh)
-        #endif
-        
-        #if canImport(SocialKit)
+        LifetimeTracker.configure()
         SocialKit.configure(
             googleClientID: "513688149579-fhj79mgkeq2rp689dpmfnn7nlkadnf31.apps.googleusercontent.com"
         )
-        #endif
         
         let window: UIWindow = UIWindow(windowScene: windowScene)
         window.rootViewController = DemoRootViewController()

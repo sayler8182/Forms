@@ -12,21 +12,37 @@
 		71DB65C92458064F00B16145 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71DB65C42458064F00B16145 /* AppDelegate.swift */; };
 		71DB65CA2458064F00B16145 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 71DB65C52458064F00B16145 /* LaunchScreen.storyboard */; };
 		71DB65CC245806AF00B16145 /* FormsIntegrationSocialKitGoogleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71DB65CB245806AF00B16145 /* FormsIntegrationSocialKitGoogleViewController.swift */; };
-		71DB65D3245809C100B16145 /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71DB65CE245809B800B16145 /* FBSDKLoginKit.framework */; platformFilter = ios; };
-		71DB65D4245809C100B16145 /* FBSDKLoginKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 71DB65CE245809B800B16145 /* FBSDKLoginKit.framework */; platformFilter = ios; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		71DB65D6245809C200B16145 /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71DB65CD245809B800B16145 /* FBSDKCoreKit.framework */; platformFilter = ios; };
-		71DB65D7245809C200B16145 /* FBSDKCoreKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 71DB65CD245809B800B16145 /* FBSDKCoreKit.framework */; platformFilter = ios; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		71DB65DA24580C8500B16145 /* FormsIntegrationRootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71DB65D924580C8500B16145 /* FormsIntegrationRootViewController.swift */; };
 		71DB65DC245817CD00B16145 /* FormsIntegrationSocialKitAppleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71DB65DB245817CD00B16145 /* FormsIntegrationSocialKitAppleViewController.swift */; };
 		71DB65DE245817DC00B16145 /* FormsIntegrationSocialKitFacebookViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71DB65DD245817DC00B16145 /* FormsIntegrationSocialKitFacebookViewController.swift */; };
 		71DB65E0245818F700B16145 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 71DB65DF245818F700B16145 /* GoogleService-Info.plist */; };
 		71DB65E324581AE200B16145 /* FormsIntegrationAnalyticsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71DB65E224581AE200B16145 /* FormsIntegrationAnalyticsViewController.swift */; };
-		71DB65F9245820E900B16145 /* Forms.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71DB65A2245803F800B16145 /* Forms.framework */; platformFilter = ios; };
-		71DB65FA245820E900B16145 /* Forms.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 71DB65A2245803F800B16145 /* Forms.framework */; platformFilter = ios; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		71DB65FB245820EB00B16145 /* Analytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71DB65A6245803F800B16145 /* Analytics.framework */; platformFilter = ios; };
-		71DB65FC245820EB00B16145 /* Analytics.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 71DB65A6245803F800B16145 /* Analytics.framework */; platformFilter = ios; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		71DB65FD245820EC00B16145 /* SocialKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71DB65CF245809B800B16145 /* SocialKit.framework */; platformFilter = ios; };
-		71DB65FE245820EC00B16145 /* SocialKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 71DB65CF245809B800B16145 /* SocialKit.framework */; platformFilter = ios; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		71DB6675245828E600B16145 /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71DB6664245828E100B16145 /* FBSDKCoreKit.framework */; platformFilter = ios; };
+		71DB6676245828E600B16145 /* FBSDKCoreKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 71DB6664245828E100B16145 /* FBSDKCoreKit.framework */; platformFilter = ios; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		71DB6677245828E700B16145 /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71DB6660245828E100B16145 /* FBSDKLoginKit.framework */; platformFilter = ios; };
+		71DB6678245828E700B16145 /* FBSDKLoginKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 71DB6660245828E100B16145 /* FBSDKLoginKit.framework */; platformFilter = ios; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		71DB66792458290A00B16145 /* Analytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71DB6662245828E100B16145 /* Analytics.framework */; platformFilter = ios; };
+		71DB667A2458290A00B16145 /* Analytics.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 71DB6662245828E100B16145 /* Analytics.framework */; platformFilter = ios; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		71DB667B2458290B00B16145 /* Anchor.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71DB665A245828E000B16145 /* Anchor.framework */; platformFilter = ios; };
+		71DB667C2458290B00B16145 /* Anchor.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 71DB665A245828E000B16145 /* Anchor.framework */; platformFilter = ios; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		71DB667D2458290D00B16145 /* DeveloperTools.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71DB665F245828E100B16145 /* DeveloperTools.framework */; platformFilter = ios; };
+		71DB667E2458290D00B16145 /* DeveloperTools.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 71DB665F245828E100B16145 /* DeveloperTools.framework */; platformFilter = ios; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		71DB667F2458290E00B16145 /* Forms.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71DB665E245828E000B16145 /* Forms.framework */; platformFilter = ios; };
+		71DB66802458290E00B16145 /* Forms.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 71DB665E245828E000B16145 /* Forms.framework */; platformFilter = ios; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		71DB66812458290F00B16145 /* Injector.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71DB6665245828E100B16145 /* Injector.framework */; platformFilter = ios; };
+		71DB66822458290F00B16145 /* Injector.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 71DB6665245828E100B16145 /* Injector.framework */; platformFilter = ios; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		71DB66832458291000B16145 /* Logger.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71DB6659245828E000B16145 /* Logger.framework */; platformFilter = ios; };
+		71DB66842458291000B16145 /* Logger.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 71DB6659245828E000B16145 /* Logger.framework */; platformFilter = ios; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		71DB66852458291100B16145 /* Networking.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71DB6661245828E100B16145 /* Networking.framework */; platformFilter = ios; };
+		71DB66862458291100B16145 /* Networking.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 71DB6661245828E100B16145 /* Networking.framework */; platformFilter = ios; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		71DB66872458291400B16145 /* SocialKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71DB665C245828E000B16145 /* SocialKit.framework */; platformFilter = ios; };
+		71DB66882458291400B16145 /* SocialKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 71DB665C245828E000B16145 /* SocialKit.framework */; platformFilter = ios; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		71DB66892458291500B16145 /* Transition.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71DB665D245828E000B16145 /* Transition.framework */; platformFilter = ios; };
+		71DB668A2458291500B16145 /* Transition.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 71DB665D245828E000B16145 /* Transition.framework */; platformFilter = ios; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		71DB668B2458291600B16145 /* Utils.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71DB665B245828E000B16145 /* Utils.framework */; platformFilter = ios; };
+		71DB668C2458291600B16145 /* Utils.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 71DB665B245828E000B16145 /* Utils.framework */; platformFilter = ios; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		71DB668D2458291800B16145 /* Validators.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71DB6666245828E100B16145 /* Validators.framework */; platformFilter = ios; };
+		71DB668E2458291800B16145 /* Validators.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 71DB6666245828E100B16145 /* Validators.framework */; platformFilter = ios; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -37,20 +53,6 @@
 			remoteGlobalIDString = 71DB656B2458023700B16145;
 			remoteInfo = FormsIntegration;
 		};
-		71DB66042458237300B16145 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 71DB65FF2458237300B16145 /* FormsExample.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 71228E052431CF7F00D08B20;
-			remoteInfo = FormsExample;
-		};
-		71DB66062458237300B16145 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 71DB65FF2458237300B16145 /* FormsExample.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 71228E1B2431CF8200D08B20;
-			remoteInfo = FormsExampleTests;
-		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -60,11 +62,19 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				71DB65D4245809C100B16145 /* FBSDKLoginKit.framework in Embed Frameworks */,
-				71DB65FE245820EC00B16145 /* SocialKit.framework in Embed Frameworks */,
-				71DB65D7245809C200B16145 /* FBSDKCoreKit.framework in Embed Frameworks */,
-				71DB65FA245820E900B16145 /* Forms.framework in Embed Frameworks */,
-				71DB65FC245820EB00B16145 /* Analytics.framework in Embed Frameworks */,
+				71DB668A2458291500B16145 /* Transition.framework in Embed Frameworks */,
+				71DB66822458290F00B16145 /* Injector.framework in Embed Frameworks */,
+				71DB6678245828E700B16145 /* FBSDKLoginKit.framework in Embed Frameworks */,
+				71DB6676245828E600B16145 /* FBSDKCoreKit.framework in Embed Frameworks */,
+				71DB668C2458291600B16145 /* Utils.framework in Embed Frameworks */,
+				71DB66802458290E00B16145 /* Forms.framework in Embed Frameworks */,
+				71DB66842458291000B16145 /* Logger.framework in Embed Frameworks */,
+				71DB668E2458291800B16145 /* Validators.framework in Embed Frameworks */,
+				71DB66862458291100B16145 /* Networking.framework in Embed Frameworks */,
+				71DB66882458291400B16145 /* SocialKit.framework in Embed Frameworks */,
+				71DB667E2458290D00B16145 /* DeveloperTools.framework in Embed Frameworks */,
+				71DB667A2458290A00B16145 /* Analytics.framework in Embed Frameworks */,
+				71DB667C2458290B00B16145 /* Anchor.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -74,8 +84,6 @@
 /* Begin PBXFileReference section */
 		71DB656C2458023700B16145 /* FormsIntegration.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FormsIntegration.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		71DB65822458023A00B16145 /* FormsIntegrationTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FormsIntegrationTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		71DB65A2245803F800B16145 /* Forms.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Forms.framework; sourceTree = "<group>"; };
-		71DB65A6245803F800B16145 /* Analytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Analytics.framework; sourceTree = "<group>"; };
 		71DB65BF2458064F00B16145 /* SceneDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		71DB65C12458064F00B16145 /* FormsIntegration.entitlements */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.entitlements; path = FormsIntegration.entitlements; sourceTree = "<group>"; };
 		71DB65C22458064F00B16145 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -83,15 +91,24 @@
 		71DB65C42458064F00B16145 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		71DB65C52458064F00B16145 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		71DB65CB245806AF00B16145 /* FormsIntegrationSocialKitGoogleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormsIntegrationSocialKitGoogleViewController.swift; sourceTree = "<group>"; };
-		71DB65CD245809B800B16145 /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKCoreKit.framework; sourceTree = "<group>"; };
-		71DB65CE245809B800B16145 /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKLoginKit.framework; sourceTree = "<group>"; };
-		71DB65CF245809B800B16145 /* SocialKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SocialKit.framework; sourceTree = "<group>"; };
 		71DB65D924580C8500B16145 /* FormsIntegrationRootViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormsIntegrationRootViewController.swift; sourceTree = "<group>"; };
 		71DB65DB245817CD00B16145 /* FormsIntegrationSocialKitAppleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormsIntegrationSocialKitAppleViewController.swift; sourceTree = "<group>"; };
 		71DB65DD245817DC00B16145 /* FormsIntegrationSocialKitFacebookViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormsIntegrationSocialKitFacebookViewController.swift; sourceTree = "<group>"; };
 		71DB65DF245818F700B16145 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		71DB65E224581AE200B16145 /* FormsIntegrationAnalyticsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormsIntegrationAnalyticsViewController.swift; sourceTree = "<group>"; };
-		71DB65FF2458237300B16145 /* FormsExample.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = FormsExample.xcodeproj; path = ../FormsExample/FormsExample.xcodeproj; sourceTree = "<group>"; };
+		71DB6659245828E000B16145 /* Logger.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Logger.framework; sourceTree = "<group>"; };
+		71DB665A245828E000B16145 /* Anchor.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Anchor.framework; sourceTree = "<group>"; };
+		71DB665B245828E000B16145 /* Utils.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Utils.framework; sourceTree = "<group>"; };
+		71DB665C245828E000B16145 /* SocialKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SocialKit.framework; sourceTree = "<group>"; };
+		71DB665D245828E000B16145 /* Transition.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Transition.framework; sourceTree = "<group>"; };
+		71DB665E245828E000B16145 /* Forms.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Forms.framework; sourceTree = "<group>"; };
+		71DB665F245828E100B16145 /* DeveloperTools.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = DeveloperTools.framework; sourceTree = "<group>"; };
+		71DB6660245828E100B16145 /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKLoginKit.framework; sourceTree = "<group>"; };
+		71DB6661245828E100B16145 /* Networking.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Networking.framework; sourceTree = "<group>"; };
+		71DB6662245828E100B16145 /* Analytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Analytics.framework; sourceTree = "<group>"; };
+		71DB6664245828E100B16145 /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKCoreKit.framework; sourceTree = "<group>"; };
+		71DB6665245828E100B16145 /* Injector.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Injector.framework; sourceTree = "<group>"; };
+		71DB6666245828E100B16145 /* Validators.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Validators.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,11 +116,19 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				71DB65FB245820EB00B16145 /* Analytics.framework in Frameworks */,
-				71DB65FD245820EC00B16145 /* SocialKit.framework in Frameworks */,
-				71DB65F9245820E900B16145 /* Forms.framework in Frameworks */,
-				71DB65D3245809C100B16145 /* FBSDKLoginKit.framework in Frameworks */,
-				71DB65D6245809C200B16145 /* FBSDKCoreKit.framework in Frameworks */,
+				71DB668B2458291600B16145 /* Utils.framework in Frameworks */,
+				71DB667F2458290E00B16145 /* Forms.framework in Frameworks */,
+				71DB66892458291500B16145 /* Transition.framework in Frameworks */,
+				71DB66792458290A00B16145 /* Analytics.framework in Frameworks */,
+				71DB6677245828E700B16145 /* FBSDKLoginKit.framework in Frameworks */,
+				71DB667B2458290B00B16145 /* Anchor.framework in Frameworks */,
+				71DB66852458291100B16145 /* Networking.framework in Frameworks */,
+				71DB668D2458291800B16145 /* Validators.framework in Frameworks */,
+				71DB667D2458290D00B16145 /* DeveloperTools.framework in Frameworks */,
+				71DB66872458291400B16145 /* SocialKit.framework in Frameworks */,
+				71DB6675245828E600B16145 /* FBSDKCoreKit.framework in Frameworks */,
+				71DB66832458291000B16145 /* Logger.framework in Frameworks */,
+				71DB66812458290F00B16145 /* Injector.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -120,7 +145,6 @@
 		71DB65632458023700B16145 = {
 			isa = PBXGroup;
 			children = (
-				71DB65FF2458237300B16145 /* FormsExample.xcodeproj */,
 				71DB656E2458023700B16145 /* FormsIntegration */,
 				71DB656D2458023700B16145 /* Products */,
 			);
@@ -148,11 +172,19 @@
 		71DB659B245803CC00B16145 /* Dependencies */ = {
 			isa = PBXGroup;
 			children = (
-				71DB65A6245803F800B16145 /* Analytics.framework */,
-				71DB65CD245809B800B16145 /* FBSDKCoreKit.framework */,
-				71DB65CE245809B800B16145 /* FBSDKLoginKit.framework */,
-				71DB65A2245803F800B16145 /* Forms.framework */,
-				71DB65CF245809B800B16145 /* SocialKit.framework */,
+				71DB6662245828E100B16145 /* Analytics.framework */,
+				71DB665A245828E000B16145 /* Anchor.framework */,
+				71DB665F245828E100B16145 /* DeveloperTools.framework */,
+				71DB6664245828E100B16145 /* FBSDKCoreKit.framework */,
+				71DB6660245828E100B16145 /* FBSDKLoginKit.framework */,
+				71DB665E245828E000B16145 /* Forms.framework */,
+				71DB6665245828E100B16145 /* Injector.framework */,
+				71DB6659245828E000B16145 /* Logger.framework */,
+				71DB6661245828E100B16145 /* Networking.framework */,
+				71DB665C245828E000B16145 /* SocialKit.framework */,
+				71DB665D245828E000B16145 /* Transition.framework */,
+				71DB665B245828E000B16145 /* Utils.framework */,
+				71DB6666245828E100B16145 /* Validators.framework */,
 			);
 			path = Dependencies;
 			sourceTree = "<group>";
@@ -205,15 +237,6 @@
 				71DB65E224581AE200B16145 /* FormsIntegrationAnalyticsViewController.swift */,
 			);
 			path = Analytics;
-			sourceTree = "<group>";
-		};
-		71DB66002458237300B16145 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				71DB66052458237300B16145 /* FormsExample.app */,
-				71DB66072458237300B16145 /* FormsExampleTests.xctest */,
-			);
-			name = Products;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -285,12 +308,6 @@
 			mainGroup = 71DB65632458023700B16145;
 			productRefGroup = 71DB656D2458023700B16145 /* Products */;
 			projectDirPath = "";
-			projectReferences = (
-				{
-					ProductGroup = 71DB66002458237300B16145 /* Products */;
-					ProjectRef = 71DB65FF2458237300B16145 /* FormsExample.xcodeproj */;
-				},
-			);
 			projectRoot = "";
 			targets = (
 				71DB656B2458023700B16145 /* FormsIntegration */,
@@ -298,23 +315,6 @@
 			);
 		};
 /* End PBXProject section */
-
-/* Begin PBXReferenceProxy section */
-		71DB66052458237300B16145 /* FormsExample.app */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.application;
-			path = FormsExample.app;
-			remoteRef = 71DB66042458237300B16145 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		71DB66072458237300B16145 /* FormsExampleTests.xctest */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.cfbundle;
-			path = FormsExampleTests.xctest;
-			remoteRef = 71DB66062458237300B16145 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		71DB656A2458023700B16145 /* Resources */ = {
@@ -496,7 +496,10 @@
 				);
 				INFOPLIST_FILE = FormsIntegration/SupportingFiles/Config/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(PROJECT_DIR)/FormsIntegration/Dependencies";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(PROJECT_DIR)/FormsIntegration/Dependencies",
+					"@executable_path/Frameworks",
+				);
 				MARKETING_VERSION = 0.0.0;
 				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_BUNDLE_IDENTIFIER = com.limbo.FormsIntegration;
@@ -520,7 +523,10 @@
 				);
 				INFOPLIST_FILE = FormsIntegration/SupportingFiles/Config/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(PROJECT_DIR)/FormsIntegration/Dependencies";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(PROJECT_DIR)/FormsIntegration/Dependencies",
+					"@executable_path/Frameworks",
+				);
 				MARKETING_VERSION = 0.0.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.limbo.FormsIntegration;
 				PRODUCT_NAME = "$(TARGET_NAME)";

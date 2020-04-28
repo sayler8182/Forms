@@ -23,13 +23,13 @@ open class ActivityIndicator: FormComponent, FormComponentWithMarginEdgeInset, F
         get { return self.activityIndicator.color }
         set { self.activityIndicator.color = newValue }
     }
-    open var marginEdgeInset: UIEdgeInsets = UIEdgeInsets(0) {
-        didSet { self.updateMarginEdgeInset() }
-    }
     open var height: CGFloat = UITableView.automaticDimension
     open var isAnimating: Bool {
         get { return self.activityIndicator.isAnimating }
         set { newValue ? self.activityIndicator.startAnimating() : self.activityIndicator.stopAnimating() }
+    }
+    open var marginEdgeInset: UIEdgeInsets = UIEdgeInsets(0) {
+        didSet { self.updateMarginEdgeInset() }
     }
     open var paddingEdgeInset: UIEdgeInsets = UIEdgeInsets(0) {
         didSet { self.updatePaddingEdgeInset() }

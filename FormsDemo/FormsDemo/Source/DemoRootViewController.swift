@@ -23,6 +23,7 @@ private enum Demo {
         case componentsButtons
         case componentsButtonsPrimaryButton
         case componentsContainers
+        case componentsContainersPage
         case componentsContainersScroll
         case componentsContainersStack
         case componentsInputs
@@ -43,6 +44,8 @@ private enum Demo {
         case utilsDeveloperTools
         case utilsDeveloperToolsLifetime
         case utilsDeveloperToolsMenu
+        case utilsImagePicker
+        case utilsImagePickerSystem
         case utilsLoader
         case utilsModal
         case utilsNetwork
@@ -103,6 +106,7 @@ private enum Demo {
                         title: "Containers",
                         sections: [
                             Section(rows: [
+                                Row(type: .componentsContainersPage, title: "PageContainer"),
                                 Row(type: .componentsContainersScroll, title: "ScrollContainer"),
                                 Row(type: .componentsContainersStack, title: "StackContainer")
                             ])
@@ -141,6 +145,14 @@ private enum Demo {
                             Section(rows: [
                                 Row(type: .utilsDeveloperToolsLifetime, title: "Lifetime"),
                                 Row(type: .utilsDeveloperToolsMenu, title: "Menu")
+                            ])
+                    ]),
+                    Row(
+                        type: .utilsImagePicker,
+                        title: "ImagePicker",
+                        sections: [
+                            Section(rows: [
+                                Row(type: .utilsImagePickerSystem, title: "System")
                             ])
                     ]),
                     Row(type: .utilsLoader, title: "Loader"),
@@ -186,19 +198,6 @@ private enum Demo {
                     Row(type: .architecturesClean, title: "Clean Swift")
                 ])
                 ]
-                .map { section in
-                    var section: Section = section
-                    #if !canImport(Analytics)
-                    section.rows = section.rows.filter { $0.type != .utilsAnalytics }
-                    #endif
-                    #if !canImport(DeveloperTools)
-                    section.rows = section.rows.filter { $0.type != .utilsDeveloperTools }
-                    #endif
-                    #if !canImport(SocialKit)
-                    section.rows = section.rows.filter { $0.type != .utilsSocialKit }
-                    #endif
-                    return section
-            }
         }()
     }
 }
@@ -233,7 +232,7 @@ public class DemoRootViewController: UINavigationController {
         let controller = DemoListViewController(items: Demo.Section.default)
         controller.title = "FormsDemo"
         self.viewControllers = [controller]
-        self.autoroute(to: nil, in: controller)
+        self.autoroute(to: .utilsImagePickerSystem, in: controller)
     }
     
     private func autoroute(to rowType: Demo.RowType?,
@@ -315,6 +314,7 @@ private class DemoListViewController: FormsViewController {
         case .viewController:                                   return DemoViewController()
         // components
         case .componentsButtonsPrimaryButton:                   return DemoPrimaryButtonViewController()
+        case .componentsContainersPage:                         return DemoPageContainerViewController()
         case .componentsContainersScroll:                       return DemoScrollContainerViewController()
         case .componentsContainersStack:                        return DemoStackContainerViewController()
         case .componentsInputsSearchBar:                        return DemoTitleSearchBarViewController()
@@ -327,15 +327,12 @@ private class DemoListViewController: FormsViewController {
         case .componentsOthers:                                 return DemoOthersViewController()
         case .componentsUtils:                                  return DemoUtilsViewController()
         // utils
-            #if canImport(Analytics)
         case .utilsAnalytics:                                   return DemoAnalyticsViewController()
-            #endif
         case .utilsAppStoreReview:                              return DemoAppStoreReviewViewController()
         case .utilsAttributedString:                            return DemoAttributedStringViewController()
-            #if canImport(DeveloperTools)
         case .utilsDeveloperToolsLifetime:                      return DemoDeveloperToolsLifetimeViewController()
         case .utilsDeveloperToolsMenu:                          return DemoDeveloperToolsMenuViewController()
-            #endif
+        case .utilsImagePickerSystem:                           return DemoImagePickerSystemViewController()
         case .utilsLoader:                                      return DemoLoaderViewController()
         case .utilsModal:                                       return DemoModalViewController()
         case .utilsNetworkGet:                                  return DemoNetworkGetViewController()
@@ -345,16 +342,10 @@ private class DemoListViewController: FormsViewController {
         case .utilsShimmerCollection:                           return DemoShimmerCollectionViewController()
         case .utilsShimmerShimmer:                              return DemoShimmerViewController()
         case .utilsShimmerTable:                                return DemoShimmerTableViewController()
-            #if canImport(SocialKit)
         case .utilsSocialKitAll:                                return DemoSocialKitAllTableViewController()
         case .utilsSocialKitApple:                              return DemoSocialKitAppleTableViewController()
-            #if canImport(FBSDKLoginKit)
         case .utilsSocialKitFacebook:                           return DemoSocialKitFacebookTableViewController()
-            #endif
-            #if canImport(GoogleSignIn)
         case .utilsSocialKitGoogle:                             return DemoSocialKitGoogleTableViewController()
-            #endif
-            #endif
         case .utilsToast:                                       return DemoToastViewController()
         case .utilsStorage:                                     return DemoStorageViewController()
         case .utilsTransition:                                  return DemoTransitionViewController()

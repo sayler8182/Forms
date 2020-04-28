@@ -28,8 +28,6 @@ enum Utils {
     }
 }
 
-#if canImport(DeveloperTools)
-
 // MARK: DemoDeveloperToolsManager
 public enum DemoDeveloperToolsManager {
     public static func onSelect(_ key: DeveloperFeatureKey,
@@ -75,5 +73,3 @@ public enum DemoDeveloperFeatureFlagKeys: String, CaseIterable, DeveloperFeature
         }
     }
 }
-
-#endif

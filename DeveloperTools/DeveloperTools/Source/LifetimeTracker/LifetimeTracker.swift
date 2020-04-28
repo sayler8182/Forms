@@ -85,8 +85,12 @@ public class LifetimeTracker: NSObject {
     fileprivate var trackedGroups: [String: LifetimeEntriesGroup] = [:]
     fileprivate var onUpdate: OnUpdate?
     
-    public static func configure(_ onUpdate: @escaping OnUpdate) {
-        Self.shared.onUpdate = onUpdate
+    fileprivate static var refresh: ([String: LifetimeEntriesGroup]) -> Void = {
+        return LifetimeTrackerManager().refresh
+    }()
+    
+    public static func configure(_ onUpdate: OnUpdate? = nil) {
+        Self.shared.onUpdate = onUpdate ?? self.refresh
     }
     
     fileprivate func track(_ instance: LifetimeTrackable,

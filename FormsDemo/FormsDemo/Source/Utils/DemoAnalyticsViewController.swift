@@ -6,8 +6,6 @@
 //  Copyright © 2020 Limbo. All rights reserved.
 //
 
-#if canImport(Analytics)
-
 import Analytics
 import Forms
 import UIKit
@@ -63,5 +61,3 @@ private enum DemoAnalytics {
         }
     }
 }
-
-#endif

@@ -494,13 +494,15 @@ public extension UIView {
         view.anchors(anchors)
     }
     
-    @discardableResult
-    func anchors(_ anchors: [Anchor],
-                 reset: Bool = false) -> UIView {
+    func with(anchors: (UIView) -> [Anchor]) -> Self {
+        self.anchors(anchors(self))
+        return self
+    }
+    
+    func anchors(_ anchors: [Anchor]) {
         for anchor in anchors {
             self.set(anchor: anchor)
         }
-        return self
     }
     
     func set(anchor: Anchor) {
@@ -515,8 +517,8 @@ public extension UIView {
                 relation: anchor.relation,
                 anchorLayoutGuide: anchorLayoutGuide)
             constraint.priority = anchor.priority
-            constraint.isActive = anchor.isActive
             anchor.connection?.constraint = constraint
+            constraint.isActive = anchor.isActive
             constraints.append(constraint)
         }
     }
@@ -544,8 +546,8 @@ public extension UIView {
             relation: anchor.relation,
             anchorLayoutGuide: anchorLayoutGuide)
         constraint.priority = anchor.priority
-        constraint.isActive = anchor.isActive
         anchor.connection?.constraint = constraint
+        constraint.isActive = anchor.isActive
         return constraint
     }
     

@@ -6,8 +6,6 @@
 //  Copyright © 2020 Limbo. All rights reserved.
 //
 
-#if canImport(SocialKit)
-
 import Forms
 import SocialKit
 import UIKit
@@ -56,5 +54,3 @@ extension DemoSocialKitAppleTableViewController {
         })
     }
 }
- 
-#endif

@@ -193,6 +193,18 @@ extension UIView {
     }
     
     @objc
+    open func with(clipsToBounds: Bool) -> Self {
+        self.clipsToBounds = clipsToBounds
+        return self
+    }
+             
+    @objc
+    open func with(contentMode: UIView.ContentMode) -> Self {
+        self.contentMode = contentMode
+        return self
+    }
+    
+    @objc
     open func with(cornerRadius: CGFloat, asPath: Bool = false) -> Self {
         if asPath {
             self.setCornerRadius(radius: cornerRadius)

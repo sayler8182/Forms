@@ -11,7 +11,7 @@ import UIKit
 
 // MARK: DemoNetworkImageViewController
 class DemoNetworkImageViewController: FormsViewController {
-    private let imageView = UIImageView()
+    private let imageView = Components.image.default()
         .with(contentMode: .scaleAspectFit)
     
     private lazy var provider = DemoProvider(delegate: self)

@@ -10,8 +10,8 @@ import UIKit
 
 // MARK: StackContainer
 open class StackContainer: FormComponent, FormComponentWithMarginEdgeInset, FormComponentWithPaddingEdgeInset {
-    public let backgroundView = UIView()
-    public let stackView = UIStackView()
+    private let backgroundView = UIView()
+    private let stackView = UIStackView()
     
     private var items: [FormComponent] = []
     
@@ -40,7 +40,6 @@ open class StackContainer: FormComponent, FormComponentWithMarginEdgeInset, Form
     }
      
     override open func setupView() {
-        self.setupComponentView()
         self.setupBackgroundView()
         self.setupStackView()
         super.setupView()
@@ -49,8 +48,6 @@ open class StackContainer: FormComponent, FormComponentWithMarginEdgeInset, Form
     override open func componentHeight() -> CGFloat {
         return self.height
     }
-    
-    private func setupComponentView() { }
     
     private func setupBackgroundView() {
         self.backgroundView.frame = self.bounds

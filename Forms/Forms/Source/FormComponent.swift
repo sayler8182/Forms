@@ -198,6 +198,22 @@ public extension FormComponentWithMarginEdgeInset {
         self.marginEdgeInset = UIEdgeInsets(vertical: marginVertical)
         return self
     }
+    func with(marginTop: CGFloat) -> Self {
+        self.marginEdgeInset.top = marginTop
+        return self
+    }
+    func with(marginBottom: CGFloat) -> Self {
+        self.marginEdgeInset.bottom = marginBottom
+        return self
+    }
+    func with(marginLeading: CGFloat) -> Self {
+        self.marginEdgeInset.leading = marginLeading
+        return self
+    }
+    func with(marginTrailing: CGFloat) -> Self {
+        self.marginEdgeInset.trailing = marginTrailing
+        return self
+    }
 }
 
 // MARK: FormComponentWithPaddingEdgeInset
@@ -219,6 +235,22 @@ public extension FormComponentWithPaddingEdgeInset {
     }
     func with(paddingVertical: CGFloat) -> Self {
         self.paddingEdgeInset = UIEdgeInsets(vertical: paddingVertical)
+        return self
+    }
+    func with(paddingTop: CGFloat) -> Self {
+        self.paddingEdgeInset.top = paddingTop
+        return self
+    }
+    func with(paddingBottom: CGFloat) -> Self {
+        self.paddingEdgeInset.bottom = paddingBottom
+        return self
+    }
+    func with(paddingLeading: CGFloat) -> Self {
+        self.paddingEdgeInset.leading = paddingLeading
+        return self
+    }
+    func with(paddingTrailing: CGFloat) -> Self {
+        self.paddingEdgeInset.trailing = paddingTrailing
         return self
     }
 }

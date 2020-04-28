@@ -192,7 +192,7 @@ extension LifetimeTrackerManager {
             title: "Settings",
             message: nil,
             preferredStyle: .actionSheet)
-        alert.addAction(UIAlertAction(title: "Hide Lifetime", style: .default) { _ in
+        alert.addAction(UIAlertAction(title: "Hide LifetimeTracker", style: .default) { _ in
             let alert = UIAlertController(title: "Hide until ...", message: nil, preferredStyle: .actionSheet)
             alert.addAction(UIAlertAction(title: "more issues are detected", style: .default) { _ in
                 _completion(.untilMoreIssue)

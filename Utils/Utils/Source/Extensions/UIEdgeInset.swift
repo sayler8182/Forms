@@ -10,10 +10,12 @@ import UIKit
 
 public extension UIEdgeInsets {
     var leading: CGFloat {
-        return UIView.isRightToLeft ? self.right : self.left
+        get { return UIView.isRightToLeft ? self.right : self.left }
+        set { if UIView.isRightToLeft { self.right = newValue} else { self.left = newValue } }
     }
     var trailing: CGFloat {
-        return UIView.isRightToLeft ? self.left : self.right
+        get { return UIView.isRightToLeft ? self.left : self.right }
+        set { if UIView.isRightToLeft { self.left = newValue} else { self.right = newValue } }
     }
     var horizontal: CGFloat {
         return self.left + self.right

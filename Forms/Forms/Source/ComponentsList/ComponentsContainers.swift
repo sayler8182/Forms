@@ -13,11 +13,23 @@ public struct ComponentsContainers: ComponentsList {
     
     public static func scroll() -> ScrollContainer {
         let component = ScrollContainer()
+        component.backgroundColor = UIColor.systemBackground
+        component.bounces = true
+        component.height = 100
+        component.marginEdgeInset = UIEdgeInsets(0)
+        component.paddingEdgeInset = UIEdgeInsets(0)
+        component.scrollDirection = .horizontal
+        component.spacing = 0
+        return component
+    }
+    
+    public static func page() -> PageContainer {
+        let component = PageContainer()
         component.automaticInterval = 5.0
         component.backgroundColor = UIColor.systemBackground
         component.bounces = true
-        component.marginEdgeInset = UIEdgeInsets(0)
         component.height = 100
+        component.marginEdgeInset = UIEdgeInsets(0)
         component.isAutomatic = false
         component.isPagingEnabled = true
         component.paddingEdgeInset = UIEdgeInsets(0)
@@ -44,7 +56,7 @@ public struct ComponentsContainers: ComponentsList {
     public static func view() -> View {
         let component = View()
         component.height = UITableView.automaticDimension
-        component.color = UIColor.systemBackground
+        component.backgroundColor = UIColor.systemBackground
         return component
     }
 }

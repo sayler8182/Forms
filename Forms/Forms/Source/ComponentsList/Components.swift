@@ -13,6 +13,7 @@ public struct Components {
     
     public typealias button = ComponentsButtons
     public typealias container = ComponentsContainers
+    public typealias image = ComponentsImageViews
     public typealias input = ComponentsInputs
     public typealias label = ComponentsLabels
     public typealias navigationBar = ComponentsNavigationBars

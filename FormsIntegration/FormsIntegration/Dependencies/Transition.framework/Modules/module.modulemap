@@ -1,0 +1,11 @@
+framework module Transition {
+  umbrella header "Transition.h"
+
+  export *
+  module * { export * }
+}
+
+module Transition.Swift {
+    header "Transition-Swift.h"
+    requires objc
+}
