@@ -34,7 +34,7 @@ extension DemoTabBarController {
 }
 
 // MARK: DemoTabBarController
-class DemoTabBarController: TabBarController {
+class DemoTabBarController: FormsTabBarController {
     override func setupView() {
         super.setupView()
         self.show(TabBarKeys.main, index: 0)
@@ -130,7 +130,7 @@ class DemoTabBarController: TabBarController {
 }
 
 // MARK: ContentViewController
-private class ContentViewController: TableViewController {
+private class ContentViewController: FormsTableViewController {
     private lazy var navigationBar = Components.navigationBar.default()
     
     private let firstButton = Components.button.default()

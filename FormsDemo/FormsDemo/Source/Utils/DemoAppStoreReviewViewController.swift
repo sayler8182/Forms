@@ -10,7 +10,7 @@ import Forms
 import UIKit
 
 // MARK: DemoAppStoreReviewViewController
-class DemoAppStoreReviewViewController: ViewController {
+class DemoAppStoreReviewViewController: FormsViewController {
     private let updateLaunchButton = Components.button.default()
         .with(title: "Update launch")
     

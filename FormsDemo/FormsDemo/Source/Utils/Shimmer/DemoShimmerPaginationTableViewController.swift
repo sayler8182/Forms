@@ -10,7 +10,7 @@ import Forms
 import UIKit
 
 // MARK: DemoShimmerPaginationTableViewController
-class DemoShimmerPaginationTableViewController: TableViewController {
+class DemoShimmerPaginationTableViewController: FormsTableViewController {
     private lazy var shimmerDataSource = ShimmerTableDataSource()
         .with(generators: [ShimmerRowGenerator(type: ShimmerDemoTableViewCell.self, count: 3)])
         .with(delegate: self)
@@ -27,14 +27,14 @@ class DemoShimmerPaginationTableViewController: TableViewController {
         self.tableContentInset = UIEdgeInsets(top: 8, bottom: 300)
     }
      
-    override func setupCell(row: TableRow, cell: TableViewCell, indexPath: IndexPath) {
+    override func setupCell(row: TableRow, cell: FormsTableViewCell, indexPath: IndexPath) {
         super.setupCell(row: row, cell: cell, indexPath: indexPath)
         cell.cast(row: row, of: DemoCellModel.self, to: DemoTableViewCell.self) { (newData, newCell) in
             newCell.fill(newData)
         }
     }
     
-    override func selectCell(row: TableRow, cell: TableViewCell, indexPath: IndexPath) {
+    override func selectCell(row: TableRow, cell: FormsTableViewCell, indexPath: IndexPath) {
         super.selectCell(row: row, cell: cell, indexPath: indexPath)
         cell.cast(row: row, of: DemoCellModel.self, to: DemoTableViewCell.self) { [unowned self] (newData, _) in
             UIAlertController()
@@ -176,7 +176,7 @@ private struct DemoCellModel {
 }
 
 // MARK: DemoTableViewCell
-private class DemoTableViewCell: TableViewCell {
+private class DemoTableViewCell: FormsTableViewCell {
     fileprivate let iconView = UIImageView()
         .with(width: 48.0, height: 48.0)
         .rounded()

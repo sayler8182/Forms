@@ -10,7 +10,7 @@ import Forms
 import UIKit
 
 // MARK: DemoShimmerPaginationCollectionViewController
-class DemoShimmerPaginationCollectionViewController: CollectionViewController {
+class DemoShimmerPaginationCollectionViewController: FormsCollectionViewController {
     private lazy var navigationBar = Components.navigationBar.default()
         .with(rightBarButtonItems: [self.changeDirectionBarItem])
     
@@ -51,14 +51,14 @@ class DemoShimmerPaginationCollectionViewController: CollectionViewController {
         }
     }
     
-    override func setupCell(item: CollectionItem, cell: CollectionViewCell, indexPath: IndexPath) {
+    override func setupCell(item: CollectionItem, cell: FormsCollectionViewCell, indexPath: IndexPath) {
         super.setupCell(item: item, cell: cell, indexPath: indexPath)
         cell.cast(item: item, of: DemoCellModel.self, to: DemoCollectionViewCell.self) { (newData, newCell) in
             newCell.fill(newData)
         }
     }
     
-    override func selectCell(item: CollectionItem, cell: CollectionViewCell, indexPath: IndexPath) {
+    override func selectCell(item: CollectionItem, cell: FormsCollectionViewCell, indexPath: IndexPath) {
         super.selectCell(item: item, cell: cell, indexPath: indexPath)
         cell.cast(item: item, of: DemoCellModel.self, to: DemoCollectionViewCell.self) { [unowned self] (newData, _) in
             UIAlertController()
@@ -200,7 +200,7 @@ private struct DemoCellModel {
 }
 
 // MARK: DemoCollectionViewCell
-private class DemoCollectionViewCell: CollectionViewCell {
+private class DemoCollectionViewCell: FormsCollectionViewCell {
     fileprivate let iconView = UIImageView()
         .with(width: 48.0, height: 48.0)
         .rounded()

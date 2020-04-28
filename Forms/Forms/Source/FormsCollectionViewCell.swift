@@ -1,5 +1,5 @@
 //
-//  CollectionViewCell.swift
+//  FormsCollectionViewCell.swift
 //  Forms
 //
 //  Created by Konrad on 4/23/20.
@@ -8,8 +8,8 @@
 
 import UIKit
 
-// MARK: CollectionViewCell
-open class CollectionViewCell: UICollectionViewCell, Componentable, ShimmerableViewCell {
+// MARK: FormsCollectionViewCell
+open class FormsCollectionViewCell: UICollectionViewCell, Componentable, ShimmerableViewCell {
     open class var identifier: String {
         return "\(self)"
     }
@@ -63,11 +63,11 @@ open class CollectionViewCell: UICollectionViewCell, Componentable, ShimmerableV
 }
 
 // MARK: DataSource
-public extension CollectionViewCell {
-    func cast<D, C: CollectionViewCell>(item: CollectionItem,
-                                        of dataType: D.Type,
-                                        to cellType: C.Type,
-                                        success: (D, C) -> Void) {
+public extension FormsCollectionViewCell {
+    func cast<D, C: FormsCollectionViewCell>(item: CollectionItem,
+                                             of dataType: D.Type,
+                                             to cellType: C.Type,
+                                             success: (D, C) -> Void) {
         self.cast(
             item: item,
             of: dataType,
@@ -76,11 +76,11 @@ public extension CollectionViewCell {
             fail: { })
     }
     
-    func cast<D, C: CollectionViewCell>(item: CollectionItem,
-                                        of dataType: D.Type,
-                                        to cellType: C.Type,
-                                        success: (D, C) -> Void,
-                                        fail: () -> Void) {
+    func cast<D, C: FormsCollectionViewCell>(item: CollectionItem,
+                                             of dataType: D.Type,
+                                             to cellType: C.Type,
+                                             success: (D, C) -> Void,
+                                             fail: () -> Void) {
         guard let data: D = item.data as? D,
             let cell: C = self as? C else {
                 return fail()

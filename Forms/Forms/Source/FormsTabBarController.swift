@@ -1,5 +1,5 @@
 //
-//  TabBarController.swift
+//  FormsTabBarController.swift
 //  Forms
 //
 //  Created by Konrad on 4/4/20.
@@ -9,8 +9,8 @@
 import Anchor
 import UIKit
 
-// MARK: TabBarController
-open class TabBarController: ViewController {
+// MARK: FormsTabBarController
+open class FormsTabBarController: FormsViewController {
     private let container = UIView(width: 320, height: 400)
     private let tabBar = TabBar(width: 320, height: 72)
     
@@ -174,7 +174,7 @@ open class TabBarController: ViewController {
 }
 
 // MARK: TabBar
-public extension TabBarController {
+public extension FormsTabBarController {
     func showTabBar(animated: Bool = true,
                     completion: ((Bool) -> Void)? = nil) {
         self.tabBar.isHidden = false
@@ -208,7 +208,7 @@ public extension TabBarController {
 
 // MARK: UIViewController
 extension UIViewController {
-    func getTabBarController<T: TabBarController>(of type: T.Type) -> T? {
+    func getTabBarController<T: FormsTabBarController>(of type: T.Type) -> T? {
         var controller: UIViewController? = self.parent
         while controller.isNotNil && !(controller is T) {
             controller = controller?.parent

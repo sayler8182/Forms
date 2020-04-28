@@ -10,7 +10,7 @@ import Forms
 import UIKit
 
 // MARK: DemoShimmerViewController
-class DemoShimmerViewController: ViewController {
+class DemoShimmerViewController: FormsViewController {
     private let iconView = UIImageView()
         .with(width: 48.0, height: 48.0)
         .with(image: UIColor.lightGray)

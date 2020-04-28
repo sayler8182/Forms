@@ -13,7 +13,7 @@ import SocialKit
 import UIKit
 
 // MARK: DemoSocialKitAllTableViewController
-class DemoSocialKitAllTableViewController: TableViewController {
+class DemoSocialKitAllTableViewController: FormsTableViewController {
     private let signInWithApple = Components.social.signInWithApple()
         .with(paddingEdgeInset: UIEdgeInsets(top: 16, leading: 16, bottom: 0, trailing: 16))
     #if canImport(FBSDKLoginKit)

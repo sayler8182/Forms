@@ -10,7 +10,7 @@ import Forms
 import UIKit
 
 // MARK: DemoModalViewController
-class DemoModalViewController: TableViewController {
+class DemoModalViewController: FormsTableViewController {
     private let titleShortModalButton = Components.button.default()
         .with(title: "Title short modal")
     

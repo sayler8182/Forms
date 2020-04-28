@@ -10,7 +10,7 @@ import Forms
 import UIKit
 
 // MARK: DemoShimmerCollectionViewController
-class DemoShimmerCollectionViewController: CollectionViewController {
+class DemoShimmerCollectionViewController: FormsCollectionViewController {
     private lazy var shimmerDataSource = ShimmerCollectionDataSource()
         .with(generators: [
             ShimmerItemGenerator(type: ShimmerShortDemoCollectionViewCell.self, count: 6),
@@ -34,7 +34,7 @@ class DemoShimmerCollectionViewController: CollectionViewController {
         self.collectionColumnsVerticalDistance = 8
     }
     
-    override func setupCell(item: CollectionItem, cell: CollectionViewCell, indexPath: IndexPath) {
+    override func setupCell(item: CollectionItem, cell: FormsCollectionViewCell, indexPath: IndexPath) {
         super.setupCell(item: item, cell: cell, indexPath: indexPath)
         cell.cast(item: item, of: DemoCellModel.self, to: DemoCollectionViewCell.self) { (newData, newCell) in
             newCell.fill(newData)
@@ -78,7 +78,7 @@ private struct DemoCellModel {
 }
 
 // MARK: DemoCollectionViewCell
-private class DemoCollectionViewCell: CollectionViewCell {
+private class DemoCollectionViewCell: FormsCollectionViewCell {
     fileprivate let iconView = UIImageView()
         .with(width: 48.0, height: 48.0)
         .rounded()

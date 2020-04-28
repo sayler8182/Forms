@@ -10,7 +10,7 @@ import Forms
 import UIKit
 
 // MARK: DemoViewViewController
-class DemoViewController: ViewController {
+class DemoViewController: FormsViewController {
     private let centerView = Components.container.view()
         .with(backgroundColor: UIColor.red)
         .with(height: 44)

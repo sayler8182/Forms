@@ -10,7 +10,7 @@ import Forms
 import UIKit
 
 // MARK: DemoUtilsViewController
-class DemoUtilsViewController: TableViewController {
+class DemoUtilsViewController: FormsTableViewController {
     private let customDivider = Components.utils.divider()
         .with(color: UIColor.red)
         .with(height: 44)

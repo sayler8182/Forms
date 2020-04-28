@@ -13,7 +13,7 @@ import Forms
 import UIKit
 
 // MARK: DemoAnalyticsViewController
-class DemoAnalyticsViewController: TableViewController {
+class DemoAnalyticsViewController: FormsTableViewController {
     private let logEventButton = Components.button.default()
         .with(title: "Log event")
     

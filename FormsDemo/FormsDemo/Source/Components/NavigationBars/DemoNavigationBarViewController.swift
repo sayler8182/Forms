@@ -10,7 +10,7 @@ import Forms
 import UIKit
 
 // MARK: DemoNavigationBarViewController
-class DemoNavigationBarViewController: TableViewController {
+class DemoNavigationBarViewController: FormsTableViewController {
     private lazy var defaultNavigationBar = Components.navigationBar.default()
         .with(title: "Default navigation bar")
     private lazy var navigationBarWithoutBack = Components.navigationBar.default()

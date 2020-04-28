@@ -10,7 +10,7 @@ import Forms
 import UIKit
 
 // MARK: DemoLabelsViewController
-class DemoLabelsViewController: TableViewController {
+class DemoLabelsViewController: FormsTableViewController {
     private let shortLabel = Components.label.default()
         .with(backgroundColor: UIColor.red)
         .with(text: "Some short text")

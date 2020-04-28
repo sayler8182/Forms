@@ -10,7 +10,7 @@ import Forms
 import UIKit
 
 // MARK: DemoStackContainerViewController
-class DemoStackContainerViewController: TableViewController {
+class DemoStackContainerViewController: FormsTableViewController {
     private lazy var firstContainer = Components.container.stack()
         .with(height: 200)
         .with(items: [self.firstRedView, self.firstGreenView])

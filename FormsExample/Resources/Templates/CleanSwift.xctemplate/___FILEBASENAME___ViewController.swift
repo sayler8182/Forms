@@ -14,7 +14,7 @@ protocol ___VARIABLE_sceneName___DisplayLogic: class {
 }
 
 // MARK: ___VARIABLE_sceneName___ViewController
-class ___VARIABLE_sceneName___ViewController: ViewController {
+class ___VARIABLE_sceneName___ViewController: FormsViewController {
     var interactor: ___VARIABLE_sceneName___BusinessLogic!
     var router: (___VARIABLE_sceneName___RoutingLogic & ___VARIABLE_sceneName___DataPassing)!
 

@@ -149,10 +149,10 @@ private class ShimmerPlaceholderView: UIView {
 
 // MARK: ShimmerRowGenerator
 public struct ShimmerRowGenerator {
-    public let type: TableViewCell.Type
+    public let type: FormsTableViewCell.Type
     public let count: Int
     
-    public init(type: TableViewCell.Type,
+    public init(type: FormsTableViewCell.Type,
                 count: Int = 1) {
         self.type = type
         self.count = count
@@ -161,10 +161,10 @@ public struct ShimmerRowGenerator {
 
 // MARK: ShimmerItemGenerator
 public struct ShimmerItemGenerator {
-    public let type: CollectionViewCell.Type
+    public let type: FormsCollectionViewCell.Type
     public let count: Int
     
-    public init(type: CollectionViewCell.Type,
+    public init(type: FormsCollectionViewCell.Type,
                 count: Int = 1) {
         self.type = type
         self.count = count
@@ -209,7 +209,7 @@ open class ShimmerTableDataSource: TableDataSource {
     }
     
     override public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = super.tableView(tableView, cellForRowAt: indexPath) as! TableViewCell
+        let cell = super.tableView(tableView, cellForRowAt: indexPath) as! FormsTableViewCell
         let section: TableSection = self.sections[indexPath.section]
         guard section.isShimmering else { return cell }
         cell.prepareForShimmering()
@@ -256,7 +256,7 @@ open class ShimmerCollectionDataSource: CollectionDataSource {
     }
     
     override public func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = super.collectionView(collectionView, cellForItemAt: indexPath) as! CollectionViewCell
+        let cell = super.collectionView(collectionView, cellForItemAt: indexPath) as! FormsCollectionViewCell
         let section: CollectionSection = self.sections[indexPath.section]
         guard section.isShimmering else { return cell }
         cell.prepareForShimmering()
@@ -270,7 +270,7 @@ public protocol ShimmerableViewCell: Shimmerable {
 }
 
 // MARK: ShimmerTableViewCell
-public class ShimmerTableViewCell: TableViewCell {
+public class ShimmerTableViewCell: FormsTableViewCell {
     private let iconView = UIImageView()
         .with(width: 48.0, height: 48.0)
         .with(image: UIColor.systemBackground.transparent)
@@ -301,7 +301,7 @@ public class ShimmerTableViewCell: TableViewCell {
 }
 
 // MARK: ShimmerCollectionViewCell
-public class ShimmerCollectionViewCell: CollectionViewCell {
+public class ShimmerCollectionViewCell: FormsCollectionViewCell {
     private let iconView = UIImageView()
         .with(width: 48.0, height: 48.0)
         .with(image: UIColor.systemBackground.transparent)

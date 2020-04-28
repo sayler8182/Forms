@@ -87,7 +87,7 @@ public class FormsIntegrationRootViewController: UINavigationController {
 }
 
 // MARK: FormsIntegrationListViewController
-private class FormsIntegrationListViewController: ViewController {
+private class FormsIntegrationListViewController: FormsViewController {
     private let tableView: UITableView = UITableView(
         frame: CGRect(width: 320, height: 44),
         style: .plain)

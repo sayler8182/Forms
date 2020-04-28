@@ -10,7 +10,7 @@ import Forms
 import UIKit
 
 // MARK: DemoTitleTextFieldViewController
-class DemoTitleTextFieldViewController: TableViewController {
+class DemoTitleTextFieldViewController: FormsTableViewController {
     private let textField = Components.input.textField.default()
         .with(placeholder: "Text")
         .with(title: "Input")

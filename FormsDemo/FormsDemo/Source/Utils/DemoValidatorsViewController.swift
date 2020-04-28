@@ -10,7 +10,7 @@ import Forms
 import UIKit
 
 // MARK: DemoValidatorsViewController
-class DemoValidatorsViewController: TableViewController {
+class DemoValidatorsViewController: FormsTableViewController {
     private let amountTextField = Components.input.textField.amount.default()
         .with(title: "AmountValidator")
         .with(validator: AmountValidator(minAmount: 100, maxAmount: 20_000, currency: "PLN"))

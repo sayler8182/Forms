@@ -12,7 +12,7 @@ import Forms
 import UIKit
 
 // MARK: DemoDeveloperToolsLifetimeViewController
-class DemoDeveloperToolsLifetimeViewController: TableViewController {
+class DemoDeveloperToolsLifetimeViewController: FormsTableViewController {
     private let createLeaksButton = Components.button.default()
         .with(title: "Create leaks")
     private let removeLeaksButton = Components.button.default()

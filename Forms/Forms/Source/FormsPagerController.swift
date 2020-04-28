@@ -1,5 +1,5 @@
 //
-//  PagerController.swift
+//  FormsPagerController.swift
 //  Forms
 //
 //  Created by Konrad on 4/6/20.
@@ -33,8 +33,8 @@ open class PagerItem: TopBarItem {
     }
 }
 
-// MARK: PagerController
-open class PagerController: ViewController {
+// MARK: FormsPagerController
+open class FormsPagerController: FormsViewController {
     private let topBar = TopBar(width: 320, height: 44)
     private let collectionView = UICollectionView(frame: CGRect.zero, collectionViewLayout: PagerFlowLayout())
     private let pageControl = UIPageControl()
@@ -209,7 +209,7 @@ open class PagerController: ViewController {
 }
 
 // MARK: TopBar
-public extension PagerController {
+public extension FormsPagerController {
     func showTopBar(animated: Bool = true,
                     completion: ((Bool) -> Void)? = nil) {
         self.collectionView.performBatchUpdates({
@@ -246,7 +246,7 @@ public extension PagerController {
 }
 
 // MARK: Page control
-public extension PagerController {
+public extension FormsPagerController {
     func showPageControl(animated: Bool = true,
                          completion: ((Bool) -> Void)? = nil) {
         self.collectionView.performBatchUpdates({
@@ -281,7 +281,7 @@ public extension PagerController {
 }
 
 // MARK: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout
-extension PagerController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+extension FormsPagerController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     public func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
     }
@@ -320,7 +320,7 @@ extension PagerController: UICollectionViewDelegate, UICollectionViewDataSource,
 }
 
 // MARK: UIScrollViewDelegate
-extension PagerController: UIScrollViewDelegate {
+extension FormsPagerController: UIScrollViewDelegate {
     public func scrollViewDidScroll(_ scrollView: UIScrollView) {
         let width: CGFloat = scrollView.frame.width
         let x: CGFloat = scrollView.contentOffset.x

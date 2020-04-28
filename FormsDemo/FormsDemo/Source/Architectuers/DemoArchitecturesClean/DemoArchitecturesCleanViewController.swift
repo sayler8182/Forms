@@ -15,7 +15,7 @@ protocol DemoArchitecturesCleanDisplayLogic: class {
 }
 
 // MARK: DemoArchitecturesCleanViewController
-class DemoArchitecturesCleanViewController: ViewController {
+class DemoArchitecturesCleanViewController: FormsViewController {
     var interactor: DemoArchitecturesCleanBusinessLogic!
     var router: DemoArchitecturesCleanRoutingLogic!
     

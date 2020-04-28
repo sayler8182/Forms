@@ -10,7 +10,7 @@ import Forms
 import UIKit
 
 // MARK: DemoNetworkImageViewController
-class DemoNetworkImageViewController: ViewController {
+class DemoNetworkImageViewController: FormsViewController {
     private let imageView = UIImageView()
         .with(contentMode: .scaleAspectFit)
     

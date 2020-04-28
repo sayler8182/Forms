@@ -10,7 +10,7 @@ import Forms
 import UIKit
 
 // MARK: DemoToastViewController
-class DemoToastViewController: TableViewController {
+class DemoToastViewController: FormsTableViewController {
     private let defaultToastTopButton = Components.button.default()
         .with(title: "Default toast top")
     private let defaultToastBottomButton = Components.button.default()

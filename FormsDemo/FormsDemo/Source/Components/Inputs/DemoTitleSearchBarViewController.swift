@@ -10,7 +10,7 @@ import Forms
 import UIKit
 
 // MARK: DemoTitleSearchBarViewController
-class DemoTitleSearchBarViewController: TableViewController {
+class DemoTitleSearchBarViewController: FormsTableViewController {
     private let searchBar = Components.input.searchBar.default()
         .with(placeholder: "Text")
     

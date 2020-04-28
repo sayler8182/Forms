@@ -10,7 +10,7 @@ import Forms
 import UIKit
 
 // MARK: DemoNetworkGetViewController
-class DemoNetworkGetViewController: ViewController {
+class DemoNetworkGetViewController: FormsViewController {
     private let statusLabel = Components.label.default()
         .with(text: " ")
     

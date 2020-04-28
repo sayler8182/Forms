@@ -13,7 +13,7 @@ import Forms
 import UIKit
 
 // MARK: DemoDeveloperToolsMenuViewController
-class DemoDeveloperToolsMenuViewController: TableViewController {
+class DemoDeveloperToolsMenuViewController: FormsTableViewController {
     private let appVersionLabel = Components.label.default()
         .with(alignment: .center)
         .with(numberOfLines: 0)
@@ -48,7 +48,7 @@ class DemoDeveloperToolsMenuViewController: TableViewController {
 }
 
 // MARK: DemoDeveloperToolsMenuFirstFeatureViewController
-class DemoDeveloperToolsMenuFirstFeatureViewController: TableViewController {
+class DemoDeveloperToolsMenuFirstFeatureViewController: FormsTableViewController {
     private let titleLabel = Components.label.default()
         .with(alignment: .center)
         .with(text: "This is first feature")
@@ -63,7 +63,7 @@ class DemoDeveloperToolsMenuFirstFeatureViewController: TableViewController {
 }
 
 // MARK: DemoDeveloperToolsMenuSecondFeatureViewController
-class DemoDeveloperToolsMenuSecondFeatureViewController: TableViewController {
+class DemoDeveloperToolsMenuSecondFeatureViewController: FormsTableViewController {
     private let titleLabel = Components.label.default()
         .with(alignment: .center)
         .with(text: "This is second feature")

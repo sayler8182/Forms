@@ -10,7 +10,7 @@ import Forms
 import UIKit
 
 // MARK: DemoPrimaryButtonViewController
-class DemoPrimaryButtonViewController: TableViewController {
+class DemoPrimaryButtonViewController: FormsTableViewController {
     private let activeButton = Components.button.default()
         .with(title: "Tap me")
     private let inactiveButton = Components.button.default()

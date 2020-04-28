@@ -10,7 +10,7 @@ import Forms
 import UIKit
 
 // MARK: DemoLoaderViewController
-class DemoLoaderViewController: TableViewController {
+class DemoLoaderViewController: FormsTableViewController {
     private let defaultLoaderButton = Components.button.default()
         .with(title: "Default loader")
     private let titleShortLoaderButton = Components.button.default()

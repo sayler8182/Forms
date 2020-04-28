@@ -15,7 +15,7 @@ protocol DemoArchitecturesCleanSummaryDisplayLogic: class {
 }
 
 // MARK: DemoArchitecturesCleanSummaryViewController
-class DemoArchitecturesCleanSummaryViewController: ViewController {
+class DemoArchitecturesCleanSummaryViewController: FormsViewController {
     var interactor: DemoArchitecturesCleanSummaryBusinessLogic!
     var router: (DemoArchitecturesCleanSummaryRoutingLogic & DemoArchitecturesCleanSummaryDataPassing)!
 

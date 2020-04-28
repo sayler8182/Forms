@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  FormsViewController.swift
 //  Forms
 //
 //  Created by Konrad on 4/1/20.
@@ -9,8 +9,8 @@
 import Anchor
 import UIKit
 
-// MARK: ViewController
-open class ViewController: UIViewController, UIGestureRecognizerDelegate {
+// MARK: FormsViewController
+open class FormsViewController: UIViewController, UIGestureRecognizerDelegate {
     public var bottomAnchor: AnchorConnection = AnchorConnection()
     open var resizeOnKeybord: Bool = true
     
@@ -86,8 +86,8 @@ open class ViewController: UIViewController, UIGestureRecognizerDelegate {
     }
 }
 
-// MARK: ViewController
-public extension ViewController {
+// MARK: FormsViewController
+public extension FormsViewController {
     func setNavigationBar(_ navigationBar: NavigationBar) {
         navigationBar.setNavigationBar(self.navigationController?.navigationBar)
         navigationBar.setNavigationItem(self.navigationItem)
@@ -95,7 +95,7 @@ public extension ViewController {
 }
 
 // MARK: Keyboard
-public extension ViewController {
+public extension FormsViewController {
     func setupResizerOnKeyboard() {
         guard self.resizeOnKeybord else { return }
         NotificationCenter.default.addObserver(
@@ -146,7 +146,7 @@ public extension ViewController {
 }
 
 // MARK: Slide to pop
-public extension ViewController {
+public extension FormsViewController {
     func setupSlideToPop() {
         self.navigationController?.interactivePopGestureRecognizer?.isEnabled = true
         self.navigationController?.interactivePopGestureRecognizer?.delegate = self

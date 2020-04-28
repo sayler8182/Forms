@@ -24,14 +24,14 @@ public class CollectionSection {
 }
 
 // MARK: CollectionItem
-public typealias CollectionItemConfigure = ((CollectionItem, CollectionViewCell, IndexPath) -> Void)
+public typealias CollectionItemConfigure = ((CollectionItem, FormsCollectionViewCell, IndexPath) -> Void)
  
 public class CollectionItem {
     public let type: AnyClass
     public let data: Any
     public let identifier: String
     
-    public init(of type: CollectionViewCell.Type,
+    public init(of type: FormsCollectionViewCell.Type,
                 data: Any = CollectionDataSource.Empty) {
         self.data = data
         self.type = type
@@ -41,8 +41,8 @@ public class CollectionItem {
 
 // MARK: CollectionDataSourceProtocol
 public protocol CollectionDataSourceDelegateProtocol: class {
-    func setupCell(item: CollectionItem, cell: CollectionViewCell, indexPath: IndexPath)
-    func selectCell(item: CollectionItem, cell: CollectionViewCell, indexPath: IndexPath)
+    func setupCell(item: CollectionItem, cell: FormsCollectionViewCell, indexPath: IndexPath)
+    func selectCell(item: CollectionItem, cell: FormsCollectionViewCell, indexPath: IndexPath)
 }
 
 // MARK: CollectionDataSource
@@ -192,14 +192,14 @@ extension CollectionDataSource: UICollectionViewDelegate, UICollectionViewDataSo
         let section: CollectionSection = self.sections[indexPath.section]
         guard !section.isShimmering else { return }
         let item: CollectionItem = section.items[indexPath.item]
-        let cell = collectionView.cellForItem(at: indexPath) as! CollectionViewCell
+        let cell = collectionView.cellForItem(at: indexPath) as! FormsCollectionViewCell
         self.delegate?.selectCell(item: item, cell: cell, indexPath: indexPath)
     }
     
     public func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let section: CollectionSection = self.sections[indexPath.section]
         let item: CollectionItem = section.items[indexPath.item]
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: item.identifier, for: indexPath) as! CollectionViewCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: item.identifier, for: indexPath) as! FormsCollectionViewCell
         cell.stopShimmering()
         self.delegate?.setupCell(item: item, cell: cell, indexPath: indexPath)
         return cell
@@ -208,7 +208,7 @@ extension CollectionDataSource: UICollectionViewDelegate, UICollectionViewDataSo
     public func collectionView(_ collectionView: UICollectionView, heightForItemAt indexPath: IndexPath) -> CGFloat? {
         let section: CollectionSection = self.sections[indexPath.section]
         let item: CollectionItem = section.items[indexPath.item]
-        guard let type = item.type as? CollectionViewCell.Type,
+        guard let type = item.type as? FormsCollectionViewCell.Type,
             let flowLayout = collectionView.flowLayout(of: CollectionFlowLayout.self) else { return 44.0 }
         return type.componentHeight(item.data, collectionView, flowLayout.itemWidth)
     }
@@ -216,7 +216,7 @@ extension CollectionDataSource: UICollectionViewDelegate, UICollectionViewDataSo
     public func collectionView(_ collectionView: UICollectionView, widthForItemAt indexPath: IndexPath) -> CGFloat? {
         let section: CollectionSection = self.sections[indexPath.section]
         let item: CollectionItem = section.items[indexPath.item]
-        guard let type = item.type as? CollectionViewCell.Type,
+        guard let type = item.type as? FormsCollectionViewCell.Type,
         let flowLayout = collectionView.flowLayout(of: CollectionFlowLayout.self) else { return 44.0 }
         return type.componentWidth(item.data, collectionView, flowLayout.itemHeight)
     }

@@ -10,7 +10,7 @@ import Forms
 import UIKit
 
 // MARK: DemoTableViewController
-class DemoTableViewController: TableViewController {
+class DemoTableViewController: FormsTableViewController {
     private let headerRedView = Components.container.view()
         .with(backgroundColor: UIColor.red)
     private let contentRedView = Components.container.view()
@@ -96,7 +96,7 @@ class DemoTableViewController: TableViewController {
 }
 
 // MARK: DemoTableViewCell
-private class DemoTableViewCell: TableViewCell {
+private class DemoTableViewCell: FormsTableViewCell {
     override func setupView() {
         super.setupView()
         self.backgroundColor = UIColor.green

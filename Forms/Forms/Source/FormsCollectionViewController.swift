@@ -1,5 +1,5 @@
 //
-//  CollectionViewController.swift
+//  FormsCollectionViewController.swift
 //  Forms
 //
 //  Created by Konrad on 4/24/20.
@@ -16,8 +16,8 @@ public protocol CollectionProtocol: class {
     func refreshCollectionView(animated: Bool)
 }
 
-// MARK: CollectionViewController
-open class CollectionViewController: ViewController, UICollectionViewDelegate, UICollectionViewDataSource, CollectionDataSourceDelegateProtocol, CollectionProtocol {
+// MARK: FormsCollectionViewController
+open class FormsCollectionViewController: FormsViewController, UICollectionViewDelegate, UICollectionViewDataSource, CollectionDataSourceDelegateProtocol, CollectionProtocol {
     private let collectionUpdatesQueue: DispatchQueue = DispatchQueue(
         label: "collectionUpdatesQueue",
         target: DispatchQueue.main)
@@ -187,13 +187,13 @@ open class CollectionViewController: ViewController, UICollectionViewDelegate, U
     }
     
     open func setupCell(item: CollectionItem,
-                        cell: CollectionViewCell,
+                        cell: FormsCollectionViewCell,
                         indexPath: IndexPath) {
         // HOOK
     }
     
     open func selectCell(item: CollectionItem,
-                         cell: CollectionViewCell,
+                         cell: FormsCollectionViewCell,
                          indexPath: IndexPath) {
         // HOOK
     }
@@ -220,7 +220,7 @@ open class CollectionViewController: ViewController, UICollectionViewDelegate, U
 }
 
 // MARK: Header
-public extension CollectionViewController {
+public extension FormsCollectionViewController {
     func setHeader(_ view: UIView,
                    height: CGFloat? = nil) {
         self.headerView.subviews.removeFromSuperview()
@@ -238,7 +238,7 @@ public extension CollectionViewController {
 }
 
 // MARK: Footer
-public extension CollectionViewController {
+public extension FormsCollectionViewController {
     func addToFooter(_ views: [UIView],
                      height: CGFloat? = nil) {
         for view in views {
@@ -284,7 +284,7 @@ public extension CollectionViewController {
 }
  
 // MARK: CollectionView
-public extension CollectionViewController {
+public extension FormsCollectionViewController {
     func reloadData(animated: Bool = true) {
         self.collectionUpdatesQueue.async {
             self.collectionView.transition(
@@ -339,7 +339,7 @@ public extension CollectionViewController {
 }
 
 // MARK: Pagination
-public extension CollectionViewController {
+public extension FormsCollectionViewController {
     func paginationSuccess(delay: TimeInterval = 0.5,
                            isLast: Bool = false) {
         self.paginationIsLoading = false
@@ -373,7 +373,7 @@ public extension CollectionViewController {
 }
 
 // MARK: PullToRefresh
-public extension CollectionViewController {
+public extension FormsCollectionViewController {
     func setPullToRefresh(_ view: UIView) {
         let refreshControl = UIRefreshControl()
         refreshControl.addSubview(view)
@@ -421,7 +421,7 @@ public extension CollectionViewController {
 }
 
 // MARK: UICollectionViewDelegate, UICollectionViewDataSource
-public extension CollectionViewController {
+public extension FormsCollectionViewController {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return 0
     }
@@ -432,14 +432,14 @@ public extension CollectionViewController {
 }
 
 // MARK: UIScrollViewDelegate
-public extension CollectionViewController {
+public extension FormsCollectionViewController {
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         self.paginationRaise()
     }
 }
     
 // MARK: Scroll
-public extension CollectionViewController {
+public extension FormsCollectionViewController {
     func scroll(to index: Int,
                 at position: UICollectionView.ScrollPosition = UICollectionView.ScrollPosition.centeredVertically,
                 animated: Bool = true) {
@@ -451,7 +451,7 @@ public extension CollectionViewController {
 }
 
 // MARK: Inputs
-extension CollectionViewController { }
+extension FormsCollectionViewController { }
 
 // MARK: CollectionDelegateFlowLayout
 public protocol CollectionDelegateFlowLayout: UICollectionViewDelegateFlowLayout {

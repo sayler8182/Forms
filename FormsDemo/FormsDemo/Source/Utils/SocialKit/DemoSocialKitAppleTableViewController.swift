@@ -13,7 +13,7 @@ import SocialKit
 import UIKit
 
 // MARK: DemoSocialKitAppleTableViewController
-class DemoSocialKitAppleTableViewController: TableViewController {
+class DemoSocialKitAppleTableViewController: FormsTableViewController {
     private let signInWithApple = Components.social.signInWithApple()
         .with(padding: 16)
     

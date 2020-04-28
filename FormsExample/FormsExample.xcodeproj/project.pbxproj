@@ -211,20 +211,6 @@
 			remoteGlobalIDString = 71DB5CA92457609000B16145;
 			remoteInfo = AnalyticsTests;
 		};
-		71DB65962458023B00B16145 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 71DB65912458023A00B16145 /* FormsIntegration.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 71DB656C2458023700B16145;
-			remoteInfo = FormsIntegration;
-		};
-		71DB65982458023B00B16145 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 71DB65912458023A00B16145 /* FormsIntegration.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 71DB65822458023A00B16145;
-			remoteInfo = FormsIntegrationTests;
-		};
 		71EBA888243D02AE0045AE40 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 71EBA881243D02AD0045AE40 /* Anchor.xcodeproj */;
@@ -292,7 +278,6 @@
 		71BB62652445E7C5002BB31F /* Logger.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Logger.xcodeproj; path = ../Logger/Logger.xcodeproj; sourceTree = "<group>"; };
 		71DB5CBA2457609000B16145 /* Analytics.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Analytics.xcodeproj; path = ../Analytics/Analytics.xcodeproj; sourceTree = "<group>"; };
 		71DB65592457729800B16145 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
-		71DB65912458023A00B16145 /* FormsIntegration.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = FormsIntegration.xcodeproj; path = ../FormsIntegration/FormsIntegration.xcodeproj; sourceTree = "<group>"; };
 		71EA6EC92449FC4B00ACB5EE /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKCoreKit.framework; sourceTree = "<group>"; };
 		71EA6ECA2449FC4B00ACB5EE /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKLoginKit.framework; sourceTree = "<group>"; };
 		71EBA881243D02AD0045AE40 /* Anchor.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Anchor.xcodeproj; path = ../Anchor/Anchor.xcodeproj; sourceTree = "<group>"; };
@@ -349,7 +334,6 @@
 				71228E2A2431CF9800D08B20 /* Resources */,
 				71228E062431CF7F00D08B20 /* Products */,
 				71EA6E9E2449FC1B00ACB5EE /* Frameworks */,
-				71DB65912458023A00B16145 /* FormsIntegration.xcodeproj */,
 			);
 			sourceTree = "<group>";
 		};
@@ -543,15 +527,6 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		71DB65922458023A00B16145 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				71DB65972458023B00B16145 /* FormsIntegration.app */,
-				71DB65992458023B00B16145 /* FormsIntegrationTests.xctest */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
 		71EA6E9E2449FC1B00ACB5EE /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -659,10 +634,6 @@
 				{
 					ProductGroup = 713B9C0E243D08E0001F6E3A /* Products */;
 					ProjectRef = 713B9C0D243D08E0001F6E3A /* FormsDemo.xcodeproj */;
-				},
-				{
-					ProductGroup = 71DB65922458023A00B16145 /* Products */;
-					ProjectRef = 71DB65912458023A00B16145 /* FormsIntegration.xcodeproj */;
 				},
 				{
 					ProductGroup = 713B9B12243D0416001F6E3A /* Products */;
@@ -861,20 +832,6 @@
 			fileType = wrapper.cfbundle;
 			path = AnalyticsTests.xctest;
 			remoteRef = 71DB5CC12457609100B16145 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		71DB65972458023B00B16145 /* FormsIntegration.app */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.application;
-			path = FormsIntegration.app;
-			remoteRef = 71DB65962458023B00B16145 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		71DB65992458023B00B16145 /* FormsIntegrationTests.xctest */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.cfbundle;
-			path = FormsIntegrationTests.xctest;
-			remoteRef = 71DB65982458023B00B16145 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 		71EBA889243D02AE0045AE40 /* AnchorTests.xctest */ = {

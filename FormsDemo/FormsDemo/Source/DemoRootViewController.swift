@@ -83,11 +83,11 @@ private enum Demo {
         static var `default`: [Section] = {
             return [
                 Section(title: "Controllers", rows: [
-                    Row(type: .collectionViewController, title: "CollectionViewController"),
-                    Row(type: .pagerController, title: "PagerController"),
-                    Row(type: .tabBarController, title: "TabBarController", shouldPresent: true),
-                    Row(type: .tableViewController, title: "TableViewController"),
-                    Row(type: .viewController, title: "ViewController")
+                    Row(type: .collectionViewController, title: "FormsCollectionViewController"),
+                    Row(type: .pagerController, title: "FormsPagerController"),
+                    Row(type: .tabBarController, title: "FormsTabBarController", shouldPresent: true),
+                    Row(type: .tableViewController, title: "FormsTableViewController"),
+                    Row(type: .viewController, title: "FormsViewController")
                 ]),
                 Section(title: "Components", rows: [
                     Row(
@@ -246,7 +246,7 @@ public class DemoRootViewController: UINavigationController {
 }
 
 // MARK: DemoListViewController
-private class DemoListViewController: ViewController {
+private class DemoListViewController: FormsViewController {
     private let tableView: UITableView = UITableView(
         frame: CGRect(width: 320, height: 44),
         style: .plain)

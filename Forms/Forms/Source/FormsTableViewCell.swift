@@ -1,5 +1,5 @@
 //
-//  TableViewCell.swift
+//  FormsTableViewCell.swift
 //  Forms
 //
 //  Created by Konrad on 4/8/20.
@@ -8,8 +8,8 @@
 
 import UIKit
 
-// MARK: TableViewCell
-open class TableViewCell: UITableViewCell, Componentable, ShimmerableViewCell {
+// MARK: FormsTableViewCell
+open class FormsTableViewCell: UITableViewCell, Componentable, ShimmerableViewCell {
     open class var identifier: String {
         return "\(self)"
     }
@@ -56,11 +56,11 @@ open class TableViewCell: UITableViewCell, Componentable, ShimmerableViewCell {
 }
 
 // MARK: DataSource
-public extension TableViewCell {
-    func cast<D, C: TableViewCell>(row: TableRow,
-                                   of dataType: D.Type,
-                                   to cellType: C.Type,
-                                   success: (D, C) -> Void) {
+public extension FormsTableViewCell {
+    func cast<D, C: FormsTableViewCell>(row: TableRow,
+                                        of dataType: D.Type,
+                                        to cellType: C.Type,
+                                        success: (D, C) -> Void) {
         self.cast(
             row: row,
             of: dataType,
@@ -69,11 +69,11 @@ public extension TableViewCell {
             fail: { })
     }
     
-    func cast<D, C: TableViewCell>(row: TableRow,
-                                   of dataType: D.Type,
-                                   to cellType: C.Type,
-                                   success: (D, C) -> Void,
-                                   fail: () -> Void) {
+    func cast<D, C: FormsTableViewCell>(row: TableRow,
+                                        of dataType: D.Type,
+                                        to cellType: C.Type,
+                                        success: (D, C) -> Void,
+                                        fail: () -> Void) {
         guard let data: D = row.data as? D,
             let cell: C = self as? C else {
                 return fail()

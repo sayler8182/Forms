@@ -10,7 +10,7 @@ import Forms
 import UIKit
 
 // MARK: DemoShimmerTableViewController
-class DemoShimmerTableViewController: TableViewController {
+class DemoShimmerTableViewController: FormsTableViewController {
     private lazy var shimmerDataSource = ShimmerTableDataSource()
         .with(generators: [
             ShimmerRowGenerator(type: ShimmerShortDemoTableViewCell.self, count: 6),
@@ -30,7 +30,7 @@ class DemoShimmerTableViewController: TableViewController {
         self.isTopToSafeArea = false
     }
     
-    override func setupCell(row: TableRow, cell: TableViewCell, indexPath: IndexPath) {
+    override func setupCell(row: TableRow, cell: FormsTableViewCell, indexPath: IndexPath) {
         super.setupCell(row: row, cell: cell, indexPath: indexPath)
         cell.cast(row: row, of: DemoCellModel.self, to: DemoTableViewCell.self) { (newData, newCell) in
             newCell.fill(newData)
@@ -74,7 +74,7 @@ private struct DemoCellModel {
 }
 
 // MARK: DemoTableViewCell
-private class DemoTableViewCell: TableViewCell {
+private class DemoTableViewCell: FormsTableViewCell {
     fileprivate let iconView = UIImageView()
         .with(width: 48.0, height: 48.0)
         .rounded()

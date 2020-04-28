@@ -11,7 +11,7 @@ import SocialKit
 import UIKit
 
 // MARK: FormsIntegrationSocialKitAppleViewController
-class FormsIntegrationSocialKitAppleViewController: TableViewController {
+class FormsIntegrationSocialKitAppleViewController: FormsTableViewController {
     private let signInWithApple = Components.social.signInWithApple()
         .with(padding: 16)
     

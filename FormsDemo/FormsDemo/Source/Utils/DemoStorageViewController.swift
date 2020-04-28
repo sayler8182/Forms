@@ -16,7 +16,7 @@ private enum StorageKeys: String, StorageKey {
 }
 
 // MARK: DemoStorageViewController
-class DemoStorageViewController: TableViewController {
+class DemoStorageViewController: FormsTableViewController {
     private lazy var storageNameTextField = Components.input.textField.default()
         .with(text: self.storageName)
         .with(title: "Name")

@@ -10,7 +10,7 @@ import Forms
 import UIKit
 
 // MARK: DemoCollectionViewController
-class DemoCollectionViewController: CollectionViewController {
+class DemoCollectionViewController: FormsCollectionViewController {
     private let headerRedView = Components.container.view()
         .with(backgroundColor: UIColor.red)
     private let footerRedView = Components.container.view()
@@ -60,7 +60,7 @@ class DemoCollectionViewController: CollectionViewController {
 }
 
 // MARK: DemoCollectionViewCell
-private class DemoCollectionViewCell: CollectionViewCell {
+private class DemoCollectionViewCell: FormsCollectionViewCell {
     override func setupView() {
         super.setupView()
         self.backgroundColor = UIColor.green

@@ -10,7 +10,7 @@ import Forms
 import UIKit
 
 // MARK: DemoScrollContainerViewController
-class DemoScrollContainerViewController: TableViewController {
+class DemoScrollContainerViewController: FormsTableViewController {
     private lazy var firstContainer = Components.container.scroll()
         .with(height: 200)
         .with(items: [self.firstRedView, self.firstGreenView])

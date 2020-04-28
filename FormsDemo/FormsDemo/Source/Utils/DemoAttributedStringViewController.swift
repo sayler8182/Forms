@@ -10,7 +10,7 @@ import Forms
 import UIKit
 
 // MARK: DemoAttributedStringViewController
-class DemoAttributedStringViewController: TableViewController {
+class DemoAttributedStringViewController: FormsTableViewController {
     private lazy var attributedLabel = Components.label.default()
         .with(attributedText: self.attributedLabelString)
         .with(padding: 16)

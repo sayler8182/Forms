@@ -11,7 +11,7 @@ import Forms
 import UIKit
 
 // MARK: FormsIntegrationAnalyticsViewController
-class FormsIntegrationAnalyticsViewController: TableViewController {
+class FormsIntegrationAnalyticsViewController: FormsTableViewController {
     private let logEventButton = Components.button.default()
         .with(title: "Log event")
     

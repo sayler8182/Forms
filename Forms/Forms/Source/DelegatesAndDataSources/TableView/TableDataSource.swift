@@ -24,14 +24,14 @@ public class TableSection {
 }
 
 // MARK: TableRow
-public typealias TableRowConfigure = ((TableRow, TableViewCell, IndexPath) -> Void)
+public typealias TableRowConfigure = ((TableRow, FormsTableViewCell, IndexPath) -> Void)
  
 public class TableRow {
     public let type: AnyClass
     public let data: Any
     public let identifier: String
     
-    public init(of type: TableViewCell.Type,
+    public init(of type: FormsTableViewCell.Type,
                 data: Any = TableDataSource.Empty) {
         self.data = data
         self.type = type
@@ -41,8 +41,8 @@ public class TableRow {
 
 // MARK: TableDataSourceProtocol
 public protocol TableDataSourceDelegateProtocol: class {
-    func setupCell(row: TableRow, cell: TableViewCell, indexPath: IndexPath)
-    func selectCell(row: TableRow, cell: TableViewCell, indexPath: IndexPath)
+    func setupCell(row: TableRow, cell: FormsTableViewCell, indexPath: IndexPath)
+    func selectCell(row: TableRow, cell: FormsTableViewCell, indexPath: IndexPath)
 }
 
 // MARK: TableDataSource
@@ -194,14 +194,14 @@ extension TableDataSource: UITableViewDelegate, UITableViewDataSource {
         let section: TableSection = self.sections[indexPath.section]
         guard !section.isShimmering else { return }
         let row: TableRow = section.rows[indexPath.row]
-        let cell = tableView.cellForRow(at: indexPath) as! TableViewCell
+        let cell = tableView.cellForRow(at: indexPath) as! FormsTableViewCell
         self.delegate?.selectCell(row: row, cell: cell, indexPath: indexPath)
     }
     
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let section: TableSection = self.sections[indexPath.section]
         let row: TableRow = section.rows[indexPath.row]
-        let cell = tableView.dequeueReusableCell(withIdentifier: row.identifier, for: indexPath) as! TableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: row.identifier, for: indexPath) as! FormsTableViewCell
         cell.selectionStyle = .none
         cell.stopShimmering()
         self.delegate?.setupCell(row: row, cell: cell, indexPath: indexPath)
@@ -211,7 +211,7 @@ extension TableDataSource: UITableViewDelegate, UITableViewDataSource {
     public func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         let section: TableSection = self.sections[indexPath.section]
         let row: TableRow = section.rows[indexPath.row]
-        guard let type = row.type as? TableViewCell.Type else { return UITableView.automaticDimension }
+        guard let type = row.type as? FormsTableViewCell.Type else { return UITableView.automaticDimension }
         return type.componentHeight(row.data, tableView)
     }
 }

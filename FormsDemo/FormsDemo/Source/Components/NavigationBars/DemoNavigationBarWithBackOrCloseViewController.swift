@@ -10,7 +10,7 @@ import Forms
 import UIKit
 
 // MARK: DemoNavigationBarWithBackOrCloseViewController
-class DemoNavigationBarWithBackOrCloseViewController: TableViewController {
+class DemoNavigationBarWithBackOrCloseViewController: FormsTableViewController {
     private lazy var navigationBar = Components.navigationBar.default()
         .with(backImage: { UIImage(systemName: "chevron.compact.left") })
         .with(closeImage: { UIImage(systemName: "xmark.square") })

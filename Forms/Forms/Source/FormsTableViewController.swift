@@ -1,5 +1,5 @@
 //
-//  TableViewController.swift
+//  FormsTableViewController.swift
 //  Forms
 //
 //  Created by Konrad on 3/27/20.
@@ -16,8 +16,8 @@ public protocol TableProtocol: class {
     func refreshTableView(animated: Bool)
 }
 
-// MARK: TableViewController
-open class TableViewController: ViewController, UITableViewDelegate, UITableViewDataSource, TableDataSourceDelegateProtocol, TableProtocol {
+// MARK: FormsTableViewController
+open class FormsTableViewController: FormsViewController, UITableViewDelegate, UITableViewDataSource, TableDataSourceDelegateProtocol, TableProtocol {
     private let tableUpdatesQueue: DispatchQueue = DispatchQueue(
         label: "tableUpdatesQueue",
         target: DispatchQueue.main)
@@ -209,13 +209,13 @@ open class TableViewController: ViewController, UITableViewDelegate, UITableView
     }
     
     open func setupCell(row: TableRow,
-                        cell: TableViewCell,
+                        cell: FormsTableViewCell,
                         indexPath: IndexPath) {
         // HOOK
     }
     
     open func selectCell(row: TableRow,
-                         cell: TableViewCell,
+                         cell: FormsTableViewCell,
                          indexPath: IndexPath) {
         // HOOK
     }
@@ -242,7 +242,7 @@ open class TableViewController: ViewController, UITableViewDelegate, UITableView
 }
 
 // MARK: Header
-public extension TableViewController {
+public extension FormsTableViewController {
     func setHeader(_ view: UIView,
                    height: CGFloat? = nil) {
         self.headerView.subviews.removeFromSuperview()
@@ -260,7 +260,7 @@ public extension TableViewController {
 }
 
 // MARK: Components
-public extension TableViewController {
+public extension FormsTableViewController {
     func add(_ components: [FormComponent],
              animated: UITableView.RowAnimation = .automatic) {
         for component in components {
@@ -343,7 +343,7 @@ public extension TableViewController {
 }
 
 // MARK: Footer
-public extension TableViewController {
+public extension FormsTableViewController {
     func addToFooter(_ views: [UIView],
                      height: CGFloat? = nil) {
         for view in views {
@@ -389,7 +389,7 @@ public extension TableViewController {
 }
 
 // MARK: Validators
-public extension TableViewController {
+public extension FormsTableViewController {
     @discardableResult
     func validate() -> Bool {
         var result: Bool = true
@@ -404,7 +404,7 @@ public extension TableViewController {
 }
 
 // MARK: TableView
-public extension TableViewController {
+public extension FormsTableViewController {
     func reloadData(animated: Bool = true) {
         self.tableUpdatesQueue.async {
             self.tableView.transition(
@@ -459,7 +459,7 @@ public extension TableViewController {
 }
 
 // MARK: Pagination
-public extension TableViewController {
+public extension FormsTableViewController {
     func paginationSuccess(delay: TimeInterval = 0.5,
                            isLast: Bool = false) {
         self.paginationIsLoading = false
@@ -491,7 +491,7 @@ public extension TableViewController {
 }
 
 // MARK: PullToRefresh
-public extension TableViewController {
+public extension FormsTableViewController {
     func setPullToRefresh(_ view: UIView) {
         let refreshControl = UIRefreshControl()
         refreshControl.addSubview(view)
@@ -539,7 +539,7 @@ public extension TableViewController {
 }
 
 // MARK: UITableViewDelegate, UITableViewDataSource
-public extension TableViewController {
+public extension FormsTableViewController {
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
@@ -567,14 +567,14 @@ public extension TableViewController {
 }
 
 // MARK: UIScrollViewDelegate
-public extension TableViewController {
+public extension FormsTableViewController {
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         self.paginationRaise()
     }
 }
     
 // MARK: Scroll
-public extension TableViewController {
+public extension FormsTableViewController {
     func scroll(to component: FormComponent,
                 at position: UITableView.ScrollPosition = UITableView.ScrollPosition.middle,
                 animated: Bool = true) {
@@ -593,4 +593,4 @@ public extension TableViewController {
 }
 
 // MARK: Inputs
-extension TableViewController { }
+extension FormsTableViewController { }

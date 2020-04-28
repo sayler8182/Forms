@@ -10,7 +10,7 @@ import Forms
 import UIKit
 
 // MARK: DemoPagerController
-class DemoPagerController: PagerController {
+class DemoPagerController: FormsPagerController {
     override func setupTopBar() {
         super.setupTopBar()
         self.topBarFillEqual = false
@@ -86,7 +86,7 @@ class DemoPagerController: PagerController {
 }
 
 // MARK: ContentViewController
-private class ContentViewController: TableViewController {
+private class ContentViewController: FormsTableViewController {
     private lazy var navigationBar = Components.navigationBar.default()
     
     private let firstButton = Components.button.default()
