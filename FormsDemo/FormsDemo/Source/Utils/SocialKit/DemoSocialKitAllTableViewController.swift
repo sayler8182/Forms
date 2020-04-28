@@ -30,9 +30,4 @@ class DemoSocialKitAllTableViewController: FormsTableViewController {
             self.signInWithGoogle
         ], divider: self.divider)
     }
-    
-    override func setupConfiguration() {
-        super.setupConfiguration()
-        self.tableContentInset = UIEdgeInsets(vertical: 16)
-    }
 }

@@ -232,7 +232,7 @@ public class DemoRootViewController: UINavigationController {
         let controller = DemoListViewController(items: Demo.Section.default)
         controller.title = "FormsDemo"
         self.viewControllers = [controller]
-        self.autoroute(to: .utilsImagePickerSystem, in: controller)
+        self.autoroute(to: nil, in: controller)
     }
     
     private func autoroute(to rowType: Demo.RowType?,
