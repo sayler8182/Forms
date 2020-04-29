@@ -42,14 +42,14 @@ class DemoDeveloperToolsLifetimeViewController: FormsTableViewController {
     }
     
     private func createLeaks() {
-        Self.leakStorage.append(Demo1Item())
-        Self.leakStorage.append(Demo1Item())
-        Self.leakStorage.append(Demo2Item())
-        Self.leakStorage.append(Demo3Item())
-        Self.leakStorage.append(Demo1Item2())
-        Self.leakStorage.append(Demo1Item2())
-        Self.leakStorage.append(Demo2Item2())
-        Self.leakStorage.append(Demo3Item2())
+        Self.leakStorage.append(Leak1Item())
+        Self.leakStorage.append(Leak1Item())
+        Self.leakStorage.append(Leak2Item())
+        Self.leakStorage.append(Leak3Item())
+        Self.leakStorage.append(Leak1Item2())
+        Self.leakStorage.append(Leak1Item2())
+        Self.leakStorage.append(Leak2Item2())
+        Self.leakStorage.append(Leak3Item2())
     }
 
     private func removeLeaks() {
@@ -57,8 +57,8 @@ class DemoDeveloperToolsLifetimeViewController: FormsTableViewController {
     }
 }
 
-// MARK: DemoItem
-private class DemoItem: LifetimeTrackable {
+// MARK: LeakItem
+private class LeakItem: LifetimeTrackable {
     class var lifetimeConfiguration: LifetimeConfiguration {
         return LifetimeConfiguration(maxCount: 3, groupType: Self.self, groupMaxCount: 3)
     }
@@ -67,16 +67,16 @@ private class DemoItem: LifetimeTrackable {
         self.lifetimeTrack()
     }
 }
-private class Demo1Item: DemoItem { }
-private class Demo2Item: DemoItem { }
-private class Demo3Item: DemoItem {
+private class Leak1Item: LeakItem { }
+private class Leak2Item: LeakItem { }
+private class Leak3Item: LeakItem {
     override class var lifetimeConfiguration: LifetimeConfiguration {
         return super.lifetimeConfiguration.with(maxCount: 1)
     }
 }
 
-// MARK: DemoItem2
-private class DemoItem2: LifetimeTrackable {
+// MARK: LeakItem2
+private class LeakItem2: LifetimeTrackable {
     class var lifetimeConfiguration: LifetimeConfiguration {
         return LifetimeConfiguration(maxCount: 3, groupType: Self.self, groupMaxCount: 3)
     }
@@ -85,9 +85,9 @@ private class DemoItem2: LifetimeTrackable {
         self.lifetimeTrack()
     }
 }
-private class Demo1Item2: DemoItem2 { }
-private class Demo2Item2: DemoItem2 { }
-private class Demo3Item2: DemoItem2 {
+private class Leak1Item2: LeakItem2 { }
+private class Leak2Item2: LeakItem2 { }
+private class Leak3Item2: LeakItem2 {
     override class var lifetimeConfiguration: LifetimeConfiguration {
         return super.lifetimeConfiguration.with(maxCount: 1)
     }

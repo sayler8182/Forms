@@ -215,19 +215,6 @@ SWIFT_CLASS("_TtC10Transition18TransitionAnimator")
 - (void)animateTransition:(id <UIViewControllerContextTransitioning> _Nonnull)transitionContext;
 @end
 
-
-SWIFT_CLASS("_TtC10Transition23SlideHorizontalAnimator")
-@interface SlideHorizontalAnimator : TransitionAnimator
-- (NSTimeInterval)transitionDuration:(id <UIViewControllerContextTransitioning> _Nullable)transitionContext SWIFT_WARN_UNUSED_RESULT;
-@end
-
-
-SWIFT_CLASS("_TtC10Transition21SlideVerticalAnimator")
-@interface SlideVerticalAnimator : TransitionAnimator
-- (NSTimeInterval)transitionDuration:(id <UIViewControllerContextTransitioning> _Nullable)transitionContext SWIFT_WARN_UNUSED_RESULT;
-@end
-
-
 @class UINavigationController;
 @class UIViewController;
 @protocol UIViewControllerInteractiveTransitioning;
@@ -250,6 +237,18 @@ SWIFT_CLASS("_TtC10Transition30TransitionNavigationController")
 - (nonnull instancetype)initWithNavigationBarClass:(Class _Nullable)navigationBarClass toolbarClass:(Class _Nullable)toolbarClass SWIFT_UNAVAILABLE;
 - (nonnull instancetype)initWithRootViewController:(UIViewController * _Nonnull)rootViewController SWIFT_UNAVAILABLE;
 - (nonnull instancetype)initWithNibName:(NSString * _Nullable)nibNameOrNil bundle:(NSBundle * _Nullable)nibBundleOrNil SWIFT_UNAVAILABLE;
+@end
+
+
+SWIFT_CLASS("_TtC10Transition33TransitionSlideHorizontalAnimator")
+@interface TransitionSlideHorizontalAnimator : TransitionAnimator
+- (NSTimeInterval)transitionDuration:(id <UIViewControllerContextTransitioning> _Nullable)transitionContext SWIFT_WARN_UNUSED_RESULT;
+@end
+
+
+SWIFT_CLASS("_TtC10Transition31TransitionSlideVerticalAnimator")
+@interface TransitionSlideVerticalAnimator : TransitionAnimator
+- (NSTimeInterval)transitionDuration:(id <UIViewControllerContextTransitioning> _Nullable)transitionContext SWIFT_WARN_UNUSED_RESULT;
 @end
 
 

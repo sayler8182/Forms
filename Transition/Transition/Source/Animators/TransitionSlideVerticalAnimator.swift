@@ -1,5 +1,5 @@
 //
-//  SlideVerticalAnimator.swift
+//  TransitionSlideVerticalAnimator.swift
 //  Transition
 //
 //  Created by Konrad on 4/15/20.
@@ -8,8 +8,8 @@
 
 import UIKit
 
-// MARK: SlideVerticalAnimator
-open class SlideVerticalAnimator: TransitionAnimator {
+// MARK: TransitionSlideVerticalAnimator
+open class TransitionSlideVerticalAnimator: TransitionAnimator {
     override open func transitionDuration(using transitionContext: UIViewControllerContextTransitioning?) -> TimeInterval {
         return 0.5
     }

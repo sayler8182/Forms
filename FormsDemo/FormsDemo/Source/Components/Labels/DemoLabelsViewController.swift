@@ -24,6 +24,7 @@ class DemoLabelsViewController: FormsTableViewController {
         .with(alignment: .notNatural)
         .with(backgroundColor: UIColor.blue)
         .with(color: UIColor.white)
+        .with(numberOfLines: 0)
         .with(padding: 16)
         .with(text: LoremIpsum.paragraph(sentences: 15))
     private let clickableLabel = Components.label.default()

@@ -252,6 +252,8 @@ typedef unsigned int swift_uint4  __attribute__((__ext_vector_type__(4)));
 @interface UIView (SWIFT_EXTENSION(Utils))
 - (nonnull instancetype)rounded SWIFT_WARN_UNUSED_RESULT;
 - (nonnull instancetype)withBackgroundColor:(UIColor * _Nullable)backgroundColor SWIFT_WARN_UNUSED_RESULT;
+- (nonnull instancetype)withClipsToBounds:(BOOL)clipsToBounds SWIFT_WARN_UNUSED_RESULT;
+- (nonnull instancetype)withContentMode:(enum UIViewContentMode)contentMode SWIFT_WARN_UNUSED_RESULT;
 - (nonnull instancetype)withCornerRadius:(CGFloat)cornerRadius asPath:(BOOL)asPath SWIFT_WARN_UNUSED_RESULT;
 - (nonnull instancetype)withHeight:(CGFloat)height SWIFT_WARN_UNUSED_RESULT;
 - (nonnull instancetype)withIsUserInteractionEnabled:(BOOL)isUserInteractionEnabled SWIFT_WARN_UNUSED_RESULT;

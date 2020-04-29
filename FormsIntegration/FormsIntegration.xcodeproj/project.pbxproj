@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		71CFF4442459A0930067D13E /* SideMenu.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71CFF4422459A08F0067D13E /* SideMenu.framework */; platformFilter = ios; };
+		71CFF4452459A0930067D13E /* SideMenu.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 71CFF4422459A08F0067D13E /* SideMenu.framework */; platformFilter = ios; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		71CFF4492459A1C40067D13E /* FormsIntegrationDeveloperToolsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71CFF4482459A1C40067D13E /* FormsIntegrationDeveloperToolsViewController.swift */; };
+		71CFF44B2459A1CD0067D13E /* FormsIntegrationSideMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71CFF44A2459A1CD0067D13E /* FormsIntegrationSideMenuViewController.swift */; };
 		71DB65C62458064F00B16145 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71DB65BF2458064F00B16145 /* SceneDelegate.swift */; };
 		71DB65C82458064F00B16145 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 71DB65C32458064F00B16145 /* Assets.xcassets */; };
 		71DB65C92458064F00B16145 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71DB65C42458064F00B16145 /* AppDelegate.swift */; };
@@ -66,6 +70,7 @@
 				71DB66822458290F00B16145 /* Injector.framework in Embed Frameworks */,
 				71DB6678245828E700B16145 /* FBSDKLoginKit.framework in Embed Frameworks */,
 				71DB6676245828E600B16145 /* FBSDKCoreKit.framework in Embed Frameworks */,
+				71CFF4452459A0930067D13E /* SideMenu.framework in Embed Frameworks */,
 				71DB668C2458291600B16145 /* Utils.framework in Embed Frameworks */,
 				71DB66802458290E00B16145 /* Forms.framework in Embed Frameworks */,
 				71DB66842458291000B16145 /* Logger.framework in Embed Frameworks */,
@@ -82,6 +87,9 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		71CFF4422459A08F0067D13E /* SideMenu.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SideMenu.framework; sourceTree = "<group>"; };
+		71CFF4482459A1C40067D13E /* FormsIntegrationDeveloperToolsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormsIntegrationDeveloperToolsViewController.swift; sourceTree = "<group>"; };
+		71CFF44A2459A1CD0067D13E /* FormsIntegrationSideMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormsIntegrationSideMenuViewController.swift; sourceTree = "<group>"; };
 		71DB656C2458023700B16145 /* FormsIntegration.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FormsIntegration.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		71DB65822458023A00B16145 /* FormsIntegrationTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FormsIntegrationTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		71DB65BF2458064F00B16145 /* SceneDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -120,6 +128,7 @@
 				71DB667F2458290E00B16145 /* Forms.framework in Frameworks */,
 				71DB66892458291500B16145 /* Transition.framework in Frameworks */,
 				71DB66792458290A00B16145 /* Analytics.framework in Frameworks */,
+				71CFF4442459A0930067D13E /* SideMenu.framework in Frameworks */,
 				71DB6677245828E700B16145 /* FBSDKLoginKit.framework in Frameworks */,
 				71DB667B2458290B00B16145 /* Anchor.framework in Frameworks */,
 				71DB66852458291100B16145 /* Networking.framework in Frameworks */,
@@ -142,6 +151,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		71CFF4462459A18B0067D13E /* DeveloperTools */ = {
+			isa = PBXGroup;
+			children = (
+				71CFF4482459A1C40067D13E /* FormsIntegrationDeveloperToolsViewController.swift */,
+			);
+			path = DeveloperTools;
+			sourceTree = "<group>";
+		};
+		71CFF4472459A1960067D13E /* SideMenu */ = {
+			isa = PBXGroup;
+			children = (
+				71CFF44A2459A1CD0067D13E /* FormsIntegrationSideMenuViewController.swift */,
+			);
+			path = SideMenu;
+			sourceTree = "<group>";
+		};
 		71DB65632458023700B16145 = {
 			isa = PBXGroup;
 			children = (
@@ -172,6 +197,7 @@
 		71DB659B245803CC00B16145 /* Dependencies */ = {
 			isa = PBXGroup;
 			children = (
+				71CFF4422459A08F0067D13E /* SideMenu.framework */,
 				71DB6662245828E100B16145 /* Analytics.framework */,
 				71DB665A245828E000B16145 /* Anchor.framework */,
 				71DB665F245828E100B16145 /* DeveloperTools.framework */,
@@ -194,6 +220,8 @@
 			children = (
 				71DB65D924580C8500B16145 /* FormsIntegrationRootViewController.swift */,
 				71DB65E124581ACA00B16145 /* Analytics */,
+				71CFF4462459A18B0067D13E /* DeveloperTools */,
+				71CFF4472459A1960067D13E /* SideMenu */,
 				71DB65D824580C4C00B16145 /* SocialKit */,
 			);
 			path = Source;
@@ -344,9 +372,11 @@
 				71DB65C92458064F00B16145 /* AppDelegate.swift in Sources */,
 				71DB65DA24580C8500B16145 /* FormsIntegrationRootViewController.swift in Sources */,
 				71DB65CC245806AF00B16145 /* FormsIntegrationSocialKitGoogleViewController.swift in Sources */,
+				71CFF44B2459A1CD0067D13E /* FormsIntegrationSideMenuViewController.swift in Sources */,
 				71DB65C62458064F00B16145 /* SceneDelegate.swift in Sources */,
 				71DB65DC245817CD00B16145 /* FormsIntegrationSocialKitAppleViewController.swift in Sources */,
 				71DB65E324581AE200B16145 /* FormsIntegrationAnalyticsViewController.swift in Sources */,
+				71CFF4492459A1C40067D13E /* FormsIntegrationDeveloperToolsViewController.swift in Sources */,
 				71DB65DE245817DC00B16145 /* FormsIntegrationSocialKitFacebookViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

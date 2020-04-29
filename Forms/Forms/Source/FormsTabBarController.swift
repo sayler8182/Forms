@@ -207,8 +207,8 @@ public extension FormsTabBarController {
 }
 
 // MARK: UIViewController
-extension UIViewController {
-    func getTabBarController<T: FormsTabBarController>(of type: T.Type) -> T? {
+public extension UIViewController {
+    func tabBarController<T: FormsTabBarController>(of type: T.Type) -> T? {
         var controller: UIViewController? = self.parent
         while controller.isNotNil && !(controller is T) {
             controller = controller?.parent

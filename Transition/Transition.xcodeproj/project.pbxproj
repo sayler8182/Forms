@@ -11,11 +11,11 @@
 		715B7B3C24474C6900754EDB /* TransitionCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 715B7B3B24474C6800754EDB /* TransitionCoordinator.swift */; };
 		715B7B3F24474CAD00754EDB /* TransitionNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 715B7B3E24474CAD00754EDB /* TransitionNavigationController.swift */; };
 		715B7B4624474DE100754EDB /* TransitionAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 715B7B4524474DE100754EDB /* TransitionAnimator.swift */; };
-		715B7B4824474E2100754EDB /* SlideHorizontalAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 715B7B4724474E2100754EDB /* SlideHorizontalAnimator.swift */; };
+		715B7B4824474E2100754EDB /* TransitionSlideHorizontalAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 715B7B4724474E2100754EDB /* TransitionSlideHorizontalAnimator.swift */; };
 		718B86C024483FEF003870BB /* ViewAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 718B86BF24483FEF003870BB /* ViewAnimator.swift */; };
 		718B86C324485174003870BB /* SnapshotViewAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 718B86C224485174003870BB /* SnapshotViewAnimator.swift */; };
 		71C578C024474FAE008BFEB3 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71C578BF24474FAE008BFEB3 /* Utils.swift */; };
-		71C578C2244752F8008BFEB3 /* SlideVerticalAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71C578C1244752F8008BFEB3 /* SlideVerticalAnimator.swift */; };
+		71C578C2244752F8008BFEB3 /* TransitionSlideVerticalAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71C578C1244752F8008BFEB3 /* TransitionSlideVerticalAnimator.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,11 +36,11 @@
 		715B7B3E24474CAD00754EDB /* TransitionNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransitionNavigationController.swift; sourceTree = "<group>"; };
 		715B7B4024474D8400754EDB /* Transition.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Transition.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		715B7B4524474DE100754EDB /* TransitionAnimator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransitionAnimator.swift; sourceTree = "<group>"; };
-		715B7B4724474E2100754EDB /* SlideHorizontalAnimator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SlideHorizontalAnimator.swift; sourceTree = "<group>"; };
+		715B7B4724474E2100754EDB /* TransitionSlideHorizontalAnimator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransitionSlideHorizontalAnimator.swift; sourceTree = "<group>"; };
 		718B86BF24483FEF003870BB /* ViewAnimator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewAnimator.swift; sourceTree = "<group>"; };
 		718B86C224485174003870BB /* SnapshotViewAnimator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnapshotViewAnimator.swift; sourceTree = "<group>"; };
 		71C578BF24474FAE008BFEB3 /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
-		71C578C1244752F8008BFEB3 /* SlideVerticalAnimator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SlideVerticalAnimator.swift; sourceTree = "<group>"; };
+		71C578C1244752F8008BFEB3 /* TransitionSlideVerticalAnimator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransitionSlideVerticalAnimator.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -96,8 +96,8 @@
 			isa = PBXGroup;
 			children = (
 				715B7B4524474DE100754EDB /* TransitionAnimator.swift */,
-				715B7B4724474E2100754EDB /* SlideHorizontalAnimator.swift */,
-				71C578C1244752F8008BFEB3 /* SlideVerticalAnimator.swift */,
+				715B7B4724474E2100754EDB /* TransitionSlideHorizontalAnimator.swift */,
+				71C578C1244752F8008BFEB3 /* TransitionSlideVerticalAnimator.swift */,
 			);
 			path = Animators;
 			sourceTree = "<group>";
@@ -224,9 +224,9 @@
 				718B86C024483FEF003870BB /* ViewAnimator.swift in Sources */,
 				715B7B3F24474CAD00754EDB /* TransitionNavigationController.swift in Sources */,
 				718B86C324485174003870BB /* SnapshotViewAnimator.swift in Sources */,
-				71C578C2244752F8008BFEB3 /* SlideVerticalAnimator.swift in Sources */,
+				71C578C2244752F8008BFEB3 /* TransitionSlideVerticalAnimator.swift in Sources */,
 				715B7B3C24474C6900754EDB /* TransitionCoordinator.swift in Sources */,
-				715B7B4824474E2100754EDB /* SlideHorizontalAnimator.swift in Sources */,
+				715B7B4824474E2100754EDB /* TransitionSlideHorizontalAnimator.swift in Sources */,
 				715B7B4624474DE100754EDB /* TransitionAnimator.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

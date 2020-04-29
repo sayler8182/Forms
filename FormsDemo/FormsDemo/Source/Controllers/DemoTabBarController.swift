@@ -131,8 +131,7 @@ class DemoTabBarController: FormsTabBarController {
 
 // MARK: ContentViewController
 private class ContentViewController: FormsTableViewController {
-    private lazy var navigationBar = Components.navigationBar.default()
-    
+    private let navigationBar = Components.navigationBar.default()
     private let firstButton = Components.button.default()
         .with(title: "Tap me")
     private let secondButton = Components.button.default()

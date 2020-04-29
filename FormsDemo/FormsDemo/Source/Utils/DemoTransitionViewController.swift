@@ -18,7 +18,7 @@ class DemoTransitionViewController: TransitionNavigationController {
     override func setupConfiguration() {
         super.setupConfiguration()
         self.viewControllers = [FirstController()]
-        self.animator = SlideHorizontalAnimator()
+        self.animator = TransitionSlideHorizontalAnimator()
     }
     
     override func setupContent() {

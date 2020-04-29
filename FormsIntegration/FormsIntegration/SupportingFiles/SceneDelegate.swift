@@ -7,6 +7,7 @@
 //
  
 import Analytics
+import DeveloperTools
 import SocialKit
 import UIKit
 
@@ -21,6 +22,9 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         // Analytics
         Analytics.configure()
+        
+        // DeveloperTools
+        LifetimeTracker.configure()
         
         // SocialKit
         SocialKit.configure(

@@ -6,7 +6,7 @@
 	<dict>
 		<key>Headers/Transition-Swift.h</key>
 		<data>
-		9oGfbZlvZPypc+kVHdyO5QtFmkw=
+		gVNvXPmDzZdBL6V29GdxHxWPEmE=
 		</data>
 		<key>Headers/Transition.h</key>
 		<data>
@@ -18,11 +18,11 @@
 		</data>
 		<key>Modules/Transition.swiftmodule/Project/arm64-apple-ios.swiftsourceinfo</key>
 		<data>
-		wOm41LUxOKSHEXEo4naM9U58ZZQ=
+		80z4z+0TcBMUVwtln33RXiwdIsM=
 		</data>
 		<key>Modules/Transition.swiftmodule/Project/arm64.swiftsourceinfo</key>
 		<data>
-		wOm41LUxOKSHEXEo4naM9U58ZZQ=
+		80z4z+0TcBMUVwtln33RXiwdIsM=
 		</data>
 		<key>Modules/Transition.swiftmodule/arm64-apple-ios.swiftdoc</key>
 		<data>
@@ -30,7 +30,7 @@
 		</data>
 		<key>Modules/Transition.swiftmodule/arm64-apple-ios.swiftmodule</key>
 		<data>
-		PCXBe1e31b1ZwyaI2OI8y3UroZ4=
+		Q88ATy796mCZLrXsTKvvHCdH5TE=
 		</data>
 		<key>Modules/Transition.swiftmodule/arm64.swiftdoc</key>
 		<data>
@@ -38,7 +38,7 @@
 		</data>
 		<key>Modules/Transition.swiftmodule/arm64.swiftmodule</key>
 		<data>
-		PCXBe1e31b1ZwyaI2OI8y3UroZ4=
+		Q88ATy796mCZLrXsTKvvHCdH5TE=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
@@ -51,7 +51,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			n1p/Xar4yJi+d5Y4+rjOiCLTXF7u779Phpl398FnWOM=
+			NNqLgoza+RfPks5q80sztWczXapN6rb1iC6ranNrnHM=
 			</data>
 		</dict>
 		<key>Headers/Transition.h</key>
@@ -65,14 +65,14 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			p+hp4JCbwgcXBCUlbopawZtnaXNudaNVpEIs9dgfBBc=
+			5/uZs42pHUZUmU4cv9H8WE4EApwxDVLp/5rUXsYJkfc=
 			</data>
 		</dict>
 		<key>Modules/Transition.swiftmodule/Project/arm64.swiftsourceinfo</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			p+hp4JCbwgcXBCUlbopawZtnaXNudaNVpEIs9dgfBBc=
+			5/uZs42pHUZUmU4cv9H8WE4EApwxDVLp/5rUXsYJkfc=
 			</data>
 		</dict>
 		<key>Modules/Transition.swiftmodule/arm64-apple-ios.swiftdoc</key>
@@ -86,7 +86,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			l0HZJwR7/6O7/vFKZjHF35tmbzL2P2JfH+V1Zh6Md2k=
+			pbIFLLUyQ5mPHHLtPuItvq2hdmeUTSTnfEhAXiJsCLw=
 			</data>
 		</dict>
 		<key>Modules/Transition.swiftmodule/arm64.swiftdoc</key>
@@ -100,7 +100,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			l0HZJwR7/6O7/vFKZjHF35tmbzL2P2JfH+V1Zh6Md2k=
+			pbIFLLUyQ5mPHHLtPuItvq2hdmeUTSTnfEhAXiJsCLw=
 			</data>
 		</dict>
 		<key>Modules/module.modulemap</key>

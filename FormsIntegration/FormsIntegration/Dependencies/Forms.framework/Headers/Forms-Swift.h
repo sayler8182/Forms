@@ -427,8 +427,6 @@ SWIFT_CLASS("_TtC5Forms24FormsTableViewController")
 
 
 
-
-
 @class UITableView;
 
 @interface FormsTableViewController (SWIFT_EXTENSION(Forms))
@@ -437,6 +435,8 @@ SWIFT_CLASS("_TtC5Forms24FormsTableViewController")
 - (UITableViewCell * _Nonnull)tableView:(UITableView * _Nonnull)tableView cellForRowAtIndexPath:(NSIndexPath * _Nonnull)indexPath SWIFT_WARN_UNUSED_RESULT;
 - (CGFloat)tableView:(UITableView * _Nonnull)tableView heightForRowAtIndexPath:(NSIndexPath * _Nonnull)indexPath SWIFT_WARN_UNUSED_RESULT;
 @end
+
+
 
 
 
@@ -459,6 +459,22 @@ SWIFT_CLASS("_TtC5Forms24FormsTableViewController")
 @interface FormsViewController (SWIFT_EXTENSION(Forms))
 - (void)keyboarWillShowForResizingWithNotification:(NSNotification * _Nonnull)notification;
 - (void)keyboarWillHideForResizingWithNotification:(NSNotification * _Nonnull)notification;
+@end
+
+
+SWIFT_CLASS("_TtC5Forms9ImageView")
+@interface ImageView : FormComponent
+@property (nonatomic, strong) UIColor * _Nullable backgroundColor;
+@property (nonatomic) UIViewContentMode contentMode;
+- (nonnull instancetype)initWithFrame:(CGRect)frame OBJC_DESIGNATED_INITIALIZER;
+- (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)coder OBJC_DESIGNATED_INITIALIZER;
+- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
+@end
+
+
+@interface ImageView (SWIFT_EXTENSION(Forms))
+- (nonnull instancetype)withHeight:(CGFloat)height SWIFT_WARN_UNUSED_RESULT;
+- (nonnull instancetype)withWidth:(CGFloat)width SWIFT_WARN_UNUSED_RESULT;
 @end
 
 
@@ -527,6 +543,37 @@ SWIFT_CLASS("_TtC5Forms13NavigationBar")
 @end
 
 
+SWIFT_CLASS("_TtC5Forms13PageContainer")
+@interface PageContainer : FormComponent
+@property (nonatomic, strong) UIColor * _Nullable backgroundColor;
+- (nonnull instancetype)initWithFrame:(CGRect)frame OBJC_DESIGNATED_INITIALIZER;
+- (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)coder OBJC_DESIGNATED_INITIALIZER;
+- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
+@end
+
+
+@interface PageContainer (SWIFT_EXTENSION(Forms)) <UIScrollViewDelegate>
+- (void)scrollViewWillBeginDragging:(UIScrollView * _Nonnull)scrollView;
+- (void)scrollViewDidEndDragging:(UIScrollView * _Nonnull)scrollView willDecelerate:(BOOL)decelerate;
+- (void)scrollViewDidScroll:(UIScrollView * _Nonnull)scrollView;
+@end
+
+
+@interface PageContainer (SWIFT_EXTENSION(Forms)) <UICollectionViewDataSource, UICollectionViewDelegateFlowLayout>
+- (NSInteger)numberOfSectionsInCollectionView:(UICollectionView * _Nonnull)collectionView SWIFT_WARN_UNUSED_RESULT;
+- (NSInteger)collectionView:(UICollectionView * _Nonnull)collectionView numberOfItemsInSection:(NSInteger)section SWIFT_WARN_UNUSED_RESULT;
+- (UICollectionViewCell * _Nonnull)collectionView:(UICollectionView * _Nonnull)collectionView cellForItemAtIndexPath:(NSIndexPath * _Nonnull)indexPath SWIFT_WARN_UNUSED_RESULT;
+- (void)collectionView:(UICollectionView * _Nonnull)collectionView willDisplayCell:(UICollectionViewCell * _Nonnull)cell forItemAtIndexPath:(NSIndexPath * _Nonnull)indexPath;
+- (void)collectionView:(UICollectionView * _Nonnull)collectionView didEndDisplayingCell:(UICollectionViewCell * _Nonnull)cell forItemAtIndexPath:(NSIndexPath * _Nonnull)indexPath;
+- (CGSize)collectionView:(UICollectionView * _Nonnull)collectionView layout:(UICollectionViewLayout * _Nonnull)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath * _Nonnull)indexPath SWIFT_WARN_UNUSED_RESULT;
+@end
+
+
+@interface PageContainer (SWIFT_EXTENSION(Forms))
+- (nonnull instancetype)withHeight:(CGFloat)height SWIFT_WARN_UNUSED_RESULT;
+@end
+
+
 SWIFT_CLASS("_TtC5Forms13PrimaryButton")
 @interface PrimaryButton : Button
 - (nonnull instancetype)initWithFrame:(CGRect)frame OBJC_DESIGNATED_INITIALIZER;
@@ -544,21 +591,6 @@ SWIFT_CLASS("_TtC5Forms15ScrollContainer")
 @end
 
 
-@interface ScrollContainer (SWIFT_EXTENSION(Forms)) <UIScrollViewDelegate>
-- (void)scrollViewWillBeginDragging:(UIScrollView * _Nonnull)scrollView;
-- (void)scrollViewDidEndDragging:(UIScrollView * _Nonnull)scrollView willDecelerate:(BOOL)decelerate;
-- (void)scrollViewDidScroll:(UIScrollView * _Nonnull)scrollView;
-@end
-
-
-@interface ScrollContainer (SWIFT_EXTENSION(Forms)) <UICollectionViewDataSource, UICollectionViewDelegateFlowLayout>
-- (NSInteger)numberOfSectionsInCollectionView:(UICollectionView * _Nonnull)collectionView SWIFT_WARN_UNUSED_RESULT;
-- (NSInteger)collectionView:(UICollectionView * _Nonnull)collectionView numberOfItemsInSection:(NSInteger)section SWIFT_WARN_UNUSED_RESULT;
-- (UICollectionViewCell * _Nonnull)collectionView:(UICollectionView * _Nonnull)collectionView cellForItemAtIndexPath:(NSIndexPath * _Nonnull)indexPath SWIFT_WARN_UNUSED_RESULT;
-- (void)collectionView:(UICollectionView * _Nonnull)collectionView willDisplayCell:(UICollectionViewCell * _Nonnull)cell forItemAtIndexPath:(NSIndexPath * _Nonnull)indexPath;
-- (void)collectionView:(UICollectionView * _Nonnull)collectionView didEndDisplayingCell:(UICollectionViewCell * _Nonnull)cell forItemAtIndexPath:(NSIndexPath * _Nonnull)indexPath;
-- (CGSize)collectionView:(UICollectionView * _Nonnull)collectionView layout:(UICollectionViewLayout * _Nonnull)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath * _Nonnull)indexPath SWIFT_WARN_UNUSED_RESULT;
-@end
 
 
 @interface ScrollContainer (SWIFT_EXTENSION(Forms))
@@ -653,11 +685,11 @@ SWIFT_CLASS("_TtC5Forms6TabBar")
 
 
 
+
+
 @interface TableDataSource (SWIFT_EXTENSION(Forms))
 - (void)scrollViewDidScroll:(UIScrollView * _Nonnull)scrollView;
 @end
-
-
 
 
 

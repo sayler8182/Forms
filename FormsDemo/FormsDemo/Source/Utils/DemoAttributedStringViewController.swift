@@ -13,10 +13,12 @@ import UIKit
 class DemoAttributedStringViewController: FormsTableViewController {
     private lazy var attributedLabel = Components.label.default()
         .with(attributedText: self.attributedLabelString)
+        .with(numberOfLines: 0)
         .with(padding: 16)
     private lazy var clickableAttributedLabel = Components.label.default()
         .with(attributedText: self.clickableAttributedLabelString)
         .with(backgroundColor: UIColor.lightGray)
+        .with(numberOfLines: 0)
         .with(padding: 16)
     
     private let divider = Components.utils.divider()
@@ -51,7 +53,11 @@ class DemoAttributedStringViewController: FormsTableViewController {
         .with(color: UIColor.red)
         .with(font: UIFont.boldSystemFont(ofSize: 23))
         .with(underlineStyle: .thick)
-        .with(string: "Tapable item", onClick: { print("Click") })
+        .with(string: "Tapable item", onClick: { [unowned self] in
+            Toast.success()
+                .with(title: "Click")
+                .show(in: self.navigationController)
+        })
         .with(string: "\nSome text")
     
     override func setupContent() {

@@ -15,6 +15,7 @@ private enum Demo {
         case controller
         case collectionViewController
         case pagerController
+        case sideMenuController
         case tabBarController
         case tableViewController
         case viewController
@@ -88,6 +89,7 @@ private enum Demo {
                 Section(title: "Controllers", rows: [
                     Row(type: .collectionViewController, title: "FormsCollectionViewController"),
                     Row(type: .pagerController, title: "FormsPagerController"),
+                    Row(type: .sideMenuController, title: "SideMenuController", shouldPresent: true),
                     Row(type: .tabBarController, title: "FormsTabBarController", shouldPresent: true),
                     Row(type: .tableViewController, title: "FormsTableViewController"),
                     Row(type: .viewController, title: "FormsViewController")
@@ -309,6 +311,7 @@ private class DemoListViewController: FormsViewController {
         // controllers
         case .collectionViewController:                         return DemoCollectionViewController()
         case .pagerController:                                  return DemoPagerController()
+        case .sideMenuController:                               return DemoSideMenuController()
         case .tabBarController:                                 return DemoTabBarController()
         case .tableViewController:                              return DemoTableViewController()
         case .viewController:                                   return DemoViewController()

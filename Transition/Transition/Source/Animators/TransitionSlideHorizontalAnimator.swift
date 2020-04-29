@@ -1,5 +1,5 @@
 //
-//  SlideHorizontalAnimator.swift
+//  TransitionSlideHorizontalAnimator.swift
 //  Transition
 //
 //  Created by Konrad on 4/15/20.
@@ -8,8 +8,8 @@
 
 import UIKit
 
-// MARK: SlideHorizontalAnimator
-open class SlideHorizontalAnimator: TransitionAnimator {
+// MARK: TransitionSlideHorizontalAnimator
+open class TransitionSlideHorizontalAnimator: TransitionAnimator {
     override open func transitionDuration(using transitionContext: UIViewControllerContextTransitioning?) -> TimeInterval {
         return 0.5
     }

@@ -13,6 +13,10 @@ private enum Integration {
     enum RowType {
         // Analytics
         case analytics
+        // Developer Tools
+        case developerTools
+        // SideMenu
+        case sideMenu
         // SocialKit
         case socialKit
         case socialKitApple
@@ -36,6 +40,12 @@ private enum Integration {
             return [
                 Section(title: "Analytics", rows: [
                     Row(type: .analytics, title: "Analytics")
+                ]),
+                Section(title: "Developer tools", rows: [
+                    Row(type: .developerTools, title: "Developer tools")
+                ]),
+                Section(title: "Side menu", rows: [
+                    Row(type: .sideMenu, title: "Side menu")
                 ]),
                 Section(title: "SocialKit", rows: [
                     Row(type: .socialKitApple, title: "SocialKit Apple"),
@@ -150,6 +160,10 @@ private class FormsIntegrationListViewController: FormsViewController {
         switch row.type {
         // Analytics
         case .analytics:                return FormsIntegrationAnalyticsViewController()
+        // DeveloperTools
+        case .developerTools:           return FormsIntegrationDeveloperToolsViewController()
+        // SideMenu
+        case .sideMenu:                 return FormsIntegrationSideMenuViewController()
         // SocialKit
         case .socialKitApple:           return FormsIntegrationSocialKitAppleViewController()
         case .socialKitFacebook:        return FormsIntegrationSocialKitFacebookViewController()

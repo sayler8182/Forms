@@ -59,6 +59,8 @@
 		719F8C7B24570358004F5A27 /* DemoDeveloperToolsMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 719F8C7A24570358004F5A27 /* DemoDeveloperToolsMenuViewController.swift */; };
 		71BB61EF2445C6E7002BB31F /* DemoNetworkGetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71BB61EE2445C6E7002BB31F /* DemoNetworkGetViewController.swift */; };
 		71BB62812445F7C7002BB31F /* DemoNetworkImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71BB62802445F7C7002BB31F /* DemoNetworkImageViewController.swift */; };
+		71CFF42C245956E40067D13E /* SideMenu.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71CFF42B245956E40067D13E /* SideMenu.framework */; };
+		71CFF42D245956E40067D13E /* SideMenu.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 71CFF42B245956E40067D13E /* SideMenu.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		71DB5C9524575B6300B16145 /* DemoTitleSearchBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71DB5C9424575B6300B16145 /* DemoTitleSearchBarViewController.swift */; };
 		71DB5CC72457647F00B16145 /* DemoAnalyticsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71DB5CC62457647F00B16145 /* DemoAnalyticsViewController.swift */; };
 		71DB668F2458299800B16145 /* Analytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71DB6538245769A700B16145 /* Analytics.framework */; };
@@ -73,6 +75,7 @@
 		71DB66F82458336800B16145 /* ImagePicker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71DB66F72458336800B16145 /* ImagePicker.framework */; };
 		71DB66F92458336800B16145 /* ImagePicker.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 71DB66F72458336800B16145 /* ImagePicker.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		71DB670224584D6700B16145 /* DemoScrollContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71DB670124584D6700B16145 /* DemoScrollContainerViewController.swift */; };
+		71FF141B2458B20000656EDA /* DemoSideMenuController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71FF141A2458B20000656EDA /* DemoSideMenuController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -92,6 +95,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				71CFF42D245956E40067D13E /* SideMenu.framework in Embed Frameworks */,
 				71DB66902458299800B16145 /* Analytics.framework in Embed Frameworks */,
 				71DB66932458299A00B16145 /* DeveloperTools.framework in Embed Frameworks */,
 				71DB66F92458336800B16145 /* ImagePicker.framework in Embed Frameworks */,
@@ -161,6 +165,7 @@
 		71BB61EE2445C6E7002BB31F /* DemoNetworkGetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoNetworkGetViewController.swift; sourceTree = "<group>"; };
 		71BB62802445F7C7002BB31F /* DemoNetworkImageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoNetworkImageViewController.swift; sourceTree = "<group>"; };
 		71C1F0012449E8B000FFC999 /* Forms.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Forms.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		71CFF42B245956E40067D13E /* SideMenu.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = SideMenu.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		71DB5C902457280F00B16145 /* SocialKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = SocialKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		71DB5C9424575B6300B16145 /* DemoTitleSearchBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoTitleSearchBarViewController.swift; sourceTree = "<group>"; };
 		71DB5CC62457647F00B16145 /* DemoAnalyticsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoAnalyticsViewController.swift; sourceTree = "<group>"; };
@@ -175,6 +180,7 @@
 		71DB66F52458333F00B16145 /* DemoImagePickerSystemViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoImagePickerSystemViewController.swift; sourceTree = "<group>"; };
 		71DB66F72458336800B16145 /* ImagePicker.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = ImagePicker.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		71DB670124584D6700B16145 /* DemoScrollContainerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoScrollContainerViewController.swift; sourceTree = "<group>"; };
+		71FF141A2458B20000656EDA /* DemoSideMenuController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoSideMenuController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -182,6 +188,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				71CFF42C245956E40067D13E /* SideMenu.framework in Frameworks */,
 				71DB668F2458299800B16145 /* Analytics.framework in Frameworks */,
 				71DB66942458299B00B16145 /* Forms.framework in Frameworks */,
 				71DB66F82458336800B16145 /* ImagePicker.framework in Frameworks */,
@@ -255,6 +262,7 @@
 		713B9C63243D0947001F6E3A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				71CFF42B245956E40067D13E /* SideMenu.framework */,
 				71DB66F72458336800B16145 /* ImagePicker.framework */,
 				71DB6698245829D900B16145 /* Anchor.framework */,
 				71DB6699245829D900B16145 /* Injector.framework */,
@@ -345,6 +353,7 @@
 			children = (
 				7138D3A82452C9E300CC7345 /* DemoCollectionViewController.swift */,
 				713B9C7A243D0964001F6E3A /* DemoPagerController.swift */,
+				71FF141A2458B20000656EDA /* DemoSideMenuController.swift */,
 				713B9C7B243D0964001F6E3A /* DemoViewController.swift */,
 				713B9C7C243D0964001F6E3A /* DemoTabBarController.swift */,
 				713B9C7D243D0964001F6E3A /* DemoTableViewController.swift */,
@@ -565,6 +574,7 @@
 				71589114244639F2003200C7 /* DemoArchitecturesCleanAssembly.swift in Sources */,
 				713B9C84243D0964001F6E3A /* DemoModalViewController.swift in Sources */,
 				713B9C81243D0964001F6E3A /* DemoLabelsViewController.swift in Sources */,
+				71FF141B2458B20000656EDA /* DemoSideMenuController.swift in Sources */,
 				713B9C7F243D0964001F6E3A /* DemoNavigationBarWithBackOrCloseViewController.swift in Sources */,
 				715B7AE22446FD1500754EDB /* DemoArchitecturesCleanSummaryPresenter.swift in Sources */,
 				719469C4243DB01D00CAD09B /* DemoShimmerViewController.swift in Sources */,
