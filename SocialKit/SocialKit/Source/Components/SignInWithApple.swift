@@ -11,7 +11,7 @@ import Forms
 import UIKit
 
 // MARK: SignInWithApple
-open class SignInWithApple: FormComponent, Clickable, FormComponentWithMarginEdgeInset, FormComponentWithPaddingEdgeInset {
+open class SignInWithApple: FormsComponent, Clickable, FormsComponentWithMarginEdgeInset, FormsComponentWithPaddingEdgeInset {
     public let backgroundView = UIView()
         .with(isUserInteractionEnabled: true)
     public lazy var signInWithApple: ASAuthorizationAppleIDButton = self.signInWithAppleWhite

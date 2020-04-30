@@ -39,7 +39,7 @@ class DemoScrollContainerViewController: FormsViewController {
     }
     
     private func setupHorizontalItems(count: Int) {
-        let items: [FormComponent] = (0..<count).map { _ in
+        let items: [FormsComponent] = (0..<count).map { _ in
             return Components.container.view()
                 .with(backgroundColor: .red)
                 .with(anchors: {[
@@ -51,7 +51,7 @@ class DemoScrollContainerViewController: FormsViewController {
     }
     
     private func setupVerticalItems(count: Int) {
-        let items: [FormComponent] = (0..<count).map { _ in
+        let items: [FormsComponent] = (0..<count).map { _ in
             return Components.container.view()
                 .with(backgroundColor: .green)
                 .with(anchors: {[

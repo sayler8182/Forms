@@ -45,7 +45,7 @@ class DemoTableViewController: FormsTableViewController {
         DispatchQueue.main.async {
             for i in 0..<2 {
                 let color: UIColor = i.isMultiple(of: 2) ? UIColor.systemPink : UIColor.systemGreen
-                let view: FormComponent = Components.container.view()
+                let view: FormsComponent = Components.container.view()
                     .with(backgroundColor: color)
                 self.add(view, animated: .none)
             }
@@ -54,7 +54,7 @@ class DemoTableViewController: FormsTableViewController {
         DispatchQueue.main.async {
             for i in 0..<10 {
                 let color: UIColor = i.isMultiple(of: 2) ? UIColor.orange : UIColor.yellow
-                let view: FormComponent = Components.container.view()
+                let view: FormsComponent = Components.container.view()
                     .with(backgroundColor: color)
                 self.add(view, animated: .automatic)
             }

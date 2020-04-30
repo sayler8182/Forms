@@ -109,10 +109,11 @@ public enum Toast {
 }
 
 // MARK: ToastView
-open class ToastView: FormComponent {
+open class ToastView: FormsComponent {
     public let titleLabel = UILabel()
     public let contentView = UIView()
-    private let gestureRecognizer = UITapGestureRecognizer()
+    private let tapGestureRecognizer = UITapGestureRecognizer()
+    private let panGestureRecognizer = UIPanGestureRecognizer()
     
     public var isDismissable: Bool = true
     public var position: ToastPosition = .top
@@ -186,12 +187,14 @@ open class ToastView: FormComponent {
     }
     
     override public func setupActions() {
-        self.gestureRecognizer.addTarget(self, action: #selector(handleGesture))
-        self.addGestureRecognizer(self.gestureRecognizer)
+        self.tapGestureRecognizer.addTarget(self, action: #selector(handleTapGesture))
+        self.addGestureRecognizer(self.tapGestureRecognizer)
+        self.panGestureRecognizer.addTarget(self, action: #selector(handlePanGesture))
+        self.addGestureRecognizer(self.panGestureRecognizer)
     }
     
     @objc
-    private func handleGesture(recognizer: UITapGestureRecognizer) {
+    private func handleTapGesture(recognizer: UITapGestureRecognizer) {
         guard self.isDismissable else { return }
         self.lifeTimer?.invalidate()
         if let onDismiss = self.onDismiss {
@@ -201,13 +204,44 @@ open class ToastView: FormComponent {
         }
     }
     
+    @objc
+    private func handlePanGesture(recognizer: UIPanGestureRecognizer) {
+        guard let context: UIView = self.superview else { return }
+        guard self.isDismissable else { return }
+        self.lifeTimer?.invalidate()
+        let translation = recognizer.translation(in: self)
+        let originY: CGFloat
+        switch self.position {
+        case .top:
+            let translationY = min(translation.y, 0)
+            originY = translationY
+        case .bottom:
+            let translationY = max(0, translation.y)
+            originY = context.frame.height - self.frame.height + translationY
+        }
+        self.animation(
+            true,
+            duration: 0.3,
+            animations: {
+                self.frame.origin.y = originY
+        })
+        
+        if recognizer.state == .ended {
+            if let onDismiss = self.onDismiss {
+                onDismiss(self)
+            } else {
+                self.hide(animated: true, completion: nil)
+            }
+        }
+    }
+    
     // MARK: HOOKS
     open func add(to parent: UIView) {
         self.backgroundColor = Toast.configuration.backgroundColor.value(for: self.style)
         self.titleLabel.textColor = Toast.configuration.titleColor.value(for: self.style)
         self.titleLabel.font = Toast.configuration.titleFont.value(for: self.style)
         self.titleLabel.textAlignment = .center
-        self.titleLabel.numberOfLines = 4
+        self.titleLabel.numberOfLines = 16
         self.contentView.addSubview(self.titleLabel, with: [
             Anchor.to(self.contentView).fill
         ])

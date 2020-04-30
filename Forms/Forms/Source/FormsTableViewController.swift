@@ -25,7 +25,7 @@ open class FormsTableViewController: FormsViewController, UITableViewDelegate, U
     private let footerView: UIStackView = UIStackView()
     private let defaultCellIdentifier: String = "_cell"
     
-    private var views: [FormComponent] = []
+    private var views: [FormsComponent] = []
     private let tableView: UITableView = UITableView(
         frame: CGRect(width: 320, height: 44),
         style: .plain)
@@ -71,6 +71,11 @@ open class FormsTableViewController: FormsViewController, UITableViewDelegate, U
     }
     open var tableRowHeight: CGFloat = UITableView.automaticDimension {
         didSet { self.tableView.rowHeight = self.tableRowHeight }
+    }
+    
+    override open func viewWillLayoutSubviews() {
+        super.viewWillLayoutSubviews()
+        self.tableView.updateHeaderViewHeight()
     }
     
     override open func setupView() {
@@ -125,10 +130,10 @@ open class FormsTableViewController: FormsViewController, UITableViewDelegate, U
             dataSource: newDataSource)
     }
     
-    public func build(_ components: [FormComponent?],
+    public func build(_ components: [FormsComponent?],
                       divider: Divider) {
-        let components: [FormComponent] = components.compactMap { $0 }
-        var _components: [FormComponent] = []
+        let components: [FormsComponent] = components.compactMap { $0 }
+        var _components: [FormsComponent] = []
         for (i, component) in components.enumerated() {
             _components.append(component)
             if i < components.count - 1 {
@@ -138,8 +143,8 @@ open class FormsTableViewController: FormsViewController, UITableViewDelegate, U
         self.build(_components)
     }
     
-    public func build(_ components: [FormComponent?]) {
-        let components: [FormComponent] = components.compactMap { $0 }
+    public func build(_ components: [FormsComponent?]) {
+        let components: [FormsComponent] = components.compactMap { $0 }
         self.tableUpdatesQueue.async {
             components.forEach { $0.table = self }
             self.views = components
@@ -195,7 +200,7 @@ open class FormsTableViewController: FormsViewController, UITableViewDelegate, U
         }
     }
     
-    // MARK: HOOKS
+    // MARK: HOOKS 
     open func setupHeader() {
         // HOOK
     }
@@ -261,48 +266,48 @@ public extension FormsTableViewController {
 
 // MARK: Components
 public extension FormsTableViewController {
-    func add(_ components: [FormComponent],
+    func add(_ components: [FormsComponent],
              animated: UITableView.RowAnimation = .automatic) {
         for component in components {
             self.add(component, animated: animated)
         }
     }
     
-    func add(_ component: FormComponent,
+    func add(_ component: FormsComponent,
              animated: UITableView.RowAnimation = .automatic) {
         let index: Int = self.views.count
         self.insert(component, at: index, animated: animated)
     }
     
-    func insert(_ component: FormComponent,
-                after: FormComponent,
+    func insert(_ component: FormsComponent,
+                after: FormsComponent,
                 animated: UITableView.RowAnimation = .automatic) {
         guard let index: Int = self.views.firstIndex(of: after) else { return }
         self.insert(component, at: index + 1, animated: animated)
     }
     
-    func insert(_ components: [FormComponent],
-                after: FormComponent,
+    func insert(_ components: [FormsComponent],
+                after: FormsComponent,
                 animated: UITableView.RowAnimation = .automatic) {
         guard let index: Int = self.views.firstIndex(of: after) else { return }
         self.insert(components, at: index, animated: animated)
     }
     
-    func insert(_ component: FormComponent,
-                before: FormComponent,
+    func insert(_ component: FormsComponent,
+                before: FormsComponent,
                 animated: UITableView.RowAnimation = .automatic) {
         guard let index: Int = self.views.firstIndex(of: before) else { return }
         self.insert(component, at: index, animated: animated)
     }
     
-    func insert(_ components: [FormComponent],
-                before: FormComponent,
+    func insert(_ components: [FormsComponent],
+                before: FormsComponent,
                 animated: UITableView.RowAnimation = .automatic) {
         guard let index: Int = self.views.firstIndex(of: before) else { return }
         self.insert(components, at: index, animated: animated)
     }
     
-    func insert(_ components: [FormComponent],
+    func insert(_ components: [FormsComponent],
                 at index: Int,
                 animated: UITableView.RowAnimation = .automatic) {
         for (i, component) in components.enumerated() {
@@ -310,7 +315,7 @@ public extension FormsTableViewController {
         }
     }
     
-    func insert(_ component: FormComponent,
+    func insert(_ component: FormsComponent,
                 at index: Int,
                 animated animation: UITableView.RowAnimation = .automatic) {
         self.tableUpdatesQueue.async {
@@ -322,14 +327,14 @@ public extension FormsTableViewController {
         }
     }
     
-    func remove(_ components: [FormComponent],
+    func remove(_ components: [FormsComponent],
                 animated: UITableView.RowAnimation = .automatic) {
         for component in components {
             self.remove(component, animated: animated)
         }
     }
     
-    func remove(_ component: FormComponent,
+    func remove(_ component: FormsComponent,
                 animated animation: UITableView.RowAnimation = .automatic) {
         self.tableUpdatesQueue.async {
             guard let index: Int = self.views.firstIndex(of: component) else { return }
@@ -553,7 +558,7 @@ public extension FormsTableViewController {
         cell.selectionStyle = .none
         cell.backgroundColor = self.cellBackgroundColor
         cell.contentView.subviews.removeFromSuperview()
-        let view: FormComponent = self.views[indexPath.row]
+        let view: FormsComponent = self.views[indexPath.row]
         cell.contentView.addSubview(view, with: [
             Anchor.to(cell.contentView).fill
         ])
@@ -561,7 +566,7 @@ public extension FormsTableViewController {
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        let view: FormComponent = self.views[indexPath.row]
+        let view: FormsComponent = self.views[indexPath.row]
         return view.componentHeight()
     }
 }
@@ -575,7 +580,7 @@ public extension FormsTableViewController {
     
 // MARK: Scroll
 public extension FormsTableViewController {
-    func scroll(to component: FormComponent,
+    func scroll(to component: FormsComponent,
                 at position: UITableView.ScrollPosition = UITableView.ScrollPosition.middle,
                 animated: Bool = true) {
         guard let index: Int = self.views.firstIndex(of: component) else { return }

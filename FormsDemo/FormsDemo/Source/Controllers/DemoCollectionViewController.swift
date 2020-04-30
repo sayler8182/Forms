@@ -21,11 +21,11 @@ class DemoCollectionViewController: FormsCollectionViewController {
     private var dataSource = CollectionDataSource()
     
     override func setupConfiguration() {
+        super.setupConfiguration()
         self.collectionContentInset = UIEdgeInsets(top: 8, leading: 8, bottom: 8, trailing: 8)
         self.collectionColumnsCount = 2
         self.collectionColumnsHorizontalDistance = 8
         self.collectionColumnsVerticalDistance = 8
-        super.setupConfiguration()
     }
     
     override func setupHeader() {

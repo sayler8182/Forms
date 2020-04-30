@@ -14,7 +14,7 @@ import Forms
 import UIKit
 
 // MARK: SignInWithFacebook
-open class SignInWithFacebook: FormComponent, Clickable, FormComponentWithMarginEdgeInset, FormComponentWithPaddingEdgeInset {
+open class SignInWithFacebook: FormsComponent, Clickable, FormsComponentWithMarginEdgeInset, FormsComponentWithPaddingEdgeInset {
     public let backgroundView = UIView()
         .with(isUserInteractionEnabled: true)
     public let signInWithFacebook = UIButton()

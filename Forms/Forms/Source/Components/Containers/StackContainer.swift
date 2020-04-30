@@ -9,11 +9,11 @@
 import UIKit
 
 // MARK: StackContainer
-open class StackContainer: FormComponent, FormComponentWithMarginEdgeInset, FormComponentWithPaddingEdgeInset {
+open class StackContainer: FormsComponent, FormsComponentWithMarginEdgeInset, FormsComponentWithPaddingEdgeInset {
     private let backgroundView = UIView()
     private let stackView = UIStackView()
     
-    private var items: [FormComponent] = []
+    private var items: [FormsComponent] = []
     
     open var alignment: UIStackView.Alignment {
         get { return self.stackView.alignment }
@@ -83,7 +83,7 @@ open class StackContainer: FormComponent, FormComponentWithMarginEdgeInset, Form
         self.stackView.constraint(to: self.backgroundView, position: .trailing)?.constant = -edgeInset.trailing
     }
     
-    public func setItems(_ items: [FormComponent]) {
+    public func setItems(_ items: [FormsComponent]) {
         self.items = items
         self.stackView.removeArrangedSubviews()
         self.stackView.addArrangedSubviews(items)
@@ -109,7 +109,7 @@ public extension StackContainer {
         self.height = height
         return self
     }
-    func with(items: [FormComponent]) -> Self {
+    func with(items: [FormsComponent]) -> Self {
         self.setItems(items)
         return self
     }

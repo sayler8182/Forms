@@ -10,7 +10,7 @@ import Anchor
 import UIKit
 
 // MARK: View
-open class View: FormComponent {
+open class View: FormsComponent {
     open var height: CGFloat = UITableView.automaticDimension
     
     override open func setupView() {

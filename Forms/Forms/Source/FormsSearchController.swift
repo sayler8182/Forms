@@ -1,8 +1,8 @@
 //
-//  SearchBar.swift
+//  FormsSearchController.swift
 //  Forms
 //
-//  Created by Konrad on 4/27/20.
+//  Created by Konrad on 4/30/20.
 //  Copyright © 2020 Limbo. All rights reserved.
 //
 
@@ -11,7 +11,7 @@ import UIKit
 import Validators
 
 // MARK: State
-public extension SearchBar {
+public extension FormsSearchController {
     enum StateType {
         case active
         case selected
@@ -45,13 +45,8 @@ public extension SearchBar {
     }
 }
 
-// MARK: SearchBar
-open class SearchBar: FormsComponent, FormsComponentWithMarginEdgeInset, FormsComponentWithPaddingEdgeInset {
-    public let backgroundView = UIView()
-        .with(width: 320, height: 44)
-    public let searchBar = UISearchBar()
-        .with(width: 320, height: 44)
-    
+// MARK: FormsSearchController
+open class FormsSearchController: UISearchController {
     open var animationTime: TimeInterval = 0.2
     open var autocapitalizationType: UITextAutocapitalizationType {
         get { return self.searchBar.autocapitalizationType }
@@ -61,22 +56,9 @@ open class SearchBar: FormsComponent, FormsComponentWithMarginEdgeInset, FormsCo
         get { return self.searchBar.autocorrectionType }
         set { self.searchBar.autocorrectionType = newValue }
     }
-    open var backgroundColors: State<UIColor?> = State<UIColor?>(UIColor.systemBackground) {
-        didSet { self.updateState() }
-    }
-    open var marginEdgeInset: UIEdgeInsets = UIEdgeInsets(0) {
-        didSet { self.updateMarginEdgeInset() }
-    }
-    open var isEnabled: Bool {
-        get { return self.isUserInteractionEnabled }
-        set { newValue ? self.enable(animated: false) : self.disable(animated: false) }
-    }
     open var keyboardType: UIKeyboardType {
         get { return self.searchBar.keyboardType }
         set { self.searchBar.keyboardType = newValue }
-    }
-    open var paddingEdgeInset: UIEdgeInsets = UIEdgeInsets(0) {
-        didSet { self.updatePaddingEdgeInset() }
     }
     open var placeholder: String? {
         get { return self.searchBar.placeholder }
@@ -120,123 +102,82 @@ open class SearchBar: FormsComponent, FormsComponentWithMarginEdgeInset, FormsCo
     
     private (set) var state: StateType = StateType.active
     
-    override open var intrinsicContentSize: CGSize {
-        return UIView.layoutFittingExpandedSize
+    public convenience init(_ updater: SearchUpdater) {
+        self.init(searchResultsController: nil)
+        updater.searchController = self
+        self.searchResultsUpdater = updater
     }
     
-    override open func setupView() {
-        self.setupBackgroundView()
+    override public init(searchResultsController: UIViewController?) {
+        super.init(searchResultsController: searchResultsController)
+        self.postInit()
         self.setupSearchBar()
-        super.setupView()
     }
     
-    override open func setupActions() {
-        super.setupActions()
-        self.searchBar.searchTextField.addTarget(self, action: #selector(handleOnBeginEditing), for: .editingDidBegin)
-        self.searchBar.searchTextField.addTarget(self, action: #selector(handleOnEndEditing), for: .editingDidEnd)
-        self.searchBar.searchTextField.addTarget(self, action: #selector(handleOnTextChanged), for: .editingChanged)
+    override public init(nibName nibNameOrNil: String?,
+                         bundle nibBundleOrNil: Bundle?) {
+        super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
+        self.postInit()
+        self.setupSearchBar()
     }
     
-    override open func enable(animated: Bool) {
-        guard !self.isUserInteractionEnabled else { return }
-        self.isUserInteractionEnabled = true
-        self.setState(.active, animated: animated)
+    public required init?(coder: NSCoder) {
+        super.init(coder: coder)
+        self.postInit()
+        self.setupSearchBar()
     }
     
-    override open func disable(animated: Bool) {
-        guard self.isUserInteractionEnabled else { return }
-        self.isUserInteractionEnabled = false
-        self.setState(.disabled, animated: animated)
+    override open func viewDidLoad() {
+        super.viewDidLoad()
+        self.setupView()
+    }
+    
+    open func setupView() {
+        self.setupConfiguration()
+        self.setupContent()
+        self.setupActions()
+        self.setupOther()
     }
     
     public func textFieldDelegate<T: UITextFieldDelegate>(of type: T.Type) -> T? {
         return self._textFieldDelegate as? T
     }
     
-    // MARK: Actions
-    @objc
-    private func handleOnBeginEditing(_ sender: UITextField) {
-        self.updateState(animated: true)
-        self.validatorTrigger()
-        if let newText: String = self.formatText?(sender.text) {
-            sender.text = newText
-        }
-        self.onBeginEditing?(sender.text)
-        if self.validateOnBeginEditing {
-            self.validate()
-            self.table?.refreshTableView()
-        }
+    // MARK: HOOKS
+    open func postInit() {
+        // HOOK
     }
     
-    @objc
-    private func handleOnDidPaste(_ sender: UITextField) {
-        self.validatorTrigger()
-        self.onDidPaste?(sender.text)
+    open func setupConfiguration() {
+        // HOOK
     }
     
-    @objc
-    private func handleOnEndEditing(_ sender: UITextField) {
-        self.updateState(animated: true)
-        self.validatorTrigger()
-        self.onEndEditing?(sender.text)
-        if self.validateOnEndEditing {
-            self.validate()
-            self.table?.refreshTableView()
-        }
-    }
-    
-    @objc
-    private func handleOnTextChanged(_ sender: UITextField) {
-        self.validatorTrigger()
-        self.onTextChanged?(sender.text)
-        if self.validateOnTextChange {
-            self.validate()
-            self.table?.refreshTableView()
-        }
-    }
-    
-    open func setupBackgroundView() {
-        self.addSubview(self.backgroundView, with: [
-            Anchor.to(self).top,
-            Anchor.to(self).horizontal,
-            Anchor.to(self).bottom
-        ])
+    open func setupContent() {
+        self.obscuresBackgroundDuringPresentation = false
+        self.view.backgroundColor = UIColor.clear
+        // HOOK
     }
     
     open func setupSearchBar() {
         self.searchBar.backgroundImage = UIImage()
-        self.searchBar.searchTextField.translatesAutoresizingMaskIntoConstraints = false
-        self.searchBar.searchTextField.anchors([
-            Anchor.to(self.searchBar).fill,
-            Anchor.to(self.searchBar.searchTextField).height(36).lessThanOrEqual
-        ])
-        self.backgroundView.addSubview(self.searchBar, with: [
-            Anchor.to(self.backgroundView).top.offset(self.paddingEdgeInset.top),
-            Anchor.to(self.backgroundView).bottom.offset(self.paddingEdgeInset.bottom),
-            Anchor.to(self.backgroundView).leading.offset(self.paddingEdgeInset.leading),
-            Anchor.to(self.backgroundView).trailing.offset(self.paddingEdgeInset.trailing)
-        ])
+        self.updateState()
     }
     
-    open func updateMarginEdgeInset() {
-        let edgeInset: UIEdgeInsets = self.marginEdgeInset
-        self.backgroundView.frame = self.bounds.with(inset: edgeInset)
-        self.backgroundView.constraint(to: self, position: .top)?.constant = edgeInset.top
-        self.backgroundView.constraint(to: self, position: .bottom)?.constant = -edgeInset.bottom
-        self.backgroundView.constraint(to: self, position: .leading)?.constant = edgeInset.leading
-        self.backgroundView.constraint(to: self, position: .trailing)?.constant = -edgeInset.trailing
+    open func setupActions() {
+        self.searchBar.searchTextField.addTarget(self, action: #selector(handleOnBeginEditing), for: .editingDidBegin)
+        self.searchBar.searchTextField.addTarget(self, action: #selector(handleOnEndEditing), for: .editingDidEnd)
+        self.searchBar.searchTextField.addTarget(self, action: #selector(handleOnTextChanged), for: .editingChanged)
     }
     
-    open func updatePaddingEdgeInset() {
-        let edgeInset: UIEdgeInsets = self.paddingEdgeInset
-        self.searchBar.constraint(to: self.backgroundView, position: .top)?.constant = edgeInset.top
-        self.searchBar.constraint(to: self.backgroundView, position: .bottom)?.constant = -edgeInset.bottom
-        self.searchBar.constraint(to: self.backgroundView, position: .leading)?.constant = edgeInset.leading
-        self.searchBar.constraint(to: self.backgroundView, position: .trailing)?.constant = -edgeInset.trailing
+    open func setupOther() {
+        // HOOK
     }
-    
-    private func updateState(animated: Bool) {
-        if self.isEnabled.not {
+}
+
+// MARK: State
+private extension FormsSearchController {
+    func updateState(animated: Bool) {
+        if self.isActive {
             self.setState(.disabled, animated: animated)
         } else if self.isFirstResponder {
             self.setState(.selected, animated: animated)
@@ -245,7 +186,7 @@ open class SearchBar: FormsComponent, FormsComponentWithMarginEdgeInset, FormsCo
         }
     }
     
-    private func updateState() {
+    func updateState() {
         switch self.state {
         case .active: self.setState(.active, animated: false, force: true)
         case .selected: self.setState(.selected, animated: false, force: true)
@@ -253,12 +194,11 @@ open class SearchBar: FormsComponent, FormsComponentWithMarginEdgeInset, FormsCo
         }
     }
     
-    private func setState(_ state: StateType,
-                          animated: Bool,
-                          force: Bool = false) {
+    func setState(_ state: StateType,
+                  animated: Bool,
+                  force: Bool = false) {
         guard self.state != state || force else { return }
-        self.animation(animated, duration: self.animationTime) {
-            self.backgroundView.backgroundColor = self.backgroundColors.value(for: state)
+        self.searchBar.animation(animated, duration: self.animationTime) {
             self.searchBar.searchTextField.textColor = self.textColors.value(for: state)
             self.searchBar.searchTextField.font = self.textFonts.value(for: state)
         }
@@ -266,15 +206,56 @@ open class SearchBar: FormsComponent, FormsComponentWithMarginEdgeInset, FormsCo
     }
 }
 
+// MARK: Actions
+extension FormsSearchController {
+    @objc
+    func handleOnBeginEditing(_ sender: UITextField) {
+        self.updateState(animated: true)
+        self.validatorTrigger()
+        if let newText: String = self.formatText?(sender.text) {
+            sender.text = newText
+        }
+        self.onBeginEditing?(sender.text)
+        if self.validateOnBeginEditing {
+            self.validate()
+        }
+    }
+    
+    @objc
+    func handleOnDidPaste(_ sender: UITextField) {
+        self.validatorTrigger()
+        self.onDidPaste?(sender.text)
+    }
+    
+    @objc
+    func handleOnEndEditing(_ sender: UITextField) {
+        self.updateState(animated: true)
+        self.validatorTrigger()
+        self.onEndEditing?(sender.text)
+        if self.validateOnEndEditing {
+            self.validate()
+        }
+    }
+    
+    @objc
+    func handleOnTextChanged(_ sender: UITextField) {
+        self.validatorTrigger()
+        self.onTextChanged?(sender.text)
+        if self.validateOnTextChange {
+            self.validate()
+        }
+    }
+}
+
 // MARK: Validadble
-extension SearchBar: Validable {
+extension FormsSearchController: Validable {
     public func validate(_ validator: Validator) -> Bool {
         return validator.validate(self.text).isValid
     }
 }
 
 // MARK: Inputable
-extension SearchBar: Inputable {
+extension FormsSearchController: Inputable {
     public func focus(animated: Bool) {
         self.searchBar.becomeFirstResponder()
     }
@@ -285,7 +266,7 @@ extension SearchBar: Inputable {
 }
 
 // MARK: Builder
-public extension SearchBar {
+public extension FormsSearchController {
     func with(animationTime: TimeInterval) -> Self {
         self.animationTime = animationTime
         return self
@@ -298,17 +279,8 @@ public extension SearchBar {
         self.autocorrectionType = autocorrectionType
         return self
     }
-    @objc
-    override func with(backgroundColor: UIColor?) -> Self {
-        self.backgroundColors = State<UIColor?>(backgroundColor)
-        return self
-    }
-    func with(backgroundColors: State<UIColor?>) -> Self {
-        self.backgroundColors = backgroundColors
-        return self
-    }
-    func with(isEnabled: Bool) -> Self {
-        self.isEnabled = isEnabled
+    func with(isActive: Bool) -> Self {
+        self.isActive = isActive
         return self
     }
     func with(keyboardType: UIKeyboardType) -> Self {

@@ -9,15 +9,15 @@
 import UIKit
 
 // MARK: PageContainer
-open class PageContainer: FormComponent, FormComponentWithMarginEdgeInset, FormComponentWithPaddingEdgeInset {
-    public typealias OnSelect = ((FormComponent) -> Void)
+open class PageContainer: FormsComponent, FormsComponentWithMarginEdgeInset, FormsComponentWithPaddingEdgeInset {
+    public typealias OnSelect = ((FormsComponent) -> Void)
     
     private let backgroundView = UIView()
     private lazy var collectionView = UICollectionView(frame: CGRect.zero, collectionViewLayout: self.flowLayout)
     private let pageControl = UIPageControl()
     
     private var flowLayout = PageContainerFlowLayout()
-    private var items: [FormComponent] = []
+    private var items: [FormsComponent] = []
     private var selectedIndex: Int? = nil
     private let defaultCellIdentifier: String = "_cell"
     private var timer: Timer? = nil
@@ -159,7 +159,7 @@ open class PageContainer: FormComponent, FormComponentWithMarginEdgeInset, FormC
         self.timer = timer
     }
     
-    public func setItems(_ items: [FormComponent]) {
+    public func setItems(_ items: [FormsComponent]) {
         self.items = items
         self.pageControl.alpha = items.isEmpty ? 0.0 : 1.0
         self.pageControl.numberOfPages = items.count
@@ -167,7 +167,7 @@ open class PageContainer: FormComponent, FormComponentWithMarginEdgeInset, FormC
         self.collectionView.collectionViewLayout.invalidateLayout()
     }
     
-    public func scrollTo(component: FormComponent,
+    public func scrollTo(component: FormsComponent,
                          animated: Bool = true) {
         guard let index: Int = self.items.firstIndex(of: component) else { return }
         self.scrollTo(index: index, animated: animated)
@@ -203,7 +203,7 @@ extension PageContainer: UICollectionViewDelegate, UICollectionViewDataSource, U
     }
     
     public func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
-        let item: FormComponent = self.items[indexPath.row]
+        let item: FormsComponent = self.items[indexPath.row]
         item.frame = collectionView.bounds
         cell.contentView.subviews.removeFromSuperview()
         cell.contentView.addSubview(item, with: [
@@ -244,7 +244,7 @@ extension PageContainer: UIScrollViewDelegate {
         guard index != self.selectedIndex else { return }
         self.selectedIndex = index
         self.pageControl.currentPage = index
-        let item: FormComponent = self.items[index]
+        let item: FormsComponent = self.items[index]
         self.onSelect?(item)
     }
 }
@@ -272,7 +272,7 @@ public extension PageContainer {
         self.isPagingEnabled = isPagingEnabled
         return self
     }
-    func with(items: [FormComponent]) -> Self {
+    func with(items: [FormsComponent]) -> Self {
         self.setItems(items)
         return self
     }

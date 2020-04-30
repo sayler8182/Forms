@@ -68,7 +68,7 @@ open class UITextFieldWithoutPadding: UITextField {
 }
 
 // MARK: TextField
-open class TextField: FormComponent, FormComponentWithMarginEdgeInset, FormComponentWithPaddingEdgeInset {
+open class TextField: FormsComponent, FormsComponentWithMarginEdgeInset, FormsComponentWithPaddingEdgeInset {
     public let backgroundView = UIView()
         .with(width: 320, height: 85)
     public let titleLabel = UILabel()

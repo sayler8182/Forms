@@ -74,7 +74,7 @@ private enum Demo {
     
     struct Row {
         var type: RowType
-        var title: String?
+        var title: String
         var subtitle: String? = nil
         var sections: [Section] = []
         var shouldPresent: Bool = false
@@ -206,12 +206,24 @@ private enum Demo {
 
 // MARK: [Demo.Section]
 fileprivate extension Array where Element == Demo.Section {
-    func row(for type: Demo.RowType,
-             from sections: [Demo.Section]) -> Demo.Row? {
+    static func rows(from sections: [Demo.Section]) -> [Demo.Row] {
+        var rows: [Demo.Row] = []
+        for section in sections {
+            rows.append(contentsOf: section.rows)
+            for row in section.rows {
+                let result = Self.rows(from: row.sections)
+                rows.append(contentsOf: result)
+            }
+        }
+        return rows
+    }
+    
+    static func row(for type: Demo.RowType,
+                    from sections: [Demo.Section]) -> Demo.Row? {
         for section in sections {
             for row in section.rows {
                 if row.type == type { return row }
-                guard let result = self.row(for: type, from: row.sections) else { continue }
+                guard let result = Self.row(for: type, from: row.sections) else { continue }
                 return result
             }
         }
@@ -241,7 +253,7 @@ public class DemoRootViewController: UINavigationController {
                            in controller: DemoListViewController) {
         guard let rowType: Demo.RowType = rowType else { return }
         let sections: [Demo.Section] = Demo.Section.default
-        guard let row: Demo.Row = Demo.Section.default.row(for: rowType, from: sections) else { return }
+        guard let row: Demo.Row = [Demo.Section].row(for: rowType, from: sections) else { return }
         controller.select(row: row)
     }
 }
@@ -252,7 +264,13 @@ private class DemoListViewController: FormsViewController {
         frame: CGRect(width: 320, height: 44),
         style: .plain)
     
-    private var items: [Demo.Section] = []
+    private lazy var searchDataSource = SearchDataSource<Demo.Section>(self.tableView)
+    private lazy var searchController = FormsSearchController(self.searchDataSource)
+    
+    private var items: [Demo.Section] {
+        get { return self.searchDataSource.items }
+        set { self.searchDataSource.items = newValue }
+    }
     private let defaultCellIdentifier: String = "_cell"
     private let injector: Injector = Injector.main
     
@@ -272,8 +290,8 @@ private class DemoListViewController: FormsViewController {
         self.items = row.sections
     }
     
-    override func setupView() {
-        super.setupView()
+    override func setupContent() {
+        super.setupContent()
         self.setupTableView()
     }
     
@@ -288,7 +306,22 @@ private class DemoListViewController: FormsViewController {
         self.tableView.register(UITableViewCell.self, forCellReuseIdentifier: self.defaultCellIdentifier)
         self.view.addSubview(self.tableView, with: [
             Anchor.to(self.view).fill
-        ])
+        ]) 
+    }
+    
+    override func setupSearchBar() {
+        super.setupSearchBar()
+        self.setSearchBar(self.searchController)
+    }
+    
+    override func setupActions() {
+        super.setupActions()
+        self.searchDataSource.onFilter = { (items, query) in
+            let rows: [Demo.Row] = [Demo.Section]
+                .rows(from: items)
+                .filter { $0.title.localizedCaseInsensitiveContains(query) }
+            return [Demo.Section(title: "Search Result", rows: rows)]
+        }
     }
     
     fileprivate func select(row: Demo.Row) {
@@ -320,7 +353,7 @@ private class DemoListViewController: FormsViewController {
         case .componentsContainersPage:                         return DemoPageContainerViewController()
         case .componentsContainersScroll:                       return DemoScrollContainerViewController()
         case .componentsContainersStack:                        return DemoStackContainerViewController()
-        case .componentsInputsSearchBar:                        return DemoTitleSearchBarViewController()
+        case .componentsInputsSearchBar:                        return DemoSearchBarViewController()
         case .componentsInputsTitleTextField:                   return DemoTitleTextFieldViewController()
         case .componentsLabels:                                 return DemoLabelsViewController()
         case .componentsNavigationBarsNavigationBar:            return DemoNavigationBarViewController()
@@ -367,8 +400,7 @@ extension DemoListViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        let item: Demo.Section = self.items[section]
-        return item.rows.count
+        return self.items[section].rows.count
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -379,7 +411,7 @@ extension DemoListViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return self.items.count.greaterThan(1) ? self.items[section].title : nil
+        return  self.items.count > 1 ?  self.items[section].title : nil
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -394,7 +426,7 @@ extension DemoListViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return self.items.count.greaterThan(1) ? 30.0 : 0
+        return self.items.count > 1 ? 30.0 : 0
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {

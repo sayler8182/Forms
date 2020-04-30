@@ -1,5 +1,5 @@
 //
-//  FormComponent.swift
+//  FormsComponent.swift
 //  Table
 //
 //  Created by Konrad on 3/27/20.
@@ -56,8 +56,8 @@ public protocol Componentable {
     func setLanguage()
 }
 
-// MARK: FormComponent
-open class FormComponent: UIView, Componentable {
+// MARK: FormsComponent
+open class FormsComponent: UIView, Componentable {
     public weak var table: TableProtocol?
     
     override public init(frame: CGRect) {
@@ -76,6 +76,7 @@ open class FormComponent: UIView, Componentable {
     }
     
     open func setupView() {
+        self.translatesAutoresizingMaskIntoConstraints = false
         self.setupActions()
         self.setTheme()
         self.setLanguage()
@@ -159,7 +160,7 @@ public struct SeparatorStyle: OptionSet {
 }
 
 // MARK: XibComponent
-open class XibComponent: FormComponent {
+open class XibComponent: FormsComponent {
     override open func setupView() {
         let view: UIView = Bundle.main.instantiate(with: self)
         view.frame = self.bounds
@@ -170,18 +171,18 @@ open class XibComponent: FormComponent {
 }
 
 // MARK: Builder
-public extension FormComponent {
+public extension FormsComponent {
     func with(componentColor: UIColor?) -> Self {
         self.backgroundColor = componentColor
         return self
     }
 }
 
-// MARK: FormComponentWithMarginEdgeInset
-public protocol FormComponentWithMarginEdgeInset: class {
+// MARK: FormsComponentWithMarginEdgeInset
+public protocol FormsComponentWithMarginEdgeInset: class {
     var marginEdgeInset: UIEdgeInsets { get set }
 }
-public extension FormComponentWithMarginEdgeInset {
+public extension FormsComponentWithMarginEdgeInset {
     func with(margin: CGFloat) -> Self {
         self.marginEdgeInset = UIEdgeInsets(margin)
         return self
@@ -216,11 +217,11 @@ public extension FormComponentWithMarginEdgeInset {
     }
 }
 
-// MARK: FormComponentWithPaddingEdgeInset
-public protocol FormComponentWithPaddingEdgeInset: class {
+// MARK: FormsComponentWithPaddingEdgeInset
+public protocol FormsComponentWithPaddingEdgeInset: class {
     var paddingEdgeInset: UIEdgeInsets { get set }
 }
-public extension FormComponentWithPaddingEdgeInset {
+public extension FormsComponentWithPaddingEdgeInset {
     func with(padding: CGFloat) -> Self {
         self.paddingEdgeInset = UIEdgeInsets(padding)
         return self

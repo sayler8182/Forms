@@ -92,6 +92,7 @@ public struct ComponentsInputs: ComponentsList {
     public enum searchBar {
         public static func `default`() -> SearchBar {
             let component = SearchBar()
+                .with(width: 320, height: 64)
             component.animationTime = 0.1
             component.backgroundColors = SearchBar.State<UIColor?>(UIColor.systemBackground)
             component.marginEdgeInset = UIEdgeInsets(0)

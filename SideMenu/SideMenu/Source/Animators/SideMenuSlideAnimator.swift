@@ -32,6 +32,9 @@ internal class SideMenuSlideAnimator: SideMenuAnimator {
                                     completion: ((Bool) -> Void)? = nil) {
         guard self.state == .closed || self.state == .inProgress else { return }
         self.state = .inProgress
+        self.controller.addChild(self.leftSide)
+        self.controller.view.addSubview(self.leftSide.view)
+        self.controller.view.bringSubviewToFront(self.content.view)
         self.content.view.addSubview(self.overlayView, with: [
             Anchor.to(self.content.view).fill
         ])
@@ -53,6 +56,9 @@ internal class SideMenuSlideAnimator: SideMenuAnimator {
                                      completion: ((Bool) -> Void)? = nil) {
         guard self.state == .closed || self.state == .inProgress else { return }
         self.state = .inProgress
+        self.controller.addChild(self.rightSide)
+        self.controller.view.addSubview(self.rightSide.view)
+        self.controller.view.bringSubviewToFront(self.content.view)
         self.content.view.addSubview(self.overlayView, with: [
             Anchor.to(self.content.view).fill
         ])
@@ -84,6 +90,8 @@ internal class SideMenuSlideAnimator: SideMenuAnimator {
                 self.content.view.frame.origin.x = 0
         }, completion: { (status) in
             self.overlayView.removeFromSuperview()
+            self.leftSide.removeFromParent()
+            self.leftSide.view.removeFromSuperview()
             self.state = .closed
             completion?(status)
         })
@@ -103,6 +111,8 @@ internal class SideMenuSlideAnimator: SideMenuAnimator {
                 self.content.view.frame.origin.x = 0
         }, completion: { (status) in
             self.overlayView.removeFromSuperview()
+            self.rightSide.removeFromParent()
+            self.rightSide.view.removeFromSuperview()
             self.state = .closed
             completion?(status)
         })

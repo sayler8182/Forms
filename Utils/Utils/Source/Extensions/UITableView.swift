@@ -15,4 +15,8 @@ public extension UITableView {
             ? action()
             : UIView.performWithoutAnimation(action)
     }
+    
+    func updateHeaderViewHeight() {
+        self.tableHeaderView?.sizeToFit()
+    }
 }

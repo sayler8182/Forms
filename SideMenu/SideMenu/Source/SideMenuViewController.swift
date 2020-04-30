@@ -40,7 +40,7 @@ open class SideMenuController: FormsViewController {
     internal var rightSide: UIViewController = UIViewController()
     internal var content: UIViewController = UIViewController()
     internal var overlayView: UIView = UIView()
-    private var panGestureRecognizer = UIPanGestureRecognizer()
+    private let panGestureRecognizer = UIPanGestureRecognizer()
     
     private lazy var animator: SideMenuAnimator = self.animationType.animator
     private var state: SideMenuState {
@@ -107,9 +107,6 @@ open class SideMenuController: FormsViewController {
         self.leftSide = controller
         controller.view.alpha = 0
         controller.view.frame = self.view.frame
-        self.addChild(controller)
-        self.view.addSubview(controller.view)
-        self.updateViewsOrder()
         self.configureAnimator()
     }
     
@@ -117,9 +114,6 @@ open class SideMenuController: FormsViewController {
         self.rightSide = controller
         controller.view.alpha = 0
         controller.view.frame = self.view.frame
-        self.addChild(controller)
-        self.view.addSubview(controller.view)
-        self.updateViewsOrder()
         self.configureAnimator()
     }
     
@@ -128,7 +122,6 @@ open class SideMenuController: FormsViewController {
         controller.view.frame = self.view.frame
         self.addChild(controller)
         self.view.addSubview(controller.view)
-        self.updateViewsOrder()
         self.configureAnimator()
     }
     
@@ -173,10 +166,6 @@ open class SideMenuController: FormsViewController {
     @objc
     private func handlePanOverlay(recognizer: UIPanGestureRecognizer) {
         self.animator.handlePanOverlay(recognizer)
-    }
-    
-    private func updateViewsOrder() {
-        self.view.bringSubviewToFront(self.content.view)
     }
     
     private func configureAnimator() {

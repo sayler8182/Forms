@@ -10,7 +10,7 @@ import Anchor
 import UIKit
 
 // MARK: ImageView
-open class ImageView: FormComponent, FormComponentWithMarginEdgeInset, FormComponentWithPaddingEdgeInset {
+open class ImageView: FormsComponent, FormsComponentWithMarginEdgeInset, FormsComponentWithPaddingEdgeInset {
     private let backgroundView = UIView()
     private let imageView = UIImageView()
     

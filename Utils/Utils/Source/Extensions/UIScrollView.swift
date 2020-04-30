@@ -49,14 +49,14 @@ public extension UIScrollView {
     }
     
     func scrollToTop(animated: Bool) {
-        if let tableView: UITableView = self as? UITableView {
-            guard tableView.numberOfSections != 0 else { return }
-            guard tableView.numberOfRows(inSection: 0) != 0 else { return }
-            tableView.scrollToRow(at: IndexPath(row: 0, section: 0), at: UITableView.ScrollPosition.top, animated: animated)
-        } else if let collectionView: UICollectionView = self as? UICollectionView {
-            guard collectionView.numberOfSections != 0 else { return }
-            guard collectionView.numberOfItems(inSection: 0) != 0 else { return }
-            collectionView.scrollToItem(at: IndexPath(item: 0, section: 0), at: UICollectionView.ScrollPosition.left, animated: animated)
+        if let tableView: UITableView = self as? UITableView,
+            tableView.numberOfSections != 0,
+            tableView.numberOfRows(inSection: 0) != 0 {
+            self.setContentOffset(CGPoint.zero, animated: animated)
+        } else if let collectionView: UICollectionView = self as? UICollectionView,
+            collectionView.numberOfSections != 0,
+            collectionView.numberOfItems(inSection: 0) != 0 {
+            self.setContentOffset(CGPoint.zero, animated: animated)
         } else {
             self.setContentOffset(CGPoint.zero, animated: animated)
         }

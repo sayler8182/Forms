@@ -10,7 +10,7 @@ import Anchor
 import UIKit
 
 // MARK: ActivityIndicator
-open class ActivityIndicator: FormComponent, FormComponentWithMarginEdgeInset, FormComponentWithPaddingEdgeInset {
+open class ActivityIndicator: FormsComponent, FormsComponentWithMarginEdgeInset, FormsComponentWithPaddingEdgeInset {
     public let backgroundView = UIView()
     public let activityIndicator = UIActivityIndicatorView()
         .with(isUserInteractionEnabled: true)

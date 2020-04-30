@@ -45,7 +45,7 @@ public extension Button {
 }
 
 // MARK: Button
-open class Button: FormComponent, Clickable, FormComponentWithMarginEdgeInset {
+open class Button: FormsComponent, Clickable, FormsComponentWithMarginEdgeInset {
     public let backgroundView = UIView()
         .with(isUserInteractionEnabled: true)
     public let titleLabel = UILabel()

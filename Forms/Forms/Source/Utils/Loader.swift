@@ -128,7 +128,7 @@ public enum Loader {
 }
 
 // MARK: LoaderCoverView
-public class LoaderCoverView: FormComponent {
+public class LoaderCoverView: FormsComponent {
     public let backgroundView: UIView = UIView()
     public weak var loaderView: LoaderView?
     
@@ -156,7 +156,7 @@ public class LoaderCoverView: FormComponent {
 }
 
 // MARK: LoaderView
-open class LoaderView: FormComponent {
+open class LoaderView: FormsComponent {
     public var coverView: LoaderCoverView? {
         return self.superview as? LoaderCoverView
     }

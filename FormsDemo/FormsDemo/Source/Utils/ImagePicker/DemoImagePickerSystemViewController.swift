@@ -64,7 +64,7 @@ class DemoImagePickerSystemViewController: FormsTableViewController {
     }
     
     private func updateImages(_ data: ImagePickerData) {
-        var items: [FormComponent] = []
+        var items: [FormsComponent] = []
         for image in data.images {
             let item = Components.image.default()
                 .with(aspectRatio: 1.0)

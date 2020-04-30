@@ -24,12 +24,12 @@ public extension ScrollContainer {
 }
 
 // MARK: ScrollContainer
-open class ScrollContainer: FormComponent, FormComponentWithMarginEdgeInset, FormComponentWithPaddingEdgeInset {
+open class ScrollContainer: FormsComponent, FormsComponentWithMarginEdgeInset, FormsComponentWithPaddingEdgeInset {
     private let backgroundView = UIView()
     private let scrollView = UIScrollView(frame: CGRect.zero)
     private let stackView = UIStackView()
     
-    private var items: [FormComponent] = []
+    private var items: [FormsComponent] = []
     
     override open var backgroundColor: UIColor? {
         get { return self.backgroundView.backgroundColor }
@@ -114,7 +114,7 @@ open class ScrollContainer: FormComponent, FormComponentWithMarginEdgeInset, For
         self.stackView.axis = self.scrollDirection.axis
     }
      
-    public func setItems(_ items: [FormComponent]) {
+    public func setItems(_ items: [FormsComponent]) {
         self.items = items
         self.stackView.addArrangedSubviews(items)
     }
@@ -131,7 +131,7 @@ public extension ScrollContainer {
         self.height = height
         return self
     }
-    func with(items: [FormComponent]) -> Self {
+    func with(items: [FormsComponent]) -> Self {
         self.setItems(items)
         return self
     }

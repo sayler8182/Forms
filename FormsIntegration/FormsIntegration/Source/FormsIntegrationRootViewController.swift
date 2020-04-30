@@ -192,7 +192,7 @@ extension FormsIntegrationListViewController: UITableViewDelegate, UITableViewDa
     }
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return self.items.count.greaterThan(1) ? self.items[section].title : nil
+        return self.items.count > 1 ? self.items[section].title : nil
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -207,7 +207,7 @@ extension FormsIntegrationListViewController: UITableViewDelegate, UITableViewDa
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return self.items.count.greaterThan(1) ? 30.0 : 0
+        return self.items.count > 1 ? 30.0 : 0
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {

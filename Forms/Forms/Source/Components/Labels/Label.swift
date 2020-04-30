@@ -11,7 +11,7 @@ import UIKit
 import Utils
 
 // MARK: Label
-open class Label: FormComponent, Clickable, FormComponentWithMarginEdgeInset, FormComponentWithPaddingEdgeInset {
+open class Label: FormsComponent, Clickable, FormsComponentWithMarginEdgeInset, FormsComponentWithPaddingEdgeInset {
     public let backgroundView = UIView()
     public let textLabel = UILabel()
         .with(isUserInteractionEnabled: true)

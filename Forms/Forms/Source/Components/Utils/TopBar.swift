@@ -25,7 +25,7 @@ open class TopBarItem: TopBarItemProtocol {
 }
 
 // MARK: TopBar
-open class TopBar: FormComponent {
+open class TopBar: FormsComponent {
     public typealias OnSelect = ((TopBarItemProtocol) -> Void)
 
     private let contentView = UIView()

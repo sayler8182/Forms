@@ -11,7 +11,9 @@ import UIKit
 
 // MARK: FormsViewController
 open class FormsViewController: UIViewController, UIGestureRecognizerDelegate {
-    public var bottomAnchor: AnchorConnection = AnchorConnection()
+    private var searchController: UISearchController? = nil
+    
+    open var bottomAnchor: AnchorConnection = AnchorConnection()
     open var resizeOnKeybord: Bool = true
     
     open var isShimmering: Bool {
@@ -38,14 +40,19 @@ open class FormsViewController: UIViewController, UIGestureRecognizerDelegate {
         print("Deinit \(type(of: self))")
     }
     
+    override open func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        self.setupSlideToPop()
+    }
+    
     open func setupView() {
         self.setupConfiguration()
         self.setupResizerOnKeyboard()
         self.setupKeyboardWhenTappedAround()
-        self.setupSlideToPop()
         
         // HOOKS
         self.setupNavigationBar()
+        self.setupSearchBar()
         self.setupContent()
         self.setupActions()
         self.setupOther()
@@ -72,6 +79,10 @@ open class FormsViewController: UIViewController, UIGestureRecognizerDelegate {
         // HOOK
     }
     
+    open func setupSearchBar() {
+        // HOOK
+    }
+    
     open func setupContent() {
         self.view.backgroundColor = UIColor.systemBackground
         // HOOK
@@ -86,11 +97,18 @@ open class FormsViewController: UIViewController, UIGestureRecognizerDelegate {
     }
 }
 
-// MARK: FormsViewController
+// MARK: NavigationBar
 public extension FormsViewController {
     func setNavigationBar(_ navigationBar: NavigationBar) {
         navigationBar.setNavigationBar(self.navigationController?.navigationBar)
         navigationBar.setNavigationItem(self.navigationItem)
+    }
+}
+
+// MARK: SearchBar
+public extension FormsViewController {
+    func setSearchBar(_ searchController: UISearchController) {
+        self.navigationItem.searchController = searchController
     }
 }
 

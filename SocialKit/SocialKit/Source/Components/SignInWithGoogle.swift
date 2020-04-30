@@ -16,7 +16,7 @@ import GTMSessionFetcher
 import UIKit
 
 // MARK: SignInWithGoogle
-open class SignInWithGoogle: FormComponent, Clickable, FormComponentWithMarginEdgeInset, FormComponentWithPaddingEdgeInset {
+open class SignInWithGoogle: FormsComponent, Clickable, FormsComponentWithMarginEdgeInset, FormsComponentWithPaddingEdgeInset {
     public let backgroundView = UIView()
         .with(isUserInteractionEnabled: true)
     public let signInWithGoogle = UIButton()
