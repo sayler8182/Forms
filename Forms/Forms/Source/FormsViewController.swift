@@ -11,6 +11,8 @@ import UIKit
 
 // MARK: FormsViewController
 open class FormsViewController: UIViewController, UIGestureRecognizerDelegate {
+    private var navigationBar: NavigationBar? = nil
+    private var navigationProgressBar: ProgressBar? = nil
     private var searchController: UISearchController? = nil
     
     open var bottomAnchor: AnchorConnection = AnchorConnection()
@@ -19,6 +21,16 @@ open class FormsViewController: UIViewController, UIGestureRecognizerDelegate {
     open var isShimmering: Bool {
         return self.view.isShimmering
     }
+    
+    open var additionalTopSafeArea: CGFloat {
+        guard !self.preventAdditionalSafeArea else { return 0 }
+        return [
+            self.navigationProgressBar?.height
+            ]
+            .compactMap { $0 }
+            .reduce(0, +)
+    }
+    open var preventAdditionalSafeArea: Bool = false
     
     override public init(nibName nibNameOrNil: String?,
                          bundle nibBundleOrNil: Bundle?) {
@@ -40,9 +52,15 @@ open class FormsViewController: UIViewController, UIGestureRecognizerDelegate {
         print("Deinit \(type(of: self))")
     }
     
+    override open func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.navigationBar?.updateProgress(animated: animated)
+    }
+    
     override open func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         self.setupSlideToPop()
+        self.navigationBar?.updateProgress(animated: animated)
     }
     
     open func setupView() {
@@ -95,19 +113,39 @@ open class FormsViewController: UIViewController, UIGestureRecognizerDelegate {
     open func setupOther() {
         // HOOK
     }
+    
+    open func updateSafeArea() {
+        // HOOK
+    }
 }
 
 // MARK: NavigationBar
 public extension FormsViewController {
-    func setNavigationBar(_ navigationBar: NavigationBar) {
+    func setNavigationBar(_ navigationBar: NavigationBar,
+                          animated: Bool = true) {
+        self.navigationBar = navigationBar
         navigationBar.setNavigationBar(self.navigationController?.navigationBar)
         navigationBar.setNavigationItem(self.navigationItem)
+        navigationBar.updateProgress(animated: animated)
+    }
+}
+
+// MARK: NavigationBar
+public extension FormsViewController {
+    func setNavigationProgressBar(_ progressBar: ProgressBar) {
+        self.navigationProgressBar = progressBar
+        self.view.addSubview(progressBar, with: [
+            Anchor.to(self.view).top.safeArea,
+            Anchor.to(self.view).horizontal
+        ])
+        self.updateSafeArea()
     }
 }
 
 // MARK: SearchBar
 public extension FormsViewController {
     func setSearchBar(_ searchController: UISearchController) {
+        self.navigationItem.hidesSearchBarWhenScrolling = false
         self.navigationItem.searchController = searchController
     }
 }

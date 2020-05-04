@@ -36,6 +36,9 @@ private enum Demo {
         case componentsNavigationBarsNavigationBarWithBack
         case componentsNavigationBarsNavigationBarWithClose
         case componentsOthers
+        case componentsProgresses
+        case componentsNavigationProgressBar
+        case componentsProgressBars
         case componentsUtils
         // Utils
         case utils
@@ -134,6 +137,15 @@ private enum Demo {
                             ])
                     ]),
                     Row(type: .componentsOthers, title: "Others"),
+                    Row(
+                        type: .componentsProgresses,
+                        title: "Progresses",
+                        sections: [
+                            Section(rows: [
+                                Row(type: .componentsNavigationProgressBar, title: "NavigationProgress", shouldPresent: true),
+                                Row(type: .componentsProgressBars, title: "ProgressBar")
+                            ])
+                    ]),
                     Row(type: .componentsUtils, title: "Utils")
                 ]),
                 Section(title: "Utils", rows: [
@@ -232,28 +244,28 @@ fileprivate extension Array where Element == Demo.Section {
 }
 
 // MARK: DemoRootViewController
-public class DemoRootViewController: UINavigationController {
-    override public func viewDidLoad() {
-        super.viewDidLoad()
+public class DemoRootViewController: FormsNavigationController {
+    override public func postInit() {
+        super.postInit()
         Forms.initialize(Injector.main, [
             DemoArchitecturesCleanAssembly(),
             DemoArchitecturesCleanSummaryAssembly()
         ])
-        self.setupView()
-    }
-    
-    public func setupView() {
         let controller = DemoListViewController(items: Demo.Section.default)
-        controller.title = "FormsDemo"
-        self.viewControllers = [controller]
-        self.autoroute(to: nil, in: controller)
+            .with(title: "FormsDemo")
+        self.setRoot(controller)
     }
     
-    private func autoroute(to rowType: Demo.RowType?,
-                           in controller: DemoListViewController) {
+    override public func setupView() {
+        super.setupView()
+        self.autoroute(to: nil)
+    }
+    
+    private func autoroute(to rowType: Demo.RowType?) {
         guard let rowType: Demo.RowType = rowType else { return }
         let sections: [Demo.Section] = Demo.Section.default
         guard let row: Demo.Row = [Demo.Section].row(for: rowType, from: sections) else { return }
+        guard let controller = self.rootViewController(of: DemoListViewController.self) else { return }
         controller.select(row: row)
     }
 }
@@ -358,9 +370,10 @@ private class DemoListViewController: FormsViewController {
         case .componentsLabels:                                 return DemoLabelsViewController()
         case .componentsNavigationBarsNavigationBar:            return DemoNavigationBarViewController()
         case .componentsNavigationBarsNavigationBarWithBack:    return DemoNavigationBarWithBackOrCloseViewController()
-        case .componentsNavigationBarsNavigationBarWithClose:   return DemoNavigationBarWithBackOrCloseViewController()
-            .with(navigationController: UINavigationController())
+        case .componentsNavigationBarsNavigationBarWithClose:   return DemoNavigationBarWithBackOrCloseViewController().embeded
         case .componentsOthers:                                 return DemoOthersViewController()
+        case .componentsNavigationProgressBar:                  return DemoNavigationProgressBarViewController()
+        case .componentsProgressBars:                           return DemoProgressBarViewController()
         case .componentsUtils:                                  return DemoUtilsViewController()
         // utils
         case .utilsAnalytics:                                   return DemoAnalyticsViewController()
@@ -387,8 +400,8 @@ private class DemoListViewController: FormsViewController {
         case .utilsTransition:                                  return DemoTransitionViewController()
         case .utilsValidators:                                  return DemoValidatorsViewController()
         // architectures
-        case .architecturesClean:                       return self.injector.resolve(DemoArchitecturesCleanViewController.self)
-        default:                                        return nil
+        case .architecturesClean:                               return self.injector.resolve(DemoArchitecturesCleanViewController.self)
+        default:                                                return nil
         }
     }
 }

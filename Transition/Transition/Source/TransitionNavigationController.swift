@@ -17,24 +17,54 @@ open class TransitionNavigationController: UINavigationController {
     
     public init() {
         super.init(nibName: nil, bundle: nil)
+        self.postInit()
     }
     
-    public required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
+    override init(rootViewController: UIViewController) {
+        super.init(rootViewController: rootViewController)
+        self.postInit()
+    }
+    
+    override public init(nibName nibNameOrNil: String?,
+                         bundle nibBundleOrNil: Bundle?) {
+        super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
+        self.postInit()
+    }
+    
+    public required init?(coder: NSCoder) {
+        super.init(coder: coder)
+        self.postInit()
+    }
+    
+    deinit {
+        print("Deinit \(type(of: self))")
     }
     
     override open func viewDidLoad() {
         super.viewDidLoad()
         self.setupView()
     }
-    
+     
     open func setupView() {
         self.setupConfiguration()
+
+        // HOOKS
+        self.setupNavigationBar()
         self.setupContent()
         self.setupActions()
+        self.setupOther()
+    }
+    
+    // MARK: HOOKS
+    open func postInit() {
+        // HOOK
     }
     
     open func setupConfiguration() {
+        // HOOK
+    }
+    
+    open func setupNavigationBar() {
         // HOOK
     }
     
@@ -47,6 +77,10 @@ open class TransitionNavigationController: UINavigationController {
         let swipeGestureRecognizer = UIScreenEdgePanGestureRecognizer(target: self, action: #selector(handleSwipe(_:)))
         swipeGestureRecognizer.edges = .left
         self.view.addGestureRecognizer(swipeGestureRecognizer)
+    }
+    
+    open func setupOther() {
+        // HOOK
     }
     
     public func animator(for operation: UINavigationController.Operation) -> TransitionAnimator? {

@@ -25,7 +25,7 @@ open class FormsTableViewController: FormsViewController, UITableViewDelegate, U
     private let footerView: UIStackView = UIStackView()
     private let defaultCellIdentifier: String = "_cell"
     
-    private var views: [FormsComponent] = []
+    public private (set) var views: [FormsComponent] = []
     private let tableView: UITableView = UITableView(
         frame: CGRect(width: 320, height: 44),
         style: .plain)
@@ -155,8 +155,9 @@ open class FormsTableViewController: FormsViewController, UITableViewDelegate, U
     private func setupHeaderView() {
         self.headerView.backgroundColor = self.headerBackgroundColor
         let layoutGuide: LayoutGuide = self.isTopToSafeArea ? .safeArea : .normal
+        let offset: CGFloat = self.isTopToSafeArea ? self.additionalTopSafeArea : 0
         self.view.addSubview(self.headerView, with: [
-            Anchor.to(self.view).top.layoutGuide(layoutGuide),
+            Anchor.to(self.view).top.layoutGuide(layoutGuide).offset(offset),
             Anchor.to(self.view).horizontal,
             Anchor.to(self.headerView).height(0.0).lowPriority
         ])
@@ -242,6 +243,12 @@ open class FormsTableViewController: FormsViewController, UITableViewDelegate, U
     }
     
     open func pullToRefresh() {
+        // HOOK
+    }
+    
+    override open func updateSafeArea() {
+        super.updateSafeArea()
+        self.headerView.constraint(to: self.view, position: .top, layoutGuide: .safeArea)?.constant = self.additionalTopSafeArea
         // HOOK
     }
 }

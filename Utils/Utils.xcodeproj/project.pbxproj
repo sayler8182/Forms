@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7103EA24246047C200A11A96 /* UINavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7103EA23246047C200A11A96 /* UINavigationController.swift */; };
 		710624F624404C9D00C267FE /* IndexPath.swift in Sources */ = {isa = PBXBuildFile; fileRef = 710624F524404C9D00C267FE /* IndexPath.swift */; };
 		710624FF24408AA900C267FE /* UIScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 710624FE24408AA900C267FE /* UIScrollView.swift */; };
 		713296992448A510006935C0 /* UIButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 713296982448A510006935C0 /* UIButton.swift */; };
@@ -48,6 +49,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		7103EA23246047C200A11A96 /* UINavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UINavigationController.swift; sourceTree = "<group>"; };
 		710624F524404C9D00C267FE /* IndexPath.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IndexPath.swift; sourceTree = "<group>"; };
 		710624FE24408AA900C267FE /* UIScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIScrollView.swift; sourceTree = "<group>"; };
 		713296982448A510006935C0 /* UIButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIButton.swift; sourceTree = "<group>"; };
@@ -159,6 +161,7 @@
 				713B9BC5243D07BC001F6E3A /* UIImage.swift */,
 				719469C5243DB21D00CAD09B /* UIImageView.swift */,
 				713B9BC6243D07BC001F6E3A /* UILabel.swift */,
+				7103EA23246047C200A11A96 /* UINavigationController.swift */,
 				713B9BC8243D07BC001F6E3A /* UITableView.swift */,
 				713B9BBD243D07BB001F6E3A /* UIResponder.swift */,
 				710624FE24408AA900C267FE /* UIScrollView.swift */,
@@ -292,6 +295,7 @@
 				713B9BCB243D07BC001F6E3A /* Number.swift in Sources */,
 				713B9BCC243D07BC001F6E3A /* Bundle.swift in Sources */,
 				713B9BB9243D07A8001F6E3A /* AttributedString.swift in Sources */,
+				7103EA24246047C200A11A96 /* UINavigationController.swift in Sources */,
 				713B9BCF243D07BC001F6E3A /* UIAlertViewController.swift in Sources */,
 				713B9BAE243D06BD001F6E3A /* LoremIpsum.swift in Sources */,
 				710624F624404C9D00C267FE /* IndexPath.swift in Sources */,

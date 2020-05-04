@@ -10,7 +10,7 @@ import UIKit
 
 // MARK: UIView
 public extension UIView {
-    private static var viewKey: UInt8 = 0
+    private static var viewKey: UInt8 = 0 
     
     var viewKey: String? {
         get { return objc_getAssociatedObject(self, &Self.viewKey) as? String }

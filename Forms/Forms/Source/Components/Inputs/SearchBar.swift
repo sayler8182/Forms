@@ -47,9 +47,9 @@ public extension SearchBar {
 
 // MARK: SearchBar
 open class SearchBar: FormsComponent, FormsComponentWithMarginEdgeInset, FormsComponentWithPaddingEdgeInset {
-    public let backgroundView = UIView()
+    private let backgroundView = UIView()
         .with(width: 320, height: 44)
-    public let searchBar = UISearchBar()
+    private let searchBar = UISearchBar()
         .with(width: 320, height: 44)
     
     open var animationTime: TimeInterval = 0.2

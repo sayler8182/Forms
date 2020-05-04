@@ -11,8 +11,8 @@ import UIKit
 
 // MARK: ActivityIndicator
 open class ActivityIndicator: FormsComponent, FormsComponentWithMarginEdgeInset, FormsComponentWithPaddingEdgeInset {
-    public let backgroundView = UIView()
-    public let activityIndicator = UIActivityIndicatorView()
+    private let backgroundView = UIView()
+    private let activityIndicator = UIActivityIndicatorView()
         .with(isUserInteractionEnabled: true)
     
     override open var backgroundColor: UIColor? {

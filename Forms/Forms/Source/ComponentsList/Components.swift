@@ -18,6 +18,7 @@ public struct Components {
     public typealias label = ComponentsLabels
     public typealias navigationBar = ComponentsNavigationBars
     public typealias other = ComponentsOther
+    public typealias progress = ComponentsProgresses
     public typealias utils = ComponentsUtils
 }
 

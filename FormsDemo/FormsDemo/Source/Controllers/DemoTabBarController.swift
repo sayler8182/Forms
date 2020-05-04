@@ -51,7 +51,7 @@ class DemoTabBarController: FormsTabBarController {
                     controller.onClickFirst = { [unowned self] in
                         self.show(TabBarKeys.other, itemKey: TabBarOtherKeys.first)
                     }
-                    return controller.with(navigationController: UINavigationController())
+                    return controller.embeded
                 },
                 image: UIImage(systemName: "heart.fill"),
                 selectedImage: UIImage(systemName: "heart.fill"),
@@ -75,7 +75,7 @@ class DemoTabBarController: FormsTabBarController {
                     controller.onClickFirst = { [unowned self] in
                         self.show(TabBarKeys.main, itemKey: TabBarOtherKeys.first)
                     }
-                    return controller.with(navigationController: UINavigationController())
+                    return controller.embeded
                 },
                 image: UIImage(systemName: "square.and.arrow.up"),
                 title: "First other"
@@ -88,7 +88,7 @@ class DemoTabBarController: FormsTabBarController {
                     controller.onClickFirst = { [unowned self] in
                         self.show(index: 2)
                     }
-                    return controller.with(navigationController: UINavigationController())
+                    return controller.embeded
                 },
                 image: UIImage(systemName: "arrow.up"),
                 title: "Second other"
@@ -105,7 +105,7 @@ class DemoTabBarController: FormsTabBarController {
                     controller.onClickSecond = { [unowned self] in
                         self.showTabBar()
                     }
-                    return controller.with(navigationController: UINavigationController())
+                    return controller.embeded
                 },
                 image: UIImage(systemName: "arrow.down"),
                 title: "Third other"

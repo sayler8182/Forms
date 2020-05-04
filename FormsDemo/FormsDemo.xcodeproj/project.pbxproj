@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7103EA152460231100A11A96 /* DemoProgressesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7103EA142460231100A11A96 /* DemoProgressesViewController.swift */; };
+		7103EA202460382300A11A96 /* DemoNavigationProgressBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7103EA1F2460382300A11A96 /* DemoNavigationProgressBarViewController.swift */; };
 		7132964724487ED0006935C0 /* DemoSocialKitAppleTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7132964624487ED0006935C0 /* DemoSocialKitAppleTableViewController.swift */; };
 		7132968A24489F8F006935C0 /* DemoSocialKitFacebookTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7132968924489F8F006935C0 /* DemoSocialKitFacebookTableViewController.swift */; };
 		7132969B2448A609006935C0 /* DemoSocialKitAllTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7132969A2448A609006935C0 /* DemoSocialKitAllTableViewController.swift */; };
@@ -108,6 +110,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		7103EA142460231100A11A96 /* DemoProgressesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoProgressesViewController.swift; sourceTree = "<group>"; };
+		7103EA1F2460382300A11A96 /* DemoNavigationProgressBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoNavigationProgressBarViewController.swift; sourceTree = "<group>"; };
 		7132964624487ED0006935C0 /* DemoSocialKitAppleTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoSocialKitAppleTableViewController.swift; sourceTree = "<group>"; };
 		7132968924489F8F006935C0 /* DemoSocialKitFacebookTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoSocialKitFacebookTableViewController.swift; sourceTree = "<group>"; };
 		7132969A2448A609006935C0 /* DemoSocialKitAllTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoSocialKitAllTableViewController.swift; sourceTree = "<group>"; };
@@ -215,6 +219,15 @@
 			path = Architectuers;
 			sourceTree = "<group>";
 		};
+		7103EA13246022F900A11A96 /* Progresses */ = {
+			isa = PBXGroup;
+			children = (
+				7103EA1F2460382300A11A96 /* DemoNavigationProgressBarViewController.swift */,
+				7103EA142460231100A11A96 /* DemoProgressesViewController.swift */,
+			);
+			path = Progresses;
+			sourceTree = "<group>";
+		};
 		7132964524487EC5006935C0 /* SocialKit */ = {
 			isa = PBXGroup;
 			children = (
@@ -288,6 +301,7 @@
 				713B9C6E243D0964001F6E3A /* Labels */,
 				713B9C6B243D0964001F6E3A /* NavigationBars */,
 				714848D724485C9E00455560 /* Others */,
+				7103EA13246022F900A11A96 /* Progresses */,
 				714848D824485CB600455560 /* Utils */,
 			);
 			path = Components;
@@ -573,6 +587,7 @@
 				714848DC24485CE500455560 /* DemoUtilsViewController.swift in Sources */,
 				71589114244639F2003200C7 /* DemoArchitecturesCleanAssembly.swift in Sources */,
 				713B9C84243D0964001F6E3A /* DemoModalViewController.swift in Sources */,
+				7103EA202460382300A11A96 /* DemoNavigationProgressBarViewController.swift in Sources */,
 				713B9C81243D0964001F6E3A /* DemoLabelsViewController.swift in Sources */,
 				71FF141B2458B20000656EDA /* DemoSideMenuController.swift in Sources */,
 				713B9C7F243D0964001F6E3A /* DemoNavigationBarWithBackOrCloseViewController.swift in Sources */,
@@ -600,6 +615,7 @@
 				719469D4243DBC6800CAD09B /* Utils.swift in Sources */,
 				715891122446377D003200C7 /* DemoArchitecturesCleanViewController.swift in Sources */,
 				71DB66F62458333F00B16145 /* DemoImagePickerSystemViewController.swift in Sources */,
+				7103EA152460231100A11A96 /* DemoProgressesViewController.swift in Sources */,
 				719F8C7B24570358004F5A27 /* DemoDeveloperToolsMenuViewController.swift in Sources */,
 				71BB61EF2445C6E7002BB31F /* DemoNetworkGetViewController.swift in Sources */,
 				715B7AE52446FD1500754EDB /* DemoArchitecturesCleanSummaryModels.swift in Sources */,

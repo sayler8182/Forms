@@ -15,9 +15,13 @@ class DemoTransitionViewController: TransitionNavigationController {
     private let changeButton = Components.button.default()
         .with(title: "Change")
     
+    override func postInit() {
+        super.postInit()
+        self.setRoot(FirstController())
+    }
+    
     override func setupConfiguration() {
         super.setupConfiguration()
-        self.viewControllers = [FirstController()]
         self.animator = TransitionSlideHorizontalAnimator()
     }
     
@@ -43,6 +47,9 @@ class DemoTransitionViewController: TransitionNavigationController {
 
 // MARK: FirstController
 private class FirstController: FormsViewController {
+    private let progressBar = Components.progress.progressBar()
+        .with(progress: 1.0 / 2.0)
+        .with(viewKey: "progressBar")
     private let contentView = Components.container.view()
         .with(backgroundColor: UIColor.red)
         .with(viewKey: "contentView")
@@ -58,6 +65,10 @@ private class FirstController: FormsViewController {
     
     override func setupContent() {
         super.setupContent()
+        self.view.addSubview(self.progressBar, with: [
+            Anchor.to(self.view).top.safeArea,
+            Anchor.to(self.view).horizontal
+        ])
         self.view.addSubview(self.contentView, with: [
             Anchor.to(self.view).center(100)
         ])
@@ -74,6 +85,9 @@ private class FirstController: FormsViewController {
 
 // MARK: SecondController
 private class SecondController: FormsViewController {
+    private let progressBar = Components.progress.progressBar()
+        .with(progress: 2.0 / 2.0)
+        .with(viewKey: "progressBar")
     private let contentView = Components.container.view()
         .with(backgroundColor: UIColor.green)
         .with(cornerRadius: 16)
@@ -90,8 +104,12 @@ private class SecondController: FormsViewController {
     
     override func setupContent() {
         super.setupContent()
+        self.view.addSubview(self.progressBar, with: [
+            Anchor.to(self.view).top.safeArea,
+            Anchor.to(self.view).horizontal
+        ])
         self.view.addSubview(self.contentView, with: [
-            Anchor.to(self.view).top.safeArea.offset(16),
+            Anchor.to(self.view).top.safeArea.offset(32),
             Anchor.to(self.contentView).size(80),
             Anchor.to(self.view).centerX
         ])

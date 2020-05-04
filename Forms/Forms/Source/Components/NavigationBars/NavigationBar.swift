@@ -85,6 +85,7 @@ open class NavigationBar: FormsComponent {
     open var leftBarButtonItems: [BarItem] = [] {
         didSet { self.updateLeftBarButtonItems() }
     }
+    open var progress: CGFloat = 0.0
     open var rightBarButtonItems: [BarItem] = [] {
         didSet { self.updateRightBarButtonItems() }
     }
@@ -118,6 +119,10 @@ open class NavigationBar: FormsComponent {
         self.updateLeftBarButtonItems()
         self.updateRightBarButtonItems()
         self.updateTitle()
+    }
+    
+    public func updateProgress(animated: Bool) {
+        self.navigationBar?.progressBar?.setProgress(self.progress, animated: animated)
     }
     
     private func updateBackBarButton() {
@@ -196,6 +201,16 @@ public extension NavigationBar {
     }
     func with(leftBarButtonItems: [BarItem]) -> Self {
         self.leftBarButtonItems = leftBarButtonItems
+        return self
+    }
+    func with(progress: CGFloat) -> Self {
+        self.progress = progress
+        return self
+    }
+    func with(progressCurrent: Int?, progressCount: Int?) -> Self {
+        guard let progressCurrent: Int = progressCurrent else { return self }
+        guard let progressCount: Int = progressCount else { return self }
+        self.progress = CGFloat(progressCurrent) / CGFloat(progressCount)
         return self
     }
     func with(rightBarButtonItems: [BarItem]) -> Self {

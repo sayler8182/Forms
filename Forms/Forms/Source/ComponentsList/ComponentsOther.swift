@@ -13,6 +13,7 @@ public struct ComponentsOther: ComponentsList {
         
     public static func activityIndicator() -> ActivityIndicator {
         let component = ActivityIndicator()
+        component.backgroundColor = UIColor.systemBackground
         component.color = UIColor.lightGray
         component.marginEdgeInset = UIEdgeInsets(0)
         component.height = UITableView.automaticDimension

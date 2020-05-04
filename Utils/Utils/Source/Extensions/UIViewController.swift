@@ -35,4 +35,8 @@ public extension UIViewController {
         navigationController.viewControllers = [self]
         return navigationController
     }
+    func with(title: String?) -> Self {
+        self.title = title
+        return self
+    }
 }

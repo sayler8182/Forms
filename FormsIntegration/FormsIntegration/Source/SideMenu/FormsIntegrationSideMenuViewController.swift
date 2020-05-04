@@ -17,8 +17,8 @@ class FormsIntegrationSideMenuViewController: SideMenuController {
     
     override func setupContent() {
         super.setupContent()
-        self.setLeftSide(self.leftSide.with(navigationController: UINavigationController()))
-        self.setContent(self.content.with(navigationController: UINavigationController()))
+        self.setLeftSide(self.leftSide.embeded)
+        self.setContent(self.content.embeded)
     }
 }
 

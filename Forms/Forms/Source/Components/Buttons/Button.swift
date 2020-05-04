@@ -46,10 +46,10 @@ public extension Button {
 
 // MARK: Button
 open class Button: FormsComponent, Clickable, FormsComponentWithMarginEdgeInset {
-    public let backgroundView = UIView()
+    private let backgroundView = UIView()
         .with(isUserInteractionEnabled: true)
-    public let titleLabel = UILabel()
-    public let gestureRecognizer = UILongPressGestureRecognizer()
+    private let titleLabel = UILabel()
+    private let gestureRecognizer = UILongPressGestureRecognizer()
     
     open var animationTime: TimeInterval = 0.2
     open var backgroundColors: State<UIColor?> = State<UIColor?>(UIColor.systemBackground) {

@@ -12,10 +12,10 @@ import Utils
 
 // MARK: Label
 open class Label: FormsComponent, Clickable, FormsComponentWithMarginEdgeInset, FormsComponentWithPaddingEdgeInset {
-    public let backgroundView = UIView()
-    public let textLabel = UILabel()
+    private let backgroundView = UIView()
+    private let textLabel = UILabel()
         .with(isUserInteractionEnabled: true)
-    public let textGestureRecognizer = UILongPressGestureRecognizer()
+    private let textGestureRecognizer = UILongPressGestureRecognizer()
     
     open var alignment: NSTextAlignment {
         get { return self.textLabel.textAlignment }

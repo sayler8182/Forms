@@ -255,3 +255,17 @@ public extension FormsComponentWithPaddingEdgeInset {
         return self
     }
 }
+
+// MARK: FormsComponentWithProgress
+public protocol FormsComponentWithProgress: class {
+    var progress: CGFloat { get set }
+    
+    func setProgress(_ progress: CGFloat,
+                     animated: Bool)
+}
+public extension FormsComponentWithProgress {
+    func with(progress: CGFloat) -> Self {
+        self.progress = progress
+        return self
+    }
+}

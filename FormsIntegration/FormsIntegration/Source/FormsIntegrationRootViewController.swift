@@ -73,25 +73,25 @@ fileprivate extension Array where Element == Integration.Section {
 }
 
 // MARK: FormsIntegrationRootViewController
-public class FormsIntegrationRootViewController: UINavigationController {
-    override public func viewDidLoad() {
-        super.viewDidLoad()
+public class FormsIntegrationRootViewController: FormsNavigationController {
+    override public func postInit() {
+        super.postInit()
         Forms.initialize(Injector.main)
-        self.setupView()
-    }
-    
-    public func setupView() {
         let controller = FormsIntegrationListViewController(items: Integration.Section.default)
-        controller.title = "FormsIntegration"
-        self.viewControllers = [controller]
-        self.autoroute(to: nil, in: controller)
+            .with(title: "FormsIntegration")
+        self.setRoot(controller)
     }
     
-    private func autoroute(to rowType: Integration.RowType?,
-                           in controller: FormsIntegrationListViewController) {
+    override public func setupView() {
+        super.setupView()
+        self.autoroute(to: nil)
+    }
+    
+    private func autoroute(to rowType: Integration.RowType?) {
         guard let rowType: Integration.RowType = rowType else { return }
         let sections: [Integration.Section] = Integration.Section.default
         guard let row: Integration.Row = Integration.Section.default.row(for: rowType, from: sections) else { return }
+        guard let controller = self.rootViewController(of: FormsIntegrationListViewController.self) else { return }
         controller.select(row: row)
     }
 }
