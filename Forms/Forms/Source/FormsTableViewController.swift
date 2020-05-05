@@ -79,11 +79,19 @@ open class FormsTableViewController: FormsViewController, UITableViewDelegate, U
     }
     
     override open func setupView() {
-        super.setupView()
+        self.setupConfiguration()
+        self.setupResizerOnKeyboard()
+        self.setupKeyboardWhenTappedAround()
+        
+        self.setupNavigationBar()
+        self.setupSearchBar()
+        self.setupContent()
         self.setupHeaderView()
         self.setupTableView()
         self.setupDataSource()
         self.setupFooterView()
+        self.setupOther()
+        self.setupActions()
         
         // HOOKS
         self.setupHeader()   

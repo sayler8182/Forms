@@ -8,6 +8,7 @@
 
 import Injector
 import Logger
+import Permission
 import UIKit
 import Utils
 import Validators
@@ -22,6 +23,7 @@ public struct Forms {
         Forms.injector = injector
         Forms.initializeBase(injector)
         Forms.initializeConfigurations(injector)
+        Forms.initializePermissions(injector)
         Forms.initializeAssemblies(injector, assemblies)
     }
     
@@ -45,6 +47,7 @@ public struct Forms {
             Theme()
         }
     }
+    
     private static func initializeConfigurations(_ injector: Injector) {
         // loader
         injector.register(ConfigurationLoaderProtocol.self) { _ in
@@ -62,6 +65,17 @@ public struct Forms {
                     success: UIColor.systemGreen,
                     error: UIColor.systemRed)
             )
+        }
+    }
+    
+    private static func initializePermissions(_ injector: Injector) {
+        // location
+        injector.register(PermissionLocationProtocol.self) { _ in
+            Permission.Location()
+        }
+        // notifications
+        injector.register(PermissionNotificationsProtocol.self) { _ in
+            Permission.Notifications()
         }
     }
     

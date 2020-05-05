@@ -14,6 +14,7 @@ private enum Demo {
         // Controllers
         case controller
         case collectionViewController
+        case modalController
         case pagerController
         case sideMenuController
         case tabBarController
@@ -55,6 +56,7 @@ private enum Demo {
         case utilsNetwork
         case utilsNetworkGet
         case utilsNetworkImage
+        case utilsPermissions
         case utilsShimmer
         case utilsShimmerPaginationCollection
         case utilsShimmerPaginationTable
@@ -91,6 +93,7 @@ private enum Demo {
             return [
                 Section(title: "Controllers", rows: [
                     Row(type: .collectionViewController, title: "FormsCollectionViewController"),
+                    Row(type: .modalController, title: "FormsModalController"),
                     Row(type: .pagerController, title: "FormsPagerController"),
                     Row(type: .sideMenuController, title: "SideMenuController", shouldPresent: true),
                     Row(type: .tabBarController, title: "FormsTabBarController", shouldPresent: true),
@@ -180,6 +183,7 @@ private enum Demo {
                                 Row(type: .utilsNetworkImage, title: "Network Image")
                             ])
                     ]),
+                    Row(type: .utilsPermissions, title: "Permissions"),
                     Row(
                         type: .utilsShimmer,
                         title: "Shimmer",
@@ -355,6 +359,7 @@ private class DemoListViewController: FormsViewController {
         switch row.type {
         // controllers
         case .collectionViewController:                         return DemoCollectionViewController()
+        case .modalController:                                  return DemoModalController()
         case .pagerController:                                  return DemoPagerController()
         case .sideMenuController:                               return DemoSideMenuController()
         case .tabBarController:                                 return DemoTabBarController()
@@ -386,6 +391,7 @@ private class DemoListViewController: FormsViewController {
         case .utilsModal:                                       return DemoModalViewController()
         case .utilsNetworkGet:                                  return DemoNetworkGetViewController()
         case .utilsNetworkImage:                                return DemoNetworkImageViewController()
+        case .utilsPermissions:                                 return DemoPermissionsViewController()
         case .utilsShimmerPaginationCollection:                 return DemoShimmerPaginationCollectionViewController()
         case .utilsShimmerPaginationTable:                      return DemoShimmerPaginationTableViewController()
         case .utilsShimmerCollection:                           return DemoShimmerCollectionViewController()

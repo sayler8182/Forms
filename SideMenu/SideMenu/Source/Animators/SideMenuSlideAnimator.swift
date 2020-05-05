@@ -121,8 +121,10 @@ internal class SideMenuSlideAnimator: SideMenuAnimator {
     override internal func panLeft(_ recognizer: UIPanGestureRecognizer) {
         let translation = recognizer.translation(in: self.overlayView)
         let translationX = min(-min(0, translation.x), self.leftSideWidth) // 0...self.leftSideWidth
-        let progress: CGFloat = translationX / self.leftSideWidth
-        guard recognizer.state != .ended else {
+        var progress: CGFloat = translationX / self.leftSideWidth
+        guard recognizer.state != .ended && recognizer.state != .cancelled else {
+            let velocity = recognizer.velocity(in: self.overlayView)
+            progress = min(max(0, progress + (-velocity.x / 2_000.0)), 1.0)
             if progress >= 0.5 {
                 self.closeLeft()
             } else {
@@ -145,8 +147,10 @@ internal class SideMenuSlideAnimator: SideMenuAnimator {
     override internal func panRight(_ recognizer: UIPanGestureRecognizer) {
         let translation = recognizer.translation(in: self.overlayView)
         let translationX = min(max(0, translation.x), self.rightSideWidth) // 0...self.rightSideWidth
-        let progress: CGFloat = translationX / self.rightSideWidth
-        guard recognizer.state != .ended else {
+        var progress: CGFloat = translationX / self.rightSideWidth
+        guard recognizer.state != .ended && recognizer.state != .cancelled else {
+            let velocity = recognizer.velocity(in: self.overlayView)
+            progress = min(max(0, progress + (velocity.x / 2_000.0)), 1.0)
             if progress >= 0.5 {
                 self.closeRight()
             } else {

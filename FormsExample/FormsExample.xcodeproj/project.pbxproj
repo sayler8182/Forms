@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7103EA8024609DF900A11A96 /* Permission.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7103EA6224609C3700A11A96 /* Permission.framework */; };
+		7103EA8124609DF900A11A96 /* Permission.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 7103EA6224609C3700A11A96 /* Permission.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		71228E092431CF7F00D08B20 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71228E082431CF7F00D08B20 /* AppDelegate.swift */; };
 		71228E0B2431CF7F00D08B20 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71228E0A2431CF7F00D08B20 /* SceneDelegate.swift */; };
 		71228E122431CF8100D08B20 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 71228E112431CF8100D08B20 /* Assets.xcassets */; };
@@ -47,6 +49,20 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		7103EA6124609C3700A11A96 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 7103EA4924609C3700A11A96 /* Permission.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 7103EA2F24609C1B00A11A96;
+			remoteInfo = Permission;
+		};
+		7103EA6324609C3700A11A96 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 7103EA4924609C3700A11A96 /* Permission.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 7103EA3824609C1B00A11A96;
+			remoteInfo = PermissionTests;
+		};
 		71228E1C2431CF8200D08B20 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 71228DFD2431CF7F00D08B20 /* Project object */;
@@ -275,6 +291,7 @@
 				71DB66B424582A1E00B16145 /* Forms.framework in Embed Frameworks */,
 				71DB66B224582A1E00B16145 /* DeveloperTools.framework in Embed Frameworks */,
 				71DB66B824582A1E00B16145 /* Injector.framework in Embed Frameworks */,
+				7103EA8124609DF900A11A96 /* Permission.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -282,6 +299,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		7103EA4924609C3700A11A96 /* Permission.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Permission.xcodeproj; path = ../Permission/Permission.xcodeproj; sourceTree = "<group>"; };
 		71228E052431CF7F00D08B20 /* FormsExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FormsExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		71228E082431CF7F00D08B20 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		71228E0A2431CF7F00D08B20 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -340,6 +358,7 @@
 				71DB66B324582A1E00B16145 /* Forms.framework in Frameworks */,
 				71DB66B124582A1E00B16145 /* DeveloperTools.framework in Frameworks */,
 				71DB66B724582A1E00B16145 /* Injector.framework in Frameworks */,
+				7103EA8024609DF900A11A96 /* Permission.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -353,6 +372,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		7103EA4A24609C3700A11A96 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				7103EA6224609C3700A11A96 /* Permission.framework */,
+				7103EA6424609C3700A11A96 /* PermissionTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		71228DFC2431CF7F00D08B20 = {
 			isa = PBXGroup;
 			children = (
@@ -363,6 +391,7 @@
 				713B9B11243D0416001F6E3A /* Injector.xcodeproj */,
 				71BB62652445E7C5002BB31F /* Logger.xcodeproj */,
 				71BB62182445DD16002BB31F /* Networking.xcodeproj */,
+				7103EA4924609C3700A11A96 /* Permission.xcodeproj */,
 				71CFF419245954B90067D13E /* SideMenu.xcodeproj */,
 				7132962724487AC2006935C0 /* SocialKit.xcodeproj */,
 				715B7B3124474C4600754EDB /* Transition.xcodeproj */,
@@ -710,6 +739,10 @@
 					ProjectRef = 71BB62182445DD16002BB31F /* Networking.xcodeproj */;
 				},
 				{
+					ProductGroup = 7103EA4A24609C3700A11A96 /* Products */;
+					ProjectRef = 7103EA4924609C3700A11A96 /* Permission.xcodeproj */;
+				},
+				{
 					ProductGroup = 71CFF41A245954B90067D13E /* Products */;
 					ProjectRef = 71CFF419245954B90067D13E /* SideMenu.xcodeproj */;
 				},
@@ -739,6 +772,20 @@
 /* End PBXProject section */
 
 /* Begin PBXReferenceProxy section */
+		7103EA6224609C3700A11A96 /* Permission.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = Permission.framework;
+			remoteRef = 7103EA6124609C3700A11A96 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		7103EA6424609C3700A11A96 /* PermissionTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = PermissionTests.xctest;
+			remoteRef = 7103EA6324609C3700A11A96 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
 		7132962D24487AC3006935C0 /* SocialKit.framework */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.framework;

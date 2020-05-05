@@ -11,7 +11,7 @@
 			isa = PBXAggregateTarget;
 			buildConfigurationList = 71EA6F2D244A366300ACB5EE /* Build configuration list for PBXAggregateTarget "Forms-Universal" */;
 			buildPhases = (
-				71EA6F30244A366E00ACB5EE /* ShellScript */,
+				71EA6F30244A366E00ACB5EE /* Export */,
 			);
 			dependencies = (
 				71EA6F37244A41BC00ACB5EE /* PBXTargetDependency */,
@@ -25,6 +25,7 @@
 		7103EA182460234E00A11A96 /* ProgressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7103EA172460234E00A11A96 /* ProgressBar.swift */; };
 		7103EA1B2460266400A11A96 /* ComponentsProgresses.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7103EA1A2460266400A11A96 /* ComponentsProgresses.swift */; };
 		7103EA22246043C300A11A96 /* FormsNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7103EA21246043C300A11A96 /* FormsNavigationController.swift */; };
+		711AF5582461569A00CE8666 /* FormsModalController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 711AF5572461569A00CE8666 /* FormsModalController.swift */; };
 		7121ABE7245AABFD00F6BEF5 /* FormsSearchController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7121ABE6245AABFC00F6BEF5 /* FormsSearchController.swift */; };
 		71278B53245AC88C00B26870 /* SearchDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71278B52245AC88C00B26870 /* SearchDataSource.swift */; };
 		7138D3A72452C98F00CC7345 /* FormsCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7138D3A62452C98F00CC7345 /* FormsCollectionViewController.swift */; };
@@ -109,6 +110,8 @@
 		7103EA172460234E00A11A96 /* ProgressBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressBar.swift; sourceTree = "<group>"; };
 		7103EA1A2460266400A11A96 /* ComponentsProgresses.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComponentsProgresses.swift; sourceTree = "<group>"; };
 		7103EA21246043C300A11A96 /* FormsNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormsNavigationController.swift; sourceTree = "<group>"; };
+		7103EA7C24609DE600A11A96 /* Permission.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Permission.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		711AF5572461569A00CE8666 /* FormsModalController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormsModalController.swift; sourceTree = "<group>"; };
 		7121ABE6245AABFC00F6BEF5 /* FormsSearchController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormsSearchController.swift; sourceTree = "<group>"; };
 		71278B52245AC88C00B26870 /* SearchDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchDataSource.swift; sourceTree = "<group>"; };
 		7138D3A62452C98F00CC7345 /* FormsCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormsCollectionViewController.swift; sourceTree = "<group>"; };
@@ -274,6 +277,7 @@
 				7138D3A62452C98F00CC7345 /* FormsCollectionViewController.swift */,
 				71946983243DA7BE00CAD09B /* FormComponent.swift */,
 				71946961243DA7BE00CAD09B /* Forms.swift */,
+				711AF5572461569A00CE8666 /* FormsModalController.swift */,
 				7103EA21246043C300A11A96 /* FormsNavigationController.swift */,
 				71946982243DA7BE00CAD09B /* FormsPagerController.swift */,
 				7121ABE6245AABFC00F6BEF5 /* FormsSearchController.swift */,
@@ -393,6 +397,7 @@
 		719469AF243DA7CC00CAD09B /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				7103EA7C24609DE600A11A96 /* Permission.framework */,
 				715B7B4124474D8A00754EDB /* Transition.framework */,
 				71BB62872445FAED002BB31F /* Logger.framework */,
 				71BB62842445FAE7002BB31F /* Networking.framework */,
@@ -542,7 +547,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		71EA6F30244A366E00ACB5EE /* ShellScript */ = {
+		71EA6F30244A366E00ACB5EE /* Export */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -551,13 +556,14 @@
 			);
 			inputPaths = (
 			);
+			name = Export;
 			outputFileListPaths = (
 			);
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "output=\"${BUILD_DIR}/Debug-Universal\"\n\nrm -rf \"${output}\"\nmkdir -p \"${output}\"\n\nframeworks=(\n    Analytics \n    Anchor\n    DeveloperTools\n    Forms\n    Injector\n    Logger\n    Networking\n    SideMenu\n    SocialKit\n    Transition\n    Utils\n    Validators\n) \n\nfor framework in \"${frameworks[@]}\"\ndo \n    cp -R \"${BUILD_DIR}/Debug-iphoneos/${framework}.framework\" \"${output}/\"\n    lipo -create -output \"${output}/${framework}.framework/${framework}\" \"${BUILD_DIR}/Debug-iphoneos/${framework}.framework/${framework}\" \"${BUILD_DIR}/Debug-iphonesimulator/${framework}.framework/${framework}\"\n    cp -r \"${BUILD_DIR}/Debug-iphonesimulator/${framework}.framework/Modules/${framework}.swiftmodule/\" \"${output}/${framework}.framework/Modules/${framework}.swiftmodule\"\ndone\n\nopen \"${output}\"\n";
+			shellScript = "output=\"${BUILD_DIR}/Debug-Universal\"\n\nrm -rf \"${output}\"\nmkdir -p \"${output}\"\n\nframeworks=(\n    Analytics \n    Anchor\n    DeveloperTools\n    Forms\n    Injector\n    Logger\n    Networking\n    Permission\n    SideMenu\n    SocialKit\n    Transition\n    Utils\n    Validators\n) \n\nfor framework in \"${frameworks[@]}\"\ndo \n    cp -R \"${BUILD_DIR}/Debug-iphoneos/${framework}.framework\" \"${output}/\"\n    lipo -create -output \"${output}/${framework}.framework/${framework}\" \"${BUILD_DIR}/Debug-iphoneos/${framework}.framework/${framework}\" \"${BUILD_DIR}/Debug-iphonesimulator/${framework}.framework/${framework}\"\n    cp -r \"${BUILD_DIR}/Debug-iphonesimulator/${framework}.framework/Modules/${framework}.swiftmodule/\" \"${output}/${framework}.framework/Modules/${framework}.swiftmodule\"\ndone\n\nopen \"${output}\"\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -584,6 +590,7 @@
 				71946993243DA7BE00CAD09B /* Components.swift in Sources */,
 				719469A0243DA7BE00CAD09B /* Divider.swift in Sources */,
 				719469C2243DAB6500CAD09B /* Shimmer.swift in Sources */,
+				711AF5582461569A00CE8666 /* FormsModalController.swift in Sources */,
 				7103EA182460234E00A11A96 /* ProgressBar.swift in Sources */,
 				71946997243DA7BE00CAD09B /* Theme.swift in Sources */,
 				71946996243DA7BE00CAD09B /* Loader.swift in Sources */,
