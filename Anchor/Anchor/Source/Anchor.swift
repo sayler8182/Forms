@@ -583,7 +583,11 @@ public extension UIView {
         case .normal:
             return anchor.view
         case .safeArea:
-            return anchor.view.safeAreaLayoutGuide
+            if #available(iOS 11.0, *) {
+                return anchor.view.safeAreaLayoutGuide
+            } else {
+                return anchor.view
+            }
         case .margins:
             return anchor.view.layoutMarginsGuide
         }

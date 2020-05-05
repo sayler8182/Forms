@@ -12,6 +12,7 @@ import UIKit
 public struct ComponentsSocial: ComponentsList {
     private init() { }
         
+    @available(iOS 13.0, *)
     public static func signInWithApple() -> SignInWithApple {
         let component = SignInWithApple()
         component.marginEdgeInset = UIEdgeInsets(0)

@@ -23,11 +23,11 @@ public extension Configuration {
     struct Toast: ConfigurationToastProtocol {
         public var lifeTime: TimeInterval = 3
         public var backgroundColor = ToastStyle(
-            info: UIColor.systemBackground,
+            info: Theme.systemBackground,
             success: UIColor.green,
             error: UIColor.red)
         public var titleColor = ToastStyle(
-            info: UIColor.label,
+            info: Theme.label,
             success: UIColor.black,
             error: UIColor.white)
         public var titleFont = ToastStyle(UIFont.boldSystemFont(ofSize: 14))

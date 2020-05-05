@@ -22,28 +22,28 @@ open class FormsTabBarController: FormsViewController {
     private var selectedIndex: Int = 0
     private var selectedKey: TabBarKey? = nil
     
-    open var backgroundColor: UIColor? = UIColor.systemBackground {
+    open var backgroundColor: UIColor? = Theme.systemBackground {
         didSet { self.container.backgroundColor = self.backgroundColor }
     }
     open var isTranslucent: Bool = false {
         didSet { self.updateTranslucent() }
     }
-    open var tabBarBackgroundColor: UIColor? = UIColor.systemBackground {
+    open var tabBarBackgroundColor: UIColor? = Theme.systemBackground {
         didSet { self.tabBar.backgroundColor = self.tabBarBackgroundColor }
     }
-    open var tabBarImageColor: UIColor? = UIColor.label {
+    open var tabBarImageColor: UIColor? = Theme.label {
         didSet { self.tabBar.imageColor = self.tabBarImageColor }
     }
-    open var tabBarImageSelectedColor: UIColor? = UIColor.label {
+    open var tabBarImageSelectedColor: UIColor? = Theme.label {
         didSet { return self.tabBar.imageSelectedColor = self.tabBarImageSelectedColor }
     }
-    open var tabBarTitleColor: UIColor? = UIColor.label {
+    open var tabBarTitleColor: UIColor? = Theme.label {
         didSet { self.tabBar.titleColor = self.tabBarTitleColor }
     }
     open var tabBarTitleFont: UIFont = UIFont.systemFont(ofSize: 10) {
         didSet { self.tabBar.titleFont = self.tabBarTitleFont }
     }
-    open var tabBarTitleSelectedColor: UIColor? = UIColor.label {
+    open var tabBarTitleSelectedColor: UIColor? = Theme.label {
         didSet { return self.tabBar.titleSelectedColor = self.tabBarTitleSelectedColor }
     }
     open var tabBarTitleSelectedFont: UIFont = UIFont.boldSystemFont(ofSize: 10) {

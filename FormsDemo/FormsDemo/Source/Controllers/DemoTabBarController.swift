@@ -10,6 +10,7 @@ import Forms
 import UIKit
 
 // MARK: Keys
+@available(iOS 13.0, *)
 extension DemoTabBarController {
     enum TabBarKeys: String, TabBarKey {
         case main
@@ -34,6 +35,7 @@ extension DemoTabBarController {
 }
 
 // MARK: DemoTabBarController
+@available(iOS 13.0, *)
 class DemoTabBarController: FormsTabBarController {
     override func setupView() {
         super.setupView()

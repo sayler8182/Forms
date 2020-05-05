@@ -70,10 +70,12 @@ public class AppStoreReview {
     
     @discardableResult
     public func showIfNeeded() -> Bool {
-        if self.isMinLaunchCountAchived && self.isMinPeriodAchived && self.isMinPeriodIntervalAchived {
-            SKStoreReviewController.requestReview()
-            self.lastReviewDate = Date()
-            return true
+        if #available(iOS 10.3, *) {
+            if self.isMinLaunchCountAchived && self.isMinPeriodAchived && self.isMinPeriodIntervalAchived {
+                SKStoreReviewController.requestReview()
+                self.lastReviewDate = Date()
+                return true
+            }
         }
         return false
     }

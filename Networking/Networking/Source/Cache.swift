@@ -31,8 +31,7 @@ public class NetworkCache {
         try self.clean()
         guard let url: URL = try self.fileManager.contentsOfDirectory(
             at: self.directory,
-            includingPropertiesForKeys: nil,
-            options: .includesDirectoriesPostOrder)
+            includingPropertiesForKeys: nil)
             .first(where: { $0.absoluteString.contains("_\(hash).") }) else { return nil }
         print("read:", url.absoluteString)
         return try Data(contentsOf: url)
@@ -47,8 +46,7 @@ public class NetworkCache {
         let now: TimeInterval = Date().timeIntervalSince1970
         let urls: [URL] = try self.fileManager.contentsOfDirectory(
             at: self.directory,
-            includingPropertiesForKeys: nil,
-            options: .includesDirectoriesPostOrder)
+            includingPropertiesForKeys: nil)
         for url in urls {
             let string: String = url.absoluteString.components(separatedBy: ".")[1]
             let expirationDate: TimeInterval = TimeInterval(string) ?? 0

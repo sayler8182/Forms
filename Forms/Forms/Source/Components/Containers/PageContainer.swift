@@ -97,7 +97,9 @@ open class PageContainer: FormsComponent, FormsComponentWithMarginEdgeInset, For
         self.collectionView.backgroundColor = UIColor.clear
         self.collectionView.frame = self.backgroundView.bounds
         self.collectionView.clipsToBounds = true
-        self.collectionView.contentInsetAdjustmentBehavior = .never
+        if #available(iOS 11.0, *) {
+            self.collectionView.contentInsetAdjustmentBehavior = .never
+        }
         self.collectionView.delegate = self
         self.collectionView.dataSource = self
         self.collectionView.contentMode = .top

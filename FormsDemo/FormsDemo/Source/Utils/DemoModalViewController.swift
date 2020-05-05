@@ -53,7 +53,7 @@ private class TitleModalView: ModalView {
     
     override func setupView() {
         super.setupView()
-        self.backgroundColor = UIColor.systemBackground
+        self.backgroundColor = Theme.systemBackground
         self.layer.cornerRadius = 8
         self.layer.shadowColor = UIColor.black.cgColor
     }

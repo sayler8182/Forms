@@ -61,7 +61,7 @@ open class SearchBar: FormsComponent, FormsComponentWithMarginEdgeInset, FormsCo
         get { return self.searchBar.autocorrectionType }
         set { self.searchBar.autocorrectionType = newValue }
     }
-    open var backgroundColors: State<UIColor?> = State<UIColor?>(UIColor.systemBackground) {
+    open var backgroundColors: State<UIColor?> = State<UIColor?>(Theme.systemBackground) {
         didSet { self.updateState() }
     }
     open var marginEdgeInset: UIEdgeInsets = UIEdgeInsets(0) {
@@ -82,6 +82,7 @@ open class SearchBar: FormsComponent, FormsComponentWithMarginEdgeInset, FormsCo
         get { return self.searchBar.placeholder }
         set { self.searchBar.placeholder = newValue }
     }
+    @available(iOS 11.0, *)
     open var smartQuotesType: UITextSmartQuotesType {
         get { return self.searchBar.smartQuotesType }
         set { self.searchBar.smartQuotesType = newValue }
@@ -90,7 +91,7 @@ open class SearchBar: FormsComponent, FormsComponentWithMarginEdgeInset, FormsCo
         get { return self.searchBar.text }
         set { self.searchBar.text = newValue }
     }
-    open var textColors: State<UIColor?> = State<UIColor?>(UIColor.label) {
+    open var textColors: State<UIColor?> = State<UIColor?>(Theme.label) {
         didSet { self.updateState() }
     }
     private var _textFieldDelegate: UITextFieldDelegate? // swiftlint:disable:this weak_delegate
@@ -98,7 +99,7 @@ open class SearchBar: FormsComponent, FormsComponentWithMarginEdgeInset, FormsCo
         get { return self._textFieldDelegate }
         set {
             self._textFieldDelegate = newValue
-            self.searchBar.searchTextField.delegate = newValue
+            self.searchBar.textField.delegate = newValue
         }
     }
     open var textFonts: State<UIFont> = State<UIFont>(UIFont.systemFont(ofSize: 14)) {
@@ -132,9 +133,9 @@ open class SearchBar: FormsComponent, FormsComponentWithMarginEdgeInset, FormsCo
     
     override open func setupActions() {
         super.setupActions()
-        self.searchBar.searchTextField.addTarget(self, action: #selector(handleOnBeginEditing), for: .editingDidBegin)
-        self.searchBar.searchTextField.addTarget(self, action: #selector(handleOnEndEditing), for: .editingDidEnd)
-        self.searchBar.searchTextField.addTarget(self, action: #selector(handleOnTextChanged), for: .editingChanged)
+        self.searchBar.textField.addTarget(self, action: #selector(handleOnBeginEditing), for: .editingDidBegin)
+        self.searchBar.textField.addTarget(self, action: #selector(handleOnEndEditing), for: .editingDidEnd)
+        self.searchBar.textField.addTarget(self, action: #selector(handleOnTextChanged), for: .editingChanged)
     }
     
     override open func enable(animated: Bool) {
@@ -205,10 +206,10 @@ open class SearchBar: FormsComponent, FormsComponentWithMarginEdgeInset, FormsCo
     
     open func setupSearchBar() {
         self.searchBar.backgroundImage = UIImage()
-        self.searchBar.searchTextField.translatesAutoresizingMaskIntoConstraints = false
-        self.searchBar.searchTextField.anchors([
+        self.searchBar.textField.translatesAutoresizingMaskIntoConstraints = false
+        self.searchBar.textField.anchors([
             Anchor.to(self.searchBar).fill,
-            Anchor.to(self.searchBar.searchTextField).height(36).lessThanOrEqual
+            Anchor.to(self.searchBar.textField).height(36).lessThanOrEqual
         ])
         self.backgroundView.addSubview(self.searchBar, with: [
             Anchor.to(self.backgroundView).top.offset(self.paddingEdgeInset.top),
@@ -259,8 +260,8 @@ open class SearchBar: FormsComponent, FormsComponentWithMarginEdgeInset, FormsCo
         guard self.state != state || force else { return }
         self.animation(animated, duration: self.animationTime) {
             self.backgroundView.backgroundColor = self.backgroundColors.value(for: state)
-            self.searchBar.searchTextField.textColor = self.textColors.value(for: state)
-            self.searchBar.searchTextField.font = self.textFonts.value(for: state)
+            self.searchBar.textField.textColor = self.textColors.value(for: state)
+            self.searchBar.textField.font = self.textFonts.value(for: state)
         }
         self.state = state
     }
@@ -319,6 +320,7 @@ public extension SearchBar {
         self.placeholder = placeholder
         return self
     }
+    @available(iOS 11.0, *)
     func with(smartQuotesType: UITextSmartQuotesType) -> Self {
         self.smartQuotesType = smartQuotesType
         return self
@@ -374,5 +376,18 @@ public extension SearchBar {
     func with(formatText: ((String?) -> String?)?) -> Self {
         self.formatText = formatText
         return self
+    }
+}
+
+// MARK: UISearchBar
+extension UISearchBar {
+    var textField: UITextField! {
+        if #available(iOS 13.0, *) {
+            return self.searchTextField
+        } else {
+            return self.subviews[0].subviews.compactMap {
+                $0 as? UITextField
+            }.first
+        }
     }
 }

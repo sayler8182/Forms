@@ -152,9 +152,15 @@ extension TableDataSource {
                     let endIndex: Int = startIndex.advanced(by: sections.count)
                     let set: IndexSet = IndexSet(startIndex..<endIndex)
                     self.sections.append(contentsOf: sections)
-                    tableView.performBatchUpdates({
+                    if #available(iOS 11.0, *) {
+                        tableView.performBatchUpdates({
+                            tableView.insertSections(set, with: animated)
+                        })
+                    } else {
+                        tableView.beginUpdates()
                         tableView.insertSections(set, with: animated)
-                    })
+                        tableView.endUpdates()
+                    }
                 } else {
                     self.sections.append(contentsOf: sections)
                     tableView.transition(

@@ -87,21 +87,39 @@ public extension UIView {
 private class ShimmerPlaceholderView: UIView {
     private let gradient = CAGradientLayer()
     private let gradientWidth: CGFloat = 0.17
-    private let backgroundFadedGray = UIColor { (trait) -> UIColor in
-        return trait.userInterfaceStyle == .dark
-            ? UIColor(0x161718)
-            : UIColor(0xF6F7F8)
-    }
-    private let gradientFirstStop = UIColor { (trait) -> UIColor in
-        return trait.userInterfaceStyle == .dark
-            ? UIColor(0x2D2D2D)
-            : UIColor(0xEDEDED)
-    }
-    private let gradientSecondStop = UIColor { (trait) -> UIColor in
-        return trait.userInterfaceStyle == .dark
-            ? UIColor(0x3D3D3D)
-            : UIColor(0xDDDDDD)
-    }
+    private var backgroundFadedGray = { () -> UIColor in
+        if #available(iOS 13.0, *) {
+            return UIColor { (trait) -> UIColor in
+                return trait.userInterfaceStyle == .dark
+                    ? UIColor(0x161718)
+                    : UIColor(0xF6F7F8)
+            }
+        } else {
+            return UIColor(0xF6F7F8)
+        }
+    }()
+    private var gradientFirstStop = { () -> UIColor in
+        if #available(iOS 13.0, *) {
+            return UIColor { (trait) -> UIColor in
+                return trait.userInterfaceStyle == .dark
+                    ? UIColor(0x2D2D2D)
+                    : UIColor(0xEDEDED)
+            }
+        } else {
+            return UIColor(0xEDEDED)
+        }
+    }()
+    private var gradientSecondStop = { () -> UIColor in
+        if #available(iOS 13.0, *) {
+            return UIColor { (trait) -> UIColor in
+                return trait.userInterfaceStyle == .dark
+                    ? UIColor(0x3D3D3D)
+                    : UIColor(0xDDDDDD)
+            }
+        } else {
+            return UIColor(0xDDDDDD)
+        }
+    }()
     
     override func layoutSubviews() {
         super.layoutSubviews()
@@ -273,7 +291,7 @@ public protocol ShimmerableViewCell: Shimmerable {
 public class ShimmerTableViewCell: FormsTableViewCell {
     private let iconView = UIImageView()
         .with(width: 48.0, height: 48.0)
-        .with(image: UIColor.systemBackground.transparent)
+        .with(image: Theme.systemBackground.transparent)
         .rounded()
     private let titleLabel = UILabel()
         .with(text: " ")
@@ -304,7 +322,7 @@ public class ShimmerTableViewCell: FormsTableViewCell {
 public class ShimmerCollectionViewCell: FormsCollectionViewCell {
     private let iconView = UIImageView()
         .with(width: 48.0, height: 48.0)
-        .with(image: UIColor.systemBackground.transparent)
+        .with(image: Theme.systemBackground.transparent)
         .rounded()
     private let titleLabel = UILabel()
         .with(text: " ")

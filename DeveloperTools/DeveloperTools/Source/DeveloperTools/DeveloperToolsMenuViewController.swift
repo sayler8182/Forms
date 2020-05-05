@@ -46,7 +46,7 @@ public class DeveloperToolsMenuViewController: UIViewController, DeveloperToolsM
     
     override public func viewDidLoad() {
         super.viewDidLoad()
-        self.view.backgroundColor = UIColor.systemBackground
+        self.view.backgroundColor = UIColor.black
         self.setupNavigationBar()
         self.setupTableView()
     }
@@ -151,10 +151,10 @@ class DeveloperToolsMenuHeaderView: UITableViewHeaderFooterView {
     }
     
     private func setupView() {
-        self.backgroundView?.backgroundColor = UIColor.tertiarySystemBackground
+        self.backgroundView?.backgroundColor = UIColor.black
         self.titleLabel.translatesAutoresizingMaskIntoConstraints = false
         self.titleLabel.font = UIFont.systemFont(ofSize: 14)
-        self.titleLabel.textColor = UIColor.label
+        self.titleLabel.textColor = UIColor.white
         self.addSubview(self.titleLabel)
         NSLayoutConstraint.activate([
             self.titleLabel.topAnchor.constraint(equalTo: self.topAnchor),
@@ -196,7 +196,7 @@ class DeveloperToolsMenuTableViewCell: UITableViewCell {
     private func setupView() {
         self.titleLabel.translatesAutoresizingMaskIntoConstraints = false
         self.titleLabel.font = UIFont.systemFont(ofSize: 14)
-        self.titleLabel.textColor = UIColor.label
+        self.titleLabel.textColor = UIColor.white
         self.titleLabel.numberOfLines = 0
         self.addSubview(self.titleLabel)
         NSLayoutConstraint.activate([
@@ -250,7 +250,7 @@ class DeveloperToolsMenuSwitchTableViewCell: UITableViewCell {
     private func setupView() {
         self.titleLabel.translatesAutoresizingMaskIntoConstraints = false
         self.titleLabel.font = UIFont.systemFont(ofSize: 14)
-        self.titleLabel.textColor = UIColor.label
+        self.titleLabel.textColor = UIColor.white
         self.titleLabel.numberOfLines = 0
         self.addSubview(self.titleLabel)
         NSLayoutConstraint.activate([

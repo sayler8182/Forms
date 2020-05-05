@@ -11,6 +11,7 @@ import Forms
 import UIKit
 
 // MARK: SignInWithApple
+@available(iOS 13.0, *)
 open class SignInWithApple: FormsComponent, Clickable, FormsComponentWithMarginEdgeInset, FormsComponentWithPaddingEdgeInset {
     public let backgroundView = UIView()
         .with(isUserInteractionEnabled: true)
@@ -108,13 +109,4 @@ open class SignInWithApple: FormsComponent, Clickable, FormsComponentWithMarginE
         self.signInWithApple.constraint(to: self.backgroundView, position: .leading)?.constant = edgeInset.leading
         self.signInWithApple.constraint(to: self.backgroundView, position: .trailing)?.constant = -edgeInset.trailing
     }
-}
-
-// MARK: Builder
-public extension SignInWithApple { 
-    @objc
-    override func with(height: CGFloat) -> Self {
-        self.height = height
-        return self
-    } 
-}
+}  

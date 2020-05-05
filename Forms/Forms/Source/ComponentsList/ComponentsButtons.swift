@@ -15,9 +15,9 @@ public struct ComponentsButtons: ComponentsList {
         let component = PrimaryButton()
         component.animationTime = 0.1
         component.backgroundColors = Button.State<UIColor?>(
-            active: UIColor.systemBlue,
-            selected: UIColor.systemBlue.withAlphaComponent(0.7),
-            disabled: UIColor.systemGray
+            active: Theme.systemBlue,
+            selected: Theme.systemBlue.withAlphaComponent(0.7),
+            disabled: Theme.systemGray
         )
         component.height = UITableView.automaticDimension
         component.isEnabled = true

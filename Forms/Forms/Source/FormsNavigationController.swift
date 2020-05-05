@@ -67,7 +67,7 @@ open class FormsNavigationController: UINavigationController {
     }
     
     open func setupContent() {
-        self.view.backgroundColor = UIColor.systemBackground
+        self.view.backgroundColor = Theme.systemBackground
         // HOOK
     }
     

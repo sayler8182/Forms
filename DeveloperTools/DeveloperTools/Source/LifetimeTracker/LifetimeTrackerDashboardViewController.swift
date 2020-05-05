@@ -26,7 +26,7 @@ public class LifetimeTrackerDashboardViewController: UIViewController, LifetimeT
     
     private var mainWindow: UIWindow?
     private lazy var window: UIWindow = {
-        let window = UIWindow(windowScene: LifetimeTrackerManager.scene)
+        let window = LifetimeTrackerManager.newWindow
         window.windowLevel = UIWindow.Level.statusBar
         window.frame = UIScreen.main.bounds
         let controller = UIViewController()
@@ -48,7 +48,7 @@ public class LifetimeTrackerDashboardViewController: UIViewController, LifetimeT
     private func setupRoundView() {
         self.roundView.translatesAutoresizingMaskIntoConstraints = false
         self.roundView.frame = CGRect(x: 0, y: 0, width: self.size, height: self.size)
-        self.roundView.backgroundColor = UIColor.tertiarySystemBackground
+        self.roundView.backgroundColor = UIColor.black
         self.roundView.layer.cornerRadius = self.roundView.frame.height / 2
         self.roundView.clipsToBounds = false
         self.roundView.layer.shadowColor = UIColor.black.withAlphaComponent(0.4).cgColor
@@ -76,7 +76,7 @@ public class LifetimeTrackerDashboardViewController: UIViewController, LifetimeT
         self.leaksTitleLabel.font = UIFont.systemFont(ofSize: 12)
         self.leaksTitleLabel.textAlignment = .center
         self.leaksTitleLabel.text = "Leaks"
-        self.leaksTitleLabel.textColor = UIColor.label
+        self.leaksTitleLabel.textColor = UIColor.white
         self.roundView.addSubview(self.leaksTitleLabel)
         NSLayoutConstraint.activate([
             self.leaksTitleLabel.topAnchor.constraint(equalTo: self.leaksCountLabel.bottomAnchor),

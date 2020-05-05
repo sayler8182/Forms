@@ -65,11 +65,20 @@ public class DeveloperTools: NSObject {
     private static var features: DeveloperFeatures = DeveloperFeatures()
     private static var onSelect: DeveloperToolsMenu.OnSelect?
     
+    @available(iOS 13.0, *)
     internal static var scene: UIWindowScene! {
         return UIApplication.shared.connectedScenes.first as? UIWindowScene
     }
+    public static var newWindow: UIWindow {
+        if #available(iOS 13.0, *) {
+            return UIWindow(windowScene: Self.scene)
+        } else {
+            return UIWindow(frame: UIScreen.main.bounds)
+        }
+    }
+    
     private static var window: UIWindow = {
-        let window = UIWindow(windowScene: DeveloperTools.scene)
+        let window = DeveloperTools.newWindow
         window.windowLevel = UIWindow.Level.statusBar - 1
         let rootViewController = UIViewController()
         window.rootViewController = rootViewController

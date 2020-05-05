@@ -21,7 +21,7 @@ class DemoModalController: FormsTableViewController {
     private let divider = Components.utils.divider()
         .with(height: 5)
     private let overlayView = Components.container.view()
-        .with(backgroundColor: UIColor.tertiarySystemBackground.withAlphaComponent(0.3))
+        .with(backgroundColor: Theme.tertiarySystemBackground.withAlphaComponent(0.3))
     
     private lazy var demoModalController = FormsModalController(self.demoModalContentController)
     private lazy var demoModalContentController = DemoFormsModalContentController()
@@ -63,7 +63,7 @@ private class DemoFormsModalContentController: FormsTableViewController {
         .with(height: 5)
     
     override func setupContent() {
-        self.view.backgroundColor = UIColor.tertiarySystemBackground
+        self.view.backgroundColor = Theme.tertiarySystemBackground
         super.setupContent()
         self.build([
             self.closeButton

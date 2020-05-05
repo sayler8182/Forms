@@ -102,7 +102,7 @@ open class FormsViewController: UIViewController, UIGestureRecognizerDelegate {
     }
     
     open func setupContent() {
-        self.view.backgroundColor = UIColor.systemBackground
+        self.view.backgroundColor = Theme.systemBackground
         // HOOK
     }
     
@@ -145,8 +145,10 @@ public extension FormsViewController {
 // MARK: SearchBar
 public extension FormsViewController {
     func setSearchBar(_ searchController: UISearchController) {
-        self.navigationItem.hidesSearchBarWhenScrolling = false
-        self.navigationItem.searchController = searchController
+        if #available(iOS 11.0, *) {
+            self.navigationItem.hidesSearchBarWhenScrolling = false
+            self.navigationItem.searchController = searchController
+        }
     }
 }
 

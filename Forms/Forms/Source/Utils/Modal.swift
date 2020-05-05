@@ -17,7 +17,7 @@ public protocol ConfigurationModalProtocol {
 
 public extension Configuration {
     struct Modal: ConfigurationModalProtocol {
-        public var backgroundColor: UIColor? = UIColor.black.withAlphaComponent(0.3)
+        public var backgroundColor: UIColor? = Theme.systemBackground.withAlphaComponent(0.3)
     }
 }
 

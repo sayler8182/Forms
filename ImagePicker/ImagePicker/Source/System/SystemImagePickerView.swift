@@ -89,12 +89,16 @@ private extension Dictionary where Key == UIImagePickerController.InfoKey {
     }
     
     var url: URL? {
-        if let url: URL = self[UIImagePickerController.InfoKey.imageURL] as? URL {
-            return url
-        } else if let url: URL = self[UIImagePickerController.InfoKey.mediaURL] as? URL {
-            return url
+        if #available(iOS 11.0, *) {
+            if let url: URL = self[UIImagePickerController.InfoKey.imageURL] as? URL {
+                return url
+            } else if let url: URL = self[UIImagePickerController.InfoKey.mediaURL] as? URL {
+                return url
+            } else {
+                return nil
+            }
         } else {
-            return nil
+            return self[UIImagePickerController.InfoKey.mediaURL] as? URL
         }
     }
 }

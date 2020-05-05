@@ -32,16 +32,16 @@ open class FormsTableViewController: FormsViewController, UITableViewDelegate, U
     private var refreshControl: UIRefreshControl? = nil
     private var shimmerDataSource: ShimmerTableDataSource? = nil
     
-    open var cellBackgroundColor: UIColor = UIColor.systemBackground {
+    open var cellBackgroundColor: UIColor = Theme.systemBackground {
         didSet { self.tableView.reloadData() }
     }
-    open var footerBackgroundColor: UIColor = UIColor.systemBackground {
+    open var footerBackgroundColor: UIColor = Theme.systemBackground {
         didSet { self.footerView.backgroundColor = self.footerBackgroundColor }
     }
     open var footerSpacing: CGFloat = 8 {
         didSet { self.footerView.spacing = self.footerSpacing }
     }
-    open var headerBackgroundColor: UIColor = UIColor.systemBackground {
+    open var headerBackgroundColor: UIColor = Theme.systemBackground {
         didSet { self.headerView.backgroundColor = self.headerBackgroundColor }
     }
     open var isBottomToSafeArea: Bool = true
@@ -438,9 +438,15 @@ public extension FormsTableViewController {
                          update: (() -> Void)? = nil) {
         self.tableUpdatesQueue.async {
             self.tableView.shouldAnimate(animated) {
-                self.tableView.performBatchUpdates({
+                if #available(iOS 11.0, *) {
+                    self.tableView.performBatchUpdates({
+                        update?()
+                    })
+                } else {
+                    self.tableView.beginUpdates()
                     update?()
-                })
+                    self.tableView.endUpdates()
+                }
             }
         }
     }
@@ -454,7 +460,12 @@ public extension FormsTableViewController {
             self.tableView.setNeedsLayout()
             self.tableView.layoutIfNeeded()
             self.tableView.shouldAnimate(animated) {
-                self.tableView.performBatchUpdates({})
+                if #available(iOS 11.0, *) {
+                    self.tableView.performBatchUpdates({})
+                } else {
+                    self.tableView.beginUpdates()
+                    self.tableView.endUpdates()
+                }
             }
         }
     }

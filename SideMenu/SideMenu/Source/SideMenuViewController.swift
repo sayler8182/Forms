@@ -90,7 +90,7 @@ open class SideMenuController: FormsViewController {
     override open func setupContent() {
         super.setupContent()
         self.view.clipsToBounds = true
-        self.overlayView.backgroundColor = UIColor.tertiarySystemBackground.withAlphaComponent(0.3)
+        self.overlayView.backgroundColor = Theme.tertiarySystemBackground.withAlphaComponent(0.3)
         self.configureAnimator()
     }
     

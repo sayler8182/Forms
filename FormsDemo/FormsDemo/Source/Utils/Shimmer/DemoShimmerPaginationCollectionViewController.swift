@@ -10,6 +10,7 @@ import Forms
 import UIKit
 
 // MARK: DemoShimmerPaginationCollectionViewController
+@available(iOS 13.0, *)
 class DemoShimmerPaginationCollectionViewController: FormsCollectionViewController {
     private lazy var navigationBar = Components.navigationBar.default()
         .with(rightBarButtonItems: [self.changeDirectionBarItem])
@@ -83,6 +84,7 @@ class DemoShimmerPaginationCollectionViewController: FormsCollectionViewControll
 }
 
 // MARK: DemoProviderDelegate
+@available(iOS 13.0, *)
 extension DemoShimmerPaginationCollectionViewController: DemoProviderDelegate {
     fileprivate func loadItemsPageSuccess(_ page: Page<Int, DemoCellModel>) {
         let items: [CollectionItem] = page.data.map { CollectionItem(of: DemoCollectionViewCell.self, data: $0) }
@@ -205,7 +207,7 @@ private class DemoCollectionViewCell: FormsCollectionViewCell {
         .with(width: 48.0, height: 48.0)
         .rounded()
     fileprivate let titleLabel = Components.label.default()
-        .with(color: UIColor.label)
+        .with(color: Theme.label)
         .with(font: UIFont.systemFont(ofSize: 14))
     fileprivate let subtitleLabel = Components.label.default()
         .with(color: UIColor.darkGray)

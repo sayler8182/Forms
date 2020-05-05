@@ -83,7 +83,7 @@ private class DemoCollectionViewCell: FormsCollectionViewCell {
         .with(width: 48.0, height: 48.0)
         .rounded()
     fileprivate let titleLabel = Components.label.default()
-        .with(color: UIColor.label)
+        .with(color: Theme.label)
         .with(font: UIFont.systemFont(ofSize: 14))
     fileprivate let subtitleLabel = Components.label.default()
         .with(color: UIColor.darkGray)

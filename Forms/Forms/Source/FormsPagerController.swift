@@ -63,7 +63,7 @@ open class FormsPagerController: FormsViewController {
     open var pageCurrentPageIndicatorTintColor: UIColor? = UIColor.gray {
         didSet { self.pageControl.currentPageIndicatorTintColor = self.pageCurrentPageIndicatorTintColor }
     }
-    open var topBarBackgroundColor: UIColor? = UIColor.systemBackground {
+    open var topBarBackgroundColor: UIColor? = Theme.systemBackground {
         didSet { self.topBar.backgroundColor = self.topBarBackgroundColor }
     }
     open var topBarFillEqual: Bool = false {
@@ -78,7 +78,7 @@ open class FormsPagerController: FormsViewController {
     open var topBarSeparatorColor: UIColor? = UIColor.lightGray {
         didSet { self.topBar.separatorColor = self.topBarSeparatorColor }
     }
-    open var topBarTitleColor: UIColor? = UIColor.label {
+    open var topBarTitleColor: UIColor? = Theme.label {
         didSet { self.topBar.titleColor = self.topBarTitleColor }
     }
     open var topBarTitleEdgeInset: UIEdgeInsets = UIEdgeInsets(vertical: 8, horizontal: 16) {
@@ -87,13 +87,13 @@ open class FormsPagerController: FormsViewController {
     open var topBarTitleFont: UIFont = UIFont.systemFont(ofSize: 14) {
         didSet { self.topBar.titleFont = self.topBarTitleFont }
     }
-    open var topBarTitleSelectedColor: UIColor? = UIColor.label {
+    open var topBarTitleSelectedColor: UIColor? = Theme.label {
         didSet { self.topBar.titleSelectedColor = self.topBarTitleSelectedColor }
     }
     open var topBarTitleSelectedFont: UIFont = UIFont.boldSystemFont(ofSize: 14) {
         didSet { self.topBar.titleSelectedFont = self.topBarTitleSelectedFont }
     }
-    open var topBarUnderlineColor: UIColor? = UIColor.label {
+    open var topBarUnderlineColor: UIColor? = Theme.label {
         didSet { self.topBar.underlineColor = self.topBarUnderlineColor }
     }
     
@@ -135,7 +135,9 @@ open class FormsPagerController: FormsViewController {
     open func setupCollectionView() {
         self.collectionView.bounces = self.bounces
         self.collectionView.clipsToBounds = true
-        self.collectionView.contentInsetAdjustmentBehavior = .never
+        if #available(iOS 11.0, *) {
+            self.collectionView.contentInsetAdjustmentBehavior = .never
+        }
         self.collectionView.backgroundColor = self.view.backgroundColor
         self.collectionView.delegate = self
         self.collectionView.dataSource = self

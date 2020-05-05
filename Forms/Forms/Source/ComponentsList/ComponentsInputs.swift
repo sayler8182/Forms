@@ -53,7 +53,7 @@ public struct ComponentsInputs: ComponentsList {
         public static func `default`() -> TitleTextField {
             let component = TitleTextField()
             component.animationTime = 0.1
-            component.backgroundColors = TextField.State<UIColor?>(UIColor.systemBackground)
+            component.backgroundColors = TextField.State<UIColor?>(Theme.systemBackground)
             component.marginEdgeInset = UIEdgeInsets(0)
             component.error = nil
             component.errorColor = UIColor.systemRed
@@ -69,19 +69,19 @@ public struct ComponentsInputs: ComponentsList {
             component.placeholder = nil
             component.text = nil
             component.textColors = TextField.State<UIColor?>(
-                active: UIColor.label,
-                selected: UIColor.label,
-                disabled: UIColor.label,
-                error: UIColor.systemRed
+                active: Theme.label,
+                selected: Theme.label,
+                disabled: Theme.label,
+                error: Theme.systemRed
             )
             component.textFieldDelegate = TextFieldDelegates.default()
             component.textFonts = TextField.State<UIFont>(UIFont.systemFont(ofSize: 16))
             component.title = nil
             component.titleColors = TextField.State<UIColor?>(
-                active: UIColor.label,
-                selected: UIColor.label,
-                disabled: UIColor.label,
-                error: UIColor.systemRed
+                active: Theme.label,
+                selected: Theme.label,
+                disabled: Theme.label,
+                error: Theme.systemRed
             )
             component.titleFonts = TextField.State<UIFont>(UIFont.systemFont(ofSize: 12))
             component.underscoreColor = UIColor.systemGray
@@ -94,7 +94,7 @@ public struct ComponentsInputs: ComponentsList {
             let component = SearchBar()
                 .with(width: 320, height: 64)
             component.animationTime = 0.1
-            component.backgroundColors = SearchBar.State<UIColor?>(UIColor.systemBackground)
+            component.backgroundColors = SearchBar.State<UIColor?>(Theme.systemBackground)
             component.marginEdgeInset = UIEdgeInsets(0)
             component.isEnabled = true
             component.paddingEdgeInset = UIEdgeInsets(
@@ -104,9 +104,9 @@ public struct ComponentsInputs: ComponentsList {
             component.placeholder = nil
             component.text = nil
             component.textColors = SearchBar.State<UIColor?>(
-                active: UIColor.label,
-                selected: UIColor.label,
-                disabled: UIColor.label
+                active: Theme.label,
+                selected: Theme.label,
+                disabled: Theme.label
             )
             component.textFieldDelegate = TextFieldDelegates.default()
             component.textFonts = SearchBar.State<UIFont>(UIFont.systemFont(ofSize: 16))

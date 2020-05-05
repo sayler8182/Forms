@@ -14,8 +14,10 @@ public struct ComponentsNavigationBars: ComponentsList {
     public static func `default`() -> NavigationBar {
         let component = NavigationBar()
         component.backgroundColor = nil
-        component.backImage = { UIImage(systemName: "chevron.left") }
-        component.closeImage = { UIImage(systemName: "xmark") }
+        if #available(iOS 13.0, *) {
+            component.backImage = { UIImage(systemName: "chevron.left") }
+            component.closeImage = { UIImage(systemName: "xmark") }
+        }
         component.isBack = true
         component.isShadow = true
         component.isTranslucent = false

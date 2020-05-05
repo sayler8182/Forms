@@ -64,6 +64,7 @@ open class FormsSearchController: UISearchController {
         get { return self.searchBar.placeholder }
         set { self.searchBar.placeholder = newValue }
     }
+    @available(iOS 11.0, *)
     open var smartQuotesType: UITextSmartQuotesType {
         get { return self.searchBar.smartQuotesType }
         set { self.searchBar.smartQuotesType = newValue }
@@ -72,7 +73,7 @@ open class FormsSearchController: UISearchController {
         get { return self.searchBar.text }
         set { self.searchBar.text = newValue }
     }
-    open var textColors: State<UIColor?> = State<UIColor?>(UIColor.label) {
+    open var textColors: State<UIColor?> = State<UIColor?>(Theme.label) {
         didSet { self.updateState() }
     }
     private var _textFieldDelegate: UITextFieldDelegate? // swiftlint:disable:this weak_delegate
@@ -80,7 +81,7 @@ open class FormsSearchController: UISearchController {
         get { return self._textFieldDelegate }
         set {
             self._textFieldDelegate = newValue
-            self.searchBar.searchTextField.delegate = newValue
+            self.searchBar.textField.delegate = newValue
         }
     }
     open var textFonts: State<UIFont> = State<UIFont>(UIFont.systemFont(ofSize: 14)) {
@@ -164,9 +165,9 @@ open class FormsSearchController: UISearchController {
     }
     
     open func setupActions() {
-        self.searchBar.searchTextField.addTarget(self, action: #selector(handleOnBeginEditing), for: .editingDidBegin)
-        self.searchBar.searchTextField.addTarget(self, action: #selector(handleOnEndEditing), for: .editingDidEnd)
-        self.searchBar.searchTextField.addTarget(self, action: #selector(handleOnTextChanged), for: .editingChanged)
+        self.searchBar.textField.addTarget(self, action: #selector(handleOnBeginEditing), for: .editingDidBegin)
+        self.searchBar.textField.addTarget(self, action: #selector(handleOnEndEditing), for: .editingDidEnd)
+        self.searchBar.textField.addTarget(self, action: #selector(handleOnTextChanged), for: .editingChanged)
     }
     
     open func setupOther() {
@@ -199,8 +200,8 @@ private extension FormsSearchController {
                   force: Bool = false) {
         guard self.state != state || force else { return }
         self.searchBar.animation(animated, duration: self.animationTime) {
-            self.searchBar.searchTextField.textColor = self.textColors.value(for: state)
-            self.searchBar.searchTextField.font = self.textFonts.value(for: state)
+            self.searchBar.textField.textColor = self.textColors.value(for: state)
+            self.searchBar.textField.font = self.textFonts.value(for: state)
         }
         self.state = state
     }
@@ -291,6 +292,7 @@ public extension FormsSearchController {
         self.placeholder = placeholder
         return self
     }
+    @available(iOS 11.0, *)
     func with(smartQuotesType: UITextSmartQuotesType) -> Self {
         self.smartQuotesType = smartQuotesType
         return self

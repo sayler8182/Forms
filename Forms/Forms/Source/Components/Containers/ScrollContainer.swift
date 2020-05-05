@@ -76,7 +76,9 @@ open class ScrollContainer: FormsComponent, FormsComponentWithMarginEdgeInset, F
         self.scrollView.backgroundColor = UIColor.clear
         self.scrollView.frame = self.backgroundView.bounds
         self.scrollView.clipsToBounds = true
-        self.scrollView.contentInsetAdjustmentBehavior = .never
+        if #available(iOS 11.0, *) {
+            self.scrollView.contentInsetAdjustmentBehavior = .never
+        }
         self.scrollView.showsHorizontalScrollIndicator = false
         self.scrollView.showsVerticalScrollIndicator = false
         self.backgroundView.addSubview(self.scrollView, with: [

@@ -13,13 +13,12 @@ public struct ComponentsOther: ComponentsList {
         
     public static func activityIndicator() -> ActivityIndicator {
         let component = ActivityIndicator()
-        component.backgroundColor = UIColor.systemBackground
+        component.backgroundColor = Theme.systemBackground
         component.color = UIColor.lightGray
         component.marginEdgeInset = UIEdgeInsets(0)
         component.height = UITableView.automaticDimension
         component.isAnimating = true
         component.paddingEdgeInset = UIEdgeInsets(0)
-        component.style = .medium
         return component
     }
 }

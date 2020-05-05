@@ -11,6 +11,7 @@ import SocialKit
 import UIKit
 
 // MARK: DemoSocialKitAppleTableViewController
+@available(iOS 13.0, *)
 class DemoSocialKitAppleTableViewController: FormsTableViewController {
     private let signInWithApple = Components.social.signInWithApple()
         .with(padding: 16)
@@ -36,6 +37,7 @@ class DemoSocialKitAppleTableViewController: FormsTableViewController {
 }
 
 // MARK: SignInWithApple
+@available(iOS 13.0, *)
 extension DemoSocialKitAppleTableViewController {
     func signInWithAppleAuthorization() {
         self.signInWithAppleProvider.authorization(

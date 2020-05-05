@@ -91,7 +91,7 @@ open class TextField: FormsComponent, FormsComponentWithMarginEdgeInset, FormsCo
         get { return self.textField.autocorrectionType }
         set { self.textField.autocorrectionType = newValue }
     }
-    open var backgroundColors: State<UIColor?> = State<UIColor?>(UIColor.systemBackground) {
+    open var backgroundColors: State<UIColor?> = State<UIColor?>(Theme.systemBackground) {
         didSet { self.updateState() }
     }
     open var marginEdgeInset: UIEdgeInsets = UIEdgeInsets(0) {
@@ -135,6 +135,7 @@ open class TextField: FormsComponent, FormsComponentWithMarginEdgeInset, FormsCo
         get { return self.textField.placeholder }
         set { self.textField.placeholder = newValue }
     }
+    @available(iOS 11.0, *)
     open var smartQuotesType: UITextSmartQuotesType {
         get { return self.textField.smartQuotesType }
         set { self.textField.smartQuotesType = newValue }
@@ -143,7 +144,7 @@ open class TextField: FormsComponent, FormsComponentWithMarginEdgeInset, FormsCo
         get { return self.textField.text }
         set { self.textField.text = newValue }
     }
-    open var textColors: State<UIColor?> = State<UIColor?>(UIColor.label) {
+    open var textColors: State<UIColor?> = State<UIColor?>(Theme.label) {
         didSet { self.updateState() }
     }
     private var _textFieldDelegate: UITextFieldDelegate? // swiftlint:disable:this weak_delegate
@@ -161,7 +162,7 @@ open class TextField: FormsComponent, FormsComponentWithMarginEdgeInset, FormsCo
         get { return self.titleLabel.text }
         set { self.titleLabel.text = newValue }
     }
-    open var titleColors: State<UIColor?> = State<UIColor?>(UIColor.label) {
+    open var titleColors: State<UIColor?> = State<UIColor?>(Theme.label) {
         didSet { self.updateState() }
     }
     open var titleFonts: State<UIFont> = State<UIFont>(UIFont.systemFont(ofSize: 10)) {
@@ -430,6 +431,7 @@ public extension TextField {
         self.placeholder = placeholder
         return self
     }
+    @available(iOS 11.0, *)
     func with(smartQuotesType: UITextSmartQuotesType) -> Self {
         self.smartQuotesType = smartQuotesType
         return self

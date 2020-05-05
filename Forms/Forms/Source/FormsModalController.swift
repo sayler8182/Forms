@@ -21,7 +21,7 @@ open class FormsModalController: FormsViewController {
     private var contentController: UIViewController? = nil
     private var overlayView: UIView? = nil
     
-    open var backgroundColor: UIColor? = UIColor.secondarySystemBackground {
+    open var backgroundColor: UIColor? = Theme.secondarySystemBackground {
         didSet { self.contentView.backgroundColor = self.backgroundColor }
     }
     open var cornerRadius: CGFloat = 8.0 {
@@ -34,10 +34,10 @@ open class FormsModalController: FormsViewController {
             self.contentHeight = newValue
         }
     }
-    open var indicatorBackgroundColor: UIColor? = UIColor.secondarySystemBackground {
+    open var indicatorBackgroundColor: UIColor? = Theme.secondarySystemBackground {
         didSet { self.indicatorBackgroundView.backgroundColor = self.indicatorBackgroundColor }
     }
-    open var indicatorColor: UIColor? = UIColor.tertiarySystemBackground {
+    open var indicatorColor: UIColor? = Theme.tertiarySystemBackground {
         didSet { self.indicatorView.backgroundColor = self.indicatorColor }
     }
     open var minHeight: CGFloat = 80.0

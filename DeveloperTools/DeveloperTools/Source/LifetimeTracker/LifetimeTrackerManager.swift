@@ -39,11 +39,20 @@ public class LifetimeTrackerManager: NSObject {
         return self.viewType.init()
     }()
 
+    @available(iOS 13.0, *)
     public static var scene: UIWindowScene! {
         return UIApplication.shared.connectedScenes.first as? UIWindowScene
     }
+    public static var newWindow: UIWindow {
+        if #available(iOS 13.0, *) {
+            return UIWindow(windowScene: Self.scene)
+        } else {
+            return UIWindow(frame: UIScreen.main.bounds)
+        }
+    }
+    
     private lazy var window: UIWindow = {
-        let window = UIWindow(windowScene: Self.scene)
+        let window = Self.newWindow
         window.windowLevel = UIWindow.Level.statusBar
         window.frame = UIScreen.main.bounds
         window.rootViewController = self.lifetimeTrackerView

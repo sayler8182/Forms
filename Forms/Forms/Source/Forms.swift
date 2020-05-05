@@ -61,9 +61,9 @@ public struct Forms {
         injector.register(ConfigurationToastProtocol.self) { _ in
             return Configuration.Toast(
                 backgroundColor: .init(
-                    info: UIColor.systemBackground,
-                    success: UIColor.systemGreen,
-                    error: UIColor.systemRed)
+                    info: Theme.systemBackground,
+                    success: Theme.systemGreen,
+                    error: Theme.systemRed)
             )
         }
     }

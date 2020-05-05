@@ -9,12 +9,14 @@
 import AuthenticationServices
 
 // MARK: SignInWithAppleError
+@available(iOS 13.0, *)
 public enum SignInWithAppleError: Error {
     case unableToRetrieveJWT
     case unableToHandleCredential
 }
 
 // MARK: SignInWithApple
+@available(iOS 13.0, *)
 public struct SignInWithAppleData {
     public let uid: String
     public let jwt: String
@@ -23,6 +25,7 @@ public struct SignInWithAppleData {
 }
 
 // MARK: SignInWithAppleProvider
+@available(iOS 13.0, *)
 public class SignInWithAppleProvider: NSObject {
     private weak var context: UIViewController!
     
@@ -70,6 +73,7 @@ public class SignInWithAppleProvider: NSObject {
 }
 
 // MARK: ASAuthorizationControllerDelegate, ASAuthorizationControllerPresentationContextProviding
+@available(iOS 13.0, *)
 extension SignInWithAppleProvider: ASAuthorizationControllerDelegate, ASAuthorizationControllerPresentationContextProviding {
     public func presentationAnchor(for controller: ASAuthorizationController) -> ASPresentationAnchor {
         return self.context.view.window ?? ASPresentationAnchor()

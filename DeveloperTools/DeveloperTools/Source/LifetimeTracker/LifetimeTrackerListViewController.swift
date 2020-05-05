@@ -31,7 +31,7 @@ class LifetimeTrackerListViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.view.backgroundColor = UIColor.systemBackground
+        self.view.backgroundColor = UIColor.black
         self.setupNavigationBar()
         self.setupTableView()
     }
@@ -67,7 +67,7 @@ class LifetimeTrackerListViewController: UIViewController {
     }
     
     func show() {
-        let window = UIWindow(windowScene: LifetimeTrackerManager.scene)
+        let window: UIWindow = LifetimeTrackerManager.newWindow
         window.windowLevel = UIWindow.Level.statusBar + 1
         let rootViewController = UIViewController()
         window.rootViewController = rootViewController
@@ -152,7 +152,7 @@ class LifetimeTrackerDashboardHeaderView: UITableViewHeaderFooterView {
     }
     
     private func setupView() {
-        self.backgroundView?.backgroundColor = UIColor.tertiarySystemBackground
+        self.backgroundView?.backgroundColor = UIColor.black
         self.indicatorView.translatesAutoresizingMaskIntoConstraints = false
         self.indicatorView.backgroundColor = UIColor.clear
         self.addSubview(self.indicatorView)
@@ -164,7 +164,7 @@ class LifetimeTrackerDashboardHeaderView: UITableViewHeaderFooterView {
         ])
         self.groupNameLabel.translatesAutoresizingMaskIntoConstraints = false
         self.groupNameLabel.font = UIFont.systemFont(ofSize: 14)
-        self.groupNameLabel.textColor = UIColor.label
+        self.groupNameLabel.textColor = UIColor.white
         self.addSubview(self.groupNameLabel)
         NSLayoutConstraint.activate([
             self.groupNameLabel.topAnchor.constraint(equalTo: self.topAnchor),
@@ -224,7 +224,7 @@ class LifetimeTrackerDashboardTableViewCell: UITableViewCell {
         ])
         self.descriptionLabel.translatesAutoresizingMaskIntoConstraints = false
         self.descriptionLabel.font = UIFont.systemFont(ofSize: 12)
-        self.descriptionLabel.textColor = UIColor.label
+        self.descriptionLabel.textColor = UIColor.black
         self.descriptionLabel.numberOfLines = 0
         self.addSubview(self.descriptionLabel)
         NSLayoutConstraint.activate([

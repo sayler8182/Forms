@@ -10,6 +10,7 @@ import Forms
 import UIKit
 
 // MARK: DemoNavigationBarViewController
+@available(iOS 13.0, *)
 class DemoNavigationBarViewController: FormsTableViewController {
     private lazy var defaultNavigationBar = Components.navigationBar.default()
         .with(title: "Default navigation bar")

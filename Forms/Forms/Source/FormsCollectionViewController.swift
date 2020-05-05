@@ -33,16 +33,16 @@ open class FormsCollectionViewController: FormsViewController, UICollectionViewD
     private var refreshControl: UIRefreshControl? = nil
     private var shimmerDataSource: ShimmerCollectionDataSource? = nil
     
-    open var cellBackgroundColor: UIColor = UIColor.systemBackground {
+    open var cellBackgroundColor: UIColor = Theme.systemBackground {
         didSet { self.collectionView.reloadData() }
     }
-    open var footerBackgroundColor: UIColor = UIColor.systemBackground {
+    open var footerBackgroundColor: UIColor = Theme.systemBackground {
         didSet { self.footerView.backgroundColor = self.footerBackgroundColor }
     }
     open var footerSpacing: CGFloat = 8 {
         didSet { self.footerView.spacing = self.footerSpacing }
     }
-    open var headerBackgroundColor: UIColor = UIColor.systemBackground {
+    open var headerBackgroundColor: UIColor = Theme.systemBackground {
         didSet { self.headerView.backgroundColor = self.headerBackgroundColor }
     }
     open var isBottomToSafeArea: Bool = true

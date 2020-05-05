@@ -10,6 +10,7 @@ import Forms
 import UIKit
 
 // MARK: DemoOthersViewController
+@available(iOS 13.0, *)
 class DemoOthersViewController: FormsTableViewController {
     private let activityIndicator = Components.other.activityIndicator()
             .with(backgroundColor: UIColor.lightGray)

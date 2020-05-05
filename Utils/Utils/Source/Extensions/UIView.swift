@@ -15,14 +15,18 @@ public extension UIView {
     }
     
     static var safeArea: UIEdgeInsets {
-        let window: UIWindow? = UIApplication.shared.connectedScenes
-            .filter { $0.activationState == .foregroundActive }
-            .map { $0 as? UIWindowScene }
-            .compactMap { $0 }
-            .flatMap { $0.windows }
-            .first(where: { $0.isKeyWindow })
-        guard let _window: UIWindow = window else { return UIEdgeInsets(0) }
-        return _window.safeAreaInsets
+        if #available(iOS 13.0, *) {
+            let window: UIWindow? = UIApplication.shared.connectedScenes
+                .filter { $0.activationState == .foregroundActive }
+                .map { $0 as? UIWindowScene }
+                .compactMap { $0 }
+                .flatMap { $0.windows }
+                .first(where: { $0.isKeyWindow })
+            guard let _window: UIWindow = window else { return UIEdgeInsets(0) }
+            return _window.safeAreaInsets
+        } else {
+            return UIEdgeInsets.zero
+        }
     }
     
     var parentController: UIViewController? {

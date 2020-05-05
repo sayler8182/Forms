@@ -26,6 +26,15 @@ public extension UIColor {
             blue: rgb & 0xFF,
             alpha: alpha)
     }
+    
+    convenience init(rgba: UInt) {
+        self.init(
+            red: Int((rgba >> 24) & 0xFF),
+            green: Int((rgba >> 16) & 0xFF),
+            blue: Int((rgba >> 8) & 0xFF),
+            alpha: Int(rgba & 0xFF))
+    }
+    
     private convenience init(red: Int,
                              green: Int,
                              blue: Int,

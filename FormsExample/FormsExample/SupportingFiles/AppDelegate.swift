@@ -6,15 +6,38 @@
 //  Copyright © 2020 Limbo. All rights reserved.
 //
 
+import Analytics
+import DeveloperTools
+import FormsDemo
+import SocialKit
 import UIKit
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
+    var window: UIWindow?
+    
     func application(_ application: UIApplication,
                      didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+        Analytics.configure()
+        DeveloperTools.configure(
+            features: DemoDeveloperFeatureKeys.allCases,
+            featuresFlags: DemoDeveloperFeatureFlagKeys.allCases,
+            onSelect: DemoDeveloperToolsManager.onSelect)
+        LifetimeTracker.configure()
+        SocialKit.configure(
+            googleClientID: "513688149579-fhj79mgkeq2rp689dpmfnn7nlkadnf31.apps.googleusercontent.com"
+        )
+        
+        if #available(iOS 13.0, *) { } else {
+            let window: UIWindow = UIWindow(frame: UIScreen.main.bounds)
+            window.rootViewController = DemoRootViewController()
+            self.window = window
+            window.makeKeyAndVisible()
+        }
         return true
     }
 
+    @available(iOS 13.0, *)
     func application(_ application: UIApplication,
                      configurationForConnecting connectingSceneSession: UISceneSession,
                      options: UIScene.ConnectionOptions) -> UISceneConfiguration {
