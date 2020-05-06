@@ -72,7 +72,9 @@ private enum Demo {
         case utilsSocialKitGoogle
         case utilsStorage
         case utilsToast
-        case utilsTransition
+        case utilsTransitions
+        case utilsTransitionsController
+        case utilsTransitionsNavigation
         case utilsValidators
         // Architectures
         case architectures
@@ -211,7 +213,13 @@ private enum Demo {
                     ]),
                     Row(type: .utilsStorage, title: "Storage"),
                     Row(type: .utilsToast, title: "Toast"),
-                    Row(type: .utilsTransition, title: "Transition", shouldPresent: true),
+                    Row(type: .utilsTransitions, title: "Transitions",
+                        sections: [
+                            Section(rows: [
+                                Row(type: .utilsTransitionsController, title: "Transitions Controller"),
+                                Row(type: .utilsTransitionsNavigation, title: "Transitions Navigation", shouldPresent: true),
+                            ])
+                    ]),
                     Row(type: .utilsValidators, title: "Validators")
                 ]),
                 Section(title: "Architectures", rows: [
@@ -410,7 +418,8 @@ private class DemoListViewController: FormsViewController {
         case .utilsSocialKitGoogle:                             return DemoSocialKitGoogleTableViewController()
         case .utilsToast:                                       return DemoToastViewController()
         case .utilsStorage:                                     return DemoStorageViewController()
-        case .utilsTransition:                                  return DemoTransitionViewController()
+        case .utilsTransitionsController:                       return DemoTransitionControllerViewController()
+        case .utilsTransitionsNavigation:                       return DemoTransitionNavigationViewController()
         case .utilsValidators:                                  return DemoValidatorsViewController()
         // architectures
         case .architecturesClean:                               return self.injector.resolve(DemoArchitecturesCleanViewController.self)

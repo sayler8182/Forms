@@ -1,8 +1,8 @@
 //
-//  DemoTransitionViewController.swift
+//  DemoTransitionControllerViewController.swift
 //  FormsDemo
 //
-//  Created by Konrad on 4/15/20.
+//  Created by Konrad on 5/6/20.
 //  Copyright © 2020 Limbo. All rights reserved.
 //
 
@@ -11,46 +11,8 @@ import Forms
 import Transition
 import UIKit
 
-// MARK: DemoTransitionViewController
-class DemoTransitionViewController: TransitionNavigationController {
-    private let changeButton = Components.button.default()
-        .with(title: "Change")
-    
-    override func postInit() {
-        super.postInit()
-        self.setRoot(FirstController())
-    }
-    
-    override func setupConfiguration() {
-        super.setupConfiguration()
-        self.animator = TransitionSlideHorizontalAnimator()
-    }
-    
-    override func setupContent() {
-        super.setupContent()
-        self.view.addSubview(self.changeButton, with: [
-            Anchor.to(self.view).horizontal,
-            Anchor.to(self.view).bottom.safeArea
-        ])
-    }
-    
-    override func setupActions() {
-        super.setupActions()
-        self.changeButton.onClick = { [unowned self] in
-            if self.viewControllers.count == 1 {
-                self.pushViewController(SecondController(), animated: true)
-            } else {
-                self.popToRootViewController(animated: true)
-            }
-        }
-    }
-}
-
-// MARK: FirstController
-private class FirstController: FormsViewController {
-    private let progressBar = Components.progress.progressBar()
-        .with(progress: 1.0 / 2.0)
-        .with(viewKey: "progressBar")
+// MARK: DemoTransitionControllerViewController
+class DemoTransitionControllerViewController: FormsViewController {
     private let contentView = Components.container.view()
         .with(backgroundColor: UIColor.red)
         .with(viewKey: "contentView")
@@ -63,13 +25,12 @@ private class FirstController: FormsViewController {
         .with(alignment: .center)
         .with(text: "First details")
         .with(viewKey: "detailsLabel")
+    private let showButton = Components.button.default()
+        .with(title: "Show")
+        .with(viewKey: "actionButton")
     
     override func setupContent() {
         super.setupContent()
-        self.view.addSubview(self.progressBar, with: [
-            Anchor.to(self.view).top.safeArea,
-            Anchor.to(self.view).horizontal
-        ])
         self.view.addSubview(self.contentView, with: [
             Anchor.to(self.view).center(100)
         ])
@@ -81,14 +42,29 @@ private class FirstController: FormsViewController {
             Anchor.to(self.view).horizontal,
             Anchor.to(self.detailsLabel).bottomToTop.offset(4)
         ])
+        self.view.addSubview(self.showButton, with: [
+            Anchor.to(self.view).horizontal,
+            Anchor.to(self.view).bottom.safeArea
+        ])
+    }
+
+    override func setupActions() {
+        super.setupActions()
+        
+        self.showButton.onClick = { [unowned self] in
+            let controller = DemoSecondController()
+            controller.modalPresentationStyle = .custom
+            self.present(controller, animated: true, completion: nil)
+        }
     }
 }
 
-// MARK: SecondController
-private class SecondController: FormsViewController {
-    private let progressBar = Components.progress.progressBar()
-        .with(progress: 2.0 / 2.0)
-        .with(viewKey: "progressBar")
+// MARK: DemoSecondController
+private class DemoSecondController: FormsViewController, TransitionableController {
+    var animator: TransitionControllerAnimator = TransitionControllerSlideVerticalAnimator()
+    var coordinator: TransitionControllerCoordinator = TransitionControllerCoordinator()
+    var edgePanGesture: UIScreenEdgePanGestureRecognizer = UIScreenEdgePanGestureRecognizer()
+    
     private let contentView = Components.container.view()
         .with(backgroundColor: UIColor.green)
         .with(cornerRadius: 16)
@@ -102,13 +78,17 @@ private class SecondController: FormsViewController {
         .with(alignment: .center)
         .with(text: "Second details")
         .with(viewKey: "detailsLabel")
+    private let hideButton = Components.button.default()
+        .with(title: "Hide")
+        .with(viewKey: "actionButton")
+    
+    override func postInit() {
+        super.postInit()
+        self.transitioningDelegate = self.coordinator
+    }
     
     override func setupContent() {
         super.setupContent()
-        self.view.addSubview(self.progressBar, with: [
-            Anchor.to(self.view).top.safeArea,
-            Anchor.to(self.view).horizontal
-        ])
         self.view.addSubview(self.contentView, with: [
             Anchor.to(self.view).top.safeArea.offset(32),
             Anchor.to(self.contentView).size(80),
@@ -122,5 +102,26 @@ private class SecondController: FormsViewController {
             Anchor.to(self.view).horizontal,
             Anchor.to(self.detailsLabel).bottomToTop.offset(4)
         ])
+        self.view.addSubview(self.hideButton, with: [
+            Anchor.to(self.view).horizontal,
+            Anchor.to(self.view).bottom.safeArea
+        ])
+    }
+    
+    override func setupActions() {
+        super.setupActions()
+        
+        self.edgePanGesture.addTarget(self, action: #selector(handleTransitionBackSwipe))
+        self.edgePanGesture.edges = .left
+        self.view.addGestureRecognizer(self.edgePanGesture)
+        
+        self.hideButton.onClick = { [unowned self] in
+            self.dismiss(animated: true, completion: nil)
+        }
+    }
+    
+    @objc
+    func handleTransitionBackSwipe(recognizer: UIScreenEdgePanGestureRecognizer) {
+        self.handleTransitionControllerEdgePan(recognizer)
     }
 }

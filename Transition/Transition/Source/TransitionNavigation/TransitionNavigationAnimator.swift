@@ -1,5 +1,5 @@
 //
-//  TransitionAnimator.swift
+//  TransitionNavigationAnimator.swift
 //  Transition
 //
 //  Created by Konrad on 4/15/20.
@@ -8,8 +8,8 @@
 
 import UIKit
 
-// MARK: TransitionAnimator
-open class TransitionAnimator: NSObject, UIViewControllerAnimatedTransitioning {
+// MARK: TransitionNavigationAnimator
+open class TransitionNavigationAnimator: NSObject, UIViewControllerAnimatedTransitioning {
     let operation: UINavigationController.Operation
     
     override public convenience init() {
@@ -37,7 +37,7 @@ open class TransitionAnimator: NSObject, UIViewControllerAnimatedTransitioning {
             container: container,
             fromView: fromView,
             toView: toView)
-        switch operation {
+        switch self.operation {
         case .push:
             self.pushTransition(
                 using: transitionContext,

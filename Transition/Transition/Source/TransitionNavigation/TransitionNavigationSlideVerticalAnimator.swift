@@ -1,5 +1,5 @@
 //
-//  TransitionSlideHorizontalAnimator.swift
+//  TransitionNavigationSlideVerticalAnimator.swift
 //  Transition
 //
 //  Created by Konrad on 4/15/20.
@@ -8,8 +8,8 @@
 
 import UIKit
 
-// MARK: TransitionSlideHorizontalAnimator
-open class TransitionSlideHorizontalAnimator: TransitionAnimator {
+// MARK: TransitionNavigationSlideVerticalAnimator
+open class TransitionNavigationSlideVerticalAnimator: TransitionNavigationAnimator {
     override open func transitionDuration(using transitionContext: UIViewControllerContextTransitioning?) -> TimeInterval {
         return 0.5
     }
@@ -33,21 +33,21 @@ open class TransitionSlideHorizontalAnimator: TransitionAnimator {
         container.addSubview(toView)
         toView.layoutIfNeeded()
         
-        let startFromFrameX = fromView.frame.origin.x
-        let startToFrameX = toView.frame.width
-        let endFromFrameX = -fromView.frame.width
-        let endToFrameX = toView.frame.origin.x
+        let startFromFrameY = fromView.frame.origin.y
+        let startToFrameY = toView.frame.height
+        let endFromFrameY = -fromView.frame.height
+        let endToFrameY = toView.frame.origin.y
         
-        fromView.frame.origin.x = startFromFrameX
-        toView.frame.origin.x = startToFrameX
+        fromView.frame.origin.y = startFromFrameY
+        toView.frame.origin.y = startToFrameY
         animator.beginTransition()
         UIView.animateKeyframes(
             withDuration: duration,
             delay: 0,
             options: .calculationModeCubic,
             animations: {
-                fromView.frame.origin.x = endFromFrameX
-                toView.frame.origin.x = endToFrameX
+                fromView.frame.origin.y = endFromFrameY
+                toView.frame.origin.y = endToFrameY
                 animator.updateTransition()
         }, completion: { _ in
             animator.endTransition()
@@ -66,21 +66,21 @@ open class TransitionSlideHorizontalAnimator: TransitionAnimator {
         container.insertSubview(toView, belowSubview: fromView)
         toView.layoutIfNeeded()
         
-        let startFromFrameX = fromView.frame.origin.x
-        let startToFrameX = -toView.frame.width
-        let endFromFrameX = fromView.frame.width
-        let endToFrameX = toView.frame.origin.x
+        let startFromFrameY = fromView.frame.origin.y
+        let startToFrameY = -toView.frame.height
+        let endFromFrameY = fromView.frame.height
+        let endToFrameY = toView.frame.origin.y
         
-        fromView.frame.origin.x = startFromFrameX
-        toView.frame.origin.x = startToFrameX
+        fromView.frame.origin.y = startFromFrameY
+        toView.frame.origin.y = startToFrameY
         animator.beginTransition()
         UIView.animateKeyframes(
             withDuration: duration,
             delay: 0,
             options: .calculationModeCubic,
             animations: {
-                fromView.frame.origin.x = endFromFrameX
-                toView.frame.origin.x = endToFrameX
+                fromView.frame.origin.y = endFromFrameY
+                toView.frame.origin.y = endToFrameY
                 animator.updateTransition()
         }, completion: { _ in
             animator.endTransition()
