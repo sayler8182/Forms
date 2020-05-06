@@ -36,10 +36,9 @@ open class BarItem: UIBarButtonItem, Clickable {
         self.image = image
         return self
     }
-
-    @available(iOS 13.0, *)
-    public func with(imageSystemName: String) -> Self {
-        self.image = UIImage(systemName: imageSystemName)
+ 
+    public func with(imageName: String) -> Self {
+        self.image = UIImage.from(name: imageName)
         return self
     }
     

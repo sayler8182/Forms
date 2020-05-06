@@ -35,6 +35,14 @@ public extension UIImage {
         self.init(cgImage: cgImage)
     }
     
+    static func from(name: String) -> UIImage? {
+        if #available(iOS 13.0, *) {
+            return UIImage(systemName: name)
+        } else {
+            return UIImage(named: name)
+        }
+    }
+    
     func scaledToFill(to size: CGSize,
                       scale: CGFloat = UIScreen.main.scale) -> UIImage {
         let image: UIImage = self

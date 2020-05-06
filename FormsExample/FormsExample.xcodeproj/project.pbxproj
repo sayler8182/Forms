@@ -13,13 +13,15 @@
 		71228E0B2431CF7F00D08B20 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71228E0A2431CF7F00D08B20 /* SceneDelegate.swift */; };
 		71228E122431CF8100D08B20 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 71228E112431CF8100D08B20 /* Assets.xcassets */; };
 		71228E2C2431CFBF00D08B20 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 71228E2B2431CFBF00D08B20 /* LaunchScreen.storyboard */; };
+		719AE5512462B31F00A39B0E /* Notifications.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 719AE4C9246294FC00A39B0E /* Notifications.framework */; };
+		719AE5522462B31F00A39B0E /* Notifications.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 719AE4C9246294FC00A39B0E /* Notifications.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		719AE5B12462C49C00A39B0E /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 719AE5692462C0F900A39B0E /* FBSDKCoreKit.framework */; };
+		719AE5B22462C49C00A39B0E /* FBSDKCoreKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 719AE5692462C0F900A39B0E /* FBSDKCoreKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		719AE5B32462C49D00A39B0E /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 719AE55C2462C0F900A39B0E /* FBSDKLoginKit.framework */; };
+		719AE5B42462C49D00A39B0E /* FBSDKLoginKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 719AE55C2462C0F900A39B0E /* FBSDKLoginKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		71CFF42E245956EE0067D13E /* SideMenu.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71CFF41F245954B90067D13E /* SideMenu.framework */; };
 		71CFF42F245956EE0067D13E /* SideMenu.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 71CFF41F245954B90067D13E /* SideMenu.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		71DB655A2457729800B16145 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 71DB65592457729800B16145 /* GoogleService-Info.plist */; };
-		71DB655D245773DB00B16145 /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71EA6ECA2449FC4B00ACB5EE /* FBSDKLoginKit.framework */; };
-		71DB655E245773DB00B16145 /* FBSDKLoginKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 71EA6ECA2449FC4B00ACB5EE /* FBSDKLoginKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		71DB655F245773DD00B16145 /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71EA6EC92449FC4B00ACB5EE /* FBSDKCoreKit.framework */; };
-		71DB6560245773DD00B16145 /* FBSDKCoreKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 71EA6EC92449FC4B00ACB5EE /* FBSDKCoreKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		71DB66AD24582A1E00B16145 /* Analytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71DB5CC02457609100B16145 /* Analytics.framework */; };
 		71DB66AE24582A1E00B16145 /* Analytics.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 71DB5CC02457609100B16145 /* Analytics.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		71DB66AF24582A1E00B16145 /* Anchor.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 713B9B17243D0417001F6E3A /* Anchor.framework */; };
@@ -203,6 +205,20 @@
 			remoteGlobalIDString = 71946945243DA7A800CAD09B;
 			remoteInfo = FormsTests;
 		};
+		719AE4C8246294FC00A39B0E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 719AE4B0246294FC00A39B0E /* Notifications.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 719AE496246294DB00A39B0E;
+			remoteInfo = Notifications;
+		};
+		719AE4CA246294FC00A39B0E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 719AE4B0246294FC00A39B0E /* Notifications.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 719AE49F246294DB00A39B0E;
+			remoteInfo = NotificationsTests;
+		};
 		71BB621D2445DD17002BB31F /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 71BB62182445DD16002BB31F /* Networking.xcodeproj */;
@@ -277,14 +293,15 @@
 			files = (
 				71DB66B024582A1E00B16145 /* Anchor.framework in Embed Frameworks */,
 				71DB66C024582A1E00B16145 /* Transition.framework in Embed Frameworks */,
+				719AE5B42462C49D00A39B0E /* FBSDKLoginKit.framework in Embed Frameworks */,
+				719AE5B22462C49C00A39B0E /* FBSDKCoreKit.framework in Embed Frameworks */,
 				71DB66C424582A1F00B16145 /* Validators.framework in Embed Frameworks */,
 				71DB66BC24582A1E00B16145 /* Networking.framework in Embed Frameworks */,
 				71DB66BE24582A1E00B16145 /* SocialKit.framework in Embed Frameworks */,
 				71DB66C224582A1E00B16145 /* Utils.framework in Embed Frameworks */,
-				71DB655E245773DB00B16145 /* FBSDKLoginKit.framework in Embed Frameworks */,
 				71DB66B624582A1E00B16145 /* ImagePicker.framework in Embed Frameworks */,
 				71CFF42F245956EE0067D13E /* SideMenu.framework in Embed Frameworks */,
-				71DB6560245773DD00B16145 /* FBSDKCoreKit.framework in Embed Frameworks */,
+				719AE5522462B31F00A39B0E /* Notifications.framework in Embed Frameworks */,
 				71DB66BA24582A1E00B16145 /* Logger.framework in Embed Frameworks */,
 				71EA6EC72449FC3300ACB5EE /* FormsDemo.framework in Embed Frameworks */,
 				71DB66AE24582A1E00B16145 /* Analytics.framework in Embed Frameworks */,
@@ -326,14 +343,15 @@
 		715B7B3124474C4600754EDB /* Transition.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Transition.xcodeproj; path = ../Transition/Transition.xcodeproj; sourceTree = "<group>"; };
 		7178026124543D2B0057E848 /* DeveloperTools.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = DeveloperTools.xcodeproj; path = ../DeveloperTools/DeveloperTools.xcodeproj; sourceTree = "<group>"; };
 		71946956243DA7A800CAD09B /* Forms.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Forms.xcodeproj; path = ../Forms/Forms.xcodeproj; sourceTree = "<group>"; };
+		719AE4B0246294FC00A39B0E /* Notifications.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Notifications.xcodeproj; path = ../Notifications/Notifications.xcodeproj; sourceTree = "<group>"; };
+		719AE55C2462C0F900A39B0E /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKLoginKit.framework; sourceTree = "<group>"; };
+		719AE5692462C0F900A39B0E /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKCoreKit.framework; sourceTree = "<group>"; };
 		71BB62182445DD16002BB31F /* Networking.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Networking.xcodeproj; path = ../Networking/Networking.xcodeproj; sourceTree = "<group>"; };
 		71BB62652445E7C5002BB31F /* Logger.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Logger.xcodeproj; path = ../Logger/Logger.xcodeproj; sourceTree = "<group>"; };
 		71CFF419245954B90067D13E /* SideMenu.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = SideMenu.xcodeproj; path = ../SideMenu/SideMenu.xcodeproj; sourceTree = "<group>"; };
 		71DB5CBA2457609000B16145 /* Analytics.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Analytics.xcodeproj; path = ../Analytics/Analytics.xcodeproj; sourceTree = "<group>"; };
 		71DB65592457729800B16145 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		71DB662D245826C900B16145 /* ImagePicker.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = ImagePicker.xcodeproj; path = ../ImagePicker/ImagePicker.xcodeproj; sourceTree = "<group>"; };
-		71EA6EC92449FC4B00ACB5EE /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKCoreKit.framework; sourceTree = "<group>"; };
-		71EA6ECA2449FC4B00ACB5EE /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKLoginKit.framework; sourceTree = "<group>"; };
 		71EBA881243D02AD0045AE40 /* Anchor.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Anchor.xcodeproj; path = ../Anchor/Anchor.xcodeproj; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -344,14 +362,15 @@
 			files = (
 				71DB66AF24582A1E00B16145 /* Anchor.framework in Frameworks */,
 				71DB66BF24582A1E00B16145 /* Transition.framework in Frameworks */,
+				719AE5B32462C49D00A39B0E /* FBSDKLoginKit.framework in Frameworks */,
 				71DB66C324582A1E00B16145 /* Validators.framework in Frameworks */,
 				71DB66BB24582A1E00B16145 /* Networking.framework in Frameworks */,
 				71DB66BD24582A1E00B16145 /* SocialKit.framework in Frameworks */,
 				71DB66C124582A1E00B16145 /* Utils.framework in Frameworks */,
-				71DB655D245773DB00B16145 /* FBSDKLoginKit.framework in Frameworks */,
 				71DB66B524582A1E00B16145 /* ImagePicker.framework in Frameworks */,
+				719AE5B12462C49C00A39B0E /* FBSDKCoreKit.framework in Frameworks */,
 				71CFF42E245956EE0067D13E /* SideMenu.framework in Frameworks */,
-				71DB655F245773DD00B16145 /* FBSDKCoreKit.framework in Frameworks */,
+				719AE5512462B31F00A39B0E /* Notifications.framework in Frameworks */,
 				71DB66B924582A1E00B16145 /* Logger.framework in Frameworks */,
 				71EA6EC62449FC3300ACB5EE /* FormsDemo.framework in Frameworks */,
 				71DB66AD24582A1E00B16145 /* Analytics.framework in Frameworks */,
@@ -391,6 +410,7 @@
 				713B9B11243D0416001F6E3A /* Injector.xcodeproj */,
 				71BB62652445E7C5002BB31F /* Logger.xcodeproj */,
 				71BB62182445DD16002BB31F /* Networking.xcodeproj */,
+				719AE4B0246294FC00A39B0E /* Notifications.xcodeproj */,
 				7103EA4924609C3700A11A96 /* Permission.xcodeproj */,
 				71CFF419245954B90067D13E /* SideMenu.xcodeproj */,
 				7132962724487AC2006935C0 /* SocialKit.xcodeproj */,
@@ -474,8 +494,8 @@
 		713296C22448B84D006935C0 /* Dependencies */ = {
 			isa = PBXGroup;
 			children = (
-				71EA6EC92449FC4B00ACB5EE /* FBSDKCoreKit.framework */,
-				71EA6ECA2449FC4B00ACB5EE /* FBSDKLoginKit.framework */,
+				719AE5692462C0F900A39B0E /* FBSDKCoreKit.framework */,
+				719AE55C2462C0F900A39B0E /* FBSDKLoginKit.framework */,
 			);
 			name = Dependencies;
 			path = ../../Dependencies;
@@ -565,6 +585,15 @@
 			children = (
 				7194695C243DA7A900CAD09B /* Forms.framework */,
 				7194695E243DA7A900CAD09B /* FormsTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		719AE4B1246294FC00A39B0E /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				719AE4C9246294FC00A39B0E /* Notifications.framework */,
+				719AE4CB246294FC00A39B0E /* NotificationsTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -737,6 +766,10 @@
 				{
 					ProductGroup = 71BB62192445DD16002BB31F /* Products */;
 					ProjectRef = 71BB62182445DD16002BB31F /* Networking.xcodeproj */;
+				},
+				{
+					ProductGroup = 719AE4B1246294FC00A39B0E /* Products */;
+					ProjectRef = 719AE4B0246294FC00A39B0E /* Notifications.xcodeproj */;
 				},
 				{
 					ProductGroup = 7103EA4A24609C3700A11A96 /* Products */;
@@ -917,6 +950,20 @@
 			fileType = wrapper.cfbundle;
 			path = FormsTests.xctest;
 			remoteRef = 7194695D243DA7A900CAD09B /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		719AE4C9246294FC00A39B0E /* Notifications.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = Notifications.framework;
+			remoteRef = 719AE4C8246294FC00A39B0E /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		719AE4CB246294FC00A39B0E /* NotificationsTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = NotificationsTests.xctest;
+			remoteRef = 719AE4CA246294FC00A39B0E /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 		71BB621E2445DD17002BB31F /* Networking.framework */ = {

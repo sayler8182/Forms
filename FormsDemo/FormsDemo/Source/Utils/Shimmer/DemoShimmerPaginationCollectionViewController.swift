@@ -6,17 +6,18 @@
 //  Copyright © 2020 Limbo. All rights reserved.
 //
 
+import Anchor
 import Forms
 import UIKit
+import Utils
 
 // MARK: DemoShimmerPaginationCollectionViewController
-@available(iOS 13.0, *)
 class DemoShimmerPaginationCollectionViewController: FormsCollectionViewController {
     private lazy var navigationBar = Components.navigationBar.default()
         .with(rightBarButtonItems: [self.changeDirectionBarItem])
     
     private lazy var changeDirectionBarItem = BarItem()
-        .with(imageSystemName: "arrow.clockwise")
+        .with(imageName: "arrow.clockwise")
     
     private lazy var shimmerDataSource = ShimmerCollectionDataSource()
         .with(generators: [ShimmerItemGenerator(type: ShimmerDemoCollectionViewCell.self, count: 3)])
@@ -83,8 +84,7 @@ class DemoShimmerPaginationCollectionViewController: FormsCollectionViewControll
     }
 }
 
-// MARK: DemoProviderDelegate
-@available(iOS 13.0, *)
+// MARK: DemoProviderDelegate 
 extension DemoShimmerPaginationCollectionViewController: DemoProviderDelegate {
     fileprivate func loadItemsPageSuccess(_ page: Page<Int, DemoCellModel>) {
         let items: [CollectionItem] = page.data.map { CollectionItem(of: DemoCollectionViewCell.self, data: $0) }

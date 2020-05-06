@@ -11,10 +11,15 @@ import SocialKit
 import UIKit
 
 // MARK: DemoSocialKitAllTableViewController
-@available(iOS 13.0, *)
 class DemoSocialKitAllTableViewController: FormsTableViewController {
-    private let signInWithApple = Components.social.signInWithApple()
-        .with(paddingEdgeInset: UIEdgeInsets(top: 16, leading: 16, bottom: 0, trailing: 16))
+    private var signInWithApple: FormsComponent? = {
+        if #available(iOS 13.0, *) {
+            return Components.social.signInWithApple()
+                .with(paddingEdgeInset: UIEdgeInsets(top: 16, leading: 16, bottom: 0, trailing: 16))
+        } else {
+            return nil
+        }
+    }()
     private let signInWithFacebook = Components.social.signInWithFacebook()
         .with(paddingHorizontal: 16)
     private let signInWithGoogle = Components.social.signInWithGoogle()

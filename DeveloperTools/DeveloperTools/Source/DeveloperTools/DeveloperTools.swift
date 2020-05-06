@@ -65,13 +65,10 @@ public class DeveloperTools: NSObject {
     private static var features: DeveloperFeatures = DeveloperFeatures()
     private static var onSelect: DeveloperToolsMenu.OnSelect?
     
-    @available(iOS 13.0, *)
-    internal static var scene: UIWindowScene! {
-        return UIApplication.shared.connectedScenes.first as? UIWindowScene
-    }
     public static var newWindow: UIWindow {
         if #available(iOS 13.0, *) {
-            return UIWindow(windowScene: Self.scene)
+            let scene: UIWindowScene! = UIApplication.shared.connectedScenes.first as? UIWindowScene
+            return UIWindow(windowScene: scene)
         } else {
             return UIWindow(frame: UIScreen.main.bounds)
         }

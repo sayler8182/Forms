@@ -200,8 +200,8 @@ private extension FormsSearchController {
                   force: Bool = false) {
         guard self.state != state || force else { return }
         self.searchBar.animation(animated, duration: self.animationTime) {
-            self.searchBar.textField.textColor = self.textColors.value(for: state)
-            self.searchBar.textField.font = self.textFonts.value(for: state)
+            self.searchBar.textField?.textColor = self.textColors.value(for: state)
+            self.searchBar.textField?.font = self.textFonts.value(for: state)
         }
         self.state = state
     }

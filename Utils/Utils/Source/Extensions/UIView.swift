@@ -16,16 +16,20 @@ public extension UIView {
     
     static var safeArea: UIEdgeInsets {
         if #available(iOS 13.0, *) {
-            let window: UIWindow? = UIApplication.shared.connectedScenes
+            let _window: UIWindow? = UIApplication.shared.connectedScenes
                 .filter { $0.activationState == .foregroundActive }
                 .map { $0 as? UIWindowScene }
                 .compactMap { $0 }
                 .flatMap { $0.windows }
                 .first(where: { $0.isKeyWindow })
-            guard let _window: UIWindow = window else { return UIEdgeInsets(0) }
-            return _window.safeAreaInsets
+            guard let window: UIWindow = _window else { return UIEdgeInsets(0) }
+            return window.safeAreaInsets
+        } else if #available(iOS 11.0, *) {
+            guard let _window: UIWindow? = UIApplication.shared.delegate?.window,
+                let window: UIWindow = _window else { return UIEdgeInsets(0) }
+            return window.safeAreaInsets
         } else {
-            return UIEdgeInsets.zero
+            return UIEdgeInsets(0)
         }
     }
     

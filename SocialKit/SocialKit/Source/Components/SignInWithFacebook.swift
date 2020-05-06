@@ -8,6 +8,7 @@
 
 #if canImport(FBSDKLoginKit)
 
+import Anchor
 import FBSDKCoreKit
 import FBSDKLoginKit
 import Forms

@@ -6,11 +6,11 @@
 //  Copyright © 2020 Limbo. All rights reserved.
 //
 
+import Anchor
 import Forms
 import UIKit
 
 // MARK: DemoNavigationBarViewController
-@available(iOS 13.0, *)
 class DemoNavigationBarViewController: FormsTableViewController {
     private lazy var defaultNavigationBar = Components.navigationBar.default()
         .with(title: "Default navigation bar")
@@ -57,9 +57,9 @@ class DemoNavigationBarViewController: FormsTableViewController {
     private lazy var text2BarItem = BarItem()
         .with(title: "Item 2")
     private lazy var image1BarItem = BarItem()
-        .with(imageSystemName: "heart.fill")
+        .with(imageName: "heart.fill")
     private lazy var image2BarItem = BarItem()
-        .with(imageSystemName: "square.and.arrow.up")
+        .with(imageName: "square.and.arrow.up")
     private lazy var cancelBarItem = BarItem()
         .with(title: "Cancel")
     

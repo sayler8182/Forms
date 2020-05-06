@@ -10,11 +10,10 @@ import Forms
 import UIKit
 
 // MARK: DemoNavigationBarWithBackOrCloseViewController
-@available(iOS 13.0, *)
 class DemoNavigationBarWithBackOrCloseViewController: FormsTableViewController {
     private lazy var navigationBar = Components.navigationBar.default()
-        .with(backImage: { UIImage(systemName: "chevron.compact.left") })
-        .with(closeImage: { UIImage(systemName: "xmark.square") })
+        .with(backImage: { UIImage.from(name: "chevron.compact.left") })
+        .with(closeImage: { UIImage.from(name: "xmark.square") })
     
     override func setupNavigationBar() {
         super.setupNavigationBar()

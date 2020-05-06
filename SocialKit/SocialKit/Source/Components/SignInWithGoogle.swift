@@ -8,6 +8,7 @@
 
 #if canImport(GoogleSignIn)
 
+import Anchor
 import AppAuth
 import Forms
 import GoogleSignIn

@@ -8,6 +8,7 @@
 
 import Forms
 import UIKit
+import Utils
 
 // MARK: DemoToastViewController
 class DemoToastViewController: FormsTableViewController {

@@ -18,6 +18,34 @@ public extension UIColor {
         return UIImage(color: self)
     }
     
+    convenience init(_ rgbDark: Int,
+                     _ darkAlpha: Int = 100,
+                     _ rgbLight: Int,
+                     _ lightAlpha: Int = 100) {
+        if #available(iOS 13.0, *) {
+            self.init { (trait) -> UIColor in
+                return trait.userInterfaceStyle == .dark
+                    ? UIColor(rgbDark, darkAlpha)
+                    : UIColor(rgbLight, lightAlpha)
+            }
+        } else {
+            self.init(rgbLight, lightAlpha)
+        }
+    }
+    
+    convenience init(rgbaDark: UInt,
+                     rgbaLight: UInt) {
+        if #available(iOS 13.0, *) {
+            self.init { (trait) -> UIColor in
+                return trait.userInterfaceStyle == .dark
+                    ? UIColor(rgba: rgbaDark)
+                    : UIColor(rgba: rgbaLight)
+            }
+        } else {
+            self.init(rgba: rgbaLight)
+        }
+    }
+    
     convenience init(_ rgb: Int,
                      _ alpha: Int = 100) {
         self.init(

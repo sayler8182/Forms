@@ -87,39 +87,9 @@ public extension UIView {
 private class ShimmerPlaceholderView: UIView {
     private let gradient = CAGradientLayer()
     private let gradientWidth: CGFloat = 0.17
-    private var backgroundFadedGray = { () -> UIColor in
-        if #available(iOS 13.0, *) {
-            return UIColor { (trait) -> UIColor in
-                return trait.userInterfaceStyle == .dark
-                    ? UIColor(0x161718)
-                    : UIColor(0xF6F7F8)
-            }
-        } else {
-            return UIColor(0xF6F7F8)
-        }
-    }()
-    private var gradientFirstStop = { () -> UIColor in
-        if #available(iOS 13.0, *) {
-            return UIColor { (trait) -> UIColor in
-                return trait.userInterfaceStyle == .dark
-                    ? UIColor(0x2D2D2D)
-                    : UIColor(0xEDEDED)
-            }
-        } else {
-            return UIColor(0xEDEDED)
-        }
-    }()
-    private var gradientSecondStop = { () -> UIColor in
-        if #available(iOS 13.0, *) {
-            return UIColor { (trait) -> UIColor in
-                return trait.userInterfaceStyle == .dark
-                    ? UIColor(0x3D3D3D)
-                    : UIColor(0xDDDDDD)
-            }
-        } else {
-            return UIColor(0xDDDDDD)
-        }
-    }()
+    private let backgroundFadedGray = UIColor(0x161718, 0xF6F7F8)
+    private let gradientFirstStop = UIColor(0x2D2D2D, 0xEDEDED)
+    private let gradientSecondStop = UIColor(0x3D3D3D, 0xDDDDDD)
     
     override func layoutSubviews() {
         super.layoutSubviews()

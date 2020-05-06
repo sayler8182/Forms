@@ -6,7 +6,9 @@
 //  Copyright © 2020 Limbo. All rights reserved.
 //
 
+import Anchor
 import Forms
+import Injector
 import UIKit
 
 private enum Demo {
@@ -362,12 +364,7 @@ private class DemoListViewController: FormsViewController {
         case .modalController:                                  return DemoModalController()
         case .pagerController:                                  return DemoPagerController()
         case .sideMenuController:                               return DemoSideMenuController()
-        case .tabBarController:
-            if #available(iOS 13.0, *) {
-                return DemoTabBarController()
-            } else {
-                return nil
-            }
+        case .tabBarController:                                 return DemoTabBarController()
         case .tableViewController:                              return DemoTableViewController()
         case .viewController:                                   return DemoViewController()
         // components
@@ -378,30 +375,10 @@ private class DemoListViewController: FormsViewController {
         case .componentsInputsSearchBar:                        return DemoSearchBarViewController()
         case .componentsInputsTitleTextField:                   return DemoTitleTextFieldViewController()
         case .componentsLabels:                                 return DemoLabelsViewController()
-        case .componentsNavigationBarsNavigationBar:
-            if #available(iOS 13.0, *) {
-                return DemoNavigationBarViewController()
-            } else {
-                return nil
-            }
-        case .componentsNavigationBarsNavigationBarWithBack:
-            if #available(iOS 13.0, *) {
-                return DemoNavigationBarWithBackOrCloseViewController()
-            } else {
-                return nil
-            }
-        case .componentsNavigationBarsNavigationBarWithClose:
-            if #available(iOS 13.0, *) {
-                return DemoNavigationBarWithBackOrCloseViewController().embeded
-            } else {
-                return nil
-            }
-        case .componentsOthers:
-            if #available(iOS 13.0, *) {
-                return DemoOthersViewController()
-            } else {
-                return nil
-            }
+        case .componentsNavigationBarsNavigationBar:            return DemoNavigationBarViewController()
+        case .componentsNavigationBarsNavigationBarWithBack:    return DemoNavigationBarWithBackOrCloseViewController()
+        case .componentsNavigationBarsNavigationBarWithClose:   return DemoNavigationBarWithBackOrCloseViewController().embeded
+        case .componentsOthers:                                 return DemoOthersViewController()
         case .componentsNavigationProgressBar:                  return DemoNavigationProgressBarViewController()
         case .componentsProgressBars:                           return DemoProgressBarViewController()
         case .componentsUtils:                                  return DemoUtilsViewController()
@@ -417,22 +394,12 @@ private class DemoListViewController: FormsViewController {
         case .utilsNetworkGet:                                  return DemoNetworkGetViewController()
         case .utilsNetworkImage:                                return DemoNetworkImageViewController()
         case .utilsPermissions:                                 return DemoPermissionsViewController()
-        case .utilsShimmerPaginationCollection:
-            if #available(iOS 13.0, *) {
-                return DemoShimmerPaginationCollectionViewController()
-            } else {
-                return nil
-            }
+        case .utilsShimmerPaginationCollection:                 return DemoShimmerPaginationCollectionViewController()
         case .utilsShimmerPaginationTable:                      return DemoShimmerPaginationTableViewController()
         case .utilsShimmerCollection:                           return DemoShimmerCollectionViewController()
         case .utilsShimmerShimmer:                              return DemoShimmerViewController()
         case .utilsShimmerTable:                                return DemoShimmerTableViewController()
-        case .utilsSocialKitAll:
-            if #available(iOS 13.0, *) {
-                return DemoSocialKitAllTableViewController()
-            } else {
-                return nil
-            }
+        case .utilsSocialKitAll:                                return DemoSocialKitAllTableViewController()
         case .utilsSocialKitApple:
             if #available(iOS 13.0, *) {
                 return DemoSocialKitAppleTableViewController()

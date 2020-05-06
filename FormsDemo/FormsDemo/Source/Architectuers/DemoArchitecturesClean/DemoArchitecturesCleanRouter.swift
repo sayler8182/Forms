@@ -6,7 +6,9 @@
 //  Copyright © 2020 Limbo. All rights reserved.
 //
 
+import Anchor
 import Forms
+import Injector
 import UIKit
 
 // MARK: DemoArchitecturesCleanRoutingLogic

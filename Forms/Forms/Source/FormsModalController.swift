@@ -41,7 +41,7 @@ open class FormsModalController: FormsViewController {
         didSet { self.indicatorView.backgroundColor = self.indicatorColor }
     }
     open var minHeight: CGFloat = 80.0
-    open var maxHeight: CGFloat = 500.0
+    open var maxHeight: CGFloat = 480.0
     
     public var onProgress: ((CGFloat) -> Void)? = nil
     

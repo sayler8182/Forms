@@ -10,7 +10,6 @@ import Forms
 import UIKit
 
 // MARK: Keys
-@available(iOS 13.0, *)
 extension DemoTabBarController {
     enum TabBarKeys: String, TabBarKey {
         case main
@@ -35,7 +34,6 @@ extension DemoTabBarController {
 }
 
 // MARK: DemoTabBarController
-@available(iOS 13.0, *)
 class DemoTabBarController: FormsTabBarController {
     override func setupView() {
         super.setupView()
@@ -55,15 +53,15 @@ class DemoTabBarController: FormsTabBarController {
                     }
                     return controller.embeded
                 },
-                image: UIImage(systemName: "heart.fill"),
-                selectedImage: UIImage(systemName: "heart.fill"),
+                image: UIImage.from(name: "heart.fill"),
+                selectedImage: UIImage.from(name: "heart.fill"),
                 title: "First"
             ),
             TabBarItem(
                 itemKey: TabBarMainKeys.second,
                 viewController: { return UIViewController() },
-                image: UIImage(systemName: "heart"),
-                selectedImage: UIImage(systemName: "heart"),
+                image: UIImage.from(name: "heart"),
+                selectedImage: UIImage.from(name: "heart"),
                 title: "Second",
                 isTranslucent: true
             )
@@ -79,7 +77,7 @@ class DemoTabBarController: FormsTabBarController {
                     }
                     return controller.embeded
                 },
-                image: UIImage(systemName: "square.and.arrow.up"),
+                image: UIImage.from(name: "square.and.arrow.up"),
                 title: "First other"
             ),
             TabBarItem(
@@ -92,7 +90,7 @@ class DemoTabBarController: FormsTabBarController {
                     }
                     return controller.embeded
                 },
-                image: UIImage(systemName: "arrow.up"),
+                image: UIImage.from(name: "arrow.up"),
                 title: "Second other"
             ),
             TabBarItem(
@@ -109,7 +107,7 @@ class DemoTabBarController: FormsTabBarController {
                     }
                     return controller.embeded
                 },
-                image: UIImage(systemName: "arrow.down"),
+                image: UIImage.from(name: "arrow.down"),
                 title: "Third other"
             )
         ], forKey: TabBarKeys.other)

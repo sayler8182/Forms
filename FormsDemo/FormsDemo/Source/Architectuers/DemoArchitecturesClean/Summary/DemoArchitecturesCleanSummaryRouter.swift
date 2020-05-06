@@ -7,6 +7,7 @@
 //
 
 import Forms
+import Injector
 import UIKit
 
 // MARK: DemoArchitecturesCleanSummaryRoutingLogic

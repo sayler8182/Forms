@@ -206,8 +206,8 @@ open class SearchBar: FormsComponent, FormsComponentWithMarginEdgeInset, FormsCo
     
     open func setupSearchBar() {
         self.searchBar.backgroundImage = UIImage()
-        self.searchBar.textField.translatesAutoresizingMaskIntoConstraints = false
-        self.searchBar.textField.anchors([
+        self.searchBar.textField?.translatesAutoresizingMaskIntoConstraints = false
+        self.searchBar.textField?.anchors([
             Anchor.to(self.searchBar).fill,
             Anchor.to(self.searchBar.textField).height(36).lessThanOrEqual
         ])
@@ -376,18 +376,5 @@ public extension SearchBar {
     func with(formatText: ((String?) -> String?)?) -> Self {
         self.formatText = formatText
         return self
-    }
-}
-
-// MARK: UISearchBar
-extension UISearchBar {
-    var textField: UITextField! {
-        if #available(iOS 13.0, *) {
-            return self.searchTextField
-        } else {
-            return self.subviews[0].subviews.compactMap {
-                $0 as? UITextField
-            }.first
-        }
     }
 }

@@ -7,6 +7,7 @@
 //
 
 import Forms
+import Injector
 
 // MARK: DemoArchitecturesCleanAssembly
 struct DemoArchitecturesCleanAssembly: Assembly {

@@ -8,6 +8,7 @@
 
 import Forms
 import UIKit
+import Utils
 
 // MARK: DemoAttributedStringViewController
 class DemoAttributedStringViewController: FormsTableViewController {

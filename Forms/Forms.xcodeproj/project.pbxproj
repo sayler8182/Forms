@@ -81,6 +81,7 @@
 		719469C2243DAB6500CAD09B /* Shimmer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 719469C1243DAB6500CAD09B /* Shimmer.swift */; };
 		719469D8243DD04700CAD09B /* FormsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 719469D7243DD04700CAD09B /* FormsTableViewCell.swift */; };
 		719469DC243DDB7600CAD09B /* TableDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 719469DB243DDB7600CAD09B /* TableDataSource.swift */; };
+		719AE5572462BD1C00A39B0E /* Permission.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 719AE5562462BD1C00A39B0E /* Permission.framework */; };
 		71BB62852445FAE7002BB31F /* Networking.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71BB62842445FAE7002BB31F /* Networking.framework */; };
 		71BB62882445FAED002BB31F /* Logger.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71BB62872445FAED002BB31F /* Logger.framework */; };
 		71DB66FC2458385400B16145 /* ImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71DB66FB2458385400B16145 /* ImageView.swift */; };
@@ -171,6 +172,7 @@
 		719469C1243DAB6500CAD09B /* Shimmer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Shimmer.swift; sourceTree = "<group>"; };
 		719469D7243DD04700CAD09B /* FormsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormsTableViewCell.swift; sourceTree = "<group>"; };
 		719469DB243DDB7600CAD09B /* TableDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableDataSource.swift; sourceTree = "<group>"; };
+		719AE5562462BD1C00A39B0E /* Permission.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Permission.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		71BB62842445FAE7002BB31F /* Networking.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Networking.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		71BB62872445FAED002BB31F /* Logger.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Logger.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		71DB66FB2458385400B16145 /* ImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageView.swift; sourceTree = "<group>"; };
@@ -184,6 +186,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				71BB62882445FAED002BB31F /* Logger.framework in Frameworks */,
+				719AE5572462BD1C00A39B0E /* Permission.framework in Frameworks */,
 				719469B5243DA7CF00CAD09B /* Injector.framework in Frameworks */,
 				719469BB243DA7D500CAD09B /* Validators.framework in Frameworks */,
 				719469B8243DA7D200CAD09B /* Utils.framework in Frameworks */,
@@ -397,6 +400,7 @@
 		719469AF243DA7CC00CAD09B /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				719AE5562462BD1C00A39B0E /* Permission.framework */,
 				7103EA7C24609DE600A11A96 /* Permission.framework */,
 				715B7B4124474D8A00754EDB /* Transition.framework */,
 				71BB62872445FAED002BB31F /* Logger.framework */,
@@ -563,7 +567,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "output=\"${BUILD_DIR}/Debug-Universal\"\n\nrm -rf \"${output}\"\nmkdir -p \"${output}\"\n\nframeworks=(\n    Analytics \n    Anchor\n    DeveloperTools\n    Forms\n    Injector\n    Logger\n    Networking\n    Permission\n    SideMenu\n    SocialKit\n    Transition\n    Utils\n    Validators\n) \n\nfor framework in \"${frameworks[@]}\"\ndo \n    cp -R \"${BUILD_DIR}/Debug-iphoneos/${framework}.framework\" \"${output}/\"\n    lipo -create -output \"${output}/${framework}.framework/${framework}\" \"${BUILD_DIR}/Debug-iphoneos/${framework}.framework/${framework}\" \"${BUILD_DIR}/Debug-iphonesimulator/${framework}.framework/${framework}\"\n    cp -r \"${BUILD_DIR}/Debug-iphonesimulator/${framework}.framework/Modules/${framework}.swiftmodule/\" \"${output}/${framework}.framework/Modules/${framework}.swiftmodule\"\ndone\n\nopen \"${output}\"\n";
+			shellScript = "output=\"${BUILD_DIR}/Debug-Universal\"\n\nrm -rf \"${output}\"\nmkdir -p \"${output}\"\n\nframeworks=(\n    Analytics \n    Anchor\n    DeveloperTools\n    Forms\n    Injector\n    Logger\n    Networking\n    Notifications\n    Permission\n    SideMenu\n    SocialKit\n    Transition\n    Utils\n    Validators\n) \n\nfor framework in \"${frameworks[@]}\"\ndo \n    cp -R \"${BUILD_DIR}/Debug-iphoneos/${framework}.framework\" \"${output}/\"\n    lipo -create -output \"${output}/${framework}.framework/${framework}\" \"${BUILD_DIR}/Debug-iphoneos/${framework}.framework/${framework}\" \"${BUILD_DIR}/Debug-iphonesimulator/${framework}.framework/${framework}\"\n    cp -r \"${BUILD_DIR}/Debug-iphonesimulator/${framework}.framework/Modules/${framework}.swiftmodule/\" \"${output}/${framework}.framework/Modules/${framework}.swiftmodule\"\ndone\n\nopen \"${output}\"\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -778,6 +782,7 @@
 		71946951243DA7A800CAD09B /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = KB85VH6WG5;
@@ -809,6 +814,7 @@
 		71946952243DA7A800CAD09B /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = KB85VH6WG5;
