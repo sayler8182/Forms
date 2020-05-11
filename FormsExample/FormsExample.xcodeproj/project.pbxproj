@@ -13,8 +13,6 @@
 		71228E0B2431CF7F00D08B20 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71228E0A2431CF7F00D08B20 /* SceneDelegate.swift */; };
 		71228E122431CF8100D08B20 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 71228E112431CF8100D08B20 /* Assets.xcassets */; };
 		71228E2C2431CFBF00D08B20 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 71228E2B2431CFBF00D08B20 /* LaunchScreen.storyboard */; };
-		719AE5512462B31F00A39B0E /* Notifications.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 719AE4C9246294FC00A39B0E /* Notifications.framework */; };
-		719AE5522462B31F00A39B0E /* Notifications.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 719AE4C9246294FC00A39B0E /* Notifications.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		719AE5B12462C49C00A39B0E /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 719AE5692462C0F900A39B0E /* FBSDKCoreKit.framework */; };
 		719AE5B22462C49C00A39B0E /* FBSDKCoreKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 719AE5692462C0F900A39B0E /* FBSDKCoreKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		719AE5B32462C49D00A39B0E /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 719AE55C2462C0F900A39B0E /* FBSDKLoginKit.framework */; };
@@ -301,7 +299,6 @@
 				71DB66C224582A1E00B16145 /* Utils.framework in Embed Frameworks */,
 				71DB66B624582A1E00B16145 /* ImagePicker.framework in Embed Frameworks */,
 				71CFF42F245956EE0067D13E /* SideMenu.framework in Embed Frameworks */,
-				719AE5522462B31F00A39B0E /* Notifications.framework in Embed Frameworks */,
 				71DB66BA24582A1E00B16145 /* Logger.framework in Embed Frameworks */,
 				71EA6EC72449FC3300ACB5EE /* FormsDemo.framework in Embed Frameworks */,
 				71DB66AE24582A1E00B16145 /* Analytics.framework in Embed Frameworks */,
@@ -370,7 +367,6 @@
 				71DB66B524582A1E00B16145 /* ImagePicker.framework in Frameworks */,
 				719AE5B12462C49C00A39B0E /* FBSDKCoreKit.framework in Frameworks */,
 				71CFF42E245956EE0067D13E /* SideMenu.framework in Frameworks */,
-				719AE5512462B31F00A39B0E /* Notifications.framework in Frameworks */,
 				71DB66B924582A1E00B16145 /* Logger.framework in Frameworks */,
 				71EA6EC62449FC3300ACB5EE /* FormsDemo.framework in Frameworks */,
 				71DB66AD24582A1E00B16145 /* Analytics.framework in Frameworks */,

@@ -81,6 +81,11 @@ public struct Forms {
     
     private static func initializeAssemblies(_ injector: Injector,
                                              _ assemblies: [Assembly]) {
+        Self.assemble(injector, assemblies)
+    }
+    
+    public static func assemble(_ injector: Injector,
+                                _ assemblies: [Assembly]) {
         injector.assemble(assemblies)
     }
 }

@@ -263,7 +263,7 @@ fileprivate extension Array where Element == Demo.Section {
 public class DemoRootViewController: FormsNavigationController {
     override public func postInit() {
         super.postInit()
-        Forms.initialize(Injector.main, [
+        Forms.assemble(Injector.main, [
             DemoArchitecturesCleanAssembly(),
             DemoArchitecturesCleanSummaryAssembly()
         ])

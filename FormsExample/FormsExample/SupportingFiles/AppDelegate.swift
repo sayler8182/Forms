@@ -8,8 +8,11 @@
 
 import Analytics
 import DeveloperTools
+import Forms
 import FormsDemo
-import Notifications
+import Injector
+// import Notifications
+import Permission
 import SocialKit
 import UIKit
 
@@ -19,8 +22,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func application(_ application: UIApplication,
                      didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+        // Forms
+        Forms.initialize(Injector.main)
+        
         // Analytics
-        Analytics.configure()
+        // Analytics.configure()
         
         // DeveloperTools
         DeveloperTools.configure(
@@ -30,7 +36,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         LifetimeTracker.configure()
         
         // Notifications
-        Notifications.configure()
+        // Notifications.configure(
+        //    onNewToken: { fcm in print("\n\(fcm)\n") },
+        //    onWillPresent: { _ in .alert },
+        //    onDidReceive: { response in print("\n\(response.notification.request.content.userInfo)\n") })
+        
+        // Permission
+        // Permission.notifications.ask { (_) in
+        //    Notifications.registerRemote()
+        //}
         
         // SocialKit
         SocialKit.configure(
@@ -46,11 +60,27 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
         return true
     }
+    
+    func application(_ application: UIApplication,
+                     didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
+        // Notifications.setAPNSToken(deviceToken)
+    }
 
     @available(iOS 13.0, *)
     func application(_ application: UIApplication,
                      configurationForConnecting connectingSceneSession: UISceneSession,
                      options: UIScene.ConnectionOptions) -> UISceneConfiguration {
         return UISceneConfiguration(name: "Default Configuration", sessionRole: connectingSceneSession.role)
+    }
+    
+    func application(_ application: UIApplication,
+                     didReceiveRemoteNotification userInfo: [AnyHashable : Any],
+                     fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
+        print(userInfo)
+    }
+    
+    func application(_ application: UIApplication,
+                     didReceiveRemoteNotification userInfo: [AnyHashable : Any]) {
+        print(userInfo)
     }
 }

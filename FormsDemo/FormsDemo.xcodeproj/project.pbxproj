@@ -60,8 +60,6 @@
 		719469C4243DB01D00CAD09B /* DemoShimmerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 719469C3243DB01D00CAD09B /* DemoShimmerViewController.swift */; };
 		719469D4243DBC6800CAD09B /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 719469D3243DBC6800CAD09B /* Utils.swift */; };
 		719469D6243DC11000CAD09B /* DemoShimmerTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 719469D5243DC11000CAD09B /* DemoShimmerTableViewController.swift */; };
-		719AE54D2462A53F00A39B0E /* Notifications.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 719AE54C2462A53F00A39B0E /* Notifications.framework */; };
-		719AE54E2462A53F00A39B0E /* Notifications.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 719AE54C2462A53F00A39B0E /* Notifications.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		719AE5D0246308FC00A39B0E /* DemoTransitionControllerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 719AE5CF246308FC00A39B0E /* DemoTransitionControllerViewController.swift */; };
 		719F8C7B24570358004F5A27 /* DemoDeveloperToolsMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 719F8C7A24570358004F5A27 /* DemoDeveloperToolsMenuViewController.swift */; };
 		71BB61EF2445C6E7002BB31F /* DemoNetworkGetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71BB61EE2445C6E7002BB31F /* DemoNetworkGetViewController.swift */; };
@@ -105,7 +103,6 @@
 				71CFF42D245956E40067D13E /* SideMenu.framework in Embed Frameworks */,
 				71DB66902458299800B16145 /* Analytics.framework in Embed Frameworks */,
 				71DB66932458299A00B16145 /* DeveloperTools.framework in Embed Frameworks */,
-				719AE54E2462A53F00A39B0E /* Notifications.framework in Embed Frameworks */,
 				71DB66F92458336800B16145 /* ImagePicker.framework in Embed Frameworks */,
 				71DB66972458299C00B16145 /* SocialKit.framework in Embed Frameworks */,
 				71DB66952458299B00B16145 /* Forms.framework in Embed Frameworks */,
@@ -205,7 +202,6 @@
 				71CFF42C245956E40067D13E /* SideMenu.framework in Frameworks */,
 				71DB668F2458299800B16145 /* Analytics.framework in Frameworks */,
 				71DB66942458299B00B16145 /* Forms.framework in Frameworks */,
-				719AE54D2462A53F00A39B0E /* Notifications.framework in Frameworks */,
 				71DB66F82458336800B16145 /* ImagePicker.framework in Frameworks */,
 				71DB66962458299C00B16145 /* SocialKit.framework in Frameworks */,
 				71DB66922458299A00B16145 /* DeveloperTools.framework in Frameworks */,
