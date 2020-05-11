@@ -50,6 +50,15 @@ public struct ComponentsInputs: ComponentsList {
             }
         }
         
+        public enum postCode {
+            public static func `default`() -> TitleTextField {
+                let component = ComponentsInputs.textField.default()
+                component.keyboardType = .numberPad
+                component.textFieldDelegate = TextFieldDelegates.postCode()
+                return component
+            }
+        }
+        
         public static func `default`() -> TitleTextField {
             let component = TitleTextField()
             component.animationTime = 0.1

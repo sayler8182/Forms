@@ -412,11 +412,15 @@ public extension FormsTableViewController {
 public extension FormsTableViewController {
     @discardableResult
     func validate() -> Bool {
+        return self.validate(false)
+    }
+    
+    @discardableResult
+    func validate(_ isSilence: Bool) -> Bool {
         var result: Bool = true
         let items: [Validable] = self.views.compactMap { $0 as? Validable }
         for item in items {
-            result = item.validate()
-            guard result else { break }
+            result = result && item.validate(isSilence)
         }
         self.refreshTableView()
         return result

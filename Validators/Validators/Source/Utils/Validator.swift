@@ -52,7 +52,10 @@ public protocol Validable: class {
     @discardableResult
     func validate() -> Bool
     @discardableResult
-    func validate(_ validator: Validator) -> Bool
+    func validate(_ isSilence: Bool) -> Bool
+    @discardableResult
+    func validate(_ validator: Validator,
+                  _ isSilence: Bool) -> Bool
     func addValidator(_ validator: Validator)
     func removeValidator(_ validator: Validator)
 }
@@ -64,10 +67,14 @@ public extension Validable {
     
     @discardableResult
     func validate() -> Bool {
+        return self.validate(false)
+    }
+    
+    @discardableResult
+    func validate(_ isSilence: Bool) -> Bool {
         var result: Bool = true
         for validator in self.validators {
-            result = self.validate(validator)
-            guard result else { return false }
+            result = result && self.validate(validator, isSilence)
         }
         return true
     }
@@ -120,6 +127,7 @@ public enum ValidationErrorType: String, ValidationErrorTypeProtocol {
     case peselShort
     case peselLong
     case phone
+    case postCode
     
     public var error: ValidationError {
         return ValidationError(self)
@@ -135,6 +143,7 @@ public class ValidationError {
     static var peselShortError = ValidationErrorType.peselShort.error
     static var peselLongError = ValidationErrorType.peselLong.error
     static var phoneError = ValidationErrorType.phone.error
+    static var postCodeError = ValidationErrorType.postCode.error
     
     static func amountMinError(_ minAmount: String) -> ValidationError {
         ValidationError(ValidationErrorType.amountMin, [minAmount])
@@ -195,6 +204,8 @@ open class ValidatorTranslator: ValidatorTranslatorProtocol {
             return "Pesel number is too long "
         case ValidationErrorType.phone.rawValue:
             return "Incorrect phone number format"
+        case ValidationErrorType.postCode.rawValue:
+            return "Incorrect post code format"
             
         case ValidationErrorType.amountMin.rawValue:
             return "Minimum allowed amount is \(parameters[safe: 0, or: ""])"

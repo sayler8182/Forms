@@ -8,6 +8,7 @@
 
 import Foundation
 
+// MARK: NotEmptyValidator
 public class NotEmptyValidator: Validator {
     override public func validate(_ value: Any?) -> ValidationResult {
         let value: String = value as? String ?? ""

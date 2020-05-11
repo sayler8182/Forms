@@ -16,4 +16,5 @@ public struct TextFieldDelegates {
     typealias email = TextFieldEmailDelegate
     typealias pesel = TextFieldPeselDelegate
     typealias phone = TextFieldPhoneDelegate
+    typealias postCode = TextFieldPostCodeDelegate
 }

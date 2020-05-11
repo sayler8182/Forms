@@ -213,11 +213,13 @@ private enum Demo {
                     ]),
                     Row(type: .utilsStorage, title: "Storage"),
                     Row(type: .utilsToast, title: "Toast"),
-                    Row(type: .utilsTransitions, title: "Transitions",
+                    Row(
+                        type: .utilsTransitions,
+                        title: "Transitions",
                         sections: [
                             Section(rows: [
                                 Row(type: .utilsTransitionsController, title: "Transitions Controller"),
-                                Row(type: .utilsTransitionsNavigation, title: "Transitions Navigation", shouldPresent: true),
+                                Row(type: .utilsTransitionsNavigation, title: "Transitions Navigation", shouldPresent: true)
                             ])
                     ]),
                     Row(type: .utilsValidators, title: "Validators")

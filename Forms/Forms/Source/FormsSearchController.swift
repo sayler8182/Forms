@@ -248,9 +248,10 @@ extension FormsSearchController {
     }
 }
 
-// MARK: Validadble
+// MARK: Validable
 extension FormsSearchController: Validable {
-    public func validate(_ validator: Validator) -> Bool {
+    public func validate(_ validator: Validator,
+                         _ isSilence: Bool) -> Bool {
         return validator.validate(self.text).isValid
     }
 }

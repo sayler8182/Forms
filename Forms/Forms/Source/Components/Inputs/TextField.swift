@@ -181,7 +181,7 @@ open class TextField: FormsComponent, FormsComponentWithMarginEdgeInset, FormsCo
     public var formatText: ((String?) -> String?)?
     
     public var onBeginEditing: ((String?) -> Void)?
-    public var onDidPaste: ((String?) -> Void)?
+    public var onDidPaste: ((String?, String) -> Void)?
     public var onEndEditing: ((String?) -> Void)?
     public var onTextChanged: ((String?) -> Void)?
     
@@ -233,13 +233,7 @@ open class TextField: FormsComponent, FormsComponentWithMarginEdgeInset, FormsCo
             self.validate()
             self.table?.refreshTableView()
         }
-    }
-    
-    @objc
-    private func handleOnDidPaste(_ sender: UITextField) {
-        self.validatorTrigger()
-        self.onDidPaste?(sender.text)
-    }
+    } 
     
     @objc
     private func handleOnEndEditing(_ sender: UITextField) {
@@ -348,11 +342,14 @@ open class TextField: FormsComponent, FormsComponentWithMarginEdgeInset, FormsCo
     }
 }
 
-// MARK: Validadble
+// MARK: Validable
 extension TextField: Validable {
-    public func validate(_ validator: Validator) -> Bool {
+    public func validate(_ validator: Validator,
+                         _ isSilence: Bool) -> Bool {
         let result = validator.validate(self.text)
-        self.error = self.validatorTriggered ? result.description : nil
+        if !isSilence {
+            self.error = self.validatorTriggered ? result.description : nil
+        }
         return result.isValid
     }
 }
@@ -511,5 +508,18 @@ public extension TextField {
     func with(formatText: ((String?) -> String?)?) -> Self {
         self.formatText = formatText
         return self
+    }
+}
+
+// MARK: UITextField
+public extension UITextField {
+    var formTextField: TextField? {
+        var superview: UIView? = self
+        while superview != nil {
+            superview = superview?.superview
+            guard let textField = superview as? TextField else { continue }
+            return textField
+        }
+        return nil
     }
 }

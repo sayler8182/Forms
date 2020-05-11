@@ -267,9 +267,10 @@ open class SearchBar: FormsComponent, FormsComponentWithMarginEdgeInset, FormsCo
     }
 }
 
-// MARK: Validadble
+// MARK: Validable
 extension SearchBar: Validable {
-    public func validate(_ validator: Validator) -> Bool {
+    public func validate(_ validator: Validator,
+                         _ isSilence: Bool) -> Bool {
         return validator.validate(self.text).isValid
     }
 }

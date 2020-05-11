@@ -8,6 +8,7 @@
 
 import Foundation
 
+// MARK: EmailValidator
 public class EmailValidator: Validator {
     override public init(isRequired: Bool = true) {
         super.init(isRequired: isRequired)

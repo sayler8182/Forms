@@ -33,6 +33,7 @@
 		714848D3244858FF00455560 /* ComponentsOther.swift in Sources */ = {isa = PBXBuildFile; fileRef = 714848D2244858FF00455560 /* ComponentsOther.swift */; };
 		714848D62448598600455560 /* ActivityIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 714848D52448598600455560 /* ActivityIndicator.swift */; };
 		715692BB243E5A2A00B4613C /* Pagination.swift in Sources */ = {isa = PBXBuildFile; fileRef = 715692BA243E5A2A00B4613C /* Pagination.swift */; };
+		7156F831246486F40078AA75 /* TextFieldPostCodeDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7156F830246486F40078AA75 /* TextFieldPostCodeDelegate.swift */; };
 		715B7B4224474D8A00754EDB /* Transition.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 715B7B4124474D8A00754EDB /* Transition.framework */; };
 		7193E34A2451AC0E006238C5 /* AppStoreReview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7193E3492451AC0E006238C5 /* AppStoreReview.swift */; };
 		7193E34C2451B047006238C5 /* Storage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7193E34B2451B047006238C5 /* Storage.swift */; };
@@ -120,6 +121,7 @@
 		714848D2244858FF00455560 /* ComponentsOther.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComponentsOther.swift; sourceTree = "<group>"; };
 		714848D52448598600455560 /* ActivityIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityIndicator.swift; sourceTree = "<group>"; };
 		715692BA243E5A2A00B4613C /* Pagination.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pagination.swift; sourceTree = "<group>"; };
+		7156F830246486F40078AA75 /* TextFieldPostCodeDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldPostCodeDelegate.swift; sourceTree = "<group>"; };
 		715B7B4124474D8A00754EDB /* Transition.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Transition.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7193E3492451AC0E006238C5 /* AppStoreReview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppStoreReview.swift; sourceTree = "<group>"; };
 		7193E34B2451B047006238C5 /* Storage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Storage.swift; sourceTree = "<group>"; };
@@ -416,12 +418,13 @@
 		719469D9243DDB5C00CAD09B /* TextField */ = {
 			isa = PBXGroup;
 			children = (
+				71946988243DA7BE00CAD09B /* TextFieldDelegate.swift */,
+				71946989243DA7BE00CAD09B /* TextFieldDelegates.swift */,
 				71946985243DA7BE00CAD09B /* TextFieldEmailDelegate.swift */,
 				71946986243DA7BE00CAD09B /* TextFieldPeselDelegate.swift */,
 				71946987243DA7BE00CAD09B /* TextFieldAmountDelegate.swift */,
-				71946988243DA7BE00CAD09B /* TextFieldDelegate.swift */,
-				71946989243DA7BE00CAD09B /* TextFieldDelegates.swift */,
 				7194698A243DA7BE00CAD09B /* TextFieldPhoneDelegate.swift */,
+				7156F830246486F40078AA75 /* TextFieldPostCodeDelegate.swift */,
 			);
 			path = TextField;
 			sourceTree = "<group>";
@@ -631,6 +634,7 @@
 				719469A1243DA7BE00CAD09B /* TitleTextField.swift in Sources */,
 				719469D8243DD04700CAD09B /* FormsTableViewCell.swift in Sources */,
 				715692BB243E5A2A00B4613C /* Pagination.swift in Sources */,
+				7156F831246486F40078AA75 /* TextFieldPostCodeDelegate.swift in Sources */,
 				71946995243DA7BE00CAD09B /* Modal.swift in Sources */,
 				71946994243DA7BE00CAD09B /* ComponentsButtons.swift in Sources */,
 			);

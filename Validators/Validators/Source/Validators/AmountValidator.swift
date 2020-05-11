@@ -9,6 +9,7 @@
 import Foundation
 import Utils
 
+// MARK: AmountValidator
 public class AmountValidator: Validator {
     private let currency: String?
     private let minAmount: Double?
