@@ -117,6 +117,7 @@ public class DeveloperTools: NSObject {
     }
 }
 
+// MARK: UIWindow
 public extension UIWindow {
     override func motionBegan(_ motion: UIEvent.EventSubtype, with event: UIEvent?) {
         super.motionBegan(motion, with: event)

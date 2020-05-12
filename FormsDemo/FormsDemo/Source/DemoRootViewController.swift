@@ -49,6 +49,7 @@ private enum Demo {
         case utilsAppStoreReview
         case utilsAttributedString
         case utilsDeveloperTools
+        case utilsDeveloperToolsAutolayout
         case utilsDeveloperToolsLifetime
         case utilsDeveloperToolsMenu
         case utilsImagePicker
@@ -164,6 +165,7 @@ private enum Demo {
                         title: "DeveloperTools",
                         sections: [
                             Section(rows: [
+                                Row(type: .utilsDeveloperToolsAutolayout, title: "Autolayout"),
                                 Row(type: .utilsDeveloperToolsLifetime, title: "Lifetime"),
                                 Row(type: .utilsDeveloperToolsMenu, title: "Menu")
                             ])
@@ -396,6 +398,7 @@ private class DemoListViewController: FormsViewController {
         case .utilsAnalytics:                                   return DemoAnalyticsViewController()
         case .utilsAppStoreReview:                              return DemoAppStoreReviewViewController()
         case .utilsAttributedString:                            return DemoAttributedStringViewController()
+        case .utilsDeveloperToolsAutolayout:                    return DemoDeveloperToolsAutolayoutViewController()
         case .utilsDeveloperToolsLifetime:                      return DemoDeveloperToolsLifetimeViewController()
         case .utilsDeveloperToolsMenu:                          return DemoDeveloperToolsMenuViewController()
         case .utilsImagePickerSystem:                           return DemoImagePickerSystemViewController()

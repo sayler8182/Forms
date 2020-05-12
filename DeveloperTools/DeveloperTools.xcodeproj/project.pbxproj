@@ -7,6 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7158CB87246A7B2400797B83 /* AutolayoutInterceptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7158CB7B246A7B2400797B83 /* AutolayoutInterceptor.swift */; };
+		7158CB89246A7B2400797B83 /* NSLayoutConstraint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7158CB7D246A7B2400797B83 /* NSLayoutConstraint.swift */; };
+		7158CB8A246A7B2400797B83 /* AutolayoutFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7158CB7E246A7B2400797B83 /* AutolayoutFormatter.swift */; };
+		7158CB8B246A7B2400797B83 /* AutolayoutReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7158CB7F246A7B2400797B83 /* AutolayoutReader.swift */; };
+		7158CB8C246A7B2400797B83 /* AutolayoutContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7158CB80246A7B2400797B83 /* AutolayoutContext.swift */; };
+		7158CB8D246A7B2400797B83 /* UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7158CB81246A7B2400797B83 /* UIView.swift */; };
+		7158CB8E246A7B2400797B83 /* AutolayoutWriter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7158CB82246A7B2400797B83 /* AutolayoutWriter.swift */; };
+		7158CB90246A7B2400797B83 /* Autolayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7158CB84246A7B2400797B83 /* Autolayout.swift */; };
 		7178025B24543D2B0057E848 /* DeveloperTools.h in Headers */ = {isa = PBXBuildFile; fileRef = 7178025924543D2B0057E848 /* DeveloperTools.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		7178029B24543F3F0057E848 /* LifetimeTracker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7178029A24543F3F0057E848 /* LifetimeTracker.swift */; };
 		717802D32454556E0057E848 /* LifetimeTrackerListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 717802C02454556E0057E848 /* LifetimeTrackerListViewController.swift */; };
@@ -30,6 +38,14 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		7158CB7B246A7B2400797B83 /* AutolayoutInterceptor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AutolayoutInterceptor.swift; sourceTree = "<group>"; };
+		7158CB7D246A7B2400797B83 /* NSLayoutConstraint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSLayoutConstraint.swift; sourceTree = "<group>"; };
+		7158CB7E246A7B2400797B83 /* AutolayoutFormatter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AutolayoutFormatter.swift; sourceTree = "<group>"; };
+		7158CB7F246A7B2400797B83 /* AutolayoutReader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AutolayoutReader.swift; sourceTree = "<group>"; };
+		7158CB80246A7B2400797B83 /* AutolayoutContext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AutolayoutContext.swift; sourceTree = "<group>"; };
+		7158CB81246A7B2400797B83 /* UIView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIView.swift; sourceTree = "<group>"; };
+		7158CB82246A7B2400797B83 /* AutolayoutWriter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AutolayoutWriter.swift; sourceTree = "<group>"; };
+		7158CB84246A7B2400797B83 /* Autolayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Autolayout.swift; sourceTree = "<group>"; };
 		7178025924543D2B0057E848 /* DeveloperTools.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DeveloperTools.h; sourceTree = "<group>"; };
 		7178025A24543D2B0057E848 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7178028124543DBA0057E848 /* DeveloperToolsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DeveloperToolsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -63,6 +79,29 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		7158CB79246A7B0800797B83 /* Autolayout */ = {
+			isa = PBXGroup;
+			children = (
+				7158CB94246A81D800797B83 /* Extensions */,
+				7158CB84246A7B2400797B83 /* Autolayout.swift */,
+				7158CB80246A7B2400797B83 /* AutolayoutContext.swift */,
+				7158CB7E246A7B2400797B83 /* AutolayoutFormatter.swift */,
+				7158CB7B246A7B2400797B83 /* AutolayoutInterceptor.swift */,
+				7158CB7F246A7B2400797B83 /* AutolayoutReader.swift */,
+				7158CB82246A7B2400797B83 /* AutolayoutWriter.swift */,
+			);
+			path = Autolayout;
+			sourceTree = "<group>";
+		};
+		7158CB94246A81D800797B83 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				7158CB7D246A7B2400797B83 /* NSLayoutConstraint.swift */,
+				7158CB81246A7B2400797B83 /* UIView.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		7178024C24543D2B0057E848 = {
 			isa = PBXGroup;
 			children = (
@@ -85,6 +124,7 @@
 		7178027C24543D8E0057E848 /* Source */ = {
 			isa = PBXGroup;
 			children = (
+				7158CB79246A7B0800797B83 /* Autolayout */,
 				71ED4F5624558AFB0072ACA3 /* DeveloperTools */,
 				717802BE2454556E0057E848 /* LifetimeTracker */,
 			);
@@ -228,9 +268,17 @@
 				717802D32454556E0057E848 /* LifetimeTrackerListViewController.swift in Sources */,
 				71ED4F5824558B100072ACA3 /* DeveloperTools.swift in Sources */,
 				717802DC2454556E0057E848 /* LifetimeTrackerDashboardViewController.swift in Sources */,
+				7158CB89246A7B2400797B83 /* NSLayoutConstraint.swift in Sources */,
+				7158CB87246A7B2400797B83 /* AutolayoutInterceptor.swift in Sources */,
+				7158CB8D246A7B2400797B83 /* UIView.swift in Sources */,
 				71ED4F5C24558C820072ACA3 /* DeveloperToolsMenuViewController.swift in Sources */,
 				717802DE2454556E0057E848 /* LifetimeTrackerManager.swift in Sources */,
+				7158CB8A246A7B2400797B83 /* AutolayoutFormatter.swift in Sources */,
+				7158CB90246A7B2400797B83 /* Autolayout.swift in Sources */,
+				7158CB8E246A7B2400797B83 /* AutolayoutWriter.swift in Sources */,
+				7158CB8C246A7B2400797B83 /* AutolayoutContext.swift in Sources */,
 				717802E4245469310057E848 /* LifetimeTrackerView.swift in Sources */,
+				7158CB8B246A7B2400797B83 /* AutolayoutReader.swift in Sources */,
 				7178029B24543F3F0057E848 /* LifetimeTracker.swift in Sources */,
 				71ED4F5A24558BB60072ACA3 /* DeveloperToolsMenu.swift in Sources */,
 			);

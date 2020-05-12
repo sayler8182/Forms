@@ -29,6 +29,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Analytics.configure()
         
         // DeveloperTools
+        Autolayout.configure()
         DeveloperTools.configure(
             features: DemoDeveloperFeatureKeys.allCases,
             featuresFlags: DemoDeveloperFeatureFlagKeys.allCases,
@@ -74,13 +75,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func application(_ application: UIApplication,
-                     didReceiveRemoteNotification userInfo: [AnyHashable : Any],
+                     didReceiveRemoteNotification userInfo: [AnyHashable: Any],
                      fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
         print(userInfo)
     }
     
     func application(_ application: UIApplication,
-                     didReceiveRemoteNotification userInfo: [AnyHashable : Any]) {
+                     didReceiveRemoteNotification userInfo: [AnyHashable: Any]) {
         print(userInfo)
     }
 }
