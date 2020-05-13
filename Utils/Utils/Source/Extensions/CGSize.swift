@@ -8,6 +8,7 @@
 
 import UIKit
 
+// MARK: CGSize
 public extension CGSize {
     init(size: CGFloat) {
         self.init(width: size, height: size)

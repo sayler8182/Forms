@@ -18,7 +18,11 @@ public struct ComponentsContainers: ComponentsList {
         component.height = 100
         component.marginEdgeInset = UIEdgeInsets(0)
         component.paddingEdgeInset = UIEdgeInsets(0)
+        component.scrollDelegate = component
         component.scrollDirection = .horizontal
+        component.scrollSteps = nil
+        component.showsHorizontalScrollIndicator = false
+        component.showsVerticalScrollIndicator = false
         component.spacing = 0
         return component
     }

@@ -10,7 +10,7 @@ import Foundation
 
 // MARK: Pagination
 public class Pagination<ID, D> {
-    public typealias OnNextPageId = (Pagination<ID, D>, Page<ID, D>?) -> ID?
+    public typealias OnNextPageId = (_ pagination: Pagination<ID, D>, _ page: Page<ID, D>?) -> ID?
     
     public let firstPageId: ID?
     public let limit: Int

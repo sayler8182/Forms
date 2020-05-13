@@ -30,7 +30,7 @@ open class FormsModalController: FormsViewController {
     open var height: CGFloat {
         get { return self.contentHeight }
         set {
-            self.contentHeightAnchor.constraint?.constant = newValue
+            self.contentHeightAnchor.constant = newValue
             self.contentHeight = newValue
         }
     }
@@ -101,7 +101,7 @@ open class FormsModalController: FormsViewController {
             duration: 0.3,
             animations: {
                 self.overlayView?.alpha = 1.0
-                self.contentHeightAnchor.constraint?.constant = self.maxHeight
+                self.contentHeightAnchor.constant = self.maxHeight
                 self.parent?.view.layoutIfNeeded()
                 self.onProgress?(1.0)
         }, completion: { (status) in
@@ -117,7 +117,7 @@ open class FormsModalController: FormsViewController {
             duration: 0.3,
             animations: {
                 self.overlayView?.alpha = 0.0
-                self.contentHeightAnchor.constraint?.constant = self.minHeight
+                self.contentHeightAnchor.constant = self.minHeight
                 self.parent?.view.layoutIfNeeded()
                 self.onProgress?(0.0)
         }, completion: { (status) in
@@ -155,13 +155,14 @@ open class FormsModalController: FormsViewController {
     @objc
     private func handlePan(recognizer: UIPanGestureRecognizer) {
         let translation = recognizer.translation(in: self.view)
-        let height: CGFloat = min(max(self.minHeight, self.contentHeight - translation.y), self.maxHeight)
+        let height: CGFloat = (self.contentHeight - translation.y)
+            .match(from: self.minHeight, to: self.maxHeight)
         var progress: CGFloat = self.maxHeight != self.minHeight
             ? (height - self.minHeight) / (self.maxHeight - self.minHeight)
             : 1.0
         guard recognizer.state != .ended && recognizer.state != .cancelled else {
             let velocity = recognizer.velocity(in: self.view)
-            progress = min(max(0, progress + (-velocity.y / 2_000.0)), 1.0)
+            progress = (progress + (-velocity.y / 2_000.0)).match(in: 0..<1)
             if progress >= 0.5 {
                 self.open()
             } else {
@@ -176,7 +177,7 @@ open class FormsModalController: FormsViewController {
             true,
             duration: 0.3,
             animations: {
-                self.contentHeightAnchor.constraint?.constant = height
+                self.contentHeightAnchor.constant = height
                 self.onProgress?(progress)
         })
     }

@@ -60,6 +60,7 @@ private enum Demo {
         case utilsNetworkGet
         case utilsNetworkImage
         case utilsPermissions
+        case utilsScrollSteps
         case utilsShimmer
         case utilsShimmerPaginationCollection
         case utilsShimmerPaginationTable
@@ -190,6 +191,7 @@ private enum Demo {
                             ])
                     ]),
                     Row(type: .utilsPermissions, title: "Permissions"),
+                    Row(type: .utilsScrollSteps, title: "ScrollSteps"),
                     Row(
                         type: .utilsShimmer,
                         title: "Shimmer",
@@ -407,6 +409,7 @@ private class DemoListViewController: FormsViewController {
         case .utilsNetworkGet:                                  return DemoNetworkGetViewController()
         case .utilsNetworkImage:                                return DemoNetworkImageViewController()
         case .utilsPermissions:                                 return DemoPermissionsViewController()
+        case .utilsScrollSteps:                                 return DemoScrollStepsViewController()
         case .utilsShimmerPaginationCollection:                 return DemoShimmerPaginationCollectionViewController()
         case .utilsShimmerPaginationTable:                      return DemoShimmerPaginationTableViewController()
         case .utilsShimmerCollection:                           return DemoShimmerCollectionViewController()

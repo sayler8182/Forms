@@ -8,6 +8,7 @@
 
 import UIKit
 
+// MARK: CGRect
 public extension CGRect {
     init(width: CGFloat,
          height: CGFloat) {

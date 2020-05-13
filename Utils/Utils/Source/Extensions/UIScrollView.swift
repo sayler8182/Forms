@@ -8,6 +8,7 @@
 
 import UIKit
 
+// MARK: UIScrollView
 public extension UIScrollView {
     @discardableResult
     func shouldLoadNext(offset: CGFloat = 0) -> Bool {

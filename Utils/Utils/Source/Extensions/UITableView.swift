@@ -8,6 +8,7 @@
 
 import UIKit
 
+// MARK: UITableView
 public extension UITableView {
     func animated(_ animated: UITableView.RowAnimation,
                   action: () -> Void) {

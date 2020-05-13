@@ -8,8 +8,13 @@
 
 import Foundation
 
+// MARK: Bool
 public extension Bool {
     var not: Bool {
         return !self
+    }
+    
+    var asInt: Int {
+        return self ? 1 : 0
     }
 }

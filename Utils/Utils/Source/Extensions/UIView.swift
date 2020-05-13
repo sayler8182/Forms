@@ -177,6 +177,7 @@ public extension UIView {
     }
 }
 
+// MARK: [UIView]
 public extension Array where Element == UIView {
     func removeFromSuperview() {
         for view in self {

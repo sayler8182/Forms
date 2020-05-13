@@ -23,7 +23,7 @@ open class ProgressBar: FormsComponent, FormsComponentWithProgress, FormsCompone
         set { self.backgroundView.backgroundColor = newValue }
     }
     open var height: CGFloat = 4.0 {
-        didSet { self.primaryHeightAnchor.constraint?.constant = self.height }
+        didSet { self.primaryHeightAnchor.constant = self.height }
     }
     open var marginEdgeInset: UIEdgeInsets = UIEdgeInsets(0) {
         didSet { self.updateMarginEdgeInset() }
@@ -56,7 +56,7 @@ open class ProgressBar: FormsComponent, FormsComponentWithProgress, FormsCompone
     
     public func setProgress(_ progress: CGFloat,
                             animated: Bool) {
-        let progress: CGFloat = min(max(0.0, progress), 1.0)
+        let progress: CGFloat = progress.match(in: 0..<1)
         self.animation(
             animated,
             duration: self.animationTime,

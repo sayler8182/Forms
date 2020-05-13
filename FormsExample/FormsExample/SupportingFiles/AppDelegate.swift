@@ -26,7 +26,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         Forms.initialize(Injector.main)
         
         // Analytics
-        // Analytics.configure()
+        Analytics.configure()
         
         // DeveloperTools
         Autolayout.configure()
@@ -64,7 +64,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func application(_ application: UIApplication,
                      didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
-        // Notifications.setAPNSToken(deviceToken)
+//         Notifications.setAPNSToken(deviceToken)
     }
 
     @available(iOS 13.0, *)

@@ -74,8 +74,8 @@ open class TabBarItem {
 
 // MARK: TabBar
 open class TabBar: UITabBar {
-    public typealias OnSelect = ((TabBarItem) -> Void)
-    public typealias ShouldSelect = ((TabBarItem) -> Bool)
+    public typealias OnSelect = ((_ item: TabBarItem) -> Void)
+    public typealias ShouldSelect = ((_ item: TabBarItem) -> Bool)
     
     private let contentView = UIView()
     private let stackView = UIStackView()

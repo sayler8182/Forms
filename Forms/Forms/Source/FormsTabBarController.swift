@@ -182,7 +182,7 @@ public extension FormsTabBarController {
             animated,
             duration: 0.3,
             animations: {
-                self.tabBarBottomAnchor.constraint?.constant = 0
+                self.tabBarBottomAnchor.constant = 0
                 self.tabBar.alpha = 1
                 self.view.layoutIfNeeded()
         }, completion: { (status) in
@@ -196,7 +196,7 @@ public extension FormsTabBarController {
             animated,
             duration: 0.3,
             animations: {
-                self.tabBarBottomAnchor.constraint?.constant = self.tabBar.frame.height
+                self.tabBarBottomAnchor.constant = self.tabBar.frame.height
                 self.tabBar.alpha = 0
                 self.view.layoutIfNeeded()
         }, completion: { (status) in

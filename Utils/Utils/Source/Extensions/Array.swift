@@ -14,8 +14,9 @@ public extension Collection {
         return self.indices.contains(index) ? self[index] : nil
     }
     
-    subscript(safe index: Index, or default: Element) -> Element {
-        return self.indices.contains(index) ? self[index] : `default`
+    subscript(safe index: Index,
+              or default: Element) -> Element {
+            return self.indices.contains(index) ? self[index] : `default`
     }
     
     var isNotEmpty: Bool {
@@ -30,24 +31,34 @@ public extension Collection {
         return try self.filter { !(try isIncluded($0)) }
     }
     
-    func doNotContains(where: (Element) throws -> Bool) rethrows -> Bool {
+    func notContains(where: (Element) throws -> Bool) rethrows -> Bool {
         return try !self.contains(where: `where`)
     }
 }
 
 extension Collection where Element: Equatable {
-    func doNotContains(_ element: Element) -> Bool {
+    var withoutDuplicates: [Element] {
+        var result: [Element] = []
+        for item in self {
+            guard !result.contains(item) else { continue }
+            result.append(item)
+        }
+        return result
+    }
+    
+    func notContains(_ element: Element) -> Bool {
         return !self.contains(element)
     }
 }
 
-// MARK: Arrray
+// MARK: Array
 public extension Array {
     func last(count: Int) -> Array {
-        var value = self
-        let result = (0..<count)
-            .compactMap { _ in return value.popLast() }
-        return result.reversed()
+        let count: Int = Swift.max(0, self.count - count)
+        return self
+            .enumerated()
+            .filter { (i, _) in return i < count }
+            .compactMap { return $0.element }
     }
     
     func first(count: Int) -> Array {

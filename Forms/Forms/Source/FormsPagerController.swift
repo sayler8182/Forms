@@ -11,7 +11,7 @@ import UIKit
 
 // MARK: PagerItem
 open class PagerItem: TopBarItem {
-    public typealias OnSelect = ((PagerItem) -> Void)
+    public typealias OnSelect = ((_ item: PagerItem) -> Void)
     
     private var _viewControllerFactory: () -> UIViewController
     public let onSelect: OnSelect?
@@ -181,7 +181,7 @@ open class FormsPagerController: FormsViewController {
     
     public func showPage(at index: Int,
                          animated: Bool = true) {
-        let index: Int = min(max(0, index), self.items.count - 1)
+        let index: Int = index.match(from: 0, to: self.items.count - 1)
         let indexPath = IndexPath(row: index, section: 0)
         self.collectionView.scrollToItem(
             at: indexPath,
@@ -258,7 +258,7 @@ public extension FormsPagerController {
                 duration: 0.3,
                 animations: {
                     self.pageControl.alpha = 1
-                    self.pageControlHeightAnchor.constraint?.constant = 30
+                    self.pageControlHeightAnchor.constant = 30
                     self.view.layoutIfNeeded()
             }, completion: completion)
         }, completion: nil)
@@ -272,7 +272,7 @@ public extension FormsPagerController {
                 duration: 0.3,
                 animations: {
                     self.pageControl.alpha = 0
-                    self.pageControlHeightAnchor.constraint?.constant = 0
+                    self.pageControlHeightAnchor.constant = 0
                     self.view.layoutIfNeeded()
             }, completion: { (status) in
                 self.pageControl.isHidden = true

@@ -11,7 +11,7 @@ import UIKit
 
 // MARK: PageContainer
 open class PageContainer: FormsComponent, FormsComponentWithMarginEdgeInset, FormsComponentWithPaddingEdgeInset {
-    public typealias OnSelect = ((FormsComponent) -> Void)
+    public typealias OnSelect = ((_ component: FormsComponent) -> Void)
     
     private let backgroundView = UIView()
     private lazy var collectionView = UICollectionView(frame: CGRect.zero, collectionViewLayout: self.flowLayout)
@@ -178,7 +178,7 @@ open class PageContainer: FormsComponent, FormsComponentWithMarginEdgeInset, For
     
     private func scrollTo(index: Int,
                           animated: Bool = true) {
-        let index: Int = min(max(0, index), self.items.count - 1)
+        let index: Int = index.match(from: 0, to: self.items.count - 1)
         let indexPath = IndexPath(row: index, section: 0)
         let position = self.scrollDirection == .horizontal
             ? UICollectionView.ScrollPosition.centeredHorizontally

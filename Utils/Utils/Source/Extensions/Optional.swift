@@ -8,6 +8,7 @@
 
 import Foundation
 
+// MARK: Optional
 public extension Optional {
     var isNil: Bool {
         switch self {

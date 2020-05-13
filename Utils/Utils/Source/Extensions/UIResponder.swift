@@ -8,6 +8,7 @@
 
 import UIKit
 
+// MARK: UIResponder
 public extension UIResponder {
     func becomeFirstResponder(animated: Bool) {
         guard !animated else {

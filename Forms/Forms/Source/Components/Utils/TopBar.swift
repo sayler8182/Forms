@@ -26,7 +26,7 @@ open class TopBarItem: TopBarItemProtocol {
 
 // MARK: TopBar
 open class TopBar: FormsComponent {
-    public typealias OnSelect = ((TopBarItemProtocol) -> Void)
+    public typealias OnSelect = ((_ item: TopBarItemProtocol) -> Void)
 
     private let contentView = UIView()
     private let collectionView = UICollectionView(frame: CGRect.zero, collectionViewLayout: TopBarFlowLayout())
@@ -170,9 +170,9 @@ open class TopBar: FormsComponent {
     private func updateUnderline(index: CGFloat,
                                  animated: Bool = true) {
         let from: Int = Int(floor(index))
-        let fromRatio: CGFloat = 1 - (index - CGFloat(from))
+        let fromRatio: CGFloat = (index - from.asCGFloat).reversed(progress: 1.0)
         let to: Int = Int(ceil(index))
-        let toRatio: CGFloat = 1 - fromRatio
+        let toRatio: CGFloat = fromRatio.reversed(progress: 1.0)
         guard let fromCell = self.collectionView.cellForItem(at: IndexPath(row: from, section: 0)) else { return }
         guard let toCell = self.collectionView.cellForItem(at: IndexPath(row: to, section: 0)) else {
             self.animation(animated, duration: 0.2) {

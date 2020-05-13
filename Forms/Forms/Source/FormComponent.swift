@@ -60,6 +60,18 @@ public protocol Componentable {
 open class FormsComponent: UIView, Componentable {
     public weak var table: TableProtocol?
     
+    public var realHeight: CGFloat {
+        return self.realSize.height
+    }
+    
+    public var realWidth: CGFloat {
+        return self.realSize.width
+    }
+    
+    public var realSize: CGSize {
+        return self.frame.size
+    }
+    
     override public init(frame: CGRect) {
         super.init(frame: frame)
         self.setupView()

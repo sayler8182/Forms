@@ -4,11 +4,7 @@
 //
 //  Created by Konrad on 4/17/20.
 //  Copyright © 2020 Limbo. All rights reserved.
-//
-
-//#if canImport(GoogleSignIn)
-//let SocialKitGoogle: Bool = true
-//#endif
+// 
 
 #if canImport(FBSDKLoginKit)
 #if !canImport(FBSDKCoreKit)

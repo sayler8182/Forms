@@ -8,6 +8,7 @@
 
 import UIKit
 
+// MARK: UIImage
 public extension UIImage {
     var asTemplate: UIImage {
         return self.withRenderingMode(.alwaysTemplate)

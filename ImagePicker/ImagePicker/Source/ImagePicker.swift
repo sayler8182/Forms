@@ -38,7 +38,7 @@ public struct ImagePickerData {
 
 // MARK: ImagePicker
 public enum ImagePicker {
-    public typealias OnSelect = ((ImagePickerData) -> Void)
+    public typealias OnSelect = ((_ data: ImagePickerData) -> Void)
     public typealias OnCancel = (() -> Void)
     
     public static func pick(on controller: UIViewController?,

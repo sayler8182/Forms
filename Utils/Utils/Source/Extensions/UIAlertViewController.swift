@@ -8,10 +8,12 @@
 
 import UIKit
 
+// MARK: UIAlertControllerSource
 public protocol UIAlertControllerSource {
     func setSource(to controller: UIPopoverPresentationController?)
 }
 
+// MARK: UIAlertController
 public extension UIAlertController {
     struct SourceView {
         let view: UIView
@@ -37,6 +39,13 @@ public extension UIAlertController {
                  completion: (() -> Void)? = nil) {
         controller.present(self, animated: animation, completion: completion)
     }
+    
+    func addAction(title: String?,
+                   style: UIAlertAction.Style,
+                   handler: ((UIAlertAction) -> Void)? = nil) {
+        let action = UIAlertAction(title: title, style: style, handler: handler)
+        self.addAction(action)
+    }
 }
 
 // MARK: Source
@@ -57,13 +66,12 @@ extension UIAlertController.SourceView: UIAlertControllerSource {
     }
 }
 
-// Builder
+// MARK: Builder
 public extension UIAlertController {
     func with(action: String?,
               style: UIAlertAction.Style = .default,
               handler: ((UIAlertAction) -> Void)? = nil) -> Self {
-        let action: UIAlertAction = UIAlertAction(title: action, style: style, handler: handler)
-        self.addAction(action)
+        self.addAction(title: action, style: style, handler: handler)
         return self
     }
     func with(message: String?) -> Self {

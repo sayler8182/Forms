@@ -26,6 +26,8 @@ public extension ScrollContainer {
 
 // MARK: ScrollContainer
 open class ScrollContainer: FormsComponent, FormsComponentWithMarginEdgeInset, FormsComponentWithPaddingEdgeInset {
+    public typealias OnDidScroll = ((_ scrollView: UIScrollView) -> Void)
+    
     private let backgroundView = UIView()
     private let scrollView = UIScrollView(frame: CGRect.zero)
     private let stackView = UIStackView()
@@ -47,13 +49,28 @@ open class ScrollContainer: FormsComponent, FormsComponentWithMarginEdgeInset, F
     open var paddingEdgeInset: UIEdgeInsets = UIEdgeInsets(0) {
         didSet { self.updatePaddingEdgeInset() }
     }
+    open var scrollDelegate: UIScrollViewDelegate? {
+        get { return self.scrollView.delegate }
+        set { self.scrollView.delegate = newValue }
+    }
     open var scrollDirection: ScrollDirection = .horizontal {
         didSet { self.updateScrollDirection() }
+    }
+    open var scrollSteps: ScrollSteps?
+    open var showsHorizontalScrollIndicator: Bool {
+        get { return self.scrollView.showsHorizontalScrollIndicator }
+        set { self.scrollView.showsHorizontalScrollIndicator = newValue }
+    }
+    open var showsVerticalScrollIndicator: Bool {
+        get { return self.scrollView.showsVerticalScrollIndicator }
+        set { self.scrollView.showsVerticalScrollIndicator = newValue }
     }
     open var spacing: CGFloat {
         get { return self.stackView.spacing }
         set { self.stackView.spacing = newValue }
     }
+    
+    public var onDidScroll: OnDidScroll? = nil
     
     override open func setupView() {
         self.setupBackgroundView()
@@ -75,6 +92,7 @@ open class ScrollContainer: FormsComponent, FormsComponentWithMarginEdgeInset, F
     
     private func setupScrollView() {
         self.scrollView.backgroundColor = UIColor.clear
+        self.scrollView.delegate = self
         self.scrollView.frame = self.backgroundView.bounds
         self.scrollView.clipsToBounds = true
         if #available(iOS 11.0, *) {
@@ -122,7 +140,15 @@ open class ScrollContainer: FormsComponent, FormsComponentWithMarginEdgeInset, F
         self.stackView.addArrangedSubviews(items)
     }
 }
- 
+
+// MARK: UIScrollViewDelegate
+extension ScrollContainer: UIScrollViewDelegate {
+    public func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        self.scrollSteps?.update(scrollView.contentOffset)
+        self.onDidScroll?(scrollView)
+    }
+}
+    
 // MARK: Builder
 public extension ScrollContainer {
     func with(bounces: Bool) -> Self {
@@ -138,8 +164,28 @@ public extension ScrollContainer {
         self.setItems(items)
         return self
     }
+    func with(onDidScroll: @escaping OnDidScroll) -> Self {
+        self.onDidScroll = onDidScroll
+        return self
+    }
+    func with(scrollDelegate: UIScrollViewDelegate?) -> Self {
+        self.scrollDelegate = scrollDelegate
+        return self
+    }
     func with(scrollDirection: ScrollDirection) -> Self {
         self.scrollDirection = scrollDirection
+        return self
+    }
+    func with(scrollSteps: ScrollSteps) -> Self {
+        self.scrollSteps = scrollSteps
+        return self
+    }
+    func with(showsHorizontalScrollIndicator: Bool) -> Self {
+        self.showsHorizontalScrollIndicator = showsHorizontalScrollIndicator
+        return self
+    }
+    func with(showsVerticalScrollIndicator: Bool) -> Self {
+        self.showsVerticalScrollIndicator = showsVerticalScrollIndicator
         return self
     }
     func with(spacing: CGFloat) -> Self {

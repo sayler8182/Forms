@@ -107,6 +107,14 @@ public extension UILayoutPriority {
 public class AnchorConnection {
     public var constraint: Constraint?
     
+    public var constant: CGFloat? {
+        get { return self.constraint?.constant }
+        set {
+            guard let newValue = newValue else { return }
+            self.constraint?.constant = newValue
+        }
+    }
+    
     public init() { }
 }
 

@@ -125,7 +125,7 @@ internal class SideMenuSlideAnimator: SideMenuAnimator {
         var progress: CGFloat = translationX / self.leftSideWidth
         guard recognizer.state != .ended && recognizer.state != .cancelled else {
             let velocity = recognizer.velocity(in: self.overlayView)
-            progress = min(max(0, progress + (-velocity.x / 2_000.0)), 1.0)
+            progress = (progress + (-velocity.x / 2_000.0)).match(in: 0..<1)
             if progress >= 0.5 {
                 self.closeLeft()
             } else {
@@ -138,8 +138,8 @@ internal class SideMenuSlideAnimator: SideMenuAnimator {
             true,
             duration: self.animationTime,
             animations: {
-                self.leftSide.view.alpha = 1 - progress
-                self.overlayView.alpha = 1 - progress
+                self.leftSide.view.alpha = progress.reversed(progress: 1.0)
+                self.overlayView.alpha = progress.reversed(progress: 1.0)
                 self.leftSide.view.frame.origin.x = -translationX
                 self.content.view.frame.origin.x = self.leftSideWidth - translationX
         })
@@ -147,11 +147,11 @@ internal class SideMenuSlideAnimator: SideMenuAnimator {
     
     override internal func panRight(_ recognizer: UIPanGestureRecognizer) {
         let translation = recognizer.translation(in: self.overlayView)
-        let translationX = min(max(0, translation.x), self.rightSideWidth) // 0...self.rightSideWidth
+        let translationX = translation.x.match(from: 1.0, to: self.rightSideWidth)
         var progress: CGFloat = translationX / self.rightSideWidth
         guard recognizer.state != .ended && recognizer.state != .cancelled else {
             let velocity = recognizer.velocity(in: self.overlayView)
-            progress = min(max(0, progress + (velocity.x / 2_000.0)), 1.0)
+            progress = (progress + (velocity.x / 2_000.0)).match(in: 0..<1)
             if progress >= 0.5 {
                 self.closeRight()
             } else {
@@ -164,8 +164,8 @@ internal class SideMenuSlideAnimator: SideMenuAnimator {
             true,
             duration: self.animationTime,
             animations: {
-                self.leftSide.view.alpha = 1 - progress
-                self.overlayView.alpha = 1 - progress
+                self.leftSide.view.alpha = progress.reversed(progress: 1.0)
+                self.overlayView.alpha = progress.reversed(progress: 1.0)
                 self.rightSide.view.frame.origin.x = self.content.view.frame.width - self.rightSideWidth + translationX
                 self.content.view.frame.origin.x = -self.rightSideWidth + translationX
         })
