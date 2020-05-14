@@ -135,6 +135,7 @@ private class FormsIntegrationListViewController: FormsViewController {
     private func setupTableView() {
         self.tableView.delegate = self
         self.tableView.dataSource = self
+        self.tableView.keyboardDismissMode = .interactive
         self.tableView.estimatedRowHeight = 44
         self.tableView.rowHeight = UITableView.automaticDimension
         self.tableView.separatorStyle = UITableViewCell.SeparatorStyle.none

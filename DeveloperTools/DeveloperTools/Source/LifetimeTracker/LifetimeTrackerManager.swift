@@ -61,7 +61,9 @@ public class LifetimeTrackerManager: NSObject {
         self.viewType = viewType
         self.visibility = visibility
         super.init()
-        self.refresh([:])
+        if visibility == .alwaysVisible {
+            self.refresh([:])
+        }
     } 
     
     public func refresh(_ trackedGroups: [String: LifetimeEntriesGroup]) {

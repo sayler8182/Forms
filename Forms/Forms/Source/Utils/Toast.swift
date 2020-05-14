@@ -24,8 +24,8 @@ public extension Configuration {
         public var lifeTime: TimeInterval = 3
         public var backgroundColor = ToastStyle(
             info: Theme.Colors.primaryBackground,
-            success: UIColor.green,
-            error: UIColor.red)
+            success: Theme.Colors.green,
+            error: Theme.Colors.red)
         public var titleColor = ToastStyle(
             info: Theme.Colors.primaryText,
             success: UIColor.black,

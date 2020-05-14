@@ -1,8 +1,8 @@
 //
-//  DemoTitleTextFieldViewController.swift
+//  DemoTitleTextViewViewController.swift
 //  FormsDemo
 //
-//  Created by Konrad on 3/31/20.
+//  Created by Konrad on 5/14/20.
 //  Copyright © 2020 Limbo. All rights reserved.
 //
 
@@ -10,36 +10,34 @@ import Forms
 import UIKit
 import Utils
 
-// MARK: DemoTitleTextFieldViewController
-class DemoTitleTextFieldViewController: FormsTableViewController {
-    private let textField = Components.input.textField.default()
+// MARK: DemoTitleTextViewViewController
+class DemoTitleTextViewViewController: FormsTableViewController {
+    private let textView = Components.input.textView.default()
         .with(placeholder: "Text")
         .with(title: "Input")
-    private let disableTextField = Components.input.textField.default()
+    private let disableTextView = Components.input.textView.default()
         .with(placeholder: "Text")
         .with(isEnabled: false)
         .with(title: "Disable")
-    private let amountTextField = Components.input.textField.amount.default()
-        .with(title: "Amount")
-    private let errorTextField = Components.input.textField.default()
+    private let errorTextView = Components.input.textView.default()
         .with(error: LoremIpsum.paragraph(sentences: 3))
         .with(placeholder: "Some text")
         .with(title: "Error")
-    private let longErrorTextField = Components.input.textField.default()
+    private let longErrorTextView = Components.input.textView.default()
         .with(error: LoremIpsum.paragraph(sentences: 3))
         .with(placeholder: "Some text")
         .with(title: "Long error")
-    private let infoTextField = Components.input.textField.default()
+    private let infoTextView = Components.input.textView.default()
         .with(info: LoremIpsum.paragraph(sentences: 2))
         .with(placeholder: "Some text")
         .with(title: "Info")
         .with(titleColor: Theme.Colors.blue)
-    private let infoAndErrorTextField = Components.input.textField.default()
+    private let infoAndErrorTextView = Components.input.textView.default()
         .with(error: LoremIpsum.paragraph(sentences: 2))
         .with(info: LoremIpsum.paragraph(sentences: 2))
         .with(placeholder: "Some text")
         .with(title: "Info and error")
-    private let footerTextField = Components.input.textField.default()
+    private let footerTextView = Components.input.textView.default()
         .with(text: "Some text")
         .with(title: "Footer")
     
@@ -48,21 +46,20 @@ class DemoTitleTextFieldViewController: FormsTableViewController {
     
     override func setupContent() {
         super.setupContent()
-        self.build([
-            self.textField,
-            self.disableTextField,
-            self.amountTextField,
-            self.errorTextField,
-            self.longErrorTextField,
-            self.infoTextField,
-            self.infoAndErrorTextField
+        self.build([ 
+            self.textView,
+            self.disableTextView,
+            self.errorTextView,
+            self.longErrorTextView,
+            self.infoTextView,
+            self.infoAndErrorTextView
         ], divider: self.divider)
     }
     
     override func setupFooter() {
         super.setupFooter()
         self.addToFooter([
-            self.footerTextField
+            self.footerTextView
         ])
     }
 }

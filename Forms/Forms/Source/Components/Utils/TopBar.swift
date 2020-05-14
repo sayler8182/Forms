@@ -42,7 +42,7 @@ open class TopBar: FormsComponent {
     open var isUnderlineRounded: Bool = false {
         didSet { self.underlineView.layer.cornerRadius = self.isUnderlineRounded ? 1.75 : 0.0 }
     }
-    open var separatorColor: UIColor? = UIColor.lightGray {
+    open var separatorColor: UIColor? = Theme.Colors.gray {
         didSet { self.separatorView.backgroundColor = self.separatorColor }
     }
     open var titleColor: UIColor? = Theme.Colors.primaryText {

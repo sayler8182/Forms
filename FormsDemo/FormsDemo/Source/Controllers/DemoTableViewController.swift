@@ -12,18 +12,18 @@ import UIKit
 // MARK: DemoTableViewController
 class DemoTableViewController: FormsTableViewController {
     private let headerRedView = Components.container.view()
-        .with(backgroundColor: UIColor.red)
+        .with(backgroundColor: Theme.Colors.red)
     private let contentRedView = Components.container.view()
-        .with(backgroundColor: UIColor.red)
+        .with(backgroundColor: Theme.Colors.red)
         .with(height: 44.0)
     private let contentGreenView = Components.container.view()
-        .with(backgroundColor: UIColor.green)
+        .with(backgroundColor: Theme.Colors.green)
         .with(height: 44.0)
     private let contentBlueView = Components.container.view()
-        .with(backgroundColor: UIColor.blue)
+        .with(backgroundColor: Theme.Colors.blue)
         .with(height: 44.0)
     private let footerRedView = Components.container.view()
-        .with(backgroundColor: UIColor.red)
+        .with(backgroundColor: Theme.Colors.red)
     private let changeSourceButton = Components.button.default()
         .with(title: "Change source")
     
@@ -99,7 +99,7 @@ class DemoTableViewController: FormsTableViewController {
 private class DemoTableViewCell: FormsTableViewCell {
     override func setupView() {
         super.setupView()
-        self.backgroundColor = UIColor.green
+        self.backgroundColor = Theme.Colors.green
     }
     
     override class func componentHeight(_ source: Any,

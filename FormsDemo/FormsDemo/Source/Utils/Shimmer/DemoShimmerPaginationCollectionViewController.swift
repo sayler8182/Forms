@@ -181,7 +181,7 @@ private extension DemoProvider {
             var items: [DemoCellModel] = []
             for i in 0..<limit {
                 let item = DemoCellModel(
-                    color: UIColor.red.withAlphaComponent(CGFloat.random(in: 0...1)),
+                    color: Theme.Colors.red.withAlphaComponent(CGFloat.random(in: 0...1)),
                     title: "Some title \(pageId * limit + i + 1)",
                     subtitle: "Some ubtitle",
                     info: LoremIpsum.paragraph(sentences: 2))

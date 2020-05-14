@@ -46,6 +46,9 @@ open class FormsTableViewController: FormsViewController, UITableViewDelegate, U
     }
     open var isBottomToSafeArea: Bool = true
     open var isTopToSafeArea: Bool = true
+    open var keyboardDismissMode: UIScrollView.KeyboardDismissMode = .interactive {
+        didSet { self.tableView.keyboardDismissMode = self.keyboardDismissMode }
+    }
     open var paginationDelayExpiration: TimeInterval = 0
     open var paginationIsAutostart: Bool = true
     open var paginationIsLoading: Bool = false
@@ -178,6 +181,7 @@ open class FormsTableViewController: FormsViewController, UITableViewDelegate, U
     private func setupTableView() {
         self.tableView.delegate = self
         self.tableView.dataSource = self
+        self.tableView.keyboardDismissMode = self.keyboardDismissMode
         self.tableView.estimatedRowHeight = self.tableEstimatedRowHeight
         self.tableView.rowHeight = self.tableRowHeight
         self.tableView.backgroundColor = self.tableBackgroundColor

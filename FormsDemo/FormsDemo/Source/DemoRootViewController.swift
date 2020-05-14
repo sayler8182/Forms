@@ -33,6 +33,7 @@ private enum Demo {
         case componentsInputs
         case componentsInputsSearchBar
         case componentsInputsTitleTextField
+        case componentsInputsTitleTextView
         case componentsLabels
         case componentsNavigationBars
         case componentsNavigationBarsNavigationBar
@@ -132,7 +133,8 @@ private enum Demo {
                         sections: [
                             Section(rows: [
                                 Row(type: .componentsInputsSearchBar, title: "SearchBar"),
-                                Row(type: .componentsInputsTitleTextField, title: "TitleTextField")
+                                Row(type: .componentsInputsTitleTextField, title: "TitleTextField"),
+                                Row(type: .componentsInputsTitleTextView, title: "TitleTextView")
                             ])
                     ]),
                     Row(type: .componentsLabels, title: "Labels"),
@@ -352,6 +354,7 @@ private class DemoListViewController: FormsViewController {
     private func setupTableView() {
         self.tableView.delegate = self
         self.tableView.dataSource = self
+        self.tableView.keyboardDismissMode = .interactive
         self.tableView.estimatedRowHeight = 44
         self.tableView.backgroundColor = UIColor.clear
         self.tableView.rowHeight = UITableView.automaticDimension
@@ -411,6 +414,7 @@ private class DemoListViewController: FormsViewController {
         case .componentsContainersStack:                        return DemoStackContainerViewController()
         case .componentsInputsSearchBar:                        return DemoSearchBarViewController()
         case .componentsInputsTitleTextField:                   return DemoTitleTextFieldViewController()
+        case .componentsInputsTitleTextView:                    return DemoTitleTextViewViewController()
         case .componentsLabels:                                 return DemoLabelsViewController()
         case .componentsNavigationBarsNavigationBar:            return DemoNavigationBarViewController()
         case .componentsNavigationBarsNavigationBarWithBack:    return DemoNavigationBarWithBackOrCloseViewController()

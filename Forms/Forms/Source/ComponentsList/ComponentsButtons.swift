@@ -11,8 +11,8 @@ import UIKit
 public struct ComponentsButtons: ComponentsList {
     private init() { }
     
-    public static func `default`() -> PrimaryButton {
-        let component = PrimaryButton()
+    public static func `default`() -> Button {
+        let component = Button()
         component.animationTime = 0.1
         component.height = UITableView.automaticDimension
         component.isEnabled = true

@@ -14,7 +14,7 @@ public struct ComponentsOther: ComponentsList {
     public static func activityIndicator() -> ActivityIndicator {
         let component = ActivityIndicator()
         component.backgroundColor = Theme.Colors.primaryBackground
-        component.color = UIColor.lightGray
+        component.color = Theme.Colors.gray
         component.marginEdgeInset = UIEdgeInsets(0)
         component.height = UITableView.automaticDimension
         component.isAnimating = true

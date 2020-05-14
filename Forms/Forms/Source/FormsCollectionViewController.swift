@@ -47,6 +47,9 @@ open class FormsCollectionViewController: FormsViewController, UICollectionViewD
     }
     open var isBottomToSafeArea: Bool = true
     open var isTopToSafeArea: Bool = true
+    open var keyboardDismissMode: UIScrollView.KeyboardDismissMode = .interactive {
+        didSet { self.collectionView.keyboardDismissMode = self.keyboardDismissMode }
+    }
     open var paginationDelayExpiration: TimeInterval = 0
     open var paginationIsAutostart: Bool = true
     open var paginationIsLoading: Bool = false
@@ -148,6 +151,7 @@ open class FormsCollectionViewController: FormsViewController, UICollectionViewD
     private func setupCollectionView() {
         self.collectionView.delegate = self
         self.collectionView.dataSource = self
+        self.collectionView.keyboardDismissMode = self.keyboardDismissMode
         self.collectionView.backgroundColor = self.collectionBackgroundColor
         self.collectionView.allowsSelection = self.collectionAllowsSelection
         self.collectionView.alwaysBounceHorizontal = self.collectionAlwaysBounceHorizontal

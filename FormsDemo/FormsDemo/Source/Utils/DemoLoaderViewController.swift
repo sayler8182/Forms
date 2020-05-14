@@ -58,10 +58,10 @@ class DemoLoaderViewController: FormsTableViewController {
 // MARK: TitleLoaderView
 private class TitleLoaderView: LoaderView {
     private let activityIndicatorView = Components.other.activityIndicator()
-        .with(color: UIColor.red)
+        .with(color: Theme.Colors.red)
     private let titleLabel = Components.label.default()
         .with(alignment: .center)
-        .with(color: UIColor.red)
+        .with(color: Theme.Colors.red)
         .with(font: Theme.Fonts.bold(ofSize: 14))
         .with(numberOfLines: 3)
     

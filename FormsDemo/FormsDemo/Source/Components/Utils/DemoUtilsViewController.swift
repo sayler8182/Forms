@@ -12,7 +12,7 @@ import UIKit
 // MARK: DemoUtilsViewController
 class DemoUtilsViewController: FormsTableViewController {
     private let customDivider = Components.utils.divider()
-        .with(color: UIColor.red)
+        .with(color: Theme.Colors.red)
         .with(height: 44)
      
     private let divider = Components.utils.divider()

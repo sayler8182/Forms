@@ -40,7 +40,7 @@ class DemoModalViewController: FormsTableViewController {
 private class TitleModalView: ModalView {
     private let titleLabel = Components.label.default()
         .with(alignment: .center)
-        .with(color: UIColor.red)
+        .with(color: Theme.Colors.red)
         .with(numberOfLines: 3)
         .with(font: Theme.Fonts.bold(ofSize: 14))
     

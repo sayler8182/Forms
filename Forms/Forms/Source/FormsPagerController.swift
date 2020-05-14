@@ -57,7 +57,7 @@ open class FormsPagerController: FormsViewController {
     open var pageBackgroundColor: UIColor? = nil {
         didSet { self.pageControl.backgroundColor = self.pageBackgroundColor }
     }
-    open var pageIndicatorTintColor: UIColor? = UIColor.lightGray {
+    open var pageIndicatorTintColor: UIColor? = Theme.Colors.gray {
         didSet { self.pageControl.pageIndicatorTintColor = self.pageIndicatorTintColor }
     }
     open var pageCurrentPageIndicatorTintColor: UIColor? = UIColor.gray {
@@ -75,7 +75,7 @@ open class FormsPagerController: FormsViewController {
     open var topBarIsUnderlineRounded: Bool = false {
         didSet { self.topBar.isUnderlineRounded = self.topBarIsUnderlineRounded }
     }
-    open var topBarSeparatorColor: UIColor? = UIColor.lightGray {
+    open var topBarSeparatorColor: UIColor? = Theme.Colors.gray {
         didSet { self.topBar.separatorColor = self.topBarSeparatorColor }
     }
     open var topBarTitleColor: UIColor? = Theme.Colors.primaryText {

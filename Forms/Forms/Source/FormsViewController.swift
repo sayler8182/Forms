@@ -11,13 +11,13 @@ import UIKit
 
 // MARK: FormsViewController
 open class FormsViewController: UIViewController, UIGestureRecognizerDelegate, Themeable {
+    private lazy var keyboard = Keyboard()
     private var navigationBar: NavigationBar? = nil
     private var navigationProgressBar: ProgressBar? = nil
     private var searchController: UISearchController? = nil
     
     open var bottomAnchor: AnchorConnection = AnchorConnection()
-    open var resizeOnKeybord: Bool = true
-    
+    open var isResizeOnKeybord: Bool = true
     open var isShimmering: Bool {
         return self.view.isShimmering
     }
@@ -109,6 +109,15 @@ open class FormsViewController: UIViewController, UIGestureRecognizerDelegate, T
         // HOOK
     }
     
+    open func setupResizerOnKeyboard() {
+        guard self.isResizeOnKeybord else { return }
+        self.addResizerOnKeyboard()
+        self.keyboard.onUpdate = { [weak self] (percent, visibleHeight, animated) in
+            guard let `self` = self else { return }
+            self.updateKeyboard(percent, visibleHeight, animated)
+        }
+    }
+    
     open func setupTheme() {
         self.setTheme()
         guard self.isThemeAutoRegister else { return }
@@ -176,52 +185,29 @@ public extension FormsViewController {
 
 // MARK: Keyboard
 public extension FormsViewController {
-    func setupResizerOnKeyboard() {
-        guard self.resizeOnKeybord else { return }
-        NotificationCenter.default.addObserver(
-            self,
-            selector: #selector(keyboarWillShowForResizing),
-            name: UIResponder.keyboardWillShowNotification,
-            object: nil)
-        NotificationCenter.default.addObserver(
-            self,
-            selector: #selector(keyboarWillHideForResizing),
-            name: UIResponder.keyboardWillHideNotification,
-            object: nil)
+    func addResizerOnKeyboard() {
+        self.keyboard.addKeyboardForResizing()
     }
     
     func removeKeyboardForResizing() {
-        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillShowNotification, object: nil)
-        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillHideNotification, object: nil)
+        self.keyboard.removeKeyboardForResizing()
     }
     
-    @objc
-    func keyboarWillShowForResizing(notification: Notification) {
+    func updateKeyboard(_ percent: CGFloat,
+                        _ visibleHeight: CGFloat,
+                        _ animated: Bool) {
         guard let constraint: NSLayoutConstraint = self.bottomAnchor.constraint else { return }
-        let keyboardFrame: NSValue? = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue
-        guard let keyboardHeight: CGFloat = keyboardFrame?.cgRectValue.height else { return }
         let viewHeight: CGFloat = self.view.frame.height
         let screenHeight: CGFloat = UIScreen.main.bounds.height
         let safeAreaInset: CGFloat = UIView.safeArea.bottom
-        let y: CGFloat = keyboardHeight - screenHeight + viewHeight - safeAreaInset
-        guard y > 0 else { return }
-        let time: Double = Double(y / keyboardHeight * 0.2)
-        constraint.constant = -keyboardHeight + safeAreaInset
-        UIView.animate(withDuration: time) {
-            self.view.layoutIfNeeded()
-        }
-    }
-    
-    @objc
-    func keyboarWillHideForResizing(notification: Notification) {
-        guard let constraint: NSLayoutConstraint = self.bottomAnchor.constraint else { return }
-        let keyboardFrame: NSValue? = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue
-        guard let keyboardHeight: CGFloat = keyboardFrame?.cgRectValue.height else { return }
-        let time: Double = Double(constraint.constant / keyboardHeight * 0.2)
-        constraint.constant = 0
-        UIView.animate(withDuration: time) {
-            self.view.layoutIfNeeded()
-        }
+        let time: CGFloat = (visibleHeight - screenHeight + viewHeight - safeAreaInset) / visibleHeight * 0.2
+        constraint.constant = visibleHeight != 0.0
+            ? -visibleHeight + safeAreaInset
+            : -visibleHeight
+        self.view.animation(
+            animated,
+            duration: time.asDouble,
+            animations: self.view.layoutIfNeeded)
     }
 }
 

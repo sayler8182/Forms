@@ -37,6 +37,7 @@
 		713B9BD9243D07BC001F6E3A /* UIStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 713B9BC9243D07BC001F6E3A /* UIStackView.swift */; };
 		719469C6243DB21D00CAD09B /* UIImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 719469C5243DB21D00CAD09B /* UIImageView.swift */; };
 		719F8C8024571B33004F5A27 /* Injector.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 719F8C7F24571B33004F5A27 /* Injector.framework */; };
+		71E0F611246D46EF0051F043 /* UITextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71E0F610246D46EF0051F043 /* UITextField.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -83,6 +84,7 @@
 		713B9BDE243D084C001F6E3A /* Utils.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Utils.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		719469C5243DB21D00CAD09B /* UIImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageView.swift; sourceTree = "<group>"; };
 		719F8C7F24571B33004F5A27 /* Injector.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Injector.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		71E0F610246D46EF0051F043 /* UITextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITextField.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -169,6 +171,7 @@
 				710624FE24408AA900C267FE /* UIScrollView.swift */,
 				711AF55B2461DDEC00CE8666 /* UISearchBar.swift */,
 				713B9BC9243D07BC001F6E3A /* UIStackView.swift */,
+				71E0F610246D46EF0051F043 /* UITextField.swift */,
 				713B9BC7243D07BC001F6E3A /* UIView.swift */,
 				713B9BC1243D07BC001F6E3A /* UIViewController.swift */,
 			);
@@ -299,6 +302,7 @@
 				713B9BCC243D07BC001F6E3A /* Bundle.swift in Sources */,
 				711AF55C2461DDEC00CE8666 /* UISearchBar.swift in Sources */,
 				713B9BB9243D07A8001F6E3A /* AttributedString.swift in Sources */,
+				71E0F611246D46EF0051F043 /* UITextField.swift in Sources */,
 				7103EA24246047C200A11A96 /* UINavigationController.swift in Sources */,
 				713B9BCF243D07BC001F6E3A /* UIAlertViewController.swift in Sources */,
 				713B9BAE243D06BD001F6E3A /* LoremIpsum.swift in Sources */,

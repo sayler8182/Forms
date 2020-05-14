@@ -42,7 +42,7 @@ public struct ComponentsContainers: ComponentsList {
         component.isPagingEnabled = true
         component.paddingEdgeInset = UIEdgeInsets(0)
         component.pageBackgroundColor = UIColor.clear
-        component.pageIndicatorTintColor = UIColor.lightGray
+        component.pageIndicatorTintColor = Theme.Colors.gray
         component.pageCurrentPageIndicatorTintColor = UIColor.gray
         component.pageIsHidden = false
         component.scrollDirection = .horizontal

@@ -13,10 +13,10 @@ import UIKit
 // MARK: DemoViewViewController
 class DemoViewController: FormsViewController {
     private let centerView = Components.container.view()
-        .with(backgroundColor: UIColor.red)
+        .with(backgroundColor: Theme.Colors.red)
         .with(height: 44)
     private let bottomView = Components.container.view()
-        .with(backgroundColor: UIColor.green)
+        .with(backgroundColor: Theme.Colors.green)
         .with(height: 44)
     
     override func setupContent() {

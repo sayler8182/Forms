@@ -14,7 +14,7 @@ import UIKit
 class DemoShimmerViewController: FormsViewController {
     private let iconView = UIImageView()
         .with(width: 48.0, height: 48.0)
-        .with(image: UIColor.lightGray)
+        .with(image: Theme.Colors.gray)
         .rounded()
     private let titleLabel = Components.label.default()
         .with(text: "Title label")

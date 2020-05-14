@@ -61,10 +61,11 @@ public class DeveloperToolsMenuViewController: UIViewController, DeveloperToolsM
     }
     
     private func setupTableView() {
-        self.tableView.separatorStyle = .none
         self.tableView.translatesAutoresizingMaskIntoConstraints = false
         self.tableView.delegate = self
         self.tableView.dataSource = self
+        self.tableView.separatorStyle = .none
+        self.tableView.keyboardDismissMode = .interactive
         self.tableView.register(DeveloperToolsMenuHeaderView.self, forHeaderFooterViewReuseIdentifier: self.defaultHeaderIdentifier)
         self.tableView.register(DeveloperToolsMenuTableViewCell.self, forCellReuseIdentifier: self.defaultCellIdentifier)
         self.tableView.register(DeveloperToolsMenuSwitchTableViewCell.self, forCellReuseIdentifier: self.defaultSwitchCellIdentifier)

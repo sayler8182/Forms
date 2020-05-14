@@ -47,17 +47,17 @@ class DemoShimmerTableViewController: FormsTableViewController {
     private func updateDataSourceItems() {
         let data: [DemoCellModel] = [
             DemoCellModel(
-                color: UIColor.red,
+                color: Theme.Colors.red,
                 title: "Red title",
                 subtitle: "Red subtitle",
                 info: LoremIpsum.paragraph(sentences: 2)),
             DemoCellModel(
-                color: UIColor.green,
+                color: Theme.Colors.green,
                 title: "Green title",
                 subtitle: "Green subtitle",
                 info: LoremIpsum.paragraph(sentences: 3)),
             DemoCellModel(
-                color: UIColor.blue,
+                color: Theme.Colors.blue,
                 title: "Blue title",
                 subtitle: "Blue subtitle",
                 info: LoremIpsum.paragraph(sentences: 4))

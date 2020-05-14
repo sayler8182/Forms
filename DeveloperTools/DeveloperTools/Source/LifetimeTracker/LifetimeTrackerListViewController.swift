@@ -46,10 +46,11 @@ class LifetimeTrackerListViewController: UIViewController {
     }
     
     private func setupTableView() {
-        self.tableView.separatorStyle = .none
         self.tableView.translatesAutoresizingMaskIntoConstraints = false
         self.tableView.delegate = self
         self.tableView.dataSource = self
+        self.tableView.separatorStyle = .none
+        self.tableView.keyboardDismissMode = .interactive
         self.tableView.register(LifetimeTrackerDashboardHeaderView.self, forHeaderFooterViewReuseIdentifier: self.defaultHeaderIdentifier)
         self.tableView.register(LifetimeTrackerDashboardTableViewCell.self, forCellReuseIdentifier: self.defaultCellIdentifier)
         self.view.addSubview(self.tableView)

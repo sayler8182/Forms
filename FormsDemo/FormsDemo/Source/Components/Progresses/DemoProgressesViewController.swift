@@ -13,8 +13,8 @@ import UIKit
 class DemoProgressBarViewController: FormsTableViewController {
     private lazy var navigationProgressBar = Components.progress.progressBar()
         .with(progress: self.progress)
-        .with(primaryColor: UIColor.systemBlue.withAlphaComponent(0.5))
-        .with(secondaryColor: UIColor.systemBlue)
+        .with(primaryColor: Theme.Colors.blue.withAlphaComponent(0.5))
+        .with(secondaryColor: Theme.Colors.blue)
      private lazy var progressBar = Components.progress.progressBar()
         .with(marginTop: 5.0)
         .with(progress: self.progress)

@@ -12,11 +12,11 @@ import UIKit
 // MARK: DemoCollectionViewController
 class DemoCollectionViewController: FormsCollectionViewController {
     private let headerRedView = Components.container.view()
-        .with(backgroundColor: UIColor.red)
+        .with(backgroundColor: Theme.Colors.red)
     private let footerRedView = Components.container.view()
-        .with(backgroundColor: UIColor.red)
+        .with(backgroundColor: Theme.Colors.red)
     private let footerGreenView = Components.container.view()
-        .with(backgroundColor: UIColor.green)
+        .with(backgroundColor: Theme.Colors.green)
     
     private var dataSource = CollectionDataSource()
     
@@ -63,7 +63,7 @@ class DemoCollectionViewController: FormsCollectionViewController {
 private class DemoCollectionViewCell: FormsCollectionViewCell {
     override func setupView() {
         super.setupView()
-        self.backgroundColor = UIColor.green
+        self.backgroundColor = Theme.Colors.green
     }
     
     override class func componentHeight(_ source: Any,

@@ -83,6 +83,7 @@
 		71DB670224584D6700B16145 /* DemoScrollContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71DB670124584D6700B16145 /* DemoScrollContainerViewController.swift */; };
 		71E0F5D0246BF0890051F043 /* DemoScrollStepsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71E0F5CF246BF0890051F043 /* DemoScrollStepsViewController.swift */; };
 		71E0F5F9246C4CAB0051F043 /* DemoThemeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71E0F5F8246C4CAB0051F043 /* DemoThemeViewController.swift */; };
+		71E0F60F246D34320051F043 /* DemoTitleTextViewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71E0F60E246D34320051F043 /* DemoTitleTextViewViewController.swift */; };
 		71FF141B2458B20000656EDA /* DemoSideMenuController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71FF141A2458B20000656EDA /* DemoSideMenuController.swift */; };
 /* End PBXBuildFile section */
 
@@ -197,6 +198,7 @@
 		71DB670124584D6700B16145 /* DemoScrollContainerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoScrollContainerViewController.swift; sourceTree = "<group>"; };
 		71E0F5CF246BF0890051F043 /* DemoScrollStepsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoScrollStepsViewController.swift; sourceTree = "<group>"; };
 		71E0F5F8246C4CAB0051F043 /* DemoThemeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoThemeViewController.swift; sourceTree = "<group>"; };
+		71E0F60E246D34320051F043 /* DemoTitleTextViewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoTitleTextViewViewController.swift; sourceTree = "<group>"; };
 		71FF141A2458B20000656EDA /* DemoSideMenuController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoSideMenuController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -349,6 +351,7 @@
 		713B9C70243D0964001F6E3A /* Inputs */ = {
 			isa = PBXGroup;
 			children = (
+				71E0F60E246D34320051F043 /* DemoTitleTextViewViewController.swift */,
 				71DB5C9424575B6300B16145 /* DemoTitleSearchBarViewController.swift */,
 				713B9C71243D0964001F6E3A /* DemoTitleTextFieldViewController.swift */,
 			);
@@ -645,6 +648,7 @@
 				719469D4243DBC6800CAD09B /* Utils.swift in Sources */,
 				715891122446377D003200C7 /* DemoArchitecturesCleanViewController.swift in Sources */,
 				71DB66F62458333F00B16145 /* DemoImagePickerSystemViewController.swift in Sources */,
+				71E0F60F246D34320051F043 /* DemoTitleTextViewViewController.swift in Sources */,
 				7103EA152460231100A11A96 /* DemoProgressesViewController.swift in Sources */,
 				719F8C7B24570358004F5A27 /* DemoDeveloperToolsMenuViewController.swift in Sources */,
 				71BB61EF2445C6E7002BB31F /* DemoNetworkGetViewController.swift in Sources */,

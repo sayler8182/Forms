@@ -22,10 +22,10 @@ class DemoNavigationBarViewController: FormsTableViewController {
         .with(rightBarButtonItems: [self.image1BarItem])
         .with(title: "Navigation bar with left and left bar")
     private lazy var navigationBarWithLeftAndRightBars = Components.navigationBar.default()
-        .with(backgroundColor: UIColor.lightGray)
+        .with(backgroundColor: Theme.Colors.gray)
         .with(leftBarButtonItems: [self.text1BarItem, self.text2BarItem])
         .with(rightBarButtonItems: [self.image1BarItem, self.image2BarItem])
-        .with(tintColor: UIColor.red)
+        .with(tintColor: Theme.Colors.red)
         .with(title: "Navigation bar with left and left bars")
     private lazy var navigationBarWithTitleView = Components.navigationBar.default()
         .with(isBack: false)
@@ -64,7 +64,7 @@ class DemoNavigationBarViewController: FormsTableViewController {
         .with(title: "Cancel")
     
     private lazy var navigationBarTitleView = Components.container.view()
-        .with(backgroundColor: UIColor.red)
+        .with(backgroundColor: Theme.Colors.red)
     private lazy var navigationBarSearchBar = Components.input.searchBar.default()
     
     private let divider = Components.utils.divider()

@@ -1,8 +1,8 @@
 //
-//  TextField.swift
+//  TextView.swift
 //  Forms
 //
-//  Created by Konrad on 3/28/20.
+//  Created by Konrad on 5/14/20.
 //  Copyright © 2020 Limbo. All rights reserved.
 //
 
@@ -11,7 +11,7 @@ import UIKit
 import Validators
 
 // MARK: State
-public extension TextField {
+public extension TextView {
     enum StateType {
         case active
         case selected
@@ -50,12 +50,10 @@ public extension TextField {
     }
 }
 
-// MARK: UITextFieldWithPlaceholder
-open class UITextFieldWithPlaceholder: UITextField {
+// MARK: UITextViewWithPlaceholder
+open class UITextViewWithPlaceholder: UITextView {
     public let placeholderLabel = UILabel()
         .with(width: 320, height: 20)
-    
-    private let padding: UIEdgeInsets = UIEdgeInsets(0)
     
     override open var attributedText: NSAttributedString! {
         get { return super.attributedText }
@@ -71,7 +69,7 @@ open class UITextFieldWithPlaceholder: UITextField {
             self.updateView()
         }
     }
-    override open var placeholder: String? {
+    open var placeholder: String? {
         get { return self.placeholderLabel.text }
         set { self.placeholderLabel.text = newValue }
     }
@@ -94,9 +92,16 @@ open class UITextFieldWithPlaceholder: UITextField {
             self.updateView()
         }
     }
+    override open var textContainerInset: UIEdgeInsets {
+        get { return super.textContainerInset }
+        set {
+            super.textContainerInset = newValue
+            self.updateView()
+        }
+    }
     
-    override public init(frame: CGRect) {
-        super.init(frame: frame)
+    override public init(frame: CGRect, textContainer: NSTextContainer?) {
+        super.init(frame: frame, textContainer: textContainer)
         self.setupView()
     }
     
@@ -106,7 +111,7 @@ open class UITextFieldWithPlaceholder: UITextField {
     }
     
     public init() {
-        super.init(frame: CGRect(width: 320, height: 44))
+        super.init(frame: CGRect(width: 320, height: 44), textContainer: nil)
         self.setupView()
         self.setupActions()
     }
@@ -119,20 +124,8 @@ open class UITextFieldWithPlaceholder: UITextField {
         NotificationCenter.default.addObserver(
             self,
             selector: #selector(textDidChangeNotification),
-            name: UITextField.textDidChangeNotification,
+            name: UITextView.textDidChangeNotification,
             object: self)
-    }
-    
-    override open func textRect(forBounds bounds: CGRect) -> CGRect {
-        return bounds.inset(by: self.padding)
-    }
-    
-    override open func placeholderRect(forBounds bounds: CGRect) -> CGRect {
-        return bounds.inset(by: self.padding)
-    }
-    
-    override open func editingRect(forBounds bounds: CGRect) -> CGRect {
-        return bounds.inset(by: self.padding)
     }
     
     private func setupPlaceholder() {
@@ -152,14 +145,14 @@ open class UITextFieldWithPlaceholder: UITextField {
     }
 }
 
-// MARK: TextField
-open class TextField: FormsComponent, FormsComponentWithMarginEdgeInset, FormsComponentWithPaddingEdgeInset {
+// MARK: TextView
+open class TextView: FormsComponent, FormsComponentWithMarginEdgeInset, FormsComponentWithPaddingEdgeInset {
     public let backgroundView = UIView()
         .with(width: 320, height: 85)
         .with(isUserInteractionEnabled: true)
     public let titleLabel = UILabel()
         .with(width: 320, height: 20)
-    public let textField = UITextFieldWithPlaceholder()
+    public let textView = UITextViewWithPlaceholder()
         .with(width: 320, height: 44)
     public let underscoreView = UIView()
         .with(width: 320, height: 1)
@@ -171,12 +164,12 @@ open class TextField: FormsComponent, FormsComponentWithMarginEdgeInset, FormsCo
     
     open var animationTime: TimeInterval = 0.2
     open var autocapitalizationType: UITextAutocapitalizationType {
-        get { return self.textField.autocapitalizationType }
-        set { self.textField.autocapitalizationType = newValue }
+        get { return self.textView.autocapitalizationType }
+        set { self.textView.autocapitalizationType = newValue }
     }
     open var autocorrectionType: UITextAutocorrectionType {
-        get { return self.textField.autocorrectionType }
-        set { self.textField.autocorrectionType = newValue }
+        get { return self.textView.autocorrectionType }
+        set { self.textView.autocorrectionType = newValue }
     }
     open var backgroundColors: State<UIColor?> = State<UIColor?>(Theme.Colors.primaryBackground) {
         didSet { self.updateState() }
@@ -207,20 +200,16 @@ open class TextField: FormsComponent, FormsComponentWithMarginEdgeInset, FormsCo
         get { return self.isUserInteractionEnabled }
         set { newValue ? self.enable(animated: false) : self.disable(animated: false) }
     }
-    open var isSecureTextEntry: Bool {
-        get { return self.textField.isSecureTextEntry }
-        set { self.textField.isSecureTextEntry = newValue }
-    }
     open var keyboardType: UIKeyboardType {
-        get { return self.textField.keyboardType }
-        set { self.textField.keyboardType = newValue }
+        get { return self.textView.keyboardType }
+        set { self.textView.keyboardType = newValue }
     }
     open var paddingEdgeInset: UIEdgeInsets = UIEdgeInsets(0) {
         didSet { self.updatePaddingEdgeInset() }
     }
     open var placeholder: String? {
-        get { return self.textField.placeholder }
-        set { self.textField.placeholder = newValue }
+        get { return self.textView.placeholder }
+        set { self.textView.placeholder = newValue }
     }
     open var placeholderColors: State<UIColor?> = State<UIColor?>(Theme.Colors.primaryText.withAlphaComponent(0.3)) {
         didSet { self.updateState() }
@@ -230,26 +219,23 @@ open class TextField: FormsComponent, FormsComponentWithMarginEdgeInset, FormsCo
     }
     @available(iOS 11.0, *)
     open var smartQuotesType: UITextSmartQuotesType {
-        get { return self.textField.smartQuotesType }
-        set { self.textField.smartQuotesType = newValue }
+        get { return self.textView.smartQuotesType }
+        set { self.textView.smartQuotesType = newValue }
     }
     open var text: String? {
-        get { return self.textField.text }
-        set { self.textField.text = newValue }
+        get { return self.textView.text }
+        set { self.textView.text = newValue }
     }
     open var textColors: State<UIColor?> = State<UIColor?>(Theme.Colors.primaryText) {
         didSet { self.updateState() }
     }
-    private var _textFieldDelegate: UITextFieldDelegate? // swiftlint:disable:this weak_delegate
-    open var textFieldDelegate: UITextFieldDelegate? {
-        get { return self._textFieldDelegate }
-        set {
-            self._textFieldDelegate = newValue
-            self.textField.delegate = newValue
-        }
-    }
     open var textFonts: State<UIFont> = State<UIFont>(Theme.Fonts.regular(ofSize: 16)) {
         didSet { self.updateState() }
+    }
+    private var _textViewDelegate: UITextViewDelegate? // swiftlint:disable:this weak_delegate
+    open var textViewDelegate: UITextViewDelegate? {
+        get { return self._textViewDelegate }
+        set { self._textViewDelegate = newValue }
     }
     open var title: String? {
         get { return self.titleLabel.text }
@@ -261,7 +247,7 @@ open class TextField: FormsComponent, FormsComponentWithMarginEdgeInset, FormsCo
     open var titleFonts: State<UIFont> = State<UIFont>(Theme.Fonts.regular(ofSize: 10)) {
         didSet { self.updateState() }
     }
-    open var underscoreColors: State<UIColor?> = State<UIColor?>(Theme.Colors.gray) {
+    open var underscoreColors: State<UIColor?> = State<UIColor?>(Theme.Colors.primaryText) {
         didSet { self.updateState() }
     }
     
@@ -283,7 +269,7 @@ open class TextField: FormsComponent, FormsComponentWithMarginEdgeInset, FormsCo
     override open func setupView() {
         self.setupBackgroundView()
         self.setupTitleLabel()
-        self.setupTextField()
+        self.setupTextView()
         self.setupUnderscoreView()
         self.setupErrorLabel()
         self.setupInfoLabel()
@@ -292,16 +278,13 @@ open class TextField: FormsComponent, FormsComponentWithMarginEdgeInset, FormsCo
     
     override open func setupActions() {
         super.setupActions()
-        self.textField.addTarget(self, action: #selector(handleOnBeginEditing), for: .editingDidBegin)
-        self.textField.addTarget(self, action: #selector(handleOnEndEditing), for: .editingDidEnd)
-        self.textField.addTarget(self, action: #selector(handleOnTextChanged), for: .editingChanged)
         self.gestureRecognizer.addTarget(self, action: #selector(handleGesture))
-            self.backgroundView.addGestureRecognizer(self.gestureRecognizer)
+        self.backgroundView.addGestureRecognizer(self.gestureRecognizer)
     }
     
     @objc
     private func handleGesture(recognizer: UITapGestureRecognizer) {
-        self.textField.becomeFirstResponder()
+        self.textView.becomeFirstResponder()
     }
     
     override open func enable(animated: Bool) {
@@ -316,61 +299,25 @@ open class TextField: FormsComponent, FormsComponentWithMarginEdgeInset, FormsCo
         self.setState(.disabled, animated: animated)
     }
     
-    public func textFieldDelegate<T: UITextFieldDelegate>(of type: T.Type) -> T? {
-        return self._textFieldDelegate as? T
+    public func textViewDelegate<T: UITextViewDelegate>(of type: T.Type) -> T? {
+        return self._textViewDelegate as? T
     }
     
-    // MARK: Actions
-    @objc
-    private func handleOnBeginEditing(_ sender: UITextField) {
-        self.updateState(animated: true)
-        self.validatorTrigger()
-        if let newText: String = self.formatText?(sender.text) {
-            sender.text = newText
-        }
-        self.onBeginEditing?(sender.text)
-        if self.validateOnBeginEditing {
-            self.validate()
-            self.table?.refreshTableView()
-        }
-    } 
-    
-    @objc
-    private func handleOnEndEditing(_ sender: UITextField) {
-        self.updateState(animated: true)
-        self.validatorTrigger()
-        self.onEndEditing?(sender.text)
-        if self.validateOnEndEditing {
-            self.validate()
-            self.table?.refreshTableView()
-        }
-    }
-    
-    @objc
-    private func handleOnTextChanged(_ sender: UITextField) {
-        self.validatorTrigger()
-        self.onTextChanged?(sender.text)
-        if self.validateOnTextChange {
-            self.validate()
-            self.table?.refreshTableView()
-        }
-    }
-    
-    // MARK: UIResponder 
+    // MARK: UIResponder
     override open var canBecomeFirstResponder: Bool {
-        return self.textField.canBecomeFirstResponder
+        return self.textView.canBecomeFirstResponder
     }
     
     override open func becomeFirstResponder() -> Bool {
-        return self.textField.becomeFirstResponder()
+        return self.textView.becomeFirstResponder()
     }
     
     override open var canResignFirstResponder: Bool {
-        return self.textField.canBecomeFirstResponder
+        return self.textView.canBecomeFirstResponder
     }
     
     override open func resignFirstResponder() -> Bool {
-        return self.textField.resignFirstResponder()
+        return self.textView.resignFirstResponder()
     }
     
     // MARK: HOOKS - setup
@@ -382,7 +329,11 @@ open class TextField: FormsComponent, FormsComponentWithMarginEdgeInset, FormsCo
         // HOOK
     }
     
-    open func setupTextField() {
+    open func setupTextView() {
+        self.textView.delegate = self
+        self.textView.isScrollEnabled = false
+        self.textView.textContainerInset = UIEdgeInsets.zero
+        self.textView.textContainer.lineFragmentPadding = 0
         // HOOK
     }
     
@@ -423,7 +374,7 @@ open class TextField: FormsComponent, FormsComponentWithMarginEdgeInset, FormsCo
             self.setState(.error, animated: animated)
         } else if self.isEnabled.not {
             self.setState(.disabled, animated: animated)
-        } else if self.textField.isFirstResponder {
+        } else if self.textView.isFirstResponder {
             self.setState(.selected, animated: animated)
         } else {
             self.setState(.active, animated: animated)
@@ -449,10 +400,10 @@ open class TextField: FormsComponent, FormsComponentWithMarginEdgeInset, FormsCo
             self.errorLabel.font = self.errorFont
             self.infoLabel.textColor = self.infoColor
             self.infoLabel.font = self.infoFont
-            self.textField.textColor = self.textColors.value(for: state)
-            self.textField.font = self.textFonts.value(for: state)
-            self.textField.placeholderColor = self.placeholderColors.value(for: state)
-            self.textField.placeholderFont = self.placeholderFonts.value(for: state)
+            self.textView.textColor = self.textColors.value(for: state)
+            self.textView.font = self.textFonts.value(for: state)
+            self.textView.placeholderColor = self.placeholderColors.value(for: state)
+            self.textView.placeholderFont = self.placeholderFonts.value(for: state)
             self.titleLabel.textColor = self.titleColors.value(for: state)
             self.titleLabel.font = self.titleFonts.value(for: state)
             self.underscoreView.backgroundColor = self.underscoreColors.value(for: state)
@@ -461,8 +412,44 @@ open class TextField: FormsComponent, FormsComponentWithMarginEdgeInset, FormsCo
     }
 }
 
+// MARK: UITextViewDelegate
+extension TextView: UITextViewDelegate {
+    public func textViewDidBeginEditing(_ textView: UITextView) {
+        self.updateState(animated: true)
+        self.validatorTrigger()
+        if let newText: String = self.formatText?(textView.text) {
+            textView.text = newText
+        }
+        self.onBeginEditing?(textView.text)
+        if self.validateOnBeginEditing {
+            self.validate()
+            self.table?.refreshTableView()
+        }
+    }
+
+    public func textViewDidEndEditing(_ textView: UITextView) {
+        self.updateState(animated: true)
+        self.validatorTrigger()
+        self.onEndEditing?(textView.text)
+        if self.validateOnEndEditing {
+            self.validate()
+            self.table?.refreshTableView()
+        }
+    }
+    
+    public func textViewDidChange(_ textView: UITextView) {
+        self.table?.refreshTableView()
+        self.validatorTrigger()
+        self.onTextChanged?(textView.text)
+        if self.validateOnTextChange {
+            self.validate()
+            self.table?.refreshTableView()
+        }
+    }
+}
+
 // MARK: Validable
-extension TextField: Validable {
+extension TextView: Validable {
     public func validate(_ validator: Validator,
                          _ isSilence: Bool) -> Bool {
         let result = validator.validate(self.text)
@@ -474,18 +461,18 @@ extension TextField: Validable {
 }
 
 // MARK: Inputable
-extension TextField: Inputable {
+extension TextView: Inputable {
     public func focus(animated: Bool) {
-        self.textField.becomeFirstResponder()
+        self.textView.becomeFirstResponder()
     }
     
     public func lostFocus(animated: Bool) {
-        self.textField.resignFirstResponder()
+        self.textView.resignFirstResponder()
     }
 }
 
 // MARK: Builder
-public extension TextField {
+public extension TextView {
     func with(animationTime: TimeInterval) -> Self {
         self.animationTime = animationTime
         return self
@@ -535,14 +522,10 @@ public extension TextField {
         self.isEnabled = isEnabled
         return self
     }
-    func with(isSecureTextEntry: Bool) -> Self {
-        self.isSecureTextEntry = isSecureTextEntry
-        return self
-    }
     func with(keyboardType: UIKeyboardType) -> Self {
         self.keyboardType = keyboardType
         return self
-    } 
+    }
     func with(placeholder: String?) -> Self {
         self.placeholder = placeholder
         return self
@@ -580,16 +563,16 @@ public extension TextField {
         self.textColors = textColors
         return self
     }
-    func with(textFieldDelegate: UITextFieldDelegate?) -> Self {
-        self.textFieldDelegate = textFieldDelegate
-        return self
-    }
     func with(textFont: UIFont) -> Self {
         self.textFonts = State<UIFont>(textFont)
         return self
     }
     func with(textFonts: State<UIFont>) -> Self {
         self.textFonts = textFonts
+        return self
+    }
+    func with(textViewDelegate: UITextViewDelegate?) -> Self {
+        self.textViewDelegate = textViewDelegate
         return self
     }
     func with(title: String?) -> Self {
@@ -650,14 +633,14 @@ public extension TextField {
     }
 }
 
-// MARK: UITextField
-public extension UITextField {
-    var formTextField: TextField? {
+// MARK: UITextView
+public extension UITextView {
+    var formTextView: TextView? {
         var superview: UIView? = self
         while superview != nil {
             superview = superview?.superview
-            guard let textField = superview as? TextField else { continue }
-            return textField
+            guard let textView = superview as? TextView else { continue }
+            return textView
         }
         return nil
     }

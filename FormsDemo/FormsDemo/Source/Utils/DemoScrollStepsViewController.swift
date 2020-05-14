@@ -13,7 +13,7 @@ import UIKit
 // MARK: DemoScrollStepsViewController
 class DemoScrollStepsViewController: FormsViewController {
     private let topView = Components.container.view()
-        .with(backgroundColor: UIColor.red)
+        .with(backgroundColor: Theme.Colors.red)
     private lazy var scrollView = Components.container.scroll()
         .with(items: [self.scrollContentView])
         .with(scrollDirection: .vertical)
@@ -23,7 +23,7 @@ class DemoScrollStepsViewController: FormsViewController {
         .with(anchors: { [Anchor.to($0).height(4_000)] })
         .with(backgroundColor: Theme.Colors.secondaryBackground)
     private let bottomView = Components.container.view()
-        .with(backgroundColor: UIColor.red)
+        .with(backgroundColor: Theme.Colors.red)
 
     private let topViewTopAnchor = AnchorConnection()
     private let bottomViewBottomAnchor = AnchorConnection()

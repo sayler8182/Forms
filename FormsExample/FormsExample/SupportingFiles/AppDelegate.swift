@@ -45,7 +45,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Permission
         // Permission.notifications.ask { (_) in
         //    Notifications.registerRemote()
-        //}
+        // }
         
         // SocialKit
         SocialKit.configure(
