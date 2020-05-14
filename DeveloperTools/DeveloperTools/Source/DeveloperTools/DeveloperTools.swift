@@ -86,7 +86,10 @@ public class DeveloperTools: NSObject {
     
     public static subscript(_ key: DeveloperFeatureFlagKey) -> Bool {
         get { return (UserDefaults.standard.object(forKey: key.rawKey) as? Bool) ?? key.isEnabled }
-        set { UserDefaults.standard.set(newValue, forKey: key.rawKey) }
+        set {
+            UserDefaults.standard.set(newValue, forKey: key.rawKey)
+            UserDefaults.standard.synchronize()
+        }
     }
     
     public static func configure(features: [DeveloperFeatureKey],

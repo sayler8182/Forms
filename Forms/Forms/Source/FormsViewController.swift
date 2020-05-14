@@ -10,7 +10,7 @@ import Anchor
 import UIKit
 
 // MARK: FormsViewController
-open class FormsViewController: UIViewController, UIGestureRecognizerDelegate {
+open class FormsViewController: UIViewController, UIGestureRecognizerDelegate, Themeable {
     private var navigationBar: NavigationBar? = nil
     private var navigationProgressBar: ProgressBar? = nil
     private var searchController: UISearchController? = nil
@@ -20,6 +20,9 @@ open class FormsViewController: UIViewController, UIGestureRecognizerDelegate {
     
     open var isShimmering: Bool {
         return self.view.isShimmering
+    }
+    open var isThemeAutoRegister: Bool {
+        return true
     }
     
     open var additionalTopSafeArea: CGFloat {
@@ -63,10 +66,15 @@ open class FormsViewController: UIViewController, UIGestureRecognizerDelegate {
         self.navigationBar?.updateProgress(animated: animated)
     }
     
+    override open var preferredStatusBarStyle: UIStatusBarStyle {
+        return Theme.Colors.statusBar.style
+    }
+    
     open func setupView() {
         self.setupConfiguration()
         self.setupResizerOnKeyboard()
         self.setupKeyboardWhenTappedAround()
+        self.setupTheme()
         
         // HOOKS
         self.setupNavigationBar()
@@ -84,12 +92,27 @@ open class FormsViewController: UIViewController, UIGestureRecognizerDelegate {
         self.view.stopShimmering(animated: animated)
     }
     
+    open func setTheme() {
+        self.setNeedsStatusBarAppearanceUpdate()
+        self.view.backgroundColor = Theme.Colors.primaryBackground  
+        self.view.flatSubviews
+            .compactMap { $0 as? Themeable }
+            .forEach { $0.setTheme() }
+    }
+    
     // MARK: HOOKS
     open func postInit() {
         // HOOK
     }
     
     open func setupConfiguration() {
+        // HOOK
+    }
+    
+    open func setupTheme() {
+        self.setTheme()
+        guard self.isThemeAutoRegister else { return }
+        Theme.register(self)
         // HOOK
     }
     
@@ -102,7 +125,6 @@ open class FormsViewController: UIViewController, UIGestureRecognizerDelegate {
     }
     
     open func setupContent() {
-        self.view.backgroundColor = Theme.systemBackground
         // HOOK
     }
     

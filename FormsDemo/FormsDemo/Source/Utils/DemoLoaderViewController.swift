@@ -62,7 +62,7 @@ private class TitleLoaderView: LoaderView {
     private let titleLabel = Components.label.default()
         .with(alignment: .center)
         .with(color: UIColor.red)
-        .with(font: UIFont.boldSystemFont(ofSize: 14))
+        .with(font: Theme.Fonts.bold(ofSize: 14))
         .with(numberOfLines: 3)
     
     required init() {
@@ -75,7 +75,7 @@ private class TitleLoaderView: LoaderView {
     
     override func setupView() {
         super.setupView()
-        self.backgroundColor = Theme.secondarySystemBackground
+        self.backgroundColor = Theme.Colors.secondaryBackground
         self.layer.cornerRadius = 8
         self.layer.shadowColor = UIColor.black.cgColor
     }

@@ -46,7 +46,7 @@ public extension FormsSearchController {
 }
 
 // MARK: FormsSearchController
-open class FormsSearchController: UISearchController {
+open class FormsSearchController: UISearchController, Themeable {
     open var animationTime: TimeInterval = 0.2
     open var autocapitalizationType: UITextAutocapitalizationType {
         get { return self.searchBar.autocapitalizationType }
@@ -73,7 +73,7 @@ open class FormsSearchController: UISearchController {
         get { return self.searchBar.text }
         set { self.searchBar.text = newValue }
     }
-    open var textColors: State<UIColor?> = State<UIColor?>(Theme.label) {
+    open var textColors: State<UIColor?> = State<UIColor?>(Theme.Colors.primaryText) {
         didSet { self.updateState() }
     }
     private var _textFieldDelegate: UITextFieldDelegate? // swiftlint:disable:this weak_delegate
@@ -84,8 +84,12 @@ open class FormsSearchController: UISearchController {
             self.searchBar.textField.delegate = newValue
         }
     }
-    open var textFonts: State<UIFont> = State<UIFont>(UIFont.systemFont(ofSize: 14)) {
+    open var textFonts: State<UIFont> = State<UIFont>(Theme.Fonts.regular(ofSize: 14)) {
         didSet { self.updateState() }
+    }
+    
+    open var isThemeAutoRegister: Bool {
+        return true
     }
     
     public var validateOnBeginEditing: Bool = false
@@ -135,9 +139,15 @@ open class FormsSearchController: UISearchController {
     
     open func setupView() {
         self.setupConfiguration()
+        self.setupTheme()
         self.setupContent()
         self.setupActions()
         self.setupOther()
+    }
+    
+    open func setTheme() {
+        self.textColors = State<UIColor?>(Theme.Colors.primaryText)
+        self.textFonts = State<UIFont>(Theme.Fonts.regular(ofSize: 14))
     }
     
     public func textFieldDelegate<T: UITextFieldDelegate>(of type: T.Type) -> T? {
@@ -150,6 +160,13 @@ open class FormsSearchController: UISearchController {
     }
     
     open func setupConfiguration() {
+        // HOOK
+    }
+    
+    open func setupTheme() {
+        self.setTheme()
+        guard self.isThemeAutoRegister else { return }
+        Theme.register(self)
         // HOOK
     }
     

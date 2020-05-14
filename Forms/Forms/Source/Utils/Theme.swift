@@ -6,284 +6,335 @@
 //  Copyright © 2020 Limbo. All rights reserved.
 //
 
+import Injector
 import UIKit
 
+// MARK: ThemeType
+public enum ThemeType {
+    case light
+    case dark
+    case custom(_ key: String)
+    
+    public init?(_ style: Int?) {
+        switch style {
+        case 1: self = ThemeType.light
+        case 2: self = ThemeType.dark
+        default: return nil
+        }
+    }
+    
+    public init?(_ key: String?) {
+        guard let key: String = key, key.isNotEmpty else { return nil }
+        switch key {
+        case ThemeType.light.key: self = ThemeType.light
+        case ThemeType.dark.key: self = ThemeType.dark
+        default: self = ThemeType.custom(key)
+        }
+    }
+    
+    public var style: Int {
+        switch self {
+        case .light: return 1
+        case .dark: return 2
+        case .custom: return -1
+        }
+    }
+    
+    public var key: String {
+        switch self {
+        case .light: return "LIGHT"
+        case .dark: return "DARK"
+        case .custom(let key): return key
+        }
+    }
+}
+
+// MARK: ThemeProtocol
 public protocol ThemeProtocol {
-    var primaryDarkColor: UIColor { get }
-    var primaryColor: UIColor { get }
-    var primaryLightColor: UIColor { get }
-    var primaryTextColor: UIColor { get }
-    var secondaryColor: UIColor { get }
-    var secondaryTextColor: UIColor { get }
-    var textPrimaryColor: UIColor { get }
-    var textSecondaryColor: UIColor { get }
-    var dividerColor: UIColor { get }
-    var errorColor: UIColor { get }
+    static var Colors: ThemeColorsProtocol { get }
     
-    var redColor: UIColor { get }
-    var greenColor: UIColor { get }
+    @available(iOS 12.0, *)
+    static func setUserInterfaceStyle(_ userInterfaceStryle: UIUserInterfaceStyle)
+    static func setTheme(_ theme: ThemeType?)
 }
 
-public struct Theme: ThemeProtocol {
-    public var primaryDarkColor: UIColor = UIColor(0xC2185B)
-    public var primaryColor: UIColor = UIColor(0xE91E63)
-    public var primaryLightColor: UIColor = UIColor(0xF8BBD0)
-    public var primaryTextColor: UIColor = UIColor(0xFFFFFF)
-    public var secondaryColor: UIColor = UIColor(0x448AFF)
-    public var secondaryTextColor: UIColor = UIColor(0xFFFFFF)
-    public var textPrimaryColor: UIColor = UIColor(0x212121)
-    public var textSecondaryColor: UIColor = UIColor(0x757575)
-    public var dividerColor: UIColor = UIColor(0xBDBDBD)
-    public var errorColor: UIColor = UIColor(0xC62828)
+// MARK: Theme
+public class Theme: ThemeProtocol {
+    fileprivate static var observers: [ThemeObserver] = []
+    fileprivate static var systemTheme: ThemeType = ThemeType.light
     
-    public var redColor: UIColor = UIColor(0xFF0A4F)
-    public var greenColor: UIColor = UIColor(0x0DFF77)
+    fileprivate static var theme: ThemeType? {
+        get {
+            let themeKey: String? = UserDefaults.standard.object(forKey: "FormsThemeTypeKey") as? String
+            return ThemeType(themeKey)
+        }
+        set {
+            if let themeKey: String = newValue?.key {
+                UserDefaults.standard.set(themeKey, forKey: "FormsThemeTypeKey")
+                UserDefaults.standard.synchronize()
+            } else {
+                UserDefaults.standard.removeObject(forKey: "FormsThemeTypeKey")
+                UserDefaults.standard.synchronize()
+            }
+        }
+    }
+    
+    public static var Colors: ThemeColorsProtocol {
+        let themeKey: String = Self.theme?.key ?? Self.systemTheme.key
+        if let colors: ThemeColorsProtocol = Injector.main.resolve(themeKey) {
+            return colors
+        } else if let colors: ThemeColorsProtocol = Injector.main.resolve() {
+            return colors
+        } else {
+            return ThemeColors()
+        }
+    }
+    
+    public static var Fonts: ThemeFontsProtocol {
+        let themeKey: String = Self.theme?.key ?? Self.systemTheme.key
+        if let fonts: ThemeFontsProtocol = Injector.main.resolve(themeKey) {
+            return fonts
+        } else if let fonts: ThemeFontsProtocol = Injector.main.resolve() {
+            return fonts
+        } else {
+            return ThemeFonts()
+        }
+    }
+    
+    @available(iOS 12.0, *)
+    public static func setUserInterfaceStyle(_ userInterfaceStyle: UIUserInterfaceStyle) {
+        guard Self.systemTheme.style != userInterfaceStyle.rawValue else { return }
+        guard let theme: ThemeType = ThemeType(userInterfaceStyle.rawValue) else { return }
+        Self.systemTheme = theme
+        Self.clean()
+        guard self.theme.isNil else { return }
+        Self.observers.setTheme()
+    }
+    
+    public static func setTheme(_ theme: ThemeType?) {
+        guard Self.theme?.key != theme?.key else { return }
+        Self.theme = theme
+        Self.clean()
+        Self.observers.setTheme()
+    }
 }
 
-public extension ThemeProtocol {
-    static var label: UIColor {
-        if #available(iOS 13.0, *) {
-            return UIColor.label
-        } else {
-            return UIColor(rgba: 0x000000ff)
+// MARK: Themeable
+public protocol Themeable: class {
+    func setTheme()
+}
+
+// MARK: ThemeObserver
+private class ThemeObserver {
+    fileprivate weak var item: Themeable?
+    
+    fileprivate init(_ item: Themeable) {
+        self.item = item
+    }
+}
+
+// MARK: [ThemeObserver]
+private extension Array where Element == ThemeObserver {
+    func setTheme() {
+        for item in self {
+            item.item?.setTheme()
         }
     }
-    static var secondaryLabel: UIColor {
-        if #available(iOS 13.0, *) {
-            return UIColor.secondaryLabel
-        } else {
-            return UIColor(rgba: 0x3c3c4399)
-        }
+}
+
+// MARK: Observers
+public extension Theme {
+    static func register(_ item: Themeable) {
+        let observer = ThemeObserver(item)
+        Self.observers.append(observer)
+        Self.clean()
     }
-    static var tertiaryLabel: UIColor {
-        if #available(iOS 13.0, *) {
-            return UIColor.tertiaryLabel
-        } else {
-            return UIColor(rgba: 0x3c3c434c)
-        }
+    
+    static func unregister(_ item: Themeable) {
+        self.observers
+            .filter { $0.item === item }
+            .forEach { $0.item = nil }
+        Self.clean()
     }
-    static var quaternaryLabel: UIColor {
-        if #available(iOS 13.0, *) {
-            return UIColor.quaternaryLabel
-        } else {
-            return UIColor(rgba: 0x3c3c432d)
-        }
+    
+    private static func clean() {
+        Self.observers = Self.observers
+            .filter { $0.item != nil }
     }
-    static var systemFill: UIColor {
-        if #available(iOS 13.0, *) {
-            return UIColor.systemFill
-        } else {
-            return UIColor(rgba: 0x78788033)
-        }
+}
+
+// MARK: ThemeColorsKey
+public struct ThemeColorsKey: Hashable {
+    static var blue = ThemeColorsKey("blue")
+    static var gray = ThemeColorsKey("gray")
+    static var green = ThemeColorsKey("green")
+    static var red = ThemeColorsKey("red")
+    
+    static var primaryText = ThemeColorsKey("primaryText")
+    static var secondaryText = ThemeColorsKey("secondaryText")
+    static var tertiaryText = ThemeColorsKey("tertiaryText")
+    
+    static var primaryBackground = ThemeColorsKey("primaryBackground")
+    static var secondaryBackground = ThemeColorsKey("secondaryBackground")
+    static var tertiaryBackground = ThemeColorsKey("tertiaryBackground")
+    
+    let key: String
+    
+    init(_ key: String) {
+        self.key = key
     }
-    static var secondarySystemFill: UIColor {
+}
+
+// MARK: ThemeBarStyle
+public enum ThemeBarStyle {
+    case light
+    case dark
+    
+    var style: UIStatusBarStyle {
         if #available(iOS 13.0, *) {
-            return UIColor.secondarySystemFill
-        } else {
-            return UIColor(rgba: 0x78788028)
+            switch self {
+            case .light:
+                return .default
+            case .dark:
+                return .darkContent
+            }
         }
+        return .lightContent
     }
-    static var tertiarySystemFill: UIColor {
-        if #available(iOS 13.0, *) {
-            return UIColor.tertiarySystemFill
-        } else {
-            return UIColor(rgba: 0x7676801e)
-        }
+}
+
+// MARK: ThemeColorsProtocol
+public protocol ThemeColorsProtocol {
+    var colors: [ThemeColorsKey: UIColor] { get }
+    var statusBar: ThemeBarStyle { get }
+    
+    func color(_ key: ThemeColorsKey) -> UIColor
+    func color(_ key: ThemeColorsKey,
+               or defaultValue: UIColor) -> UIColor
+}
+
+// MARK: ThemeColors
+public struct ThemeColors: ThemeColorsProtocol {
+    public let colors: [ThemeColorsKey: UIColor]
+    public let statusBar: ThemeBarStyle
+    
+    public init(colors: [ThemeColorsKey: UIColor] = [:],
+                statusBar: ThemeBarStyle = .dark) {
+        self.colors = colors
+        self.statusBar = statusBar
     }
-    static var quaternarySystemFill: UIColor {
-        if #available(iOS 13.0, *) {
-            return UIColor.quaternarySystemFill
-        } else {
-            return UIColor(rgba: 0x74748014)
-        }
+    
+    public func color(_ key: ThemeColorsKey) -> UIColor {
+        return self.color(key, or: UIColor.red)
     }
-    static var placeholderText: UIColor {
-        if #available(iOS 13.0, *) {
-            return UIColor.placeholderText
-        } else {
-            return UIColor(rgba: 0x3c3c434c)
-        }
+    
+    public func color(_ key: ThemeColorsKey,
+                      or defaultValue: UIColor) -> UIColor {
+        return self.colors[key] ?? defaultValue
     }
-    static var systemBackground: UIColor {
-        if #available(iOS 13.0, *) {
-            return UIColor.systemBackground
-        } else {
-            return UIColor(rgba: 0xffffffff)
-        }
+}
+
+// MARK: ThemeFontsKey
+public struct ThemeFontsKey: Hashable {
+    static var bold = ThemeFontsKey("bold")
+    static var regular = ThemeFontsKey("regular")
+    
+    let key: String
+    
+    init(_ key: String) {
+        self.key = key
     }
-    static var secondarySystemBackground: UIColor {
-        if #available(iOS 13.0, *) {
-            return UIColor.secondarySystemBackground
-        } else {
-            return UIColor(rgba: 0xf2f2f7ff)
-        }
+}
+
+// MARK: ThemeFontsProtocol
+public protocol ThemeFontsProtocol {
+    typealias ThemeFont = (_ size: CGFloat) -> UIFont
+    
+    var fonts: [ThemeFontsKey: ThemeFont] { get }
+    
+    func font(_ key: ThemeFontsKey,
+              ofSize size: CGFloat) -> UIFont
+    func font(_ key: ThemeFontsKey,
+              ofSize size: CGFloat,
+              or defaultValue: UIFont) -> UIFont
+}
+
+// MARK: ThemeFonts
+public struct ThemeFonts: ThemeFontsProtocol {
+    public let fonts: [ThemeFontsKey: ThemeFont]
+    
+    public init(fonts: [ThemeFontsKey: ThemeFont] = [:]) {
+        self.fonts = fonts
     }
-    static var tertiarySystemBackground: UIColor {
-        if #available(iOS 13.0, *) {
-            return UIColor.tertiarySystemBackground
-        } else {
-            return UIColor(rgba: 0xffffffff)
-        }
+    
+    public func font(_ key: ThemeFontsKey,
+                     ofSize size: CGFloat) -> UIFont {
+        return self.font(key, ofSize: size, or: UIFont.systemFont(ofSize: 14))
     }
-    static var systemGroupedBackground: UIColor {
-        if #available(iOS 13.0, *) {
-            return UIColor.systemGroupedBackground
-        } else {
-            return UIColor(rgba: 0xf2f2f7ff)
-        }
+    
+    public func font(_ key: ThemeFontsKey,
+                     ofSize size: CGFloat,
+                     or defaultValue: UIFont) -> UIFont {
+        return self.fonts[key]?(size) ?? defaultValue
     }
-    static var secondarySystemGroupedBackground: UIColor {
-        if #available(iOS 13.0, *) {
-            return UIColor.secondarySystemGroupedBackground
-        } else {
-            return UIColor(rgba: 0xffffffff)
-        }
+}
+
+// MARK: Colors
+public extension ThemeColorsProtocol {
+    var blue: UIColor {
+        return self.color(.blue)
     }
-    static var tertiarySystemGroupedBackground: UIColor {
-        if #available(iOS 13.0, *) {
-            return UIColor.tertiarySystemGroupedBackground
-        } else {
-            return UIColor(rgba: 0xf2f2f7ff)
-        }
+    var gray: UIColor {
+        return self.color(.gray)
     }
-    static var separator: UIColor {
-        if #available(iOS 13.0, *) {
-            return UIColor.separator
-        } else {
-            return UIColor(rgba: 0x3c3c4349)
-        }
+    var green: UIColor {
+        return self.color(.green)
     }
-    static var opaqueSeparator: UIColor {
-        if #available(iOS 13.0, *) {
-            return UIColor.opaqueSeparator
-        } else {
-            return UIColor(rgba: 0xc6c6c8ff)
-        }
+    var red: UIColor {
+        return self.color(.red)
     }
-    static var link: UIColor {
-        if #available(iOS 13.0, *) {
-            return UIColor.link
-        } else {
-            return UIColor(rgba: 0x007affff)
-        }
+    
+    var primaryText: UIColor {
+        return self.color(.primaryText)
     }
-    static var darkText: UIColor {
-        if #available(iOS 13.0, *) {
-            return UIColor.darkText
-        } else {
-            return UIColor(rgba: 0x000000ff)
-        }
+    var secondaryText: UIColor {
+        return self.color(.secondaryText)
     }
-    static var lightText: UIColor {
-        if #available(iOS 13.0, *) {
-            return UIColor.lightText
-        } else {
-            return UIColor(rgba: 0xffffff99)
-        }
+    var tertiaryText: UIColor {
+        return self.color(.tertiaryText)
     }
-    static var systemBlue: UIColor {
-        if #available(iOS 13.0, *) {
-            return UIColor.systemBlue
-        } else {
-            return UIColor(rgba: 0x007affff)
-        }
+    
+    var primaryBackground: UIColor {
+        return self.color(.primaryBackground)
     }
-    static var systemGreen: UIColor {
-        if #available(iOS 13.0, *) {
-            return UIColor.systemGreen
-        } else {
-            return UIColor(rgba: 0x34c759ff)
-        }
+    var secondaryBackground: UIColor {
+        return self.color(.secondaryBackground)
     }
-    static var systemIndigo: UIColor {
-        if #available(iOS 13.0, *) {
-            return UIColor.systemIndigo
-        } else {
-            return UIColor(rgba: 0x5856d6ff)
-        }
+    var tertiaryBackground: UIColor {
+        return self.color(.tertiaryBackground)
     }
-    static var systemOrange: UIColor {
-        if #available(iOS 13.0, *) {
-            return UIColor.systemOrange
-        } else {
-            return UIColor(rgba: 0xff9500ff)
-        }
+}
+
+// MARK: Fonts
+public extension ThemeFontsProtocol {
+    func bold(ofSize size: CGFloat) -> UIFont {
+        return self.font(.bold, ofSize: size)
     }
-    static var systemPink: UIColor {
-        if #available(iOS 13.0, *) {
-            return UIColor.systemPink
-        } else {
-            return UIColor(rgba: 0xff2d55ff)
-        }
+    func regular(ofSize size: CGFloat) -> UIFont {
+        return self.font(.regular, ofSize: size)
     }
-    static var systemPurple: UIColor {
-        if #available(iOS 13.0, *) {
-            return UIColor.systemPurple
-        } else {
-            return UIColor(rgba: 0xaf52deff)
-        }
+}
+
+// MARK: UITableView
+extension UITableView: Themeable {
+    public func setTheme() {
+        self.reloadData()
     }
-    static var systemRed: UIColor {
-        if #available(iOS 13.0, *) {
-            return UIColor.systemRed
-        } else {
-            return UIColor(rgba: 0xff3b30ff)
-        }
-    }
-    static var systemTeal: UIColor {
-        if #available(iOS 13.0, *) {
-            return UIColor.systemTeal
-        } else {
-            return UIColor(rgba: 0x5ac8faff)
-        }
-    }
-    static var systemYellow: UIColor {
-        if #available(iOS 13.0, *) {
-            return UIColor.systemYellow
-        } else {
-            return UIColor(rgba: 0xffcc00ff)
-        }
-    }
-    static var systemGray: UIColor {
-        if #available(iOS 13.0, *) {
-            return UIColor.systemGray
-        } else {
-            return UIColor(rgba: 0x8e8e93ff)
-        }
-    }
-    static var systemGray2: UIColor {
-        if #available(iOS 13.0, *) {
-            return UIColor.systemGray2
-        } else {
-            return UIColor(rgba: 0xaeaeb2ff)
-        }
-    }
-    static var systemGray3: UIColor {
-        if #available(iOS 13.0, *) {
-            return UIColor.systemGray3
-        } else {
-            return UIColor(rgba: 0xc7c7ccff)
-        }
-    }
-    static var systemGray4: UIColor {
-        if #available(iOS 13.0, *) {
-            return UIColor.systemGray4
-        } else {
-            return UIColor(rgba: 0xd1d1d6ff)
-        }
-    }
-    static var systemGray5: UIColor {
-        if #available(iOS 13.0, *) {
-            return UIColor.systemGray5
-        } else {
-            return UIColor(rgba: 0xe5e5eaff)
-        }
-    }
-    static var systemGray6: UIColor {
-        if #available(iOS 13.0, *) {
-            return UIColor.systemGray6
-        } else {
-            return UIColor(rgba: 0xf2f2f7ff)
-        }
+}
+
+// MARK: UICollectionView
+extension UICollectionView: Themeable {
+    public func setTheme() {
+        self.reloadData()
     }
 }

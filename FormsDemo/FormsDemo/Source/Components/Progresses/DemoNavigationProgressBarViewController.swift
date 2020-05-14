@@ -19,6 +19,11 @@ class DemoNavigationProgressBarViewController: FormsNavigationController {
         self.setRoot(DemoFirstViewController())
     }
     
+    override func setTheme() {
+        self.navigationProgressBar.setupView()
+        super.setTheme()
+    }
+    
     override func setupNavigationBar() {
         super.setupNavigationBar()
         self.setNavigationProgressBar(self.navigationProgressBar)
@@ -39,6 +44,7 @@ private class DemoFirstViewController: FormsTableViewController {
     override func setupContent() {
         super.setupContent()
         self.build([
+            self.divider,
             self.nextButton
         ], divider: self.divider)
     }
@@ -73,6 +79,7 @@ private class DemoSecondViewController: FormsTableViewController {
     override func setupContent() {
         super.setupContent()
         self.build([
+            self.divider,
             self.backButton,
             self.nextButton
         ], divider: self.divider)
@@ -109,6 +116,7 @@ private class DemoThirdViewController: FormsTableViewController {
     override func setupContent() {
         super.setupContent()
         self.build([
+            self.divider,
             self.backButton
         ], divider: self.divider)
     }

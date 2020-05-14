@@ -52,7 +52,7 @@ open class Button: FormsComponent, Clickable, FormsComponentWithMarginEdgeInset 
     private let gestureRecognizer = UILongPressGestureRecognizer()
     
     open var animationTime: TimeInterval = 0.2
-    open var backgroundColors: State<UIColor?> = State<UIColor?>(Theme.systemBackground) {
+    open var backgroundColors: State<UIColor?> = State<UIColor?>(Theme.Colors.primaryBackground) {
         didSet { self.updateState() }
     }
     open var marginEdgeInset: UIEdgeInsets = UIEdgeInsets(0) {
@@ -73,13 +73,13 @@ open class Button: FormsComponent, Clickable, FormsComponentWithMarginEdgeInset 
         get { return self.titleLabel.text }
         set { self.titleLabel.text = newValue }
     }
-    open var titleColors: State<UIColor?> = State<UIColor?>(Theme.label) {
+    open var titleColors: State<UIColor?> = State<UIColor?>(Theme.Colors.primaryText) {
         didSet { self.updateState() }
     }
     open var titleEdgeInset: UIEdgeInsets = UIEdgeInsets(0) {
         didSet { self.updateTitleEdgeInset() }
     }
-    open var titleFonts: State<UIFont> = State<UIFont>(UIFont.systemFont(ofSize: 14)) {
+    open var titleFonts: State<UIFont> = State<UIFont>(Theme.Fonts.regular(ofSize: 14)) {
         didSet { self.updateState() }
     }
     open var titleNumberOfLines: Int {

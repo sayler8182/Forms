@@ -91,7 +91,7 @@ open class TextField: FormsComponent, FormsComponentWithMarginEdgeInset, FormsCo
         get { return self.textField.autocorrectionType }
         set { self.textField.autocorrectionType = newValue }
     }
-    open var backgroundColors: State<UIColor?> = State<UIColor?>(Theme.systemBackground) {
+    open var backgroundColors: State<UIColor?> = State<UIColor?>(Theme.Colors.primaryBackground) {
         didSet { self.updateState() }
     }
     open var marginEdgeInset: UIEdgeInsets = UIEdgeInsets(0) {
@@ -103,7 +103,7 @@ open class TextField: FormsComponent, FormsComponentWithMarginEdgeInset, FormsCo
     open var errorColor: UIColor = UIColor.red {
         didSet { self.updateState() }
     }
-    open var errorFont: UIFont = UIFont.systemFont(ofSize: 10) {
+    open var errorFont: UIFont = Theme.Fonts.regular(ofSize: 10) {
         didSet { self.updateState() }
     }
     open var info: String? {
@@ -113,7 +113,7 @@ open class TextField: FormsComponent, FormsComponentWithMarginEdgeInset, FormsCo
     open var infoColor: UIColor = UIColor.lightGray {
         didSet { self.updateState() }
     }
-    open var infoFont: UIFont = UIFont.systemFont(ofSize: 10) {
+    open var infoFont: UIFont = Theme.Fonts.regular(ofSize: 10) {
         didSet { self.updateState() }
     }
     open var isEnabled: Bool {
@@ -144,7 +144,7 @@ open class TextField: FormsComponent, FormsComponentWithMarginEdgeInset, FormsCo
         get { return self.textField.text }
         set { self.textField.text = newValue }
     }
-    open var textColors: State<UIColor?> = State<UIColor?>(Theme.label) {
+    open var textColors: State<UIColor?> = State<UIColor?>(Theme.Colors.primaryText) {
         didSet { self.updateState() }
     }
     private var _textFieldDelegate: UITextFieldDelegate? // swiftlint:disable:this weak_delegate
@@ -155,17 +155,17 @@ open class TextField: FormsComponent, FormsComponentWithMarginEdgeInset, FormsCo
             self.textField.delegate = newValue
         }
     }
-    open var textFonts: State<UIFont> = State<UIFont>(UIFont.systemFont(ofSize: 14)) {
+    open var textFonts: State<UIFont> = State<UIFont>(Theme.Fonts.regular(ofSize: 14)) {
         didSet { self.updateState() }
     }
     open var title: String? {
         get { return self.titleLabel.text }
         set { self.titleLabel.text = newValue }
     }
-    open var titleColors: State<UIColor?> = State<UIColor?>(Theme.label) {
+    open var titleColors: State<UIColor?> = State<UIColor?>(Theme.Colors.primaryText) {
         didSet { self.updateState() }
     }
-    open var titleFonts: State<UIFont> = State<UIFont>(UIFont.systemFont(ofSize: 10)) {
+    open var titleFonts: State<UIFont> = State<UIFont>(Theme.Fonts.regular(ofSize: 10)) {
         didSet { self.updateState() }
     }
     open var underscoreColor: UIColor = UIColor.lightGray {

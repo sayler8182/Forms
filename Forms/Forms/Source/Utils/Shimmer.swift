@@ -261,7 +261,7 @@ public protocol ShimmerableViewCell: Shimmerable {
 public class ShimmerTableViewCell: FormsTableViewCell {
     private let iconView = UIImageView()
         .with(width: 48.0, height: 48.0)
-        .with(image: Theme.systemBackground.transparent)
+        .with(image: Theme.Colors.primaryBackground.transparent)
         .rounded()
     private let titleLabel = UILabel()
         .with(text: " ")
@@ -292,7 +292,7 @@ public class ShimmerTableViewCell: FormsTableViewCell {
 public class ShimmerCollectionViewCell: FormsCollectionViewCell {
     private let iconView = UIImageView()
         .with(width: 48.0, height: 48.0)
-        .with(image: Theme.systemBackground.transparent)
+        .with(image: Theme.Colors.primaryBackground.transparent)
         .rounded()
     private let titleLabel = UILabel()
         .with(text: " ")

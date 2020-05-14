@@ -13,7 +13,7 @@ public struct ComponentsNavigationBars: ComponentsList {
         
     public static func `default`() -> NavigationBar {
         let component = NavigationBar()
-        component.backgroundColor = nil
+        component.backgroundColor = Theme.Colors.primaryBackground
         component.backImage = { UIImage.from(name: "chevron.left") }
         component.closeImage = { UIImage.from(name: "xmark") }
         component.isBack = true
@@ -21,9 +21,14 @@ public struct ComponentsNavigationBars: ComponentsList {
         component.isTranslucent = false
         component.leftBarButtonItems = []
         component.rightBarButtonItems = []
-        component.tintColor = nil
+        component.tintColor = Theme.Colors.primaryText
         component.title = nil
         component.titleView = nil
+        component.onSetTheme = { [weak component] in
+            guard let component = component else { return }
+            component.backgroundColor = Theme.Colors.primaryBackground
+            component.tintColor = Theme.Colors.primaryText
+        }
         return component
     }
 }

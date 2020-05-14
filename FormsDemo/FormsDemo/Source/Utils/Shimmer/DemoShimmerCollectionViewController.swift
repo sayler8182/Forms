@@ -85,14 +85,14 @@ private class DemoCollectionViewCell: FormsCollectionViewCell {
         .with(width: 48.0, height: 48.0)
         .rounded()
     fileprivate let titleLabel = Components.label.default()
-        .with(color: Theme.label)
-        .with(font: UIFont.systemFont(ofSize: 14))
+        .with(color: Theme.Colors.primaryText)
+        .with(font: Theme.Fonts.regular(ofSize: 14))
     fileprivate let subtitleLabel = Components.label.default()
         .with(color: UIColor.darkGray)
-        .with(font: UIFont.systemFont(ofSize: 14))
+        .with(font: Theme.Fonts.regular(ofSize: 14))
     fileprivate let infoLabel = Components.label.default()
         .with(color: UIColor.gray)
-        .with(font: UIFont.systemFont(ofSize: 10))
+        .with(font: Theme.Fonts.regular(ofSize: 10))
         .with(numberOfLines: 3)
     
     override func setupView() {
@@ -131,7 +131,7 @@ private class DemoCollectionViewCell: FormsCollectionViewCell {
                                         _ itemWidth: CGFloat) -> CGFloat? {
         guard let source = source as? DemoCellModel else { return nil }
         let infoHeight: CGFloat = Components.label.default()
-            .with(font: UIFont.systemFont(ofSize: 10))
+            .with(font: Theme.Fonts.regular(ofSize: 10))
             .with(numberOfLines: 3)
             .with(text: source.info)
             .height(for: itemWidth)
@@ -151,7 +151,7 @@ private class ShimmerShortDemoCollectionViewCell: DemoCollectionViewCell {
                                         _ collectionView: UICollectionView,
                                         _ itemWidth: CGFloat) -> CGFloat? {
         let infoHeight: CGFloat = Components.label.default()
-            .with(font: UIFont.systemFont(ofSize: 10))
+            .with(font: Theme.Fonts.regular(ofSize: 10))
             .with(numberOfLines: 3)
             .with(text: LoremIpsum.emptyMedium)
             .height(for: itemWidth)
@@ -171,7 +171,7 @@ private class ShimmerLongDemoCollectionViewCell: DemoCollectionViewCell {
                                         _ collectionView: UICollectionView,
                                         _ itemWidth: CGFloat) -> CGFloat? {
         let infoHeight: CGFloat = Components.label.default()
-            .with(font: UIFont.systemFont(ofSize: 10))
+            .with(font: Theme.Fonts.regular(ofSize: 10))
             .with(numberOfLines: 3)
             .with(text: LoremIpsum.empty(lines: 3))
             .height(for: itemWidth)

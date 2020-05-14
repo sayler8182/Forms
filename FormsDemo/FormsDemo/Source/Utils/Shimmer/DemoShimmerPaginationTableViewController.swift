@@ -183,14 +183,14 @@ private class DemoTableViewCell: FormsTableViewCell {
         .with(width: 48.0, height: 48.0)
         .rounded()
     fileprivate let titleLabel = Components.label.default()
-        .with(color: Theme.label)
-        .with(font: UIFont.systemFont(ofSize: 14))
+        .with(color: Theme.Colors.primaryText)
+        .with(font: Theme.Fonts.regular(ofSize: 14))
     fileprivate let subtitleLabel = Components.label.default()
         .with(color: UIColor.darkGray)
-        .with(font: UIFont.systemFont(ofSize: 14))
+        .with(font: Theme.Fonts.regular(ofSize: 14))
     fileprivate let infoLabel = Components.label.default()
         .with(color: UIColor.gray)
-        .with(font: UIFont.systemFont(ofSize: 10))
+        .with(font: Theme.Fonts.regular(ofSize: 10))
         .with(numberOfLines: 3)
     
     override func setupView() {

@@ -30,7 +30,7 @@ class DemoLabelsViewController: FormsTableViewController {
         .with(text: LoremIpsum.paragraph(sentences: 15))
     private let clickableLabel = Components.label.default()
         .with(alignment: .center)
-        .with(font: UIFont.boldSystemFont(ofSize: 24))
+        .with(font: Theme.Fonts.bold(ofSize: 24))
         .with(isUserInteractionEnabled: true)
         .with(text: "Tap me")
      

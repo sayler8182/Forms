@@ -90,7 +90,6 @@ open class SideMenuController: FormsViewController {
     override open func setupContent() {
         super.setupContent()
         self.view.clipsToBounds = true
-        self.overlayView.backgroundColor = Theme.tertiarySystemBackground.withAlphaComponent(0.3)
         self.configureAnimator()
     }
     
@@ -101,6 +100,11 @@ open class SideMenuController: FormsViewController {
         self.overlayView.addGestureRecognizer(tapGestureRecognizer)
         self.panGestureRecognizer.addTarget(self, action: #selector(handlePanOverlay))
         self.overlayView.addGestureRecognizer(self.panGestureRecognizer)
+    }
+    
+    override open func setTheme() {
+        self.overlayView.backgroundColor = Theme.Colors.tertiaryBackground.withAlphaComponent(0.3)
+        super.setTheme()
     }
     
     public func setLeftSide(_ controller: UIViewController) {

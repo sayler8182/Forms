@@ -82,6 +82,7 @@
 		71DB66F92458336800B16145 /* ImagePicker.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 71DB66F72458336800B16145 /* ImagePicker.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		71DB670224584D6700B16145 /* DemoScrollContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71DB670124584D6700B16145 /* DemoScrollContainerViewController.swift */; };
 		71E0F5D0246BF0890051F043 /* DemoScrollStepsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71E0F5CF246BF0890051F043 /* DemoScrollStepsViewController.swift */; };
+		71E0F5F9246C4CAB0051F043 /* DemoThemeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71E0F5F8246C4CAB0051F043 /* DemoThemeViewController.swift */; };
 		71FF141B2458B20000656EDA /* DemoSideMenuController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71FF141A2458B20000656EDA /* DemoSideMenuController.swift */; };
 /* End PBXBuildFile section */
 
@@ -195,6 +196,7 @@
 		71DB66F72458336800B16145 /* ImagePicker.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = ImagePicker.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		71DB670124584D6700B16145 /* DemoScrollContainerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoScrollContainerViewController.swift; sourceTree = "<group>"; };
 		71E0F5CF246BF0890051F043 /* DemoScrollStepsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoScrollStepsViewController.swift; sourceTree = "<group>"; };
+		71E0F5F8246C4CAB0051F043 /* DemoThemeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoThemeViewController.swift; sourceTree = "<group>"; };
 		71FF141A2458B20000656EDA /* DemoSideMenuController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoSideMenuController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -370,6 +372,7 @@
 				7103EA842460A60E00A11A96 /* DemoPermissionsViewController.swift */,
 				71E0F5CF246BF0890051F043 /* DemoScrollStepsViewController.swift */,
 				7193E34F2451D258006238C5 /* DemoStorageViewController.swift */,
+				71E0F5F8246C4CAB0051F043 /* DemoThemeViewController.swift */,
 				713B9C75243D0964001F6E3A /* DemoToastViewController.swift */,
 				713B9C76243D0964001F6E3A /* DemoValidatorsViewController.swift */,
 			);
@@ -651,6 +654,7 @@
 				714848DA24485CCA00455560 /* DemoOthersViewController.swift in Sources */,
 				715260682446E93900119B0A /* DemoArchitecturesCleanRouter.swift in Sources */,
 				715692B9243E58E700B4613C /* DemoShimmerPaginationTableViewController.swift in Sources */,
+				71E0F5F9246C4CAB0051F043 /* DemoThemeViewController.swift in Sources */,
 				719AE5D0246308FC00A39B0E /* DemoTransitionControllerViewController.swift in Sources */,
 				713B9C88243D0964001F6E3A /* DemoLoaderViewController.swift in Sources */,
 				713B9C86243D0964001F6E3A /* DemoValidatorsViewController.swift in Sources */,

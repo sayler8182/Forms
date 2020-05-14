@@ -42,7 +42,7 @@ private class TitleModalView: ModalView {
         .with(alignment: .center)
         .with(color: UIColor.red)
         .with(numberOfLines: 3)
-        .with(font: UIFont.boldSystemFont(ofSize: 14))
+        .with(font: Theme.Fonts.bold(ofSize: 14))
     
     required init() {
         super.init()
@@ -54,7 +54,7 @@ private class TitleModalView: ModalView {
     
     override func setupView() {
         super.setupView()
-        self.backgroundColor = Theme.systemBackground
+        self.backgroundColor = Theme.Colors.primaryBackground
         self.layer.cornerRadius = 8
         self.layer.shadowColor = UIColor.black.cgColor
     }

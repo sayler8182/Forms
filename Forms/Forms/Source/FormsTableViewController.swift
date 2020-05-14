@@ -32,16 +32,16 @@ open class FormsTableViewController: FormsViewController, UITableViewDelegate, U
     private var refreshControl: UIRefreshControl? = nil
     private var shimmerDataSource: ShimmerTableDataSource? = nil
     
-    open var cellBackgroundColor: UIColor = Theme.systemBackground {
+    open var cellBackgroundColor: UIColor = UIColor.clear {
         didSet { self.tableView.reloadData() }
     }
-    open var footerBackgroundColor: UIColor = Theme.systemBackground {
+    open var footerBackgroundColor: UIColor = UIColor.clear {
         didSet { self.footerView.backgroundColor = self.footerBackgroundColor }
     }
     open var footerSpacing: CGFloat = 8 {
         didSet { self.footerView.spacing = self.footerSpacing }
     }
-    open var headerBackgroundColor: UIColor = Theme.systemBackground {
+    open var headerBackgroundColor: UIColor = UIColor.clear {
         didSet { self.headerView.backgroundColor = self.headerBackgroundColor }
     }
     open var isBottomToSafeArea: Bool = true
@@ -82,6 +82,7 @@ open class FormsTableViewController: FormsViewController, UITableViewDelegate, U
         self.setupConfiguration()
         self.setupResizerOnKeyboard()
         self.setupKeyboardWhenTappedAround()
+        self.setupTheme()
         
         self.setupNavigationBar()
         self.setupSearchBar()
@@ -136,7 +137,7 @@ open class FormsTableViewController: FormsViewController, UITableViewDelegate, U
         self.setDataSource(
             delegate: newDataSource,
             dataSource: newDataSource)
-    }
+    } 
     
     public func build(_ components: [FormsComponent?],
                       divider: Divider) {
@@ -145,7 +146,10 @@ open class FormsTableViewController: FormsViewController, UITableViewDelegate, U
         for (i, component) in components.enumerated() {
             _components.append(component)
             if i < components.count - 1 {
-                _components.append(divider)
+                let _divider = Components.utils.divider()
+                    .with(color: divider.color)
+                    .with(height: divider.height)
+                _components.append(_divider)
             }
         }
         self.build(_components)

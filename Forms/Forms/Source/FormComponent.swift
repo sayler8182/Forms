@@ -49,7 +49,7 @@ public extension Focusable {
 public protocol Inputable: Focusable { }
 
 // MARK: Componentable
-public protocol Componentable {
+public protocol Componentable: Themeable {
     func setupView()
     func setupActions()
     func setTheme()
@@ -85,6 +85,13 @@ open class FormsComponent: UIView, Componentable {
     public init() {
         super.init(frame: CGRect(width: 320, height: 44))
         self.setupView()
+    }
+    
+    public var onSetTheme: (() -> Void) = { } {
+        didSet { self.onSetTheme() }
+    }
+    public var onSetLanguage: (() -> Void) = { } {
+        didSet { self.onSetLanguage() }
     }
     
     open func setupView() {
@@ -135,21 +142,18 @@ open class FormsComponent: UIView, Componentable {
         }
     }
     
-    override open func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
-        super.traitCollectionDidChange(previousTraitCollection)
-        self.setTheme()
-    }
-    
     // MARK: HOOKS
     open func setupActions() {
         // HOOK
     }
     
     open func setTheme() {
+        self.onSetTheme()
         // HOOK
     }
     
     open func setLanguage() {
+        self.onSetLanguage()
         // HOOK
     }
     

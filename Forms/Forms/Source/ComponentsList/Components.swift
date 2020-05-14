@@ -19,12 +19,8 @@ public struct Components {
     public typealias navigationBar = ComponentsNavigationBars
     public typealias other = ComponentsOther
     public typealias progress = ComponentsProgresses
+    public typealias sections = ComponentsSections
     public typealias utils = ComponentsUtils
 }
 
 public protocol ComponentsList { }
-public extension ComponentsList {
-    static var theme: ThemeProtocol {
-        return Forms.injector.resolve(ThemeProtocol.self)
-    }
-}

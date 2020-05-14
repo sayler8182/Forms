@@ -22,7 +22,7 @@ open class SignInWithFacebook: FormsComponent, Clickable, FormsComponentWithMarg
         .with(backgroundColor: UIColor(0x3B5998))
         .with(cornerRadius: 6)
         .with(titleColor: UIColor.white)
-        .with(titleFont: UIFont.systemFont(ofSize: 12))
+        .with(titleFont: Theme.Fonts.regular(ofSize: 12))
     
     override open var backgroundColor: UIColor? {
         get { return self.backgroundView.backgroundColor }

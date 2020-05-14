@@ -73,6 +73,7 @@ private enum Demo {
         case utilsSocialKitFacebook
         case utilsSocialKitGoogle
         case utilsStorage
+        case utilsTheme
         case utilsToast
         case utilsTransitions
         case utilsTransitionsController
@@ -216,6 +217,7 @@ private enum Demo {
                             ])
                     ]),
                     Row(type: .utilsStorage, title: "Storage"),
+                    Row(type: .utilsTheme, title: "Theme"),
                     Row(type: .utilsToast, title: "Toast"),
                     Row(
                         type: .utilsTransitions,
@@ -281,6 +283,12 @@ public class DemoRootViewController: FormsNavigationController {
         self.autoroute(to: nil)
     }
     
+    override public func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+        if #available(iOS 12.0, *) {
+            Theme.setUserInterfaceStyle(self.traitCollection.userInterfaceStyle)
+        }
+    }
+    
     private func autoroute(to rowType: Demo.RowType?) {
         guard let rowType: Demo.RowType = rowType else { return }
         let sections: [Demo.Section] = Demo.Section.default
@@ -322,6 +330,20 @@ private class DemoListViewController: FormsViewController {
         self.items = row.sections
     }
     
+    override var keyCommands: [UIKeyCommand]? {
+        return [
+            UIKeyCommand(
+                input: "f",
+                modifierFlags: .command,
+                action: #selector(searchCommand),
+                discoverabilityTitle: "Search")
+        ]
+    }
+    
+    override var canBecomeFirstResponder: Bool {
+        return true
+    }
+    
     override func setupContent() {
         super.setupContent()
         self.setupTableView()
@@ -331,6 +353,7 @@ private class DemoListViewController: FormsViewController {
         self.tableView.delegate = self
         self.tableView.dataSource = self
         self.tableView.estimatedRowHeight = 44
+        self.tableView.backgroundColor = UIColor.clear
         self.tableView.rowHeight = UITableView.automaticDimension
         self.tableView.separatorStyle = UITableViewCell.SeparatorStyle.none
         self.tableView.allowsSelection = true
@@ -426,12 +449,22 @@ private class DemoListViewController: FormsViewController {
         case .utilsSocialKitGoogle:                             return DemoSocialKitGoogleTableViewController()
         case .utilsToast:                                       return DemoToastViewController()
         case .utilsStorage:                                     return DemoStorageViewController()
+        case .utilsTheme:                                       return DemoThemeViewController()
         case .utilsTransitionsController:                       return DemoTransitionControllerViewController()
         case .utilsTransitionsNavigation:                       return DemoTransitionNavigationViewController()
         case .utilsValidators:                                  return DemoValidatorsViewController()
         // architectures
         case .architecturesClean:                               return self.injector.resolve(DemoArchitecturesCleanViewController.self)
         default:                                                return nil
+        }
+    }
+    
+    @objc
+    private func searchCommand(sender: UIKeyCommand) {
+        if self.searchController.searchBar.isFirstResponder {
+            self.searchController.searchBar.resignFirstResponder()
+        } else {
+            self.searchController.searchBar.becomeFirstResponder()
         }
     }
 }
@@ -453,14 +486,21 @@ extension DemoListViewController: UITableViewDelegate, UITableViewDataSource {
         self.select(row: row)
     }
     
-    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return  self.items.count > 1 ?  self.items[section].title : nil
-    }
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let title: String? = self.items.count > 1 ? self.items[section].title : nil
+        guard let _title: String = title else { return nil }
+        return Components.sections.default()
+            .with(text: _title)
+            .with(width: tableView.frame.width)
+    } 
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: self.defaultCellIdentifier, for: indexPath)
         let item: Demo.Section = self.items[indexPath.section]
         let row: Demo.Row = item.rows[indexPath.row]
+        cell.backgroundColor = UIColor.clear
+        cell.textLabel?.textColor = Theme.Colors.primaryText
+        cell.detailTextLabel?.textColor = Theme.Colors.secondaryText
         cell.accessoryType = .disclosureIndicator
         cell.selectionStyle = .gray
         cell.textLabel?.text = row.title
@@ -469,7 +509,7 @@ extension DemoListViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return self.items.count > 1 ? 30.0 : 0
+        return self.items.count > 1 ? UITableView.automaticDimension : 0
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {

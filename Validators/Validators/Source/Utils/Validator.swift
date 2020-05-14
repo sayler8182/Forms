@@ -159,7 +159,7 @@ public class ValidationError {
     private let type: ValidationErrorTypeProtocol
     private let parameters: [Any]
     private lazy var translator: ValidatorTranslatorProtocol = {
-        let translator: ValidatorTranslatorProtocol? = Injector.main.resolve(ValidatorTranslatorProtocol.self)
+        let translator: ValidatorTranslatorProtocol? = Injector.main.resolve()
         return translator ?? ValidatorTranslator()
     }()
     

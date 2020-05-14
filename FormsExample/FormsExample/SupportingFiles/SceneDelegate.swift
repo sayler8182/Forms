@@ -6,6 +6,7 @@
 //  Copyright © 2020 Limbo. All rights reserved.
 //
 
+import Forms
 import FormsDemo
 import UIKit
 
@@ -19,8 +20,14 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
                options connectionOptions: UIScene.ConnectionOptions) {
         guard let windowScene = (scene as? UIWindowScene) else { return }
         let window: UIWindow = UIWindow(windowScene: windowScene)
+        Theme.setUserInterfaceStyle(window.traitCollection.userInterfaceStyle)
         window.rootViewController = DemoRootViewController()
         self.window = window
-        window.makeKeyAndVisible()
+        window.makeKeyAndVisible() 
+    }
+    
+    func sceneWillEnterForeground(_ scene: UIScene) {
+        guard let window: UIWindow = self.window else { return }
+        Theme.setUserInterfaceStyle(window.traitCollection.userInterfaceStyle)
     }
 }

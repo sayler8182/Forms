@@ -45,22 +45,22 @@ open class TopBar: FormsComponent {
     open var separatorColor: UIColor? = UIColor.lightGray {
         didSet { self.separatorView.backgroundColor = self.separatorColor }
     }
-    open var titleColor: UIColor? = Theme.label {
+    open var titleColor: UIColor? = Theme.Colors.primaryText {
         didSet { self.collectionView.reloadData() }
     }
     open var titleEdgeInset: UIEdgeInsets = UIEdgeInsets(vertical: 8, horizontal: 16) {
         didSet { self.collectionView.reloadData() }
     }
-    open var titleFont: UIFont = UIFont.systemFont(ofSize: 14) {
+    open var titleFont: UIFont = Theme.Fonts.regular(ofSize: 14) {
         didSet { self.collectionView.reloadData() }
     }
-    open var titleSelectedColor: UIColor? = Theme.label {
+    open var titleSelectedColor: UIColor? = Theme.Colors.primaryText {
         didSet { self.collectionView.reloadData() }
     }
-    open var titleSelectedFont: UIFont = UIFont.boldSystemFont(ofSize: 14) {
+    open var titleSelectedFont: UIFont = Theme.Fonts.bold(ofSize: 14) {
         didSet { self.collectionView.reloadData() }
     }
-    open var underlineColor: UIColor? = Theme.label {
+    open var underlineColor: UIColor? = Theme.Colors.primaryText {
         didSet { self.underlineView.backgroundColor = self.underlineColor }
     }
     

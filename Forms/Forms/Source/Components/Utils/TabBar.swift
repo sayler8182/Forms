@@ -89,13 +89,13 @@ open class TabBar: UITabBar {
     open var titleColor: UIColor? {
         didSet { self.updateItems() }
     }
-    open var titleFont: UIFont = UIFont.systemFont(ofSize: 10) {
+    open var titleFont: UIFont = Theme.Fonts.regular(ofSize: 10) {
         didSet { self.updateItems() }
     }
     open var titleSelectedColor: UIColor? {
         didSet { self.updateItems() }
     }
-    open var titleSelectedFont: UIFont = UIFont.systemFont(ofSize: 10) {
+    open var titleSelectedFont: UIFont = Theme.Fonts.regular(ofSize: 10) {
         didSet { self.updateItems() }
     }
     

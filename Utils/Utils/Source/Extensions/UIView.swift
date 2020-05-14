@@ -52,6 +52,15 @@ public extension UIView {
         }
     }
     
+    var flatSubviews: [UIView] {
+        var subviews: [UIView] = self.subviews
+        guard !subviews.isEmpty else { return [] }
+        for subview in subviews {
+            subviews.append(contentsOf: subview.flatSubviews)
+        }
+        return subviews
+    }
+    
     convenience init(width: CGFloat,
                      height: CGFloat) {
         self.init(frame: CGRect(width: width, height: height))

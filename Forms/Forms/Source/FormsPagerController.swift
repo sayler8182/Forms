@@ -63,7 +63,7 @@ open class FormsPagerController: FormsViewController {
     open var pageCurrentPageIndicatorTintColor: UIColor? = UIColor.gray {
         didSet { self.pageControl.currentPageIndicatorTintColor = self.pageCurrentPageIndicatorTintColor }
     }
-    open var topBarBackgroundColor: UIColor? = Theme.systemBackground {
+    open var topBarBackgroundColor: UIColor? = Theme.Colors.primaryBackground {
         didSet { self.topBar.backgroundColor = self.topBarBackgroundColor }
     }
     open var topBarFillEqual: Bool = false {
@@ -78,22 +78,22 @@ open class FormsPagerController: FormsViewController {
     open var topBarSeparatorColor: UIColor? = UIColor.lightGray {
         didSet { self.topBar.separatorColor = self.topBarSeparatorColor }
     }
-    open var topBarTitleColor: UIColor? = Theme.label {
+    open var topBarTitleColor: UIColor? = Theme.Colors.primaryText {
         didSet { self.topBar.titleColor = self.topBarTitleColor }
     }
     open var topBarTitleEdgeInset: UIEdgeInsets = UIEdgeInsets(vertical: 8, horizontal: 16) {
         didSet { self.topBar.titleEdgeInset = self.topBarTitleEdgeInset }
     }
-    open var topBarTitleFont: UIFont = UIFont.systemFont(ofSize: 14) {
+    open var topBarTitleFont: UIFont = Theme.Fonts.regular(ofSize: 14) {
         didSet { self.topBar.titleFont = self.topBarTitleFont }
     }
-    open var topBarTitleSelectedColor: UIColor? = Theme.label {
+    open var topBarTitleSelectedColor: UIColor? = Theme.Colors.primaryText {
         didSet { self.topBar.titleSelectedColor = self.topBarTitleSelectedColor }
     }
-    open var topBarTitleSelectedFont: UIFont = UIFont.boldSystemFont(ofSize: 14) {
+    open var topBarTitleSelectedFont: UIFont = Theme.Fonts.bold(ofSize: 14) {
         didSet { self.topBar.titleSelectedFont = self.topBarTitleSelectedFont }
     }
-    open var topBarUnderlineColor: UIColor? = Theme.label {
+    open var topBarUnderlineColor: UIColor? = Theme.Colors.primaryText {
         didSet { self.topBar.underlineColor = self.topBarUnderlineColor }
     }
     
@@ -173,6 +173,16 @@ open class FormsPagerController: FormsViewController {
             Anchor.to(self.view).bottom.safeArea,
             Anchor.to(self.pageControl).height(0).connect(self.pageControlHeightAnchor)
         ])
+    }
+    
+    override open func setTheme() {
+        self.topBarBackgroundColor = Theme.Colors.primaryBackground
+        self.topBarTitleColor = Theme.Colors.primaryText
+        self.topBarTitleFont = Theme.Fonts.regular(ofSize: 14)
+        self.topBarTitleSelectedColor = Theme.Colors.primaryText
+        self.topBarTitleSelectedFont = Theme.Fonts.bold(ofSize: 14)
+        self.topBarUnderlineColor = Theme.Colors.primaryText
+        super.setTheme()
     }
     
     open func setupItems() {

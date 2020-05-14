@@ -99,7 +99,7 @@ public extension Number {
                           decimalSeparator: String? = nil) -> String {
         let value: NSNumber = self.asDouble as NSNumber
         let formatter: NumberFormatter = NumberFormatter()
-        let numberFormat: NumberFormatProtocol? = Injector.main.resolve(NumberFormatProtocol.self)
+        let numberFormat: NumberFormatProtocol? = Injector.main.resolve()
         formatter.groupingSeparator = groupingSeparator ?? numberFormat?.groupingSeparator ?? ","
         formatter.decimalSeparator = decimalSeparator ?? numberFormat?.decimalSeparator ?? ","
         formatter.numberStyle = .decimal

@@ -61,7 +61,7 @@ open class SearchBar: FormsComponent, FormsComponentWithMarginEdgeInset, FormsCo
         get { return self.searchBar.autocorrectionType }
         set { self.searchBar.autocorrectionType = newValue }
     }
-    open var backgroundColors: State<UIColor?> = State<UIColor?>(Theme.systemBackground) {
+    open var backgroundColors: State<UIColor?> = State<UIColor?>(Theme.Colors.primaryBackground) {
         didSet { self.updateState() }
     }
     open var marginEdgeInset: UIEdgeInsets = UIEdgeInsets(0) {
@@ -91,7 +91,7 @@ open class SearchBar: FormsComponent, FormsComponentWithMarginEdgeInset, FormsCo
         get { return self.searchBar.text }
         set { self.searchBar.text = newValue }
     }
-    open var textColors: State<UIColor?> = State<UIColor?>(Theme.label) {
+    open var textColors: State<UIColor?> = State<UIColor?>(Theme.Colors.primaryText) {
         didSet { self.updateState() }
     }
     private var _textFieldDelegate: UITextFieldDelegate? // swiftlint:disable:this weak_delegate
@@ -102,7 +102,7 @@ open class SearchBar: FormsComponent, FormsComponentWithMarginEdgeInset, FormsCo
             self.searchBar.textField.delegate = newValue
         }
     }
-    open var textFonts: State<UIFont> = State<UIFont>(UIFont.systemFont(ofSize: 14)) {
+    open var textFonts: State<UIFont> = State<UIFont>(Theme.Fonts.regular(ofSize: 14)) {
         didSet { self.updateState() }
     }
     

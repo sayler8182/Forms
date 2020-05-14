@@ -36,7 +36,7 @@ open class BarItem: UIBarButtonItem, Clickable {
         self.image = image
         return self
     }
- 
+    
     public func with(imageName: String) -> Self {
         self.image = UIImage.from(name: imageName)
         return self
@@ -49,7 +49,7 @@ open class BarItem: UIBarButtonItem, Clickable {
 }
 
 private class BackBarItem: BarItem { }
-    
+
 private class EmptyBarItem: BackBarItem {
     override func setupView() { }
 }

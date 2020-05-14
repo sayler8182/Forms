@@ -9,10 +9,11 @@
 import Anchor
 import UIKit
 
-// MARK: DemoNavigationProgressBarViewController
-open class FormsNavigationController: UINavigationController {
-    private let navigationProgressBar = Components.progress.progressBar()
-        .with(progress: 1.0 / 3.0)
+// MARK: FormsNavigationController
+open class FormsNavigationController: UINavigationController, Themeable {
+    open var isThemeAutoRegister: Bool {
+        return true
+    }
     
     public init() {
         super.init(nibName: nil, bundle: nil)
@@ -44,14 +45,33 @@ open class FormsNavigationController: UINavigationController {
         print("Deinit \(type(of: self))")
     }
     
+    override open var preferredStatusBarStyle: UIStatusBarStyle {
+        return Theme.Colors.statusBar.style
+    }
+     
+    override open var childForStatusBarStyle: UIViewController? {
+        return self.topViewController
+    }
+    
     open func setupView() {
         self.setupConfiguration()
+        self.setupTheme()
         
         // HOOKS
         self.setupNavigationBar()
         self.setupContent()
         self.setupActions()
         self.setupOther()
+    }
+    
+    open func setTheme() {
+        self.setNeedsStatusBarAppearanceUpdate()
+        self.navigationBar.titleTextAttributes = [
+            NSAttributedString.Key.foregroundColor: Theme.Colors.primaryText
+        ]
+        self.navigationBar.tintColor = Theme.Colors.primaryText
+        self.navigationBar.barTintColor = Theme.Colors.primaryBackground
+        self.view.backgroundColor = Theme.Colors.primaryBackground
     }
     
     // MARK: HOOKS
@@ -63,12 +83,18 @@ open class FormsNavigationController: UINavigationController {
         // HOOK
     }
     
+    open func setupTheme() {
+        self.setTheme()
+        guard self.isThemeAutoRegister else { return }
+        Theme.register(self)
+        // HOOK
+    }
+    
     open func setupNavigationBar() {
         // HOOK
     }
     
     open func setupContent() {
-        self.view.backgroundColor = Theme.systemBackground
         // HOOK
     }
     

@@ -14,25 +14,28 @@ public struct ComponentsButtons: ComponentsList {
     public static func `default`() -> PrimaryButton {
         let component = PrimaryButton()
         component.animationTime = 0.1
-        component.backgroundColors = Button.State<UIColor?>(
-            active: Theme.systemBlue,
-            selected: Theme.systemBlue.withAlphaComponent(0.7),
-            disabled: Theme.systemGray
-        )
         component.height = UITableView.automaticDimension
         component.isEnabled = true
         component.marginEdgeInset = UIEdgeInsets(0)
         component.minHeight = 44.0
         component.maxHeight = CGFloat.greatestConstraintConstant
         component.title = nil
-        component.titleColors = Button.State<UIColor?>(UIColor.white)
         component.titleEdgeInset = UIEdgeInsets(
             vertical: 5,
             horizontal: 16
         )
-        component.titleFonts = Button.State<UIFont>(UIFont.systemFont(ofSize: 14))
         component.titleNumberOfLines = 2
         component.titleTextAlignment = NSTextAlignment.center
+        component.onSetTheme = { [weak component] in
+            guard let component = component else { return }
+            component.backgroundColors = Button.State<UIColor?>(
+                active: Theme.Colors.blue,
+                selected: Theme.Colors.blue.withAlphaComponent(0.7),
+                disabled: Theme.Colors.gray
+            )
+            component.titleColors = Button.State<UIColor?>(UIColor.white)
+            component.titleFonts = Button.State<UIFont>(Theme.Fonts.regular(ofSize: 14))
+        }
         return component
     }
 }

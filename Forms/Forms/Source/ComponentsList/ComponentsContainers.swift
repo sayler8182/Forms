@@ -13,7 +13,7 @@ public struct ComponentsContainers: ComponentsList {
     
     public static func scroll() -> ScrollContainer {
         let component = ScrollContainer()
-        component.backgroundColor = Theme.systemBackground
+        component.backgroundColor = Theme.Colors.primaryBackground
         component.bounces = true
         component.height = 100
         component.marginEdgeInset = UIEdgeInsets(0)
@@ -24,13 +24,17 @@ public struct ComponentsContainers: ComponentsList {
         component.showsHorizontalScrollIndicator = false
         component.showsVerticalScrollIndicator = false
         component.spacing = 0
+        component.onSetTheme = { [weak component] in
+            guard let component = component else { return }
+            component.backgroundColor = Theme.Colors.primaryBackground
+        }
         return component
     }
     
     public static func page() -> PageContainer {
         let component = PageContainer()
         component.automaticInterval = 5.0
-        component.backgroundColor = Theme.systemBackground
+        component.backgroundColor = Theme.Colors.primaryBackground
         component.bounces = true
         component.height = 100
         component.marginEdgeInset = UIEdgeInsets(0)
@@ -42,6 +46,10 @@ public struct ComponentsContainers: ComponentsList {
         component.pageCurrentPageIndicatorTintColor = UIColor.gray
         component.pageIsHidden = false
         component.scrollDirection = .horizontal
+        component.onSetTheme = { [weak component] in
+            guard let component = component else { return }
+            component.backgroundColor = Theme.Colors.primaryBackground
+        }
         return component
     }
     
@@ -49,18 +57,26 @@ public struct ComponentsContainers: ComponentsList {
         let component = StackContainer()
         component.alignment = .fill
         component.axis = .horizontal
-        component.backgroundColor = Theme.systemBackground
+        component.backgroundColor = Theme.Colors.primaryBackground
         component.distribution = .fillEqually
         component.marginEdgeInset = UIEdgeInsets(0)
         component.height = 100
         component.paddingEdgeInset = UIEdgeInsets(0)
+        component.onSetTheme = { [weak component] in
+            guard let component = component else { return }
+            component.backgroundColor = Theme.Colors.primaryBackground
+        }
         return component
     }
     
     public static func view() -> View {
         let component = View()
         component.height = UITableView.automaticDimension
-        component.backgroundColor = Theme.systemBackground
+        component.backgroundColor = Theme.Colors.primaryBackground
+        component.onSetTheme = { [weak component] in
+            guard let component = component else { return }
+            component.backgroundColor = Theme.Colors.primaryBackground
+        }
         return component
     }
 }

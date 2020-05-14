@@ -21,7 +21,7 @@ open class FormsModalController: FormsViewController {
     private var contentController: UIViewController? = nil
     private var overlayView: UIView? = nil
     
-    open var backgroundColor: UIColor? = Theme.secondarySystemBackground {
+    open var backgroundColor: UIColor? = Theme.Colors.secondaryBackground {
         didSet { self.contentView.backgroundColor = self.backgroundColor }
     }
     open var cornerRadius: CGFloat = 8.0 {
@@ -34,10 +34,10 @@ open class FormsModalController: FormsViewController {
             self.contentHeight = newValue
         }
     }
-    open var indicatorBackgroundColor: UIColor? = Theme.secondarySystemBackground {
+    open var indicatorBackgroundColor: UIColor? = Theme.Colors.secondaryBackground {
         didSet { self.indicatorBackgroundView.backgroundColor = self.indicatorBackgroundColor }
     }
-    open var indicatorColor: UIColor? = Theme.tertiarySystemBackground {
+    open var indicatorColor: UIColor? = Theme.Colors.tertiaryBackground {
         didSet { self.indicatorView.backgroundColor = self.indicatorColor }
     }
     open var minHeight: CGFloat = 80.0
@@ -71,6 +71,13 @@ open class FormsModalController: FormsViewController {
         self.view.isUserInteractionEnabled = true
         self.panGestureRecognizer.addTarget(self, action: #selector(handlePan))
         self.view.addGestureRecognizer(self.panGestureRecognizer)
+    }
+    
+    override open func setTheme() {
+        self.backgroundColor = Theme.Colors.secondaryBackground
+        self.indicatorBackgroundColor = Theme.Colors.secondaryBackground
+        self.indicatorColor = Theme.Colors.tertiaryBackground
+        super.setTheme()
     }
     
     open func add(to controller: UIViewController,

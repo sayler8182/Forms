@@ -107,8 +107,8 @@ extension Injector {
 
 // MARK: Resolver
 extension Injector: Resolver {
-    public func resolve<Service>() -> Service! {
-        return self.resolve(Service.self, name: nil)
+    public func resolve<Service>(_ name: String? = nil) -> Service! {
+        return self.resolve(Service.self, name: name)
     }
     
     public func resolve<Service>(_ serviceType: Service.Type) -> Service! {
