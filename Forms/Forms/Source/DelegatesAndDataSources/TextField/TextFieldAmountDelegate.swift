@@ -52,7 +52,7 @@ public class TextFieldAmountDelegate: TextFieldDelegate {
     public func textFieldDidEndEditing(_ textField: UITextField) {
         var amount: Double = textField.text.asDouble.or(0)
         amount = self.normalizeValue(double: amount)
-        textField.text = amount.currencyNotation(with: self.currency)
+        textField.text = amount.formatted(suffix: self.currency)
     }
     
     private func validateFormat(text: String) -> Bool {

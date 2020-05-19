@@ -55,11 +55,11 @@ public class AmountValidator: Validator {
         }
         if let minAmount: Double = self.minAmount,
             amount < minAmount {
-            return ValidationResult(error: .amountMinError(minAmount.currencyNotation(with: self.currency)))
+            return ValidationResult(error: .amountMinError(minAmount.formatted(suffix: self.currency)))
         }
         if let maxAmount: Double = self.maxAmount,
             amount > maxAmount {
-            return ValidationResult(error: .amountMaxError(maxAmount.currencyNotation(with: self.currency)))
+            return ValidationResult(error: .amountMaxError(maxAmount.formatted(suffix: self.currency)))
         }
         return ValidationResult()
     }

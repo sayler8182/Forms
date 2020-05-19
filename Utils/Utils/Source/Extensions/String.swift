@@ -141,3 +141,10 @@ public extension String {
         return ceil(boundingBox.width)
     }
 }
+
+// MARK: String.Element
+public extension String.Element {
+    var asString: String {
+        return String(self)
+    }
+}

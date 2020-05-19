@@ -17,6 +17,9 @@
 		7138D3A92452C9E300CC7345 /* DemoCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7138D3A82452C9E300CC7345 /* DemoCollectionViewController.swift */; };
 		7138D3AB2452E19300CC7345 /* DemoShimmerPaginationCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7138D3AA2452E19300CC7345 /* DemoShimmerPaginationCollectionViewController.swift */; };
 		7138D3AD245324E500CC7345 /* DemoShimmerCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7138D3AC245324E500CC7345 /* DemoShimmerCollectionViewController.swift */; };
+		713A76012473C5510067C968 /* Mock.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 713A76002473C5510067C968 /* Mock.framework */; };
+		713A76022473C5510067C968 /* Mock.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 713A76002473C5510067C968 /* Mock.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		713A76062473DB290067C968 /* DemoMockViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 713A76052473DB290067C968 /* DemoMockViewController.swift */; };
 		713B9C04243D08E0001F6E3A /* FormsDemo.h in Headers */ = {isa = PBXBuildFile; fileRef = 713B9BF6243D08E0001F6E3A /* FormsDemo.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		713B9C7E243D0964001F6E3A /* DemoPrimaryButtonViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 713B9C6A243D0964001F6E3A /* DemoPrimaryButtonViewController.swift */; };
 		713B9C7F243D0964001F6E3A /* DemoNavigationBarWithBackOrCloseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 713B9C6C243D0964001F6E3A /* DemoNavigationBarWithBackOrCloseViewController.swift */; };
@@ -105,6 +108,7 @@
 			dstSubfolderSpec = 10;
 			files = (
 				71CFF42D245956E40067D13E /* SideMenu.framework in Embed Frameworks */,
+				713A76022473C5510067C968 /* Mock.framework in Embed Frameworks */,
 				71DB66902458299800B16145 /* Analytics.framework in Embed Frameworks */,
 				71DB66932458299A00B16145 /* DeveloperTools.framework in Embed Frameworks */,
 				71DB66F92458336800B16145 /* ImagePicker.framework in Embed Frameworks */,
@@ -127,6 +131,8 @@
 		7138D3A82452C9E300CC7345 /* DemoCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoCollectionViewController.swift; sourceTree = "<group>"; };
 		7138D3AA2452E19300CC7345 /* DemoShimmerPaginationCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoShimmerPaginationCollectionViewController.swift; sourceTree = "<group>"; };
 		7138D3AC245324E500CC7345 /* DemoShimmerCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoShimmerCollectionViewController.swift; sourceTree = "<group>"; };
+		713A76002473C5510067C968 /* Mock.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Mock.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		713A76052473DB290067C968 /* DemoMockViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoMockViewController.swift; sourceTree = "<group>"; };
 		713B9BF6243D08E0001F6E3A /* FormsDemo.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FormsDemo.h; sourceTree = "<group>"; };
 		713B9BF7243D08E0001F6E3A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		713B9C2E243D0906001F6E3A /* FormsDemoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FormsDemoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -208,6 +214,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				71CFF42C245956E40067D13E /* SideMenu.framework in Frameworks */,
+				713A76012473C5510067C968 /* Mock.framework in Frameworks */,
 				71DB668F2458299800B16145 /* Analytics.framework in Frameworks */,
 				71DB66942458299B00B16145 /* Forms.framework in Frameworks */,
 				71DB66F82458336800B16145 /* ImagePicker.framework in Frameworks */,
@@ -290,6 +297,7 @@
 		713B9C63243D0947001F6E3A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				713A76002473C5510067C968 /* Mock.framework */,
 				719AE54C2462A53F00A39B0E /* Notifications.framework */,
 				71CFF42B245956E40067D13E /* SideMenu.framework */,
 				71DB66F72458336800B16145 /* ImagePicker.framework */,
@@ -371,6 +379,7 @@
 				7193E34D2451B5B7006238C5 /* DemoAppStoreReviewViewController.swift */,
 				713B9C77243D0964001F6E3A /* DemoAttributedStringViewController.swift */,
 				713B9C78243D0964001F6E3A /* DemoLoaderViewController.swift */,
+				713A76052473DB290067C968 /* DemoMockViewController.swift */,
 				713B9C74243D0964001F6E3A /* DemoModalViewController.swift */,
 				7103EA842460A60E00A11A96 /* DemoPermissionsViewController.swift */,
 				71E0F5CF246BF0890051F043 /* DemoScrollStepsViewController.swift */,
@@ -639,6 +648,7 @@
 				71DB670224584D6700B16145 /* DemoScrollContainerViewController.swift in Sources */,
 				7158911624463B18003200C7 /* DemoArchitecturesCleanInteractor.swift in Sources */,
 				7158911824463B86003200C7 /* DemoArchitecturesCleanModels.swift in Sources */,
+				713A76062473DB290067C968 /* DemoMockViewController.swift in Sources */,
 				7158CB96246A88D900797B83 /* DemoDeveloperToolsAutolayoutViewController.swift in Sources */,
 				71BB62812445F7C7002BB31F /* DemoNetworkImageViewController.swift in Sources */,
 				711AF55A24615BDB00CE8666 /* DemoModalController.swift in Sources */,

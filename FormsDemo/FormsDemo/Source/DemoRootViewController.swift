@@ -56,6 +56,7 @@ private enum Demo {
         case utilsImagePicker
         case utilsImagePickerSystem
         case utilsLoader
+        case utilsMock
         case utilsModal
         case utilsNetwork
         case utilsNetworkGet
@@ -183,6 +184,7 @@ private enum Demo {
                             ])
                     ]),
                     Row(type: .utilsLoader, title: "Loader"),
+                    Row(type: .utilsMock, title: "Mock"),
                     Row(type: .utilsModal, title: "Modal"),
                     Row(
                         type: .utilsNetwork,
@@ -282,7 +284,7 @@ public class DemoRootViewController: FormsNavigationController {
     
     override public func setupView() {
         super.setupView()
-        self.autoroute(to: nil)
+        self.autoroute(to: .utilsMock)
     }
     
     override public func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
@@ -432,6 +434,7 @@ private class DemoListViewController: FormsViewController {
         case .utilsDeveloperToolsMenu:                          return DemoDeveloperToolsMenuViewController()
         case .utilsImagePickerSystem:                           return DemoImagePickerSystemViewController()
         case .utilsLoader:                                      return DemoLoaderViewController()
+        case .utilsMock:                                        return DemoMockViewController()
         case .utilsModal:                                       return DemoModalViewController()
         case .utilsNetworkGet:                                  return DemoNetworkGetViewController()
         case .utilsNetworkImage:                                return DemoNetworkImageViewController()

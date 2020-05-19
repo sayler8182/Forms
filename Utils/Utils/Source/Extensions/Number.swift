@@ -9,18 +9,24 @@
 import Injector
 import UIKit
 
+private let kNumberFormatter: NumberFormatter = NumberFormatter()
+
 // MARK: NumberFormatProtocol
 public protocol NumberFormatProtocol {
+    var fractionDigits: Int { get }
     var groupingSeparator: String { get }
     var decimalSeparator: String { get }
 }
 
 public struct NumberFormat: NumberFormatProtocol {
+    public var fractionDigits: Int
     public var groupingSeparator: String
     public var decimalSeparator: String
     
-    public init(groupingSeparator: String,
+    public init(fractionDigits: Int,
+                groupingSeparator: String,
                 decimalSeparator: String) {
+        self.fractionDigits = fractionDigits
         self.groupingSeparator = groupingSeparator
         self.decimalSeparator = decimalSeparator
     }
@@ -52,6 +58,8 @@ public extension String {
     }
     var asInt: Int? { self.asDouble?.asInt }
     var asNumber: NSNumber? { self.asDouble?.asNumber }
+    var asString: String { self }
+    var isFractional: Bool { self.contains(".") }
 }
 
 public extension Optional where Wrapped == String {
@@ -61,6 +69,8 @@ public extension Optional where Wrapped == String {
     var asDouble: Double? { self?.asDouble }
     var asInt: Int? { self?.asInt }
     var asNumber: NSNumber? { self?.asNumber }
+    var asString: String? { self?.asString }
+    var isFractional: Bool? { self?.isFractional }
 }
 
 // MARK: Number
@@ -71,6 +81,8 @@ public protocol Number: Comparable {
     var asDouble: Double { get }
     var asInt: Int { get }
     var asNumber: NSNumber { get }
+    var asString: String { get }
+    var isFractional: Bool { get }
     
     var ceiled: Self { get }
     var floored: Self { get }
@@ -94,24 +106,6 @@ public extension Number {
         return self.asDouble == 0.0
     }
     
-    func currencyNotation(with currency: String? = nil,
-                          groupingSeparator: String? = nil,
-                          decimalSeparator: String? = nil) -> String {
-        let value: NSNumber = self.asDouble as NSNumber
-        let formatter: NumberFormatter = NumberFormatter()
-        let numberFormat: NumberFormatProtocol? = Injector.main.resolve()
-        formatter.groupingSeparator = groupingSeparator ?? numberFormat?.groupingSeparator ?? ","
-        formatter.decimalSeparator = decimalSeparator ?? numberFormat?.decimalSeparator ?? ","
-        formatter.numberStyle = .decimal
-        formatter.minimumFractionDigits = 2
-        formatter.maximumFractionDigits = 2
-        var string: String? = formatter.string(from: value)
-        if let currency: String = currency {
-            string?.append(currency)
-        }
-        return string.or("")
-    }
-    
     func greaterThan(_ value: Self) -> Bool {
         return self > value
     }
@@ -133,14 +127,64 @@ public extension Number {
     }
 }
 
+// MARK: NumberFormattable
+public protocol NumberFormattable {
+    var asNumber: NSNumber { get }
+    var isFractional: Bool { get }
+}
+
+public extension NumberFormattable {
+    func formatted(prefix: String? = nil,
+                   suffix: String? = nil,
+                   fractionDigits: Int? = nil,
+                   groupingSeparator: String? = nil,
+                   decimalSeparator: String? = nil) -> String {
+        return self.formatted(
+            prefix: prefix,
+            suffix: suffix,
+            minFractionDigits: fractionDigits,
+            maxFractionDigits: fractionDigits,
+            groupingSeparator: groupingSeparator,
+            decimalSeparator: decimalSeparator)
+    }
+    
+    func formatted(prefix: String? = nil,
+                   suffix: String? = nil,
+                   minFractionDigits: Int? = nil,
+                   maxFractionDigits: Int? = nil,
+                   groupingSeparator: String? = nil,
+                   decimalSeparator: String? = nil) -> String {
+        let numberFormat: NumberFormatProtocol? = Injector.main.resolve()
+        kNumberFormatter.groupingSeparator = groupingSeparator ?? numberFormat?.groupingSeparator ?? ","
+        kNumberFormatter.decimalSeparator = decimalSeparator ?? numberFormat?.decimalSeparator ?? ","
+        kNumberFormatter.numberStyle = .decimal
+        kNumberFormatter.minimumFractionDigits = self.isFractional
+            ? minFractionDigits ?? numberFormat?.fractionDigits ?? 2
+            : minFractionDigits ?? 0
+        kNumberFormatter.maximumFractionDigits = self.isFractional
+            ? maxFractionDigits ?? numberFormat?.fractionDigits ?? 2
+            : maxFractionDigits ?? 0
+        var string: String = kNumberFormatter.string(from: self.asNumber).or("")
+        if let prefix: String = prefix {
+            string.insert(contentsOf: prefix, at: string.startIndex)
+        }
+        if let suffix: String = suffix {
+            string.append(suffix)
+        }
+        return string
+    }
+}
+
 // MARK: CGFloat
-extension CGFloat: Number {
+extension CGFloat: Number, NumberFormattable {
     public var asBool: Bool { self != 0.0 }
     public var asCGFloat: CGFloat { self }
     public var asDecimal: Decimal { self.asDouble.asDecimal }
     public var asDouble: Double { Double(self) }
     public var asInt: Int { Int(self) }
     public var asNumber: NSNumber { self as NSNumber }
+    public var asString: String { self.asDouble.asString }
+    public var isFractional: Bool { true }
     
     public var ceiled: CGFloat { self.rounded(.up) }
     public var floored: CGFloat { self.rounded(.down) }
@@ -160,13 +204,15 @@ extension CGFloat: Number {
 }
 
 // MARK: Double
-extension Double: Number {
+extension Double: Number, NumberFormattable {
     public var asBool: Bool { self != 0.0 }
     public var asCGFloat: CGFloat { CGFloat(self) }
     public var asDecimal: Decimal { Decimal(self) }
     public var asDouble: Double { self }
     public var asInt: Int { Int(self) }
     public var asNumber: NSNumber { self as NSNumber }
+    public var asString: String { String(self) }
+    public var isFractional: Bool { true }
     
     public var ceiled: Double { self.rounded(.up) }
     public var floored: Double { self.rounded(.down) }
@@ -186,13 +232,15 @@ extension Double: Number {
 }
 
 // MARK: Int
-extension Int: Number {
+extension Int: Number, NumberFormattable {
     public var asBool: Bool { self != 0 }
     public var asCGFloat: CGFloat { CGFloat(self) }
     public var asDecimal: Decimal { Decimal(self) }
     public var asDouble: Double { Double(self) }
     public var asInt: Int { self }
     public var asNumber: NSNumber { self as NSNumber }
+    public var asString: String { String(self) }
+    public var isFractional: Bool { false }
     
     public var ceiled: Int { self }
     public var floored: Int { self }

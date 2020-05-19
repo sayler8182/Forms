@@ -36,9 +36,17 @@ public struct Forms {
         injector.register(ValidatorTranslatorProtocol.self) { _ in
             ValidatorTranslator()
         }
+        // date format
+        injector.register(DateFormatProtocol.self) { _ in
+            DateFormat(
+                dateFormat: "yyyy-MM-dd",
+                timeFormat: "HH:mm",
+                fullFormat: "yyyy-MM-dd HH:mm")
+        }
         // number format
         injector.register(NumberFormatProtocol.self) { _ in
             NumberFormat(
+                fractionDigits: 2,
                 groupingSeparator: " ",
                 decimalSeparator: ",")
         }
