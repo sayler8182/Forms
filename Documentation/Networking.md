@@ -19,13 +19,13 @@ Logger.framework
 
 Check if has internet connection
 
-```Swift
+```swift
 Reachability.isConnected()
 ```
 
 ## Request
 
-```Swift
+```swift
 let request = Request(
     url: "https://postman-echo.com".url,
     method: .GET)
@@ -38,7 +38,7 @@ self.call(
 
 ### Custom body
 
-```Swift
+```swift
 let data = Data()
 let request = Request(
     url: "https://postman-echo.com".url,
@@ -53,7 +53,7 @@ self.call(
 
 ### Custom headers
 
-```Swift
+```swift
 let request = Request(
     url: "https://postman-echo.com".url,
     method: .POST,
@@ -69,7 +69,7 @@ self.call(
 
 ### Custom provider
 
-```Swift
+```swift
 let request = Request(
     url: "https://postman-echo.com".url,
     method: .GET,
@@ -82,7 +82,7 @@ self.call(
     onCompletion: { (_, _) in })
 ```
 
-```Swift
+```swift
 class AppRequestProvider: RequestProvider {
     override func setHeaders(_ request: inout Request) {
         let headers = request.headers
@@ -94,7 +94,7 @@ class AppRequestProvider: RequestProvider {
 
 ## Response parser
 
-```Swift
+```swift
 let request = Request(
     url: "https://postman-echo.com".url,
     method: .GET)
@@ -106,7 +106,7 @@ self.call(
     onCompletion: { (_, _) in })
 ```
 
-```Swift
+```swift
 class AppResponseParser: ResponseParser { 
     override func parseError(data: Data) -> ApiError? {
         // parse error from success response
@@ -117,7 +117,7 @@ class AppResponseParser: ResponseParser {
 
 ## Cache
 
-```Swift
+```swift
 let request = Request(
     url: "https://upload.wikimedia.org/wikipedia/commons/0/0f/Welsh_Corgi_Pembroke_WPR_Kamien_07_10_07.jpg".url,
     method: .GET)
@@ -131,7 +131,7 @@ self.call(
 
 ## Logger 
 
-```Swift
+```swift
 let request = Request(
     url: "https://postman-echo.com".url,
     method: .GET)
@@ -146,7 +146,7 @@ self.call(
 ## Cancellation
 
 
-```Swift
+```swift
 let request = Request(
     url: "https://postman-echo.com".url,
     method: .GET)
@@ -157,13 +157,13 @@ let task: ApiTask = self.call(
     onCompletion: { (_, _) in })
 ```
 
-```Swift
+```swift
 task.cancel()
 ```
 
 ## SSL Pinning
 
-```Swift
+```swift
 SSLPinning.isEnabled = true
 SSLPinning.certificates = [
     Bundle.main.url(forResource: "certificate", withExtension: "cer")

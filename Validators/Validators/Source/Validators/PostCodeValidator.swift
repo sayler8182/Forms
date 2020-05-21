@@ -34,11 +34,15 @@ public class PostCodeValidator: Validator {
 }
 
 // MARK: String
-public struct PostCodeFormat {
+public struct PostCodeFormat: ExpressibleByStringInterpolation {
     public let format: String
     
     public init(_ format: String = "XX-XXX") {
         self.format = format
+    }
+    
+    public init(stringLiteral value: StringLiteralType) {
+        self.init(value)
     }
     
     public func replace(with range: NSRange,

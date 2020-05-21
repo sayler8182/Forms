@@ -23,7 +23,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication,
                      didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Forms
-        Forms.initialize(Injector.main)
+        Forms.configure()
         
         // Analytics
         Analytics.configure()
@@ -64,7 +64,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func application(_ application: UIApplication,
                      didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
-//         Notifications.setAPNSToken(deviceToken)
+         // Notifications.setAPNSToken(deviceToken)
     }
 
     @available(iOS 13.0, *)

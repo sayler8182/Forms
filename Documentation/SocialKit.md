@@ -1,6 +1,6 @@
 # SocialKit
 
-SocialKit is Social media all in one
+SocialKit is Social media all in one.
 
 ## Import
 
@@ -16,10 +16,16 @@ Forms.framework
 
 ## External dependencies
 
+Sign in with Facebook
 ```
-AppAuth.framework
 FBSDKCoreKit.framework
 FBSDKLoginKit.framework
+```
+
+Sign in with Google
+
+```
+AppAuth.framework
 GTMAppAuth.framework
 GTMSessionFetcher.framework
 GoogleSignIn.framework
@@ -31,25 +37,31 @@ GoogleSignIn.framework
 - [x] Sign in with Facebook
 - [x] Sign in with Google
 
+## NOTICE
+Currently firebase DOSN'T support dynamic framework. There could be a problem with *Sign in with Google* when you use *Analytics* or *Notifications* framework 
+see https://github.com/firebase/firebase-ios-sdk/blob/master/docs/firebase_in_libraries.md
+
+## Usage
+
 ## Configuration
 
-```Swift
+```swift
 SocialKit.configure(
     googleClientID: "CLIENT_ID"
 )
 ```
 
-## Sign in with Apple
+## Usage - Sign in with Apple - iOS 13+ only
 
 ### Required Dependencies
 
-```Swift 
+```swift 
 import AuthenticationServices
 ```
 
-### Usage
+### Authorization
 
-```Swift
+```swift
 let provider = SignInWithAppleProvider(context: context)
 self.provider.authorization(
     scopes: [.email],
@@ -59,18 +71,35 @@ self.provider.authorization(
     onCompletion: { (_, _) in })
 ```
 
-## Sign in with Facebook
+### Component
+
+```swift
+let signInWithApple = Components.social.signInWithApple()
+```
+
+## Usage - Sign in with Facebook
+
+### Integration
+
+Library uses FBSDK service. You should create and configure project [here](https://developers.facebook.com/). Then configure Facebook login for your project. It's also important to add *URL Type* in your Target Info's - *URL Schemas* is your fb*APP_ID* from panel.
+
+You need to add additional keys in your Info.plist
+```
+FacebookAppID -> *APP_ID*
+FacebookDisplayName -> *APP_NAME*
+LSApplicationQueriesSchemes -> ["fbapi", "fb-messenger-api", "fbauth2", "fbshareextension"]
+```
 
 ### Required Dependencies
 
-```Swift 
+```swift 
 import FBSDKCoreKit
 import FBSDKLoginKit
 ```
 
-### Usage
+### Authorization
 
-```Swift
+```swift
 let provider = SignInWithFacebookProvider(context: context)
 self.provider.authorization(
     permissions: ["email"],
@@ -80,24 +109,40 @@ self.provider.authorization(
     onCompletion: { (_, _) in })
 ```
 
-## Sign in with Google
+### Component
+
+```swift
+let signInWithFacebook = Components.social.signInWithFacebook()
+```
+
+## Usage - Sign in with Google 
 
 ### Required Dependencies
 
-```Swift 
+```swift 
 import AppAuth
 import GoogleSignIn
 import GTMAppAuth
 import GTMSessionFetcher
 ```
 
-### Usage
+### Integration
 
-```Swift
+Library uses Firebase service. You should create and configure project [here](https://console.firebase.google.com/). Then download *GoogleService-Info.plist* and add to your project. It's also important to add *URL Type* in your Target Info's - *URL Schemas* is your *REVERSED_CLIENT_ID* from *GoogleService-Info.plist*.
+
+### Authorization
+
+```swift
 let provider = SignInWithGoogleProvider(context: context)
 self.provider.authorization(
     onSuccess: { (_) in },
     onError: { (_) in },
     onCancel: { (_) in },
     onCompletion: { (_, _) in })
+```
+
+### Component
+
+```swift
+let signInWithGoogle = Components.social.signInWithGoogle()
 ```

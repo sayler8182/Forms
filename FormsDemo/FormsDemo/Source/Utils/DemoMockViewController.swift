@@ -81,7 +81,11 @@ private struct DemoModel: Mockable, CustomDebugStringConvertible {
         self.age = mock.number(18...100)
         self.height = mock.number(1.5...1.99)
         self.description = mock.string([.length(.regular)])
-        self.birthDate = mock.date(from: "1950-01-01 00:00", to: "2000-12-31 23:59")
+        self.birthDate = mock.date(
+            from: "1950-01-01 00:00",
+            fromFormat: "yyyy-MM-dd HH:mm",
+            to: "2000-12-31 23:59",
+            toFormat: "yyyy-MM-dd HH:mm")
         self.postCode = mock.postCode(format: "XX-XXX")
         self.phone = mock.phone(
             prefix: "+48",

@@ -10,9 +10,9 @@ import Injector
 
 ## Usage
 
-Definition
+### Definition
 
-```Swift
+```swift
 protocol Animal {
     var name: String { get }
 }
@@ -31,9 +31,9 @@ struct PetOwner: Person {
 }
 ```
 
-Registration
+### Registration
 
-```Swift
+```swift
 let injector = Injector()
 injector.register(Animal.self) { _ in 
     Cat(name: "Mimi") 
@@ -43,30 +43,31 @@ injector.register(Person.self) { r in
 }
 ```
 
-Resolve
+### Resolve
 
-```Swift
+```swift
 let person = container.resolve(Person.self)
 person?.play() // prints "I'm playing with Mimi."
 ```
 
 or
 
-```Swift
+```swift
 let person: Person = container.resolve()
 person.play() // prints "I'm playing with Mimi."
 ```
 
-## Scope
+### Scope
 
-```Swift
+```swift
 injector.register(Animal.self) { _ in 
     Cat(name: "Mimi") 
 }.inScope(InjectorScope.container)
 ```
 
-Available scopes
-```Swift
+### Available scopes
+
+```swift
 static let transient = InjectorScope(
     storageFactory: TransientStorage.init,
     description: "transient")

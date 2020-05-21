@@ -41,7 +41,7 @@ class DemoValidatorsViewController: FormsTableViewController {
         .with(validateOnEndEditing: true)
     private let customPostCodeTextField = Components.input.textField.postCode.default()
         .with(title: "CustomPostCodeValidator")
-        .with(validator: PostCodeValidator(format: PostCodeFormat("XX-XX-XX")))
+        .with(validator: PostCodeValidator(format: "XX-XX-XX"))
         .with(validateOnTextChange: true)
     
     private let divider = Components.utils.divider()
@@ -66,6 +66,6 @@ class DemoValidatorsViewController: FormsTableViewController {
         self.amountTextField.textFieldDelegate(of: TextFieldAmountDelegate.self)?
             .configure(currency: "PLN", maxValue: 100_000, maxFraction: 4)
         self.customPostCodeTextField.textFieldDelegate(of: TextFieldPostCodeDelegate.self)?
-            .configure(format: PostCodeFormat("XX-XX-XX"))
+            .configure(format: "XX-XX-XX")
     }
 }

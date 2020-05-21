@@ -81,7 +81,6 @@
 		719469C2243DAB6500CAD09B /* Shimmer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 719469C1243DAB6500CAD09B /* Shimmer.swift */; };
 		719469D8243DD04700CAD09B /* FormsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 719469D7243DD04700CAD09B /* FormsTableViewCell.swift */; };
 		719469DC243DDB7600CAD09B /* TableDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 719469DB243DDB7600CAD09B /* TableDataSource.swift */; };
-		719AE5572462BD1C00A39B0E /* Permission.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 719AE5562462BD1C00A39B0E /* Permission.framework */; };
 		71BB62852445FAE7002BB31F /* Networking.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71BB62842445FAE7002BB31F /* Networking.framework */; };
 		71BB62882445FAED002BB31F /* Logger.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71BB62872445FAED002BB31F /* Logger.framework */; };
 		71D3E43F246D61A1008BA211 /* Keyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71D3E43E246D61A1008BA211 /* Keyboard.swift */; };
@@ -198,7 +197,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				71BB62882445FAED002BB31F /* Logger.framework in Frameworks */,
-				719AE5572462BD1C00A39B0E /* Permission.framework in Frameworks */,
 				719469B5243DA7CF00CAD09B /* Injector.framework in Frameworks */,
 				719469BB243DA7D500CAD09B /* Validators.framework in Frameworks */,
 				719469B8243DA7D200CAD09B /* Utils.framework in Frameworks */,

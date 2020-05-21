@@ -40,11 +40,15 @@ public protocol Permissionable {
 public enum Permission {
     public typealias AskCompletion = (PermissionStatus) -> Void
     
-    @Injected
-    public static var location: PermissionLocationProtocol // swiftlint:disable:this let_var_whitespace
+    public static var location: PermissionLocationProtocol = {
+        let location: PermissionLocationProtocol? = Injector.main.resolve()
+        return location ?? Permission.Location()
+    }()
     
-    @Injected
-    public static var notifications: PermissionNotificationsProtocol // swiftlint:disable:this let_var_whitespace
+    public static var notifications: PermissionNotificationsProtocol = {
+        let notifications: PermissionNotificationsProtocol? = Injector.main.resolve()
+        return notifications ?? Permission.Notifications()
+    }()
     
     public static func ask(_ permissions: [Permissionable],
                            _ completion: @escaping (Bool) -> Void) {

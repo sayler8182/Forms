@@ -36,7 +36,7 @@ public extension Permission {
             self.locationManager.delegate = self
         }
         
-        public init(_ defaultAskType: AskType) {
+        public init(defaultAskType: AskType) {
             self.defaultAskType = defaultAskType
             super.init()
             self.locationManager.delegate = self

@@ -39,10 +39,10 @@ class DemoLoaderViewController: FormsTableViewController {
             Utils.delay(2.0, self) { Loader.hide(in: $0.navigationController) }
         }
         self.titleShortLoaderButton.onClick = { [unowned self] in
-            let loaderView: TitleLoaderView? = Loader.show(
+            Loader.show(
                 in: self.navigationController,
-                of: TitleLoaderView.self)
-            loaderView?.setTitle("Short text")
+                of: TitleLoaderView.self)?
+                .setTitle("Short text")
             Utils.delay(2.0, self) { Loader.hide(in: $0.navigationController) }
         }
         self.titleLongLoaderButton.onClick = { [unowned self] in

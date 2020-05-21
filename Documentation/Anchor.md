@@ -6,15 +6,11 @@ Anchor is a DSL to make Auto Layout easy.
 
 ```swift
 import Anchor
-```
+``` 
 
-or 
+## Usage
 
-```swift
-import Forms
-```
-
-## Adding anchor
+### Adding anchor
 
 ```swift
 // create view
@@ -32,7 +28,7 @@ centerView.anchors([
 ])
 ```
 
-## Adding subview with anchor
+### Adding subview with anchor
 
 ```swift
 let fillView = UIView()
@@ -41,23 +37,23 @@ view.addSubview(fillView, with: [
 ])
 ```
 
-## Offset
+### Offset
 
-```Swift
+```swift
 // default 0
 Anchor.to(view).offset(8) 
 ```
 
-## Multiplier
+### Multiplier
 
-```Swift
+```swift
 // default 1
 Anchor.to(view).multiplier(2) 
 ```
 
-## Relation
+### Relation
 
-```Swift
+```swift
 // default .equal
 Anchor.to(view).relation(.greaterThanOrEqual)
 Anchor.to(view).relation(.equal) 
@@ -66,31 +62,31 @@ Anchor.to(view).relation(.lessThanOrEqual)
 
 or
 
-```Swift
+```swift
 Anchor.to(view).greaterThanOrEqual
 Anchor.to(view).equal
 Anchor.to(view).lessThanOrEqual
 ```
 
-## LayoutGuide
+### LayoutGuide
 LayoutGuide
 
-```Swift
+```swift
 // default normal
 Anchor.to(view).layoutGuide(.normal)
 Anchor.to(view).layoutGuide(.safeArea)
 Anchor.to(view).layoutGuide(.margins)
 ```
 
-```Swift
+```swift
 Anchor.to(view).normal
 Anchor.to(view).safeArea
 Anchor.to(view).margins
 ```
 
-## Priority
+### Priority
 
-```Swift
+```swift
 // default required
 Anchor.to(view).priority(.required) 
 Anchor.to(view).priority(UILayoutPriority(1)) 
@@ -98,26 +94,26 @@ Anchor.to(view).priority(UILayoutPriority(1))
 
 or
 
-```Swift 
+```swift 
 Anchor.to(view).requiredPriority
 Anchor.to(view).highPriority
 Anchor.to(view).lowPriority
 Anchor.to(view).priority(750)
 ```
 
-## Activation
+### Activation
 
-```Swift
+```swift
 // default true
 Anchor.to(view).isActive(true)
 Anchor.to(view).isActive(false)
 ```
 
-## Positions
+### Positions
 
 Base positions
 
-```Swift
+```swift
 Anchor.to(view).top
 Anchor.to(view).bottom
 Anchor.to(view).topToBottom
@@ -145,7 +141,7 @@ Anchor.to(view).size(size)
 ```
 
 Combined positions
-```Swift
+```swift
 Anchor.to(view).vertical
 Anchor.to(view).horizontal
 Anchor.to(view).fill
@@ -156,7 +152,7 @@ Anchor.to(view).center(width, height)
 Anchor.to(view).center(size)
 ```
 
-## Update constraint value
+### Update constraint value
 
 ```swift
 // create connection

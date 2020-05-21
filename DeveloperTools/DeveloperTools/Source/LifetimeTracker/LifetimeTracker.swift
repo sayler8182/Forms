@@ -17,7 +17,7 @@ public class LifetimeConfiguration: NSObject {
     fileprivate var instanceName: String = ""
     fileprivate var instancePointer: String = ""
     
-    public init(maxCount: Int,
+    public init(maxCount: Int = 1,
                 groupType: Any.Type,
                 groupMaxCount: Int? = nil) {
         self.maxCount = maxCount
@@ -25,7 +25,7 @@ public class LifetimeConfiguration: NSObject {
         self.groupMaxCount = groupMaxCount
     }
     
-    public init(maxCount: Int,
+    public init(maxCount: Int = 1,
                 groupName: String = "lifetimetracker.nogroup.identifier",
                 groupMaxCount: Int? = nil) {
         self.maxCount = maxCount

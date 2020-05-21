@@ -29,6 +29,11 @@ public struct Storage<T>: StorageProvider {
         self.key = key
     }
     
+    public var value: T? {
+        get { return self.wrappedValue }
+        set { self.wrappedValue = newValue }
+    }
+    
     public var wrappedValue: T? {
         get { return self.userDefaults.object(forKey: self.key.rawValue) as? T }
         set {
@@ -54,6 +59,11 @@ public struct StorageWithDefault<T>: StorageProvider {
                 _ defaultValue: T) {
         self.key = key
         self.defaultValue = defaultValue
+    }
+    
+    public var value: T {
+        get { return self.wrappedValue }
+        set { self.wrappedValue = newValue }
     }
     
     public var wrappedValue: T {
@@ -103,6 +113,11 @@ public struct StorageKeychain<T: KeychainValue>: StorageProvider {
         self.service = service
         self.group = group
         self.accessibility = accessibility
+    }
+    
+    public var value: T? {
+        get { return self.wrappedValue }
+        set { self.wrappedValue = newValue }
     }
     
     public var wrappedValue: T? {
@@ -197,6 +212,11 @@ public struct StorageKeychainWithDefault<T: KeychainValue>: StorageProvider {
         self.service = service
         self.group = group
         self.accessibility = accessibility
+    }
+    
+    public var value: T {
+        get { return self.wrappedValue }
+        set { self.wrappedValue = newValue }
     }
     
     public var wrappedValue: T {

@@ -62,7 +62,9 @@ private class TitleModalView: ModalView {
     override func setupActions() {
         super.setupActions()
         self.onDismiss = { [unowned self] _ in
-            Modal.hide(in: self.context, of: TitleModalView.self)
+            Modal.hide(
+                in: self.context,
+                of: TitleModalView.self)
         }
     }
     
@@ -98,8 +100,8 @@ private class TitleModalView: ModalView {
         }, completion: completion)
     }
     
-    override  func hide(animated: Bool,
-                        completion: ((Bool) -> Void)? = nil) {
+    override func hide(animated: Bool,
+                       completion: ((Bool) -> Void)? = nil) {
         guard let coverView = self.coverView else { return }
         self.animation(
             animated,

@@ -17,7 +17,7 @@ open class FormsViewController: UIViewController, UIGestureRecognizerDelegate, T
     private var searchController: UISearchController? = nil
     
     open var bottomAnchor: AnchorConnection = AnchorConnection()
-    open var isResizeOnKeybord: Bool = true
+    open var isResizeOnKeyboard: Bool = true
     open var isShimmering: Bool {
         return self.view.isShimmering
     }
@@ -110,8 +110,8 @@ open class FormsViewController: UIViewController, UIGestureRecognizerDelegate, T
     }
     
     open func setupResizerOnKeyboard() {
-        guard self.isResizeOnKeybord else { return }
-        self.addResizerOnKeyboard()
+        guard self.isResizeOnKeyboard else { return }
+        self.registerKeyboard()
         self.keyboard.onUpdate = { [weak self] (percent, visibleHeight, animated) in
             guard let `self` = self else { return }
             self.updateKeyboard(percent, visibleHeight, animated)
@@ -185,12 +185,12 @@ public extension FormsViewController {
 
 // MARK: Keyboard
 public extension FormsViewController {
-    func addResizerOnKeyboard() {
-        self.keyboard.addKeyboardForResizing()
+    func registerKeyboard() {
+        self.keyboard.register()
     }
     
-    func removeKeyboardForResizing() {
-        self.keyboard.removeKeyboardForResizing()
+    func unregisterKeyboard() {
+        self.keyboard.unregister()
     }
     
     func updateKeyboard(_ percent: CGFloat,

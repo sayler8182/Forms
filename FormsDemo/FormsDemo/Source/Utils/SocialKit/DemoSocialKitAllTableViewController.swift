@@ -12,7 +12,7 @@ import UIKit
 
 // MARK: DemoSocialKitAllTableViewController
 class DemoSocialKitAllTableViewController: FormsTableViewController {
-    private var signInWithApple: FormsComponent? = {
+    private let signInWithApple: FormsComponent? = {
         if #available(iOS 13.0, *) {
             return Components.social.signInWithApple()
                 .with(paddingEdgeInset: UIEdgeInsets(top: 16, leading: 16, bottom: 0, trailing: 16))

@@ -22,7 +22,7 @@ public class Keyboard: NSObject {
         self.displayLink = nil
     }
     
-    public func addKeyboardForResizing() {
+    public func register() {
         NotificationCenter.default.addObserver(
             self,
             selector: #selector(keyboardWillShowForResizing),
@@ -45,7 +45,7 @@ public class Keyboard: NSObject {
             object: nil)
     }
     
-    public func removeKeyboardForResizing() {
+    public func unregister() {
         self.stopObserver()
         NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillHideNotification, object: nil)

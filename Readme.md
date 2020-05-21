@@ -10,42 +10,59 @@ Forms is all in one iOS framework
 
 - [x] Pure Swift Type Support
 - [x] Modular
-- [x] [Analytics](./Documentation/Analytics.md)
-- [x] [DSL to make Auto Layout](./Documentation/Anchor.md)
-- [x] [DeveloperTools](./Documentation/DeveloperTools.md)
-- [x] [Dependency Injection](./Documentation/Injector.md)
-- [x] [Logger](./Documentation/Logger.md)
-- [x] [Networking](./Documentation/Networking.md)
-- [x] [SocialKit](./Documentation/SocialKit.md) Sign in with exteranal services
-- [x] [Utils and extensions](./Documentation/Utils.md)
-- [x] [Validators](./Documentation/Validators.md)
-- [x] [Forms](./Documentation/Forms.md)
-- [x] [Full demo](./Documentation/FormsDemo.md)
+- [x] [Analytics](./Documentation/Analytics.md) - Application analytics
+- [x] [Anchor](./Documentation/Anchor.md) - DSL
+- [x] [DeveloperTools](./Documentation/DeveloperTools.md) - Developer Tools
+- [x] [Forms](./Documentation/Forms.md) - Forms framework
+- [x] [ImagePicker](./Documentation/ImagePicker.md) - Image Picker
+- [x] [Injector](./Documentation/Injector.md) - Dependency Injection
+- [x] [Logger](./Documentation/Logger.md) - Logger data
+- [x] [Mock](./Documentation/Mock.md) - Mocking data
+- [x] [Networking](./Documentation/Networking.md) - Network layer
+- [x] [Notifications](./Documentation/Notifications.md) - Firebase notifications
+- [x] [Permissions](./Documentation/Permissions.md) - Application permissions
+- [x] [SideMenu](./Documentation/SideMenu.md) - Side menu
+- [x] [SocialKit](./Documentation/SocialKit.md) - Sign in with external services
+- [x] [Utils](./Documentation/Utils.md) - Utils and extensions
+- [x] [Transition](./Documentation/Transition.md) - UI transitions
+- [x] [Validators](./Documentation/Validators.md) - Data validators
+- [x] [FormsDemo](./Documentation/FormsDemo.md) - All features demo
+
+## NOTICE
+Currently firebase DOSN'T support dynamic framework. You can't use Analytics and Notifications framework together
+see https://github.com/firebase/firebase-ios-sdk/blob/master/docs/firebase_in_libraries.md
 
 ## Requirements
 
-- iOS 13.0+ 
+- iOS 10.0+ 
 - Swift 5.1
 - Xcode 11.0+
 
 ## Installation
 
 Compile from source and copy dynamic framework.
-1. Select Forms target
+1. Select *Forms* target
 2. Build for iPhone and simulator
-3. Select Forms-Universal target
+3. Select *Forms-Universal* target
 4. Build
 5. Copy generated frameworks
 
 ```
+Analytics.framework
 Anchor.framework
+DeveloperTools.framework
 Forms.framework
+ImagePicker.framework
 Injector.framework
 Logger.framework
+Mock.framework
 Networking.framework
+Notifications.framework
+Permissions.framework
+SideMenu.framework
 SocialKit.framework
-Transition.framework
 Utils.framework
+Transition.framework
 Validators.framework
 ```
 
@@ -61,6 +78,8 @@ FirebaseAnalytics.framework
 FirebaseCore.framework
 FirebaseCoreDiagnostics.framework
 FirebaseInstallations.framework
+FirebaseInstanceID.framework
+FirebaseMessaging.framework
 GTMAppAuth.framework
 GTMSessionFetcher.framework
 GoogleAppMeasurement.framework
@@ -69,8 +88,8 @@ GoogleDataTransportCCTSupport.framework
 GoogleSignIn.framework
 GoogleUtilities.framework
 PromisesObjC.framework
+Protobuf.framework
 nanopb.framework
-
 ```
 
 To update dependencies You should use 
@@ -79,7 +98,7 @@ To update dependencies You should use
 carthage bootstrap
 ```
 
-and copy downloaded framework to ./Dependencies folder
+and copy downloaded framework to [./Dependencies](./Dependencies) folder
 
 ## Contribution Guide or Questions
 
@@ -88,9 +107,23 @@ You can submit issues, ask general questions, or open pull requests.
 ## Credits
 
 The Forms framework is inspired by:
-- [Clean Swift](https://clean-swift.com/)
-- [Swinject](https://github.com/Swinject/Swinject)
+
+- *Atchitectures*<br/>
+[Clean Swift](https://clean-swift.com/)
+
+- *DeveloperTools*<br/>
+[Gedatsu](https://github.com/bannzai/Gedatsu)
+[LifetimeTracker](https://github.com/krzysztofzablocki/LifetimeTracker)
+- *Injector*<br/>
+[Swinject](https://github.com/Swinject/Swinject)
+
 
 ## License
 
 MIT license. See the [LICENSE file](LICENSE) for details.
+
+## TODO:
+
+- [ ] Firebase dynamic frameworks
+- [ ] Forms documentation
+- [ ] Refactor FormsIntegration

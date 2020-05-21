@@ -8,7 +8,6 @@
 
 import Injector
 import Logger
-import Permission
 import UIKit
 import Utils
 import Validators
@@ -18,16 +17,15 @@ public struct Forms {
     
     private init() { }
     
-    public static func initialize(_ injector: Injector,
-                                  _ assemblies: [Assembly] = []) {
+    public static func configure(_ injector: Injector = Injector.main,
+                                 _ assemblies: [Assembly] = []) {
         Forms.injector = injector
-        Forms.initializeBase(injector)
-        Forms.initializeConfigurations(injector)
-        Forms.initializePermissions(injector)
-        Forms.initializeAssemblies(injector, assemblies)
+        Forms.configureBase(injector)
+        Forms.configureConfigurations(injector)
+        Forms.configureAssemblies(injector, assemblies)
     }
     
-    private static func initializeBase(_ injector: Injector) {
+    private static func configureBase(_ injector: Injector) {
         // logger
         injector.register(LoggerProtocol.self) { _ in
             Logger()
@@ -87,7 +85,7 @@ public struct Forms {
         }
     }
     
-    private static func initializeConfigurations(_ injector: Injector) {
+    private static func configureConfigurations(_ injector: Injector) {
         // loader
         injector.register(ConfigurationLoaderProtocol.self) { _ in
             Configuration.Loader()
@@ -107,19 +105,8 @@ public struct Forms {
         }
     }
     
-    private static func initializePermissions(_ injector: Injector) {
-        // location
-        injector.register(PermissionLocationProtocol.self) { _ in
-            Permission.Location()
-        }
-        // notifications
-        injector.register(PermissionNotificationsProtocol.self) { _ in
-            Permission.Notifications()
-        }
-    }
-    
-    private static func initializeAssemblies(_ injector: Injector,
-                                             _ assemblies: [Assembly]) {
+    private static func configureAssemblies(_ injector: Injector,
+                                            _ assemblies: [Assembly]) {
         Self.assemble(injector, assemblies)
     }
     

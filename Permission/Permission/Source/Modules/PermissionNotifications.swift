@@ -28,7 +28,7 @@ public extension Permission {
             super.init()
         }
         
-        public init(_ defaultOptions: UNAuthorizationOptions) {
+        public init(defaultOptions: UNAuthorizationOptions) {
             self.defaultOptions = defaultOptions
             super.init()
         }

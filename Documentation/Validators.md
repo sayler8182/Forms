@@ -15,9 +15,11 @@ Injector.framework
 Utils.framework
 ```
 
-## Validators
+## Usage
 
-```Swift
+### Validators
+
+```swift
 AmountValidator(
     minAmount: 100, 
     maxAmount: 20_000, 
@@ -29,19 +31,20 @@ LengthValidator(
 NotEmptyValidator()
 PeselValidator()
 PhoneValidator(isRequired: false)
+PostCodeValidator(format: "XX-XXX")
 ```
 
-## Validation
+### Validation
 
-```Swift
+```swift
 let validator = EmailValidator()
 let result = validator.validate("some@email.com")
 print(result.isValid, result.error)
 ```
 
-## Custom ValidationError translations
+### Custom ValidationError translations
 
-```Swift 
+```swift 
 enum AppValidationErrorType: String, ValidationErrorTypeProtocol {
     case myCustom
     
