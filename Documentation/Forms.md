@@ -53,31 +53,256 @@ Forms.configure(Injector.main, assemblies)
 
 ### Components
 
-TODO
+All components extend FormsComponent class. Components can be use in FormsTableViewController.<br/>
+Component shouldn't be initialized with *init*, but with builder.
+
+```swift
+let view = Components.container.view()
+    .with(backgroundColor: UIColor.red)
+    .with(height: 44)
+```
+
+New components or new configuration
+
+```swift
+extension Components {
+    typealias custom = ComponentsCustom
+}
+
+struct ComponentsCustom: ComponentsList {
+    private init() { }
+        
+    public static func someCustomComponent() -> CustomComponent {
+        let component = CustomComponent()
+        component.marginEdgeInset = UIEdgeInsets(0)
+        component.height = UITableView.automaticDimension
+        component.paddingEdgeInset = UIEdgeInsets(0)
+        return component
+    }
+}
+```
 
 ### FormsViewController
 
-TODO
+FormsViewController should be base for all UIViewControllers. All subviews should be added with Anchor framework.
+
+Lifecycle
+
+```swift
+func setupView() {
+    self.setupConfiguration()
+    self.setupResizerOnKeyboard()
+    self.setupKeyboardWhenTappedAround()
+    self.setupTheme()
+    
+    // HOOKS
+    self.setupNavigationBar()
+    self.setupSearchBar()
+    self.setupContent()
+    self.setupActions()
+    self.setupOther()
+}
+```
+
+Build
+
+```swift
+let view = Components.button.default()
+self.view.addSubview(view, witch: [
+    Anchor.to(self.view).fill
+])
+```
 
 ### FormsTableViewController
 
-TODO
+FormsTableViewController extends FormsViewController but basic view is UITableView. Class supports *TableDataSource* and *Direct components*.
+
+Lifecycle
+
+```swift
+override func setupView() {
+    self.setupConfiguration()
+    self.setupResizerOnKeyboard()
+    self.setupKeyboardWhenTappedAround()
+    self.setupTheme()
+    
+    self.setupNavigationBar()
+    self.setupSearchBar()
+    self.setupContent()
+    self.setupHeaderView()
+    self.setupTableView()
+    self.setupDataSource()
+    self.setupFooterView()
+    self.setupOther()
+    self.setupActions()
+    
+    // HOOKS
+    self.setupHeader()   
+    self.setupFooter()
+    self.setupPagination()
+    self.setupPullToRefresh()
+}
+```
+
+Build
+
+```swift
+let view = Components.button.default()
+build([view])
+```
+
+or 
+
+```swift
+let view = Components.button.default()
+addComponent(view)
+removeComponent(view)
+```
+
+Header and Footer
+
+```swift
+override func setupHeader() {
+    super.setupHeader()
+    self.setHeader(
+        UIView(), 
+        height: 44.0)
+}
+     
+override func setupFooter() {
+    super.setupFooter()
+    self.addToFooter([
+        UIView(),
+        UIView()
+    ], height: 44.0)
+}
+```
+
+FormsTableViewController is *Validable* after perform *validate* method all components will be validate.
+
+To enable *Pull to Refresh* You should set *pullToRefreshIsEnabled* flag andd override *pullToRefresh* method. 
+
+```swift
+override func pullToRefresh() {
+    // some call
+    self.pullToRefreshFinish()
+}
+```
 
 ### FormsCollectionViewController
 
-TODO
+FormsCollectionViewController works like FormsTableViewController but doesn't support direct components.
 
 ### FormsTabBarController
 
-TODO
+FormsTabBarController supports multiple sets
+
+```swift
+    enum TabBarKeys: String, TabBarKey {
+        case main
+        case other
+        
+        var keys: [TabBarItemKey] {
+            switch self {
+            case .main: return TabBarMainKeys.allCases
+            case .other: return TabBarOtherKeys.allCases
+            }
+        }
+    }
+    enum TabBarMainKeys: String, TabBarItemKey, CaseIterable {
+        case first
+        case second
+    }
+    enum TabBarOtherKeys: String, TabBarItemKey, CaseIterable {
+        case first
+        case second
+        case third
+    }
+```
+
+```swift
+override func setupItems() {
+    super.setupItems()
+    self.addSet([
+            TabBarItem(
+                itemKey: TabBarMainKeys.first,
+                viewController: { UIViewController() },
+                image: UIImage.from(name: "heart.fill"),
+                selectedImage: UIImage.from(name: "heart.fill"),
+                title: "First"
+            ),
+            TabBarItem(
+                itemKey: TabBarMainKeys.second,
+                viewController: { return UIViewController() },
+                image: UIImage.from(name: "heart"),
+                selectedImage: UIImage.from(name: "heart"),
+                title: "Second",
+                isTranslucent: true
+            )
+        ], forKey: TabBarKeys.main)
+```
+
+Select set and item
+
+```swift
+select(TabBarKeys.main, itemKey: TabBarMainKeys.second)
+```
+
+You can show or hide tab bar
+
+```swift
+func showTabBar(animated: Bool = true,
+                completion: ((Bool) -> Void)? = nil) {
+func hideTabBar(animated: Bool = true,
+                completion: ((Bool) -> Void)? = nil) {
+```
+
 
 ### FormsPagerController
 
-TODO
+```swift
+override func setupItems() {
+    super.setupItems()
+    self.setItems([
+        PagerItem(
+            viewController: { UIViewController() }
+            title: "First",
+            onSelect: { _ in }),
+        PagerItem(
+            viewController: { UIViewController() }
+            title: "Second is longer",
+            onSelect: { _ in }),
+    ])
+```
+
+You can show or hide top bar
+
+```swift
+func showTopBar(animated: Bool = true,
+                completion: ((Bool) -> Void)? = nil) {
+func hideTopBar(animated: Bool = true,
+                completion: ((Bool) -> Void)? = nil) {
+```
+
+and page control
+
+```swift
+func showPageControl(animated: Bool = true,
+                    completion: ((Bool) -> Void)? = nil) {
+func hidePageControl(animated: Bool = true,
+                    completion: ((Bool) -> Void)? = nil) {
+```
 
 ### FormsSearchController
 
-TODO
+FormsSearchController extends UISearchController and allows use it in navigation item.
+
+```swift
+override func setupSearchBar() {
+    super.setupSearchBar()
+    self.setSearchBar(self.searchController)
+}
+```
 
 ## Delegates and DataSources
 
@@ -721,3 +946,7 @@ class CustomToastView: ToastView {
                        completion: ((Bool) -> Void)? = nil) { }
 }
 ```
+
+## Demo 
+
+Complete demo is in FormsDemo project

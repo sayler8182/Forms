@@ -634,6 +634,3 @@ public extension FormsTableViewController {
         }
     }
 }
-
-// MARK: Inputs
-extension FormsTableViewController { }

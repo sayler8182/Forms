@@ -8,13 +8,19 @@
 
 import Analytics
 import DeveloperTools
+import Forms
 import SocialKit
 import UIKit
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
+    var window: UIWindow?
+    
     func application(_ application: UIApplication,
                      didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+        // Forms
+        Forms.configure()
+        
         // Analytics
         Analytics.configure()
         
@@ -26,6 +32,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             googleClientID: "513688149579-fhj79mgkeq2rp689dpmfnn7nlkadnf31.apps.googleusercontent.com"
         )
         
+        if #available(iOS 13.0, *) {
+        } else {
+            let window: UIWindow = UIWindow(frame: UIScreen.main.bounds)
+            window.rootViewController = FormsIntegrationRootViewController()
+            self.window = window
+            window.makeKeyAndVisible()
+        }
         return true
     }
 

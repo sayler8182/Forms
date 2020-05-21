@@ -2,7 +2,7 @@
 Forms
 ========
 
-[![Swift Version](https://img.shields.io/badge/Swift-5.1-F16D39.svg?style=flat)](https://developer.apple.com/swift)
+[![Swift Version](https://img.shields.io/badge/Swift-5.2-F16D39.svg?style=flat)](https://developer.apple.com/swift)
 
 Forms is all in one iOS framework
 
@@ -35,8 +35,11 @@ see https://github.com/firebase/firebase-ios-sdk/blob/master/docs/firebase_in_li
 ## Requirements
 
 - iOS 10.0+ 
-- Swift 5.1
+- Swift 5.2
 - Xcode 11.0+
+
+Stable version<br/>
+XCode  11.5 (11E608c)
 
 ## Installation
 
@@ -112,8 +115,9 @@ The Forms framework is inspired by:
 [Clean Swift](https://clean-swift.com/)
 
 - *DeveloperTools*<br/>
-[Gedatsu](https://github.com/bannzai/Gedatsu)
+[Gedatsu](https://github.com/bannzai/Gedatsu),
 [LifetimeTracker](https://github.com/krzysztofzablocki/LifetimeTracker)
+
 - *Injector*<br/>
 [Swinject](https://github.com/Swinject/Swinject)
 
@@ -125,5 +129,3 @@ MIT license. See the [LICENSE file](LICENSE) for details.
 ## TODO:
 
 - [ ] Firebase dynamic frameworks
-- [ ] Forms documentation
-- [ ] Refactor FormsIntegration

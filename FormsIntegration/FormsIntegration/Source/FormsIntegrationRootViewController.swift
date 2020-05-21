@@ -6,7 +6,9 @@
 //  Copyright © 2020 Limbo. All rights reserved.
 //
 
+import Anchor
 import Forms
+import Injector
 import UIKit
 
 private enum Integration {
@@ -81,7 +83,6 @@ fileprivate extension Array where Element == Integration.Section {
 public class FormsIntegrationRootViewController: FormsNavigationController {
     override public func postInit() {
         super.postInit()
-        Forms.initialize(Injector.main)
         let controller = FormsIntegrationListViewController(items: Integration.Section.default)
             .with(title: "FormsIntegration")
         self.setRoot(controller)
@@ -137,6 +138,7 @@ private class FormsIntegrationListViewController: FormsViewController {
         self.tableView.dataSource = self
         self.tableView.keyboardDismissMode = .interactive
         self.tableView.estimatedRowHeight = 44
+        self.tableView.backgroundColor = UIColor.clear
         self.tableView.rowHeight = UITableView.automaticDimension
         self.tableView.separatorStyle = UITableViewCell.SeparatorStyle.none
         self.tableView.allowsSelection = true
@@ -199,14 +201,21 @@ extension FormsIntegrationListViewController: UITableViewDelegate, UITableViewDa
         self.select(row: row)
     }
     
-    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return self.items.count > 1 ? self.items[section].title : nil
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let title: String? = self.items.count > 1 ? self.items[section].title : nil
+        guard let _title: String = title else { return nil }
+        return Components.sections.default()
+            .with(text: _title)
+            .with(width: tableView.frame.width)
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: self.defaultCellIdentifier, for: indexPath)
         let item: Integration.Section = self.items[indexPath.section]
         let row: Integration.Row = item.rows[indexPath.row]
+        cell.backgroundColor = UIColor.clear
+        cell.textLabel?.textColor = Theme.Colors.primaryText
+        cell.detailTextLabel?.textColor = Theme.Colors.secondaryText
         cell.accessoryType = .disclosureIndicator
         cell.selectionStyle = .gray
         cell.textLabel?.text = row.title
@@ -215,7 +224,7 @@ extension FormsIntegrationListViewController: UITableViewDelegate, UITableViewDa
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return self.items.count > 1 ? 30.0 : 0
+        return self.items.count > 1 ? UITableView.automaticDimension : 0
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
