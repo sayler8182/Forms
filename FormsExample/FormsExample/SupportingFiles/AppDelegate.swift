@@ -22,6 +22,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func application(_ application: UIApplication,
                      didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+        // DeveloperTools - Console
+        Console.configure(ignore: [
+            "FacebookAdvertiserIDCollectionEnabled is currently",
+            "Connection 5: unable to determine",
+            "[Firebase/Analytics]",
+            "Can't find keyplane that supports type",
+            "HTTP load failed, 0/0 bytes",
+            "Connection to daemon was invalidated",
+            "ack=0, win=0 state=CLOSED rcv_nxt"
+        ])
+        
         // Forms
         Forms.configure()
         
@@ -29,11 +40,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         Analytics.configure()
         
         // DeveloperTools
-        Autolayout.configure()
         DeveloperTools.configure(
             features: DemoDeveloperFeatureKeys.allCases,
             featuresFlags: DemoDeveloperFeatureFlagKeys.allCases,
             onSelect: DemoDeveloperToolsManager.onSelect)
+        
+        // DeveloperTools - LifetimeTracker
         LifetimeTracker.configure()
         
         // Notifications

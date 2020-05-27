@@ -30,17 +30,17 @@ internal extension UIView {
     func _autolayout(engine: AnyObject,
                      constraint: NSLayoutConstraint,
                      exclusiveConstraints: [NSLayoutConstraint]) {
-        _assert(Thread.isMainThread)
+        consoleAssert(Thread.isMainThread)
         defer { _autolayout(engine: engine, constraint: constraint, exclusiveConstraints: exclusiveConstraints) }
         guard let isLoggingSuspend: Bool = value(forKey: "_isUnsatisfiableConstraintsLoggingSuspended") as? Bool else { return }
         if isLoggingSuspend { return }
-        let context = AutolayoutContext(
+        let context = ConsoleAutolayoutContext(
             view: self,
             constraint: constraint,
             exclusiveConstraints: exclusiveConstraints)
         context.buildTree()
-        Autolayout.shared.save {
-            Swift.print(AutolayoutFormatter.format(context), to: &Autolayout.shared)
+        Console.shared.save {
+            Swift.print(ConsoleAutolayoutFormatter.format(context), to: &Console.shared)
         }
     }
 }

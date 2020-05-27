@@ -18,13 +18,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func application(_ application: UIApplication,
                      didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+        // DeveloperTools - Console
+        Console.configure()
+        
         // Forms
         Forms.configure()
         
         // Analytics
         Analytics.configure()
-        
+
         // DeveloperTools
+        DeveloperTools.configure()
+        
+        // DeveloperTools - LifetimeTracker
         LifetimeTracker.configure()
         
         // SocialKit

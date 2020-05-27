@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>CFBuildDate</key>
-	<string>Thu May 21 15:33:52 CEST 2020</string>
+	<string>Wed May 27 17:50:53 CEST 2020</string>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
 	<key>CFBundleDisplayName</key>
@@ -42,7 +42,7 @@
 	<key>CFBundleVersion</key>
 	<string>1</string>
 	<key>FacebookAdvertiserIDCollectionEnabled</key>
-	<string>NO</string>
+	<string>YES</string>
 	<key>FacebookAppID</key>
 	<string>1234</string>
 	<key>FacebookAutoLogAppEventsEnabled</key>

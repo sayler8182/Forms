@@ -11,19 +11,22 @@ import DeveloperTools
 ## Features
 
 - [x] Pure Swift Type Support
-- [x] Autolayout - Constraints warnings translator
+- [x] Console - Console hook and constraints warnings translator
 - [x] DeveloperTools - Developer features menu
 - [x] LifetimeTracker - Leak tracker
 
-## Autolayout
+## Console
 
 ### Configuration
 
 ```swift
-Autolayout.configure()
+// ignores warnings with provided text
+Console.configure(ignore: [
+    "HTTP load failed, 0/0 bytes"
+])
 ```
 
-### Before
+### Autolayout error before
 
 ```
 Make a symbolic breakpoint at UIViewAlertForUnsatisfiableConstraints to catch this in the debugger.
@@ -45,7 +48,7 @@ Make a symbolic breakpoint at UIViewAlertForUnsatisfiableConstraints to catch th
 The methods in the UIConstraintBasedLayoutDebugging category on UIView listed in <UIKitCore/UIView.h> may also be helpful.
 ```
 
-### After
+### Autolayout error after
 
 ```
 ⚠️ Catch AutoLayout error and details below

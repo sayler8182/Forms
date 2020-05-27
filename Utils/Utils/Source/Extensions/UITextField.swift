@@ -9,4 +9,12 @@
 import UIKit
 
 // MARK: UITextField
-public extension UITextField { }
+public extension UITextField {
+    func setBeginTextFocus() {
+        self.selectedTextRange = self.textRange(from: self.beginningOfDocument, to: self.beginningOfDocument)
+    }
+    
+    func setEndTextFocus() {
+        self.selectedTextRange = self.textRange(from: self.endOfDocument, to: self.endOfDocument)
+    }
+}

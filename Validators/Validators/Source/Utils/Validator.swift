@@ -118,6 +118,7 @@ public enum ValidationErrorType: String, ValidationErrorTypeProtocol {
     case amountMin
     case amountMax
     case email
+    case length
     case lengthMin
     case lengthMax
     case notEmpty
@@ -148,6 +149,9 @@ public class ValidationError {
     }
     static func amountMaxError(_ maxAmount: String) -> ValidationError {
         ValidationError(ValidationErrorType.amountMax, [maxAmount])
+    }
+    static func lengthError(_ length: String) -> ValidationError {
+        ValidationError(ValidationErrorType.length, [length])
     }
     static func lengthMinError(_ minLength: String) -> ValidationError {
         ValidationError(ValidationErrorType.lengthMin, [minLength])
@@ -206,6 +210,8 @@ open class ValidatorTranslator: ValidatorTranslatorProtocol {
             return "Minimum allowed amount is \(parameters[safe: 0, or: ""])"
         case ValidationErrorType.amountMax.rawValue:
             return "Maximum allowed amount is \(parameters[safe: 0, or: ""])"
+        case ValidationErrorType.length.rawValue:
+            return "Allowed length is \(parameters[safe: 0, or: ""]) characters"
         case ValidationErrorType.lengthMin.rawValue:
             return "Minimum allowed length is \(parameters[safe: 0, or: ""]) characters"
         case ValidationErrorType.lengthMax.rawValue:

@@ -28,5 +28,4 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         guard let window: UIWindow = self.window else { return }
         Theme.setUserInterfaceStyle(window.traitCollection.userInterfaceStyle)
     }
-
 }

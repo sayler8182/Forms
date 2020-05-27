@@ -53,6 +53,7 @@ private enum Demo {
         case componentsContainersScroll
         case componentsContainersStack
         case componentsInputs
+        case componentsInputsPinView
         case componentsInputsSearchBar
         case componentsInputsTitleTextField
         case componentsInputsTitleTextView
@@ -72,7 +73,7 @@ private enum Demo {
         case utilsAppStoreReview
         case utilsAttributedString
         case utilsDeveloperTools
-        case utilsDeveloperToolsAutolayout
+        case utilsDeveloperToolsConsole
         case utilsDeveloperToolsLifetime
         case utilsDeveloperToolsMenu
         case utilsImagePicker
@@ -155,6 +156,7 @@ private enum Demo {
                         title: "Inputs",
                         sections: [
                             Section(rows: [
+                                Row(type: RowType.componentsInputsPinView, title: "PinView"),
                                 Row(type: RowType.componentsInputsSearchBar, title: "SearchBar"),
                                 Row(type: RowType.componentsInputsTitleTextField, title: "TitleTextField"),
                                 Row(type: RowType.componentsInputsTitleTextView, title: "TitleTextView")
@@ -192,7 +194,7 @@ private enum Demo {
                         title: "DeveloperTools",
                         sections: [
                             Section(rows: [
-                                Row(type: RowType.utilsDeveloperToolsAutolayout, title: "Autolayout"),
+                                Row(type: RowType.utilsDeveloperToolsConsole, title: "Console"),
                                 Row(type: RowType.utilsDeveloperToolsLifetime, title: "Lifetime"),
                                 Row(type: RowType.utilsDeveloperToolsMenu, title: "Menu")
                             ])
@@ -489,6 +491,7 @@ private class DemoListViewController: FormsViewController {
         case .componentsContainersPage:                         return DemoPageContainerViewController()
         case .componentsContainersScroll:                       return DemoScrollContainerViewController()
         case .componentsContainersStack:                        return DemoStackContainerViewController()
+        case .componentsInputsPinView:                          return DemoPinViewViewController()
         case .componentsInputsSearchBar:                        return DemoSearchBarViewController()
         case .componentsInputsTitleTextField:                   return DemoTitleTextFieldViewController()
         case .componentsInputsTitleTextView:                    return DemoTitleTextViewViewController()
@@ -504,7 +507,7 @@ private class DemoListViewController: FormsViewController {
         case .utilsAnalytics:                                   return DemoAnalyticsViewController()
         case .utilsAppStoreReview:                              return DemoAppStoreReviewViewController()
         case .utilsAttributedString:                            return DemoAttributedStringViewController()
-        case .utilsDeveloperToolsAutolayout:                    return DemoDeveloperToolsAutolayoutViewController()
+        case .utilsDeveloperToolsConsole:                       return DemoDeveloperToolsConsoleViewController()
         case .utilsDeveloperToolsLifetime:                      return DemoDeveloperToolsLifetimeViewController()
         case .utilsDeveloperToolsMenu:                          return DemoDeveloperToolsMenuViewController()
         case .utilsImagePickerSystem:                           return DemoImagePickerSystemViewController()

@@ -7,14 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		7158CB87246A7B2400797B83 /* AutolayoutInterceptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7158CB7B246A7B2400797B83 /* AutolayoutInterceptor.swift */; };
 		7158CB89246A7B2400797B83 /* NSLayoutConstraint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7158CB7D246A7B2400797B83 /* NSLayoutConstraint.swift */; };
-		7158CB8A246A7B2400797B83 /* AutolayoutFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7158CB7E246A7B2400797B83 /* AutolayoutFormatter.swift */; };
-		7158CB8B246A7B2400797B83 /* AutolayoutReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7158CB7F246A7B2400797B83 /* AutolayoutReader.swift */; };
-		7158CB8C246A7B2400797B83 /* AutolayoutContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7158CB80246A7B2400797B83 /* AutolayoutContext.swift */; };
+		7158CB8C246A7B2400797B83 /* ConsoleAutolayoutContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7158CB80246A7B2400797B83 /* ConsoleAutolayoutContext.swift */; };
 		7158CB8D246A7B2400797B83 /* UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7158CB81246A7B2400797B83 /* UIView.swift */; };
-		7158CB8E246A7B2400797B83 /* AutolayoutWriter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7158CB82246A7B2400797B83 /* AutolayoutWriter.swift */; };
-		7158CB90246A7B2400797B83 /* Autolayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7158CB84246A7B2400797B83 /* Autolayout.swift */; };
 		7178025B24543D2B0057E848 /* DeveloperTools.h in Headers */ = {isa = PBXBuildFile; fileRef = 7178025924543D2B0057E848 /* DeveloperTools.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		7178029B24543F3F0057E848 /* LifetimeTracker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7178029A24543F3F0057E848 /* LifetimeTracker.swift */; };
 		717802D32454556E0057E848 /* LifetimeTrackerListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 717802C02454556E0057E848 /* LifetimeTrackerListViewController.swift */; };
@@ -22,6 +17,10 @@
 		717802DE2454556E0057E848 /* LifetimeTrackerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 717802CE2454556E0057E848 /* LifetimeTrackerManager.swift */; };
 		717802E4245469310057E848 /* LifetimeTrackerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 717802E3245469310057E848 /* LifetimeTrackerView.swift */; };
 		717802E6245469BE0057E848 /* LifetimeTrackerDashboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 717802E5245469BE0057E848 /* LifetimeTrackerDashboard.swift */; };
+		71C936A1247EA89F00603A6F /* Console.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71C936A0247EA89F00603A6F /* Console.swift */; };
+		71C936A3247EA90500603A6F /* ConsoleReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71C936A2247EA90500603A6F /* ConsoleReader.swift */; };
+		71C936A5247EA90C00603A6F /* ConsoleWriter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71C936A4247EA90C00603A6F /* ConsoleWriter.swift */; };
+		71C936A7247EA91800603A6F /* ConsoleInterceptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71C936A6247EA91800603A6F /* ConsoleInterceptor.swift */; };
 		71ED4F5824558B100072ACA3 /* DeveloperTools.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71ED4F5724558B100072ACA3 /* DeveloperTools.swift */; };
 		71ED4F5A24558BB60072ACA3 /* DeveloperToolsMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71ED4F5924558BB60072ACA3 /* DeveloperToolsMenu.swift */; };
 		71ED4F5C24558C820072ACA3 /* DeveloperToolsMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71ED4F5B24558C820072ACA3 /* DeveloperToolsMenuViewController.swift */; };
@@ -38,14 +37,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		7158CB7B246A7B2400797B83 /* AutolayoutInterceptor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AutolayoutInterceptor.swift; sourceTree = "<group>"; };
 		7158CB7D246A7B2400797B83 /* NSLayoutConstraint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSLayoutConstraint.swift; sourceTree = "<group>"; };
-		7158CB7E246A7B2400797B83 /* AutolayoutFormatter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AutolayoutFormatter.swift; sourceTree = "<group>"; };
-		7158CB7F246A7B2400797B83 /* AutolayoutReader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AutolayoutReader.swift; sourceTree = "<group>"; };
-		7158CB80246A7B2400797B83 /* AutolayoutContext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AutolayoutContext.swift; sourceTree = "<group>"; };
+		7158CB80246A7B2400797B83 /* ConsoleAutolayoutContext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConsoleAutolayoutContext.swift; sourceTree = "<group>"; };
 		7158CB81246A7B2400797B83 /* UIView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIView.swift; sourceTree = "<group>"; };
-		7158CB82246A7B2400797B83 /* AutolayoutWriter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AutolayoutWriter.swift; sourceTree = "<group>"; };
-		7158CB84246A7B2400797B83 /* Autolayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Autolayout.swift; sourceTree = "<group>"; };
 		7178025924543D2B0057E848 /* DeveloperTools.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DeveloperTools.h; sourceTree = "<group>"; };
 		7178025A24543D2B0057E848 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7178028124543DBA0057E848 /* DeveloperToolsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DeveloperToolsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -56,6 +50,10 @@
 		717802CE2454556E0057E848 /* LifetimeTrackerManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LifetimeTrackerManager.swift; sourceTree = "<group>"; };
 		717802E3245469310057E848 /* LifetimeTrackerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LifetimeTrackerView.swift; sourceTree = "<group>"; };
 		717802E5245469BE0057E848 /* LifetimeTrackerDashboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LifetimeTrackerDashboard.swift; sourceTree = "<group>"; };
+		71C936A0247EA89F00603A6F /* Console.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Console.swift; sourceTree = "<group>"; };
+		71C936A2247EA90500603A6F /* ConsoleReader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConsoleReader.swift; sourceTree = "<group>"; };
+		71C936A4247EA90C00603A6F /* ConsoleWriter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConsoleWriter.swift; sourceTree = "<group>"; };
+		71C936A6247EA91800603A6F /* ConsoleInterceptor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConsoleInterceptor.swift; sourceTree = "<group>"; };
 		71ED4F5724558B100072ACA3 /* DeveloperTools.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeveloperTools.swift; sourceTree = "<group>"; };
 		71ED4F5924558BB60072ACA3 /* DeveloperToolsMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeveloperToolsMenu.swift; sourceTree = "<group>"; };
 		71ED4F5B24558C820072ACA3 /* DeveloperToolsMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeveloperToolsMenuViewController.swift; sourceTree = "<group>"; };
@@ -79,20 +77,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		7158CB79246A7B0800797B83 /* Autolayout */ = {
-			isa = PBXGroup;
-			children = (
-				7158CB94246A81D800797B83 /* Extensions */,
-				7158CB84246A7B2400797B83 /* Autolayout.swift */,
-				7158CB80246A7B2400797B83 /* AutolayoutContext.swift */,
-				7158CB7E246A7B2400797B83 /* AutolayoutFormatter.swift */,
-				7158CB7B246A7B2400797B83 /* AutolayoutInterceptor.swift */,
-				7158CB7F246A7B2400797B83 /* AutolayoutReader.swift */,
-				7158CB82246A7B2400797B83 /* AutolayoutWriter.swift */,
-			);
-			path = Autolayout;
-			sourceTree = "<group>";
-		};
 		7158CB94246A81D800797B83 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
@@ -124,7 +108,7 @@
 		7178027C24543D8E0057E848 /* Source */ = {
 			isa = PBXGroup;
 			children = (
-				7158CB79246A7B0800797B83 /* Autolayout */,
+				71C9369F247EA89100603A6F /* Console */,
 				71ED4F5624558AFB0072ACA3 /* DeveloperTools */,
 				717802BE2454556E0057E848 /* LifetimeTracker */,
 			);
@@ -142,6 +126,19 @@
 				7178029A24543F3F0057E848 /* LifetimeTracker.swift */,
 			);
 			path = LifetimeTracker;
+			sourceTree = "<group>";
+		};
+		71C9369F247EA89100603A6F /* Console */ = {
+			isa = PBXGroup;
+			children = (
+				7158CB94246A81D800797B83 /* Extensions */,
+				71C936A0247EA89F00603A6F /* Console.swift */,
+				7158CB80246A7B2400797B83 /* ConsoleAutolayoutContext.swift */,
+				71C936A6247EA91800603A6F /* ConsoleInterceptor.swift */,
+				71C936A2247EA90500603A6F /* ConsoleReader.swift */,
+				71C936A4247EA90C00603A6F /* ConsoleWriter.swift */,
+			);
+			path = Console;
 			sourceTree = "<group>";
 		};
 		71ED4F5624558AFB0072ACA3 /* DeveloperTools */ = {
@@ -266,20 +263,19 @@
 			files = (
 				717802E6245469BE0057E848 /* LifetimeTrackerDashboard.swift in Sources */,
 				717802D32454556E0057E848 /* LifetimeTrackerListViewController.swift in Sources */,
+				71C936A5247EA90C00603A6F /* ConsoleWriter.swift in Sources */,
 				71ED4F5824558B100072ACA3 /* DeveloperTools.swift in Sources */,
 				717802DC2454556E0057E848 /* LifetimeTrackerDashboardViewController.swift in Sources */,
 				7158CB89246A7B2400797B83 /* NSLayoutConstraint.swift in Sources */,
-				7158CB87246A7B2400797B83 /* AutolayoutInterceptor.swift in Sources */,
 				7158CB8D246A7B2400797B83 /* UIView.swift in Sources */,
+				71C936A7247EA91800603A6F /* ConsoleInterceptor.swift in Sources */,
 				71ED4F5C24558C820072ACA3 /* DeveloperToolsMenuViewController.swift in Sources */,
 				717802DE2454556E0057E848 /* LifetimeTrackerManager.swift in Sources */,
-				7158CB8A246A7B2400797B83 /* AutolayoutFormatter.swift in Sources */,
-				7158CB90246A7B2400797B83 /* Autolayout.swift in Sources */,
-				7158CB8E246A7B2400797B83 /* AutolayoutWriter.swift in Sources */,
-				7158CB8C246A7B2400797B83 /* AutolayoutContext.swift in Sources */,
+				7158CB8C246A7B2400797B83 /* ConsoleAutolayoutContext.swift in Sources */,
+				71C936A1247EA89F00603A6F /* Console.swift in Sources */,
 				717802E4245469310057E848 /* LifetimeTrackerView.swift in Sources */,
-				7158CB8B246A7B2400797B83 /* AutolayoutReader.swift in Sources */,
 				7178029B24543F3F0057E848 /* LifetimeTracker.swift in Sources */,
+				71C936A3247EA90500603A6F /* ConsoleReader.swift in Sources */,
 				71ED4F5A24558BB60072ACA3 /* DeveloperToolsMenu.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

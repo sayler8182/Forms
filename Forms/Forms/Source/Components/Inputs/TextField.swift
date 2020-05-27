@@ -52,6 +52,8 @@ public extension TextField {
 
 // MARK: UITextFieldWithPlaceholder
 open class UITextFieldWithPlaceholder: UITextField {
+    public typealias OnDeleteBackward = () -> Void
+    
     public let placeholderLabel = UILabel()
         .with(width: 320, height: 20)
     
@@ -94,6 +96,15 @@ open class UITextFieldWithPlaceholder: UITextField {
             self.updateView()
         }
     }
+    override open var textAlignment: NSTextAlignment {
+        get { return super.textAlignment }
+        set {
+            super.textAlignment = newValue
+            self.placeholderLabel.textAlignment = newValue
+        }
+    }
+    
+    public var onDeleteBackward: OnDeleteBackward?
     
     override public init(frame: CGRect) {
         super.init(frame: frame)
@@ -121,6 +132,11 @@ open class UITextFieldWithPlaceholder: UITextField {
             selector: #selector(textDidChangeNotification),
             name: UITextField.textDidChangeNotification,
             object: self)
+    }
+    
+    override open func deleteBackward() {
+        super.deleteBackward()
+        self.onDeleteBackward?()
     }
     
     override open func textRect(forBounds bounds: CGRect) -> CGRect {

@@ -1,5 +1,5 @@
 //
-//  DemoDeveloperToolsAutolayoutViewController.swift
+//  DemoDeveloperToolsConsoleViewController.swift
 //  FormsDemo
 //
 //  Created by Konrad on 5/12/20.
@@ -11,8 +11,8 @@ import DeveloperTools
 import Forms
 import UIKit
 
-// MARK: DemoDeveloperToolsAutolayoutViewController
-class DemoDeveloperToolsAutolayoutViewController: FormsViewController {
+// MARK: DemoDeveloperToolsConsoleViewController
+class DemoDeveloperToolsConsoleViewController: FormsViewController {
     private let titleLabel = Components.label.default()
         .with(alignment: .center)
         .with(numberOfLines: 0)

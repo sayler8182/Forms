@@ -11,14 +11,95 @@ import UIKit
 public struct ComponentsInputs: ComponentsList {
     private init() { }
     
+    public enum pin {
+        public static func `default`() -> PinView {
+            let component = PinView()
+            component.animationTime = 0.1
+            component.backgroundColors = PinView.State<UIColor?>(Theme.Colors.primaryBackground)
+            component.error = nil
+            component.errorColor = Theme.Colors.red
+            component.errorFont = Theme.Fonts.regular(ofSize: 12)
+            component.info = nil
+            component.infoColor = Theme.Colors.gray
+            component.infoFont = Theme.Fonts.regular(ofSize: 12)
+            component.isEnabled = true
+            component.itemSpacing = 6.0
+            component.itemWidth = 30.0
+            component.keyboardType = .numberPad
+            component.marginEdgeInset = UIEdgeInsets(0)
+            component.numberOfChars = 4
+            component.paddingEdgeInset = UIEdgeInsets(
+                vertical: 8,
+                horizontal: 16
+            )
+            component.placeholder = nil
+            component.placeholderColors = PinView.State<UIColor?>(Theme.Colors.primaryText.withAlphaComponent(0.3))
+            component.placeholderFonts = PinView.State<UIFont>(Theme.Fonts.regular(ofSize: 32))
+            component.text = nil
+            component.textAlignment = .center
+            component.textColors = PinView.State<UIColor?>(
+                active: Theme.Colors.primaryText,
+                selected: Theme.Colors.primaryText,
+                disabled: Theme.Colors.primaryText,
+                error: Theme.Colors.red
+            ) 
+            component.textFonts = PinView.State<UIFont>(Theme.Fonts.regular(ofSize: 32))
+            component.title = nil
+            component.titleColors = PinView.State<UIColor?>(
+                active: Theme.Colors.primaryText,
+                selected: Theme.Colors.primaryText,
+                disabled: Theme.Colors.primaryText,
+                error: Theme.Colors.red
+            )
+            component.titleFonts = PinView.State<UIFont>(Theme.Fonts.regular(ofSize: 12))
+            component.underscoreColors = PinView.State<UIColor?>(
+                active: Theme.Colors.gray,
+                selected: Theme.Colors.primaryText,
+                disabled: Theme.Colors.gray,
+                error: Theme.Colors.red
+            )
+            component.onSetTheme = { [weak component] in
+                guard let component = component else { return }
+                component.backgroundColors = PinView.State<UIColor?>(Theme.Colors.primaryBackground)
+                component.errorColor = Theme.Colors.red
+                component.errorFont = Theme.Fonts.regular(ofSize: 12)
+                component.infoColor = Theme.Colors.gray
+                component.infoFont = Theme.Fonts.regular(ofSize: 12)
+                component.placeholderColors = PinView.State<UIColor?>(Theme.Colors.primaryText.withAlphaComponent(0.3))
+                component.placeholderFonts = PinView.State<UIFont>(Theme.Fonts.regular(ofSize: 32))
+                component.textColors = PinView.State<UIColor?>(
+                    active: Theme.Colors.primaryText,
+                    selected: Theme.Colors.primaryText,
+                    disabled: Theme.Colors.primaryText,
+                    error: Theme.Colors.red
+                )
+                component.textFonts = PinView.State<UIFont>(Theme.Fonts.regular(ofSize: 32))
+                component.titleColors = PinView.State<UIColor?>(
+                    active: Theme.Colors.primaryText,
+                    selected: Theme.Colors.primaryText,
+                    disabled: Theme.Colors.primaryText,
+                    error: Theme.Colors.red
+                )
+                component.titleFonts = PinView.State<UIFont>(Theme.Fonts.regular(ofSize: 12))
+                component.underscoreColors = PinView.State<UIColor?>(
+                    active: Theme.Colors.gray,
+                    selected: Theme.Colors.primaryText,
+                    disabled: Theme.Colors.gray,
+                    error: Theme.Colors.red
+                )
+            }
+            return component
+        }
+    }
+        
     public enum searchBar {
         public static func `default`() -> SearchBar {
             let component = SearchBar()
                 .with(width: 320, height: 64)
             component.animationTime = 0.1
             component.backgroundColors = SearchBar.State<UIColor?>(Theme.Colors.primaryBackground)
-            component.marginEdgeInset = UIEdgeInsets(0)
             component.isEnabled = true
+            component.marginEdgeInset = UIEdgeInsets(0)
             component.paddingEdgeInset = UIEdgeInsets(
                 vertical: 8,
                 horizontal: 16
@@ -98,7 +179,6 @@ public struct ComponentsInputs: ComponentsList {
             let component = TitleTextField()
             component.animationTime = 0.1
             component.backgroundColors = TextField.State<UIColor?>(Theme.Colors.primaryBackground)
-            component.marginEdgeInset = UIEdgeInsets(0)
             component.error = nil
             component.errorColor = Theme.Colors.red
             component.errorFont = Theme.Fonts.regular(ofSize: 12)
@@ -106,6 +186,7 @@ public struct ComponentsInputs: ComponentsList {
             component.infoColor = Theme.Colors.gray
             component.infoFont = Theme.Fonts.regular(ofSize: 12)
             component.isEnabled = true
+            component.marginEdgeInset = UIEdgeInsets(0)
             component.paddingEdgeInset = UIEdgeInsets(
                 vertical: 8,
                 horizontal: 16
@@ -174,7 +255,6 @@ public struct ComponentsInputs: ComponentsList {
             let component = TitleTextView()
             component.animationTime = 0.1
             component.backgroundColors = TextView.State<UIColor?>(Theme.Colors.primaryBackground)
-            component.marginEdgeInset = UIEdgeInsets(0)
             component.error = nil
             component.errorColor = Theme.Colors.red
             component.errorFont = Theme.Fonts.regular(ofSize: 12)
@@ -182,6 +262,7 @@ public struct ComponentsInputs: ComponentsList {
             component.infoColor = Theme.Colors.gray
             component.infoFont = Theme.Fonts.regular(ofSize: 12)
             component.isEnabled = true
+            component.marginEdgeInset = UIEdgeInsets(0)
             component.paddingEdgeInset = UIEdgeInsets(
                 vertical: 8,
                 horizontal: 16

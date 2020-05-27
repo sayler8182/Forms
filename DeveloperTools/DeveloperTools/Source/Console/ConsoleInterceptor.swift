@@ -1,15 +1,15 @@
 //
-//  AutolayoutInterceptor.swift
+//  ConsoleInterceptor.swift
 //  DeveloperTools
 //
-//  Created by Konrad on 4/26/20.
+//  Created by Konrad on 5/27/20.
 //  Copyright © 2020 Limbo. All rights reserved.
 //
 
 import Foundation
 
-// MARK: AutolayoutInterceptor
-internal class AutolayoutInterceptor {
+// MARK: ConsoleInterceptor
+internal class ConsoleInterceptor {
     internal typealias Intercept = (() -> Void)
     
     private var queue: [Intercept] = []
@@ -22,7 +22,7 @@ internal class AutolayoutInterceptor {
     }
     
     internal func intercept() {
-        DispatchQueue.main.async {
+        DispatchQueue.main.sync {
             let intercept: Intercept = self.queue.removeFirst()
             intercept()
         }

@@ -646,7 +646,7 @@ extension UIView {
             return self.constraint(
                 from: view.trailingAnchor,
                 to: anchorLayoutGuide.trailingAnchor,
-                relation: relation,
+                relation: relation.inverted,
                 constant: -offset)
         case .leadingToTrailing:
             return self.constraint(
@@ -825,6 +825,19 @@ extension UIView {
             return source.constraint(lessThanOrEqualToConstant: constant)
         @unknown default:
             return source.constraint(equalToConstant: constant)
+        }
+    }
+}
+
+// MARK: Relation
+private extension Relation {
+    var inverted: Relation {
+        if self == .greaterThanOrEqual {
+            return .lessThanOrEqual
+        } else if self == .lessThanOrEqual {
+            return .greaterThanOrEqual
+        } else {
+            return .equal
         }
     }
 }

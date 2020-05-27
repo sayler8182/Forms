@@ -92,8 +92,8 @@ public class DeveloperTools: NSObject {
         }
     }
     
-    public static func configure(features: [DeveloperFeatureKey],
-                                 featuresFlags: [DeveloperFeatureFlagKey],
+    public static func configure(features: [DeveloperFeatureKey] = [],
+                                 featuresFlags: [DeveloperFeatureFlagKey] = [],
                                  viewType: (UIViewController & DeveloperToolsMenu).Type = DeveloperToolsMenuViewController.self,
                                  onSelect: DeveloperToolsMenu.OnSelect? = nil) {
         self.viewType = viewType
