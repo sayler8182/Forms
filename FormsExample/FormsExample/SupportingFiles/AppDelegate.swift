@@ -30,7 +30,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             "Can't find keyplane that supports type",
             "HTTP load failed, 0/0 bytes",
             "Connection to daemon was invalidated",
-            "ack=0, win=0 state=CLOSED rcv_nxt"
+            "[] tcp_input"
         ])
         
         // Forms

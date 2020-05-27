@@ -86,7 +86,7 @@ private struct DemoModel: Mockable, CustomDebugStringConvertible {
             fromFormat: "yyyy-MM-dd HH:mm",
             to: "2000-12-31 23:59",
             toFormat: "yyyy-MM-dd HH:mm")
-        self.postCode = mock.postCode(format: "XX-XXX")
+        self.postCode = mock.postCode(format: "DD-DDD")
         self.phone = mock.phone(
             prefix: "+48",
             length: 9,

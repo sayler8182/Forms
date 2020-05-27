@@ -220,7 +220,7 @@ public extension Mock {
 
 // MARK: Mock - PostCode
 public extension Mock {
-    func postCode(format: String = "XX-XXX",
+    func postCode(format: String = "DD-DDD",
                   options: [MockOptions] = [.none]) -> String! {
         guard !self.isNull(options) else { return nil }
         var string: String = ""

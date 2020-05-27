@@ -39,9 +39,14 @@ class DemoValidatorsViewController: FormsTableViewController {
         .with(title: "PostCodeValidator")
         .with(validator: PostCodeValidator())
         .with(validateOnEndEditing: true)
-    private let customPostCodeTextField = Components.input.textField.postCode.default()
-        .with(title: "CustomPostCodeValidator")
-        .with(validator: PostCodeValidator(format: "XX-XX-XX"))
+    private let dateTextField = Components.input.textField.date.default()
+        .with(title: "DateValidator")
+        .with(validator: DateValidator())
+        .with(validateOnTextChange: true)
+    private let formatTextField = Components.input.textField.format.default()
+        .with(maskText: "DD-DD-DD")
+        .with(title: "FormatValidator")
+        .with(validator: FormatValidator(format: Format("DD-DD-DD")))
         .with(validateOnTextChange: true)
     
     private let divider = Components.utils.divider()
@@ -57,7 +62,8 @@ class DemoValidatorsViewController: FormsTableViewController {
             self.peselTextField,
             self.phoneTextField,
             self.postCodeTextField,
-            customPostCodeTextField
+            self.dateTextField,
+            self.formatTextField
         ], divider: self.divider)
     }
     
@@ -65,7 +71,7 @@ class DemoValidatorsViewController: FormsTableViewController {
         super.setupOther()
         self.amountTextField.textFieldDelegate(of: TextFieldAmountDelegate.self)?
             .configure(currency: "PLN", maxValue: 100_000, maxFraction: 4)
-        self.customPostCodeTextField.textFieldDelegate(of: TextFieldPostCodeDelegate.self)?
-            .configure(format: "XX-XX-XX")
+        self.formatTextField.textFieldDelegate(of: TextFieldFormatDelegate.self)?
+            .configure(format: "DD-DD-DD")
     }
 }

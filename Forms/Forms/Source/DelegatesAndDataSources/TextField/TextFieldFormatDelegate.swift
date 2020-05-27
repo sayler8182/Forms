@@ -1,5 +1,5 @@
 //
-//  TextFieldPostCodeDelegate.swift
+//  TextFieldFormatDelegate.swift
 //  Forms
 //
 //  Created by Konrad on 5/7/20.
@@ -9,16 +9,26 @@
 import UIKit
 import Validators
 
-// MARK: TextFieldPostCodeDelegate
-public class TextFieldPostCodeDelegate: TextFieldDelegate {
-    public var format: PostCodeFormat = PostCodeFormat()
+// MARK: TextFieldFormatDelegate
+public class TextFieldFormatDelegate: TextFieldDelegate {
+    public var format: FormatProtocol = Format("")
      
-    override public init() {
+    public init(format: FormatProtocol) {
         super.init()
-        self.configure()
+        self.configure(format: format)
     }
     
-    public func configure(format: PostCodeFormat = PostCodeFormat()) {
+    public init(format: String) {
+        super.init()
+        let format: FormatProtocol = Format(format)
+        self.configure(format: format)
+    }
+     
+    public func configure(format: String) {
+        self.format = Format(format)
+    }
+    
+    public func configure(format: FormatProtocol) {
         self.format = format
     }
     

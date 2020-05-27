@@ -137,6 +137,16 @@ public struct ComponentsInputs: ComponentsList {
             }
         }
         
+        public enum date {
+            public static func `default`() -> TitleTextField {
+                let component = ComponentsInputs.textField.default()
+                component.keyboardType = .numberPad
+                component.textFieldDelegate = TextFieldDelegates.format(format: "DD/DD/DDDD")
+                component.maskText = "dd/MM/yyyy"
+                return component
+            }
+        }
+        
         public enum email {
             public static func `default`() -> TitleTextField {
                 let component = ComponentsInputs.textField.default()
@@ -144,6 +154,14 @@ public struct ComponentsInputs: ComponentsList {
                 component.autocorrectionType = .no
                 component.keyboardType = .emailAddress
                 component.textFieldDelegate = TextFieldDelegates.email()
+                return component
+            }
+        }
+        
+        public enum format {
+            public static func `default`() -> TitleTextField {
+                let component = ComponentsInputs.textField.default()
+                component.textFieldDelegate = TextFieldDelegates.format(format: "")
                 return component
             }
         }
@@ -170,7 +188,8 @@ public struct ComponentsInputs: ComponentsList {
             public static func `default`() -> TitleTextField {
                 let component = ComponentsInputs.textField.default()
                 component.keyboardType = .numberPad
-                component.textFieldDelegate = TextFieldDelegates.postCode()
+                component.textFieldDelegate = TextFieldDelegates.format(format: "DD-DDD")
+                component.maskText = "00-000"
                 return component
             }
         }
@@ -187,6 +206,9 @@ public struct ComponentsInputs: ComponentsList {
             component.infoFont = Theme.Fonts.regular(ofSize: 12)
             component.isEnabled = true
             component.marginEdgeInset = UIEdgeInsets(0)
+            component.maskText = nil
+            component.maskColors = TextField.State<UIColor?>(Theme.Colors.primaryText.withAlphaComponent(0.3))
+            component.maskFonts = TextField.State<UIFont>(Theme.Fonts.regular(ofSize: 16))
             component.paddingEdgeInset = UIEdgeInsets(
                 vertical: 8,
                 horizontal: 16
@@ -224,6 +246,8 @@ public struct ComponentsInputs: ComponentsList {
                 component.errorFont = Theme.Fonts.regular(ofSize: 12)
                 component.infoColor = Theme.Colors.gray
                 component.infoFont = Theme.Fonts.regular(ofSize: 12)
+                component.maskColors = TextField.State<UIColor?>(Theme.Colors.primaryText.withAlphaComponent(0.3))
+                component.maskFonts = TextField.State<UIFont>(Theme.Fonts.regular(ofSize: 16))
                 component.placeholderColors = TextField.State<UIColor?>(Theme.Colors.primaryText.withAlphaComponent(0.3))
                 component.placeholderFonts = TextField.State<UIFont>(Theme.Fonts.regular(ofSize: 16))
                 component.textColors = TextField.State<UIColor?>(

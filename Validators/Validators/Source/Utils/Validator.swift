@@ -117,6 +117,8 @@ public enum ValidationErrorType: String, ValidationErrorTypeProtocol {
     case amount
     case amountMin
     case amountMax
+    case date
+    case format
     case email
     case length
     case lengthMin
@@ -142,13 +144,18 @@ public class ValidationError {
     static var peselShortError = ValidationErrorType.peselShort.error
     static var peselLongError = ValidationErrorType.peselLong.error
     static var phoneError = ValidationErrorType.phone.error
-    static var postCodeError = ValidationErrorType.postCode.error
     
     static func amountMinError(_ minAmount: String) -> ValidationError {
         ValidationError(ValidationErrorType.amountMin, [minAmount])
     }
     static func amountMaxError(_ maxAmount: String) -> ValidationError {
         ValidationError(ValidationErrorType.amountMax, [maxAmount])
+    }
+    static func dateError(_ format: FormatProtocol) -> ValidationError {
+        ValidationError(ValidationErrorType.date, [format.format])
+    }
+    static func formatError(_ format: FormatProtocol) -> ValidationError {
+        ValidationError(ValidationErrorType.format, [format.format])
     }
     static func lengthError(_ length: String) -> ValidationError {
         ValidationError(ValidationErrorType.length, [length])
@@ -158,6 +165,9 @@ public class ValidationError {
     }
     static func lengthMaxError(_ maxLength: String) -> ValidationError {
         ValidationError(ValidationErrorType.lengthMax, [maxLength])
+    }
+    static func postCodeError(_ format: FormatProtocol) -> ValidationError {
+        ValidationError(ValidationErrorType.postCode, [format.format])
     }
     
     private let type: ValidationErrorTypeProtocol
@@ -198,24 +208,28 @@ open class ValidatorTranslator: ValidatorTranslatorProtocol {
         case ValidationErrorType.pesel.rawValue:
             return "Incorrect pesel format"
         case ValidationErrorType.peselShort.rawValue:
-            return "Pesel number is too short "
+            return "Pesel number is too short"
         case ValidationErrorType.peselLong.rawValue:
-            return "Pesel number is too long "
+            return "Pesel number is too long"
         case ValidationErrorType.phone.rawValue:
             return "Incorrect phone number format"
-        case ValidationErrorType.postCode.rawValue:
-            return "Incorrect post code format"
             
         case ValidationErrorType.amountMin.rawValue:
             return "Minimum allowed amount is \(parameters[safe: 0, or: ""])"
         case ValidationErrorType.amountMax.rawValue:
             return "Maximum allowed amount is \(parameters[safe: 0, or: ""])"
+        case ValidationErrorType.date.rawValue:
+            return "Incorrect date format (\(parameters[safe: 0, or: ""]))"
+        case ValidationErrorType.format.rawValue:
+            return "Incorrect format (\(parameters[safe: 0, or: ""]))"
         case ValidationErrorType.length.rawValue:
             return "Allowed length is \(parameters[safe: 0, or: ""]) characters"
         case ValidationErrorType.lengthMin.rawValue:
             return "Minimum allowed length is \(parameters[safe: 0, or: ""]) characters"
         case ValidationErrorType.lengthMax.rawValue:
             return "Maximum allowed length is \(parameters[safe: 0, or: ""]) characters"
+        case ValidationErrorType.postCode.rawValue:
+            return "Incorrect post code format (\(parameters[safe: 0, or: ""]))"
             
         default:
             return nil

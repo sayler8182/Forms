@@ -56,6 +56,8 @@ open class UITextFieldWithPlaceholder: UITextField {
     
     public let placeholderLabel = UILabel()
         .with(width: 320, height: 20)
+    public let maskLabel = UILabel()
+        .with(width: 320, height: 20)
     
     private let padding: UIEdgeInsets = UIEdgeInsets(0)
     
@@ -72,6 +74,21 @@ open class UITextFieldWithPlaceholder: UITextField {
             super.font = newValue
             self.updateView()
         }
+    }
+    open var maskText: String? = nil {
+        didSet { self.updateView() }
+    }
+    open var maskAttributedText: NSAttributedString? {
+        get { return self.maskLabel.attributedText }
+        set { self.maskLabel.attributedText = newValue }
+    }
+    open var maskColor: UIColor? {
+        get { return self.maskLabel.textColor }
+        set { self.maskLabel.textColor = newValue }
+    }
+    open var maskFont: UIFont {
+        get { return self.maskLabel.font }
+        set { self.maskLabel.font = newValue }
     }
     override open var placeholder: String? {
         get { return self.placeholderLabel.text }
@@ -101,6 +118,7 @@ open class UITextFieldWithPlaceholder: UITextField {
         set {
             super.textAlignment = newValue
             self.placeholderLabel.textAlignment = newValue
+            self.maskLabel.textAlignment = newValue
         }
     }
     
@@ -124,6 +142,9 @@ open class UITextFieldWithPlaceholder: UITextField {
     
     open func setupView() {
         self.setupPlaceholder()
+        self.setupMask()
+        self.sendSubviewToBack(self.maskLabel)
+        self.sendSubviewToBack(self.placeholderLabel)
     }
     
     open func setupActions() {
@@ -153,13 +174,42 @@ open class UITextFieldWithPlaceholder: UITextField {
     
     private func setupPlaceholder() {
         self.addSubview(self.placeholderLabel, with: [
-            Anchor.to(self).fill
+            Anchor.to(self).top,
+            Anchor.to(self).horizontal,
+            Anchor.to(self).bottom.offset(1.0)
         ])
-        self.sendSubviewToBack(self.placeholderLabel)
+    }
+    private func setupMask() {
+        self.addSubview(self.maskLabel, with: [
+            Anchor.to(self).top,
+            Anchor.to(self).horizontal,
+            Anchor.to(self).bottom.offset(1.0)
+        ])
     }
     
     private func updateView() {
         self.placeholderLabel.isHidden = self.text.isNotNilOrEmpty
+        self.maskLabel.isHidden = !self.placeholderLabel.isHidden && self.maskText.isNilOrEmpty
+        self.updateMaskPosition()
+    }
+    
+    private func updateMaskPosition() {
+        let textCount: Int = self.text.or("").count
+        let maskCount: Int = self.maskText.or("").count
+        if maskCount - textCount > 0 {
+            self.maskLabel.text = self.maskText?[textCount..<maskCount]
+        } else {
+            self.maskLabel.text = nil
+            self.maskLabel.isHidden = true
+        }
+        if textCount != 0 {
+            let textWidth: CGFloat = self.intrinsicContentSize.width
+            self.maskLabel.constraint(to: self, position: .leading)?.constant = textWidth
+            self.layoutIfNeeded()
+        } else {
+            self.maskLabel.constraint(to: self, position: .leading)?.constant = 0.0
+            self.layoutIfNeeded()
+        }
     }
     
     @objc
@@ -197,9 +247,6 @@ open class TextField: FormsComponent, FormsComponentWithMarginEdgeInset, FormsCo
     open var backgroundColors: State<UIColor?> = State<UIColor?>(Theme.Colors.primaryBackground) {
         didSet { self.updateState() }
     }
-    open var marginEdgeInset: UIEdgeInsets = UIEdgeInsets(0) {
-        didSet { self.updateMarginEdgeInset() }
-    }
     open var error: String? {
         didSet { self.updateError() }
     }
@@ -230,6 +277,19 @@ open class TextField: FormsComponent, FormsComponentWithMarginEdgeInset, FormsCo
     open var keyboardType: UIKeyboardType {
         get { return self.textField.keyboardType }
         set { self.textField.keyboardType = newValue }
+    }
+    open var maskText: String? {
+        get { return self.textField.maskText }
+        set { self.textField.maskText = newValue }
+    }
+    open var maskColors: State<UIColor?> = State<UIColor?>(Theme.Colors.primaryText.withAlphaComponent(0.3)) {
+        didSet { self.updateState() }
+    }
+    open var maskFonts: State<UIFont> = State<UIFont>(Theme.Fonts.regular(ofSize: 16)) {
+        didSet { self.updateState() }
+    }
+    open var marginEdgeInset: UIEdgeInsets = UIEdgeInsets(0) {
+        didSet { self.updateMarginEdgeInset() }
     }
     open var paddingEdgeInset: UIEdgeInsets = UIEdgeInsets(0) {
         didSet { self.updatePaddingEdgeInset() }
@@ -469,6 +529,8 @@ open class TextField: FormsComponent, FormsComponentWithMarginEdgeInset, FormsCo
             self.textField.font = self.textFonts.value(for: state)
             self.textField.placeholderColor = self.placeholderColors.value(for: state)
             self.textField.placeholderFont = self.placeholderFonts.value(for: state)
+            self.textField.maskColor = self.maskColors.value(for: state)
+            self.textField.maskFont = self.maskFonts.value(for: state)
             self.titleLabel.textColor = self.titleColors.value(for: state)
             self.titleLabel.font = self.titleFonts.value(for: state)
             self.underscoreView.backgroundColor = self.underscoreColors.value(for: state)
@@ -558,7 +620,27 @@ public extension TextField {
     func with(keyboardType: UIKeyboardType) -> Self {
         self.keyboardType = keyboardType
         return self
-    } 
+    }
+    func with(maskText: String?) -> Self {
+        self.maskText = maskText
+        return self
+    }
+    func with(maskColor: UIColor?) -> Self {
+        self.maskColors = State<UIColor?>(maskColor)
+        return self
+    }
+    func with(maskColors: State<UIColor?>) -> Self {
+        self.maskColors = maskColors
+        return self
+    }
+    func with(maskFont: UIFont) -> Self {
+        self.maskFonts = State<UIFont>(maskFont)
+        return self
+    }
+    func with(maskFonts: State<UIFont>) -> Self {
+        self.maskFonts = maskFonts
+        return self
+    }
     func with(placeholder: String?) -> Self {
         self.placeholder = placeholder
         return self

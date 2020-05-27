@@ -86,7 +86,7 @@
 		711071192476BF610056BBB5 /* Pagination.swift in Sources */ = {isa = PBXBuildFile; fileRef = 715692BA243E5A2A00B4613C /* Pagination.swift */; };
 		7110711A2476BF610056BBB5 /* Keyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71D3E43E246D61A1008BA211 /* Keyboard.swift */; };
 		7110711B2476BF610056BBB5 /* TitleTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71E0F60C246D32EC0051F043 /* TitleTextView.swift */; };
-		7110711C2476BF610056BBB5 /* TextFieldPostCodeDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7156F830246486F40078AA75 /* TextFieldPostCodeDelegate.swift */; };
+		7110711C2476BF610056BBB5 /* TextFieldFormatDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7156F830246486F40078AA75 /* TextFieldFormatDelegate.swift */; };
 		7110711D2476BF610056BBB5 /* Modal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7194696A243DA7BE00CAD09B /* Modal.swift */; };
 		7110711E2476BF610056BBB5 /* ComponentsButtons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71946968243DA7BE00CAD09B /* ComponentsButtons.swift */; };
 		711071202476BF610056BBB5 /* Logger.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71BB62872445FAED002BB31F /* Logger.framework */; };
@@ -112,7 +112,7 @@
 		714848D3244858FF00455560 /* ComponentsOther.swift in Sources */ = {isa = PBXBuildFile; fileRef = 714848D2244858FF00455560 /* ComponentsOther.swift */; };
 		714848D62448598600455560 /* ActivityIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 714848D52448598600455560 /* ActivityIndicator.swift */; };
 		715692BB243E5A2A00B4613C /* Pagination.swift in Sources */ = {isa = PBXBuildFile; fileRef = 715692BA243E5A2A00B4613C /* Pagination.swift */; };
-		7156F831246486F40078AA75 /* TextFieldPostCodeDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7156F830246486F40078AA75 /* TextFieldPostCodeDelegate.swift */; };
+		7156F831246486F40078AA75 /* TextFieldFormatDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7156F830246486F40078AA75 /* TextFieldFormatDelegate.swift */; };
 		715B7B4224474D8A00754EDB /* Transition.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 715B7B4124474D8A00754EDB /* Transition.framework */; };
 		7193E34A2451AC0E006238C5 /* AppStoreReview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7193E3492451AC0E006238C5 /* AppStoreReview.swift */; };
 		7193E34C2451B047006238C5 /* Storage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7193E34B2451B047006238C5 /* Storage.swift */; };
@@ -215,7 +215,7 @@
 		714848D2244858FF00455560 /* ComponentsOther.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComponentsOther.swift; sourceTree = "<group>"; };
 		714848D52448598600455560 /* ActivityIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityIndicator.swift; sourceTree = "<group>"; };
 		715692BA243E5A2A00B4613C /* Pagination.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pagination.swift; sourceTree = "<group>"; };
-		7156F830246486F40078AA75 /* TextFieldPostCodeDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldPostCodeDelegate.swift; sourceTree = "<group>"; };
+		7156F830246486F40078AA75 /* TextFieldFormatDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldFormatDelegate.swift; sourceTree = "<group>"; };
 		715B7B4124474D8A00754EDB /* Transition.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Transition.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7193E3492451AC0E006238C5 /* AppStoreReview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppStoreReview.swift; sourceTree = "<group>"; };
 		7193E34B2451B047006238C5 /* Storage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Storage.swift; sourceTree = "<group>"; };
@@ -556,11 +556,11 @@
 			children = (
 				71946988243DA7BE00CAD09B /* TextFieldDelegate.swift */,
 				71946989243DA7BE00CAD09B /* TextFieldDelegates.swift */,
-				71946985243DA7BE00CAD09B /* TextFieldEmailDelegate.swift */,
-				71946986243DA7BE00CAD09B /* TextFieldPeselDelegate.swift */,
 				71946987243DA7BE00CAD09B /* TextFieldAmountDelegate.swift */,
+				71946985243DA7BE00CAD09B /* TextFieldEmailDelegate.swift */,
+				7156F830246486F40078AA75 /* TextFieldFormatDelegate.swift */,
+				71946986243DA7BE00CAD09B /* TextFieldPeselDelegate.swift */,
 				7194698A243DA7BE00CAD09B /* TextFieldPhoneDelegate.swift */,
-				7156F830246486F40078AA75 /* TextFieldPostCodeDelegate.swift */,
 			);
 			path = TextField;
 			sourceTree = "<group>";
@@ -818,7 +818,7 @@
 				711071192476BF610056BBB5 /* Pagination.swift in Sources */,
 				7110711A2476BF610056BBB5 /* Keyboard.swift in Sources */,
 				7110711B2476BF610056BBB5 /* TitleTextView.swift in Sources */,
-				7110711C2476BF610056BBB5 /* TextFieldPostCodeDelegate.swift in Sources */,
+				7110711C2476BF610056BBB5 /* TextFieldFormatDelegate.swift in Sources */,
 				7110711D2476BF610056BBB5 /* Modal.swift in Sources */,
 				7110711E2476BF610056BBB5 /* ComponentsButtons.swift in Sources */,
 			);
@@ -889,7 +889,7 @@
 				715692BB243E5A2A00B4613C /* Pagination.swift in Sources */,
 				71D3E43F246D61A1008BA211 /* Keyboard.swift in Sources */,
 				71E0F60D246D32EC0051F043 /* TitleTextView.swift in Sources */,
-				7156F831246486F40078AA75 /* TextFieldPostCodeDelegate.swift in Sources */,
+				7156F831246486F40078AA75 /* TextFieldFormatDelegate.swift in Sources */,
 				71946995243DA7BE00CAD09B /* Modal.swift in Sources */,
 				71946994243DA7BE00CAD09B /* ComponentsButtons.swift in Sources */,
 			);
