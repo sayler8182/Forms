@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7150CEDC247FCC4E00F2681B /* TransitionControllerCircleAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7150CEDB247FCC4E00F2681B /* TransitionControllerCircleAnimator.swift */; };
 		715B7B2824474C4600754EDB /* FormsTransitions.h in Headers */ = {isa = PBXBuildFile; fileRef = 715B7B1A24474C4600754EDB /* FormsTransitions.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		715B7B3C24474C6900754EDB /* TransitionNavigationCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 715B7B3B24474C6800754EDB /* TransitionNavigationCoordinator.swift */; };
 		715B7B3F24474CAD00754EDB /* TransitionableNavigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 715B7B3E24474CAD00754EDB /* TransitionableNavigation.swift */; };
@@ -25,6 +26,7 @@
 
 /* Begin PBXFileReference section */
 		7150CDA3247FA05F00F2681B /* FormsTransitions.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = FormsTransitions.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		7150CEDB247FCC4E00F2681B /* TransitionControllerCircleAnimator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransitionControllerCircleAnimator.swift; sourceTree = "<group>"; };
 		715B7B1A24474C4600754EDB /* FormsTransitions.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FormsTransitions.h; sourceTree = "<group>"; };
 		715B7B1B24474C4600754EDB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		715B7B3B24474C6800754EDB /* TransitionNavigationCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransitionNavigationCoordinator.swift; sourceTree = "<group>"; };
@@ -111,6 +113,7 @@
 				719AE5C6246305AA00A39B0E /* TransitionControllerAnimator.swift */,
 				719AE5CC2463080300A39B0E /* TransitionControllerSlideHorizontalAnimator.swift */,
 				719AE5E124631E6B00A39B0E /* TransitionControllerSlideVerticalAnimator.swift */,
+				7150CEDB247FCC4E00F2681B /* TransitionControllerCircleAnimator.swift */,
 			);
 			path = TransitionController;
 			sourceTree = "<group>";
@@ -196,6 +199,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				71C578C024474FAE008BFEB3 /* Utils.swift in Sources */,
+				7150CEDC247FCC4E00F2681B /* TransitionControllerCircleAnimator.swift in Sources */,
 				718B86C024483FEF003870BB /* ViewAnimator.swift in Sources */,
 				715B7B3F24474CAD00754EDB /* TransitionableNavigation.swift in Sources */,
 				718B86C324485174003870BB /* SnapshotViewAnimator.swift in Sources */,

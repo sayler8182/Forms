@@ -62,8 +62,12 @@ private class DemoFormsModalContentController: FormsTableViewController {
     private let divider = Components.utils.divider()
         .with(height: 5)
     
-    override func setupContent() {
+    override func setTheme() {
+        super.setTheme()
         self.view.backgroundColor = Theme.Colors.tertiaryBackground
+    }
+    
+    override func setupContent() {
         super.setupContent()
         self.build([
             self.closeButton

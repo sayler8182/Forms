@@ -20,11 +20,16 @@ public protocol TransitionableController: NSObjectProtocol {
     func handleTransitionControllerEdgePan(_ recognizer: UIScreenEdgePanGestureRecognizer)
     
     func animator(isDynamic: Bool, isPresenting: Bool) -> TransitionControllerAnimator?
+    func setTransitionSource(view: UIView)
 }
 
 public extension TransitionableController {
     func animator(isDynamic: Bool, isPresenting: Bool) -> TransitionControllerAnimator? {
         return self.animator.with(isDynamic: isDynamic, isPresenting: isPresenting)
+    }
+    
+    func setTransitionSource(view: UIView) {
+        self.animator.setSource(view: view)
     }
     
     func _handleTransitionControllerEdgePan(_ recognizer: UIScreenEdgePanGestureRecognizer) {

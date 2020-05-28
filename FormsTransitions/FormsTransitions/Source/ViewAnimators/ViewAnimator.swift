@@ -39,6 +39,7 @@ public class ViewAnimator {
     public let container: UIView
     public let fromView: UIView
     public let toView: UIView
+    public let transitionContainer: UIView = UIView()
     
     public var matchesType: ViewMatch.Type {
         return ViewMatch.self
@@ -65,18 +66,22 @@ public class ViewAnimator {
     }
     
     public func beginTransition() {
+        self.transitionContainer.frame = self.container.bounds
+        self.container.addSubview(self.transitionContainer)
         self.matches.forEach {
-            $0.beginTransition(in: self.container)
+            $0.beginTransition(in: self.transitionContainer)
         }
     }
     
     public func updateTransition() {
+        self.transitionContainer.frame = self.container.bounds
         self.matches.forEach {
             $0.updateTransition(in: self.container)
         }
     }
     
     public func endTransition() {
+        self.transitionContainer.removeFromSuperview()
         self.matches.forEach {
             $0.endTransition(in: self.container)
         } 

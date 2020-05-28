@@ -23,19 +23,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication,
                      didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // DeveloperTools - Console
-        Console.configure(ignore: [
-            "FacebookAdvertiserIDCollectionEnabled is currently",
-            "Attempting to load the view of a view controller",
-            "Connection 5: unable to determine",
-            "[Firebase/Analytics]",
-            "Can't find keyplane that supports type",
-            "HTTP load failed, 0/0 bytes",
-            "Connection to daemon was invalidated",
-            "[] tcp_input",
-            "Domain=AKAuthenticationError Code=-7003",
-            "[TableView] Warning once only",
-            "TUISystemInputAssistantView.bottom == _UIKBCompatInputView.top"
-        ])
+        Console.configure()
         
         // Forms
         Forms.configure()

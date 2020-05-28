@@ -194,12 +194,13 @@ public enum ThemeBarStyle {
         if #available(iOS 13.0, *) {
             switch self {
             case .light:
-                return .default
+                return .lightContent
             case .dark:
                 return .darkContent
             }
+        } else {
+            return .default
         }
-        return .lightContent
     }
 }
 

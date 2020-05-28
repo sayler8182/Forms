@@ -26,7 +26,7 @@ public class Console {
             queue: .init(label: "com.limbo.DeveloperTools.Console"))
     }
     
-    public static func configure(ignore: [String] = []) {
+    public static func configure(ignore: [String] = Console.defaultIgnore) {
         Self.shared.configure(ignore: ignore)
     }
     
@@ -57,6 +57,29 @@ extension Console: TextOutputStream {
     public func write(_ string: String) {
         guard let data: Data = string.data(using: .utf8) else { return }
         self.writer.write(content: data)
+    }
+}
+
+// MARK: Default Ignore
+public extension Console {
+    static var defaultIgnore: [String] {
+        return [
+            "FacebookAdvertiserIDCollectionEnabled is currently",
+            "Attempting to load the view of a view controller",
+            "Connection 5: unable to determine",
+            "[Firebase/Analytics]",
+            "Can't find keyplane that supports type",
+            "HTTP load failed, 0/0 bytes",
+            "Connection to daemon was invalidated",
+            "TIC Read Status",
+            "Simulator user has requested new graphics quality",
+            "[BoringSSL]",
+            "[] tcp_input",
+            "Domain=AKAuthenticationError Code=-7003",
+            "[] nw_read_request_report",
+            "[TableView] Warning once only",
+            "TUISystemInputAssistantView.bottom == _UIKBCompatInputView.top"
+        ]
     }
 }
 

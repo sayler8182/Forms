@@ -10,8 +10,10 @@ import UIKit
 
 // MARK: TransitionControllerAnimator
 open class TransitionControllerAnimator: NSObject, UIViewControllerAnimatedTransitioning {
-    let isDynamic: Bool
-    let isPresenting: Bool?
+    public let isDynamic: Bool
+    public let isPresenting: Bool?
+    
+    private (set) var sourceView: UIView?
     
     override public convenience init() {
         self.init(isDynamic: false, isPresenting: nil)
@@ -23,9 +25,19 @@ open class TransitionControllerAnimator: NSObject, UIViewControllerAnimatedTrans
         self.isPresenting = isPresenting
     }
     
+    open func setSource(view: UIView) {
+        self.sourceView = view
+    }
+    
     open func with(isDynamic: Bool,
                    isPresenting: Bool?) -> Self {
         return Self(isDynamic: isDynamic, isPresenting: isPresenting)
+            .with(source: self.sourceView)
+    }
+    
+    open func with(source: UIView?) -> Self {
+        self.sourceView = source
+        return self
     }
     
     open func transitionDuration(using transitionContext: UIViewControllerContextTransitioning?) -> TimeInterval {

@@ -10,8 +10,8 @@ import UIKit
 
 // MARK: TransitionNavigationAnimator
 open class TransitionNavigationAnimator: NSObject, UIViewControllerAnimatedTransitioning {
-    let isDynamic: Bool
-    let operation: UINavigationController.Operation
+    public let isDynamic: Bool
+    public let operation: UINavigationController.Operation
     
     override public convenience init() {
         self.init(isDynamic: false, operation: .none)
