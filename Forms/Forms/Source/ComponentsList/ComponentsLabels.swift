@@ -16,7 +16,7 @@ public struct ComponentsLabels: ComponentsList {
         component.alignment = .natural
         component.animationTime = 0.2
         component.attributedText = nil
-        component.backgroundColor = Theme.Colors.primaryBackground
+        component.backgroundColor = UIColor.clear
         component.color = Theme.Colors.primaryText
         component.marginEdgeInset = UIEdgeInsets(0)
         component.font = Theme.Fonts.regular(ofSize: 14)
@@ -29,7 +29,7 @@ public struct ComponentsLabels: ComponentsList {
         component.text = nil
         component.onSetTheme = { [weak component] in
             guard let component = component else { return }
-            component.backgroundColor = Theme.Colors.primaryBackground
+            component.backgroundColor = UIColor.clear
             component.color = Theme.Colors.primaryText
             component.font = Theme.Fonts.regular(ofSize: 14)
         }

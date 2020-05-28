@@ -32,7 +32,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             "HTTP load failed, 0/0 bytes",
             "Connection to daemon was invalidated",
             "[] tcp_input",
-            "Domain=AKAuthenticationError Code=-7003"
+            "Domain=AKAuthenticationError Code=-7003",
+            "[TableView] Warning once only",
+            "TUISystemInputAssistantView.bottom == _UIKBCompatInputView.top"
         ])
         
         // Forms

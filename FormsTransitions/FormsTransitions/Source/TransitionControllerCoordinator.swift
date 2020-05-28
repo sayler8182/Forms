@@ -10,7 +10,13 @@ import UIKit
 
 // MARK: TransitionControllerCoordinator
 open class TransitionControllerCoordinator: NSObject, UIViewControllerTransitioningDelegate {
-    var interactionController: UIPercentDrivenInteractiveTransition?
+    public var interactionController: UIPercentDrivenInteractiveTransition?
+    
+    public let isDynamic: Bool
+    
+    public init(isDynamic: Bool = false) {
+        self.isDynamic = isDynamic
+    }
     
     public func presentationController(forPresented presented: UIViewController,
                                        presenting: UIViewController?,
@@ -22,12 +28,12 @@ open class TransitionControllerCoordinator: NSObject, UIViewControllerTransition
                                     presenting: UIViewController,
                                     source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
         guard let presented = presented as? TransitionableController else { return nil }
-        return presented.animator(for: true)
+        return presented.animator(isDynamic: self.isDynamic, isPresenting: true)
     }
     
     public func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
         guard let dismissed = dismissed as? TransitionableController else { return nil }
-        return dismissed.animator(for: false)
+        return dismissed.animator(isDynamic: self.isDynamic, isPresenting: false)
     }
     
     public func interactionControllerForPresentation(using animator: UIViewControllerAnimatedTransitioning) -> UIViewControllerInteractiveTransitioning? {

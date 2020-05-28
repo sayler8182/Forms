@@ -19,12 +19,12 @@ public protocol TransitionableController: NSObjectProtocol {
     
     func handleTransitionControllerEdgePan(_ recognizer: UIScreenEdgePanGestureRecognizer)
     
-    func animator(for isPresenting: Bool) -> TransitionControllerAnimator?
+    func animator(isDynamic: Bool, isPresenting: Bool) -> TransitionControllerAnimator?
 }
 
 public extension TransitionableController {
-    func animator(for isPresenting: Bool) -> TransitionControllerAnimator? {
-        return self.animator.with(isPresenting: isPresenting)
+    func animator(isDynamic: Bool, isPresenting: Bool) -> TransitionControllerAnimator? {
+        return self.animator.with(isDynamic: isDynamic, isPresenting: isPresenting)
     }
     
     func _handleTransitionControllerEdgePan(_ recognizer: UIScreenEdgePanGestureRecognizer) {
@@ -53,7 +53,7 @@ public extension TransitionableController {
             break
         }
     }
-}
+} 
 
 // MARK: UIViewController
 public extension UIViewController {

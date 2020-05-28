@@ -13,7 +13,7 @@ public struct ComponentsOther: ComponentsList {
         
     public static func activityIndicator() -> ActivityIndicator {
         let component = ActivityIndicator()
-        component.backgroundColor = Theme.Colors.primaryBackground
+        component.backgroundColor = UIColor.clear
         component.color = Theme.Colors.gray
         component.marginEdgeInset = UIEdgeInsets(0)
         component.height = UITableView.automaticDimension
@@ -21,7 +21,8 @@ public struct ComponentsOther: ComponentsList {
         component.paddingEdgeInset = UIEdgeInsets(0)
         component.onSetTheme = { [weak component] in
             guard let component = component else { return }
-            component.backgroundColor = Theme.Colors.primaryBackground
+            component.backgroundColor = UIColor.clear
+            component.color = Theme.Colors.gray
         }
         return component
     }

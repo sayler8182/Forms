@@ -10,7 +10,12 @@ import UIKit
 
 // MARK: TransitionNavigationCoordinator
 open class TransitionNavigationCoordinator: NSObject, UINavigationControllerDelegate {
-    var interactionController: UIPercentDrivenInteractiveTransition?
+    public var interactionController: UIPercentDrivenInteractiveTransition?
+    public let isDynamic: Bool
+    
+    public init(isDynamic: Bool = false) {
+        self.isDynamic = isDynamic
+    }
     
     public func navigationController(_ navigationController: UINavigationController,
                                      animationControllerFor operation: UINavigationController.Operation,
@@ -18,7 +23,7 @@ open class TransitionNavigationCoordinator: NSObject, UINavigationControllerDele
                                      to toVC: UIViewController) -> UIViewControllerAnimatedTransitioning? {
         guard let navigationController = navigationController as? TransitionableNavigation else { return nil }
         guard operation != .none else { return nil }
-        return navigationController.animator(for: operation)
+        return navigationController.animator(isDynamic: self.isDynamic, operation: operation)
     }
     
     public func navigationController(_ navigationController: UINavigationController,

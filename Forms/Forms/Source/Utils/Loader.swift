@@ -201,7 +201,7 @@ private class DefaultLoaderView: LoaderView {
         super.setupView()
         self.backgroundColor = Theme.Colors.secondaryBackground
         self.layer.cornerRadius = 8
-        self.layer.shadowColor = UIColor.black.cgColor
+        self.layer.shadowColor = Theme.Colors.primaryText.cgColor
     }
     
     override func add(to parent: UIView) {
@@ -216,6 +216,7 @@ private class DefaultLoaderView: LoaderView {
     override func show(animated: Bool,
                        completion: ((Bool) -> Void)? = nil) {
         self.coverView?.backgroundView.alpha = 0
+        self.alpha = 0
         self.animation(
             animated,
             duration: 0.3,

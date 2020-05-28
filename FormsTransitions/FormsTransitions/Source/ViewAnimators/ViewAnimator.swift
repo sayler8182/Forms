@@ -35,6 +35,7 @@ public class ViewMatch {
 
 // MARK: ViewAnimator
 public class ViewAnimator {
+    public let isDynamic: Bool
     public let container: UIView
     public let fromView: UIView
     public let toView: UIView
@@ -53,9 +54,11 @@ public class ViewAnimator {
         return self.createMatches(of: self.matchesType)
     }()
     
-    public init(container: UIView,
+    public init(isDynamic: Bool,
+                container: UIView,
                 fromView: UIView,
                 toView: UIView) {
+        self.isDynamic = isDynamic
         self.container = container
         self.fromView = fromView
         self.toView = toView
@@ -76,7 +79,7 @@ public class ViewAnimator {
     public func endTransition() {
         self.matches.forEach {
             $0.endTransition(in: self.container)
-        }
+        } 
     }
     
     private func animatedSubviews(in view: UIView) -> [UIView] {
@@ -102,5 +105,10 @@ public class ViewAnimator {
             matches.append(match)
         }
         return matches
+    }
+    
+    internal func whenDynamic(_ action: () -> Void) {
+        guard self.isDynamic else { return }
+        action()
     }
 }

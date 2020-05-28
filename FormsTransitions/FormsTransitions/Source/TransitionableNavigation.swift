@@ -20,12 +20,12 @@ public protocol TransitionableNavigation: NSObjectProtocol {
     
     func handleTransitionNavigationEdgePan(_ recognizer: UIScreenEdgePanGestureRecognizer)
     
-    func animator(for operation: UINavigationController.Operation) -> TransitionNavigationAnimator?
+    func animator(isDynamic: Bool, operation: UINavigationController.Operation) -> TransitionNavigationAnimator?
 }
 
 public extension TransitionableNavigation {
-    func animator(for operation: UINavigationController.Operation) -> TransitionNavigationAnimator? {
-        return self.animator.with(operation: operation)
+    func animator(isDynamic: Bool, operation: UINavigationController.Operation) -> TransitionNavigationAnimator? {
+        return self.animator.with(isDynamic: isDynamic, operation: operation)
     }
     
     fileprivate func _handleTransitionNavigationEdgePan(_ recognizer: UIScreenEdgePanGestureRecognizer) {

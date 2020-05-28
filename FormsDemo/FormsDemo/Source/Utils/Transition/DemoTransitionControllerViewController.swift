@@ -52,19 +52,41 @@ class DemoTransitionControllerViewController: FormsViewController {
         super.setupActions()
         
         self.showButton.onClick = { [unowned self] in
-            let controller = DemoSecondController()
+            let controller = DemoSecondNavigationController()
             controller.modalPresentationStyle = .custom
-            self.present(controller, animated: true, completion: nil)
+            self.navigationController?.present(controller, animated: true, completion: nil)
         }
     }
 }
 
-// MARK: DemoSecondController
-private class DemoSecondController: FormsViewController, TransitionableController {
+// MARK: DemoSecondNavigationController
+private class DemoSecondNavigationController: FormsNavigationController, TransitionableController {
     var animator: TransitionControllerAnimator = TransitionControllerSlideVerticalAnimator()
     var coordinator: TransitionControllerCoordinator = TransitionControllerCoordinator()
     var edgePanGesture: UIScreenEdgePanGestureRecognizer = UIScreenEdgePanGestureRecognizer()
     
+    override func postInit() {
+        super.postInit()
+        self.transitioningDelegate = self.coordinator
+        self.setRoot(DemoSecondViewController())
+    }
+    
+    override func setupActions() {
+        super.setupActions()
+        
+        self.edgePanGesture.addTarget(self, action: #selector(handleTransitionBackSwipe))
+        self.edgePanGesture.edges = .left
+        self.view.addGestureRecognizer(self.edgePanGesture)
+    }
+    
+    @objc
+    func handleTransitionBackSwipe(recognizer: UIScreenEdgePanGestureRecognizer) {
+        self.handleTransitionControllerEdgePan(recognizer)
+    }
+}
+    
+// MARK: DemoSecondViewController
+private class DemoSecondViewController: FormsViewController {
     private let contentView = Components.container.view()
         .with(backgroundColor: Theme.Colors.green)
         .with(cornerRadius: 16)
@@ -81,11 +103,6 @@ private class DemoSecondController: FormsViewController, TransitionableControlle
     private let hideButton = Components.button.default()
         .with(title: "Hide")
         .with(viewKey: "actionButton")
-    
-    override func postInit() {
-        super.postInit()
-        self.transitioningDelegate = self.coordinator
-    }
     
     override func setupContent() {
         super.setupContent()
@@ -111,17 +128,8 @@ private class DemoSecondController: FormsViewController, TransitionableControlle
     override func setupActions() {
         super.setupActions()
         
-        self.edgePanGesture.addTarget(self, action: #selector(handleTransitionBackSwipe))
-        self.edgePanGesture.edges = .left
-        self.view.addGestureRecognizer(self.edgePanGesture)
-        
         self.hideButton.onClick = { [unowned self] in
             self.dismiss(animated: true, completion: nil)
         }
-    }
-    
-    @objc
-    func handleTransitionBackSwipe(recognizer: UIScreenEdgePanGestureRecognizer) {
-        self.handleTransitionControllerEdgePan(recognizer)
     }
 }

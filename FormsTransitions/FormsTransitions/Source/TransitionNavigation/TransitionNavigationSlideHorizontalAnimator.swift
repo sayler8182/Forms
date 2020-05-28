@@ -18,6 +18,7 @@ open class TransitionNavigationSlideHorizontalAnimator: TransitionNavigationAnim
                                     fromView: UIView,
                                     toView: UIView) -> ViewAnimator {
         return SnapshotViewAnimator(
+            isDynamic: self.isDynamic,
             container: container,
             fromView: fromView,
             toView: toView)
@@ -38,7 +39,7 @@ open class TransitionNavigationSlideHorizontalAnimator: TransitionNavigationAnim
         let endFromFrameX = -fromView.frame.width
         let endToFrameX = toView.frame.origin.x
         
-        fromView.frame.origin.x = startFromFrameX
+        animator.whenDynamic { fromView.frame.origin.x = startFromFrameX }
         toView.frame.origin.x = startToFrameX
         animator.beginTransition()
         UIView.animateKeyframes(
@@ -46,7 +47,7 @@ open class TransitionNavigationSlideHorizontalAnimator: TransitionNavigationAnim
             delay: 0,
             options: .calculationModeCubic,
             animations: {
-                fromView.frame.origin.x = endFromFrameX
+                animator.whenDynamic { fromView.frame.origin.x = endFromFrameX }
                 toView.frame.origin.x = endToFrameX
                 animator.updateTransition()
         }, completion: { _ in
@@ -72,7 +73,7 @@ open class TransitionNavigationSlideHorizontalAnimator: TransitionNavigationAnim
         let endToFrameX = toView.frame.origin.x
         
         fromView.frame.origin.x = startFromFrameX
-        toView.frame.origin.x = startToFrameX
+        animator.whenDynamic { toView.frame.origin.x = startToFrameX }
         animator.beginTransition()
         UIView.animateKeyframes(
             withDuration: duration,
@@ -80,7 +81,7 @@ open class TransitionNavigationSlideHorizontalAnimator: TransitionNavigationAnim
             options: .calculationModeCubic,
             animations: {
                 fromView.frame.origin.x = endFromFrameX
-                toView.frame.origin.x = endToFrameX
+                animator.whenDynamic { toView.frame.origin.x = endToFrameX }
                 animator.updateTransition()
         }, completion: { _ in
             animator.endTransition()
