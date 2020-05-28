@@ -7,9 +7,9 @@
 //
 
 import Forms
+import FormsUtils
+import FormsValidators
 import UIKit
-import Utils
-import Validators
 
 // MARK: DemoPinViewViewController
 class DemoPinViewViewController: FormsTableViewController {

@@ -7,8 +7,8 @@
 //
 
 import Forms
+import FormsValidators
 import UIKit
-import Validators
 
 // MARK: DemoValidatorsViewController
 class DemoValidatorsViewController: FormsTableViewController {

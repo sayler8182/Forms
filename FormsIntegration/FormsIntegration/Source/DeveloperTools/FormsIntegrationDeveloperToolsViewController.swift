@@ -6,8 +6,8 @@
 //  Copyright © 2020 Limbo. All rights reserved.
 //
 
-import DeveloperTools
 import Forms
+import FormsDeveloperTools
 import UIKit
 
 // MARK: FormsIntegrationDeveloperToolsViewController

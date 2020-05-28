@@ -6,8 +6,8 @@
 //  Copyright © 2020 Limbo. All rights reserved.
 //
 
+import FormsUtils
 import UIKit
-import Utils
 
 // MARK: TextFieldPeselDelegate
 public class TextFieldPeselDelegate: TextFieldDelegate {

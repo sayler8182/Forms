@@ -6,7 +6,7 @@
 //  Copyright © 2020 Limbo. All rights reserved.
 //
 
-import DeveloperTools
+import FormsDeveloperTools
 import UIKit
 
 // MARK: Utils

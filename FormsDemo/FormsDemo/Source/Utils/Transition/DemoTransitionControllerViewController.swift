@@ -6,9 +6,9 @@
 //  Copyright © 2020 Limbo. All rights reserved.
 //
 
-import Anchor
 import Forms
-import Transition
+import FormsAnchor
+import FormsTransitions
 import UIKit
 
 // MARK: DemoTransitionControllerViewController

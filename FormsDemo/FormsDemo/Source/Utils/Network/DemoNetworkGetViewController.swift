@@ -6,11 +6,11 @@
 //  Copyright © 2020 Limbo. All rights reserved.
 //
 
-import Anchor
 import Forms
-import Injector
-import Logger
-import Networking
+import FormsAnchor
+import FormsInjector
+import FormsLogger
+import FormsNetworking
 import UIKit
 
 // MARK: DemoNetworkGetViewController

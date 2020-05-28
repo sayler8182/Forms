@@ -7,7 +7,7 @@
 //
 
 import Forms
-import Mock
+import FormsMock
 import UIKit
 
 class DemoMockViewController: FormsTableViewController {

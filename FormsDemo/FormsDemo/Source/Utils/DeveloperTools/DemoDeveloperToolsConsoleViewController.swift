@@ -6,9 +6,9 @@
 //  Copyright © 2020 Limbo. All rights reserved.
 //
 
-import Anchor
-import DeveloperTools
 import Forms
+import FormsAnchor
+import FormsDeveloperTools
 import UIKit
 
 // MARK: DemoDeveloperToolsConsoleViewController

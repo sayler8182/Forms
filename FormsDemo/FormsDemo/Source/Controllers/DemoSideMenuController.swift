@@ -7,7 +7,7 @@
 //
 
 import Forms
-import SideMenu
+import FormsSideMenu
 import UIKit
 
 // MARK: DemoSideMenuController

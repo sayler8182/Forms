@@ -6,11 +6,11 @@
 //  Copyright © 2020 Limbo. All rights reserved.
 //
 
-import Injector
-import Logger
+import FormsInjector
+import FormsLogger
+import FormsUtils
+import FormsValidators
 import UIKit
-import Utils
-import Validators
 
 public struct Forms {
     public private (set) static var injector: Injector = Injector.main

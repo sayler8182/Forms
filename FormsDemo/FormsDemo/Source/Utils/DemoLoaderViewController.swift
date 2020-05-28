@@ -6,10 +6,10 @@
 //  Copyright © 2020 Limbo. All rights reserved.
 //
 
-import Anchor
 import Forms
+import FormsAnchor
+import FormsUtils
 import UIKit
-import Utils
 
 // MARK: DemoLoaderViewController
 class DemoLoaderViewController: FormsTableViewController {

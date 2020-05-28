@@ -7,7 +7,7 @@
 //
 
 import Forms
-import Permission
+import FormsPermissions
 import UIKit
 
 class DemoPermissionsViewController: FormsTableViewController {
@@ -49,34 +49,34 @@ class DemoPermissionsViewController: FormsTableViewController {
         super.setupActions()
         self.askAllButton.onClick = { [unowned self] in
             let permissions: [Permissionable] = [
-                Permission.location,
-                Permission.notifications
+                Permissions.location,
+                Permissions.notifications
             ]
-            Permission.ask(permissions) { [weak self] _ in
+            Permissions.ask(permissions) { [weak self] _ in
                 guard let `self` = self else { return }
                 self.updateStatuses()
             }
         }
         self.locationDefaultButton.onClick = { [unowned self] in
-            Permission.location.ask { [weak self] _ in
+            Permissions.location.ask { [weak self] _ in
                 guard let `self` = self else { return }
                 self.updateLocationStatus()
             }
         }
         self.locationWhenInUseButton.onClick = { [unowned self] in
-            Permission.location.askWhenInUse { [weak self] _ in
+            Permissions.location.askWhenInUse { [weak self] _ in
                 guard let `self` = self else { return }
                 self.updateLocationStatus()
             }
         }
         self.locationAlwaysButton.onClick = { [unowned self] in
-            Permission.location.askAlways { [weak self] _ in
+            Permissions.location.askAlways { [weak self] _ in
                 guard let `self` = self else { return }
                 self.updateLocationStatus()
             }
         }
         self.notificationsDefaultButton.onClick = { [unowned self] in
-            Permission.notifications.ask { [weak self] _ in
+            Permissions.notifications.ask { [weak self] _ in
                 guard let `self` = self else { return }
                 self.updateNotificationsStatus()
             }
@@ -89,7 +89,7 @@ class DemoPermissionsViewController: FormsTableViewController {
     }
     
     private func updateLocationStatus() {
-        Permission.location.status { status in
+        Permissions.location.status { status in
             DispatchQueue.main.async {
                 self.locationStatusLabel.text = "Location status: " + status.rawValue
             }
@@ -97,7 +97,7 @@ class DemoPermissionsViewController: FormsTableViewController {
     }
     
     private func updateNotificationsStatus() {
-        Permission.notifications.status { status in
+        Permissions.notifications.status { status in
             DispatchQueue.main.async {
                 self.notificationsStatusLabel.text = "Notifications status: " + status.rawValue
             }

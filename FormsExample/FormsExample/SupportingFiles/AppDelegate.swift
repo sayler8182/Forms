@@ -6,14 +6,14 @@
 //  Copyright © 2020 Limbo. All rights reserved.
 //
 
-import Analytics
-import DeveloperTools
 import Forms
+import FormsAnalytics
 import FormsDemo
-import Injector
+import FormsDeveloperTools
+import FormsInjector
 // import Notifications
-import Permission
-import SocialKit
+import FormsPermissions
+import FormsSocialKit
 import UIKit
 
 @UIApplicationMain
@@ -25,12 +25,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // DeveloperTools - Console
         Console.configure(ignore: [
             "FacebookAdvertiserIDCollectionEnabled is currently",
+            "Attempting to load the view of a view controller",
             "Connection 5: unable to determine",
             "[Firebase/Analytics]",
             "Can't find keyplane that supports type",
             "HTTP load failed, 0/0 bytes",
             "Connection to daemon was invalidated",
-            "[] tcp_input"
+            "[] tcp_input",
+            "Domain=AKAuthenticationError Code=-7003"
         ])
         
         // Forms

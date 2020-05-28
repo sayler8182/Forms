@@ -7,8 +7,8 @@
 //
 
 import Forms
+import FormsUtils
 import UIKit
-import Utils
 
 // MARK: DemoTitleTextFieldViewController
 class DemoTitleTextFieldViewController: FormsTableViewController {

@@ -6,9 +6,9 @@
 //  Copyright © 2020 Limbo. All rights reserved.
 //
 
-import Anchor
+import FormsAnchor
+import FormsUtils
 import UIKit
-import Utils
 
 // MARK: SectionView
 open class SectionView: FormsComponent, Clickable, FormsComponentWithMarginEdgeInset, FormsComponentWithPaddingEdgeInset {

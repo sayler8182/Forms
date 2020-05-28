@@ -6,9 +6,9 @@
 //  Copyright © 2020 Limbo. All rights reserved.
 //
 
-import Anchor
 import Forms
-import Networking
+import FormsAnchor
+import FormsNetworking
 import UIKit
 
 // MARK: DemoNetworkImageViewController

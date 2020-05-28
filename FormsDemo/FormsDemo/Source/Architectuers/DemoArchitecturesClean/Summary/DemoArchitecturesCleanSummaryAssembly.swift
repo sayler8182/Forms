@@ -7,7 +7,7 @@
 //
 
 import Forms
-import Injector
+import FormsInjector
 
 // MARK: DemoArchitecturesCleanSummaryAssembly
 class DemoArchitecturesCleanSummaryAssembly: Assembly {

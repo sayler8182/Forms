@@ -6,10 +6,10 @@
 //  Copyright © 2020 Limbo. All rights reserved.
 //
 
-import Analytics
-import DeveloperTools
 import Forms
-import SocialKit
+import FormsAnalytics
+import FormsDeveloperTools
+import FormsSocialKit
 import UIKit
 
 @UIApplicationMain

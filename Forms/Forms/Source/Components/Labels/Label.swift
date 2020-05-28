@@ -6,9 +6,9 @@
 //  Copyright © 2020 Limbo. All rights reserved.
 //
 
-import Anchor
+import FormsAnchor
+import FormsUtils
 import UIKit
-import Utils
 
 // MARK: Label
 open class Label: FormsComponent, Clickable, FormsComponentWithMarginEdgeInset, FormsComponentWithPaddingEdgeInset {

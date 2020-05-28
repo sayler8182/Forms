@@ -10,23 +10,23 @@ Forms is all in one iOS framework
 
 - [x] Pure Swift Type Support
 - [x] Modular
-- [x] [Analytics](./Documentation/Analytics.md) - Application analytics
-- [x] [Anchor](./Documentation/Anchor.md) - DSL
-- [x] [DeveloperTools](./Documentation/DeveloperTools.md) - Developer Tools
 - [x] [Forms](./Documentation/Forms.md) - Forms framework
-- [x] [ImagePicker](./Documentation/ImagePicker.md) - Image Picker
-- [x] [Injector](./Documentation/Injector.md) - Dependency Injection
-- [x] [Logger](./Documentation/Logger.md) - Logger data
-- [x] [Mock](./Documentation/Mock.md) - Mocking data
-- [x] [Networking](./Documentation/Networking.md) - Network layer
-- [x] [Notifications](./Documentation/Notifications.md) - Firebase notifications
-- [x] [Permissions](./Documentation/Permissions.md) - Application permissions
-- [x] [SideMenu](./Documentation/SideMenu.md) - Side menu
-- [x] [SocialKit](./Documentation/SocialKit.md) - Sign in with external services
-- [x] [Utils](./Documentation/Utils.md) - Utils and extensions
-- [x] [Transition](./Documentation/Transition.md) - UI transitions
-- [x] [Validators](./Documentation/Validators.md) - Data validators
 - [x] [FormsDemo](./Documentation/FormsDemo.md) - All features demo
+- [x] [FormsAnalytics](./Documentation/FormsAnalytics.md) - Application analytics
+- [x] [FormsAnchor](./Documentation/FormsAnchor.md) - DSL
+- [x] [FormsDeveloperTools](./Documentation/FormsDeveloperTools.md) - Developer Tools
+- [x] [FormsImagePicker](./Documentation/FormsImagePicker.md) - Image Picker
+- [x] [FormsInjector](./Documentation/FormsInjector.md) - Dependency Injection
+- [x] [FormsLogger](./Documentation/FormsLogger.md) - Logger data
+- [x] [FormsMock](./Documentation/FormsMock.md) - Mocking data
+- [x] [FormsNetworking](./Documentation/FormsNetworking.md) - Network layer
+- [x] [FormsNotifications](./Documentation/FormsNotifications.md) - Firebase notifications
+- [x] [FormsPermissions](./Documentation/FormsPermissions.md) - Application permissions
+- [x] [FormsSideMenu](./Documentation/FormsSideMenu.md) - Side menu
+- [x] [FormsSocialKit](./Documentation/FormsSocialKit.md) - Sign in with external services
+- [x] [FormsUtils](./Documentation/FormsUtils.md) - Utils and extensions
+- [x] [FormsTransitions](./Documentation/FormsTransitions.md) - UI transitions
+- [x] [FormsValidators](./Documentation/FormsValidators.md) - Data validators
 
 ## NOTICE
 Currently firebase DOSN'T support dynamic framework. You can't use Analytics and Notifications framework together
@@ -51,22 +51,22 @@ Compile from source and copy dynamic framework.
 5. Copy generated frameworks
 
 ```
-Analytics.framework
-Anchor.framework
-DeveloperTools.framework
 Forms.framework
-ImagePicker.framework
-Injector.framework
-Logger.framework
-Mock.framework
-Networking.framework
-Notifications.framework
-Permissions.framework
-SideMenu.framework
-SocialKit.framework
-Utils.framework
-Transition.framework
-Validators.framework
+FormsAnalytics.framework
+FormsAnchor.framework
+FormsDeveloperTools.framework
+FormsImagePicker.framework
+FormsInjector.framework
+FormsLogger.framework
+FormsMock.framework
+FormsNetworking.framework
+FormsNotifications.framework
+FormsPermissions.framework
+FormsSideMenu.framework
+FormsSocialKit.framework
+FormsTransitions.framework
+FormsUtils.framework
+FormsValidators.framework
 ```
 
 ## External dependencies

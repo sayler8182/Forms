@@ -6,8 +6,8 @@
 //  Copyright © 2020 Limbo. All rights reserved.
 //
 
-import Analytics
 import Forms
+import FormsAnalytics
 import UIKit
 
 // MARK: FormsIntegrationAnalyticsViewController

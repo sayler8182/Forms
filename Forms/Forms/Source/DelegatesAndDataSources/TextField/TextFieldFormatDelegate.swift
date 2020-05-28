@@ -6,8 +6,8 @@
 //  Copyright © 2020 Limbo. All rights reserved.
 //
 
+import FormsValidators
 import UIKit
-import Validators
 
 // MARK: TextFieldFormatDelegate
 public class TextFieldFormatDelegate: TextFieldDelegate {

@@ -12,6 +12,15 @@ import FormsDemo
 
 ```
 Forms.framework
+FormsAnalytics.framework
+FormsDeveloperTools.framework
+FormsImagePicker.framework
+FormsMock.framework
+FormsNetworking.framework
+FormsPermissions.framework
+FormsSideMenu.framework
+FormsSocialKit.framework
+FormsTransition.framework
 ```
 
 ## Usage

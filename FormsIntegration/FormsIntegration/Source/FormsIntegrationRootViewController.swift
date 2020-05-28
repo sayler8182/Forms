@@ -6,9 +6,9 @@
 //  Copyright © 2020 Limbo. All rights reserved.
 //
 
-import Anchor
 import Forms
-import Injector
+import FormsAnchor
+import FormsInjector
 import UIKit
 
 private enum Integration {
@@ -17,8 +17,8 @@ private enum Integration {
         case analytics
         // Developer Tools
         case developerTools
-        // Permission
-        case permission
+        // Permissions
+        case permissions
         // SideMenu
         case sideMenu
         // SocialKit
@@ -48,8 +48,8 @@ private enum Integration {
                 Section(title: "DeveloperTools", rows: [
                     Row(type: .developerTools, title: "DeveloperTools")
                 ]),
-                Section(title: "Permission", rows: [
-                    Row(type: .permission, title: "Permission")
+                Section(title: "Permissions", rows: [
+                    Row(type: .permissions, title: "Permissions")
                 ]),
                 Section(title: "SideMenu", rows: [
                     Row(type: .sideMenu, title: "SideMenu")
@@ -171,7 +171,7 @@ private class FormsIntegrationListViewController: FormsViewController {
         // DeveloperTools
         case .developerTools:           return FormsIntegrationDeveloperToolsViewController()
         // Permission
-        case .permission:               return FormsIntegrationPermissionViewController()
+        case .permissions:              return FormsIntegrationPermissionsViewController()
         // SideMenu
         case .sideMenu:                 return FormsIntegrationSideMenuViewController()
         // SocialKit

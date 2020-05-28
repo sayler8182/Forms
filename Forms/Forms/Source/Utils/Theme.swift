@@ -6,7 +6,7 @@
 //  Copyright © 2020 Limbo. All rights reserved.
 //
 
-import Injector
+import FormsInjector
 import UIKit
 
 // MARK: ThemeType

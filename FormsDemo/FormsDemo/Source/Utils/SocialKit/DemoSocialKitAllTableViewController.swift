@@ -7,7 +7,7 @@
 //
 
 import Forms
-import SocialKit
+import FormsSocialKit
 import UIKit
 
 // MARK: DemoSocialKitAllTableViewController

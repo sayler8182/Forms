@@ -6,8 +6,8 @@
 //  Copyright © 2020 Limbo. All rights reserved.
 //
 
-import Anchor
-import Injector
+import FormsAnchor
+import FormsInjector
 import UIKit
 
 // MARK: Configuration

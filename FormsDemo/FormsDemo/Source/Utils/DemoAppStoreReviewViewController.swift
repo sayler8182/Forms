@@ -6,8 +6,8 @@
 //  Copyright © 2020 Limbo. All rights reserved.
 //
 
-import Anchor
 import Forms
+import FormsAnchor
 import UIKit
 
 // MARK: DemoAppStoreReviewViewController

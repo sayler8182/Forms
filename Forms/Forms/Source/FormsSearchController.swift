@@ -6,9 +6,9 @@
 //  Copyright © 2020 Limbo. All rights reserved.
 //
 
-import Anchor
+import FormsAnchor
+import FormsValidators
 import UIKit
-import Validators
 
 // MARK: State
 public extension FormsSearchController {

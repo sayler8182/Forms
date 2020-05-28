@@ -7,7 +7,7 @@
 //
 
 import Forms
-import ImagePicker
+import FormsImagePicker
 import UIKit
 
 // MARK: DemoImagePickerSystemViewController
