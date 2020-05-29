@@ -8,6 +8,7 @@
 
 import Forms
 import FormsAnchor
+import FormsUtils
 import UIKit
 
 // MARK: DemoShimmerViewController
@@ -25,7 +26,7 @@ class DemoShimmerViewController: FormsViewController {
         super.setupContent()
         self.setupTitleView()
         self.startShimmering()
-        Utils.delay(10.0, self) { $0.stopShimmering() }
+        delay(10.0, self) { $0.stopShimmering() }
     }
     
     private func setupTitleView() {

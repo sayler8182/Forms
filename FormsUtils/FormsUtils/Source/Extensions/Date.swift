@@ -39,7 +39,7 @@ public enum DateFormatType: CaseIterable {
     case full
     
     var format: String {
-        let dateFormat: DateFormatProtocol? = Injector.main.resolve()
+        let dateFormat: DateFormatProtocol? = Injector.main.resolveOrDefault("FormsUtils")
         switch self {
         case .date: return dateFormat?.dateFormat ?? "yyyy-MM-dd"
         case .time: return dateFormat?.timeFormat ?? "HH:mm"

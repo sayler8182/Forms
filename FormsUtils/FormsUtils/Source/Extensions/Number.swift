@@ -154,7 +154,7 @@ public extension NumberFormattable {
                    maxFractionDigits: Int? = nil,
                    groupingSeparator: String? = nil,
                    decimalSeparator: String? = nil) -> String {
-        let numberFormat: NumberFormatProtocol? = Injector.main.resolve()
+        let numberFormat: NumberFormatProtocol? = Injector.main.resolveOrDefault("FormsUtils")
         kNumberFormatter.groupingSeparator = groupingSeparator ?? numberFormat?.groupingSeparator ?? ","
         kNumberFormatter.decimalSeparator = decimalSeparator ?? numberFormat?.decimalSeparator ?? ","
         kNumberFormatter.numberStyle = .decimal

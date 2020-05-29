@@ -46,9 +46,22 @@ public class Injector {
     
     @discardableResult
     public func register<Service>(_ serviceType: Service.Type,
-                                  name: String? = nil,
+                                  factory: @escaping (Resolver) -> Any) -> InjectorService<Service> {
+        self._register(serviceType, name: nil, factory: factory)
+    }
+    
+    @discardableResult
+    public func register<Service>(_ serviceType: Service.Type,
+                                  name: String?,
                                   factory: @escaping (Resolver) -> Any) -> InjectorService<Service> {
         self._register(serviceType, name: name, factory: factory)
+    }
+    
+    @discardableResult
+    public func register<Service>(_ serviceType: Service.Type,
+                                  module: String?,
+                                  factory: @escaping (Resolver) -> Any) -> InjectorService<Service> {
+        self._register(serviceType, name: module, factory: factory)
     }
     
     public func reset() {
@@ -107,12 +120,26 @@ extension Injector {
 
 // MARK: Resolver
 extension Injector: Resolver {
+    public func resolveOrDefault<Service>(_ nameOrModule: String? = nil) -> Service! {
+        return self.resolve(Service.self, name: nameOrModule) ?? self.resolve(Service.self)
+    }
+    
     public func resolve<Service>(_ name: String? = nil) -> Service! {
         return self.resolve(Service.self, name: name)
     }
     
     public func resolve<Service>(_ serviceType: Service.Type) -> Service! {
         return self.resolve(serviceType, name: nil)
+    }
+    
+    public func resolveOrDefault<Service>(_ serviceType: Service.Type,
+                                          name: String?) -> Service! {
+        return self.resolve(serviceType, name: name) ?? self.resolve(serviceType)
+    }
+    
+    public func resolveOrDefault<Service>(_ serviceType: Service.Type,
+                                          module: String? = nil) -> Service! {
+        return self.resolve(serviceType, name: module) ?? self.resolve(serviceType)
     }
     
     public func resolve<Service>(_ serviceType: Service.Type,

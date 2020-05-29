@@ -36,26 +36,6 @@ private class DemoMenuViewController: FormsTableViewController {
     
     private let divider = Components.utils.divider()
         .with(height: 5)
-      
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-       print("menu viewWillAppear")
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        print("menu viewDidAppear")
-    }
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        print("menu viewWillDisappear")
-    }
-    
-    override func viewDidDisappear(_ animated: Bool) {
-        super.viewDidDisappear(animated)
-        print("menu viewDidDisappear")
-    }
     
     override func setupContent() {
         super.setupContent()
@@ -67,7 +47,7 @@ private class DemoMenuViewController: FormsTableViewController {
     override func setupActions() {
         super.setupActions()
         self.closeButton.onClick = { [unowned self] in
-          self.sideMenuController?.close()
+            self.sideMenuController?.close()
         }
     }
 }
@@ -82,26 +62,6 @@ private class DemoContentViewController: FormsTableViewController {
     
     private let divider = Components.utils.divider()
         .with(height: 5)
-      
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-       print("content viewWillAppear")
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        print("content viewDidAppear")
-    }
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        print("content viewWillDisappear")
-    }
-    
-    override func viewDidDisappear(_ animated: Bool) {
-        super.viewDidDisappear(animated)
-        print("content viewDidDisappear")
-    }
     
     override func setupContent() {
         super.setupContent()

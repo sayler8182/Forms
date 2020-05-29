@@ -24,12 +24,12 @@ open class ResponseParser {
     public init() { }
      
     open func parse<T: Parseable>(data: Data?,
-                                  error: ApiError?,
+                                  error: NetworkError?,
                                   onSuccess: (T) -> Void,
-                                  onError: (ApiError) -> Void,
-                                  onCompletion: ((T?, ApiError?) -> Void)? = nil) {
+                                  onError: (NetworkError) -> Void,
+                                  onCompletion: ((T?, NetworkError?) -> Void)? = nil) {
         guard let data: Data = data else {
-            let error: ApiError = error ?? ApiError.incorrectResponseFormat
+            let error: NetworkError = error ?? NetworkError.incorrectResponseFormat
             onError(error)
             onCompletion?(nil, error)
             return
@@ -39,7 +39,7 @@ open class ResponseParser {
             onCompletion?(nil, error)
         }
         guard let object: T = self.map(data: data) else {
-            let error: ApiError = ApiError.incorrectResponseFormat
+            let error: NetworkError = NetworkError.incorrectResponseFormat
             onError(error)
             onCompletion?(nil, error)
             return
@@ -48,7 +48,7 @@ open class ResponseParser {
         onCompletion?(object, error)
     }
     
-    open func parseError(data: Data) -> ApiError? {
+    open func parseError(data: Data) -> NetworkError? {
         return nil
     }
     

@@ -7,6 +7,8 @@
 //
 
 import FormsAnchor
+import FormsInjector
+import FormsLogger
 import UIKit
 
 // MARK: FormsViewController
@@ -52,7 +54,8 @@ open class FormsViewController: UIViewController, UIGestureRecognizerDelegate, T
     }
     
     deinit {
-        print("Deinit \(type(of: self))")
+        let logger: LoggerProtocol? = Injector.main.resolveOrDefault("Forms")
+        logger?.log(.info, "Deinit \(type(of: self))")
     }
     
     override open func viewWillAppear(_ animated: Bool) {

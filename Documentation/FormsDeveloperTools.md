@@ -8,6 +8,13 @@ FormsDeveloperTools is development helper library.
 import FormsDeveloperTools
 ```
 
+## Dependencies
+
+```
+FormsInjector.framework
+FormsLogger.framework
+```
+
 ## Features
 
 - [x] Pure Swift Type Support

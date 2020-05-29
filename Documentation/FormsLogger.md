@@ -14,15 +14,26 @@ import FormsLogger
 ### Log
 
 ```swift
-let logger = Logger()
-logger.log("Some data")
+let logger = ConsoleLogger()
+logger.log(.info, "Some data")
+```
+
+### Log Type
+
+```swift
+enum LogType: Int {
+    case info = 0
+    case warning = 1
+    case error = 2
+}
 ```
 
 ### Custom logger
 
 ```swift
 class AppLogger: LoggerProtocol {
-    func log(_ string: String) {
+    func log(_ type: LogType,
+             _ string: String) {
        print(string)
     }
 }

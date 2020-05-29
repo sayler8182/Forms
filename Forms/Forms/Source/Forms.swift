@@ -12,6 +12,25 @@ import FormsUtils
 import FormsValidators
 import UIKit
 
+// MARK: Module
+enum Module: String {
+    case formsAnalytics = "FormsAnalytics"
+    case formsAnchor = "FormsAnchor"
+    case formsDeveloperTools = "FormsDeveloperTools"
+    case formsImagePicker = "FormsImagePicker"
+    case formsInjector = "FormsInjector"
+    case formsLogger = "FormsLogger"
+    case formsMock = "FormsMock"
+    case formsNetworking = "FormsNetworking"
+    case formsNotifications = "FormsNotifications"
+    case formsPermissions = "FormsPermissions"
+    case formsSideMenu = "FormsSideMenu"
+    case formsTransition = "FormsTransition"
+    case formsUtils = "FormsUtils"
+    case formsValidators = "FormsValidators"
+}
+
+// MARK: Forms
 public struct Forms {
     public private (set) static var injector: Injector = Injector.main
     
@@ -28,7 +47,10 @@ public struct Forms {
     private static func configureBase(_ injector: Injector) {
         // logger
         injector.register(LoggerProtocol.self) { _ in
-            Logger()
+            ConsoleLogger()
+        }
+        injector.register(LoggerProtocol.self, module: Module.formsNetworking.rawValue) { _ in
+            ConsoleLogger()
         }
         // validators
         injector.register(ValidatorTranslatorProtocol.self) { _ in
@@ -82,7 +104,7 @@ public struct Forms {
                 .bold: { UIFont.boldSystemFont(ofSize: $0) },
                 .regular: { UIFont.systemFont(ofSize: $0) }
             ])
-        }
+        } 
     }
     
     private static func configureConfigurations(_ injector: Injector) {

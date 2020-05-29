@@ -6,9 +6,22 @@
 //  Copyright © 2020 Limbo. All rights reserved.
 //
 
+import FormsLogger
 import Foundation
 
-public class NetworkCache {
+// MARK: NetworkCacheProtocol
+public protocol NetworkCacheProtocol {
+    func write(hash: Any,
+               data: Data,
+               logger: LoggerProtocol?) throws
+    func read(hash: Any,
+              logger: LoggerProtocol?) throws -> Data?
+    func reset() throws
+    func clean() throws
+}
+
+// MARK: NetworkTmpCache
+public class NetworkTmpCache: NetworkCacheProtocol {
     private let fileManager = FileManager.default
     private let directory: URL = FileManager.default.temporaryDirectory.appendingPathComponent("networking_cache")
     private let ttl: TimeInterval
@@ -19,21 +32,23 @@ public class NetworkCache {
     }
     
     public func write(hash: Any,
-                      data: Data) throws {
+                      data: Data,
+                      logger: LoggerProtocol? = nil) throws {
         let expirationDate: Int64 = Int64(Date().timeIntervalSince1970 + self.ttl)
         let url: URL = self.directory.appendingPathComponent("_\(hash).\(expirationDate).cache")
         try? self.fileManager.removeItem(at: url)
         try data.write(to: url)
-        print("write:", url.absoluteString)
+        logger?.log(.info, "Write to cache: \(url.absoluteString)")
     }
     
-    public func read(hash: Any) throws -> Data? {
+    public func read(hash: Any,
+                     logger: LoggerProtocol? = nil) throws -> Data? {
         try self.clean()
         guard let url: URL = try self.fileManager.contentsOfDirectory(
             at: self.directory,
             includingPropertiesForKeys: nil)
             .first(where: { $0.absoluteString.contains("_\(hash).") }) else { return nil }
-        print("read:", url.absoluteString)
+        logger?.log(.info, "Read from cache: \(url.absoluteString)")
         return try Data(contentsOf: url)
     }
     

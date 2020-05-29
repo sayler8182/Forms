@@ -495,11 +495,15 @@ public extension UIStackView {
 }
 
 // MARK: UIView Anchors
-public extension UIView {
+public extension UIView { 
     func addSubview(_ view: UIView,
-                    with anchors: [Anchor]) {
+                    with anchors: [Anchor],
+                    layoutIfNeeded: Bool = false) {
         self.addSubview(view)
         view.anchors(anchors)
+        if layoutIfNeeded {
+            self.layoutIfNeeded()
+        }
     }
     
     func with(anchors: (UIView) -> [Anchor]) -> Self {

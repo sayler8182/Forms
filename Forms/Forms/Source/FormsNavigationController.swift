@@ -7,6 +7,8 @@
 //
 
 import FormsAnchor
+import FormsInjector
+import FormsLogger
 import UIKit
 
 // MARK: FormsNavigationController
@@ -42,7 +44,8 @@ open class FormsNavigationController: UINavigationController, Themeable {
     }
     
     deinit {
-        print("Deinit \(type(of: self))")
+        let logger: LoggerProtocol? = Injector.main.resolveOrDefault("Forms")
+        logger?.log(.info, "Deinit \(type(of: self))")
     }
     
     override open var preferredStatusBarStyle: UIStatusBarStyle {

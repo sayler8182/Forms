@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		715C4401248120840093EBFF /* FormsLogger.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 715C4400248120840093EBFF /* FormsLogger.framework */; };
+		715C4405248120E00093EBFF /* FormsInjector.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 715C4404248120E00093EBFF /* FormsInjector.framework */; };
 		719AE534246299BB00A39B0E /* GoogleDataTransport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 719AE523246299BB00A39B0E /* GoogleDataTransport.framework */; settings = {ATTRIBUTES = (Required, ); }; };
 		719AE535246299BB00A39B0E /* GoogleDataTransportCCTSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 719AE524246299BB00A39B0E /* GoogleDataTransportCCTSupport.framework */; settings = {ATTRIBUTES = (Required, ); }; };
 		719AE536246299BB00A39B0E /* GoogleAppMeasurement.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 719AE525246299BB00A39B0E /* GoogleAppMeasurement.framework */; settings = {ATTRIBUTES = (Required, ); }; };
@@ -23,6 +25,8 @@
 
 /* Begin PBXFileReference section */
 		7150CD85247FA05F00F2681B /* FormsAnalytics.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = FormsAnalytics.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		715C4400248120840093EBFF /* FormsLogger.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FormsLogger.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		715C4404248120E00093EBFF /* FormsInjector.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FormsInjector.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		719AE523246299BB00A39B0E /* GoogleDataTransport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GoogleDataTransport.framework; sourceTree = "<group>"; };
 		719AE524246299BB00A39B0E /* GoogleDataTransportCCTSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GoogleDataTransportCCTSupport.framework; sourceTree = "<group>"; };
 		719AE525246299BB00A39B0E /* GoogleAppMeasurement.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GoogleAppMeasurement.framework; sourceTree = "<group>"; };
@@ -43,6 +47,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				715C4405248120E00093EBFF /* FormsInjector.framework in Frameworks */,
 				719AE53E246299BB00A39B0E /* PromisesObjC.framework in Frameworks */,
 				719AE53C246299BB00A39B0E /* FirebaseAnalytics.framework in Frameworks */,
 				719AE535246299BB00A39B0E /* GoogleDataTransportCCTSupport.framework in Frameworks */,
@@ -51,6 +56,7 @@
 				719AE534246299BB00A39B0E /* GoogleDataTransport.framework in Frameworks */,
 				719AE53D246299BB00A39B0E /* GoogleUtilities.framework in Frameworks */,
 				719AE53F246299BB00A39B0E /* nanopb.framework in Frameworks */,
+				715C4401248120840093EBFF /* FormsLogger.framework in Frameworks */,
 				719AE543246299BB00A39B0E /* FirebaseCoreDiagnostics.framework in Frameworks */,
 				719AE541246299BB00A39B0E /* FirebaseInstallations.framework in Frameworks */,
 			);
@@ -59,6 +65,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		715C43FF248120840093EBFF /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				715C4404248120E00093EBFF /* FormsInjector.framework */,
+				715C4400248120840093EBFF /* FormsLogger.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		719AE521246299BB00A39B0E /* Dependencies */ = {
 			isa = PBXGroup;
 			children = (
@@ -82,6 +97,7 @@
 			children = (
 				71DB5CA22457609000B16145 /* FormsAnalytics */,
 				7150CD85247FA05F00F2681B /* FormsAnalytics.framework */,
+				715C43FF248120840093EBFF /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};

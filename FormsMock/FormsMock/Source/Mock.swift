@@ -28,6 +28,8 @@ public class Mock {
             .filter { ![".", ","].contains($0) }
     }()
     
+    public init() { }
+    
     private func random(percent: Double) -> Int {
         let value: Int = Int(percent * 100)
         return Int.random(in: 0...value)
@@ -254,10 +256,19 @@ public extension Mock {
 public extension Mock {
     func imageUrl(_ options: [MockOptions] = [.none]) -> URL! {
         guard !self.isNull(options) else { return nil }
+        let quality: MockOptions.Quality = options.quality ?? .random
         let id: Int = self.random(0..<1_000)
-        let width: Int = self.random(200..<1_000)
-        let height: Int = self.random(200..<1_000)
-        return URL(string: "https://i.picsum.photos/id/\(id)/\(width)/\(height).jpg")
+        
+        switch quality {
+        case .low:
+            return URL(string: "https://i.picsum.photos/id/\(id)/60/60.jpg")
+        case .random:
+            let width: Int = self.random(200..<1_000)
+            let height: Int = self.random(200..<1_000)
+            return URL(string: "https://i.picsum.photos/id/\(id)/\(width)/\(height).jpg")
+        case .high:
+            return URL(string: "https://i.picsum.photos/id/\(id)/1000/1000.jpg")
+        }
     }
 }
 

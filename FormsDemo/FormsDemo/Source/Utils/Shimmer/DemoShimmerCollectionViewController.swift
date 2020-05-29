@@ -23,7 +23,7 @@ class DemoShimmerCollectionViewController: FormsCollectionViewController {
     override func setupContent() {
         super.setupContent()
         self.startShimmering(self.shimmerDataSource)
-        Utils.delay(2.5, self) { $0.updateDataSource() }
+        delay(2.5, self) { $0.updateDataSource() }
     }
     
     override func setupConfiguration() {

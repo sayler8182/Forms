@@ -43,6 +43,17 @@ injector.register(Person.self) { r in
 }
 ```
 
+### Registration name or module
+
+```swift
+injector.register(Person.self, name: "SomeName") { r in
+    PetOwner(pet: r.resolve(Animal.self))
+}
+injector.register(Person.self, module: "SomeModule") { r in
+    PetOwner(pet: r.resolve(Animal.self))
+}
+```
+
 ### Resolve
 
 ```swift
@@ -55,6 +66,13 @@ or
 ```swift
 let person: Person = container.resolve()
 person.play() // prints "I'm playing with Mimi."
+```
+
+### Resolve name or module
+
+```swift
+let person1: Person = container.resolveOrDefault("SomeName")
+let person2: Person = container.resolveOrDefault("SomeModule")
 ```
 
 ### Scope

@@ -194,6 +194,25 @@ public extension FormsComponent {
     }
 }
 
+// MARK: FormsComponentWithLoading
+public protocol FormsComponentWithLoading: class {
+    var isLoading: Bool { get set }
+}
+public extension FormsComponentWithLoading {
+    func startLoading(animated: Bool) {
+        guard !self.isLoading else { return }
+        self.isLoading = true
+    }
+    func stopLoading(animated: Bool) {
+        guard self.isLoading else { return }
+        self.isLoading = false
+    }
+    func with(isLoading: Bool) -> Self {
+        self.isLoading = isLoading
+        return self
+    }
+}
+
 // MARK: FormsComponentWithMarginEdgeInset
 public protocol FormsComponentWithMarginEdgeInset: class {
     var marginEdgeInset: UIEdgeInsets { get set }

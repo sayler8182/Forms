@@ -11,21 +11,21 @@ import Forms
 ## Dependencies
 
 ```
-Anchor.framework
-Injector.framework
-Logger.framework
-Networking.framework
-Transition.framework
-Utils.framework
-Validators.framework
+FormsAnchor.framework
+FormsInjector.framework
+FormsLogger.framework
+FormsNetworking.framework
+FormsTransition.framework
+FormsUtils.framework
+FormsValidators.framework
 ```
 
 ## Extensions
 
 ```
-ImagePicker.framework
-SideMenu.framework
-SocialKit.framework
+FormsImagePicker.framework
+FormsSideMenu.framework
+FormsSocialKit.framework
 ```
 
 ## Usage

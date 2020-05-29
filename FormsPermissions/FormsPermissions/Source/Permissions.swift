@@ -41,12 +41,12 @@ public enum Permissions {
     public typealias AskCompletion = (PermissionsStatus) -> Void
     
     public static var location: PermissionsLocationProtocol = {
-        let location: PermissionsLocationProtocol? = Injector.main.resolve()
+        let location: PermissionsLocationProtocol? = Injector.main.resolveOrDefault("FormsPermissions")
         return location ?? Permissions.Location()
     }()
     
     public static var notifications: PermissionsNotificationsProtocol = {
-        let notifications: PermissionsNotificationsProtocol? = Injector.main.resolve()
+        let notifications: PermissionsNotificationsProtocol? = Injector.main.resolveOrDefault("FormsPermissions")
         return notifications ?? Permissions.Notifications()
     }()
     

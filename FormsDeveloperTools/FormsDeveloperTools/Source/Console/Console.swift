@@ -6,6 +6,8 @@
 //  Copyright © 2020 Limbo. All rights reserved.
 //
 
+import FormsInjector
+import FormsLogger
 import Foundation
 import UIKit
 
@@ -78,7 +80,11 @@ public extension Console {
             "Domain=AKAuthenticationError Code=-7003",
             "[] nw_read_request_report",
             "[TableView] Warning once only",
-            "TUISystemInputAssistantView.bottom == _UIKBCompatInputView.top"
+            "TUISystemInputAssistantView.bottom == _UIKBCompatInputView.top",
+            "[Common] _BSMachError: port",
+            "[logger]",
+            "Write to cache",
+            "Read from cache"
         ]
     }
 }
@@ -89,5 +95,6 @@ internal func consoleAssert(_ condition: Bool,
                             _ file: StaticString = #file,
                             _ line: UInt = #line) {
     if condition { return }
-    print("[AUTOLAYOUT WARNING]: Unexpected behavior about \(message) in \(file):\(line)")
+    let logger: LoggerProtocol? = Injector.main.resolveOrDefault("FormsDeveloperTools")
+    logger?.log(.warning, "[AUTOLAYOUT WARNING]: Unexpected behavior about \(message) in \(file):\(line)")
 }

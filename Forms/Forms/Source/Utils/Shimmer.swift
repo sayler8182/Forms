@@ -11,18 +11,34 @@ import UIKit
 
 // MARK: Shimmerable
 public protocol Shimmerable: class {
+    var isShimmerable: Bool { get set }
     var isShimmering: Bool { get }
     
     func startShimmering(animated: Bool)
     func stopShimmering(animated: Bool)
 }
+extension Shimmerable {
+    func with(isShimmerable: Bool) -> Self {
+        self.isShimmerable = isShimmerable
+        return self
+    }
+}
 public protocol UnShimmerable: class { }
+public class UnShimmerableView: UIView, UnShimmerable { }
 public class UnShimmerableLabel: UILabel, UnShimmerable { }
 public class UnShimmerableImageView: UIImageView, UnShimmerable { }
 public class UnShimmerableButton: UIButton, UnShimmerable { }
+extension UIActivityIndicatorView: UnShimmerable { }
 
 // MARK: Shimmer - UIView
 public extension UIView {
+    private static var isShimmerableKey: UInt8 = 0
+    
+    var isShimmerable: Bool {
+        get { return objc_getAssociatedObject(self, &Self.isShimmerableKey) as? Bool ?? true }
+        set { objc_setAssociatedObject(self, &Self.isShimmerableKey, newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC) }
+    }
+    
     var isShimmering: Bool {
         if self.subviews.isEmpty,
             self is ShimmerPlaceholderView {
@@ -36,6 +52,7 @@ public extension UIView {
     
     @objc
     func startShimmering(animated: Bool = true) {
+        guard self.isShimmerable else { return }
         self.setShimmer(animated: animated)
     }
     
@@ -50,8 +67,8 @@ public extension UIView {
     private func setShimmer(animated: Bool) {
         let placeholders = self.subviews.filter({ $0 is ShimmerPlaceholderView })
         placeholders.removeFromSuperview()
+        if self is UnShimmerable { return }
         if self.subviews.isEmpty {
-            if self is UnShimmerable { return }
             self.putPlaceholder(animated: animated)
             self.isUserInteractionEnabled = true
         }

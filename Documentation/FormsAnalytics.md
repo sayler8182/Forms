@@ -9,6 +9,13 @@ By default integrate Firebase.
 import FormsAnalytics
 ```
 
+## Dependencies
+
+```
+FormsInjector.framework
+FormsLogger.framework
+```
+
 ## External dependencies
 
 ```

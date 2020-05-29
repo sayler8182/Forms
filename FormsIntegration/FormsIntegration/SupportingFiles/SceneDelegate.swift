@@ -28,4 +28,11 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         guard let window: UIWindow = self.window else { return }
         Theme.setUserInterfaceStyle(window.traitCollection.userInterfaceStyle)
     }
+    
+    func windowScene(_ windowScene: UIWindowScene,
+                     didUpdate previousCoordinateSpace: UICoordinateSpace,
+                     interfaceOrientation previousInterfaceOrientation: UIInterfaceOrientation,
+                     traitCollection previousTraitCollection: UITraitCollection) {
+        Theme.setUserInterfaceStyle(windowScene.traitCollection.userInterfaceStyle)
+    }
 }

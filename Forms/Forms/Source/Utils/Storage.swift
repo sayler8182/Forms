@@ -6,8 +6,8 @@
 //  Copyright © 2020 Limbo. All rights reserved.
 //
 
-import Foundation
 import FormsInjector
+import Foundation
 import Security
 
 // MARK: StorageContainerProtocol
@@ -143,7 +143,7 @@ public protocol StorageProvider {
 @propertyWrapper
 public struct Storage<T>: StorageProvider {
     private let container: StorageContainerProtocol = {
-        let container: StorageContainerProtocol? = Injector.main.resolve()
+        let container: StorageContainerProtocol? = Injector.main.resolveOrDefault("Forms")
         return container ?? StorageUserDefaultsContainer.shared
     }()
     private let key: StorageKey
@@ -171,7 +171,7 @@ public struct Storage<T>: StorageProvider {
 @propertyWrapper
 public struct StorageWithDefault<T>: StorageProvider {
     private let container: StorageContainerProtocol = {
-        let container: StorageContainerProtocol? = Injector.main.resolve()
+        let container: StorageContainerProtocol? = Injector.main.resolveOrDefault("Forms")
         return container ?? StorageUserDefaultsContainer.shared
     }()
     private let key: StorageKey
@@ -202,7 +202,7 @@ public struct StorageWithDefault<T>: StorageProvider {
 @propertyWrapper
 public struct StorageSecure<T: KeychainValue>: StorageProvider {
     private let container: StorageSecureContainerProtocol = {
-        let container: StorageSecureContainerProtocol? = Injector.main.resolve()
+        let container: StorageSecureContainerProtocol? = Injector.main.resolveOrDefault("Forms")
         return container ?? StorageKeychainContainer.shared
     }()
     private let info: StorageSecureInfo
@@ -237,7 +237,7 @@ public struct StorageSecure<T: KeychainValue>: StorageProvider {
 @propertyWrapper
 public struct StorageSecureWithDefault<T: KeychainValue>: StorageProvider {
     private let container: StorageSecureContainerProtocol = {
-        let container: StorageSecureContainerProtocol? = Injector.main.resolve()
+        let container: StorageSecureContainerProtocol? = Injector.main.resolveOrDefault("Forms")
         return container ?? StorageKeychainContainer.shared
     }()
     private let info: StorageSecureInfo

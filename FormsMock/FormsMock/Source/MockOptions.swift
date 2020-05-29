@@ -11,6 +11,7 @@ import Foundation
 // MARK: MockOptions
 public enum MockOptions {
     case none
+    case quality(_ quality: Quality)
     case length(_ length: Length)
     case nullable(_ chance: Double)
 }
@@ -20,6 +21,11 @@ public extension MockOptions {
         case short
         case regular
         case long
+    }
+    enum Quality {
+        case low
+        case random
+        case high
     }
 }
 
@@ -35,6 +41,13 @@ extension Array where Element == MockOptions {
     var nullableChance: Double? {
         return self.compactMap { (item: MockOptions) -> Double? in
             if case let MockOptions.nullable(chance) = item { return chance }
+            return nil
+        }.first
+    }
+    
+    var quality: MockOptions.Quality? {
+        return self.compactMap { (item: MockOptions) -> MockOptions.Quality? in
+            if case let MockOptions.quality(quality) = item { return quality }
             return nil
         }.first
     }

@@ -6,39 +6,56 @@
 //  Copyright © 2020 Limbo. All rights reserved.
 //
 
+import FormsInjector
 import FormsLogger
 import Foundation
 
-// MARK: ApiError
-public enum ApiError: Equatable {
+// MARK: NetworkError
+public enum NetworkError: CustomDebugStringConvertible, Equatable {
+    case cancelled
     case connectionFailure
     case incorrectResponseFormat
     case errorStatusCode(Int)
-    case wrongCredentials
     case unknown(String)
+    
+    public var isCancelled: Bool {
+        return self == .cancelled
+    }
+    
+    public var debugDescription: String {
+        switch self {
+        case .cancelled: return "Cancelled"
+        case .connectionFailure: return "Connection Failure"
+        case .incorrectResponseFormat: return "Incorrect response format"
+        case .errorStatusCode(let code): return "Error with status code \(code)"
+        case .unknown(let reason): return "Unknown \(reason)"
+        }
+    }
+    
+    internal init(_ error: Error?) {
+        switch error {
+        case let error as NSError where error.code == NSURLErrorNotConnectedToInternet:
+            self = .connectionFailure
+        case let error as NSError where error.code == NSURLErrorCancelled:
+            self = .cancelled
+        default:
+            self = .incorrectResponseFormat
+        }
+    }
 }
 
-// MARK: ApiTask
-public struct ApiTask {
+// MARK: NetworkTask
+public class NetworkTask {
     public let task: URLSessionDataTask?
+    
+    internal init(task: URLSessionDataTask?) {
+        self.task = task
+    }
     
     public func cancel() {
         self.task?.cancel()
     }
-}
-
-public extension ApiError {
-    internal init(_ error: NetworkError) {
-        switch error {
-        case .connectionFailure:
-            self = .connectionFailure
-        case .errorStatusCode(let statusCode):
-            self = .errorStatusCode(statusCode)
-        case .unknown(let reason):
-            self = .unknown(reason)
-        }
-    }
-}
+} 
 
 // MARK: Request
 public struct Request {
@@ -50,7 +67,7 @@ public struct Request {
     public var request: URLRequest
     
     public init(url: URL,
-                method: HTTPMethod,
+                method: HTTPMethod = .GET,
                 headers: [String: String] = [:],
                 body: Data? = nil,
                 provider: RequestProvider? = nil) {
@@ -72,40 +89,42 @@ public protocol Requestable {
     @discardableResult
     func call(_ request: Request,
               _ logger: LoggerProtocol?,
-              _ cache: NetworkCache?,
-              onCompletion: @escaping ((Data?, ApiError?) -> Void)) -> ApiTask
+              _ cache: NetworkCacheProtocol?,
+              onCompletion: @escaping ((Data?, NetworkError?) -> Void)) -> NetworkTask
     @discardableResult
     func call(_ request: Request,
               logger: LoggerProtocol?,
-              cache: NetworkCache?,
+              cache: NetworkCacheProtocol?,
               onSuccess: @escaping (Data) -> Void,
-              onError: @escaping (ApiError) -> Void,
-              onCompletion: ((Data?, ApiError?) -> Void)?) -> ApiTask 
+              onError: @escaping (NetworkError) -> Void,
+              onCompletion: ((Data?, NetworkError?) -> Void)?) -> NetworkTask 
     @discardableResult
     func call<T: Parseable>(_ request: Request,
                             logger: LoggerProtocol?,
-                            cache: NetworkCache?,
+                            cache: NetworkCacheProtocol?,
                             parser: ResponseParser,
                             onSuccess: @escaping (T) -> Void,
-                            onError: @escaping (ApiError) -> Void,
-                            onCompletion: ((T?, ApiError?) -> Void)?) -> ApiTask
+                            onError: @escaping (NetworkError) -> Void,
+                            onCompletion: ((T?, NetworkError?) -> Void)?) -> NetworkTask
 }
 
 public extension Requestable {
     @discardableResult
     func call(_ request: Request,
               _ logger: LoggerProtocol? = nil,
-              _ cache: NetworkCache? = nil,
-              onCompletion: @escaping ((Data?, ApiError?) -> Void)) -> ApiTask {
+              _ cache: NetworkCacheProtocol? = nil,
+              onCompletion: @escaping ((Data?, NetworkError?) -> Void)) -> NetworkTask {
+        let logger: LoggerProtocol? = logger ?? Injector.main.resolveOrDefault("FormsNetworking")
+        let cache: NetworkCacheProtocol? = cache ?? Injector.main.resolveOrDefault("FormsNetworking")
         let networkTask = NetworkProvider.call(request.request, logger, cache) { (result) in
             switch result {
             case .success(let data):
                 onCompletion(data, nil)
             case .failure(let error):
-                onCompletion(nil, ApiError(error))
+                onCompletion(nil, error)
             }
         }
-        return ApiTask(
+        return NetworkTask(
             task: networkTask
         )
     }
@@ -113,15 +132,15 @@ public extension Requestable {
     @discardableResult
     func call(_ request: Request,
               logger: LoggerProtocol? = nil,
-              cache: NetworkCache? = nil,
+              cache: NetworkCacheProtocol? = nil,
               onSuccess: @escaping (Data) -> Void,
-              onError: @escaping (ApiError) -> Void,
-              onCompletion: ((Data?, ApiError?) -> Void)? = nil) -> ApiTask {
+              onError: @escaping (NetworkError) -> Void,
+              onCompletion: ((Data?, NetworkError?) -> Void)? = nil) -> NetworkTask {
         return self.call(request, logger, cache) { (data, error) in
             if let data: Data = data {
                 onSuccess(data)
             }
-            if let error: ApiError = error {
+            if let error: NetworkError = error {
                 onError(error)
             }
             onCompletion?(data, error)
@@ -131,11 +150,11 @@ public extension Requestable {
     @discardableResult
     func call<T: Parseable>(_ request: Request,
                             logger: LoggerProtocol? = nil,
-                            cache: NetworkCache? = nil,
+                            cache: NetworkCacheProtocol? = nil,
                             parser: ResponseParser,
                             onSuccess: @escaping (T) -> Void,
-                            onError: @escaping (ApiError) -> Void,
-                            onCompletion: ((T?, ApiError?) -> Void)? = nil) -> ApiTask {
+                            onError: @escaping (NetworkError) -> Void,
+                            onCompletion: ((T?, NetworkError?) -> Void)? = nil) -> NetworkTask {
         return self.call(request, logger, cache) { (data, error) in
             parser.parse(
                 data: data,

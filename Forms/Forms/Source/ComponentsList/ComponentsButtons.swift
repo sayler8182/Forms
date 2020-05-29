@@ -16,6 +16,7 @@ public struct ComponentsButtons: ComponentsList {
         component.animationTime = 0.1
         component.height = UITableView.automaticDimension
         component.isEnabled = true
+        component.isLoading = false
         component.marginEdgeInset = UIEdgeInsets(0)
         component.minHeight = 44.0
         component.maxHeight = CGFloat.greatestConstraintConstant
@@ -31,7 +32,8 @@ public struct ComponentsButtons: ComponentsList {
             component.backgroundColors = Button.State<UIColor?>(
                 active: Theme.Colors.blue,
                 selected: Theme.Colors.blue.withAlphaComponent(0.7),
-                disabled: Theme.Colors.gray
+                disabled: Theme.Colors.gray,
+                loading: Theme.Colors.blue
             )
             component.titleColors = Button.State<UIColor?>(UIColor.white)
             component.titleFonts = Button.State<UIFont>(Theme.Fonts.regular(ofSize: 14))

@@ -63,22 +63,7 @@ private enum Integration {
         }()
     }
 }
-
-// MARK: [Integration.Section]
-fileprivate extension Array where Element == Integration.Section {
-    func row(for type: Integration.RowType,
-             from sections: [Integration.Section]) -> Integration.Row? {
-        for section in sections {
-            for row in section.rows {
-                if row.type == type { return row }
-                guard let result = self.row(for: type, from: row.sections) else { continue }
-                return result
-            }
-        }
-        return nil
-    }
-}
-
+ 
 // MARK: FormsIntegrationRootViewController
 public class FormsIntegrationRootViewController: FormsNavigationController {
     override public func postInit() {
@@ -86,19 +71,6 @@ public class FormsIntegrationRootViewController: FormsNavigationController {
         let controller = FormsIntegrationListViewController(items: Integration.Section.default)
             .with(title: "FormsIntegration")
         self.setRoot(controller)
-    }
-    
-    override public func setupView() {
-        super.setupView()
-        self.autoroute(to: nil)
-    }
-    
-    private func autoroute(to rowType: Integration.RowType?) {
-        guard let rowType: Integration.RowType = rowType else { return }
-        let sections: [Integration.Section] = Integration.Section.default
-        guard let row: Integration.Row = Integration.Section.default.row(for: rowType, from: sections) else { return }
-        guard let controller = self.rootViewController(of: FormsIntegrationListViewController.self) else { return }
-        controller.select(row: row)
     }
 }
 

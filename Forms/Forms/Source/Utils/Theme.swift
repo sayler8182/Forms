@@ -83,7 +83,7 @@ public class Theme: ThemeProtocol {
         let themeKey: String = Self.theme?.key ?? Self.systemTheme.key
         if let colors: ThemeColorsProtocol = Injector.main.resolve(themeKey) {
             return colors
-        } else if let colors: ThemeColorsProtocol = Injector.main.resolve() {
+        } else if let colors: ThemeColorsProtocol = Injector.main.resolveOrDefault("Forms") {
             return colors
         } else {
             return ThemeColors()
@@ -94,7 +94,7 @@ public class Theme: ThemeProtocol {
         let themeKey: String = Self.theme?.key ?? Self.systemTheme.key
         if let fonts: ThemeFontsProtocol = Injector.main.resolve(themeKey) {
             return fonts
-        } else if let fonts: ThemeFontsProtocol = Injector.main.resolve() {
+        } else if let fonts: ThemeFontsProtocol = Injector.main.resolveOrDefault("Forms") {
             return fonts
         } else {
             return ThemeFonts()

@@ -14,6 +14,10 @@ public extension UIActivityIndicatorView {
         self.color = color
         return self
     }
+    func with(hidesWhenStopped: Bool) -> Self {
+        self.hidesWhenStopped = hidesWhenStopped
+        return self
+    }
     func with(isAnimating: Bool) -> Self {
         isAnimating
             ? self.startAnimating()

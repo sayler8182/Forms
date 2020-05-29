@@ -11,6 +11,7 @@ import FormsAnalytics
 import FormsDemo
 import FormsDeveloperTools
 import FormsInjector
+import FormsLogger
 // import Notifications
 import FormsPermissions
 import FormsSocialKit
@@ -19,6 +20,9 @@ import UIKit
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
+    
+    @Injected
+    private var logger: LoggerProtocol? // swiftlint:disable:this let_var_whitespace
     
     func application(_ application: UIApplication,
                      didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
@@ -42,9 +46,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         // Notifications
         // Notifications.configure(
-        //    onNewToken: { fcm in print("\n\(fcm)\n") },
+        //    onNewToken: { fcm in logger?.log(.info, "\n\(fcm)\n") },
         //    onWillPresent: { _ in .alert },
-        //    onDidReceive: { response in print("\n\(response.notification.request.content.userInfo)\n") })
+        //    onDidReceive: { response in logger?.log(.info, "\n\(response.notification.request.content.userInfo)\n") })
         
         // Permission
         // Permission.notifications.ask { (_) in
@@ -64,7 +68,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             window.makeKeyAndVisible()
         }
         return true
-    } 
+    }
     
     func application(_ application: UIApplication,
                      didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
@@ -81,11 +85,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication,
                      didReceiveRemoteNotification userInfo: [AnyHashable: Any],
                      fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
-        print(userInfo)
+        self.logger?.log(.info, userInfo)
     }
     
     func application(_ application: UIApplication,
                      didReceiveRemoteNotification userInfo: [AnyHashable: Any]) {
-        print(userInfo)
+        self.logger?.log(.info, userInfo)
     }
 }

@@ -20,7 +20,7 @@ FormsLogger.framework
 Check if has internet connection
 
 ```swift
-Reachability.isConnected()
+Reachability.isConnected
 ```
 
 ## Request
@@ -108,7 +108,7 @@ self.call(
 
 ```swift
 class AppResponseParser: ResponseParser { 
-    override func parseError(data: Data) -> ApiError? {
+    override func parseError(data: Data) -> NetworkError? {
         // parse error from success response
         return nil
     }
@@ -150,7 +150,7 @@ self.call(
 let request = Request(
     url: "https://postman-echo.com".url,
     method: .GET)
-let task: ApiTask = self.call(
+let task: NetworkTask = self.call(
     request,
     onSuccess: { (_) in },
     onError: { (_) in },

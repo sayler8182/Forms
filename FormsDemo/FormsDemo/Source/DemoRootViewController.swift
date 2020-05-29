@@ -291,6 +291,19 @@ fileprivate extension Array where Element == DemoSection {
         }
         return nil
     }
+    
+    static func parentRow(parent: DemoRow? = nil,
+                          for type: DemoRowType,
+                          from sections: [DemoSection]) -> DemoRow? {
+           for section in sections {
+               for row in section.rows {
+                   if row.type.rawValue == type.rawValue { return parent }
+                guard let result = Self.parentRow(parent: row, for: type, from: row.sections) else { continue }
+                   return result
+               }
+           }
+           return nil
+       }
 }
 
 // MARK: DemoRootViewController
@@ -335,13 +348,7 @@ public class DemoRootViewController: FormsNavigationController {
         super.setupView()
         self.autoroute(to: nil)
     }
-    
-    override public func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
-        if #available(iOS 12.0, *) {
-            Theme.setUserInterfaceStyle(self.traitCollection.userInterfaceStyle)
-        }
-    }
-    
+     
     private func prepareItems() -> [DemoSection] {
         let defaultSections: [DemoSection] = Demo.Section.default
         guard self.sections.isNotEmpty else { return defaultSections }
@@ -360,7 +367,19 @@ public class DemoRootViewController: FormsNavigationController {
         let sections: [DemoSection] = Demo.Section.default
         guard let row: DemoRow = [DemoSection].row(for: rowType, from: sections) else { return }
         guard let controller = self.rootViewController(of: DemoListViewController.self) else { return }
-        controller.select(row: row)
+        self.fillPrePath(to: rowType, in: controller, from: sections)
+        controller.select(row: row, animated: false)
+    }
+    
+    private func fillPrePath(to rowType: DemoRowType,
+                             in controller: DemoListViewController,
+                             from sections: [DemoSection]) {
+        var rowType: DemoRowType = rowType
+        repeat {
+            guard let row: DemoRow = [DemoSection].parentRow(for: rowType, from: sections) else { break }
+            controller.select(row: row, animated: false)
+            rowType = row.type
+        } while true
     }
 }
 
@@ -455,23 +474,23 @@ private class DemoListViewController: FormsViewController {
         }
     }
     
-    fileprivate func select(row: DemoRow) {
+    fileprivate func select(row: DemoRow, animated: Bool = true) {
         if !row.sections.isEmpty {
             let controller = DemoListViewController(row, self.getRowController)
-            self.show(controller, sender: nil)
+            self.navigationController?.pushViewController(controller, animated: animated)
         } else if let controller: UIViewController = self.rowController(row) {
-            self.show(row, controller)
+            self.show(row, controller, animated)
         } else if let controller: UIViewController = self.getRowController(row) {
-            self.show(row, controller)
+            self.show(row, controller, animated)
         }
     }
     
-    private func show(_ row: DemoRow, _ controller: UIViewController) {
+    private func show(_ row: DemoRow, _ controller: UIViewController, _ animated: Bool) {
         controller.title = row.title
         if row.shouldPresent {
-            self.present(controller, animated: true, completion: nil)
+            self.present(controller, animated: animated, completion: nil)
         } else {
-            self.navigationController?.pushViewController(controller, animated: true)
+            self.navigationController?.pushViewController(controller, animated: animated)
         }
     }
     

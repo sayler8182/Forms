@@ -6,12 +6,13 @@
 //  Copyright © 2020 Limbo. All rights reserved.
 //
 
+import FormsUtils
 import Foundation
 
 // MARK: DemoArchitecturesCleanWorker
 class DemoArchitecturesCleanWorker {
     func getRandomNumber(completion: @escaping (Int) -> Void) {
-        Utils.delay(1) {
+        delay(1) {
             let number = Int.random(in: 0..<10)
             completion(number)
         }

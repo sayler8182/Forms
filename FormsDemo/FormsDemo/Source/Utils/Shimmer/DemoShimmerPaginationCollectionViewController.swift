@@ -169,7 +169,7 @@ private extension DemoProvider {
                    success: @escaping ([DemoCellModel]) -> Void,
                    fail: @escaping (Error) -> Void,
                    completion: (([DemoCellModel]?, Error?) -> Void)? = nil) {
-        Utils.delay(3.0) {
+        delay(3.0) {
             if let error: Error = error {
                 self.wasError = true
                 fail(error)

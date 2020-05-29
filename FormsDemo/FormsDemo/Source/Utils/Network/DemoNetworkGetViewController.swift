@@ -85,23 +85,23 @@ private struct NetworkMethods {
     static var demo: NetworkMethodsTest { NetworkMethodsTest() }
 }
 
-private class NetworkMethodsTest: Requestable {
-    @Injected
-    private var logger: LoggerProtocol // swiftlint:disable:this let_var_whitespace
+// MARK: NetworkMethodsTest
+private struct NetworkMethodsTest: Requestable {
     private var parser = AppResponseParser()
     
+    @discardableResult
     func get<T: Parseable>(onSuccess: @escaping (T) -> Void,
-                           onError: @escaping (ApiError) -> Void,
-                           onCompletion: ((T?, ApiError?) -> Void)? = nil) {
+                           onError: @escaping (NetworkError) -> Void,
+                           onCompletion: ((T?, NetworkError?) -> Void)? = nil) -> NetworkTask {
         let request = Request(
             url: "https://postman-echo.com/get?foo1=bar1&foo2=bar2".url,
             method: .GET,
             headers: [:],
             body: nil,
             provider: AppRequestProvider())
-        self.call(
+        return self.call(
             request,
-            logger: self.logger,
+            cache: NetworkTmpCache(ttl: 60),
             parser: self.parser,
             onSuccess: onSuccess,
             onError: onError,
@@ -109,6 +109,7 @@ private class NetworkMethodsTest: Requestable {
     }
 }
 
+// MARK: AppRequestProvider
 private class AppRequestProvider: RequestProvider {
     override func setHeaders(_ request: inout Request) {
         let headers = request.headers
@@ -116,8 +117,10 @@ private class AppRequestProvider: RequestProvider {
     }
 }
 
+// MARK: AppResponseParser
 private class AppResponseParser: ResponseParser { }
 
+// MARK: DemoNetworData
 struct DemoNetworData: Codable, Parseable {
     let url: String
     

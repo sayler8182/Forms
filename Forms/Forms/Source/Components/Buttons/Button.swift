@@ -15,23 +15,27 @@ public extension Button {
         case active
         case selected
         case disabled
+        case loading
     }
     
     class State<T> {
         var active: T
         var selected: T
         var disabled: T
+        var loading: T
         
         init(_ value: T) {
             self.active = value
             self.selected = value
             self.disabled = value
+            self.loading = value
         }
         
-        init(active: T, selected: T, disabled: T) {
+        init(active: T, selected: T, disabled: T, loading: T) {
             self.active = active
             self.selected = selected
             self.disabled = disabled
+            self.loading = loading
         }
         
         func value(for state: StateType) -> T {
@@ -39,16 +43,19 @@ public extension Button {
             case .active: return self.active
             case .selected: return self.selected
             case .disabled: return self.disabled
+            case .loading: return self.loading
             }
         }
     }
 }
 
 // MARK: Button
-open class Button: FormsComponent, Clickable, FormsComponentWithMarginEdgeInset {
-    private let backgroundView = UIView()
+open class Button: FormsComponent, Clickable, FormsComponentWithLoading, FormsComponentWithMarginEdgeInset {
+    private let backgroundView = UnShimmerableView()
         .with(isUserInteractionEnabled: true)
-    private let titleLabel = UILabel()
+    private let titleLabel = UnShimmerableLabel()
+    private lazy var loaderView = UIActivityIndicatorView()
+        .with(hidesWhenStopped: true)
     private let gestureRecognizer = UILongPressGestureRecognizer()
     
     open var animationTime: TimeInterval = 0.2
@@ -59,9 +66,11 @@ open class Button: FormsComponent, Clickable, FormsComponentWithMarginEdgeInset 
         didSet { self.updateMarginEdgeInset() }
     }
     open var height: CGFloat = UITableView.automaticDimension
-    open var isEnabled: Bool {
-        get { return self.gestureRecognizer.isEnabled }
-        set { newValue ? self.enable(animated: false) : self.disable(animated: false) }
+    open var isEnabled: Bool = true {
+        didSet { self.updateGesture() }
+    }
+    open var isLoading: Bool = false {
+        didSet { self.updateGesture() }
     }
     open var maxHeight: CGFloat = CGFloat.greatestConstraintConstant {
         didSet { self.updateMaxHeight() }
@@ -110,16 +119,30 @@ open class Button: FormsComponent, Clickable, FormsComponentWithMarginEdgeInset 
         self.backgroundView.addGestureRecognizer(self.gestureRecognizer)
     }
     
-    override open func enable(animated: Bool) {
-        guard !self.gestureRecognizer.isEnabled else { return }
-        self.gestureRecognizer.isEnabled = true
+    override open func enable(animated: Bool = true) {
+        guard !self.isEnabled else { return }
+        self.isEnabled = true
         self.setState(.active, animated: animated)
     }
     
-    override open func disable(animated: Bool) {
-        guard self.gestureRecognizer.isEnabled else { return }
-        self.gestureRecognizer.isEnabled = false
+    override open func disable(animated: Bool = true) {
+        guard self.isEnabled else { return }
+        self.isEnabled = false
         self.setState(.disabled, animated: animated)
+    }
+    
+    open func startLoading(animated: Bool = true) {
+        guard !self.isLoading else { return }
+        self.isLoading = true
+        self.setState(.loading, animated: animated)
+        self.addLoader(animated: animated)
+    }
+    
+    open func stopLoading(animated: Bool = true) {
+        guard self.isLoading else { return }
+        self.isLoading = false
+        self.setState(.active, animated: animated)
+        self.removeLoader(animated: animated)
     }
     
     override open func componentHeight() -> CGFloat {
@@ -188,6 +211,19 @@ open class Button: FormsComponent, Clickable, FormsComponentWithMarginEdgeInset 
         self.titleLabel.constraint(to: self.backgroundView, position: .trailing)?.constant = -edgeInset.trailing
     }
     
+    private func updateGesture() {
+        self.gestureRecognizer.isEnabled = self.isEnabled && !self.isLoading
+        if self.isEnabled && !self.isLoading {
+            self.enable(animated: false)
+        } else if !self.isEnabled && !self.isLoading {
+            self.disable(animated: false)
+        } else if self.isLoading {
+            self.startLoading(animated: false)
+        } else if !self.isLoading {
+            self.stopLoading(animated: false)
+        }
+    }
+    
     private func updateMaxHeight() {
         let maxHeight: CGFloat = self.maxHeight
         self.constraint(position: .height, relation: .lessThanOrEqual)?.constant = maxHeight
@@ -203,6 +239,7 @@ open class Button: FormsComponent, Clickable, FormsComponentWithMarginEdgeInset 
         case .active: self.setState(.active, animated: false, force: true)
         case .selected: self.setState(.selected, animated: false, force: true)
         case .disabled: self.setState(.disabled, animated: false, force: true)
+        case .loading: self.setState(.loading, animated: false, force: true)
         }
     }
     
@@ -214,8 +251,40 @@ open class Button: FormsComponent, Clickable, FormsComponentWithMarginEdgeInset 
             self.backgroundView.backgroundColor = self.backgroundColors.value(for: state)
             self.titleLabel.textColor = self.titleColors.value(for: state)
             self.titleLabel.font = self.titleFonts.value(for: state)
+            self.loaderView.color = self.titleColors.value(for: state)
         }
         self.state = state
+    }
+    
+    private func addLoader(animated: Bool) {
+        self.loaderView.startAnimating()
+        self.loaderView.center = self.backgroundView.center
+        self.backgroundView.addSubview(self.loaderView, with: [
+            Anchor.to(self.backgroundView).center
+        ])
+        self.animation(
+            animated,
+            duration: self.animationTime * 3,
+            animations: {
+                self.titleLabel.alpha = 0
+                self.loaderView.alpha = 1
+        }, completion: { status in
+            self.titleLabel.isHidden = status
+        })
+    }
+    
+    private func removeLoader(animated: Bool) {
+        self.titleLabel.isHidden = false
+        self.animation(
+            animated,
+            duration: self.animationTime * 3,
+            animations: {
+                self.titleLabel.alpha = 1
+                self.loaderView.alpha = 0
+        }, completion: { _ in
+            self.loaderView.stopAnimating()
+            self.loaderView.removeFromSuperview()
+        })
     }
 }
 

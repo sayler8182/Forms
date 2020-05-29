@@ -36,11 +36,9 @@ class DemoTransitionNavigationViewController: FormsNavigationController, Transit
     
     override func setupActions() {
         super.setupActions()
-        
         self.edgePanGesture.addTarget(self, action: #selector(handleTransitionBackSwipe))
         self.edgePanGesture.edges = .left
         self.view.addGestureRecognizer(self.edgePanGesture)
-        
         self.changeButton.onClick = { [unowned self] in
             if self.viewControllers.count == 1 {
                 self.pushViewController(DemoSecondController(), animated: true)

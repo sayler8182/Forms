@@ -56,7 +56,6 @@ class DemoTransitionControllerViewController: FormsViewController {
 
     override func setupActions() {
         super.setupActions()
-        
         self.showSlideButton.onClick = { [unowned self] in
             let controller = DemoSecondNavigationController()
             controller.modalPresentationStyle = .custom
@@ -85,7 +84,6 @@ private class DemoSecondNavigationController: FormsNavigationController, Transit
     
     override func setupActions() {
         super.setupActions()
-        
         self.edgePanGesture.addTarget(self, action: #selector(handleTransitionBackSwipe))
         self.edgePanGesture.edges = .left
         self.view.addGestureRecognizer(self.edgePanGesture)
@@ -139,7 +137,6 @@ private class DemoSecondViewController: FormsViewController {
     
     override func setupActions() {
         super.setupActions()
-        
         self.hideButton.onClick = { [unowned self] in
             self.dismiss(animated: true, completion: nil)
         }
@@ -202,7 +199,6 @@ private class DemoThirdViewController: FormsViewController, TransitionableContro
     
     override func setupActions() {
         super.setupActions()
-        
         self.hideButton.onClick = { [unowned self] in
             self.setTransitionSource(view: self.hideButton)
             self.dismiss(animated: true, completion: nil)

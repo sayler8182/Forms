@@ -9,25 +9,6 @@
 import FormsDeveloperTools
 import UIKit
 
-// MARK: Utils
-enum Utils {
-    static func delay(_ delay: Double,
-                      _ action: @escaping () -> Void) {
-        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + delay) {
-            action()
-        }
-    }
-    
-    static func delay<T: AnyObject>(_ delay: Double,
-                                    _ target: T,
-                                    _ action: @escaping (T) -> Void) {
-        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + delay) { [weak target] in
-            guard let target: T = target else { return }
-            action(target)
-        }
-    }
-}
-
 // MARK: DemoDeveloperToolsManager
 public enum DemoDeveloperToolsManager {
     public static func onSelect(_ key: DeveloperFeatureKey,

@@ -16,10 +16,7 @@ public struct ComponentsLabels: ComponentsList {
         component.alignment = .natural
         component.animationTime = 0.2
         component.attributedText = nil
-        component.backgroundColor = UIColor.clear
-        component.color = Theme.Colors.primaryText
         component.marginEdgeInset = UIEdgeInsets(0)
-        component.font = Theme.Fonts.regular(ofSize: 14)
         component.height = UITableView.automaticDimension
         component.isUserInteractionEnabled = true
         component.minHeight = 0.0

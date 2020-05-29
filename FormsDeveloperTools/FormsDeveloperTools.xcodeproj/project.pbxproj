@@ -10,6 +10,8 @@
 		7158CB89246A7B2400797B83 /* NSLayoutConstraint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7158CB7D246A7B2400797B83 /* NSLayoutConstraint.swift */; };
 		7158CB8C246A7B2400797B83 /* ConsoleAutolayoutContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7158CB80246A7B2400797B83 /* ConsoleAutolayoutContext.swift */; };
 		7158CB8D246A7B2400797B83 /* UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7158CB81246A7B2400797B83 /* UIView.swift */; };
+		715C440A24813CCB0093EBFF /* FormsInjector.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 715C440924813CCB0093EBFF /* FormsInjector.framework */; };
+		715C440E24813CD00093EBFF /* FormsLogger.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 715C440D24813CD00093EBFF /* FormsLogger.framework */; };
 		7178025B24543D2B0057E848 /* DeveloperTools.h in Headers */ = {isa = PBXBuildFile; fileRef = 7178025924543D2B0057E848 /* DeveloperTools.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		7178029B24543F3F0057E848 /* LifetimeTracker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7178029A24543F3F0057E848 /* LifetimeTracker.swift */; };
 		717802D32454556E0057E848 /* LifetimeTrackerListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 717802C02454556E0057E848 /* LifetimeTrackerListViewController.swift */; };
@@ -31,6 +33,8 @@
 		7158CB7D246A7B2400797B83 /* NSLayoutConstraint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSLayoutConstraint.swift; sourceTree = "<group>"; };
 		7158CB80246A7B2400797B83 /* ConsoleAutolayoutContext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConsoleAutolayoutContext.swift; sourceTree = "<group>"; };
 		7158CB81246A7B2400797B83 /* UIView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIView.swift; sourceTree = "<group>"; };
+		715C440924813CCB0093EBFF /* FormsInjector.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FormsInjector.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		715C440D24813CD00093EBFF /* FormsLogger.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FormsLogger.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7178025924543D2B0057E848 /* DeveloperTools.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DeveloperTools.h; sourceTree = "<group>"; };
 		7178025A24543D2B0057E848 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7178029A24543F3F0057E848 /* LifetimeTracker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LifetimeTracker.swift; sourceTree = "<group>"; };
@@ -53,6 +57,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				715C440E24813CD00093EBFF /* FormsLogger.framework in Frameworks */,
+				715C440A24813CCB0093EBFF /* FormsInjector.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -68,11 +74,21 @@
 			path = Extensions;
 			sourceTree = "<group>";
 		};
+		715C440824813CCB0093EBFF /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				715C440D24813CD00093EBFF /* FormsLogger.framework */,
+				715C440924813CCB0093EBFF /* FormsInjector.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		7178024C24543D2B0057E848 = {
 			isa = PBXGroup;
 			children = (
 				7178025824543D2B0057E848 /* FormsDeveloperTools */,
 				7150CD8B247FA05F00F2681B /* FormsDeveloperTools.framework */,
+				715C440824813CCB0093EBFF /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
