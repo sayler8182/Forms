@@ -8,6 +8,7 @@
 
 import Forms
 import FormsAnchor
+import FormsToastKit
 import FormsUtils
 import UIKit
 

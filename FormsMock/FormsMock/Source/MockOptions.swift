@@ -11,9 +11,9 @@ import Foundation
 // MARK: MockOptions
 public enum MockOptions {
     case none
-    case quality(_ quality: Quality)
     case length(_ length: Length)
     case nullable(_ chance: Double)
+    case quality(_ quality: Quality)
 }
 
 public extension MockOptions {
@@ -29,7 +29,7 @@ public extension MockOptions {
     }
 }
 
-// MARK: MockOptions
+// MARK: [MockOptions]
 extension Array where Element == MockOptions {
     var length: MockOptions.Length? {
         return self.compactMap { (item: MockOptions) -> MockOptions.Length? in

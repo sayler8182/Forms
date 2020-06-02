@@ -8,6 +8,7 @@
 
 import Forms
 import FormsSocialKit
+import FormsToastKit
 import UIKit
 
 // MARK: FormsIntegrationSocialKitGoogleViewController

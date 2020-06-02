@@ -10,17 +10,33 @@ import FormsLogger
 import Foundation
 
 // MARK: ContentType {
-internal enum ContentType: String {
-    case imageJPEG = "image/jpeg"
-    case imagePNG = "image/png"
+public enum ContentType: String {
+    case jpeg = "image/jpeg"
+    case jpg = "image/jpg"
+    case png = "image/png"
+    case zip = "application/zip"
+    case pdf = "application/pdf"
+    case doc = "application/msword"
     case unknown
     
-    init(_ contentType: Any?) {
+    public init(contentType: Any?) {
         guard let contentType: String = contentType as? String else {
             self = .unknown
             return
         }
         self = ContentType(rawValue: contentType) ?? .unknown
+    }
+    
+    public init(extension: String?) {
+        switch `extension` {
+        case "jpeg": self = .jpeg
+        case "jpg": self = .jpg
+        case "png": self = .png
+        case "zip": self = .zip
+        case "pdf": self = .pdf
+        case "doc": self = .doc
+        default: self = .unknown
+        }
     }
 }
 

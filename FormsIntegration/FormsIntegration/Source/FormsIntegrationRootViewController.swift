@@ -19,8 +19,8 @@ private enum Integration {
         case developerTools
         // Permissions
         case permissions
-        // SideMenu
-        case sideMenu
+        // SideMenuKit
+        case sideMenuKit
         // SocialKit
         case socialKit
         case socialKitApple
@@ -51,8 +51,8 @@ private enum Integration {
                 Section(title: "Permissions", rows: [
                     Row(type: .permissions, title: "Permissions")
                 ]),
-                Section(title: "SideMenu", rows: [
-                    Row(type: .sideMenu, title: "SideMenu")
+                Section(title: "SideMenuKit", rows: [
+                    Row(type: .sideMenuKit, title: "SideMenuKit")
                 ]),
                 Section(title: "SocialKit", rows: [
                     Row(type: .socialKitApple, title: "SocialKit Apple"),
@@ -144,8 +144,8 @@ private class FormsIntegrationListViewController: FormsViewController {
         case .developerTools:           return FormsIntegrationDeveloperToolsViewController()
         // Permission
         case .permissions:              return FormsIntegrationPermissionsViewController()
-        // SideMenu
-        case .sideMenu:                 return FormsIntegrationSideMenuViewController()
+        // SideMenuKit
+        case .sideMenuKit:              return FormsIntegrationSideMenuKitViewController()
         // SocialKit
         case .socialKitApple:           return FormsIntegrationSocialKitAppleViewController()
         case .socialKitFacebook:        return FormsIntegrationSocialKitFacebookViewController()

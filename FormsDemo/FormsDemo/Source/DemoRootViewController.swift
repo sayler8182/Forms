@@ -38,10 +38,6 @@ private enum Demo {
         // Controllers
         case controller
         case collectionViewController
-        case modalController
-        case pagerController
-        case sideMenuController
-        case tabBarController
         case tableViewController
         case viewController
         // Components
@@ -69,22 +65,9 @@ private enum Demo {
         case componentsUtils
         // Utils
         case utils
-        case utilsAnalytics
-        case utilsAppStoreReview
         case utilsAttributedString
-        case utilsDeveloperTools
-        case utilsDeveloperToolsConsole
-        case utilsDeveloperToolsLifetime
-        case utilsDeveloperToolsMenu
-        case utilsImagePicker
-        case utilsImagePickerSystem
         case utilsLoader
-        case utilsMock
         case utilsModal
-        case utilsNetwork
-        case utilsNetworkGet
-        case utilsNetworkImage
-        case utilsPermissions
         case utilsScrollSteps
         case utilsShimmer
         case utilsShimmerPaginationCollection
@@ -92,18 +75,37 @@ private enum Demo {
         case utilsShimmerCollection
         case utilsShimmerShimmer
         case utilsShimmerTable
-        case utilsSocialKit
-        case utilsSocialKitAll
-        case utilsSocialKitApple
-        case utilsSocialKitFacebook
-        case utilsSocialKitGoogle
         case utilsStorage
         case utilsTheme
-        case utilsToast
-        case utilsTransitions
-        case utilsTransitionsController
-        case utilsTransitionsNavigation
-        case utilsValidators
+        // Frameworks
+        case frameworkAnalytics
+        case frameworkAppStoreReview
+        case frameworkDeveloperTools
+        case frameworkDeveloperToolsConsole
+        case frameworkDeveloperToolsLifetime
+        case frameworkDeveloperToolsMenu
+        case frameworkMock
+        case frameworkNetwork
+        case frameworkNetworkGet
+        case frameworkNetworkImage
+        case frameworkPermissions
+        case frameworkTransitions
+        case frameworkTransitionsController
+        case frameworkTransitionsNavigation
+        case frameworkValidators
+        // Kits
+        case kitCardKit
+        case kitImagePickerKit
+        case kitImagePickerKitSystem
+        case kitPagerKit
+        case kitSideMenuKit
+        case kitSocialKit
+        case kitSocialKitAll
+        case kitSocialKitApple
+        case kitSocialKitFacebook
+        case kitSocialKitGoogle
+        case kitTabBarKit
+        case kitToastKit
         // Architectures
         case architectures
         case architecturesClean
@@ -125,10 +127,6 @@ private enum Demo {
             return [
                 Section(title: "Controllers", rows: [
                     Row(type: RowType.collectionViewController, title: "FormsCollectionViewController"),
-                    Row(type: RowType.modalController, title: "FormsModalController"),
-                    Row(type: RowType.pagerController, title: "FormsPagerController"),
-                    Row(type: RowType.sideMenuController, title: "SideMenuController", shouldPresent: true),
-                    Row(type: RowType.tabBarController, title: "FormsTabBarController", shouldPresent: true),
                     Row(type: RowType.tableViewController, title: "FormsTableViewController"),
                     Row(type: RowType.viewController, title: "FormsViewController")
                 ]),
@@ -186,40 +184,9 @@ private enum Demo {
                     Row(type: RowType.componentsUtils, title: "Utils")
                 ]),
                 Section(title: "Utils", rows: [
-                    Row(type: RowType.utilsAnalytics, title: "Analytics"),
-                    Row(type: RowType.utilsAppStoreReview, title: "AppStoreReview"),
                     Row(type: RowType.utilsAttributedString, title: "AttributedString"),
-                    Row(
-                        type: RowType.utilsDeveloperTools,
-                        title: "DeveloperTools",
-                        sections: [
-                            Section(rows: [
-                                Row(type: RowType.utilsDeveloperToolsConsole, title: "Console"),
-                                Row(type: RowType.utilsDeveloperToolsLifetime, title: "Lifetime"),
-                                Row(type: RowType.utilsDeveloperToolsMenu, title: "Menu")
-                            ])
-                    ]),
-                    Row(
-                        type: RowType.utilsImagePicker,
-                        title: "ImagePicker",
-                        sections: [
-                            Section(rows: [
-                                Row(type: RowType.utilsImagePickerSystem, title: "System")
-                            ])
-                    ]),
                     Row(type: RowType.utilsLoader, title: "Loader"),
-                    Row(type: RowType.utilsMock, title: "Mock"),
                     Row(type: RowType.utilsModal, title: "Modal"),
-                    Row(
-                        type: RowType.utilsNetwork,
-                        title: "Network",
-                        sections: [
-                            Section(rows: [
-                                Row(type: RowType.utilsNetworkGet, title: "Network Get"),
-                                Row(type: RowType.utilsNetworkImage, title: "Network Image")
-                            ])
-                    ]),
-                    Row(type: RowType.utilsPermissions, title: "Permissions"),
                     Row(type: RowType.utilsScrollSteps, title: "ScrollSteps"),
                     Row(
                         type: RowType.utilsShimmer,
@@ -233,30 +200,69 @@ private enum Demo {
                                 Row(type: RowType.utilsShimmerTable, title: "Shimmer Table")
                             ])
                     ]),
+                    Row(type: RowType.utilsStorage, title: "Storage"),
+                    Row(type: RowType.utilsTheme, title: "Theme")  
+                ]),
+                Section(title: "Frameworks", rows: [
+                    Row(type: RowType.frameworkAnalytics, title: "Analytics"),
+                    Row(type: RowType.frameworkAppStoreReview, title: "AppStoreReview"),
                     Row(
-                        type: RowType.utilsSocialKit,
-                        title: "SocialKit",
+                        type: RowType.frameworkDeveloperTools,
+                        title: "DeveloperTools",
                         sections: [
                             Section(rows: [
-                                Row(type: RowType.utilsSocialKitAll, title: "SocialKit All"),
-                                Row(type: RowType.utilsSocialKitApple, title: "SocialKit Apple"),
-                                Row(type: RowType.utilsSocialKitFacebook, title: "SocialKit Facebook"),
-                                Row(type: RowType.utilsSocialKitGoogle, title: "SocialKit Google")
+                                Row(type: RowType.frameworkDeveloperToolsConsole, title: "Console"),
+                                Row(type: RowType.frameworkDeveloperToolsLifetime, title: "Lifetime"),
+                                Row(type: RowType.frameworkDeveloperToolsMenu, title: "Menu")
                             ])
                     ]),
-                    Row(type: RowType.utilsStorage, title: "Storage"),
-                    Row(type: RowType.utilsTheme, title: "Theme"),
-                    Row(type: RowType.utilsToast, title: "Toast"),
+                    Row(type: RowType.frameworkMock, title: "Mock"),
                     Row(
-                        type: RowType.utilsTransitions,
+                        type: RowType.frameworkNetwork,
+                        title: "Network",
+                        sections: [
+                            Section(rows: [
+                                Row(type: RowType.frameworkNetworkGet, title: "Network Get"),
+                                Row(type: RowType.frameworkNetworkImage, title: "Network Image")
+                            ])
+                    ]),
+                    Row(type: RowType.frameworkPermissions, title: "Permissions"),
+                    Row(
+                        type: RowType.frameworkTransitions,
                         title: "Transitions",
                         sections: [
                             Section(rows: [
-                                Row(type: RowType.utilsTransitionsController, title: "Transitions Controller"),
-                                Row(type: RowType.utilsTransitionsNavigation, title: "Transitions Navigation", shouldPresent: true)
+                                Row(type: RowType.frameworkTransitionsController, title: "Transitions Controller"),
+                                Row(type: RowType.frameworkTransitionsNavigation, title: "Transitions Navigation", shouldPresent: true)
                             ])
                     ]),
-                    Row(type: RowType.utilsValidators, title: "Validators")
+                    Row(type: RowType.frameworkValidators, title: "Validators")
+                ]),
+                Section(title: "Kits", rows: [
+                    Row(type: RowType.kitCardKit, title: "CardKit"),
+                    Row(
+                        type: RowType.kitImagePickerKit,
+                        title: "ImagePickerKit",
+                        sections: [
+                            Section(rows: [
+                                Row(type: RowType.kitImagePickerKitSystem, title: "System")
+                            ])
+                    ]),
+                    Row(type: RowType.kitPagerKit, title: "PagerKit"),
+                    Row(type: RowType.kitSideMenuKit, title: "SideMenuKit", shouldPresent: true),
+                    Row(
+                        type: RowType.kitSocialKit,
+                        title: "SocialKit",
+                        sections: [
+                            Section(rows: [
+                                Row(type: RowType.kitSocialKitAll, title: "SocialKit All"),
+                                Row(type: RowType.kitSocialKitApple, title: "SocialKit Apple"),
+                                Row(type: RowType.kitSocialKitFacebook, title: "SocialKit Facebook"),
+                                Row(type: RowType.kitSocialKitGoogle, title: "SocialKit Google")
+                            ])
+                    ]),
+                    Row(type: RowType.kitTabBarKit, title: "TabBarKit", shouldPresent: true),
+                    Row(type: RowType.kitToastKit, title: "ToastKit")
                 ]),
                 Section(title: "Architectures", rows: [
                     Row(type: RowType.architecturesClean, title: "Clean Swift")
@@ -499,10 +505,6 @@ private class DemoListViewController: FormsViewController {
         switch type {
         // controllers
         case .collectionViewController:                         return DemoCollectionViewController()
-        case .modalController:                                  return DemoModalController()
-        case .pagerController:                                  return DemoPagerController()
-        case .sideMenuController:                               return DemoSideMenuController()
-        case .tabBarController:                                 return DemoTabBarController()
         case .tableViewController:                              return DemoTableViewController()
         case .viewController:                                   return DemoViewController()
         // components
@@ -523,40 +525,46 @@ private class DemoListViewController: FormsViewController {
         case .componentsProgressBars:                           return DemoProgressBarViewController()
         case .componentsUtils:                                  return DemoUtilsViewController()
         // utils
-        case .utilsAnalytics:                                   return DemoAnalyticsViewController()
-        case .utilsAppStoreReview:                              return DemoAppStoreReviewViewController()
         case .utilsAttributedString:                            return DemoAttributedStringViewController()
-        case .utilsDeveloperToolsConsole:                       return DemoDeveloperToolsConsoleViewController()
-        case .utilsDeveloperToolsLifetime:                      return DemoDeveloperToolsLifetimeViewController()
-        case .utilsDeveloperToolsMenu:                          return DemoDeveloperToolsMenuViewController()
-        case .utilsImagePickerSystem:                           return DemoImagePickerSystemViewController()
         case .utilsLoader:                                      return DemoLoaderViewController()
-        case .utilsMock:                                        return DemoMockViewController()
         case .utilsModal:                                       return DemoModalViewController()
-        case .utilsNetworkGet:                                  return DemoNetworkGetViewController()
-        case .utilsNetworkImage:                                return DemoNetworkImageViewController()
-        case .utilsPermissions:                                 return DemoPermissionsViewController()
         case .utilsScrollSteps:                                 return DemoScrollStepsViewController()
         case .utilsShimmerPaginationCollection:                 return DemoShimmerPaginationCollectionViewController()
         case .utilsShimmerPaginationTable:                      return DemoShimmerPaginationTableViewController()
         case .utilsShimmerCollection:                           return DemoShimmerCollectionViewController()
         case .utilsShimmerShimmer:                              return DemoShimmerViewController()
         case .utilsShimmerTable:                                return DemoShimmerTableViewController()
-        case .utilsSocialKitAll:                                return DemoSocialKitAllTableViewController()
-        case .utilsSocialKitApple:
+        case .utilsStorage:                                     return DemoStorageViewController()
+        case .utilsTheme:                                       return DemoThemeViewController()
+        // frameworks
+        case .frameworkAnalytics:                               return DemoAnalyticsViewController()
+        case .frameworkAppStoreReview:                          return DemoAppStoreReviewViewController()
+        case .frameworkDeveloperToolsConsole:                   return DemoDeveloperToolsConsoleViewController()
+        case .frameworkDeveloperToolsLifetime:                  return DemoDeveloperToolsLifetimeViewController()
+        case .frameworkDeveloperToolsMenu:                      return DemoDeveloperToolsMenuViewController()
+        case .frameworkMock:                                    return DemoMockViewController()
+        case .frameworkNetworkGet:                              return DemoNetworkGetViewController()
+        case .frameworkNetworkImage:                            return DemoNetworkImageViewController()
+        case .frameworkPermissions:                             return DemoPermissionsViewController()
+        case .frameworkTransitionsController:                   return DemoTransitionControllerViewController()
+        case .frameworkTransitionsNavigation:                   return DemoTransitionNavigationViewController()
+        case .frameworkValidators:                              return DemoValidatorsViewController()
+        // kits
+        case .kitCardKit:                                       return DemoCardKitController()
+        case .kitImagePickerKitSystem:                          return DemoImagePickerKitSystemViewController()
+        case .kitPagerKit:                                      return DemoPagerKitController()
+        case .kitSideMenuKit:                                   return DemoSideMenuKitController()
+        case .kitSocialKitAll:                                  return DemoSocialKitAllTableViewController()
+        case .kitSocialKitApple:
             if #available(iOS 13.0, *) {
                 return DemoSocialKitAppleTableViewController()
             } else {
                 return nil
             }
-        case .utilsSocialKitFacebook:                           return DemoSocialKitFacebookTableViewController()
-        case .utilsSocialKitGoogle:                             return DemoSocialKitGoogleTableViewController()
-        case .utilsToast:                                       return DemoToastViewController()
-        case .utilsStorage:                                     return DemoStorageViewController()
-        case .utilsTheme:                                       return DemoThemeViewController()
-        case .utilsTransitionsController:                       return DemoTransitionControllerViewController()
-        case .utilsTransitionsNavigation:                       return DemoTransitionNavigationViewController()
-        case .utilsValidators:                                  return DemoValidatorsViewController()
+        case .kitSocialKitFacebook:                             return DemoSocialKitFacebookTableViewController()
+        case .kitSocialKitGoogle:                               return DemoSocialKitGoogleTableViewController()
+        case .kitTabBarKit:                                     return DemoTabBarKitController()
+        case .kitToastKit:                                      return DemoToastKitViewController()
         // architectures
         case .architecturesClean:                               return self.injector.resolve(DemoArchitecturesCleanViewController.self)
         default:                                                return nil

@@ -11,14 +11,26 @@
 		71228E0B2431CF7F00D08B20 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71228E0A2431CF7F00D08B20 /* SceneDelegate.swift */; };
 		71228E122431CF8100D08B20 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 71228E112431CF8100D08B20 /* Assets.xcassets */; };
 		71228E2C2431CFBF00D08B20 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 71228E2B2431CFBF00D08B20 /* LaunchScreen.storyboard */; };
+		7136A00D2486623100298D3B /* FormsAppStoreReview.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7136A007248661AE00298D3B /* FormsAppStoreReview.framework */; };
+		7136A00E2486623100298D3B /* FormsAppStoreReview.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 7136A007248661AE00298D3B /* FormsAppStoreReview.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		7136A05D24866AFC00298D3B /* FormsTabBarKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7136A05724866AE300298D3B /* FormsTabBarKit.framework */; };
+		7136A05E24866AFC00298D3B /* FormsTabBarKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 7136A05724866AE300298D3B /* FormsTabBarKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		7136A0BB24866ED500298D3B /* FormsPagerKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7136A0A924866E5F00298D3B /* FormsPagerKit.framework */; };
+		7136A0BC24866ED500298D3B /* FormsPagerKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 7136A0A924866E5F00298D3B /* FormsPagerKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		7136A120248673F300298D3B /* FormsCardKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7136A107248672EF00298D3B /* FormsCardKit.framework */; };
+		7136A121248673F300298D3B /* FormsCardKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 7136A107248672EF00298D3B /* FormsCardKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		7136A122248674FB00298D3B /* FormsToastKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71369FE72486605A00298D3B /* FormsToastKit.framework */; };
+		7136A123248674FB00298D3B /* FormsToastKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 71369FE72486605A00298D3B /* FormsToastKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		7136A1242486761500298D3B /* FormsSideMenuKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71369FDE2486605A00298D3B /* FormsSideMenuKit.framework */; };
+		7136A1252486761500298D3B /* FormsSideMenuKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 71369FDE2486605A00298D3B /* FormsSideMenuKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		7136A14A2486941E00298D3B /* FormsImagePickerKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71369FEC2486605A00298D3B /* FormsImagePickerKit.framework */; };
+		7136A14B2486941E00298D3B /* FormsImagePickerKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 71369FEC2486605A00298D3B /* FormsImagePickerKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		7150CE64247FA9B100F2681B /* FormsAnalytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7150CE10247FA6C200F2681B /* FormsAnalytics.framework */; };
 		7150CE65247FA9B100F2681B /* FormsAnalytics.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 7150CE10247FA6C200F2681B /* FormsAnalytics.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		7150CE66247FA9B100F2681B /* FormsAnchor.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7150CE15247FA71100F2681B /* FormsAnchor.framework */; };
 		7150CE67247FA9B100F2681B /* FormsAnchor.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 7150CE15247FA71100F2681B /* FormsAnchor.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		7150CE68247FA9B100F2681B /* FormsDeveloperTools.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7150CE1A247FA71F00F2681B /* FormsDeveloperTools.framework */; };
 		7150CE69247FA9B100F2681B /* FormsDeveloperTools.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 7150CE1A247FA71F00F2681B /* FormsDeveloperTools.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		7150CE6A247FA9B100F2681B /* FormsImagePicker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7150CE1F247FA72700F2681B /* FormsImagePicker.framework */; };
-		7150CE6B247FA9B100F2681B /* FormsImagePicker.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 7150CE1F247FA72700F2681B /* FormsImagePicker.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		7150CE6C247FA9B100F2681B /* FormsInjector.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7150CE24247FA72D00F2681B /* FormsInjector.framework */; };
 		7150CE6D247FA9B100F2681B /* FormsInjector.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 7150CE24247FA72D00F2681B /* FormsInjector.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		7150CE6E247FA9B100F2681B /* FormsLogger.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7150CE29247FA73300F2681B /* FormsLogger.framework */; };
@@ -29,8 +41,6 @@
 		7150CE73247FA9B100F2681B /* FormsNetworking.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 7150CE33247FA74200F2681B /* FormsNetworking.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		7150CE74247FA9B100F2681B /* FormsPermissions.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7150CE3D247FA76F00F2681B /* FormsPermissions.framework */; };
 		7150CE75247FA9B100F2681B /* FormsPermissions.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 7150CE3D247FA76F00F2681B /* FormsPermissions.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		7150CE76247FA9B100F2681B /* FormsSideMenu.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7150CE42247FA78300F2681B /* FormsSideMenu.framework */; };
-		7150CE77247FA9B100F2681B /* FormsSideMenu.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 7150CE42247FA78300F2681B /* FormsSideMenu.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		7150CE78247FA9B100F2681B /* FormsSocialKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7150CE47247FA78A00F2681B /* FormsSocialKit.framework */; };
 		7150CE79247FA9B100F2681B /* FormsSocialKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 7150CE47247FA78A00F2681B /* FormsSocialKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		7150CE7A247FA9B100F2681B /* FormsTransitions.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7150CE4C247FA79000F2681B /* FormsTransitions.framework */; };
@@ -51,6 +61,55 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		71369FDD2486605A00298D3B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 71CFF419245954B90067D13E /* FormsSideMenuKit.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 7150CD99247FA05F00F2681B;
+			remoteInfo = FormsSideMenuKit;
+		};
+		71369FE62486605A00298D3B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 71369F822486585100298D3B /* FormsToastKit.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 71369F8E2486589C00298D3B;
+			remoteInfo = FormsToastKit;
+		};
+		71369FEB2486605A00298D3B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 71DB662D245826C900B16145 /* FormsImagePickerKit.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 7150CD8D247FA05F00F2681B;
+			remoteInfo = FormsImagePickerKit;
+		};
+		7136A006248661AE00298D3B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 7136A002248661AD00298D3B /* FormsAppStoreReview.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 71369FF7248661AD00298D3B;
+			remoteInfo = FormsAppStoreReview;
+		};
+		7136A05624866AE300298D3B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 7136A04124866AE200298D3B /* FormsTabBarKit.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 7136A03624866AE200298D3B;
+			remoteInfo = FormsTabBarKit;
+		};
+		7136A0A824866E5F00298D3B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 7136A09624866E5E00298D3B /* FormsPagerKit.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 7136A08B24866E5E00298D3B;
+			remoteInfo = FormsPagerKit;
+		};
+		7136A106248672EF00298D3B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 7136A102248672EE00298D3B /* FormsCardKit.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 7136A0F7248672EE00298D3B;
+			remoteInfo = FormsCardKit;
+		};
 		713B9C12243D08E1001F6E3A /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 713B9C0D243D08E0001F6E3A /* FormsDemo.xcodeproj */;
@@ -85,13 +144,6 @@
 			proxyType = 2;
 			remoteGlobalIDString = 7150CD8B247FA05F00F2681B;
 			remoteInfo = FormsDeveloperTools;
-		};
-		7150CE1E247FA72700F2681B /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 71DB662D245826C900B16145 /* FormsImagePicker.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 7150CD8D247FA05F00F2681B;
-			remoteInfo = FormsImagePicker;
 		};
 		7150CE23247FA72D00F2681B /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -134,13 +186,6 @@
 			proxyType = 2;
 			remoteGlobalIDString = 7150CDA1247FA05F00F2681B;
 			remoteInfo = FormsPermissions;
-		};
-		7150CE41247FA78300F2681B /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 71CFF419245954B90067D13E /* FormsSideMenu.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 7150CD99247FA05F00F2681B;
-			remoteInfo = FormsSideMenu;
 		};
 		7150CE46247FA78A00F2681B /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -186,6 +231,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				7136A00E2486623100298D3B /* FormsAppStoreReview.framework in Embed Frameworks */,
 				7150CE71247FA9B100F2681B /* FormsMock.framework in Embed Frameworks */,
 				7150CE75247FA9B100F2681B /* FormsPermissions.framework in Embed Frameworks */,
 				7150CE7D247FA9B200F2681B /* FormsUtils.framework in Embed Frameworks */,
@@ -197,13 +243,17 @@
 				7150CE65247FA9B100F2681B /* FormsAnalytics.framework in Embed Frameworks */,
 				7150CE7F247FA9B200F2681B /* FormsValidators.framework in Embed Frameworks */,
 				71FCB260247F999500A84D30 /* FormsDemo.framework in Embed Frameworks */,
+				7136A0BC24866ED500298D3B /* FormsPagerKit.framework in Embed Frameworks */,
 				7150CE69247FA9B100F2681B /* FormsDeveloperTools.framework in Embed Frameworks */,
 				7150CE6F247FA9B100F2681B /* FormsLogger.framework in Embed Frameworks */,
+				7136A123248674FB00298D3B /* FormsToastKit.framework in Embed Frameworks */,
 				7150CE7B247FA9B100F2681B /* FormsTransitions.framework in Embed Frameworks */,
-				7150CE77247FA9B100F2681B /* FormsSideMenu.framework in Embed Frameworks */,
 				71FCB27A247F9A1800A84D30 /* Forms.framework in Embed Frameworks */,
-				7150CE6B247FA9B100F2681B /* FormsImagePicker.framework in Embed Frameworks */,
+				7136A14B2486941E00298D3B /* FormsImagePickerKit.framework in Embed Frameworks */,
 				7150CE67247FA9B100F2681B /* FormsAnchor.framework in Embed Frameworks */,
+				7136A1252486761500298D3B /* FormsSideMenuKit.framework in Embed Frameworks */,
+				7136A05E24866AFC00298D3B /* FormsTabBarKit.framework in Embed Frameworks */,
+				7136A121248673F300298D3B /* FormsCardKit.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -219,6 +269,11 @@
 		71228E162431CF8100D08B20 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		71228E2B2431CFBF00D08B20 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		7132962724487AC2006935C0 /* FormsSocialKit.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = FormsSocialKit.xcodeproj; path = ../FormsSocialKit/FormsSocialKit.xcodeproj; sourceTree = "<group>"; };
+		71369F822486585100298D3B /* FormsToastKit.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = FormsToastKit.xcodeproj; path = ../FormsToast/FormsToastKit.xcodeproj; sourceTree = "<group>"; };
+		7136A002248661AD00298D3B /* FormsAppStoreReview.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = FormsAppStoreReview.xcodeproj; path = ../FormsAppStoreReview/FormsAppStoreReview.xcodeproj; sourceTree = "<group>"; };
+		7136A04124866AE200298D3B /* FormsTabBarKit.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = FormsTabBarKit.xcodeproj; path = ../FormsTabBarKit/FormsTabBarKit.xcodeproj; sourceTree = "<group>"; };
+		7136A09624866E5E00298D3B /* FormsPagerKit.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = FormsPagerKit.xcodeproj; path = ../FormsPagerKit/FormsPagerKit.xcodeproj; sourceTree = "<group>"; };
+		7136A102248672EE00298D3B /* FormsCardKit.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = FormsCardKit.xcodeproj; path = ../FormsCardKit/FormsCardKit.xcodeproj; sourceTree = "<group>"; };
 		713A75CF2473C0740067C968 /* FormsMock.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = FormsMock.xcodeproj; path = ../FormsMock/FormsMock.xcodeproj; sourceTree = "<group>"; };
 		713B9B11243D0416001F6E3A /* FormsInjector.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = FormsInjector.xcodeproj; path = ../FormsInjector/FormsInjector.xcodeproj; sourceTree = "<group>"; };
 		713B9B55243D050E001F6E3A /* FormsValidators.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = FormsValidators.xcodeproj; path = ../FormsValidators/FormsValidators.xcodeproj; sourceTree = "<group>"; };
@@ -244,9 +299,9 @@
 		719AE5692462C0F900A39B0E /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKCoreKit.framework; sourceTree = "<group>"; };
 		71BB62182445DD16002BB31F /* FormsNetworking.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = FormsNetworking.xcodeproj; path = ../FormsNetworking/FormsNetworking.xcodeproj; sourceTree = "<group>"; };
 		71BB62652445E7C5002BB31F /* FormsLogger.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = FormsLogger.xcodeproj; path = ../FormsLogger/FormsLogger.xcodeproj; sourceTree = "<group>"; };
-		71CFF419245954B90067D13E /* FormsSideMenu.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = FormsSideMenu.xcodeproj; path = ../FormsSideMenu/FormsSideMenu.xcodeproj; sourceTree = "<group>"; };
+		71CFF419245954B90067D13E /* FormsSideMenuKit.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = FormsSideMenuKit.xcodeproj; path = ../FormsSideMenu/FormsSideMenuKit.xcodeproj; sourceTree = "<group>"; };
 		71DB65592457729800B16145 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
-		71DB662D245826C900B16145 /* FormsImagePicker.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = FormsImagePicker.xcodeproj; path = ../FormsImagePicker/FormsImagePicker.xcodeproj; sourceTree = "<group>"; };
+		71DB662D245826C900B16145 /* FormsImagePickerKit.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = FormsImagePickerKit.xcodeproj; path = ../FormsImagePicker/FormsImagePickerKit.xcodeproj; sourceTree = "<group>"; };
 		71EBA881243D02AD0045AE40 /* FormsAnchor.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = FormsAnchor.xcodeproj; path = ../FormsAnchor/FormsAnchor.xcodeproj; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -255,6 +310,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7136A00D2486623100298D3B /* FormsAppStoreReview.framework in Frameworks */,
 				7150CE70247FA9B100F2681B /* FormsMock.framework in Frameworks */,
 				7150CE74247FA9B100F2681B /* FormsPermissions.framework in Frameworks */,
 				7150CE7C247FA9B200F2681B /* FormsUtils.framework in Frameworks */,
@@ -266,13 +322,17 @@
 				7150CE64247FA9B100F2681B /* FormsAnalytics.framework in Frameworks */,
 				7150CE7E247FA9B200F2681B /* FormsValidators.framework in Frameworks */,
 				71FCB25F247F999500A84D30 /* FormsDemo.framework in Frameworks */,
+				7136A0BB24866ED500298D3B /* FormsPagerKit.framework in Frameworks */,
 				7150CE68247FA9B100F2681B /* FormsDeveloperTools.framework in Frameworks */,
 				7150CE6E247FA9B100F2681B /* FormsLogger.framework in Frameworks */,
+				7136A122248674FB00298D3B /* FormsToastKit.framework in Frameworks */,
 				7150CE7A247FA9B100F2681B /* FormsTransitions.framework in Frameworks */,
-				7150CE76247FA9B100F2681B /* FormsSideMenu.framework in Frameworks */,
 				71FCB279247F9A1800A84D30 /* Forms.framework in Frameworks */,
-				7150CE6A247FA9B100F2681B /* FormsImagePicker.framework in Frameworks */,
+				7136A14A2486941E00298D3B /* FormsImagePickerKit.framework in Frameworks */,
 				7150CE66247FA9B100F2681B /* FormsAnchor.framework in Frameworks */,
+				7136A1242486761500298D3B /* FormsSideMenuKit.framework in Frameworks */,
+				7136A05D24866AFC00298D3B /* FormsTabBarKit.framework in Frameworks */,
+				7136A120248673F300298D3B /* FormsCardKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -284,16 +344,21 @@
 			children = (
 				7150CE0B247FA6C200F2681B /* FormsAnalytics.xcodeproj */,
 				71EBA881243D02AD0045AE40 /* FormsAnchor.xcodeproj */,
+				7136A002248661AD00298D3B /* FormsAppStoreReview.xcodeproj */,
+				7136A102248672EE00298D3B /* FormsCardKit.xcodeproj */,
 				7178026124543D2B0057E848 /* FormsDeveloperTools.xcodeproj */,
-				71DB662D245826C900B16145 /* FormsImagePicker.xcodeproj */,
+				71DB662D245826C900B16145 /* FormsImagePickerKit.xcodeproj */,
 				713B9B11243D0416001F6E3A /* FormsInjector.xcodeproj */,
 				71BB62652445E7C5002BB31F /* FormsLogger.xcodeproj */,
 				713A75CF2473C0740067C968 /* FormsMock.xcodeproj */,
 				71BB62182445DD16002BB31F /* FormsNetworking.xcodeproj */,
 				719AE4B0246294FC00A39B0E /* FormsNotifications.xcodeproj */,
+				7136A09624866E5E00298D3B /* FormsPagerKit.xcodeproj */,
 				7103EA4924609C3700A11A96 /* FormsPermissions.xcodeproj */,
-				71CFF419245954B90067D13E /* FormsSideMenu.xcodeproj */,
+				71CFF419245954B90067D13E /* FormsSideMenuKit.xcodeproj */,
 				7132962724487AC2006935C0 /* FormsSocialKit.xcodeproj */,
+				7136A04124866AE200298D3B /* FormsTabBarKit.xcodeproj */,
+				71369F822486585100298D3B /* FormsToastKit.xcodeproj */,
 				715B7B3124474C4600754EDB /* FormsTransitions.xcodeproj */,
 				713B9BA1243D0696001F6E3A /* FormsUtils.xcodeproj */,
 				713B9B55243D050E001F6E3A /* FormsValidators.xcodeproj */,
@@ -371,6 +436,62 @@
 			path = ../../Dependencies;
 			sourceTree = "<group>";
 		};
+		71369FCD2486605A00298D3B /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				71369FDE2486605A00298D3B /* FormsSideMenuKit.framework */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		71369FE32486605A00298D3B /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				71369FE72486605A00298D3B /* FormsToastKit.framework */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		71369FE82486605A00298D3B /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				71369FEC2486605A00298D3B /* FormsImagePickerKit.framework */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		7136A003248661AD00298D3B /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				7136A007248661AE00298D3B /* FormsAppStoreReview.framework */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		7136A04224866AE200298D3B /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				7136A05724866AE300298D3B /* FormsTabBarKit.framework */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		7136A09724866E5E00298D3B /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				7136A0A924866E5F00298D3B /* FormsPagerKit.framework */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		7136A103248672EE00298D3B /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				7136A107248672EF00298D3B /* FormsCardKit.framework */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		713B9C0E243D08E0001F6E3A /* Products */ = {
 			isa = PBXGroup;
 			children = (
@@ -399,14 +520,6 @@
 			isa = PBXGroup;
 			children = (
 				7150CE1A247FA71F00F2681B /* FormsDeveloperTools.framework */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
-		7150CE1B247FA72700F2681B /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				7150CE1F247FA72700F2681B /* FormsImagePicker.framework */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -455,14 +568,6 @@
 			isa = PBXGroup;
 			children = (
 				7150CE3D247FA76F00F2681B /* FormsPermissions.framework */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
-		7150CE3E247FA78300F2681B /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				7150CE42247FA78300F2681B /* FormsSideMenu.framework */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -603,6 +708,14 @@
 					ProjectRef = 71EBA881243D02AD0045AE40 /* FormsAnchor.xcodeproj */;
 				},
 				{
+					ProductGroup = 7136A003248661AD00298D3B /* Products */;
+					ProjectRef = 7136A002248661AD00298D3B /* FormsAppStoreReview.xcodeproj */;
+				},
+				{
+					ProductGroup = 7136A103248672EE00298D3B /* Products */;
+					ProjectRef = 7136A102248672EE00298D3B /* FormsCardKit.xcodeproj */;
+				},
+				{
 					ProductGroup = 713B9C0E243D08E0001F6E3A /* Products */;
 					ProjectRef = 713B9C0D243D08E0001F6E3A /* FormsDemo.xcodeproj */;
 				},
@@ -611,8 +724,8 @@
 					ProjectRef = 7178026124543D2B0057E848 /* FormsDeveloperTools.xcodeproj */;
 				},
 				{
-					ProductGroup = 7150CE1B247FA72700F2681B /* Products */;
-					ProjectRef = 71DB662D245826C900B16145 /* FormsImagePicker.xcodeproj */;
+					ProductGroup = 71369FE82486605A00298D3B /* Products */;
+					ProjectRef = 71DB662D245826C900B16145 /* FormsImagePickerKit.xcodeproj */;
 				},
 				{
 					ProductGroup = 7150CE20247FA72D00F2681B /* Products */;
@@ -635,16 +748,28 @@
 					ProjectRef = 719AE4B0246294FC00A39B0E /* FormsNotifications.xcodeproj */;
 				},
 				{
+					ProductGroup = 7136A09724866E5E00298D3B /* Products */;
+					ProjectRef = 7136A09624866E5E00298D3B /* FormsPagerKit.xcodeproj */;
+				},
+				{
 					ProductGroup = 7150CE39247FA76F00F2681B /* Products */;
 					ProjectRef = 7103EA4924609C3700A11A96 /* FormsPermissions.xcodeproj */;
 				},
 				{
-					ProductGroup = 7150CE3E247FA78300F2681B /* Products */;
-					ProjectRef = 71CFF419245954B90067D13E /* FormsSideMenu.xcodeproj */;
+					ProductGroup = 71369FCD2486605A00298D3B /* Products */;
+					ProjectRef = 71CFF419245954B90067D13E /* FormsSideMenuKit.xcodeproj */;
 				},
 				{
 					ProductGroup = 7150CE43247FA78A00F2681B /* Products */;
 					ProjectRef = 7132962724487AC2006935C0 /* FormsSocialKit.xcodeproj */;
+				},
+				{
+					ProductGroup = 7136A04224866AE200298D3B /* Products */;
+					ProjectRef = 7136A04124866AE200298D3B /* FormsTabBarKit.xcodeproj */;
+				},
+				{
+					ProductGroup = 71369FE32486605A00298D3B /* Products */;
+					ProjectRef = 71369F822486585100298D3B /* FormsToastKit.xcodeproj */;
 				},
 				{
 					ProductGroup = 7150CE48247FA79000F2681B /* Products */;
@@ -667,6 +792,55 @@
 /* End PBXProject section */
 
 /* Begin PBXReferenceProxy section */
+		71369FDE2486605A00298D3B /* FormsSideMenuKit.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = FormsSideMenuKit.framework;
+			remoteRef = 71369FDD2486605A00298D3B /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		71369FE72486605A00298D3B /* FormsToastKit.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = FormsToastKit.framework;
+			remoteRef = 71369FE62486605A00298D3B /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		71369FEC2486605A00298D3B /* FormsImagePickerKit.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = FormsImagePickerKit.framework;
+			remoteRef = 71369FEB2486605A00298D3B /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		7136A007248661AE00298D3B /* FormsAppStoreReview.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = FormsAppStoreReview.framework;
+			remoteRef = 7136A006248661AE00298D3B /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		7136A05724866AE300298D3B /* FormsTabBarKit.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = FormsTabBarKit.framework;
+			remoteRef = 7136A05624866AE300298D3B /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		7136A0A924866E5F00298D3B /* FormsPagerKit.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = FormsPagerKit.framework;
+			remoteRef = 7136A0A824866E5F00298D3B /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		7136A107248672EF00298D3B /* FormsCardKit.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = FormsCardKit.framework;
+			remoteRef = 7136A106248672EF00298D3B /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
 		713B9C13243D08E1001F6E3A /* FormsDemo.framework */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.framework;
@@ -700,13 +874,6 @@
 			fileType = wrapper.framework;
 			path = FormsDeveloperTools.framework;
 			remoteRef = 7150CE19247FA71F00F2681B /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		7150CE1F247FA72700F2681B /* FormsImagePicker.framework */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.framework;
-			path = FormsImagePicker.framework;
-			remoteRef = 7150CE1E247FA72700F2681B /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 		7150CE24247FA72D00F2681B /* FormsInjector.framework */ = {
@@ -749,13 +916,6 @@
 			fileType = wrapper.framework;
 			path = FormsPermissions.framework;
 			remoteRef = 7150CE3C247FA76F00F2681B /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		7150CE42247FA78300F2681B /* FormsSideMenu.framework */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.framework;
-			path = FormsSideMenu.framework;
-			remoteRef = 7150CE41247FA78300F2681B /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 		7150CE47247FA78A00F2681B /* FormsSocialKit.framework */ = {

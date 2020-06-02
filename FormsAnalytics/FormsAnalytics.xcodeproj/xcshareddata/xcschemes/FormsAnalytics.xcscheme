@@ -20,20 +20,6 @@
                ReferencedContainer = "container:FormsAnalytics.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
-         <BuildActionEntry
-            buildForTesting = "YES"
-            buildForRunning = "NO"
-            buildForProfiling = "NO"
-            buildForArchiving = "NO"
-            buildForAnalyzing = "NO">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "71DB5CA82457609000B16145"
-               BuildableName = "FormsAnalyticsTests.xctest"
-               BlueprintName = "FormsAnalyticsTests"
-               ReferencedContainer = "container:FormsAnalytics.xcodeproj">
-            </BuildableReference>
-         </BuildActionEntry>
       </BuildActionEntries>
    </BuildAction>
    <TestAction
@@ -61,6 +47,15 @@
       savedToolIdentifier = ""
       useCustomWorkingDirectory = "NO"
       debugDocumentVersioning = "YES">
+      <MacroExpansion>
+         <BuildableReference
+            BuildableIdentifier = "primary"
+            BlueprintIdentifier = "71DB5C9F2457609000B16145"
+            BuildableName = "FormsAnalytics.framework"
+            BlueprintName = "FormsAnalytics"
+            ReferencedContainer = "container:FormsAnalytics.xcodeproj">
+         </BuildableReference>
+      </MacroExpansion>
    </ProfileAction>
    <AnalyzeAction
       buildConfiguration = "Debug">

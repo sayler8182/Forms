@@ -25,6 +25,7 @@ enum Module: String {
     case formsNotifications = "FormsNotifications"
     case formsPermissions = "FormsPermissions"
     case formsSideMenu = "FormsSideMenu"
+    case formsToastKit = "FormsToastKit"
     case formsTransition = "FormsTransition"
     case formsUtils = "FormsUtils"
     case formsValidators = "FormsValidators"
@@ -115,15 +116,6 @@ public struct Forms {
         // modal
         injector.register(ConfigurationModalProtocol.self) { _ in
             Configuration.Modal()
-        }
-        // toast
-        injector.register(ConfigurationToastProtocol.self) { _ in
-            return Configuration.Toast(
-                backgroundColor: .init(
-                    info: Theme.Colors.primaryBackground,
-                    success: Theme.Colors.green,
-                    error: Theme.Colors.red)
-            )
         }
     }
     

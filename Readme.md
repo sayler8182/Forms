@@ -12,21 +12,31 @@ Forms is all in one iOS framework
 - [x] Modular
 - [x] [Forms](./Documentation/Forms.md) - Forms framework
 - [x] [FormsDemo](./Documentation/FormsDemo.md) - All features demo
+
+## Frameworks
 - [x] [FormsAnalytics](./Documentation/FormsAnalytics.md) - Application analytics
 - [x] [FormsAnchor](./Documentation/FormsAnchor.md) - DSL
+- [x] [FormsAppStoreReview](./Documentation/FormsAppStoreReview.md) - AppStore review helper
 - [x] [FormsDeveloperTools](./Documentation/FormsDeveloperTools.md) - Developer Tools
-- [x] [FormsImagePicker](./Documentation/FormsImagePicker.md) - Image Picker
 - [x] [FormsInjector](./Documentation/FormsInjector.md) - Dependency Injection
 - [x] [FormsLogger](./Documentation/FormsLogger.md) - Logger data
 - [x] [FormsMock](./Documentation/FormsMock.md) - Mocking data
 - [x] [FormsNetworking](./Documentation/FormsNetworking.md) - Network layer
 - [x] [FormsNotifications](./Documentation/FormsNotifications.md) - Firebase notifications
 - [x] [FormsPermissions](./Documentation/FormsPermissions.md) - Application permissions
-- [x] [FormsSideMenu](./Documentation/FormsSideMenu.md) - Side menu
-- [x] [FormsSocialKit](./Documentation/FormsSocialKit.md) - Sign in with external services
 - [x] [FormsUtils](./Documentation/FormsUtils.md) - Utils and extensions
 - [x] [FormsTransitions](./Documentation/FormsTransitions.md) - UI transitions
 - [x] [FormsValidators](./Documentation/FormsValidators.md) - Data validators
+
+## Kits
+Kits extend Forms module
+- [x] [FormsCardKit](./Documentation/FormsCardKit.md) - Card
+- [x] [FormsImagePickerKit](./Documentation/FormsImagePickerKit.md) - Image Picker
+- [x] [FormsPagerKit](./Documentation/FormsPagerKit.md) - Pager
+- [x] [FormsSideMenuKit](./Documentation/FormsSideMenuKit.md) - Side menu
+- [x] [FormsSocialKit](./Documentation/FormsSocialKit.md) - Sign in with external services
+- [x] [FormsTabBarKit](./Documentation/FormsSideMenuKit.md) - TabBar
+- [x] [FormsToastKit](./Documentation/ToastKit.md) - Toast
 
 ## NOTICE
 Currently firebase DOSN'T support dynamic framework. You can't use Analytics and Notifications framework together
@@ -43,27 +53,26 @@ XCode  11.5 (11E608c)
 
 ## Installation
 
-Compile from source and copy dynamic framework.
-1. Select *Forms* target
-2. Build for iPhone and simulator
-3. Select *Forms-Universal* target
-4. Build
-5. Copy generated frameworks
+Download project and run *./build.sh* script
 
 ```
 Forms.framework
 FormsAnalytics.framework
 FormsAnchor.framework
+FormsAppStoreReview.framework
 FormsDeveloperTools.framework
-FormsImagePicker.framework
+FormsImagePickerKit.framework
 FormsInjector.framework
 FormsLogger.framework
 FormsMock.framework
 FormsNetworking.framework
 FormsNotifications.framework
 FormsPermissions.framework
-FormsSideMenu.framework
+FormsPager.framework
+FormsSideMenuKit.framework
 FormsSocialKit.framework
+FormsTabBarKit.framework
+FormsToastKit.framework
 FormsTransitions.framework
 FormsUtils.framework
 FormsValidators.framework

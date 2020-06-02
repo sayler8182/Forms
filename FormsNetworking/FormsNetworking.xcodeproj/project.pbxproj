@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		71385EF724853A6C0032BB5F /* Multipart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71385EF624853A6C0032BB5F /* Multipart.swift */; };
 		7150CE5F247FA85800F2681B /* FormsInjector.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7150CE5D247FA85800F2681B /* FormsInjector.framework */; };
 		7150CE61247FA85800F2681B /* FormsLogger.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7150CE5E247FA85800F2681B /* FormsLogger.framework */; };
 		71BB620F2445DD16002BB31F /* FormsNetworking.h in Headers */ = {isa = PBXBuildFile; fileRef = 71BB62012445DD16002BB31F /* FormsNetworking.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -19,6 +20,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		71385EF624853A6C0032BB5F /* Multipart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Multipart.swift; sourceTree = "<group>"; };
 		7150CD95247FA05F00F2681B /* FormsNetworking.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = FormsNetworking.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7150CE5D247FA85800F2681B /* FormsInjector.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FormsInjector.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7150CE5E247FA85800F2681B /* FormsLogger.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FormsLogger.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -82,6 +84,7 @@
 				71BB62362445DD62002BB31F /* Request.swift */,
 				71BB62372445DD62002BB31F /* Parser.swift */,
 				71BB62382445DD62002BB31F /* SSLPinning.swift */,
+				71385EF624853A6C0032BB5F /* Multipart.swift */,
 			);
 			path = Source;
 			sourceTree = "<group>";
@@ -168,6 +171,7 @@
 			files = (
 				71BB623A2445DD62002BB31F /* Reachability.swift in Sources */,
 				71BB623B2445DD62002BB31F /* Request.swift in Sources */,
+				71385EF724853A6C0032BB5F /* Multipart.swift in Sources */,
 				71BB62392445DD62002BB31F /* Network.swift in Sources */,
 				71BB623C2445DD62002BB31F /* Parser.swift in Sources */,
 				71BB628B24460437002BB31F /* Cache.swift in Sources */,

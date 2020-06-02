@@ -13,7 +13,7 @@ public protocol TransitionableNavigation: NSObjectProtocol {
     var view: UIView! { get set }
     var animator: TransitionNavigationAnimator { get set }
     var coordinator: TransitionNavigationCoordinator { get set }
-    var edgePanGesture: UIScreenEdgePanGestureRecognizer { get set }
+    var edgePanGesture: UIScreenEdgePanGestureRecognizer! { get set }
     
     @discardableResult
     func popViewController(animated: Bool) -> UIViewController?

@@ -18,7 +18,7 @@ public protocol StorageContainerProtocol {
 }
 
 // MARK: StorageUserDefaults
-public class StorageUserDefaultsContainer: StorageContainerProtocol {
+public class StorageUserDefaultsContainer: StorageContainerProtocol, StorageSecureContainerProtocol {
     private let userDefaults = UserDefaults.standard
     public static let shared = StorageUserDefaultsContainer()
     
@@ -36,6 +36,18 @@ public class StorageUserDefaultsContainer: StorageContainerProtocol {
     public func remove(forKey key: StorageKey) {
         self.userDefaults.removeObject(forKey: key.rawValue)
         self.userDefaults.synchronize()
+    }
+    
+    public func get<T: KeychainValue>(info: StorageSecureInfo) throws -> T? {
+        return self.get(forKey: info.key)
+    }
+    
+    public func set<T: KeychainValue>(value: T?, info: StorageSecureInfo) throws {
+        return self.set(value: value, forKey: info.key)
+    }
+    
+    public func remove(info: StorageSecureInfo) throws {
+        return self.remove(forKey: info.key)
     }
 }
 

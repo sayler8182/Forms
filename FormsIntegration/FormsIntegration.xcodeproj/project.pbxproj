@@ -12,6 +12,18 @@
 		711071922476C1930056BBB5 /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7110716F2476C0990056BBB5 /* FBSDKLoginKit.framework */; };
 		711071932476C1930056BBB5 /* FBSDKLoginKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 7110716F2476C0990056BBB5 /* FBSDKLoginKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		711AF5562461524700CE8666 /* FormsIntegrationPermissionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 711AF5552461524700CE8666 /* FormsIntegrationPermissionsViewController.swift */; };
+		7136A13E248692B700298D3B /* FormsImagePickerKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7136A1342486927500298D3B /* FormsImagePickerKit.framework */; };
+		7136A13F248692B700298D3B /* FormsImagePickerKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 7136A1342486927500298D3B /* FormsImagePickerKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		7136A140248692B900298D3B /* FormsAppStoreReview.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7136A1372486927500298D3B /* FormsAppStoreReview.framework */; };
+		7136A141248692B900298D3B /* FormsAppStoreReview.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 7136A1372486927500298D3B /* FormsAppStoreReview.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		7136A142248692BA00298D3B /* FormsCardKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7136A1332486927500298D3B /* FormsCardKit.framework */; };
+		7136A143248692BA00298D3B /* FormsCardKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 7136A1332486927500298D3B /* FormsCardKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		7136A144248692BC00298D3B /* FormsSideMenuKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7136A1362486927500298D3B /* FormsSideMenuKit.framework */; };
+		7136A145248692BC00298D3B /* FormsSideMenuKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 7136A1362486927500298D3B /* FormsSideMenuKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		7136A146248692BE00298D3B /* FormsTabBarKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7136A1352486927500298D3B /* FormsTabBarKit.framework */; };
+		7136A147248692BE00298D3B /* FormsTabBarKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 7136A1352486927500298D3B /* FormsTabBarKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		7136A148248692BF00298D3B /* FormsToastKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7136A1322486927500298D3B /* FormsToastKit.framework */; };
+		7136A149248692BF00298D3B /* FormsToastKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 7136A1322486927500298D3B /* FormsToastKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		7150CEAA247FAC9F00F2681B /* Forms.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7150CE8E247FAC8800F2681B /* Forms.framework */; };
 		7150CEAB247FAC9F00F2681B /* Forms.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 7150CE8E247FAC8800F2681B /* Forms.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		7150CEAC247FACA000F2681B /* FormsAnalytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7150CE91247FAC8800F2681B /* FormsAnalytics.framework */; };
@@ -20,8 +32,6 @@
 		7150CEAF247FACA100F2681B /* FormsAnchor.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 7150CE9A247FAC8A00F2681B /* FormsAnchor.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		7150CEB0247FACA200F2681B /* FormsDeveloperTools.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7150CE90247FAC8800F2681B /* FormsDeveloperTools.framework */; };
 		7150CEB1247FACA200F2681B /* FormsDeveloperTools.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 7150CE90247FAC8800F2681B /* FormsDeveloperTools.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		7150CEB2247FACA300F2681B /* FormsImagePicker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7150CE96247FAC8900F2681B /* FormsImagePicker.framework */; };
-		7150CEB3247FACA300F2681B /* FormsImagePicker.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 7150CE96247FAC8900F2681B /* FormsImagePicker.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		7150CEB4247FACA400F2681B /* FormsInjector.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7150CE95247FAC8900F2681B /* FormsInjector.framework */; };
 		7150CEB5247FACA500F2681B /* FormsInjector.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 7150CE95247FAC8900F2681B /* FormsInjector.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		7150CEB6247FACA600F2681B /* FormsLogger.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7150CE8D247FAC8800F2681B /* FormsLogger.framework */; };
@@ -32,8 +42,6 @@
 		7150CEBB247FACA900F2681B /* FormsNetworking.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 7150CE8C247FAC8800F2681B /* FormsNetworking.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		7150CEBC247FACAA00F2681B /* FormsPermissions.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7150CE92247FAC8800F2681B /* FormsPermissions.framework */; };
 		7150CEBD247FACAA00F2681B /* FormsPermissions.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 7150CE92247FAC8800F2681B /* FormsPermissions.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		7150CEBE247FACAB00F2681B /* FormsSideMenu.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7150CE8F247FAC8800F2681B /* FormsSideMenu.framework */; };
-		7150CEBF247FACAB00F2681B /* FormsSideMenu.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 7150CE8F247FAC8800F2681B /* FormsSideMenu.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		7150CEC0247FACAC00F2681B /* FormsSocialKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7150CE98247FAC8900F2681B /* FormsSocialKit.framework */; };
 		7150CEC1247FACAC00F2681B /* FormsSocialKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 7150CE98247FAC8900F2681B /* FormsSocialKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		7150CEC2247FACAD00F2681B /* FormsTransitions.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7150CE94247FAC8900F2681B /* FormsTransitions.framework */; };
@@ -43,7 +51,7 @@
 		7150CEC6247FACB000F2681B /* FormsValidators.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7150CE97247FAC8900F2681B /* FormsValidators.framework */; };
 		7150CEC7247FACB000F2681B /* FormsValidators.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 7150CE97247FAC8900F2681B /* FormsValidators.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		71CFF4492459A1C40067D13E /* FormsIntegrationDeveloperToolsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71CFF4482459A1C40067D13E /* FormsIntegrationDeveloperToolsViewController.swift */; };
-		71CFF44B2459A1CD0067D13E /* FormsIntegrationSideMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71CFF44A2459A1CD0067D13E /* FormsIntegrationSideMenuViewController.swift */; };
+		71CFF44B2459A1CD0067D13E /* FormsIntegrationSideMenuKitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71CFF44A2459A1CD0067D13E /* FormsIntegrationSideMenuKitViewController.swift */; };
 		71DB65C62458064F00B16145 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71DB65BF2458064F00B16145 /* SceneDelegate.swift */; };
 		71DB65C82458064F00B16145 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 71DB65C32458064F00B16145 /* Assets.xcassets */; };
 		71DB65C92458064F00B16145 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71DB65C42458064F00B16145 /* AppDelegate.swift */; };
@@ -68,16 +76,20 @@
 				7150CEB7247FACA600F2681B /* FormsLogger.framework in Embed Frameworks */,
 				7150CEB5247FACA500F2681B /* FormsInjector.framework in Embed Frameworks */,
 				7150CEAF247FACA100F2681B /* FormsAnchor.framework in Embed Frameworks */,
-				7150CEBF247FACAB00F2681B /* FormsSideMenu.framework in Embed Frameworks */,
 				7150CEB1247FACA200F2681B /* FormsDeveloperTools.framework in Embed Frameworks */,
 				711071932476C1930056BBB5 /* FBSDKLoginKit.framework in Embed Frameworks */,
 				7150CEC5247FACAE00F2681B /* FormsUtils.framework in Embed Frameworks */,
-				7150CEB3247FACA300F2681B /* FormsImagePicker.framework in Embed Frameworks */,
 				711071912476C1910056BBB5 /* FBSDKCoreKit.framework in Embed Frameworks */,
+				7136A143248692BA00298D3B /* FormsCardKit.framework in Embed Frameworks */,
+				7136A13F248692B700298D3B /* FormsImagePickerKit.framework in Embed Frameworks */,
 				7150CEC1247FACAC00F2681B /* FormsSocialKit.framework in Embed Frameworks */,
+				7136A145248692BC00298D3B /* FormsSideMenuKit.framework in Embed Frameworks */,
 				7150CEC7247FACB000F2681B /* FormsValidators.framework in Embed Frameworks */,
 				7150CEBD247FACAA00F2681B /* FormsPermissions.framework in Embed Frameworks */,
+				7136A149248692BF00298D3B /* FormsToastKit.framework in Embed Frameworks */,
+				7136A147248692BE00298D3B /* FormsTabBarKit.framework in Embed Frameworks */,
 				7150CEC3247FACAD00F2681B /* FormsTransitions.framework in Embed Frameworks */,
+				7136A141248692B900298D3B /* FormsAppStoreReview.framework in Embed Frameworks */,
 				7150CEAB247FAC9F00F2681B /* Forms.framework in Embed Frameworks */,
 				7150CEAD247FACA000F2681B /* FormsAnalytics.framework in Embed Frameworks */,
 			);
@@ -90,23 +102,27 @@
 		7110716F2476C0990056BBB5 /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKLoginKit.framework; sourceTree = "<group>"; };
 		711071722476C0990056BBB5 /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKCoreKit.framework; sourceTree = "<group>"; };
 		711AF5552461524700CE8666 /* FormsIntegrationPermissionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormsIntegrationPermissionsViewController.swift; sourceTree = "<group>"; };
+		7136A1322486927500298D3B /* FormsToastKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FormsToastKit.framework; sourceTree = "<group>"; };
+		7136A1332486927500298D3B /* FormsCardKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FormsCardKit.framework; sourceTree = "<group>"; };
+		7136A1342486927500298D3B /* FormsImagePickerKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FormsImagePickerKit.framework; sourceTree = "<group>"; };
+		7136A1352486927500298D3B /* FormsTabBarKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FormsTabBarKit.framework; sourceTree = "<group>"; };
+		7136A1362486927500298D3B /* FormsSideMenuKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FormsSideMenuKit.framework; sourceTree = "<group>"; };
+		7136A1372486927500298D3B /* FormsAppStoreReview.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FormsAppStoreReview.framework; sourceTree = "<group>"; };
 		7150CE8C247FAC8800F2681B /* FormsNetworking.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FormsNetworking.framework; sourceTree = "<group>"; };
 		7150CE8D247FAC8800F2681B /* FormsLogger.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FormsLogger.framework; sourceTree = "<group>"; };
 		7150CE8E247FAC8800F2681B /* Forms.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Forms.framework; sourceTree = "<group>"; };
-		7150CE8F247FAC8800F2681B /* FormsSideMenu.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FormsSideMenu.framework; sourceTree = "<group>"; };
 		7150CE90247FAC8800F2681B /* FormsDeveloperTools.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FormsDeveloperTools.framework; sourceTree = "<group>"; };
 		7150CE91247FAC8800F2681B /* FormsAnalytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FormsAnalytics.framework; sourceTree = "<group>"; };
 		7150CE92247FAC8800F2681B /* FormsPermissions.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FormsPermissions.framework; sourceTree = "<group>"; };
 		7150CE93247FAC8900F2681B /* FormsMock.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FormsMock.framework; sourceTree = "<group>"; };
 		7150CE94247FAC8900F2681B /* FormsTransitions.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FormsTransitions.framework; sourceTree = "<group>"; };
 		7150CE95247FAC8900F2681B /* FormsInjector.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FormsInjector.framework; sourceTree = "<group>"; };
-		7150CE96247FAC8900F2681B /* FormsImagePicker.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FormsImagePicker.framework; sourceTree = "<group>"; };
 		7150CE97247FAC8900F2681B /* FormsValidators.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FormsValidators.framework; sourceTree = "<group>"; };
 		7150CE98247FAC8900F2681B /* FormsSocialKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FormsSocialKit.framework; sourceTree = "<group>"; };
 		7150CE99247FAC8900F2681B /* FormsUtils.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FormsUtils.framework; sourceTree = "<group>"; };
 		7150CE9A247FAC8A00F2681B /* FormsAnchor.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FormsAnchor.framework; sourceTree = "<group>"; };
 		71CFF4482459A1C40067D13E /* FormsIntegrationDeveloperToolsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormsIntegrationDeveloperToolsViewController.swift; sourceTree = "<group>"; };
-		71CFF44A2459A1CD0067D13E /* FormsIntegrationSideMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormsIntegrationSideMenuViewController.swift; sourceTree = "<group>"; };
+		71CFF44A2459A1CD0067D13E /* FormsIntegrationSideMenuKitViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormsIntegrationSideMenuKitViewController.swift; sourceTree = "<group>"; };
 		71DB656C2458023700B16145 /* FormsIntegration.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FormsIntegration.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		71DB65BF2458064F00B16145 /* SceneDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		71DB65C12458064F00B16145 /* FormsIntegration.entitlements */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.entitlements; path = FormsIntegration.entitlements; sourceTree = "<group>"; };
@@ -128,8 +144,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				7150CEBA247FACA900F2681B /* FormsNetworking.framework in Frameworks */,
-				7150CEB2247FACA300F2681B /* FormsImagePicker.framework in Frameworks */,
 				7150CEC4247FACAE00F2681B /* FormsUtils.framework in Frameworks */,
+				7136A142248692BA00298D3B /* FormsCardKit.framework in Frameworks */,
 				711071922476C1930056BBB5 /* FBSDKLoginKit.framework in Frameworks */,
 				7150CEAC247FACA000F2681B /* FormsAnalytics.framework in Frameworks */,
 				7150CEB8247FACA700F2681B /* FormsMock.framework in Frameworks */,
@@ -137,13 +153,17 @@
 				7150CEAA247FAC9F00F2681B /* Forms.framework in Frameworks */,
 				7150CEB6247FACA600F2681B /* FormsLogger.framework in Frameworks */,
 				7150CEC2247FACAD00F2681B /* FormsTransitions.framework in Frameworks */,
+				7136A144248692BC00298D3B /* FormsSideMenuKit.framework in Frameworks */,
+				7136A140248692B900298D3B /* FormsAppStoreReview.framework in Frameworks */,
 				7150CEC0247FACAC00F2681B /* FormsSocialKit.framework in Frameworks */,
 				711071902476C1910056BBB5 /* FBSDKCoreKit.framework in Frameworks */,
 				7150CEC6247FACB000F2681B /* FormsValidators.framework in Frameworks */,
+				7136A148248692BF00298D3B /* FormsToastKit.framework in Frameworks */,
 				7150CEAE247FACA100F2681B /* FormsAnchor.framework in Frameworks */,
+				7136A13E248692B700298D3B /* FormsImagePickerKit.framework in Frameworks */,
 				7150CEBC247FACAA00F2681B /* FormsPermissions.framework in Frameworks */,
-				7150CEBE247FACAB00F2681B /* FormsSideMenu.framework in Frameworks */,
 				7150CEB0247FACA200F2681B /* FormsDeveloperTools.framework in Frameworks */,
+				7136A146248692BE00298D3B /* FormsTabBarKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -166,12 +186,12 @@
 			path = DeveloperTools;
 			sourceTree = "<group>";
 		};
-		71CFF4472459A1960067D13E /* SideMenu */ = {
+		71CFF4472459A1960067D13E /* SideMenuKit */ = {
 			isa = PBXGroup;
 			children = (
-				71CFF44A2459A1CD0067D13E /* FormsIntegrationSideMenuViewController.swift */,
+				71CFF44A2459A1CD0067D13E /* FormsIntegrationSideMenuKitViewController.swift */,
 			);
-			path = SideMenu;
+			path = SideMenuKit;
 			sourceTree = "<group>";
 		};
 		71DB65632458023700B16145 = {
@@ -208,15 +228,19 @@
 				7150CE8E247FAC8800F2681B /* Forms.framework */,
 				7150CE91247FAC8800F2681B /* FormsAnalytics.framework */,
 				7150CE9A247FAC8A00F2681B /* FormsAnchor.framework */,
+				7136A1372486927500298D3B /* FormsAppStoreReview.framework */,
+				7136A1332486927500298D3B /* FormsCardKit.framework */,
 				7150CE90247FAC8800F2681B /* FormsDeveloperTools.framework */,
-				7150CE96247FAC8900F2681B /* FormsImagePicker.framework */,
 				7150CE95247FAC8900F2681B /* FormsInjector.framework */,
+				7136A1342486927500298D3B /* FormsImagePickerKit.framework */,
 				7150CE8D247FAC8800F2681B /* FormsLogger.framework */,
 				7150CE93247FAC8900F2681B /* FormsMock.framework */,
 				7150CE8C247FAC8800F2681B /* FormsNetworking.framework */,
 				7150CE92247FAC8800F2681B /* FormsPermissions.framework */,
-				7150CE8F247FAC8800F2681B /* FormsSideMenu.framework */,
+				7136A1362486927500298D3B /* FormsSideMenuKit.framework */,
 				7150CE98247FAC8900F2681B /* FormsSocialKit.framework */,
+				7136A1352486927500298D3B /* FormsTabBarKit.framework */,
+				7136A1322486927500298D3B /* FormsToastKit.framework */,
 				7150CE94247FAC8900F2681B /* FormsTransitions.framework */,
 				7150CE99247FAC8900F2681B /* FormsUtils.framework */,
 				7150CE97247FAC8900F2681B /* FormsValidators.framework */,
@@ -231,7 +255,7 @@
 				71DB65E124581ACA00B16145 /* Analytics */,
 				71CFF4462459A18B0067D13E /* DeveloperTools */,
 				711AF5542461523900CE8666 /* Permissions */,
-				71CFF4472459A1960067D13E /* SideMenu */,
+				71CFF4472459A1960067D13E /* SideMenuKit */,
 				71DB65D824580C4C00B16145 /* SocialKit */,
 			);
 			path = Source;
@@ -352,7 +376,7 @@
 				71DB65C92458064F00B16145 /* AppDelegate.swift in Sources */,
 				71DB65DA24580C8500B16145 /* FormsIntegrationRootViewController.swift in Sources */,
 				71DB65CC245806AF00B16145 /* FormsIntegrationSocialKitGoogleViewController.swift in Sources */,
-				71CFF44B2459A1CD0067D13E /* FormsIntegrationSideMenuViewController.swift in Sources */,
+				71CFF44B2459A1CD0067D13E /* FormsIntegrationSideMenuKitViewController.swift in Sources */,
 				71DB65C62458064F00B16145 /* SceneDelegate.swift in Sources */,
 				71DB65DC245817CD00B16145 /* FormsIntegrationSocialKitAppleViewController.swift in Sources */,
 				711AF5562461524700CE8666 /* FormsIntegrationPermissionsViewController.swift in Sources */,

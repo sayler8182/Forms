@@ -20,12 +20,16 @@ FormsUtils.framework
 FormsValidators.framework
 ```
 
-## Extensions
+## Kits
 
 ```
-FormsImagePicker.framework
-FormsSideMenu.framework
+FormsCardKit.framework
+FormsImagePickerKit.framework
+FormsPagerKit.framework
+FormsSideMenuKit.framework
 FormsSocialKit.framework
+FormsTabBarKit.framework
+FormsToastKit.framework
 ```
 
 ## Usage
@@ -193,106 +197,6 @@ override func pullToRefresh() {
 
 FormsCollectionViewController works like FormsTableViewController but doesn't support direct components.
 
-### FormsTabBarController
-
-FormsTabBarController supports multiple sets
-
-```swift
-    enum TabBarKeys: String, TabBarKey {
-        case main
-        case other
-        
-        var keys: [TabBarItemKey] {
-            switch self {
-            case .main: return TabBarMainKeys.allCases
-            case .other: return TabBarOtherKeys.allCases
-            }
-        }
-    }
-    enum TabBarMainKeys: String, TabBarItemKey, CaseIterable {
-        case first
-        case second
-    }
-    enum TabBarOtherKeys: String, TabBarItemKey, CaseIterable {
-        case first
-        case second
-        case third
-    }
-```
-
-```swift
-override func setupItems() {
-    super.setupItems()
-    self.addSet([
-            TabBarItem(
-                itemKey: TabBarMainKeys.first,
-                viewController: { UIViewController() },
-                image: UIImage.from(name: "heart.fill"),
-                selectedImage: UIImage.from(name: "heart.fill"),
-                title: "First"
-            ),
-            TabBarItem(
-                itemKey: TabBarMainKeys.second,
-                viewController: { return UIViewController() },
-                image: UIImage.from(name: "heart"),
-                selectedImage: UIImage.from(name: "heart"),
-                title: "Second",
-                isTranslucent: true
-            )
-        ], forKey: TabBarKeys.main)
-```
-
-Select set and item
-
-```swift
-select(TabBarKeys.main, itemKey: TabBarMainKeys.second)
-```
-
-You can show or hide tab bar
-
-```swift
-func showTabBar(animated: Bool = true,
-                completion: ((Bool) -> Void)? = nil) {
-func hideTabBar(animated: Bool = true,
-                completion: ((Bool) -> Void)? = nil) {
-```
-
-
-### FormsPagerController
-
-```swift
-override func setupItems() {
-    super.setupItems()
-    self.setItems([
-        PagerItem(
-            viewController: { UIViewController() }
-            title: "First",
-            onSelect: { _ in }),
-        PagerItem(
-            viewController: { UIViewController() }
-            title: "Second is longer",
-            onSelect: { _ in }),
-    ])
-```
-
-You can show or hide top bar
-
-```swift
-func showTopBar(animated: Bool = true,
-                completion: ((Bool) -> Void)? = nil) {
-func hideTopBar(animated: Bool = true,
-                completion: ((Bool) -> Void)? = nil) {
-```
-
-and page control
-
-```swift
-func showPageControl(animated: Bool = true,
-                    completion: ((Bool) -> Void)? = nil) {
-func hidePageControl(animated: Bool = true,
-                    completion: ((Bool) -> Void)? = nil) {
-```
-
 ### FormsSearchController
 
 FormsSearchController extends UISearchController and allows use it in navigation item.
@@ -406,34 +310,6 @@ var items: [Any] {
 ```
 
 ## Utils
-
-### AppStoreReview
-
-```swift
-let appStoreReview = AppStoreReview(
-    minLaunchCount: 3, // minimum launch count
-    minPeriod: 60 * 60 * 24, // after each 1 day
-    minPeriodInterval: 60 * 60 * 24 * 30 // each 1 month
-)
-```
-
-Right after app starts you should notify service. This method will save first launch date for later comparisons.
-
-```swift
-appStoreReview.initFirstLaunchIfNeeded()
-```
-
-After each launch you should also notify service for changing launch counter. (Notice that init doesn't change launch count)
-
-```swift
-appStoreReview.launch()
-```
-
-When your app is ready to display review information you can show modal 
-
-```swift
-appStoreReview.showIfNeeded()
-```
 
 ### Keyboard
 
@@ -722,10 +598,10 @@ let token: String?
 @StorageWithDefault(StorageKeys.token, "some_token")
 let token: String
 
-@StorageKeychain(StorageKeys.token)
+@StorageSecure(StorageKeys.token)
 let token: String?
 
-@StorageKeychainWithDefault(StorageKeys.token)
+@StorageSecureWithDefault(StorageKeys.token)
 let token: String
 ```
 
@@ -742,6 +618,17 @@ or standard read / write
 let token = Storage<String>(StorageKeys.token)
 let value = token
 token.value = "New value"
+```
+
+Inject storage container
+
+```swift
+injector.register(StorageContainerProtocol.self) { _ in
+    StorageUserDefaultsContainer.shared
+}
+injector.register(StorageSecureContainerProtocol.self) { _ in
+    StorageKeychainContainer.shared
+}
 ```
 
 ### Theme
@@ -862,90 +749,7 @@ Injector.main.register(ThemeFontsProtocol.self) { _ in
         .regular: { UIFont.systemFont(ofSize: $0) }
     ])
 }
-```
-
-### Toast
-
-Toast can be shown on every UIViewController (also UINavigationController)
-
-```swift
-Toast.new()
-    .with(title: "Some message"))
-    .show(in: controller)
-```
-
-or
-
-```swift
-Toast.new(of: CustomToastView.self)
-    .show(in: controller)
-```
-
-Position allows you to change toast position
-
-```swift
-enum ToastPosition {
-    case top
-    case bottom
-}
-```
-
-```swift
-Toast.new()
-    .with(position: .bottom))
-    .with(title: "Some message"))
-    .show(in: controller)
-```
-
-Style allows you to change toast presentation style
-
-```swift
-enum ToastStyleType {
-    case info
-    case success
-    case error
-}
-```
-
-```swift
-Toast.new()
-    .with(style: .info))
-    .with(title: "Some message"))
-    .show(in: controller)
-```
-
-or 
-
-```swift
-Toast.error()
-    .with(title: "Some message"))
-    .show(in: controller)
-```
-
-Custom configuration
-
-```swift
-Injector.main.register(ConfigurationToastProtocol.self) { _ in
-    return Configuration.Toast(
-        backgroundColor: .init(
-            info: UIColor.black,
-            success: UIColor.green,
-            error: UIColor.red)
-    )
-}
-```
-
-Custom toast implementation
-
-```swift
-class CustomToastView: ToastView {
-    override func add(to parent: UIView) { }
-    override func show(animated: Bool,
-                       completion: ((Bool) -> Void)? = nil) { }
-    override func hide(animated: Bool,
-                       completion: ((Bool) -> Void)? = nil) { }
-}
-```
+``` 
 
 ## Demo 
 

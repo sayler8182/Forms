@@ -20,20 +20,6 @@
                ReferencedContainer = "container:FormsLogger.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
-         <BuildActionEntry
-            buildForTesting = "YES"
-            buildForRunning = "NO"
-            buildForProfiling = "NO"
-            buildForArchiving = "NO"
-            buildForAnalyzing = "NO">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "71BB62532445E7C5002BB31F"
-               BuildableName = "FormsLoggerTests.xctest"
-               BlueprintName = "FormsLoggerTests"
-               ReferencedContainer = "container:FormsLogger.xcodeproj">
-            </BuildableReference>
-         </BuildActionEntry>
       </BuildActionEntries>
    </BuildAction>
    <TestAction
@@ -61,6 +47,15 @@
       savedToolIdentifier = ""
       useCustomWorkingDirectory = "NO"
       debugDocumentVersioning = "YES">
+      <MacroExpansion>
+         <BuildableReference
+            BuildableIdentifier = "primary"
+            BlueprintIdentifier = "71BB624A2445E7C5002BB31F"
+            BuildableName = "FormsLogger.framework"
+            BlueprintName = "FormsLogger"
+            ReferencedContainer = "container:FormsLogger.xcodeproj">
+         </BuildableReference>
+      </MacroExpansion>
    </ProfileAction>
    <AnalyzeAction
       buildConfiguration = "Debug">

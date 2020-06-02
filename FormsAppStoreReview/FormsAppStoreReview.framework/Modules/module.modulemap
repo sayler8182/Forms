@@ -1,0 +1,11 @@
+framework module FormsAppStoreReview {
+  umbrella header "FormsAppStoreReview.h"
+
+  export *
+  module * { export * }
+}
+
+module FormsAppStoreReview.Swift {
+    header "FormsAppStoreReview-Swift.h"
+    requires objc
+}

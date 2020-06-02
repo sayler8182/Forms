@@ -84,7 +84,13 @@ public extension Console {
             "[Common] _BSMachError: port",
             "[logger]",
             "Write to cache",
-            "Read from cache"
+            "Read from cache",
+            "_UIAlertControllerView",
+            "he behavior of the UICollectionViewFlowLayout",
+            "the item height must be less than the height of the UICollectionView",
+            "[Assert] trying to load collection",
+            "The relevant UICollectionViewFlowLayout instance is",
+            "Make a symbolic breakpoint at UICollectionViewFlowLayoutBreakForInvalidSizes"
         ]
     }
 }

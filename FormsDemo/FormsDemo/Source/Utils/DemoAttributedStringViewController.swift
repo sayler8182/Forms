@@ -7,6 +7,7 @@
 //
 
 import Forms
+import FormsToastKit
 import FormsUtils
 import UIKit
 

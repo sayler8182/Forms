@@ -10,10 +10,24 @@
 		7103EA152460231100A11A96 /* DemoProgressesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7103EA142460231100A11A96 /* DemoProgressesViewController.swift */; };
 		7103EA202460382300A11A96 /* DemoNavigationProgressBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7103EA1F2460382300A11A96 /* DemoNavigationProgressBarViewController.swift */; };
 		7103EA852460A60E00A11A96 /* DemoPermissionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7103EA842460A60E00A11A96 /* DemoPermissionsViewController.swift */; };
-		711AF55A24615BDB00CE8666 /* DemoModalController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 711AF55924615BDB00CE8666 /* DemoModalController.swift */; };
+		711AF55A24615BDB00CE8666 /* DemoCardKitController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 711AF55924615BDB00CE8666 /* DemoCardKitController.swift */; };
 		7132964724487ED0006935C0 /* DemoSocialKitAppleTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7132964624487ED0006935C0 /* DemoSocialKitAppleTableViewController.swift */; };
 		7132968A24489F8F006935C0 /* DemoSocialKitFacebookTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7132968924489F8F006935C0 /* DemoSocialKitFacebookTableViewController.swift */; };
 		7132969B2448A609006935C0 /* DemoSocialKitAllTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7132969A2448A609006935C0 /* DemoSocialKitAllTableViewController.swift */; };
+		71369FB124865C5E00298D3B /* FormsSideMenuKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71369FB024865C5E00298D3B /* FormsSideMenuKit.framework */; };
+		71369FB224865C5E00298D3B /* FormsSideMenuKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 71369FB024865C5E00298D3B /* FormsSideMenuKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		71369FB424865E6A00298D3B /* FormsImagePickerKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71369FB324865E6A00298D3B /* FormsImagePickerKit.framework */; };
+		71369FB524865E6A00298D3B /* FormsImagePickerKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 71369FB324865E6A00298D3B /* FormsImagePickerKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		7136A0102486624100298D3B /* FormsAppStoreReview.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7136A00F2486624100298D3B /* FormsAppStoreReview.framework */; };
+		7136A0112486624100298D3B /* FormsAppStoreReview.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 7136A00F2486624100298D3B /* FormsAppStoreReview.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		7136A12724867DDE00298D3B /* FormsTabBarKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7136A12624867DDE00298D3B /* FormsTabBarKit.framework */; };
+		7136A12824867DDE00298D3B /* FormsTabBarKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 7136A12624867DDE00298D3B /* FormsTabBarKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		7136A12A24867DE200298D3B /* FormsPagerKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7136A12924867DE200298D3B /* FormsPagerKit.framework */; };
+		7136A12B24867DE200298D3B /* FormsPagerKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 7136A12924867DE200298D3B /* FormsPagerKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		7136A12D24867DE800298D3B /* FormsToastKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7136A12C24867DE800298D3B /* FormsToastKit.framework */; };
+		7136A12E24867DE800298D3B /* FormsToastKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 7136A12C24867DE800298D3B /* FormsToastKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		7136A13024867E5C00298D3B /* FormsCardKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7136A12F24867E5C00298D3B /* FormsCardKit.framework */; };
+		7136A13124867E5C00298D3B /* FormsCardKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 7136A12F24867E5C00298D3B /* FormsCardKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		7138D3A92452C9E300CC7345 /* DemoCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7138D3A82452C9E300CC7345 /* DemoCollectionViewController.swift */; };
 		7138D3AB2452E19300CC7345 /* DemoShimmerPaginationCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7138D3AA2452E19300CC7345 /* DemoShimmerPaginationCollectionViewController.swift */; };
 		7138D3AD245324E500CC7345 /* DemoShimmerCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7138D3AC245324E500CC7345 /* DemoShimmerCollectionViewController.swift */; };
@@ -26,13 +40,13 @@
 		713B9C82243D0964001F6E3A /* DemoTitleTextFieldViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 713B9C71243D0964001F6E3A /* DemoTitleTextFieldViewController.swift */; };
 		713B9C83243D0964001F6E3A /* DemoRootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 713B9C72243D0964001F6E3A /* DemoRootViewController.swift */; };
 		713B9C84243D0964001F6E3A /* DemoModalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 713B9C74243D0964001F6E3A /* DemoModalViewController.swift */; };
-		713B9C85243D0964001F6E3A /* DemoToastViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 713B9C75243D0964001F6E3A /* DemoToastViewController.swift */; };
+		713B9C85243D0964001F6E3A /* DemoToastKitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 713B9C75243D0964001F6E3A /* DemoToastKitViewController.swift */; };
 		713B9C86243D0964001F6E3A /* DemoValidatorsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 713B9C76243D0964001F6E3A /* DemoValidatorsViewController.swift */; };
 		713B9C87243D0964001F6E3A /* DemoAttributedStringViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 713B9C77243D0964001F6E3A /* DemoAttributedStringViewController.swift */; };
 		713B9C88243D0964001F6E3A /* DemoLoaderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 713B9C78243D0964001F6E3A /* DemoLoaderViewController.swift */; };
-		713B9C89243D0964001F6E3A /* DemoPagerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 713B9C7A243D0964001F6E3A /* DemoPagerController.swift */; };
+		713B9C89243D0964001F6E3A /* DemoPagerKitController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 713B9C7A243D0964001F6E3A /* DemoPagerKitController.swift */; };
 		713B9C8A243D0964001F6E3A /* DemoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 713B9C7B243D0964001F6E3A /* DemoViewController.swift */; };
-		713B9C8B243D0964001F6E3A /* DemoTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 713B9C7C243D0964001F6E3A /* DemoTabBarController.swift */; };
+		713B9C8B243D0964001F6E3A /* DemoTabBarKitController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 713B9C7C243D0964001F6E3A /* DemoTabBarKitController.swift */; };
 		713B9C8C243D0964001F6E3A /* DemoTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 713B9C7D243D0964001F6E3A /* DemoTableViewController.swift */; };
 		714848DA24485CCA00455560 /* DemoOthersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 714848D924485CCA00455560 /* DemoOthersViewController.swift */; };
 		714848DC24485CE500455560 /* DemoUtilsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 714848DB24485CE500455560 /* DemoUtilsViewController.swift */; };
@@ -73,7 +87,7 @@
 		71DB5CC72457647F00B16145 /* DemoAnalyticsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71DB5CC62457647F00B16145 /* DemoAnalyticsViewController.swift */; };
 		71DB66942458299B00B16145 /* Forms.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71C1F0012449E8B000FFC999 /* Forms.framework */; };
 		71DB66952458299B00B16145 /* Forms.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 71C1F0012449E8B000FFC999 /* Forms.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		71DB66F62458333F00B16145 /* DemoImagePickerSystemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71DB66F52458333F00B16145 /* DemoImagePickerSystemViewController.swift */; };
+		71DB66F62458333F00B16145 /* DemoImagePickerKitSystemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71DB66F52458333F00B16145 /* DemoImagePickerKitSystemViewController.swift */; };
 		71DB670224584D6700B16145 /* DemoScrollContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71DB670124584D6700B16145 /* DemoScrollContainerViewController.swift */; };
 		71E0F5D0246BF0890051F043 /* DemoScrollStepsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71E0F5CF246BF0890051F043 /* DemoScrollStepsViewController.swift */; };
 		71E0F5F9246C4CAB0051F043 /* DemoThemeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71E0F5F8246C4CAB0051F043 /* DemoThemeViewController.swift */; };
@@ -82,19 +96,15 @@
 		71FCB24A247F969F00A84D30 /* FormsAnalytics.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 71FCB240247F969F00A84D30 /* FormsAnalytics.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		71FCB24B247F969F00A84D30 /* FormsDeveloperTools.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71FCB241247F969F00A84D30 /* FormsDeveloperTools.framework */; };
 		71FCB24C247F969F00A84D30 /* FormsDeveloperTools.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 71FCB241247F969F00A84D30 /* FormsDeveloperTools.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		71FCB24D247F969F00A84D30 /* FormsImagePicker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71FCB242247F969F00A84D30 /* FormsImagePicker.framework */; };
-		71FCB24E247F969F00A84D30 /* FormsImagePicker.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 71FCB242247F969F00A84D30 /* FormsImagePicker.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		71FCB24F247F969F00A84D30 /* FormsMock.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71FCB243247F969F00A84D30 /* FormsMock.framework */; };
 		71FCB250247F969F00A84D30 /* FormsMock.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 71FCB243247F969F00A84D30 /* FormsMock.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		71FCB251247F969F00A84D30 /* FormsNetworking.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71FCB244247F969F00A84D30 /* FormsNetworking.framework */; };
 		71FCB252247F969F00A84D30 /* FormsNetworking.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 71FCB244247F969F00A84D30 /* FormsNetworking.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		71FCB255247F969F00A84D30 /* FormsSideMenu.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71FCB246247F969F00A84D30 /* FormsSideMenu.framework */; };
-		71FCB256247F969F00A84D30 /* FormsSideMenu.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 71FCB246247F969F00A84D30 /* FormsSideMenu.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		71FCB257247F969F00A84D30 /* FormsSocialKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71FCB247247F969F00A84D30 /* FormsSocialKit.framework */; };
 		71FCB258247F969F00A84D30 /* FormsSocialKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 71FCB247247F969F00A84D30 /* FormsSocialKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		71FCB2C0247F9C6400A84D30 /* FormsPermissions.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71FCB2BF247F9C6400A84D30 /* FormsPermissions.framework */; };
 		71FCB2C1247F9C6400A84D30 /* FormsPermissions.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 71FCB2BF247F9C6400A84D30 /* FormsPermissions.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		71FF141B2458B20000656EDA /* DemoSideMenuController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71FF141A2458B20000656EDA /* DemoSideMenuController.swift */; };
+		71FF141B2458B20000656EDA /* DemoSideMenuKitController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71FF141A2458B20000656EDA /* DemoSideMenuKitController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -105,15 +115,20 @@
 			dstSubfolderSpec = 10;
 			files = (
 				71FCB250247F969F00A84D30 /* FormsMock.framework in Embed Frameworks */,
-				71FCB24E247F969F00A84D30 /* FormsImagePicker.framework in Embed Frameworks */,
+				7136A12E24867DE800298D3B /* FormsToastKit.framework in Embed Frameworks */,
+				71369FB224865C5E00298D3B /* FormsSideMenuKit.framework in Embed Frameworks */,
+				7136A12B24867DE200298D3B /* FormsPagerKit.framework in Embed Frameworks */,
+				7136A0112486624100298D3B /* FormsAppStoreReview.framework in Embed Frameworks */,
 				71FCB252247F969F00A84D30 /* FormsNetworking.framework in Embed Frameworks */,
+				71369FB524865E6A00298D3B /* FormsImagePickerKit.framework in Embed Frameworks */,
 				71FCB258247F969F00A84D30 /* FormsSocialKit.framework in Embed Frameworks */,
 				71FCB2C1247F9C6400A84D30 /* FormsPermissions.framework in Embed Frameworks */,
+				7136A13124867E5C00298D3B /* FormsCardKit.framework in Embed Frameworks */,
 				71FCB24A247F969F00A84D30 /* FormsAnalytics.framework in Embed Frameworks */,
-				71FCB256247F969F00A84D30 /* FormsSideMenu.framework in Embed Frameworks */,
 				7150CE82247FA9ED00F2681B /* FormsTransitions.framework in Embed Frameworks */,
 				71FCB24C247F969F00A84D30 /* FormsDeveloperTools.framework in Embed Frameworks */,
 				71DB66952458299B00B16145 /* Forms.framework in Embed Frameworks */,
+				7136A12824867DDE00298D3B /* FormsTabBarKit.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -124,10 +139,17 @@
 		7103EA142460231100A11A96 /* DemoProgressesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoProgressesViewController.swift; sourceTree = "<group>"; };
 		7103EA1F2460382300A11A96 /* DemoNavigationProgressBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoNavigationProgressBarViewController.swift; sourceTree = "<group>"; };
 		7103EA842460A60E00A11A96 /* DemoPermissionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoPermissionsViewController.swift; sourceTree = "<group>"; };
-		711AF55924615BDB00CE8666 /* DemoModalController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoModalController.swift; sourceTree = "<group>"; };
+		711AF55924615BDB00CE8666 /* DemoCardKitController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoCardKitController.swift; sourceTree = "<group>"; };
 		7132964624487ED0006935C0 /* DemoSocialKitAppleTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoSocialKitAppleTableViewController.swift; sourceTree = "<group>"; };
 		7132968924489F8F006935C0 /* DemoSocialKitFacebookTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoSocialKitFacebookTableViewController.swift; sourceTree = "<group>"; };
 		7132969A2448A609006935C0 /* DemoSocialKitAllTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoSocialKitAllTableViewController.swift; sourceTree = "<group>"; };
+		71369FB024865C5E00298D3B /* FormsSideMenuKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FormsSideMenuKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		71369FB324865E6A00298D3B /* FormsImagePickerKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FormsImagePickerKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		7136A00F2486624100298D3B /* FormsAppStoreReview.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FormsAppStoreReview.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		7136A12624867DDE00298D3B /* FormsTabBarKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FormsTabBarKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		7136A12924867DE200298D3B /* FormsPagerKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FormsPagerKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		7136A12C24867DE800298D3B /* FormsToastKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FormsToastKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		7136A12F24867E5C00298D3B /* FormsCardKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FormsCardKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7138D3A82452C9E300CC7345 /* DemoCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoCollectionViewController.swift; sourceTree = "<group>"; };
 		7138D3AA2452E19300CC7345 /* DemoShimmerPaginationCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoShimmerPaginationCollectionViewController.swift; sourceTree = "<group>"; };
 		7138D3AC245324E500CC7345 /* DemoShimmerCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoShimmerCollectionViewController.swift; sourceTree = "<group>"; };
@@ -141,13 +163,13 @@
 		713B9C71243D0964001F6E3A /* DemoTitleTextFieldViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DemoTitleTextFieldViewController.swift; sourceTree = "<group>"; };
 		713B9C72243D0964001F6E3A /* DemoRootViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DemoRootViewController.swift; sourceTree = "<group>"; };
 		713B9C74243D0964001F6E3A /* DemoModalViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DemoModalViewController.swift; sourceTree = "<group>"; };
-		713B9C75243D0964001F6E3A /* DemoToastViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DemoToastViewController.swift; sourceTree = "<group>"; };
+		713B9C75243D0964001F6E3A /* DemoToastKitViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DemoToastKitViewController.swift; sourceTree = "<group>"; };
 		713B9C76243D0964001F6E3A /* DemoValidatorsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DemoValidatorsViewController.swift; sourceTree = "<group>"; };
 		713B9C77243D0964001F6E3A /* DemoAttributedStringViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DemoAttributedStringViewController.swift; sourceTree = "<group>"; };
 		713B9C78243D0964001F6E3A /* DemoLoaderViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DemoLoaderViewController.swift; sourceTree = "<group>"; };
-		713B9C7A243D0964001F6E3A /* DemoPagerController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DemoPagerController.swift; sourceTree = "<group>"; };
+		713B9C7A243D0964001F6E3A /* DemoPagerKitController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DemoPagerKitController.swift; sourceTree = "<group>"; };
 		713B9C7B243D0964001F6E3A /* DemoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DemoViewController.swift; sourceTree = "<group>"; };
-		713B9C7C243D0964001F6E3A /* DemoTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DemoTabBarController.swift; sourceTree = "<group>"; };
+		713B9C7C243D0964001F6E3A /* DemoTabBarKitController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DemoTabBarKitController.swift; sourceTree = "<group>"; };
 		713B9C7D243D0964001F6E3A /* DemoTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DemoTableViewController.swift; sourceTree = "<group>"; };
 		714848D924485CCA00455560 /* DemoOthersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoOthersViewController.swift; sourceTree = "<group>"; };
 		714848DB24485CE500455560 /* DemoUtilsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoUtilsViewController.swift; sourceTree = "<group>"; };
@@ -187,21 +209,19 @@
 		71C9369D247E513500603A6F /* DemoPinViewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoPinViewViewController.swift; sourceTree = "<group>"; };
 		71DB5C9424575B6300B16145 /* DemoTitleSearchBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoTitleSearchBarViewController.swift; sourceTree = "<group>"; };
 		71DB5CC62457647F00B16145 /* DemoAnalyticsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoAnalyticsViewController.swift; sourceTree = "<group>"; };
-		71DB66F52458333F00B16145 /* DemoImagePickerSystemViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoImagePickerSystemViewController.swift; sourceTree = "<group>"; };
+		71DB66F52458333F00B16145 /* DemoImagePickerKitSystemViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoImagePickerKitSystemViewController.swift; sourceTree = "<group>"; };
 		71DB670124584D6700B16145 /* DemoScrollContainerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoScrollContainerViewController.swift; sourceTree = "<group>"; };
 		71E0F5CF246BF0890051F043 /* DemoScrollStepsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoScrollStepsViewController.swift; sourceTree = "<group>"; };
 		71E0F5F8246C4CAB0051F043 /* DemoThemeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoThemeViewController.swift; sourceTree = "<group>"; };
 		71E0F60E246D34320051F043 /* DemoTitleTextViewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoTitleTextViewViewController.swift; sourceTree = "<group>"; };
 		71FCB240247F969F00A84D30 /* FormsAnalytics.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FormsAnalytics.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		71FCB241247F969F00A84D30 /* FormsDeveloperTools.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FormsDeveloperTools.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		71FCB242247F969F00A84D30 /* FormsImagePicker.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FormsImagePicker.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		71FCB243247F969F00A84D30 /* FormsMock.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FormsMock.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		71FCB244247F969F00A84D30 /* FormsNetworking.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FormsNetworking.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		71FCB246247F969F00A84D30 /* FormsSideMenu.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FormsSideMenu.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		71FCB247247F969F00A84D30 /* FormsSocialKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FormsSocialKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		71FCB248247F969F00A84D30 /* FormsTransition.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FormsTransition.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		71FCB2BF247F9C6400A84D30 /* FormsPermissions.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FormsPermissions.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		71FF141A2458B20000656EDA /* DemoSideMenuController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoSideMenuController.swift; sourceTree = "<group>"; };
+		71FF141A2458B20000656EDA /* DemoSideMenuKitController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoSideMenuKitController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -210,15 +230,20 @@
 			buildActionMask = 2147483647;
 			files = (
 				71FCB24F247F969F00A84D30 /* FormsMock.framework in Frameworks */,
-				71FCB24D247F969F00A84D30 /* FormsImagePicker.framework in Frameworks */,
+				7136A12D24867DE800298D3B /* FormsToastKit.framework in Frameworks */,
+				71369FB124865C5E00298D3B /* FormsSideMenuKit.framework in Frameworks */,
+				7136A12A24867DE200298D3B /* FormsPagerKit.framework in Frameworks */,
+				7136A0102486624100298D3B /* FormsAppStoreReview.framework in Frameworks */,
 				71FCB251247F969F00A84D30 /* FormsNetworking.framework in Frameworks */,
+				71369FB424865E6A00298D3B /* FormsImagePickerKit.framework in Frameworks */,
 				71FCB257247F969F00A84D30 /* FormsSocialKit.framework in Frameworks */,
 				71FCB2C0247F9C6400A84D30 /* FormsPermissions.framework in Frameworks */,
+				7136A13024867E5C00298D3B /* FormsCardKit.framework in Frameworks */,
 				71FCB249247F969F00A84D30 /* FormsAnalytics.framework in Frameworks */,
 				71DB66942458299B00B16145 /* Forms.framework in Frameworks */,
 				7150CE81247FA9ED00F2681B /* FormsTransitions.framework in Frameworks */,
-				71FCB255247F969F00A84D30 /* FormsSideMenu.framework in Frameworks */,
 				71FCB24B247F969F00A84D30 /* FormsDeveloperTools.framework in Frameworks */,
+				7136A12724867DDE00298D3B /* FormsTabBarKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -253,6 +278,35 @@
 			path = SocialKit;
 			sourceTree = "<group>";
 		};
+		71369FBD24865F8D00298D3B /* Kits */ = {
+			isa = PBXGroup;
+			children = (
+				71DB66F42458333400B16145 /* ImagePickerKit */,
+				7132964524487EC5006935C0 /* SocialKit */,
+				711AF55924615BDB00CE8666 /* DemoCardKitController.swift */,
+				713B9C7A243D0964001F6E3A /* DemoPagerKitController.swift */,
+				71FF141A2458B20000656EDA /* DemoSideMenuKitController.swift */,
+				713B9C7C243D0964001F6E3A /* DemoTabBarKitController.swift */,
+				713B9C75243D0964001F6E3A /* DemoToastKitViewController.swift */,
+			);
+			path = Kits;
+			sourceTree = "<group>";
+		};
+		7136A018248663BC00298D3B /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				717802BB245449C10057E848 /* DeveloperTools */,
+				71BB61ED2445C6DD002BB31F /* Network */,
+				719AE5CE246308E300A39B0E /* Transition */,
+				71DB5CC62457647F00B16145 /* DemoAnalyticsViewController.swift */,
+				7193E34D2451B5B7006238C5 /* DemoAppStoreReviewViewController.swift */,
+				713A76052473DB290067C968 /* DemoMockViewController.swift */,
+				7103EA842460A60E00A11A96 /* DemoPermissionsViewController.swift */,
+				713B9C76243D0964001F6E3A /* DemoValidatorsViewController.swift */,
+			);
+			path = Frameworks;
+			sourceTree = "<group>";
+		};
 		713B9BE9243D08E0001F6E3A = {
 			isa = PBXGroup;
 			children = (
@@ -279,6 +333,8 @@
 				713B9C79243D0964001F6E3A /* Controllers */,
 				713B9C68243D0964001F6E3A /* Components */,
 				713B9C73243D0964001F6E3A /* Utils */,
+				7136A018248663BC00298D3B /* Frameworks */,
+				71369FBD24865F8D00298D3B /* Kits */,
 				7103184B244636C200BB63D4 /* Architectuers */,
 				719469D3243DBC6800CAD09B /* Utils.swift */,
 			);
@@ -288,14 +344,19 @@
 		713B9C63243D0947001F6E3A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				7136A12F24867E5C00298D3B /* FormsCardKit.framework */,
+				7136A12C24867DE800298D3B /* FormsToastKit.framework */,
+				7136A12924867DE200298D3B /* FormsPagerKit.framework */,
+				7136A12624867DDE00298D3B /* FormsTabBarKit.framework */,
+				7136A00F2486624100298D3B /* FormsAppStoreReview.framework */,
+				71369FB324865E6A00298D3B /* FormsImagePickerKit.framework */,
+				71369FB024865C5E00298D3B /* FormsSideMenuKit.framework */,
 				71C1F0012449E8B000FFC999 /* Forms.framework */,
 				71FCB240247F969F00A84D30 /* FormsAnalytics.framework */,
 				71FCB241247F969F00A84D30 /* FormsDeveloperTools.framework */,
-				71FCB242247F969F00A84D30 /* FormsImagePicker.framework */,
 				71FCB243247F969F00A84D30 /* FormsMock.framework */,
 				71FCB244247F969F00A84D30 /* FormsNetworking.framework */,
 				71FCB2BF247F9C6400A84D30 /* FormsPermissions.framework */,
-				71FCB246247F969F00A84D30 /* FormsSideMenu.framework */,
 				71FCB247247F969F00A84D30 /* FormsSocialKit.framework */,
 				71FCB248247F969F00A84D30 /* FormsTransition.framework */,
 				7150CE80247FA9ED00F2681B /* FormsTransitions.framework */,
@@ -357,24 +418,13 @@
 		713B9C73243D0964001F6E3A /* Utils */ = {
 			isa = PBXGroup;
 			children = (
-				717802BB245449C10057E848 /* DeveloperTools */,
-				71DB66F42458333400B16145 /* ImagePicker */,
-				71BB61ED2445C6DD002BB31F /* Network */,
 				71D39CCE244455F1006BED33 /* Shimmer */,
-				7132964524487EC5006935C0 /* SocialKit */,
-				719AE5CE246308E300A39B0E /* Transition */,
-				71DB5CC62457647F00B16145 /* DemoAnalyticsViewController.swift */,
-				7193E34D2451B5B7006238C5 /* DemoAppStoreReviewViewController.swift */,
 				713B9C77243D0964001F6E3A /* DemoAttributedStringViewController.swift */,
 				713B9C78243D0964001F6E3A /* DemoLoaderViewController.swift */,
-				713A76052473DB290067C968 /* DemoMockViewController.swift */,
 				713B9C74243D0964001F6E3A /* DemoModalViewController.swift */,
-				7103EA842460A60E00A11A96 /* DemoPermissionsViewController.swift */,
 				71E0F5CF246BF0890051F043 /* DemoScrollStepsViewController.swift */,
 				7193E34F2451D258006238C5 /* DemoStorageViewController.swift */,
 				71E0F5F8246C4CAB0051F043 /* DemoThemeViewController.swift */,
-				713B9C75243D0964001F6E3A /* DemoToastViewController.swift */,
-				713B9C76243D0964001F6E3A /* DemoValidatorsViewController.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -383,11 +433,7 @@
 			isa = PBXGroup;
 			children = (
 				7138D3A82452C9E300CC7345 /* DemoCollectionViewController.swift */,
-				711AF55924615BDB00CE8666 /* DemoModalController.swift */,
-				713B9C7A243D0964001F6E3A /* DemoPagerController.swift */,
-				71FF141A2458B20000656EDA /* DemoSideMenuController.swift */,
 				713B9C7B243D0964001F6E3A /* DemoViewController.swift */,
-				713B9C7C243D0964001F6E3A /* DemoTabBarController.swift */,
 				713B9C7D243D0964001F6E3A /* DemoTableViewController.swift */,
 			);
 			path = Controllers;
@@ -488,12 +534,12 @@
 			path = Shimmer;
 			sourceTree = "<group>";
 		};
-		71DB66F42458333400B16145 /* ImagePicker */ = {
+		71DB66F42458333400B16145 /* ImagePickerKit */ = {
 			isa = PBXGroup;
 			children = (
-				71DB66F52458333F00B16145 /* DemoImagePickerSystemViewController.swift */,
+				71DB66F52458333F00B16145 /* DemoImagePickerKitSystemViewController.swift */,
 			);
-			path = ImagePicker;
+			path = ImagePickerKit;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -588,12 +634,12 @@
 				713B9C84243D0964001F6E3A /* DemoModalViewController.swift in Sources */,
 				7103EA202460382300A11A96 /* DemoNavigationProgressBarViewController.swift in Sources */,
 				713B9C81243D0964001F6E3A /* DemoLabelsViewController.swift in Sources */,
-				71FF141B2458B20000656EDA /* DemoSideMenuController.swift in Sources */,
+				71FF141B2458B20000656EDA /* DemoSideMenuKitController.swift in Sources */,
 				713B9C7F243D0964001F6E3A /* DemoNavigationBarWithBackOrCloseViewController.swift in Sources */,
 				715B7AE22446FD1500754EDB /* DemoArchitecturesCleanSummaryPresenter.swift in Sources */,
 				719469C4243DB01D00CAD09B /* DemoShimmerViewController.swift in Sources */,
 				713B9C80243D0964001F6E3A /* DemoNavigationBarViewController.swift in Sources */,
-				713B9C89243D0964001F6E3A /* DemoPagerController.swift in Sources */,
+				713B9C89243D0964001F6E3A /* DemoPagerKitController.swift in Sources */,
 				7132968A24489F8F006935C0 /* DemoSocialKitFacebookTableViewController.swift in Sources */,
 				71DB5CC72457647F00B16145 /* DemoAnalyticsViewController.swift in Sources */,
 				7138D3AB2452E19300CC7345 /* DemoShimmerPaginationCollectionViewController.swift in Sources */,
@@ -610,13 +656,13 @@
 				713A76062473DB290067C968 /* DemoMockViewController.swift in Sources */,
 				7158CB96246A88D900797B83 /* DemoDeveloperToolsConsoleViewController.swift in Sources */,
 				71BB62812445F7C7002BB31F /* DemoNetworkImageViewController.swift in Sources */,
-				711AF55A24615BDB00CE8666 /* DemoModalController.swift in Sources */,
+				711AF55A24615BDB00CE8666 /* DemoCardKitController.swift in Sources */,
 				715B7AE32446FD1500754EDB /* DemoArchitecturesCleanSummaryWorker.swift in Sources */,
-				713B9C8B243D0964001F6E3A /* DemoTabBarController.swift in Sources */,
+				713B9C8B243D0964001F6E3A /* DemoTabBarKitController.swift in Sources */,
 				715B7AE42446FD1500754EDB /* DemoArchitecturesCleanSummaryRouter.swift in Sources */,
 				719469D4243DBC6800CAD09B /* Utils.swift in Sources */,
 				715891122446377D003200C7 /* DemoArchitecturesCleanViewController.swift in Sources */,
-				71DB66F62458333F00B16145 /* DemoImagePickerSystemViewController.swift in Sources */,
+				71DB66F62458333F00B16145 /* DemoImagePickerKitSystemViewController.swift in Sources */,
 				71E0F60F246D34320051F043 /* DemoTitleTextViewViewController.swift in Sources */,
 				7103EA152460231100A11A96 /* DemoProgressesViewController.swift in Sources */,
 				719F8C7B24570358004F5A27 /* DemoDeveloperToolsMenuViewController.swift in Sources */,
@@ -644,7 +690,7 @@
 				7138D3A92452C9E300CC7345 /* DemoCollectionViewController.swift in Sources */,
 				7193E34E2451B5B7006238C5 /* DemoAppStoreReviewViewController.swift in Sources */,
 				713B9C83243D0964001F6E3A /* DemoRootViewController.swift in Sources */,
-				713B9C85243D0964001F6E3A /* DemoToastViewController.swift in Sources */,
+				713B9C85243D0964001F6E3A /* DemoToastKitViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

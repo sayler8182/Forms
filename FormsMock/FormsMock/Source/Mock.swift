@@ -227,7 +227,7 @@ public extension Mock {
         guard !self.isNull(options) else { return nil }
         var string: String = ""
         for formatChar in format {
-            let char = formatChar == "X"
+            let char = formatChar == "D"
                 ? String(self.random(0...9))
                 : String(formatChar)
             string.append(char)

@@ -14,6 +14,14 @@ public extension UIView {
         return UIApplication.shared.userInterfaceLayoutDirection == .rightToLeft
     }
     
+    var safeArea: UIEdgeInsets {
+        if #available(iOS 11.0, *) {
+            return self.safeAreaInsets
+        } else {
+            return UIEdgeInsets(0)
+        }
+    }
+    
     static var safeArea: UIEdgeInsets {
         if #available(iOS 13.0, *) {
             let _window: UIWindow? = UIApplication.shared.connectedScenes

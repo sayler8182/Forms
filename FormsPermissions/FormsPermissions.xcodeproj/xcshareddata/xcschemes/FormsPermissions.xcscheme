@@ -20,20 +20,6 @@
                ReferencedContainer = "container:FormsPermissions.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
-         <BuildActionEntry
-            buildForTesting = "YES"
-            buildForRunning = "NO"
-            buildForProfiling = "NO"
-            buildForArchiving = "NO"
-            buildForAnalyzing = "NO">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "7103EA3724609C1B00A11A96"
-               BuildableName = "FormsPermissionsTests.xctest"
-               BlueprintName = "FormsPermissionsTests"
-               ReferencedContainer = "container:FormsPermissions.xcodeproj">
-            </BuildableReference>
-         </BuildActionEntry>
       </BuildActionEntries>
    </BuildAction>
    <TestAction

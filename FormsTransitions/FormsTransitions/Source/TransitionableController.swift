@@ -13,7 +13,7 @@ public protocol TransitionableController: NSObjectProtocol {
     var view: UIView! { get set }
     var animator: TransitionControllerAnimator { get set }
     var coordinator: TransitionControllerCoordinator { get set }
-    var edgePanGesture: UIScreenEdgePanGestureRecognizer { get set }
+    var edgePanGesture: UIScreenEdgePanGestureRecognizer! { get set }
     
     func dismiss(animated flag: Bool, completion: (() -> Void)?)
     

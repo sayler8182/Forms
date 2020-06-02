@@ -8,6 +8,7 @@
 
 import Forms
 import FormsAnalytics
+import FormsToastKit
 import UIKit
 
 // MARK: FormsIntegrationAnalyticsViewController
