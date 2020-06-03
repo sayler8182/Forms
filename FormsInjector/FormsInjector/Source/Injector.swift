@@ -221,8 +221,7 @@ extension Injector {
             serviceType: serviceType,
             argumentsType: Arguments.self,
             factory: factory,
-            scope: self.scope
-        )
+            scope: self.scope)
         self.services[key] = entry
         return entry
     }

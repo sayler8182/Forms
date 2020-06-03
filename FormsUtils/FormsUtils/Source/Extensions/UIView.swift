@@ -223,7 +223,19 @@ extension UIView {
         self.clipsToBounds = clipsToBounds
         return self
     }
-             
+    
+    @objc
+    open func with(contentCompressionResistancePriority: UILayoutPriority, axis: NSLayoutConstraint.Axis) -> Self {
+        self.setContentCompressionResistancePriority(contentCompressionResistancePriority, for: axis)
+        return self
+    }
+    
+    @objc
+    open func with(contentHuggingPriority: UILayoutPriority, axis: NSLayoutConstraint.Axis) -> Self {
+        self.setContentHuggingPriority(contentHuggingPriority, for: axis)
+        return self
+    }
+    
     @objc
     open func with(contentMode: UIView.ContentMode) -> Self {
         self.contentMode = contentMode

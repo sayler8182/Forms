@@ -27,9 +27,9 @@ class DemoModalViewController: FormsTableViewController {
     
     override func setupActions() {
         super.setupActions()
-        self.titleShortModalButton.onClick = { [unowned self] in
+        self.titleShortModalButton.onClick = Unowned(self) { (_self) in
             let modalView = Modal.show(
-                in: self.navigationController,
+                in: _self.navigationController,
                 of: TitleModalView.self)
             modalView?.setTitle("Short title")
         }
@@ -76,7 +76,7 @@ private class TitleModalView: ModalView {
         parent.addSubview(self, with: [
             Anchor.to(parent).center,
             Anchor.to(parent).leading.offset(16).greaterThanOrEqual,
-            Anchor.to(parent).trailing.offset(16).lessThanOrEqual
+            Anchor.to(parent).trailing.offset(16).greaterThanOrEqual
         ])
         self.addSubview(self.titleLabel, with: [
             Anchor.to(self).top.offset(16),

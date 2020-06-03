@@ -71,8 +71,8 @@ class DemoTableViewController: FormsTableViewController {
     
     override func setupActions() {
         super.setupActions()
-        self.changeSourceButton.onClick = { [unowned self] in
-            self.changeSource()
+        self.changeSourceButton.onClick = Unowned(self) { (_self) in
+            _self.changeSource()
         }
     }
     

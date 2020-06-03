@@ -75,8 +75,8 @@ open class ImageView: FormsComponent, FormsComponentWithMarginEdgeInset, FormsCo
     private func setupImageView() {
         self.imageView.clipsToBounds = true
         self.imageView.frame = self.bounds
-        self.addSubview(self.imageView, with: [
-            Anchor.to(self).fill,
+        self.backgroundView.addSubview(self.imageView, with: [
+            Anchor.to(self.backgroundView).fill,
             Anchor.to(self.imageView).height(0).connect(self.imageHeightAnchor).isActive(false),
             Anchor.to(self.imageView).width(0).connect(self.imageWidthAnchor).isActive(false)
         ])

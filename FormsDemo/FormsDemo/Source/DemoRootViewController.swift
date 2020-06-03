@@ -44,6 +44,7 @@ private enum Demo {
         case components
         case componentsButtons
         case componentsButtonsPrimaryButton
+        case componentsCheckboxes
         case componentsContainers
         case componentsContainersPage
         case componentsContainersScroll
@@ -139,6 +140,7 @@ private enum Demo {
                                 Row(type: RowType.componentsButtonsPrimaryButton, title: "PrimaryButton")
                             ])
                     ]),
+                    Row(type: RowType.componentsCheckboxes, title: "Checkboxes"),
                     Row(
                         type: RowType.componentsContainers,
                         title: "Containers",
@@ -509,6 +511,7 @@ private class DemoListViewController: FormsViewController {
         case .viewController:                                   return DemoViewController()
         // components
         case .componentsButtonsPrimaryButton:                   return DemoPrimaryButtonViewController()
+        case .componentsCheckboxes:                             return DemoCheckboxesViewController()
         case .componentsContainersPage:                         return DemoPageContainerViewController()
         case .componentsContainersScroll:                       return DemoScrollContainerViewController()
         case .componentsContainersStack:                        return DemoStackContainerViewController()

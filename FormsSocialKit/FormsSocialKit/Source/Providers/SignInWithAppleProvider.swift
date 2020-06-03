@@ -118,8 +118,7 @@ extension SignInWithAppleProvider: ASAuthorizationControllerDelegate, ASAuthoriz
             uid: credential.user,
             jwt: jwt,
             email: credential.email,
-            fullName: credential.fullName
-        )
+            fullName: credential.fullName)
         self.onSuccess?(data)
         self.onCompletion?(data, nil)
     }

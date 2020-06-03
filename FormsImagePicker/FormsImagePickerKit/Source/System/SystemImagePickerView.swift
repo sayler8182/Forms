@@ -127,8 +127,7 @@ private class SystemImagePickerControllerDelegate: NSObject, UIImagePickerContro
         }
         let imagePickerData = ImagePickerData(
             images: images,
-            videos: videos
-        )
+            videos: videos)
         picker.dismiss(animated: true) {
             self.controller?.onSelect?(imagePickerData)
         }

@@ -18,8 +18,7 @@ public struct ComponentsProgresses: ComponentsList {
         component.height = 4
         component.paddingEdgeInset = UIEdgeInsets(0)
         component.progress = 0
-        component.onSetTheme = { [weak component] in
-            guard let component = component else { return }
+        component.onSetTheme = Strong(component) { component in
             component.backgroundColor = Theme.Colors.primaryBackground
             component.primaryColor = Theme.Colors.primaryText.withAlphaComponent(0.5)
             component.secondaryColor = Theme.Colors.primaryText

@@ -27,8 +27,7 @@ class DemoArchitecturesCleanSummaryInteractor: DemoArchitecturesCleanSummaryBusi
     
     func getContent(_ request: DemoArchitecturesCleanSummary.GetContent.Request) {
         let response = DemoArchitecturesCleanSummary.GetContent.Response(
-            generated: self.generated
-        )
+            generated: self.generated)
         self.presenter.presentContent(response)
     }
 }

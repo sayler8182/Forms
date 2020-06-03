@@ -47,38 +47,38 @@ class DemoPermissionsViewController: FormsTableViewController {
     
     override func setupActions() {
         super.setupActions()
-        self.askAllButton.onClick = { [unowned self] in
+        self.askAllButton.onClick = Unowned(self) { (_self: DemoPermissionsViewController) in
             let permissions: [Permissionable] = [
                 Permissions.location,
                 Permissions.notifications
             ]
-            Permissions.ask(permissions) { [weak self] _ in
-                guard let `self` = self else { return }
-                self.updateStatuses()
+            Permissions.ask(permissions) { [weak _self] _ in
+                guard let _self = _self else { return }
+                _self.updateStatuses()
             }
         }
-        self.locationDefaultButton.onClick = { [unowned self] in
-            Permissions.location.ask { [weak self] _ in
-                guard let `self` = self else { return }
-                self.updateLocationStatus()
+        self.locationDefaultButton.onClick = Unowned(self) { (_self: DemoPermissionsViewController) in
+            Permissions.location.ask { [weak _self] _ in
+                guard let _self = _self else { return }
+                _self.updateLocationStatus()
             }
         }
-        self.locationWhenInUseButton.onClick = { [unowned self] in
-            Permissions.location.askWhenInUse { [weak self] _ in
-                guard let `self` = self else { return }
-                self.updateLocationStatus()
+        self.locationWhenInUseButton.onClick = Unowned(self) { (_self: DemoPermissionsViewController) in
+            Permissions.location.askWhenInUse { [weak _self] _ in
+                guard let _self = _self else { return }
+                _self.updateLocationStatus()
             }
         }
-        self.locationAlwaysButton.onClick = { [unowned self] in
-            Permissions.location.askAlways { [weak self] _ in
-                guard let `self` = self else { return }
-                self.updateLocationStatus()
+        self.locationAlwaysButton.onClick = Unowned(self) { (_self: DemoPermissionsViewController) in
+            Permissions.location.askAlways { [weak _self] _ in
+                guard let _self = _self else { return }
+                _self.updateLocationStatus()
             }
         }
-        self.notificationsDefaultButton.onClick = { [unowned self] in
-            Permissions.notifications.ask { [weak self] _ in
-                guard let `self` = self else { return }
-                self.updateNotificationsStatus()
+        self.notificationsDefaultButton.onClick = Unowned(self) { (_self: DemoPermissionsViewController) in
+            Permissions.notifications.ask { [weak _self] _ in
+                guard let _self = _self else { return }
+                _self.updateNotificationsStatus()
             }
         }
     }

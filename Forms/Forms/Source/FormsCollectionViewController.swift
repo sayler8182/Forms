@@ -558,8 +558,7 @@ open class CollectionFlowLayout: UICollectionViewFlowLayout {
         let maxOffsetY: CGFloat = offsetsY.max() ?? contentInset.top
         self.contentSize = CGSize(
             width: collectionView.frame.width,
-            height: maxOffsetY + contentInset.bottom
-        )
+            height: maxOffsetY + contentInset.bottom)
     }
     
     private func prepareHorizontal(collectionView: UICollectionView,
@@ -593,8 +592,7 @@ open class CollectionFlowLayout: UICollectionViewFlowLayout {
         let maxOffsetX: CGFloat = offsetsX.max() ?? contentInset.leading
         self.contentSize = CGSize(
             width: maxOffsetX + contentInset.trailing,
-            height: collectionView.frame.height
-        )
+            height: collectionView.frame.height)
     }
     
     override public func layoutAttributesForElements(in rect: CGRect) -> [UICollectionViewLayoutAttributes]? {

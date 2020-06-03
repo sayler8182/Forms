@@ -56,16 +56,16 @@ class DemoTransitionControllerViewController: FormsViewController {
 
     override func setupActions() {
         super.setupActions()
-        self.showSlideButton.onClick = { [unowned self] in
+        self.showSlideButton.onClick = Unowned(self) { (_self) in
             let controller = DemoSecondNavigationController()
             controller.modalPresentationStyle = .custom
-            self.navigationController?.present(controller, animated: true, completion: nil)
+            _self.navigationController?.present(controller, animated: true, completion: nil)
         }
-        self.showCircleButton.onClick = { [unowned self] in
+        self.showCircleButton.onClick = Unowned(self) { (_self) in
             let controller = DemoThirdViewController()
-            controller.setTransitionSource(view: self.showCircleButton)
+            controller.setTransitionSource(view: _self.showCircleButton)
             controller.modalPresentationStyle = .custom
-            self.navigationController?.present(controller, animated: true, completion: nil)
+            _self.navigationController?.present(controller, animated: true, completion: nil)
         }
     }
 }
@@ -137,8 +137,8 @@ private class DemoSecondViewController: FormsViewController {
     
     override func setupActions() {
         super.setupActions()
-        self.hideButton.onClick = { [unowned self] in
-            self.dismiss(animated: true, completion: nil)
+        self.hideButton.onClick = Unowned(self) { (_self) in
+            _self.dismiss(animated: true, completion: nil)
         }
     }
 }
@@ -199,9 +199,9 @@ private class DemoThirdViewController: FormsViewController, TransitionableContro
     
     override func setupActions() {
         super.setupActions()
-        self.hideButton.onClick = { [unowned self] in
-            self.setTransitionSource(view: self.hideButton)
-            self.dismiss(animated: true, completion: nil)
+        self.hideButton.onClick = Unowned(self) { (_self) in
+            _self.setTransitionSource(view: _self.hideButton)
+            _self.dismiss(animated: true, completion: nil)
         }
     }
 }

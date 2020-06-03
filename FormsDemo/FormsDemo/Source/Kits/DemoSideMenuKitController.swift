@@ -46,8 +46,8 @@ private class DemoMenuViewController: FormsTableViewController {
     
     override func setupActions() {
         super.setupActions()
-        self.closeButton.onClick = { [unowned self] in
-            self.sideMenuController?.close()
+        self.closeButton.onClick = Unowned(self) { (_self) in
+            _self.sideMenuController?.close()
         }
     }
 }
@@ -78,11 +78,11 @@ private class DemoContentViewController: FormsTableViewController {
     
     override func setupActions() {
         super.setupActions()
-        self.openLeftButton.onClick = { [unowned self] in
-            self.sideMenuController?.open(direction: .left)
+        self.openLeftButton.onClick = Unowned(self) { (_self) in
+            _self.sideMenuController?.open(direction: .left)
         }
-        self.openRightButton.onClick = { [unowned self] in
-            self.sideMenuController?.open(direction: .right)
+        self.openRightButton.onClick = Unowned(self) { (_self) in
+            _self.sideMenuController?.open(direction: .right)
         }
     }
 }

@@ -162,15 +162,13 @@ public class LifetimeTrackerDashboardViewController: UIViewController, LifetimeT
             attributes: [
                 NSAttributedString.Key.font: UIFont.systemFont(ofSize: 24),
                 NSAttributedString.Key.foregroundColor: leaksColor
-        ])
-        )
+        ]))
         attributedText.append(NSAttributedString(
             string: "/\(dashboard.groupLeaksCount)",
             attributes: [
                 NSAttributedString.Key.font: UIFont.systemFont(ofSize: 12),
                 NSAttributedString.Key.foregroundColor: groupLeaksColor
-        ])
-        )
+        ]))
         self.leaksCountLabel.attributedText = attributedText
     }
     

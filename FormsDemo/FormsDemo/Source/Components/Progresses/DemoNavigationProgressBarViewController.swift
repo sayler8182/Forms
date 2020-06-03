@@ -56,9 +56,9 @@ private class DemoFirstViewController: FormsTableViewController {
     
     override func setupActions() {
         super.setupActions()
-        self.nextButton.onClick = { [unowned self] in
+        self.nextButton.onClick = Unowned(self) { (_self) in
             let controller = DemoSecondViewController()
-            self.navigationController?.pushViewController(controller, animated: true)
+            _self.navigationController?.pushViewController(controller, animated: true)
         }
     }
 }
@@ -92,12 +92,12 @@ private class DemoSecondViewController: FormsTableViewController {
     
     override func setupActions() {
         super.setupActions()
-        self.backButton.onClick = { [unowned self] in
-            self.navigationController?.popViewController(animated: true)
+        self.backButton.onClick = Unowned(self) { (_self) in
+            _self.navigationController?.popViewController(animated: true)
         }
-        self.nextButton.onClick = { [unowned self] in
+        self.nextButton.onClick = Unowned(self) { (_self) in
             let controller = DemoThirdViewController()
-            self.navigationController?.pushViewController(controller, animated: true)
+            _self.navigationController?.pushViewController(controller, animated: true)
         }
     }
 }
@@ -128,8 +128,8 @@ private class DemoThirdViewController: FormsTableViewController {
     
     override func setupActions() {
         super.setupActions()
-        self.backButton.onClick = { [unowned self] in
-            self.navigationController?.popViewController(animated: true)
+        self.backButton.onClick = Unowned(self) { (_self) in
+            _self.navigationController?.popViewController(animated: true)
         }
     }
 }

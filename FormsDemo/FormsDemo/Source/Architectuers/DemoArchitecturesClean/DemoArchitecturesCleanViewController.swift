@@ -40,8 +40,8 @@ class DemoArchitecturesCleanViewController: FormsViewController {
     
     override func setupActions() {
         super.setupActions()
-        self.generateButton.onClick = { [unowned self] in
-            self.getContent()
+        self.generateButton.onClick = Unowned(self) { (_self) in
+            _self.getContent()
         }
     }
 }

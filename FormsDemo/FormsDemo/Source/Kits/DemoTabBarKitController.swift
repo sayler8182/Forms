@@ -49,8 +49,8 @@ class DemoTabBarKitController: TabBarController {
                 viewController: { [unowned self] in
                     let controller = ContentViewController()
                     controller.titleFirst = "Change set to other"
-                    controller.onClickFirst = { [unowned self] in
-                        self.show(TabBarKeys.other, itemKey: TabBarOtherKeys.first)
+                    controller.onClickFirst = Unowned(self) { (_self) in
+                        _self.show(TabBarKeys.other, itemKey: TabBarOtherKeys.first)
                     }
                     return controller.embeded
                 },
@@ -73,8 +73,8 @@ class DemoTabBarKitController: TabBarController {
                 viewController: { [unowned self] in
                     let controller = ContentViewController()
                     controller.titleFirst = "Change set to main"
-                    controller.onClickFirst = { [unowned self] in
-                        self.show(TabBarKeys.main, itemKey: TabBarOtherKeys.first)
+                    controller.onClickFirst = Unowned(self) { (_self) in
+                        _self.show(TabBarKeys.main, itemKey: TabBarOtherKeys.first)
                     }
                     return controller.embeded
                 },
@@ -86,8 +86,8 @@ class DemoTabBarKitController: TabBarController {
                 viewController: { [unowned self] in
                     let controller = ContentViewController()
                     controller.titleFirst = "Select third"
-                    controller.onClickFirst = { [unowned self] in
-                        self.show(index: 2)
+                    controller.onClickFirst = Unowned(self) { (_self) in
+                        _self.show(index: 2)
                     }
                     return controller.embeded
                 },
@@ -99,12 +99,12 @@ class DemoTabBarKitController: TabBarController {
                 viewController: { [unowned self] in
                     let controller = ContentViewController()
                     controller.titleFirst = "Hide TabBar"
-                    controller.onClickFirst = { [unowned self] in
-                        self.hideTabBar()
+                    controller.onClickFirst = Unowned(self) { (_self) in
+                        _self.hideTabBar()
                     }
                     controller.titleSecond = "Show TabBar"
-                    controller.onClickSecond = { [unowned self] in
-                        self.showTabBar()
+                    controller.onClickSecond = Unowned(self) { (_self) in
+                        _self.showTabBar()
                     }
                     return controller.embeded
                 },
@@ -173,11 +173,11 @@ private class ContentViewController: FormsTableViewController {
     
     override func setupActions() {
         super.setupActions()
-        self.firstButton.onClick = { [unowned self] in
-            self.onClickFirst?()
+        self.firstButton.onClick = Unowned(self) { (_self) in
+            _self.onClickFirst?()
         }
-        self.secondButton.onClick = { [unowned self] in
-            self.onClickSecond?()
+        self.secondButton.onClick = Unowned(self) { (_self) in
+            _self.onClickSecond?()
         }
     }
 }

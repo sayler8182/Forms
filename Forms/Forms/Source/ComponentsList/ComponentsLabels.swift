@@ -24,12 +24,10 @@ public struct ComponentsLabels: ComponentsList {
         component.numberOfLines = 1
         component.paddingEdgeInset = UIEdgeInsets(0)
         component.text = nil
-        component.onSetTheme = { [weak component] in
-            guard let component = component else { return }
+        component.onSetTheme = Strong(component) { component in
             component.backgroundColor = UIColor.clear
             component.color = Theme.Colors.primaryText
-            component.font = Theme.Fonts.regular(ofSize: 14)
-        }
+            component.font = Theme.Fonts.regular(ofSize: 14)}
         return component
     }
 }

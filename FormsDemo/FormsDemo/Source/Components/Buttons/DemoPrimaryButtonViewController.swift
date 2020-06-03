@@ -38,13 +38,13 @@ class DemoPrimaryButtonViewController: FormsTableViewController {
     
     override func setupActions() {
         super.setupActions()
-        self.activeButton.onClick = { [unowned self] in
+        self.activeButton.onClick = Unowned(self) { (_self) in
             UIAlertController()
                 .with(title: "Tapped")
                 .with(message: "Active button")
                 .with(action: "Ok")
                 .with(action: "Cancel", style: .destructive)
-                .present(on: self)
+                .present(on: _self)
         }
     }
 }

@@ -192,7 +192,7 @@ public extension FormsComponent {
         self.backgroundColor = componentColor
         return self
     }
-}
+} 
 
 // MARK: FormsComponentWithLoading
 public protocol FormsComponentWithLoading: class {
@@ -271,6 +271,10 @@ public extension FormsComponentWithPaddingEdgeInset {
     }
     func with(paddingVertical: CGFloat) -> Self {
         self.paddingEdgeInset = UIEdgeInsets(vertical: paddingVertical)
+        return self
+    }
+    func with(paddingVertical: CGFloat, paddingHorizontal: CGFloat) -> Self {
+        self.paddingEdgeInset = UIEdgeInsets(vertical: paddingVertical, horizontal: paddingHorizontal)
         return self
     }
     func with(paddingTop: CGFloat) -> Self {

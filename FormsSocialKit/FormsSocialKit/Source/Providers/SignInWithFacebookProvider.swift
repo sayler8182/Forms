@@ -114,8 +114,7 @@ extension SignInWithFacebookProvider {
             } else if let result: Any = result {
                 let data = SignInWithFacebookData(
                     accessToken: accessToken,
-                    data: result
-                )
+                    data: result)
                 self.onSuccess?(data)
                 self.onCompletion?(data, nil)
             } else {

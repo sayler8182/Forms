@@ -1,5 +1,5 @@
 //
-//  ComponentsOther.swift
+//  ComponentsOthers.swift
 //  Forms
 //
 //  Created by Konrad on 4/16/20.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-public struct ComponentsOther: ComponentsList {
+public struct ComponentsOthers: ComponentsList {
     private init() { }
         
     public static func activityIndicator() -> ActivityIndicator {
@@ -17,8 +17,7 @@ public struct ComponentsOther: ComponentsList {
         component.height = UITableView.automaticDimension
         component.isAnimating = true
         component.paddingEdgeInset = UIEdgeInsets(0)
-        component.onSetTheme = { [weak component] in
-            guard let component = component else { return }
+        component.onSetTheme = Strong(component) { component in
             component.backgroundColor = UIColor.clear
             component.color = Theme.Colors.gray
         }

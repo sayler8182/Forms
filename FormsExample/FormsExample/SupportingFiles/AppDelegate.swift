@@ -57,8 +57,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         // SocialKit
         SocialKit.configure(
-            googleClientID: "513688149579-fhj79mgkeq2rp689dpmfnn7nlkadnf31.apps.googleusercontent.com"
-        )
+            googleClientID: "513688149579-fhj79mgkeq2rp689dpmfnn7nlkadnf31.apps.googleusercontent.com")
         
         if #available(iOS 13.0, *) {
         } else {

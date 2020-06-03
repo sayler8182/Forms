@@ -266,7 +266,7 @@ open class PinView: FormsComponent, FormsComponentWithMarginEdgeInset, FormsComp
         self.addSubview(self.backgroundView, with: [
             Anchor.to(self).top,
             Anchor.to(self).horizontal,
-            Anchor.to(self).bottom.lessThanOrEqual
+            Anchor.to(self).bottom.greaterThanOrEqual
         ])
     }
     
@@ -351,8 +351,8 @@ open class PinView: FormsComponent, FormsComponentWithMarginEdgeInset, FormsComp
             if #available(iOS 11.0, *) {
                 textField.smartQuotesType = self.smartQuotesType
             }
-            textField.onDeleteBackward = { [unowned self] in
-                _ = self.textField(textField, shouldChangeCharactersIn: NSRange(), replacementString: "")
+            textField.onDeleteBackward = Unowned(self) { (_self) in
+                _ = _self.textField(textField, shouldChangeCharactersIn: NSRange(), replacementString: "")
             }
             self.textFieldContainer.addArrangedSubview(textField)
             textField.anchors([
@@ -396,7 +396,7 @@ open class PinView: FormsComponent, FormsComponentWithMarginEdgeInset, FormsComp
     private func updateState(animated: Bool) {
         if self.error.isNotNilOrEmpty {
             self.setState(.error, animated: animated)
-        } else if self.isEnabled.not {
+        } else if !self.isEnabled {
             self.setState(.disabled, animated: animated)
         } else if self.textFieldContainer.isFirstResponder {
             self.setState(.selected, animated: animated)

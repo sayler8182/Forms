@@ -140,13 +140,13 @@ open class NavigationBar: FormsComponent {
                 ? self.backImage?()
                 : self.closeImage?()
             let item = BarItem().with(image: image)
-            item.onClick = { [unowned self] in
-                if let onBack = self.onBack {
+            item.onClick = Unowned(self) { (_self) in
+                if let onBack = _self.onBack {
                     onBack()
                 } else if canGoBack {
-                    self.navigationBar?.parentNavigationController?.popViewController(animated: true)
+                    _self.navigationBar?.parentNavigationController?.popViewController(animated: true)
                 } else {
-                    self.navigationBar?.parentController?.dismiss(animated: true, completion: nil)
+                    _self.navigationBar?.parentController?.dismiss(animated: true, completion: nil)
                 }
             }
             self.navigationItem?.leftBarButtonItems = [item]

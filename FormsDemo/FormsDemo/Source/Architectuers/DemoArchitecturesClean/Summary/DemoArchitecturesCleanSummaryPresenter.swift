@@ -20,8 +20,7 @@ class DemoArchitecturesCleanSummaryPresenter: DemoArchitecturesCleanSummaryPrese
     func presentContent(_ response: DemoArchitecturesCleanSummary.GetContent.Response) {
         DispatchQueue.main.async {
             let viewModel = DemoArchitecturesCleanSummary.GetContent.ViewModel(
-                generated: response.generated?.description ?? "No data has been passed"
-            )
+                generated: response.generated?.description ?? "No data has been passed")
             self.controller.displayContent(viewModel)
         }
     }

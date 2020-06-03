@@ -28,13 +28,13 @@ class DemoAnalyticsViewController: FormsTableViewController {
     
     override func setupActions() {
         super.setupActions()
-        self.logEventButton.onClick = { [unowned self] in
+        self.logEventButton.onClick = Unowned(self) { (_self) in
             Analytics.log(DemoAnalytics.DemoEvent.demoEvent, [
                 DemoAnalytics.DemoEvent.Parameter.demoParameter(value: "value")
             ])
             Toast.success()
                 .with(title: "Logged")
-                .show(in: self.navigationController)
+                .show(in: _self.navigationController)
         }
     }
 }

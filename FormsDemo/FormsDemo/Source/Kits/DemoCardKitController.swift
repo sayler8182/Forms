@@ -38,14 +38,14 @@ class DemoCardKitController: FormsTableViewController {
     
     override func setupActions() {
         super.setupActions()
-        self.openButton.onClick = { [unowned self] in
-            self.demoCardController.open()
+        self.openButton.onClick = Unowned(self) { (_self) in
+            _self.demoCardController.open()
         }
-        self.closeButton.onClick = { [unowned self] in
-            self.demoCardController.close()
+        self.closeButton.onClick = Unowned(self) { (_self) in
+            _self.demoCardController.close()
         }
-        self.demoCardController.onProgress = { [unowned self] (progress) in
-            self.progerssBar.setProgress(progress, animated: true)
+        self.demoCardController.onProgress = Unowned(self) { (_self, progress) in
+            _self.progerssBar.setProgress(progress, animated: true)
         }
     }
     
@@ -77,8 +77,8 @@ private class DemoFormsCardContentController: FormsTableViewController {
     
     override func setupActions() {
         super.setupActions()
-        self.closeButton.onClick = { [unowned self] in
-            self.cardController?.close()
+        self.closeButton.onClick = Unowned(self) { (_self) in
+            _self.cardController?.close()
         }
     }
 }

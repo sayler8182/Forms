@@ -33,11 +33,11 @@ class DemoDeveloperToolsLifetimeViewController: FormsTableViewController {
     
     override func setupActions() {
         super.setupActions()
-        self.createLeaksButton.onClick = { [unowned self] in
-            self.createLeaks()
+        self.createLeaksButton.onClick = Unowned(self) { (_self) in
+            _self.createLeaks()
         }
-        self.removeLeaksButton.onClick = { [unowned self] in
-            self.removeLeaks()
+        self.removeLeaksButton.onClick = Unowned(self) { (_self) in
+            _self.removeLeaks()
         }
     }
     

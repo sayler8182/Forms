@@ -14,8 +14,7 @@ public struct ComponentsUtils: ComponentsList {
     public static func divider() -> Divider {
         let component = Divider()
         component.height = 1
-        component.onSetTheme = { [weak component] in
-            guard let component = component else { return }
+        component.onSetTheme = Strong(component) { component in
             component.color = Theme.Colors.primaryBackground
         }
         return component

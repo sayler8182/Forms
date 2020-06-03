@@ -104,12 +104,12 @@ private class DemoCollectionViewCell: FormsCollectionViewCell {
         ])
         self.contentView.addSubview(self.titleLabel, with: [
             Anchor.to(self.iconView).leadingToTrailing.offset(8),
-            Anchor.to(self.contentView).trailing.lessThanOrEqual,
+            Anchor.to(self.contentView).trailing.greaterThanOrEqual,
             Anchor.to(self.iconView).bottomToCenterY.offset(1)
         ])
         self.contentView.addSubview(self.subtitleLabel, with: [
             Anchor.to(self.iconView).leadingToTrailing.offset(8),
-            Anchor.to(self.contentView).trailing.lessThanOrEqual,
+            Anchor.to(self.contentView).trailing.greaterThanOrEqual,
             Anchor.to(self.iconView).topToCenterY.offset(1)
         ])
         self.contentView.addSubview(self.infoLabel, with: [

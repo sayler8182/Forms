@@ -100,12 +100,12 @@ private class DemoTableViewCell: FormsTableViewCell {
         ])
         self.contentView.addSubview(self.titleLabel, with: [
             Anchor.to(self.iconView).leadingToTrailing.offset(8),
-            Anchor.to(self.contentView).trailing.lessThanOrEqual.offset(16),
+            Anchor.to(self.contentView).trailing.greaterThanOrEqual.offset(16),
             Anchor.to(self.iconView).bottomToCenterY.offset(1)
         ])
         self.contentView.addSubview(self.subtitleLabel, with: [
             Anchor.to(self.iconView).leadingToTrailing.offset(8),
-            Anchor.to(self.contentView).trailing.lessThanOrEqual.offset(16),
+            Anchor.to(self.contentView).trailing.greaterThanOrEqual.offset(16),
             Anchor.to(self.iconView).topToCenterY.offset(1)
         ])
         self.contentView.addSubview(self.infoLabel, with: [

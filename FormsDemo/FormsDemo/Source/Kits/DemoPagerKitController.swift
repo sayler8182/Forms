@@ -29,12 +29,12 @@ class DemoPagerKitController: PagerController {
                 viewController: { [unowned self] in
                     let controller = ContentViewController()
                     controller.titleFirst = "Change page to second"
-                    controller.onClickFirst = { [unowned self] in
-                        self.showPage(at: 1)
+                    controller.onClickFirst = Unowned(self) { (_self) in
+                        _self.showPage(at: 1)
                     }
                     controller.titleSecond = "Change page to out of range"
-                    controller.onClickSecond = { [unowned self] in
-                        self.showPage(at: Int.max)
+                    controller.onClickSecond = Unowned(self) { (_self) in
+                        _self.showPage(at: Int.max)
                     }
                     return controller
                 },
@@ -46,12 +46,12 @@ class DemoPagerKitController: PagerController {
                 viewController: { [unowned self] in
                     let controller = ContentViewController()
                     controller.titleFirst = "Show page control"
-                    controller.onClickFirst = { [unowned self] in
-                        self.showPageControl()
+                    controller.onClickFirst = Unowned(self) { (_self) in
+                        _self.showPageControl()
                     }
                     controller.titleSecond = "Hide page control"
-                    controller.onClickSecond = { [unowned self] in
-                        self.hidePageControl()
+                    controller.onClickSecond = Unowned(self) { (_self) in
+                        _self.hidePageControl()
                     }
                     return controller
                 },
@@ -63,12 +63,12 @@ class DemoPagerKitController: PagerController {
                 viewController: { [unowned self] in
                     let controller = ContentViewController()
                     controller.titleFirst = "Show top bar"
-                    controller.onClickFirst = { [unowned self] in
-                        self.showTopBar()
+                    controller.onClickFirst = Unowned(self) { (_self) in
+                        _self.showTopBar()
                     }
                     controller.titleSecond = "Hide top bar"
-                    controller.onClickSecond = { [unowned self] in
-                        self.hideTopBar()
+                    controller.onClickSecond = Unowned(self) { (_self) in
+                        _self.hideTopBar()
                     }
                     return controller
                 },
@@ -130,11 +130,11 @@ private class ContentViewController: FormsTableViewController {
     
     override func setupActions() {
         super.setupActions()
-        self.firstButton.onClick = { [unowned self] in
-            self.onClickFirst?()
+        self.firstButton.onClick = Unowned(self) { (_self) in
+            _self.onClickFirst?()
         }
-        self.secondButton.onClick = { [unowned self] in
-            self.onClickSecond?()
+        self.secondButton.onClick = Unowned(self) { (_self) in
+            _self.onClickSecond?()
         }
     }
 }

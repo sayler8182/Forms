@@ -16,7 +16,7 @@ open class TitleTextField: TextField {
         self.addSubview(self.backgroundView, with: [
             Anchor.to(self).top,
             Anchor.to(self).horizontal,
-            Anchor.to(self).bottom.lessThanOrEqual
+            Anchor.to(self).bottom.greaterThanOrEqual
         ])
     }
     

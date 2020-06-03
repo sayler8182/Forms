@@ -11,6 +11,7 @@
 		7103EA202460382300A11A96 /* DemoNavigationProgressBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7103EA1F2460382300A11A96 /* DemoNavigationProgressBarViewController.swift */; };
 		7103EA852460A60E00A11A96 /* DemoPermissionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7103EA842460A60E00A11A96 /* DemoPermissionsViewController.swift */; };
 		711AF55A24615BDB00CE8666 /* DemoCardKitController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 711AF55924615BDB00CE8666 /* DemoCardKitController.swift */; };
+		71207CF3248787260004B840 /* DemoCheckboxesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71207CF2248787260004B840 /* DemoCheckboxesViewController.swift */; };
 		7132964724487ED0006935C0 /* DemoSocialKitAppleTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7132964624487ED0006935C0 /* DemoSocialKitAppleTableViewController.swift */; };
 		7132968A24489F8F006935C0 /* DemoSocialKitFacebookTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7132968924489F8F006935C0 /* DemoSocialKitFacebookTableViewController.swift */; };
 		7132969B2448A609006935C0 /* DemoSocialKitAllTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7132969A2448A609006935C0 /* DemoSocialKitAllTableViewController.swift */; };
@@ -140,6 +141,7 @@
 		7103EA1F2460382300A11A96 /* DemoNavigationProgressBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoNavigationProgressBarViewController.swift; sourceTree = "<group>"; };
 		7103EA842460A60E00A11A96 /* DemoPermissionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoPermissionsViewController.swift; sourceTree = "<group>"; };
 		711AF55924615BDB00CE8666 /* DemoCardKitController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoCardKitController.swift; sourceTree = "<group>"; };
+		71207CF2248787260004B840 /* DemoCheckboxesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoCheckboxesViewController.swift; sourceTree = "<group>"; };
 		7132964624487ED0006935C0 /* DemoSocialKitAppleTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoSocialKitAppleTableViewController.swift; sourceTree = "<group>"; };
 		7132968924489F8F006935C0 /* DemoSocialKitFacebookTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoSocialKitFacebookTableViewController.swift; sourceTree = "<group>"; };
 		7132969A2448A609006935C0 /* DemoSocialKitAllTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoSocialKitAllTableViewController.swift; sourceTree = "<group>"; };
@@ -267,6 +269,14 @@
 			path = Progresses;
 			sourceTree = "<group>";
 		};
+		71207CF1248787180004B840 /* Checkboxes */ = {
+			isa = PBXGroup;
+			children = (
+				71207CF2248787260004B840 /* DemoCheckboxesViewController.swift */,
+			);
+			path = Checkboxes;
+			sourceTree = "<group>";
+		};
 		7132964524487EC5006935C0 /* SocialKit */ = {
 			isa = PBXGroup;
 			children = (
@@ -369,6 +379,7 @@
 			children = (
 				713B9C69243D0964001F6E3A /* Buttons */,
 				7193E3542451DF61006238C5 /* Containers */,
+				71207CF1248787180004B840 /* Checkboxes */,
 				713B9C70243D0964001F6E3A /* Inputs */,
 				713B9C6E243D0964001F6E3A /* Labels */,
 				713B9C6B243D0964001F6E3A /* NavigationBars */,
@@ -640,6 +651,7 @@
 				719469C4243DB01D00CAD09B /* DemoShimmerViewController.swift in Sources */,
 				713B9C80243D0964001F6E3A /* DemoNavigationBarViewController.swift in Sources */,
 				713B9C89243D0964001F6E3A /* DemoPagerKitController.swift in Sources */,
+				71207CF3248787260004B840 /* DemoCheckboxesViewController.swift in Sources */,
 				7132968A24489F8F006935C0 /* DemoSocialKitFacebookTableViewController.swift in Sources */,
 				71DB5CC72457647F00B16145 /* DemoAnalyticsViewController.swift in Sources */,
 				7138D3AB2452E19300CC7345 /* DemoShimmerPaginationCollectionViewController.swift in Sources */,

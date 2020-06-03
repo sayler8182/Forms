@@ -39,11 +39,11 @@ class DemoTransitionNavigationViewController: FormsNavigationController, Transit
         self.edgePanGesture.addTarget(self, action: #selector(handleTransitionBackSwipe))
         self.edgePanGesture.edges = .left
         self.view.addGestureRecognizer(self.edgePanGesture)
-        self.changeButton.onClick = { [unowned self] in
-            if self.viewControllers.count == 1 {
-                self.pushViewController(DemoSecondController(), animated: true)
+        self.changeButton.onClick = Unowned(self) { (_self) in
+            if _self.viewControllers.count == 1 {
+                _self.pushViewController(DemoSecondController(), animated: true)
             } else {
-                self.popToRootViewController(animated: true)
+                _self.popToRootViewController(animated: true)
             }
         }
     }

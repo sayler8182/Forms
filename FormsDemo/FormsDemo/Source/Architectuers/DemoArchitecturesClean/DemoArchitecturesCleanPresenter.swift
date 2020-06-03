@@ -20,8 +20,7 @@ class DemoArchitecturesCleanPresenter: DemoArchitecturesCleanPresentationLogic {
     func presentGetContent(_ response: DemoArchitecturesClean.GetContent.Respone) {
         DispatchQueue.main.async {
             let viewModel = DemoArchitecturesClean.GetContent.ViewModel(
-                generated: response.generated.description
-            )
+                generated: response.generated.description)
             self.controller.displayContent(viewModel)
         }
     }

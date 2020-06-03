@@ -31,19 +31,19 @@ class DemoToastKitViewController: FormsTableViewController {
     
     override func setupActions() {
         super.setupActions()
-        self.defaultToastTopButton.onClick = { [unowned self] in
+        self.defaultToastTopButton.onClick = Unowned(self) { (_self) in
             Toast.new()
                 .with(position: .top)
                 .with(style: .success)
                 .with(title: LoremIpsum.paragraph(sentences: 4))
-                .show(in: self.navigationController)
+                .show(in: _self.navigationController)
         }
-        self.defaultToastBottomButton.onClick = { [unowned self] in
+        self.defaultToastBottomButton.onClick = Unowned(self) { (_self) in
             Toast.new()
                 .with(position: .bottom)
                 .with(style: .error)
                 .with(title: LoremIpsum.paragraph(sentences: 8))
-                .show(in: self.navigationController)
+                .show(in: _self.navigationController)
         }
     }
 }

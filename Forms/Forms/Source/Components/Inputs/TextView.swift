@@ -372,7 +372,7 @@ open class TextView: FormsComponent, FormsComponentWithMarginEdgeInset, FormsCom
     private func updateState(animated: Bool) {
         if self.error.isNotNilOrEmpty {
             self.setState(.error, animated: animated)
-        } else if self.isEnabled.not {
+        } else if !self.isEnabled {
             self.setState(.disabled, animated: animated)
         } else if self.textView.isFirstResponder {
             self.setState(.selected, animated: animated)

@@ -31,8 +31,8 @@ class DemoSocialKitAppleTableViewController: FormsTableViewController {
     
     override func setupActions() {
         super.setupActions()
-        self.signInWithApple.onClick = { [unowned self] in
-            self.signInWithAppleAuthorization()
+        self.signInWithApple.onClick = Unowned(self) { (_self) in
+            _self.signInWithAppleAuthorization()
         }
     }
 }

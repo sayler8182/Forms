@@ -237,7 +237,7 @@ open class SearchBar: FormsComponent, FormsComponentWithMarginEdgeInset, FormsCo
     }
     
     private func updateState(animated: Bool) {
-        if self.isEnabled.not {
+        if !self.isEnabled {
             self.setState(.disabled, animated: animated)
         } else if self.isFirstResponder {
             self.setState(.selected, animated: animated)

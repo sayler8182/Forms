@@ -23,8 +23,7 @@ public struct ComponentsContainers: ComponentsList {
         component.showsHorizontalScrollIndicator = false
         component.showsVerticalScrollIndicator = false
         component.spacing = 0
-        component.onSetTheme = { [weak component] in
-            guard let component = component else { return }
+        component.onSetTheme = Strong(component) { component in
             component.backgroundColor = Theme.Colors.primaryBackground
         }
         return component
@@ -44,8 +43,7 @@ public struct ComponentsContainers: ComponentsList {
         component.pageCurrentPageIndicatorTintColor = UIColor.gray
         component.pageIsHidden = false
         component.scrollDirection = .horizontal
-        component.onSetTheme = { [weak component] in
-            guard let component = component else { return }
+        component.onSetTheme = Strong(component) { component in
             component.backgroundColor = Theme.Colors.primaryBackground
         }
         return component
@@ -59,8 +57,7 @@ public struct ComponentsContainers: ComponentsList {
         component.marginEdgeInset = UIEdgeInsets(0)
         component.height = 100
         component.paddingEdgeInset = UIEdgeInsets(0)
-        component.onSetTheme = { [weak component] in
-            guard let component = component else { return }
+        component.onSetTheme = Strong(component) { component in
             component.backgroundColor = Theme.Colors.primaryBackground
         }
         return component
@@ -69,8 +66,7 @@ public struct ComponentsContainers: ComponentsList {
     public static func view() -> View {
         let component = View()
         component.height = UITableView.automaticDimension
-        component.onSetTheme = { [weak component] in
-            guard let component = component else { return }
+        component.onSetTheme = Strong(component) { component in
             component.backgroundColor = Theme.Colors.primaryBackground
         }
         return component

@@ -31,9 +31,9 @@ class DemoMockViewController: FormsTableViewController {
     
     override func setupActions() {
         super.setupActions()
-        self.reloadButton.onClick = { [unowned self] in
-            self.reloadMock()
-            self.reloadData()
+        self.reloadButton.onClick = Unowned(self) { (_self) in
+            _self.reloadMock()
+            _self.reloadData()
         }
     }
     

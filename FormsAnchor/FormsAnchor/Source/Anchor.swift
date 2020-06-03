@@ -625,7 +625,7 @@ extension UIView {
             return self.constraint(
                 from: view.bottomAnchor,
                 to: anchorLayoutGuide.bottomAnchor,
-                relation: relation,
+                relation: relation.inverted,
                 constant: -offset)
         case .topToBottom:
             return self.constraint(

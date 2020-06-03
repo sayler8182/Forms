@@ -33,9 +33,9 @@ class DemoAppStoreReviewViewController: FormsViewController {
     
     override func setupActions() {
         super.setupActions()
-        self.updateLaunchButton.onClick = { [unowned self] in
-            self.appStoreReview.launch()
-            self.appStoreReview.showIfNeeded()
+        self.updateLaunchButton.onClick = Unowned(self) { (_self) in
+            _self.appStoreReview.launch()
+            _self.appStoreReview.showIfNeeded()
         }
     }
 }

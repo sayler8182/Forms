@@ -90,7 +90,9 @@ public extension Console {
             "the item height must be less than the height of the UICollectionView",
             "[Assert] trying to load collection",
             "The relevant UICollectionViewFlowLayout instance is",
-            "Make a symbolic breakpoint at UICollectionViewFlowLayoutBreakForInvalidSizes"
+            "Make a symbolic breakpoint at UICollectionViewFlowLayoutBreakForInvalidSizes",
+            "[Touch] unexpected nil window in __sendSystemGestureLatentClientUpdate",
+            "[Snapshotting] Snapshotting a view"
         ]
     }
 }

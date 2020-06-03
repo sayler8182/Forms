@@ -115,9 +115,8 @@ open class FormsViewController: UIViewController, UIGestureRecognizerDelegate, T
     open func setupResizerOnKeyboard() {
         guard self.isResizeOnKeyboard else { return }
         self.registerKeyboard()
-        self.keyboard.onUpdate = { [weak self] (percent, visibleHeight, animated) in
-            guard let `self` = self else { return }
-            self.updateKeyboard(percent, visibleHeight, animated)
+        self.keyboard.onUpdate = Strong(self) { (_self, percent, visibleHeight, animated) in
+            _self.updateKeyboard(percent, visibleHeight, animated)
         }
     }
     

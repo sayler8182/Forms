@@ -30,8 +30,8 @@ class DemoSocialKitGoogleTableViewController: FormsTableViewController {
 
     override func setupActions() {
         super.setupActions()
-        self.signInWithGoogle.onClick = { [unowned self] in
-            self.signInWithGoogleAuthorization()
+        self.signInWithGoogle.onClick = Unowned(self) { (_self) in
+            _self.signInWithGoogleAuthorization()
         }
     }
 }

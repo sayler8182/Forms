@@ -50,13 +50,13 @@ class DemoNetworkImageViewController: FormsViewController {
     
     override func setupActions() {
         super.setupActions()
-        self.reloadButton.onClick = { [unowned self] in
-            self.reloadButton.startLoading()
-            self.getContent()
+        self.reloadButton.onClick = Unowned(self) { (_self) in
+            _self.reloadButton.startLoading()
+            _self.getContent()
         }
-        self.reloadAndCancelButton.onClick = { [unowned self] in
-            self.getContent()
-            self.getContentCancel()
+        self.reloadAndCancelButton.onClick = Unowned(self) { (_self) in
+            _self.getContent()
+            _self.getContentCancel()
         }
     }
 }
@@ -141,8 +141,7 @@ private struct NetworkMethodsImages: Requestable {
              onError: @escaping (NetworkError) -> Void,
              onCompletion: ((Data?, NetworkError?) -> Void)? = nil) -> NetworkTask {
         let request = Request(
-            url: Mock().imageUrl([.quality(.high)])
-        )
+            url: Mock().imageUrl([.quality(.high)]))
         return self.call(
             request,
             logger: WarningOnlyLogger(),

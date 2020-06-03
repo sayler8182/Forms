@@ -99,8 +99,7 @@ extension SignInWithGoogleProvider: GIDSignInDelegate {
                 email: user.profile.email,
                 fullName: user.profile.name,
                 givenName: user.profile.givenName,
-                familyName: user.profile.familyName
-            )
+                familyName: user.profile.familyName)
             self.onSuccess?(data)
             self.onCompletion?(data, nil)
         } else {

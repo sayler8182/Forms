@@ -30,8 +30,8 @@ class DemoSocialKitFacebookTableViewController: FormsTableViewController {
     
     override func setupActions() {
         super.setupActions()
-        self.signInWithFacebook.onClick = { [unowned self] in
-            self.signInWithFacebookAuthorization()
+        self.signInWithFacebook.onClick = Unowned(self) { (_self) in
+            _self.signInWithFacebookAuthorization()
         }
     }
 }

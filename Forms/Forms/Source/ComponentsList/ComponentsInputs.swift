@@ -25,14 +25,12 @@ public struct ComponentsInputs: ComponentsList {
             component.numberOfChars = 4
             component.paddingEdgeInset = UIEdgeInsets(
                 vertical: 8,
-                horizontal: 16
-            )
+                horizontal: 16)
             component.placeholder = nil
             component.text = nil
             component.textAlignment = .center
             component.title = nil
-            component.onSetTheme = { [weak component] in
-                guard let component = component else { return }
+            component.onSetTheme = Strong(component) { component in
                 component.backgroundColors = PinView.State<UIColor?>(Theme.Colors.primaryBackground)
                 component.errorColor = Theme.Colors.red
                 component.errorFont = Theme.Fonts.regular(ofSize: 12)
@@ -44,22 +42,19 @@ public struct ComponentsInputs: ComponentsList {
                     active: Theme.Colors.primaryText,
                     selected: Theme.Colors.primaryText,
                     disabled: Theme.Colors.primaryText,
-                    error: Theme.Colors.red
-                )
+                    error: Theme.Colors.red)
                 component.textFonts = PinView.State<UIFont>(Theme.Fonts.regular(ofSize: 32))
                 component.titleColors = PinView.State<UIColor?>(
                     active: Theme.Colors.primaryText,
                     selected: Theme.Colors.primaryText,
                     disabled: Theme.Colors.primaryText,
-                    error: Theme.Colors.red
-                )
+                    error: Theme.Colors.red)
                 component.titleFonts = PinView.State<UIFont>(Theme.Fonts.regular(ofSize: 12))
                 component.underscoreColors = PinView.State<UIColor?>(
                     active: Theme.Colors.gray,
                     selected: Theme.Colors.primaryText,
                     disabled: Theme.Colors.gray,
-                    error: Theme.Colors.red
-                )
+                    error: Theme.Colors.red)
             }
             return component
         }
@@ -74,19 +69,16 @@ public struct ComponentsInputs: ComponentsList {
             component.marginEdgeInset = UIEdgeInsets(0)
             component.paddingEdgeInset = UIEdgeInsets(
                 vertical: 8,
-                horizontal: 16
-            )
+                horizontal: 16)
             component.placeholder = nil
             component.text = nil
             component.textFieldDelegate = TextFieldDelegates.default()
-            component.onSetTheme = { [weak component] in
-                guard let component = component else { return }
+            component.onSetTheme = Strong(component) { component in
                 component.backgroundColors = SearchBar.State<UIColor?>(Theme.Colors.primaryBackground)
                 component.textColors = SearchBar.State<UIColor?>(
                     active: Theme.Colors.primaryText,
                     selected: Theme.Colors.primaryText,
-                    disabled: Theme.Colors.primaryText
-                )
+                    disabled: Theme.Colors.primaryText)
                 component.textFonts = SearchBar.State<UIFont>(Theme.Fonts.regular(ofSize: 16))
             }
             return component
@@ -170,14 +162,12 @@ public struct ComponentsInputs: ComponentsList {
             component.maskText = nil
             component.paddingEdgeInset = UIEdgeInsets(
                 vertical: 8,
-                horizontal: 16
-            )
+                horizontal: 16)
             component.placeholder = nil
             component.text = nil
             component.textFieldDelegate = TextFieldDelegates.default()
             component.title = nil
-            component.onSetTheme = { [weak component] in
-                guard let component = component else { return }
+            component.onSetTheme = Strong(component) { component in
                 component.backgroundColors = TextField.State<UIColor?>(Theme.Colors.primaryBackground)
                 component.errorColor = Theme.Colors.red
                 component.errorFont = Theme.Fonts.regular(ofSize: 12)
@@ -191,22 +181,19 @@ public struct ComponentsInputs: ComponentsList {
                     active: Theme.Colors.primaryText,
                     selected: Theme.Colors.primaryText,
                     disabled: Theme.Colors.primaryText,
-                    error: Theme.Colors.red
-                )
+                    error: Theme.Colors.red)
                 component.textFonts = TextField.State<UIFont>(Theme.Fonts.regular(ofSize: 16))
                 component.titleColors = TextField.State<UIColor?>(
                     active: Theme.Colors.primaryText,
                     selected: Theme.Colors.primaryText,
                     disabled: Theme.Colors.primaryText,
-                    error: Theme.Colors.red
-                )
+                    error: Theme.Colors.red)
                 component.titleFonts = TextField.State<UIFont>(Theme.Fonts.regular(ofSize: 12))
                 component.underscoreColors = TextField.State<UIColor?>(
                     active: Theme.Colors.gray,
                     selected: Theme.Colors.primaryText,
                     disabled: Theme.Colors.gray,
-                    error: Theme.Colors.red
-                )
+                    error: Theme.Colors.red)
             }
             return component
         }
@@ -221,14 +208,12 @@ public struct ComponentsInputs: ComponentsList {
             component.marginEdgeInset = UIEdgeInsets(0)
             component.paddingEdgeInset = UIEdgeInsets(
                 vertical: 8,
-                horizontal: 16
-            )
+                horizontal: 16)
             component.placeholder = nil
             component.text = nil
             component.textViewDelegate = nil
             component.title = nil
-            component.onSetTheme = { [weak component] in
-                guard let component = component else { return }
+            component.onSetTheme = Strong(component) { component in
                 component.backgroundColors = TextView.State<UIColor?>(Theme.Colors.primaryBackground)
                 component.errorColor = Theme.Colors.red
                 component.errorFont = Theme.Fonts.regular(ofSize: 12)
@@ -240,22 +225,19 @@ public struct ComponentsInputs: ComponentsList {
                     active: Theme.Colors.primaryText,
                     selected: Theme.Colors.primaryText,
                     disabled: Theme.Colors.primaryText,
-                    error: Theme.Colors.red
-                )
+                    error: Theme.Colors.red)
                 component.textFonts = TextView.State<UIFont>(Theme.Fonts.regular(ofSize: 16))
                 component.titleColors = TextView.State<UIColor?>(
                     active: Theme.Colors.primaryText,
                     selected: Theme.Colors.primaryText,
                     disabled: Theme.Colors.primaryText,
-                    error: Theme.Colors.red
-                )
+                    error: Theme.Colors.red)
                 component.titleFonts = TextView.State<UIFont>(Theme.Fonts.regular(ofSize: 12))
                 component.underscoreColors = TextView.State<UIColor?>(
                     active: Theme.Colors.gray,
                     selected: Theme.Colors.primaryText,
                     disabled: Theme.Colors.gray,
-                    error: Theme.Colors.red
-                )
+                    error: Theme.Colors.red)
             }
             return component
         }

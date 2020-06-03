@@ -46,9 +46,9 @@ class DemoShimmerPaginationCollectionViewController: FormsCollectionViewControll
     
     override func setupActions() {
         super.setupActions()
-        self.changeDirectionBarItem.onClick = { [unowned self] in
-            self.collectionColumnsCount = self.collectionScrollDirection == .vertical ? 6 : 2
-            self.collectionScrollDirection = self.collectionScrollDirection == .vertical
+        self.changeDirectionBarItem.onClick = Unowned(self) { (_self) in
+            _self.collectionColumnsCount = _self.collectionScrollDirection == .vertical ? 6 : 2
+            _self.collectionScrollDirection = _self.collectionScrollDirection == .vertical
                 ? UICollectionView.ScrollDirection.horizontal
                 : UICollectionView.ScrollDirection.vertical
         }
@@ -227,12 +227,12 @@ private class DemoCollectionViewCell: FormsCollectionViewCell {
         ])
         self.contentView.addSubview(self.titleLabel, with: [
             Anchor.to(self.iconView).leadingToTrailing.offset(8),
-            Anchor.to(self.contentView).trailing.lessThanOrEqual,
+            Anchor.to(self.contentView).trailing.greaterThanOrEqual,
             Anchor.to(self.iconView).bottomToCenterY.offset(1)
         ])
         self.contentView.addSubview(self.subtitleLabel, with: [
             Anchor.to(self.iconView).leadingToTrailing.offset(8),
-            Anchor.to(self.contentView).trailing.lessThanOrEqual,
+            Anchor.to(self.contentView).trailing.greaterThanOrEqual,
             Anchor.to(self.iconView).topToCenterY.offset(1)
         ])
         self.contentView.addSubview(self.infoLabel, with: [

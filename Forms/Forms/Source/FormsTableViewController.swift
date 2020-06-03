@@ -12,6 +12,8 @@ import UIKit
 
 // MARK: TableProtocol
 public protocol TableProtocol: class {
+    var views: [FormsComponent] { get }
+    
     func refreshTableView()
     func refreshTableView(animated: Bool)
 }

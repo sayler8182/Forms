@@ -34,23 +34,23 @@ class DemoLoaderViewController: FormsTableViewController {
     
     override func setupActions() {
         super.setupActions()
-        self.defaultLoaderButton.onClick = { [unowned self] in
-            Loader.show(in: self.navigationController)
-            delay(2.0, self) { Loader.hide(in: $0.navigationController) }
+        self.defaultLoaderButton.onClick = Unowned(self) { (_self) in
+            Loader.show(in: _self.navigationController)
+            delay(2.0, _self) { Loader.hide(in: $0.navigationController) }
         }
-        self.titleShortLoaderButton.onClick = { [unowned self] in
+        self.titleShortLoaderButton.onClick = Unowned(self) { (_self) in
             Loader.show(
-                in: self.navigationController,
+                in: _self.navigationController,
                 of: TitleLoaderView.self)?
                 .setTitle("Short text")
-            delay(2.0, self) { Loader.hide(in: $0.navigationController) }
+            delay(2.0, _self) { Loader.hide(in: $0.navigationController) }
         }
-        self.titleLongLoaderButton.onClick = { [unowned self] in
+        self.titleLongLoaderButton.onClick = Unowned(self) { (_self) in
             let loaderView: TitleLoaderView? = Loader.show(
-                in: self.navigationController,
+                in: _self.navigationController,
                 of: TitleLoaderView.self)
             loaderView?.setTitle(LoremIpsum.paragraph(sentences: 4))
-            delay(2.0, self) { Loader.hide(in: $0.navigationController) }
+            delay(2.0, _self) { Loader.hide(in: $0.navigationController) }
         }
     }
 }
@@ -89,7 +89,7 @@ private class TitleLoaderView: LoaderView {
             Anchor.to(parent).center,
             Anchor.to(self).size(80).priority(.defaultLow),
             Anchor.to(parent).leading.offset(16).greaterThanOrEqual,
-            Anchor.to(parent).trailing.offset(16).lessThanOrEqual
+            Anchor.to(parent).trailing.offset(16).greaterThanOrEqual
         ])
         self.addSubview(self.activityIndicatorView, with: [
             Anchor.to(self).top.offset(16),

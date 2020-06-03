@@ -497,7 +497,7 @@ open class TextField: FormsComponent, FormsComponentWithMarginEdgeInset, FormsCo
     private func updateState(animated: Bool) {
         if self.error.isNotNilOrEmpty {
             self.setState(.error, animated: animated)
-        } else if self.isEnabled.not {
+        } else if !self.isEnabled {
             self.setState(.disabled, animated: animated)
         } else if self.textField.isFirstResponder {
             self.setState(.selected, animated: animated)

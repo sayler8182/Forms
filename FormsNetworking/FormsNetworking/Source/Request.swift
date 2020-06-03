@@ -125,8 +125,7 @@ public extension Requestable {
             }
         }
         return NetworkTask(
-            task: networkTask
-        )
+            task: networkTask)
     }
     
     @discardableResult

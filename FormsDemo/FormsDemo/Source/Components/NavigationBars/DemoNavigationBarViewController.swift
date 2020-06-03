@@ -105,12 +105,12 @@ class DemoNavigationBarViewController: FormsTableViewController {
             self.navigationBarWithSearchBarButton: self.navigationBarWithSearchBar
         ]
         for item in map {
-            item.key.onClick = { [unowned self] in
-                self.setNavigationBar(item.value)
+            item.key.onClick = Unowned(self) { (_self) in
+                _self.setNavigationBar(item.value)
             }
         }
-        self.cancelBarItem.onClick = { [unowned self] in
-            self.navigationBarSearchBar.endEditing(true)
+        self.cancelBarItem.onClick = Unowned(self) { (_self) in
+            _self.navigationBarSearchBar.endEditing(true)
         }
     }
 }

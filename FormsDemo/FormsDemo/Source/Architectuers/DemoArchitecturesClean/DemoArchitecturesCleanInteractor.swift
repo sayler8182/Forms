@@ -30,8 +30,7 @@ class DemoArchitecturesCleanInteractor: DemoArchitecturesCleanBusinessLogic, Dem
             guard let `self` = self else { return }
             self.generated = number
             let respone = DemoArchitecturesClean.GetContent.Respone(
-                generated: number
-            )
+                generated: number)
             self.presenter.presentGetContent(respone)
         }
     }

@@ -66,8 +66,7 @@ public class AttributedString {
         guard let string: NSAttributedString = string else { return }
         let part: Part = Part(
             position: NSRange(location: self.string.length, length: string.length),
-            onClick: onClick
-        )
+            onClick: onClick)
         self.parts.append(part)
     }
     
@@ -76,8 +75,7 @@ public class AttributedString {
         guard let string: String = string else { return }
         let part: Part = Part(
             position: NSRange(location: self.string.length, length: string.count),
-            onClick: onClick
-        )
+            onClick: onClick)
         self.parts.append(part)
     }
     
@@ -85,8 +83,7 @@ public class AttributedString {
                           onClick: Action? = nil) {
         let part: Part = Part(
             position: NSRange(location: self.string.length, length: 0),
-            onClick: onClick
-        )
+            onClick: onClick)
         self.parts.append(part)
     }
     

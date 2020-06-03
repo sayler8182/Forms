@@ -23,18 +23,15 @@ public struct ComponentsButtons: ComponentsList {
         component.title = nil
         component.titleEdgeInset = UIEdgeInsets(
             vertical: 5,
-            horizontal: 16
-        )
+            horizontal: 16)
         component.titleNumberOfLines = 2
         component.titleTextAlignment = NSTextAlignment.center
-        component.onSetTheme = { [weak component] in
-            guard let component = component else { return }
+        component.onSetTheme = Strong(component) { component in
             component.backgroundColors = Button.State<UIColor?>(
                 active: Theme.Colors.blue,
                 selected: Theme.Colors.blue.withAlphaComponent(0.7),
                 disabled: Theme.Colors.gray,
-                loading: Theme.Colors.blue
-            )
+                loading: Theme.Colors.blue)
             component.titleColors = Button.State<UIColor?>(UIColor.white)
             component.titleFonts = Button.State<UIFont>(Theme.Fonts.regular(ofSize: 14))
         }
