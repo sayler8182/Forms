@@ -16,10 +16,25 @@ FormsInjector.framework
 
 ## Plist keys
 
+### Camera
+
+```
+NSCameraUsageDescription
+NSMicrophoneUsageDescription
+```
+
 ### Location
+
 ```
 NSLocationWhenInUseUsageDescription
 NSLocationAlwaysAndWhenInUseUsageDescription
+```
+
+### PhotoLibrary
+
+```
+NSPhotoLibraryAddUsageDescription # readonly
+NSPhotoLibraryUsageDescription # write/read
 ```
 
 ### Other
@@ -30,16 +45,12 @@ NSAppleMusicUsageDescription
 NSBluetoothAlwaysUsageDescription
 NSBluetoothPeripheralUsageDescription
 NSCalendarsUsageDescription
-NSCameraUsageDescription
 NSContactsUsageDescription
 NSFaceIDUsageDescription
 NSHealthShareUsageDescription
 NSHealthUpdateUsageDescription
 NSHomeKitUsageDescription
-NSMicrophoneUsageDescription
 NSMotionUsageDescription
-NSPhotoLibraryAddUsageDescription
-NSPhotoLibraryUsageDescription
 NSRemindersUsageDescription
 NSSiriUsageDescription
 NSSpeechRecognitionUsageDescription
@@ -51,6 +62,11 @@ NSVideoSubscriberAccountUsageDescription
 ### Injections
 
 ```swift
+// camera
+injector.register(PermissionsCameraProtocol.self) { _ in
+    Permissions.Camera(defaultMediaType: .video)
+}
+
 // location
 injector.register(PermissionsLocationProtocol.self) { _ in
     Permissions.Location(defaultAskType: .always)
@@ -60,6 +76,20 @@ injector.register(PermissionsLocationProtocol.self) { _ in
 injector.register(PermissionsNotificationsProtocol.self) { _ in
     Permissions.Notifications(defaultOptions: [.alert, .badge, .sound])
 }
+
+// photo library
+injector.register(PermissionsPhotoLibraryProtocol.self) { _ in
+    Permissions.PhotoLibrary()
+}
+```
+
+### Camera
+
+```swift
+Permissions.camera.ask { (status: PermissionsStatus) in }
+Permissions.camera.ask(.video) { (status: PermissionsStatus) in }
+Permissions.camera.status { (status: PermissionsStatus) in }
+Permissions.camera.status(.video) { (status: PermissionsStatus) in }
 ```
 
 ### Location
@@ -79,12 +109,21 @@ Permissions.location.ask([.alert, .badge, .sound]) { (status: PermissionStatus) 
 Permissions.location.status { (status: PermissionsStatus) in }
 ```
 
+### PhotoLibrary
+
+```swift
+Permissions.photoLibrary.ask { (status: PermissionsStatus) in }
+Permissions.photoLibrary.status { (status: PermissionsStatus) in }
+```
+
 ### Many permissions
 
 ```swift
 let permissions: [Permissionable] = [
+    Permissions.camera,
     Permissions.location,
-    Permissions.notifications
+    Permissions.notifications,
+    Permissions.photoLibrary
 ]
 Permissions.ask(permissions) { (status: Bool) in }
 ```

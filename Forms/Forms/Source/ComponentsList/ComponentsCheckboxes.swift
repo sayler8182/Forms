@@ -49,7 +49,7 @@ public struct ComponentsCheckboxes: ComponentsList {
     public static func radio() -> Checkbox {
         let component = Checkbox()
         component.animationTime = 0.1
-        component.updateGroupKey = "_radio_group"
+        component.groupKey = "_radio_group"
         component.images = Checkbox.State<(() -> UIImage?)?>(
             active: { UIImage.from(name: "circle") },
             selected: { UIImage.from(name: "stop.circle") })

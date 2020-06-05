@@ -11,6 +11,8 @@
 		7103EA7224609C9F00A11A96 /* Permissions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7103EA7124609C9F00A11A96 /* Permissions.swift */; };
 		7103EA7624609D1B00A11A96 /* PermissionsLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7103EA7524609D1B00A11A96 /* PermissionsLocation.swift */; };
 		7103EA8324609F8C00A11A96 /* PermissionsNotifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7103EA8224609F8C00A11A96 /* PermissionsNotifications.swift */; };
+		71207CFC2487E6880004B840 /* PermissionsCamera.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71207CFB2487E6880004B840 /* PermissionsCamera.swift */; };
+		71207D192487EDE20004B840 /* PermissionsPhotoLibrary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71207D182487EDE20004B840 /* PermissionsPhotoLibrary.swift */; };
 		714EF18C247F936900AE3044 /* FormsInjector.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 714EF18B247F936900AE3044 /* FormsInjector.framework */; };
 /* End PBXBuildFile section */
 
@@ -20,6 +22,8 @@
 		7103EA7124609C9F00A11A96 /* Permissions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Permissions.swift; sourceTree = "<group>"; };
 		7103EA7524609D1B00A11A96 /* PermissionsLocation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PermissionsLocation.swift; sourceTree = "<group>"; };
 		7103EA8224609F8C00A11A96 /* PermissionsNotifications.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PermissionsNotifications.swift; sourceTree = "<group>"; };
+		71207CFB2487E6880004B840 /* PermissionsCamera.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PermissionsCamera.swift; sourceTree = "<group>"; };
+		71207D182487EDE20004B840 /* PermissionsPhotoLibrary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PermissionsPhotoLibrary.swift; sourceTree = "<group>"; };
 		714EF18B247F936900AE3044 /* FormsInjector.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FormsInjector.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7150CDA1247FA05F00F2681B /* FormsPermissions.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = FormsPermissions.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -67,8 +71,10 @@
 		7103EA7424609D0900A11A96 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				71207CFB2487E6880004B840 /* PermissionsCamera.swift */,
 				7103EA7524609D1B00A11A96 /* PermissionsLocation.swift */,
 				7103EA8224609F8C00A11A96 /* PermissionsNotifications.swift */,
+				71207D182487EDE20004B840 /* PermissionsPhotoLibrary.swift */,
 			);
 			path = Modules;
 			sourceTree = "<group>";
@@ -163,8 +169,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				7103EA7224609C9F00A11A96 /* Permissions.swift in Sources */,
+				71207D192487EDE20004B840 /* PermissionsPhotoLibrary.swift in Sources */,
 				7103EA7624609D1B00A11A96 /* PermissionsLocation.swift in Sources */,
 				7103EA8324609F8C00A11A96 /* PermissionsNotifications.swift in Sources */,
+				71207CFC2487E6880004B840 /* PermissionsCamera.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

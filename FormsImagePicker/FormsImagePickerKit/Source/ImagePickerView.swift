@@ -14,5 +14,6 @@ public protocol ImagePickerView {
                         allowsEditing: Bool,
                         mediaTypes: [ImagePickerMediaType],
                         onSelect: ImagePicker.OnSelect?,
+                        onFail: ImagePicker.OnFail?,
                         onCancel: ImagePicker.OnCancel?)
 }

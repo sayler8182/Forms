@@ -17,6 +17,7 @@ import UIKit
 
 // MARK: DemoNetworkImageViewController
 class DemoNetworkImageViewController: FormsViewController {
+    private let progressBar = Components.progress.progressBar()
     private let imageView = Components.image.default()
         .with(contentMode: .scaleAspectFit)
     private let reloadButton = Components.button.default()
@@ -33,8 +34,12 @@ class DemoNetworkImageViewController: FormsViewController {
     
     override func setupContent() {
         super.setupContent()
-        self.view.addSubview(self.imageView, with: [
+        self.view.addSubview(self.progressBar, with: [
             Anchor.to(self.view).top.safeArea.offset(16),
+            Anchor.to(self.view).horizontal.offset(16)
+        ])
+        self.view.addSubview(self.imageView, with: [
+            Anchor.to(self.progressBar).topToBottom,
             Anchor.to(self.view).horizontal.offset(16)
         ])
         self.view.addSubview(self.reloadButton, with: [
@@ -64,6 +69,7 @@ class DemoNetworkImageViewController: FormsViewController {
 // MARK: DemoProviderDelegate
 extension DemoNetworkImageViewController: DemoDisplayLogic {
     func getContent() {
+        self.progressBar.progress = 0.0
         self.startShimmering()
         self.provider.getContent()
     }
@@ -76,6 +82,10 @@ extension DemoNetworkImageViewController: DemoDisplayLogic {
         self.reloadButton.stopLoading()
         self.stopShimmering()
         self.imageView.image = image
+    }
+    
+    func displayContentProgress(_ progress: Double) {
+        self.progressBar.progress = progress.asCGFloat
     }
     
     func displayContentError(_ error: String,
@@ -92,6 +102,7 @@ extension DemoNetworkImageViewController: DemoDisplayLogic {
 // MARK: DemoDisplayLogic
 private protocol DemoDisplayLogic: class {
     func displayContent(_ image: UIImage?)
+    func displayContentProgress(_ progress: Double)
     func displayContentError(_ error: String,
                              _ isCancelled: Bool)
 }
@@ -108,6 +119,12 @@ private class DemoProvider {
     
     func getContent() {
         self.contentTask = NetworkMethods.images.get(
+            onProgress: { [weak self] (_, _, progress: Double) in
+                guard let `self` = self else { return }
+                DispatchQueue.main.async {
+                    self.delegate?.displayContentProgress(progress)
+                }
+            },
             onSuccess: { [weak self] (data: Data) in
                 guard let `self` = self else { return }
                 let image: UIImage? = UIImage(data: data)
@@ -137,15 +154,17 @@ private struct NetworkMethods {
 // MARK: NetworkMethodsImages
 private struct NetworkMethodsImages: Requestable {
     @discardableResult
-    func get(onSuccess: @escaping (Data) -> Void,
+    func get(onProgress: @escaping (Int64, Int64, Double) -> Void,
+             onSuccess: @escaping (Data) -> Void,
              onError: @escaping (NetworkError) -> Void,
              onCompletion: ((Data?, NetworkError?) -> Void)? = nil) -> NetworkTask {
         let request = Request(
             url: Mock().imageUrl([.quality(.high)]))
         return self.call(
             request,
-            logger: WarningOnlyLogger(),
+            logger: ConsoleLogger(),
             cache: NetworkTmpCache(ttl: 60 * 60),
+            onProgress: onProgress,
             onSuccess: onSuccess,
             onError: onError,
             onCompletion: onCompletion)

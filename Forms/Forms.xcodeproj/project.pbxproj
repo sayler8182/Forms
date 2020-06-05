@@ -10,6 +10,10 @@
 		7103EA182460234E00A11A96 /* ProgressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7103EA172460234E00A11A96 /* ProgressBar.swift */; };
 		7103EA1B2460266400A11A96 /* ComponentsProgresses.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7103EA1A2460266400A11A96 /* ComponentsProgresses.swift */; };
 		7103EA22246043C300A11A96 /* FormsNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7103EA21246043C300A11A96 /* FormsNavigationController.swift */; };
+		71090BC32488CC4800CDB25D /* Switch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71090BC22488CC4800CDB25D /* Switch.swift */; };
+		71090BC42488CC4800CDB25D /* Switch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71090BC22488CC4800CDB25D /* Switch.swift */; };
+		71090BC62488CD1400CDB25D /* ComponentsSwitches.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71090BC52488CD1400CDB25D /* ComponentsSwitches.swift */; };
+		71090BC72488CD1400CDB25D /* ComponentsSwitches.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71090BC52488CD1400CDB25D /* ComponentsSwitches.swift */; };
 		711070DE2476BF610056BBB5 /* Forms.h in Headers */ = {isa = PBXBuildFile; fileRef = 7194693F243DA7A800CAD09B /* Forms.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		711070E02476BF610056BBB5 /* TableDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 719469DB243DDB7600CAD09B /* TableDataSource.swift */; };
 		711070E12476BF610056BBB5 /* ComponentsUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71946965243DA7BE00CAD09B /* ComponentsUtils.swift */; };
@@ -160,6 +164,8 @@
 		7103EA172460234E00A11A96 /* ProgressBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressBar.swift; sourceTree = "<group>"; };
 		7103EA1A2460266400A11A96 /* ComponentsProgresses.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComponentsProgresses.swift; sourceTree = "<group>"; };
 		7103EA21246043C300A11A96 /* FormsNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormsNavigationController.swift; sourceTree = "<group>"; };
+		71090BC22488CC4800CDB25D /* Switch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Switch.swift; sourceTree = "<group>"; };
+		71090BC52488CD1400CDB25D /* ComponentsSwitches.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComponentsSwitches.swift; sourceTree = "<group>"; };
 		71207CEB24877E610004B840 /* Checkbox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Checkbox.swift; sourceTree = "<group>"; };
 		71207CEE248783B80004B840 /* ComponentsCheckboxes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComponentsCheckboxes.swift; sourceTree = "<group>"; };
 		71207CF82487B6000004B840 /* Weak.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Weak.swift; sourceTree = "<group>"; };
@@ -294,6 +300,14 @@
 			path = Progresses;
 			sourceTree = "<group>";
 		};
+		71090BC12488CC2C00CDB25D /* Switches */ = {
+			isa = PBXGroup;
+			children = (
+				71090BC22488CC4800CDB25D /* Switch.swift */,
+			);
+			path = Switches;
+			sourceTree = "<group>";
+		};
 		71207CEA24877E1E0004B840 /* Checkboxes */ = {
 			isa = PBXGroup;
 			children = (
@@ -391,6 +405,7 @@
 				714848D2244858FF00455560 /* ComponentsOthers.swift */,
 				7103EA1A2460266400A11A96 /* ComponentsProgresses.swift */,
 				71E0F5F3246C3C760051F043 /* ComponentsSections.swift */,
+				71090BC52488CD1400CDB25D /* ComponentsSwitches.swift */,
 				71946965243DA7BE00CAD09B /* ComponentsUtils.swift */,
 			);
 			path = ComponentsList;
@@ -426,6 +441,7 @@
 				714848D42448597B00455560 /* Others */,
 				7103EA162460233C00A11A96 /* Progresses */,
 				71E0F5F5246C3E040051F043 /* Sections */,
+				71090BC12488CC2C00CDB25D /* Switches */,
 				71946977243DA7BE00CAD09B /* Utils */,
 			);
 			path = Components;
@@ -675,6 +691,7 @@
 				711070E72476BF610056BBB5 /* ComponentsNavigationBars.swift in Sources */,
 				711070E82476BF610056BBB5 /* FormsSearchController.swift in Sources */,
 				711070E92476BF610056BBB5 /* SearchBar.swift in Sources */,
+				71090BC72488CD1400CDB25D /* ComponentsSwitches.swift in Sources */,
 				711070EA2476BF610056BBB5 /* NavigationBar.swift in Sources */,
 				711070EB2476BF610056BBB5 /* TextView.swift in Sources */,
 				711070EC2476BF610056BBB5 /* ComponentsInputs.swift in Sources */,
@@ -699,6 +716,7 @@
 				711070FF2476BF610056BBB5 /* SearchDataSource.swift in Sources */,
 				711071002476BF610056BBB5 /* Forms.swift in Sources */,
 				711071012476BF610056BBB5 /* TextFieldDelegates.swift in Sources */,
+				71090BC42488CC4800CDB25D /* Switch.swift in Sources */,
 				711071032476BF610056BBB5 /* TextFieldPhoneDelegate.swift in Sources */,
 				711071042476BF610056BBB5 /* FormComponent.swift in Sources */,
 				71207CF0248783B80004B840 /* ComponentsCheckboxes.swift in Sources */,
@@ -742,6 +760,7 @@
 				71946992243DA7BE00CAD09B /* ComponentsNavigationBars.swift in Sources */,
 				7121ABE7245AABFD00F6BEF5 /* FormsSearchController.swift in Sources */,
 				71458F6624571FAD001B774B /* SearchBar.swift in Sources */,
+				71090BC62488CD1400CDB25D /* ComponentsSwitches.swift in Sources */,
 				7194699C243DA7BE00CAD09B /* NavigationBar.swift in Sources */,
 				71E0F60B246D30EC0051F043 /* TextView.swift in Sources */,
 				7194698F243DA7BE00CAD09B /* ComponentsInputs.swift in Sources */,
@@ -766,6 +785,7 @@
 				71278B53245AC88C00B26870 /* SearchDataSource.swift in Sources */,
 				7194698E243DA7BE00CAD09B /* Forms.swift in Sources */,
 				719469AB243DA7BE00CAD09B /* TextFieldDelegates.swift in Sources */,
+				71090BC32488CC4800CDB25D /* Switch.swift in Sources */,
 				719469AC243DA7BE00CAD09B /* TextFieldPhoneDelegate.swift in Sources */,
 				719469A6243DA7BE00CAD09B /* FormComponent.swift in Sources */,
 				71207CEF248783B80004B840 /* ComponentsCheckboxes.swift in Sources */,

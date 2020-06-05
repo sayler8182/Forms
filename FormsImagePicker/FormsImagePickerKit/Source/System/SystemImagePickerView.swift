@@ -6,6 +6,7 @@
 //  Copyright © 2020 Limbo. All rights reserved.
 //
 
+import FormsPermissions
 import MobileCoreServices
 import UIKit
 
@@ -15,6 +16,7 @@ public class SystemImagePickerView: ImagePickerView {
                                allowsEditing: Bool,
                                mediaTypes: [ImagePickerMediaType],
                                onSelect: ImagePicker.OnSelect?,
+                               onFail: ImagePicker.OnFail?,
                                onCancel: ImagePicker.OnCancel?) {
         let alert: UIAlertController = UIAlertController(
             title: "Choose source",
@@ -26,27 +28,25 @@ public class SystemImagePickerView: ImagePickerView {
             title: "Camera",
             style: .default,
             handler: { _ in
-                let imagePicker = SystemImagePickerController()
-                imagePicker.configure(
-                    sourceType: UIImagePickerController.SourceType.camera,
+                self.presentCamera(
+                    on: controller,
                     allowsEditing: allowsEditing,
                     mediaTypes: mediaTypes,
                     onSelect: onSelect,
+                    onFail: onFail,
                     onCancel: onCancel)
-                controller.present(imagePicker, animated: true)
         }))
         alert.addAction(UIAlertAction(
-            title: "Gallery",
+            title: "Photo library",
             style: .default,
             handler: { _ in
-                let imagePicker = SystemImagePickerController()
-                imagePicker.configure(
-                    sourceType: UIImagePickerController.SourceType.photoLibrary,
+                self.presentPhotoLibrary(
+                    on: controller,
                     allowsEditing: allowsEditing,
                     mediaTypes: mediaTypes,
                     onSelect: onSelect,
+                    onFail: onFail,
                     onCancel: onCancel)
-                controller.present(imagePicker, animated: true)
         }))
         alert.addAction(UIAlertAction(
             title: "Cancel",
@@ -54,24 +54,73 @@ public class SystemImagePickerView: ImagePickerView {
             handler: { _ in }))
         controller.present(alert, animated: true)
     }
+    
+    private static func presentCamera(on controller: UIViewController,
+                                      allowsEditing: Bool,
+                                      mediaTypes: [ImagePickerMediaType],
+                                      onSelect: ImagePicker.OnSelect?,
+                                      onFail: ImagePicker.OnFail?,
+                                      onCancel: ImagePicker.OnCancel?) {
+        Permissions.camera.status { (status) in
+            guard !status.isRestricted else {
+                onFail?()
+                return
+            }
+            let imagePicker = SystemImagePickerController()
+            imagePicker.configure(
+                sourceType: UIImagePickerController.SourceType.camera,
+                allowsEditing: allowsEditing,
+                mediaTypes: mediaTypes,
+                onSelect: onSelect,
+                onFail: onFail,
+                onCancel: onCancel)
+            controller.present(imagePicker, animated: true)
+        }
+    }
+    
+    private static func presentPhotoLibrary(on controller: UIViewController,
+                                            allowsEditing: Bool,
+                                            mediaTypes: [ImagePickerMediaType],
+                                            onSelect: ImagePicker.OnSelect?,
+                                            onFail: ImagePicker.OnFail?,
+                                            onCancel: ImagePicker.OnCancel?) {
+        Permissions.photoLibrary.status { (status) in
+            guard !status.isRestricted else {
+                onFail?()
+                return
+            }
+            let imagePicker = SystemImagePickerController()
+            imagePicker.configure(
+                sourceType: UIImagePickerController.SourceType.photoLibrary,
+                allowsEditing: allowsEditing,
+                mediaTypes: mediaTypes,
+                onSelect: onSelect,
+                onFail: onFail,
+                onCancel: onCancel)
+            controller.present(imagePicker, animated: true)
+        }
+    }
 }
 
 // MARK: SystemImagePickerController
 private class SystemImagePickerController: UIImagePickerController {
     private lazy var imagePickerDelegate = SystemImagePickerControllerDelegate(self) // swiftlint:disable:this weak_delegate
     fileprivate var onSelect: ImagePicker.OnSelect?
+    fileprivate var onFail: ImagePicker.OnFail?
     fileprivate var onCancel: ImagePicker.OnCancel?
     
     fileprivate func configure(sourceType: UIImagePickerController.SourceType,
                                allowsEditing: Bool = false,
                                mediaTypes: [ImagePickerMediaType],
                                onSelect: ImagePicker.OnSelect?,
+                               onFail: ImagePicker.OnFail?,
                                onCancel: ImagePicker.OnCancel?) {
         self.delegate = self.imagePickerDelegate
         self.sourceType = sourceType
         self.allowsEditing = allowsEditing
         self.mediaTypes = mediaTypes.map { $0.kUTType }
         self.onSelect = onSelect
+        self.onFail = onFail
         self.onCancel = onCancel
     }
 }
@@ -114,8 +163,8 @@ private class SystemImagePickerControllerDelegate: NSObject, UIImagePickerContro
     func imagePickerController(_ picker: UIImagePickerController,
                                didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey: Any]) {
         var images: [ImagePickerData.Image] = []
-        if let image: UIImage = info.image,
-            let url: URL = info.url {
+        if let image: UIImage = info.image {
+            let url: URL? = info.url
             images.append(ImagePickerData.Image(
                 image: image,
                 imageURL: url))

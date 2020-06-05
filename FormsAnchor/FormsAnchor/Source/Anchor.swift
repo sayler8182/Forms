@@ -347,6 +347,13 @@ public extension Anchor {
         anchor.positions.append(.size(.height(size.height)))
         return anchor
     }
+    
+    func size(_ width: CGFloat, _ height: CGFloat) -> Anchor {
+        var anchor: Anchor = self
+        anchor.positions.append(.size(.width(width)))
+        anchor.positions.append(.size(.height(height)))
+        return anchor
+    }
 }
 
 // MARK: Positions - Combined

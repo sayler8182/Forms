@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>CFBuildDate</key>
-	<string>Wed Jun  3 13:43:24 CEST 2020</string>
+	<string>Fri Jun  5 13:15:52 CEST 2020</string>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
 	<key>CFBundleDisplayName</key>
@@ -69,10 +69,16 @@
 		<key>NSAllowsArbitraryLoads</key>
 		<true/>
 	</dict>
+	<key>NSCameraUsageDescription</key>
+	<string>Privacy - Camera Usage Description</string>
 	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
-	<string>Location Always and When In Use Usage Description</string>
+	<string>Privacy - Location Always and When In Use Usage Description</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>Location When In Use Usage Description</string>
+	<string>Privacy - Location When In Use Usage Description</string>
+	<key>NSMicrophoneUsageDescription</key>
+	<string>Privacy - Microphone Usage Description</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>Privacy - Photo Library Usage Description</string>
 	<key>UIApplicationSceneManifest</key>
 	<dict>
 		<key>UIApplicationSupportsMultipleScenes</key>

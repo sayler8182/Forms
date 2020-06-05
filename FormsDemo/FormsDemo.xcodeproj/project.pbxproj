@@ -10,6 +10,7 @@
 		7103EA152460231100A11A96 /* DemoProgressesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7103EA142460231100A11A96 /* DemoProgressesViewController.swift */; };
 		7103EA202460382300A11A96 /* DemoNavigationProgressBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7103EA1F2460382300A11A96 /* DemoNavigationProgressBarViewController.swift */; };
 		7103EA852460A60E00A11A96 /* DemoPermissionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7103EA842460A60E00A11A96 /* DemoPermissionsViewController.swift */; };
+		71090BCA2488CD9A00CDB25D /* DemoSwitchesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71090BC92488CD9A00CDB25D /* DemoSwitchesViewController.swift */; };
 		711AF55A24615BDB00CE8666 /* DemoCardKitController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 711AF55924615BDB00CE8666 /* DemoCardKitController.swift */; };
 		71207CF3248787260004B840 /* DemoCheckboxesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71207CF2248787260004B840 /* DemoCheckboxesViewController.swift */; };
 		7132964724487ED0006935C0 /* DemoSocialKitAppleTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7132964624487ED0006935C0 /* DemoSocialKitAppleTableViewController.swift */; };
@@ -93,6 +94,7 @@
 		71E0F5D0246BF0890051F043 /* DemoScrollStepsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71E0F5CF246BF0890051F043 /* DemoScrollStepsViewController.swift */; };
 		71E0F5F9246C4CAB0051F043 /* DemoThemeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71E0F5F8246C4CAB0051F043 /* DemoThemeViewController.swift */; };
 		71E0F60F246D34320051F043 /* DemoTitleTextViewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71E0F60E246D34320051F043 /* DemoTitleTextViewViewController.swift */; };
+		71F83AA9248A385900D6B579 /* DemoSVGViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71F83AA8248A385900D6B579 /* DemoSVGViewController.swift */; };
 		71FCB249247F969F00A84D30 /* FormsAnalytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71FCB240247F969F00A84D30 /* FormsAnalytics.framework */; };
 		71FCB24A247F969F00A84D30 /* FormsAnalytics.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 71FCB240247F969F00A84D30 /* FormsAnalytics.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		71FCB24B247F969F00A84D30 /* FormsDeveloperTools.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71FCB241247F969F00A84D30 /* FormsDeveloperTools.framework */; };
@@ -140,6 +142,7 @@
 		7103EA142460231100A11A96 /* DemoProgressesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoProgressesViewController.swift; sourceTree = "<group>"; };
 		7103EA1F2460382300A11A96 /* DemoNavigationProgressBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoNavigationProgressBarViewController.swift; sourceTree = "<group>"; };
 		7103EA842460A60E00A11A96 /* DemoPermissionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoPermissionsViewController.swift; sourceTree = "<group>"; };
+		71090BC92488CD9A00CDB25D /* DemoSwitchesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoSwitchesViewController.swift; sourceTree = "<group>"; };
 		711AF55924615BDB00CE8666 /* DemoCardKitController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoCardKitController.swift; sourceTree = "<group>"; };
 		71207CF2248787260004B840 /* DemoCheckboxesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoCheckboxesViewController.swift; sourceTree = "<group>"; };
 		7132964624487ED0006935C0 /* DemoSocialKitAppleTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoSocialKitAppleTableViewController.swift; sourceTree = "<group>"; };
@@ -216,6 +219,7 @@
 		71E0F5CF246BF0890051F043 /* DemoScrollStepsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoScrollStepsViewController.swift; sourceTree = "<group>"; };
 		71E0F5F8246C4CAB0051F043 /* DemoThemeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoThemeViewController.swift; sourceTree = "<group>"; };
 		71E0F60E246D34320051F043 /* DemoTitleTextViewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoTitleTextViewViewController.swift; sourceTree = "<group>"; };
+		71F83AA8248A385900D6B579 /* DemoSVGViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoSVGViewController.swift; sourceTree = "<group>"; };
 		71FCB240247F969F00A84D30 /* FormsAnalytics.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FormsAnalytics.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		71FCB241247F969F00A84D30 /* FormsDeveloperTools.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FormsDeveloperTools.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		71FCB243247F969F00A84D30 /* FormsMock.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FormsMock.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -267,6 +271,14 @@
 				7103EA142460231100A11A96 /* DemoProgressesViewController.swift */,
 			);
 			path = Progresses;
+			sourceTree = "<group>";
+		};
+		71090BC82488CD8C00CDB25D /* Switches */ = {
+			isa = PBXGroup;
+			children = (
+				71090BC92488CD9A00CDB25D /* DemoSwitchesViewController.swift */,
+			);
+			path = Switches;
 			sourceTree = "<group>";
 		};
 		71207CF1248787180004B840 /* Checkboxes */ = {
@@ -385,6 +397,7 @@
 				713B9C6B243D0964001F6E3A /* NavigationBars */,
 				714848D724485C9E00455560 /* Others */,
 				7103EA13246022F900A11A96 /* Progresses */,
+				71090BC82488CD8C00CDB25D /* Switches */,
 				714848D824485CB600455560 /* Utils */,
 			);
 			path = Components;
@@ -435,6 +448,7 @@
 				713B9C74243D0964001F6E3A /* DemoModalViewController.swift */,
 				71E0F5CF246BF0890051F043 /* DemoScrollStepsViewController.swift */,
 				7193E34F2451D258006238C5 /* DemoStorageViewController.swift */,
+				71F83AA8248A385900D6B579 /* DemoSVGViewController.swift */,
 				71E0F5F8246C4CAB0051F043 /* DemoThemeViewController.swift */,
 			);
 			path = Utils;
@@ -643,10 +657,12 @@
 				714848DC24485CE500455560 /* DemoUtilsViewController.swift in Sources */,
 				71589114244639F2003200C7 /* DemoArchitecturesCleanAssembly.swift in Sources */,
 				713B9C84243D0964001F6E3A /* DemoModalViewController.swift in Sources */,
+				71F83AA9248A385900D6B579 /* DemoSVGViewController.swift in Sources */,
 				7103EA202460382300A11A96 /* DemoNavigationProgressBarViewController.swift in Sources */,
 				713B9C81243D0964001F6E3A /* DemoLabelsViewController.swift in Sources */,
 				71FF141B2458B20000656EDA /* DemoSideMenuKitController.swift in Sources */,
 				713B9C7F243D0964001F6E3A /* DemoNavigationBarWithBackOrCloseViewController.swift in Sources */,
+				71090BCA2488CD9A00CDB25D /* DemoSwitchesViewController.swift in Sources */,
 				715B7AE22446FD1500754EDB /* DemoArchitecturesCleanSummaryPresenter.swift in Sources */,
 				719469C4243DB01D00CAD09B /* DemoShimmerViewController.swift in Sources */,
 				713B9C80243D0964001F6E3A /* DemoNavigationBarViewController.swift in Sources */,

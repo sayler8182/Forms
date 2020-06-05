@@ -42,10 +42,14 @@ class DemoImagePickerKitSystemViewController: FormsTableViewController {
                 mediaTypes: [.image],
                 onSelect: { [unowned self] (data) in
                     self.updateImages(data)
-            }, onCancel: { [unowned self] in
-                Toast.info()
-                    .with(title: "Cancel")
-                    .show(in: self.navigationController)
+                }, onFail: { [unowned self] in
+                    Toast.info()
+                        .with(title: "Fail")
+                        .show(in: self.navigationController)
+                }, onCancel: { [unowned self] in
+                    Toast.info()
+                        .with(title: "Cancel")
+                        .show(in: self.navigationController)
             })
         }
         self.chooseVideoButton.onClick = {
@@ -56,10 +60,14 @@ class DemoImagePickerKitSystemViewController: FormsTableViewController {
                 mediaTypes: [.video],
                 onSelect: { [unowned self] (data) in
                     self.updateVideos(data)
-            }, onCancel: { [unowned self] in
-                Toast.info()
-                    .with(title: "Cancel")
-                    .show(in: self.navigationController)
+                }, onFail: { [unowned self] in
+                    Toast.info()
+                        .with(title: "Fail")
+                        .show(in: self.navigationController)     
+                }, onCancel: { [unowned self] in
+                    Toast.info()
+                        .with(title: "Cancel")
+                        .show(in: self.navigationController)
             })
         }
     }

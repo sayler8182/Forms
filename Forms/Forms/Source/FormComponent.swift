@@ -213,6 +213,17 @@ public extension FormsComponentWithLoading {
     }
 }
 
+// MARK: FormsComponentWithGroup
+public protocol FormsComponentWithGroup: class {
+    var groupKey: String? { get set }
+}
+public extension FormsComponentWithGroup {
+    func with(groupKey: String?) -> Self {
+        self.groupKey = groupKey
+        return self
+    }
+}
+
 // MARK: FormsComponentWithMarginEdgeInset
 public protocol FormsComponentWithMarginEdgeInset: class {
     var marginEdgeInset: UIEdgeInsets { get set }

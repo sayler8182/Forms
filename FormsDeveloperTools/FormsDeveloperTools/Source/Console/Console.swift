@@ -92,7 +92,8 @@ public extension Console {
             "The relevant UICollectionViewFlowLayout instance is",
             "Make a symbolic breakpoint at UICollectionViewFlowLayoutBreakForInvalidSizes",
             "[Touch] unexpected nil window in __sendSystemGestureLatentClientUpdate",
-            "[Snapshotting] Snapshotting a view"
+            "[Snapshotting] Snapshotting a view",
+            "invalid mode 'kCFRunLoopCommonModes'"
         ]
     }
 }

@@ -26,7 +26,7 @@ public enum ImagePickerMediaType {
 public struct ImagePickerData {
     public struct Image {
         public let image: UIImage
-        public let imageURL: URL
+        public let imageURL: URL?
     }
     public struct Video {
         public let videoURL: URL
@@ -39,6 +39,7 @@ public struct ImagePickerData {
 // MARK: ImagePicker
 public enum ImagePicker {
     public typealias OnSelect = ((_ data: ImagePickerData) -> Void)
+    public typealias OnFail = (() -> Void)
     public typealias OnCancel = (() -> Void)
     
     public static func pick(on controller: UIViewController?,
@@ -46,6 +47,7 @@ public enum ImagePicker {
                             allowsEditing: Bool = true,
                             mediaTypes: [ImagePickerMediaType] = [.image],
                             onSelect: OnSelect?,
+                            onFail: OnFail? = nil,
                             onCancel: OnCancel? = nil) {
         guard let controller: UIViewController = controller else { return }
         pickerType.present(
@@ -53,6 +55,7 @@ public enum ImagePicker {
             allowsEditing: allowsEditing,
             mediaTypes: mediaTypes,
             onSelect: onSelect,
+            onFail: onFail,
             onCancel: onCancel)
     }
 }

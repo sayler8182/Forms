@@ -20,7 +20,8 @@ public struct Components {
     public typealias navigationBar = ComponentsNavigationBars
     public typealias other = ComponentsOthers
     public typealias progress = ComponentsProgresses
-    public typealias sections = ComponentsSections
+    public typealias section = ComponentsSections
+    public typealias `switch` = ComponentsSwitches
     public typealias utils = ComponentsUtils
 }
 

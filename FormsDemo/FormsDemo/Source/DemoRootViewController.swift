@@ -9,6 +9,7 @@
 import Forms
 import FormsAnchor
 import FormsInjector
+import FormsUtils
 import UIKit
 
 // MARK: Protocols
@@ -61,6 +62,7 @@ private enum Demo {
         case componentsNavigationBarsNavigationBarWithClose
         case componentsOthers
         case componentsProgresses
+        case componentsSwitches
         case componentsNavigationProgressBar
         case componentsProgressBars
         case componentsUtils
@@ -77,6 +79,7 @@ private enum Demo {
         case utilsShimmerShimmer
         case utilsShimmerTable
         case utilsStorage
+        case utilsSVG
         case utilsTheme
         // Frameworks
         case frameworkAnalytics
@@ -183,6 +186,7 @@ private enum Demo {
                                 Row(type: RowType.componentsProgressBars, title: "ProgressBar")
                             ])
                     ]),
+                    Row(type: RowType.componentsSwitches, title: "Switches"),
                     Row(type: RowType.componentsUtils, title: "Utils")
                 ]),
                 Section(title: "Utils", rows: [
@@ -203,6 +207,7 @@ private enum Demo {
                             ])
                     ]),
                     Row(type: RowType.utilsStorage, title: "Storage"),
+                    Row(type: RowType.utilsSVG, title: "SVG"),
                     Row(type: RowType.utilsTheme, title: "Theme")  
                 ]),
                 Section(title: "Frameworks", rows: [
@@ -375,6 +380,7 @@ public class DemoRootViewController: FormsNavigationController {
         let sections: [DemoSection] = Demo.Section.default
         guard let row: DemoRow = [DemoSection].row(for: rowType, from: sections) else { return }
         guard let controller = self.rootViewController(of: DemoListViewController.self) else { return }
+        controller.searchController.text = row.title
         self.fillPrePath(to: rowType, in: controller, from: sections)
         controller.select(row: row, animated: false)
     }
@@ -399,8 +405,8 @@ private class DemoListViewController: FormsViewController {
         frame: CGRect(width: 320, height: 44),
         style: .plain)
     
-    private lazy var searchDataSource = SearchDataSource<DemoSection>(self.tableView)
-    private lazy var searchController = FormsSearchController(self.searchDataSource)
+    fileprivate lazy var searchDataSource = SearchDataSource<DemoSection>(self.tableView)
+    fileprivate lazy var searchController = FormsSearchController(self.searchDataSource)
     
     private var items: [DemoSection] {
         get { return self.searchDataSource.items }
@@ -446,6 +452,16 @@ private class DemoListViewController: FormsViewController {
         return true
     }
     
+    override func postInit() {
+        super.postInit()
+        self.searchDataSource.onFilter = { (items, query) in
+            let rows: [DemoRow] = [DemoSection]
+                .rows(from: items)
+                .filter { $0.title.localizedCaseInsensitiveContains(query) }
+            return [Demo.Section(title: "Search Result", rows: rows)]
+        }
+    }
+    
     override func setupContent() {
         super.setupContent()
         self.setupTableView()
@@ -470,16 +486,6 @@ private class DemoListViewController: FormsViewController {
     override func setupSearchBar() {
         super.setupSearchBar()
         self.setSearchBar(self.searchController)
-    }
-    
-    override func setupActions() {
-        super.setupActions()
-        self.searchDataSource.onFilter = { (items, query) in
-            let rows: [DemoRow] = [DemoSection]
-                .rows(from: items)
-                .filter { $0.title.localizedCaseInsensitiveContains(query) }
-            return [Demo.Section(title: "Search Result", rows: rows)]
-        }
     }
     
     fileprivate func select(row: DemoRow, animated: Bool = true) {
@@ -523,8 +529,9 @@ private class DemoListViewController: FormsViewController {
         case .componentsNavigationBarsNavigationBar:            return DemoNavigationBarViewController()
         case .componentsNavigationBarsNavigationBarWithBack:    return DemoNavigationBarWithBackOrCloseViewController()
         case .componentsNavigationBarsNavigationBarWithClose:   return DemoNavigationBarWithBackOrCloseViewController().embeded
-        case .componentsOthers:                                 return DemoOthersViewController()
         case .componentsNavigationProgressBar:                  return DemoNavigationProgressBarViewController()
+        case .componentsOthers:                                 return DemoOthersViewController()
+        case .componentsSwitches:                               return DemoSwitchesViewController()
         case .componentsProgressBars:                           return DemoProgressBarViewController()
         case .componentsUtils:                                  return DemoUtilsViewController()
         // utils
@@ -538,6 +545,7 @@ private class DemoListViewController: FormsViewController {
         case .utilsShimmerShimmer:                              return DemoShimmerViewController()
         case .utilsShimmerTable:                                return DemoShimmerTableViewController()
         case .utilsStorage:                                     return DemoStorageViewController()
+        case .utilsSVG:                                         return DemoSVGViewController()
         case .utilsTheme:                                       return DemoThemeViewController()
         // frameworks
         case .frameworkAnalytics:                               return DemoAnalyticsViewController()
@@ -604,7 +612,7 @@ extension DemoListViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let title: String? = self.items.count > 1 ? self.items[section].title : nil
         guard let _title: String = title else { return nil }
-        return Components.sections.default()
+        return Components.section.default()
             .with(text: _title)
             .with(width: tableView.frame.width)
     } 

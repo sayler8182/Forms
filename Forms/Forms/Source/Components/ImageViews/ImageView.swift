@@ -7,10 +7,11 @@
 //
 
 import FormsAnchor
+import FormsUtils
 import UIKit
 
 // MARK: ImageView
-open class ImageView: FormsComponent, FormsComponentWithMarginEdgeInset, FormsComponentWithPaddingEdgeInset {
+open class ImageView: FormsComponent, SVGView, FormsComponentWithMarginEdgeInset, FormsComponentWithPaddingEdgeInset {
     private let backgroundView = UIView()
     private let imageView = UIImageView()
     
@@ -47,6 +48,10 @@ open class ImageView: FormsComponent, FormsComponentWithMarginEdgeInset, FormsCo
     }
     open var paddingEdgeInset: UIEdgeInsets = UIEdgeInsets(0) {
         didSet { self.updatePaddingEdgeInset() }
+    }
+    open var svgLayer: CAShapeLayer? {
+        get { return self.imageView.svgLayer }
+        set { self.imageView.svgLayer = newValue }
     }
     open var width: CGFloat = UITableView.automaticDimension {
         didSet {

@@ -12,6 +12,15 @@ import FormsImagePickerKit
 
 ```
 Forms.framework
+FormsPermissions.framework
+```
+
+## Permissions
+
+```
+NSCameraUsageDescription
+NSPhotoLibraryUsageDescription
+NSMicrophoneUsageDescription
 ```
 
 ## Usage
@@ -51,6 +60,19 @@ ImagePicker.pick(
     allowsEditing: true,
     mediaTypes: [.image, .video],
     onSelect: { (data: ImagePickerData) in }, 
+    onCancel: { })
+```
+
+Handle rejected permissions
+
+```swift
+ImagePicker.pick(
+    on: controller,
+    pickerType: SystemImagePickerView.self,
+    allowsEditing: true,
+    mediaTypes: [.image, .video],
+    onSelect: { (data: ImagePickerData) in }, 
+    onFail: { },
     onCancel: { })
 ```
 

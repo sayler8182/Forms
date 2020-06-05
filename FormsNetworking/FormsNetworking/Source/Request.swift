@@ -59,6 +59,8 @@ public class NetworkTask {
 
 // MARK: Request
 public struct Request {
+    public typealias OnProgress = (_ size: Int64, _ totalSize: Int64, _ progress: Double) -> Void
+    
     public let url: URL
     public let method: HTTPMethod
     public let headers: [String: String]
@@ -85,38 +87,18 @@ public struct Request {
 }
 
 // MARK: Requestable
-public protocol Requestable {
-    @discardableResult
-    func call(_ request: Request,
-              _ logger: LoggerProtocol?,
-              _ cache: NetworkCacheProtocol?,
-              onCompletion: @escaping ((Data?, NetworkError?) -> Void)) -> NetworkTask
-    @discardableResult
-    func call(_ request: Request,
-              logger: LoggerProtocol?,
-              cache: NetworkCacheProtocol?,
-              onSuccess: @escaping (Data) -> Void,
-              onError: @escaping (NetworkError) -> Void,
-              onCompletion: ((Data?, NetworkError?) -> Void)?) -> NetworkTask 
-    @discardableResult
-    func call<T: Parseable>(_ request: Request,
-                            logger: LoggerProtocol?,
-                            cache: NetworkCacheProtocol?,
-                            parser: ResponseParser,
-                            onSuccess: @escaping (T) -> Void,
-                            onError: @escaping (NetworkError) -> Void,
-                            onCompletion: ((T?, NetworkError?) -> Void)?) -> NetworkTask
-}
+public protocol Requestable { }
 
 public extension Requestable {
     @discardableResult
     func call(_ request: Request,
               _ logger: LoggerProtocol? = nil,
               _ cache: NetworkCacheProtocol? = nil,
-              onCompletion: @escaping ((Data?, NetworkError?) -> Void)) -> NetworkTask {
+              _ onProgress: Request.OnProgress? = nil,
+              _ onCompletion: @escaping ((Data?, NetworkError?) -> Void)) -> NetworkTask {
         let logger: LoggerProtocol? = logger ?? Injector.main.resolveOrDefault("FormsNetworking")
         let cache: NetworkCacheProtocol? = cache ?? Injector.main.resolveOrDefault("FormsNetworking")
-        let networkTask = NetworkProvider.call(request.request, logger, cache) { (result) in
+        let networkTask = NetworkProvider.call(request.request, logger, cache, onProgress) { (result) in
             switch result {
             case .success(let data):
                 onCompletion(data, nil)
@@ -132,10 +114,11 @@ public extension Requestable {
     func call(_ request: Request,
               logger: LoggerProtocol? = nil,
               cache: NetworkCacheProtocol? = nil,
+              onProgress: Request.OnProgress? = nil,
               onSuccess: @escaping (Data) -> Void,
               onError: @escaping (NetworkError) -> Void,
               onCompletion: ((Data?, NetworkError?) -> Void)? = nil) -> NetworkTask {
-        return self.call(request, logger, cache) { (data, error) in
+        return self.call(request, logger, cache, onProgress) { (data, error) in
             if let data: Data = data {
                 onSuccess(data)
             }
@@ -151,10 +134,11 @@ public extension Requestable {
                             logger: LoggerProtocol? = nil,
                             cache: NetworkCacheProtocol? = nil,
                             parser: ResponseParser,
+                            onProgress: Request.OnProgress? = nil,
                             onSuccess: @escaping (T) -> Void,
                             onError: @escaping (NetworkError) -> Void,
                             onCompletion: ((T?, NetworkError?) -> Void)? = nil) -> NetworkTask {
-        return self.call(request, logger, cache) { (data, error) in
+        return self.call(request, logger, cache, onProgress) { (data, error) in
             parser.parse(
                 data: data,
                 error: error,

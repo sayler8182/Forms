@@ -20,7 +20,17 @@ public enum PermissionsStatus: String {
     case restricted = "restricted"
     case unknown = "unknown"
     
-    var isAuthorized: Bool {
+    public var isRestricted: Bool {
+        switch self {
+        case .denied: return true
+        case .provisional: return true
+        case .restricted: return true
+        case .unknown: return true
+        default: return false
+        }
+    }
+    
+    public var isAuthorized: Bool {
         switch self {
         case .authorized: return true
         case .authorizedAlways: return true
@@ -40,6 +50,11 @@ public protocol Permissionable {
 public enum Permissions {
     public typealias AskCompletion = (PermissionsStatus) -> Void
     
+    public static var camera: PermissionsCameraProtocol = {
+        let camera: PermissionsCameraProtocol? = Injector.main.resolveOrDefault("FormsPermissions")
+        return camera ?? Permissions.Camera()
+    }()
+    
     public static var location: PermissionsLocationProtocol = {
         let location: PermissionsLocationProtocol? = Injector.main.resolveOrDefault("FormsPermissions")
         return location ?? Permissions.Location()
@@ -48,6 +63,11 @@ public enum Permissions {
     public static var notifications: PermissionsNotificationsProtocol = {
         let notifications: PermissionsNotificationsProtocol? = Injector.main.resolveOrDefault("FormsPermissions")
         return notifications ?? Permissions.Notifications()
+    }()
+    
+    public static var photoLibrary: PermissionsPhotoLibraryProtocol = {
+        let photoLibrary: PermissionsPhotoLibraryProtocol? = Injector.main.resolveOrDefault("FormsPermissions")
+        return photoLibrary ?? Permissions.PhotoLibrary()
     }()
     
     public static func ask(_ permissions: [Permissionable],

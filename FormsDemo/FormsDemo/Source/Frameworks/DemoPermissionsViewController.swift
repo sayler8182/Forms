@@ -13,6 +13,11 @@ import UIKit
 class DemoPermissionsViewController: FormsTableViewController {
     private let askAllButton = Components.button.default()
         .with(title: "Ask all")
+    private let cameraStatusLabel = Components.label.default()
+        .with(paddingEdgeInset: UIEdgeInsets(top: 8, leading: 16, bottom: 4, trailing: 16))
+        .with(text: "Camera status: ")
+    private let cameraButton = Components.button.default()
+        .with(title: "Camera")
     private let locationStatusLabel = Components.label.default()
         .with(paddingEdgeInset: UIEdgeInsets(top: 8, leading: 16, bottom: 4, trailing: 16))
         .with(text: "Location status: ")
@@ -24,9 +29,14 @@ class DemoPermissionsViewController: FormsTableViewController {
         .with(title: "Location Always")
     private let notificationsStatusLabel = Components.label.default()
         .with(paddingEdgeInset: UIEdgeInsets(top: 8, leading: 16, bottom: 4, trailing: 16))
-        .with(text: " Notifications status: ")
+        .with(text: "Notifications status: ")
     private let notificationsDefaultButton = Components.button.default()
         .with(title: "Notifications")
+    private let photoLibraryStatusLabel = Components.label.default()
+        .with(paddingEdgeInset: UIEdgeInsets(top: 8, leading: 16, bottom: 4, trailing: 16))
+        .with(text: "PhotoLibrary status: ")
+    private let photoLibraryButton = Components.button.default()
+        .with(title: "PhotoLibrary")
     
     private let divider = Components.utils.divider()
         .with(height: 5.0)
@@ -35,12 +45,16 @@ class DemoPermissionsViewController: FormsTableViewController {
         super.setupContent()
         self.build([
             self.askAllButton,
+            self.cameraStatusLabel,
+            self.cameraButton,
             self.locationStatusLabel,
             self.locationDefaultButton,
             self.locationWhenInUseButton,
             self.locationAlwaysButton,
             self.notificationsStatusLabel,
-            self.notificationsDefaultButton
+            self.notificationsDefaultButton,
+            self.photoLibraryStatusLabel,
+            self.photoLibraryButton
         ], divider: self.divider)
         self.updateStatuses()
     }
@@ -49,12 +63,20 @@ class DemoPermissionsViewController: FormsTableViewController {
         super.setupActions()
         self.askAllButton.onClick = Unowned(self) { (_self: DemoPermissionsViewController) in
             let permissions: [Permissionable] = [
+                Permissions.camera,
                 Permissions.location,
-                Permissions.notifications
+                Permissions.notifications,
+                Permissions.photoLibrary
             ]
             Permissions.ask(permissions) { [weak _self] _ in
                 guard let _self = _self else { return }
                 _self.updateStatuses()
+            }
+        }
+        self.cameraButton.onClick = Unowned(self) { (_self: DemoPermissionsViewController) in
+            Permissions.camera.ask { [weak _self] _ in
+                guard let _self = _self else { return }
+                _self.updateCameraStatus()
             }
         }
         self.locationDefaultButton.onClick = Unowned(self) { (_self: DemoPermissionsViewController) in
@@ -81,11 +103,27 @@ class DemoPermissionsViewController: FormsTableViewController {
                 _self.updateNotificationsStatus()
             }
         }
+        self.photoLibraryButton.onClick = Unowned(self) { (_self: DemoPermissionsViewController) in
+            Permissions.photoLibrary.ask { [weak _self] _ in
+                guard let _self = _self else { return }
+                _self.updatePhotoLibraryStatus()
+            }
+        }
     }
     
     private func updateStatuses() {
+        self.updateCameraStatus()
         self.updateLocationStatus()
         self.updateNotificationsStatus()
+        self.updatePhotoLibraryStatus()
+    }
+    
+    private func updateCameraStatus() {
+        Permissions.camera.status { status in
+            DispatchQueue.main.async {
+                self.cameraStatusLabel.text = "Camera status: " + status.rawValue
+            }
+        }
     }
     
     private func updateLocationStatus() {
@@ -100,6 +138,14 @@ class DemoPermissionsViewController: FormsTableViewController {
         Permissions.notifications.status { status in
             DispatchQueue.main.async {
                 self.notificationsStatusLabel.text = "Notifications status: " + status.rawValue
+            }
+        }
+    }
+    
+    private func updatePhotoLibraryStatus() {
+        Permissions.photoLibrary.status { status in
+            DispatchQueue.main.async {
+                self.photoLibraryStatusLabel.text = "PhotoLibrary status: " + status.rawValue
             }
         }
     }

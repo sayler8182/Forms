@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		71207D152487EC710004B840 /* FormsPermissions.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71207D142487EC710004B840 /* FormsPermissions.framework */; };
 		7150CE59247FA81500F2681B /* Forms.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7150CE58247FA81500F2681B /* Forms.framework */; };
 		71DB6624245826B600B16145 /* FormsImagePickerKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 71DB6616245826B600B16145 /* FormsImagePickerKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		71DB66EE24582AAD00B16145 /* SystemImagePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71DB66ED24582AAD00B16145 /* SystemImagePickerView.swift */; };
@@ -15,6 +16,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		71207D142487EC710004B840 /* FormsPermissions.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FormsPermissions.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7150CD8D247FA05F00F2681B /* FormsImagePickerKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = FormsImagePickerKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7150CE58247FA81500F2681B /* Forms.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Forms.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		71DB6616245826B600B16145 /* FormsImagePickerKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FormsImagePickerKit.h; sourceTree = "<group>"; };
@@ -30,6 +32,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7150CE59247FA81500F2681B /* Forms.framework in Frameworks */,
+				71207D152487EC710004B840 /* FormsPermissions.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -39,6 +42,7 @@
 		7150CE57247FA81500F2681B /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				71207D142487EC710004B840 /* FormsPermissions.framework */,
 				7150CE58247FA81500F2681B /* Forms.framework */,
 			);
 			name = Frameworks;

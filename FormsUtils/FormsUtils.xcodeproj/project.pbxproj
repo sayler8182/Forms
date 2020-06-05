@@ -41,6 +41,8 @@
 		715C43FE2480EE010093EBFF /* Globals.swift in Sources */ = {isa = PBXBuildFile; fileRef = 715C43FD2480EE010093EBFF /* Globals.swift */; };
 		719469C6243DB21D00CAD09B /* UIImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 719469C5243DB21D00CAD09B /* UIImageView.swift */; };
 		71E0F611246D46EF0051F043 /* UITextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71E0F610246D46EF0051F043 /* UITextField.swift */; };
+		71F83AA5248A24AA00D6B579 /* SVG.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71F83AA4248A24AA00D6B579 /* SVG.swift */; };
+		71F83AA7248A251D00D6B579 /* CGPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71F83AA6248A251D00D6B579 /* CGPoint.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -80,6 +82,8 @@
 		715C43FD2480EE010093EBFF /* Globals.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Globals.swift; sourceTree = "<group>"; };
 		719469C5243DB21D00CAD09B /* UIImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageView.swift; sourceTree = "<group>"; };
 		71E0F610246D46EF0051F043 /* UITextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITextField.swift; sourceTree = "<group>"; };
+		71F83AA4248A24AA00D6B579 /* SVG.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SVG.swift; sourceTree = "<group>"; };
+		71F83AA6248A251D00D6B579 /* CGPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CGPoint.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -128,6 +132,7 @@
 				713B9BB8243D07A8001F6E3A /* AttributedString.swift */,
 				715C43FD2480EE010093EBFF /* Globals.swift */,
 				713B9BAD243D06BD001F6E3A /* LoremIpsum.swift */,
+				71F83AA4248A24AA00D6B579 /* SVG.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -138,6 +143,7 @@
 				713B9BB0243D06C3001F6E3A /* Array.swift */,
 				713B9BB1243D06C3001F6E3A /* Bool.swift */,
 				713B9BBC243D07BB001F6E3A /* Bundle.swift */,
+				71F83AA6248A251D00D6B579 /* CGPoint.swift */,
 				713B9BC2243D07BC001F6E3A /* CGRect.swift */,
 				713B9BC3243D07BC001F6E3A /* CGSize.swift */,
 				713A76092473F4FD0067C968 /* Date.swift */,
@@ -271,6 +277,7 @@
 				713B9BAE243D06BD001F6E3A /* LoremIpsum.swift in Sources */,
 				710624F624404C9D00C267FE /* IndexPath.swift in Sources */,
 				713B9BD4243D07BC001F6E3A /* UIColor.swift in Sources */,
+				71F83AA5248A24AA00D6B579 /* SVG.swift in Sources */,
 				713B9BD6243D07BC001F6E3A /* UILabel.swift in Sources */,
 				710624FF24408AA900C267FE /* UIScrollView.swift in Sources */,
 				713B9BD0243D07BC001F6E3A /* UIActivityIndicatorView.swift in Sources */,
@@ -285,6 +292,7 @@
 				713B9BD5243D07BC001F6E3A /* UIImage.swift in Sources */,
 				713B9BCD243D07BC001F6E3A /* UIResponder.swift in Sources */,
 				719469C6243DB21D00CAD09B /* UIImageView.swift in Sources */,
+				71F83AA7248A251D00D6B579 /* CGPoint.swift in Sources */,
 				713B9BB6243D06C3001F6E3A /* Optional.swift in Sources */,
 				713B9BD8243D07BC001F6E3A /* UITableView.swift in Sources */,
 				713B9BD9243D07BC001F6E3A /* UIStackView.swift in Sources */,

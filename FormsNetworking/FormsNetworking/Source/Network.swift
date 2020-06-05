@@ -59,7 +59,8 @@ internal enum NetworkProvider {
     internal static func call(_ request: URLRequest,
                               _ logger: LoggerProtocol?,
                               _ cache: NetworkCacheProtocol?,
-                              completion: @escaping (Result<Data>) -> Void) -> URLSessionDataTask? {
+                              _ progress: Request.OnProgress? = nil,
+                              _ completion: @escaping (_ result: Result<Data>) -> Void) -> URLSessionDataTask? {
         let hash: Any = request.hashValue
         log(request, logger)
         if let cache: NetworkCacheProtocol = cache,
@@ -78,7 +79,7 @@ internal enum NetworkProvider {
             return nil
         }
         
-        let sessionDelegate = SessionDelegate(hash, logger, cache, completion)
+        let sessionDelegate = SessionDelegate(hash, logger, cache, progress, completion)
         let sessionConfiguration = NetworkProvider.sessionConfiguration()
         let session = URLSession(
             configuration: sessionConfiguration,
@@ -106,37 +107,43 @@ internal class SessionDelegate: NSObject, URLSessionDelegate, URLSessionDataDele
     private let cache: NetworkCacheProtocol?
     private var data: Data
     private let successStatusCode: Range<Int>
-    private let completion: (Result<Data>) -> Void
+    private let onProgress: Request.OnProgress?
+    private let onCompletion: (_ result: Result<Data>) -> Void
+    
+    private var totalSize: Int64 = 0
+    private var size: Int64 {
+        return Int64(self.data.count)
+    }
+    private var progress: Double {
+        guard self.totalSize != 0 else { return 0.0 }
+        return Double(self.size) / Double(self.totalSize)
+    }
     
     init(_ requestHash: Any,
          _ logger: LoggerProtocol?,
          _ cache: NetworkCacheProtocol?,
-         _ completion: @escaping (Result<Data>) -> Void) {
+         _ onProgress: Request.OnProgress?,
+         _ onCompletion: @escaping (_ result: Result<Data>) -> Void) {
         self.requestHash = requestHash
         self.logger = logger
         self.cache = cache
         self.data = Data()
         self.successStatusCode = 200..<300
-        self.completion = completion
+        self.onProgress = onProgress
+        self.onCompletion = onCompletion
         super.init()
     }
     
     func urlSession(_ session: URLSession,
                     task: URLSessionTask,
-                    willPerformHTTPRedirection response: HTTPURLResponse,
-                    newRequest request: URLRequest,
-                    completionHandler: @escaping (URLRequest?) -> Void) {
-    }
-    
-    func urlSession(_ session: URLSession,
-                    task: URLSessionTask,
                     didCompleteWithError error: Error?) {
+        self.onProgress?(self.size, self.totalSize, 1.0)
         guard error == nil,
             let response = task.response as? HTTPURLResponse else {
                 let networkError: NetworkError = .init(error)
                 let result: Result<Data> = Result.failure(networkError)
                 log(task, networkError, error, self.logger)
-                self.completion(result)
+                self.onCompletion(result)
                 return
         }
         
@@ -144,20 +151,31 @@ internal class SessionDelegate: NSObject, URLSessionDelegate, URLSessionDataDele
             let networkError: NetworkError = .errorStatusCode(response.statusCode)
             let result: Result<Data> = Result.failure(networkError)
             log(response, networkError, self.logger)
-            self.completion(result)
+            self.onCompletion(result)
             return
         }
         
         log(response, self.data, self.logger)
         try? self.cache?.write(hash: self.requestHash, data: self.data, logger: self.logger)
         let result: Result<Data> = Result.success(self.data)
-        self.completion(result)
+        self.onCompletion(result)
+    }
+    
+    func urlSession(_ session: URLSession,
+                    dataTask: URLSessionDataTask,
+                    didReceive response: URLResponse,
+                    completionHandler: @escaping (URLSession.ResponseDisposition) -> Void) {
+        self.totalSize = response.expectedContentLength
+        log(self.size, self.totalSize, self.progress, self.logger)
+        completionHandler(.allow)
     }
     
     func urlSession(_ session: URLSession,
                     dataTask: URLSessionDataTask,
                     didReceive data: Data) {
         self.data.append(data)
+        log(self.size, self.totalSize, self.progress, self.logger)
+        self.onProgress?(self.size, self.totalSize, self.progress)
     }
     
     func urlSession(_ session: URLSession,
@@ -271,6 +289,17 @@ private func log(_ response: HTTPURLResponse,
     string += "\nERROR: \(networkError.debugDescription)"
     string += "\n" + (response.url?.absoluteString ?? "")
     logger.log(.warning, string)
+}
+
+private func log(_ size: Int64,
+                 _ totalSize: Int64,
+                 _ progress: Double,
+                 _ logger: LoggerProtocol?) {
+    guard let logger: LoggerProtocol = logger else { return }
+    var string: String = ""
+    string += size == 0 ? "\n" : ""
+    string += "PROGRESS: \(size) / \(totalSize) - \(Int(progress * 100))%"
+    logger.log(.info, string)
 }
 
 private func dataToString(_ data: Data) -> String {
