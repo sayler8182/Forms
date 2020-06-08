@@ -325,6 +325,7 @@
 				);
 				MARKETING_VERSION = 0.0.0;
 				ONLY_ACTIVE_ARCH = NO;
+				OTHER_LIBTOOLFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = com.limbo.Forms.Networking;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
@@ -355,6 +356,7 @@
 					"@loader_path/Frameworks",
 				);
 				MARKETING_VERSION = 0.0.0;
+				OTHER_LIBTOOLFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = com.limbo.Forms.Networking;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;

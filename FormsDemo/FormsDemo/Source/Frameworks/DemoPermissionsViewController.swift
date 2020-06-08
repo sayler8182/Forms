@@ -10,6 +10,7 @@ import Forms
 import FormsPermissions
 import UIKit
 
+// MARK: DemoPermissionsViewController
 class DemoPermissionsViewController: FormsTableViewController {
     private let askAllButton = Components.button.default()
         .with(title: "Ask all")

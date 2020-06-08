@@ -16,6 +16,12 @@
 		7132964724487ED0006935C0 /* DemoSocialKitAppleTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7132964624487ED0006935C0 /* DemoSocialKitAppleTableViewController.swift */; };
 		7132968A24489F8F006935C0 /* DemoSocialKitFacebookTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7132968924489F8F006935C0 /* DemoSocialKitFacebookTableViewController.swift */; };
 		7132969B2448A609006935C0 /* DemoSocialKitAllTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7132969A2448A609006935C0 /* DemoSocialKitAllTableViewController.swift */; };
+		7135DF62248E194100B5807F /* DemoNetworkUploadViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7135DF61248E194100B5807F /* DemoNetworkUploadViewController.swift */; };
+		7135DF9A248E3E6F00B5807F /* FormsHomeShortcuts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7135DF99248E3E6F00B5807F /* FormsHomeShortcuts.framework */; };
+		7135DF9B248E3E6F00B5807F /* FormsHomeShortcuts.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 7135DF99248E3E6F00B5807F /* FormsHomeShortcuts.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		7135DFF8248E6E2C00B5807F /* FormsLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7135DFF7248E6E2C00B5807F /* FormsLocation.framework */; };
+		7135DFF9248E6E2C00B5807F /* FormsLocation.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 7135DFF7248E6E2C00B5807F /* FormsLocation.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		7135DFFB248E6EA300B5807F /* DemoLocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7135DFFA248E6EA300B5807F /* DemoLocationViewController.swift */; };
 		71369FB124865C5E00298D3B /* FormsSideMenuKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71369FB024865C5E00298D3B /* FormsSideMenuKit.framework */; };
 		71369FB224865C5E00298D3B /* FormsSideMenuKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 71369FB024865C5E00298D3B /* FormsSideMenuKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		71369FB424865E6A00298D3B /* FormsImagePickerKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71369FB324865E6A00298D3B /* FormsImagePickerKit.framework */; };
@@ -124,7 +130,9 @@
 				7136A0112486624100298D3B /* FormsAppStoreReview.framework in Embed Frameworks */,
 				71FCB252247F969F00A84D30 /* FormsNetworking.framework in Embed Frameworks */,
 				71369FB524865E6A00298D3B /* FormsImagePickerKit.framework in Embed Frameworks */,
+				7135DF9B248E3E6F00B5807F /* FormsHomeShortcuts.framework in Embed Frameworks */,
 				71FCB258247F969F00A84D30 /* FormsSocialKit.framework in Embed Frameworks */,
+				7135DFF9248E6E2C00B5807F /* FormsLocation.framework in Embed Frameworks */,
 				71FCB2C1247F9C6400A84D30 /* FormsPermissions.framework in Embed Frameworks */,
 				7136A13124867E5C00298D3B /* FormsCardKit.framework in Embed Frameworks */,
 				71FCB24A247F969F00A84D30 /* FormsAnalytics.framework in Embed Frameworks */,
@@ -148,6 +156,10 @@
 		7132964624487ED0006935C0 /* DemoSocialKitAppleTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoSocialKitAppleTableViewController.swift; sourceTree = "<group>"; };
 		7132968924489F8F006935C0 /* DemoSocialKitFacebookTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoSocialKitFacebookTableViewController.swift; sourceTree = "<group>"; };
 		7132969A2448A609006935C0 /* DemoSocialKitAllTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoSocialKitAllTableViewController.swift; sourceTree = "<group>"; };
+		7135DF61248E194100B5807F /* DemoNetworkUploadViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoNetworkUploadViewController.swift; sourceTree = "<group>"; };
+		7135DF99248E3E6F00B5807F /* FormsHomeShortcuts.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FormsHomeShortcuts.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		7135DFF7248E6E2C00B5807F /* FormsLocation.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FormsLocation.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		7135DFFA248E6EA300B5807F /* DemoLocationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoLocationViewController.swift; sourceTree = "<group>"; };
 		71369FB024865C5E00298D3B /* FormsSideMenuKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FormsSideMenuKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		71369FB324865E6A00298D3B /* FormsImagePickerKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FormsImagePickerKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7136A00F2486624100298D3B /* FormsAppStoreReview.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FormsAppStoreReview.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -242,7 +254,9 @@
 				7136A0102486624100298D3B /* FormsAppStoreReview.framework in Frameworks */,
 				71FCB251247F969F00A84D30 /* FormsNetworking.framework in Frameworks */,
 				71369FB424865E6A00298D3B /* FormsImagePickerKit.framework in Frameworks */,
+				7135DF9A248E3E6F00B5807F /* FormsHomeShortcuts.framework in Frameworks */,
 				71FCB257247F969F00A84D30 /* FormsSocialKit.framework in Frameworks */,
+				7135DFF8248E6E2C00B5807F /* FormsLocation.framework in Frameworks */,
 				71FCB2C0247F9C6400A84D30 /* FormsPermissions.framework in Frameworks */,
 				7136A13024867E5C00298D3B /* FormsCardKit.framework in Frameworks */,
 				71FCB249247F969F00A84D30 /* FormsAnalytics.framework in Frameworks */,
@@ -322,6 +336,7 @@
 				719AE5CE246308E300A39B0E /* Transition */,
 				71DB5CC62457647F00B16145 /* DemoAnalyticsViewController.swift */,
 				7193E34D2451B5B7006238C5 /* DemoAppStoreReviewViewController.swift */,
+				7135DFFA248E6EA300B5807F /* DemoLocationViewController.swift */,
 				713A76052473DB290067C968 /* DemoMockViewController.swift */,
 				7103EA842460A60E00A11A96 /* DemoPermissionsViewController.swift */,
 				713B9C76243D0964001F6E3A /* DemoValidatorsViewController.swift */,
@@ -366,6 +381,8 @@
 		713B9C63243D0947001F6E3A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				7135DFF7248E6E2C00B5807F /* FormsLocation.framework */,
+				7135DF99248E3E6F00B5807F /* FormsHomeShortcuts.framework */,
 				7136A12F24867E5C00298D3B /* FormsCardKit.framework */,
 				7136A12C24867DE800298D3B /* FormsToastKit.framework */,
 				7136A12924867DE200298D3B /* FormsPagerKit.framework */,
@@ -543,6 +560,7 @@
 			children = (
 				71BB61EE2445C6E7002BB31F /* DemoNetworkGetViewController.swift */,
 				71BB62802445F7C7002BB31F /* DemoNetworkImageViewController.swift */,
+				7135DF61248E194100B5807F /* DemoNetworkUploadViewController.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -670,6 +688,7 @@
 				71207CF3248787260004B840 /* DemoCheckboxesViewController.swift in Sources */,
 				7132968A24489F8F006935C0 /* DemoSocialKitFacebookTableViewController.swift in Sources */,
 				71DB5CC72457647F00B16145 /* DemoAnalyticsViewController.swift in Sources */,
+				7135DF62248E194100B5807F /* DemoNetworkUploadViewController.swift in Sources */,
 				7138D3AB2452E19300CC7345 /* DemoShimmerPaginationCollectionViewController.swift in Sources */,
 				715B7AE72446FD1500754EDB /* DemoArchitecturesCleanSummaryAssembly.swift in Sources */,
 				715B7AE62446FD1500754EDB /* DemoArchitecturesCleanSummaryViewController.swift in Sources */,
@@ -712,6 +731,7 @@
 				7103EA852460A60E00A11A96 /* DemoPermissionsViewController.swift in Sources */,
 				713B9C82243D0964001F6E3A /* DemoTitleTextFieldViewController.swift in Sources */,
 				715B7B0C2447379200754EDB /* DemoTransitionNavigationViewController.swift in Sources */,
+				7135DFFB248E6EA300B5807F /* DemoLocationViewController.swift in Sources */,
 				7193E3682451F3AF006238C5 /* DemoStackContainerViewController.swift in Sources */,
 				71E0F5D0246BF0890051F043 /* DemoScrollStepsViewController.swift in Sources */,
 				715B7AAE2446FA7900754EDB /* DemoArchitecturesCleanWorker.swift in Sources */,
@@ -869,7 +889,7 @@
 				);
 				MARKETING_VERSION = 0.0.0;
 				ONLY_ACTIVE_ARCH = NO;
-				OTHER_LDFLAGS = "";
+				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = com.limbo.FormsDemo;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
@@ -902,7 +922,7 @@
 					"@loader_path/Frameworks",
 				);
 				MARKETING_VERSION = 0.0.0;
-				OTHER_LDFLAGS = "";
+				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = com.limbo.FormsDemo;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;

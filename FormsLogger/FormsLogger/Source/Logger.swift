@@ -40,7 +40,11 @@ public class ConsoleLogger: LoggerProtocol {
         let string: String = "\(item)"
         let bundleIdentifier: String = Bundle.main.bundleIdentifier ?? "com.limbo.Forms.Logger"
         let log: OSLog = OSLog(subsystem: bundleIdentifier, category: "logger")
+        #if DEBUG
+        os_log("%{PUBLIC}@", log: log, type: .default, string)
+        #else
         os_log("%{PRIVATE}@", log: log, type: .default, string)
+        #endif
     }
 }
 

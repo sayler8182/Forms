@@ -139,7 +139,7 @@ extension Double: FromDateFormattable, ToDateFormattable {
 }
 
 // MARK: Date
-extension Date {
+public extension Date {
     var calendar: Calendar {
         return Calendar.current
     }

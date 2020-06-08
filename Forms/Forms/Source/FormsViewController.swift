@@ -9,10 +9,11 @@
 import FormsAnchor
 import FormsInjector
 import FormsLogger
+import FormsUtils
 import UIKit
 
 // MARK: FormsViewController
-open class FormsViewController: UIViewController, UIGestureRecognizerDelegate, Themeable {
+open class FormsViewController: UIViewController, UIGestureRecognizerDelegate, AppLifecycleable, Themeable {
     private lazy var keyboard = Keyboard()
     private var navigationBar: NavigationBar? = nil
     private var navigationProgressBar: ProgressBar? = nil
@@ -25,6 +26,10 @@ open class FormsViewController: UIViewController, UIGestureRecognizerDelegate, T
     }
     open var isThemeAutoRegister: Bool {
         return true
+    }
+    
+    open var appLifecycleableEvents: [AppLifecycleEvent] {
+        return []
     }
     
     open var additionalTopSafeArea: CGFloat {
@@ -54,6 +59,7 @@ open class FormsViewController: UIViewController, UIGestureRecognizerDelegate, T
     }
     
     deinit {
+        self.unregisterAppLifecycle()
         let logger: LoggerProtocol? = Injector.main.resolveOrDefault("Forms")
         logger?.log(.info, "Deinit \(type(of: self))")
     }
@@ -103,8 +109,11 @@ open class FormsViewController: UIViewController, UIGestureRecognizerDelegate, T
             .forEach { $0.setTheme() }
     }
     
+    open func appLifecycleable(event: AppLifecycleEvent) { }
+    
     // MARK: HOOKS
     open func postInit() {
+        self.registerAppLifecycle()
         // HOOK
     }
     

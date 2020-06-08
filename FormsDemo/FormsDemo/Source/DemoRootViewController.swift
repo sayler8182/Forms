@@ -8,6 +8,7 @@
 
 import Forms
 import FormsAnchor
+import FormsHomeShortcuts
 import FormsInjector
 import FormsUtils
 import UIKit
@@ -88,10 +89,12 @@ private enum Demo {
         case frameworkDeveloperToolsConsole
         case frameworkDeveloperToolsLifetime
         case frameworkDeveloperToolsMenu
+        case frameworkLocation
         case frameworkMock
         case frameworkNetwork
         case frameworkNetworkGet
         case frameworkNetworkImage
+        case frameworkNetworkUpload
         case frameworkPermissions
         case frameworkTransitions
         case frameworkTransitionsController
@@ -223,6 +226,7 @@ private enum Demo {
                                 Row(type: RowType.frameworkDeveloperToolsMenu, title: "Menu")
                             ])
                     ]),
+                    Row(type: RowType.frameworkLocation, title: "Location"),
                     Row(type: RowType.frameworkMock, title: "Mock"),
                     Row(
                         type: RowType.frameworkNetwork,
@@ -230,7 +234,8 @@ private enum Demo {
                         sections: [
                             Section(rows: [
                                 Row(type: RowType.frameworkNetworkGet, title: "Network Get"),
-                                Row(type: RowType.frameworkNetworkImage, title: "Network Image")
+                                Row(type: RowType.frameworkNetworkImage, title: "Network Image"),
+                                Row(type: RowType.frameworkNetworkUpload, title: "Network Upload")
                             ])
                     ]),
                     Row(type: RowType.frameworkPermissions, title: "Permissions"),
@@ -323,6 +328,13 @@ fileprivate extension Array where Element == DemoSection {
 public class DemoRootViewController: FormsNavigationController {
     public typealias GetRowController = (DemoRow) -> UIViewController?
     
+    override public var appLifecycleableEvents: [AppLifecycleEvent] {
+        return [.willEnterForeground]
+    }
+    
+    @OptionalInjected
+    private var homeShortcuts: HomeShortcutsProtocol?  // swiftlint:disable:this let_var_whitespace
+    
     private var sections: [DemoSection] = []
     private var getRowController: GetRowController
     
@@ -360,6 +372,20 @@ public class DemoRootViewController: FormsNavigationController {
     override public func setupView() {
         super.setupView()
         self.autoroute(to: nil)
+        self.homeShortcuts?.handleIfNeeded { (item) in
+            guard let controller = self.rootViewController(of: DemoListViewController.self) else { return }
+            controller.searchController.text = item.localizedTitle
+        }
+    }
+    
+    override public func appLifecycleable(event: AppLifecycleEvent) {
+        self.homeShortcuts?.handleIfNeeded { (item) in
+            UIAlertController()
+                .with(message: item.localizedSubtitle)
+                .with(title: item.localizedTitle)
+                .with(action: "Ok")
+                .present(on: self)
+        }
     }
      
     private func prepareItems() -> [DemoSection] {
@@ -553,9 +579,11 @@ private class DemoListViewController: FormsViewController {
         case .frameworkDeveloperToolsConsole:                   return DemoDeveloperToolsConsoleViewController()
         case .frameworkDeveloperToolsLifetime:                  return DemoDeveloperToolsLifetimeViewController()
         case .frameworkDeveloperToolsMenu:                      return DemoDeveloperToolsMenuViewController()
+        case .frameworkLocation:                                return DemoLocationViewController()
         case .frameworkMock:                                    return DemoMockViewController()
         case .frameworkNetworkGet:                              return DemoNetworkGetViewController()
         case .frameworkNetworkImage:                            return DemoNetworkImageViewController()
+        case .frameworkNetworkUpload:                           return DemoNetworkUploadViewController()
         case .frameworkPermissions:                             return DemoPermissionsViewController()
         case .frameworkTransitionsController:                   return DemoTransitionControllerViewController()
         case .frameworkTransitionsNavigation:                   return DemoTransitionNavigationViewController()

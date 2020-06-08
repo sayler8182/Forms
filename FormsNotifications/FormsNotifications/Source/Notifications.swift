@@ -8,7 +8,7 @@
 
 import FirebaseCore
 import FirebaseMessaging
-import Foundation
+import FormsPermission
 import UIKit
 import UserNotifications
 
@@ -39,9 +39,12 @@ public class Notifications: NSObject {
     }
     
     public static func registerRemote() {
-        DispatchQueue.main.async {
-            UNUserNotificationCenter.current().delegate = Self.shared
-            UIApplication.shared.registerForRemoteNotifications()
+        Permission.notifications.ask { (status) in
+            DispatchQueue.main.async {
+                guard status.isAuthorized else { return }
+                UNUserNotificationCenter.current().delegate = Self.shared
+                UIApplication.shared.registerForRemoteNotifications()
+            }
         }
     }
 }

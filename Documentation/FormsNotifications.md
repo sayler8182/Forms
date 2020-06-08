@@ -9,6 +9,12 @@ By default integrate Firebase.
 import FormsNotifications
 ```
 
+## Dependencies
+
+```
+FormsPermissions.framework
+```
+
 ## External dependencies
 
 ```
@@ -58,12 +64,8 @@ func application(_ application: UIApplication,
 }
 ```
 
-### Permission
-
-You can use *Permission* library to handle permission
+### Register remote
 
 ```swift
-Permission.notifications.ask { (_) in
-   Notifications.registerRemote()
-}
+Notifications.registerRemote()
 ```

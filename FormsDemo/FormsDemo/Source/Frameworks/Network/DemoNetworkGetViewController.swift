@@ -37,7 +37,7 @@ class DemoNetworkGetViewController: FormsViewController {
 
 // MARK: DemoProviderDelegate
 extension DemoNetworkGetViewController: DemoProviderDelegate {
-    func displayContent(_ data: DemoNetworData) {
+    func displayContent(_ data: DemoNetworkGetOutput) {
         self.stopShimmering()
         self.statusLabel.text = data.url
     }
@@ -50,7 +50,7 @@ extension DemoNetworkGetViewController: DemoProviderDelegate {
 
 // MARK: DemoProviderDelegate
 private protocol DemoProviderDelegate: class {
-    func displayContent(_ data: DemoNetworData)
+    func displayContent(_ data: DemoNetworkGetOutput)
     func displayContentError(_ error: String)
 }
 
@@ -64,7 +64,7 @@ private class DemoProvider {
     
     func getContent() {
         NetworkMethods.demo.get(
-            onSuccess: { [weak self] (data: DemoNetworData) in
+            onSuccess: { [weak self] (data: DemoNetworkGetOutput) in
                 guard let `self` = self else { return }
                 DispatchQueue.main.async {
                     self.delegate?.displayContent(data)
@@ -87,7 +87,7 @@ private struct NetworkMethods {
 
 // MARK: NetworkMethodsTest
 private struct NetworkMethodsTest: Requestable {
-    private var parser = AppResponseParser()
+    private var parser = ResponseParser()
     
     @discardableResult
     func get<T: Parseable>(onSuccess: @escaping (T) -> Void,
@@ -117,11 +117,8 @@ private class AppRequestProvider: RequestProvider {
     }
 }
 
-// MARK: AppResponseParser
-private class AppResponseParser: ResponseParser { }
-
-// MARK: DemoNetworData
-struct DemoNetworData: Codable, Parseable {
+// MARK: DemoNetworkGetOutput
+struct DemoNetworkGetOutput: Codable, Parseable {
     let url: String
     
     init(from decoder: Decoder) throws {

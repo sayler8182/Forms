@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7135DFFD248E6EB900B5807F /* FormsPermissions.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7135DFFC248E6EB900B5807F /* FormsPermissions.framework */; };
+		7135DFFE248E6EB900B5807F /* FormsPermissions.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 7135DFFC248E6EB900B5807F /* FormsPermissions.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		719AE4A7246294DB00A39B0E /* FormsNotifications.h in Headers */ = {isa = PBXBuildFile; fileRef = 719AE499246294DB00A39B0E /* FormsNotifications.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		719AE54A2462A50B00A39B0E /* Notifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = 719AE5492462A50B00A39B0E /* Notifications.swift */; };
 		719AE5552462B50600A39B0E /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 719AE5542462B50600A39B0E /* StoreKit.framework */; };
@@ -25,7 +27,22 @@
 		719AE5B02462C13500A39B0E /* FirebaseCoreDiagnostics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 719AE4EC2462989D00A39B0E /* FirebaseCoreDiagnostics.framework */; settings = {ATTRIBUTES = (Required, ); }; };
 /* End PBXBuildFile section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		7135DFFF248E6EB900B5807F /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				7135DFFE248E6EB900B5807F /* FormsPermissions.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
+		7135DFFC248E6EB900B5807F /* FormsPermissions.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FormsPermissions.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7150CD97247FA05F00F2681B /* FormsNotifications.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = FormsNotifications.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		719AE499246294DB00A39B0E /* FormsNotifications.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FormsNotifications.h; sourceTree = "<group>"; };
 		719AE49A246294DB00A39B0E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -51,6 +68,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7135DFFD248E6EB900B5807F /* FormsPermissions.framework in Frameworks */,
 				719AE5AD2462C13500A39B0E /* PromisesObjC.framework in Frameworks */,
 				719AE5A72462C13500A39B0E /* GoogleDataTransport.framework in Frameworks */,
 				719AE5552462B50600A39B0E /* StoreKit.framework in Frameworks */,
@@ -123,6 +141,7 @@
 		719AE5532462B50600A39B0E /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				7135DFFC248E6EB900B5807F /* FormsPermissions.framework */,
 				719AE5542462B50600A39B0E /* StoreKit.framework */,
 			);
 			name = Frameworks;
@@ -150,6 +169,7 @@
 				719AE492246294DB00A39B0E /* Sources */,
 				719AE493246294DB00A39B0E /* Frameworks */,
 				719AE494246294DB00A39B0E /* Resources */,
+				7135DFFF248E6EB900B5807F /* Embed Frameworks */,
 			);
 			buildRules = (
 			);

@@ -18,7 +18,9 @@ Forms is all in one iOS framework
 - [x] [FormsAnchor](./Documentation/FormsAnchor.md) - DSL
 - [x] [FormsAppStoreReview](./Documentation/FormsAppStoreReview.md) - AppStore review helper
 - [x] [FormsDeveloperTools](./Documentation/FormsDeveloperTools.md) - Developer Tools
+- [x] [FormsHomeShortcuts](./Documentation/FormsHomeShortcuts.md) - Home shortcuts
 - [x] [FormsInjector](./Documentation/FormsInjector.md) - Dependency Injection
+- [x] [FormsLocation](./Documentation/FormsLocation.md) - Location service
 - [x] [FormsLogger](./Documentation/FormsLogger.md) - Logger data
 - [x] [FormsMock](./Documentation/FormsMock.md) - Mocking data
 - [x] [FormsNetworking](./Documentation/FormsNetworking.md) - Network layer
@@ -61,8 +63,10 @@ FormsAnalytics.framework
 FormsAnchor.framework
 FormsAppStoreReview.framework
 FormsDeveloperTools.framework
+FormsHomeShortcuts.framework
 FormsImagePickerKit.framework
 FormsInjector.framework
+FormsLocation.framework
 FormsLogger.framework
 FormsMock.framework
 FormsNetworking.framework

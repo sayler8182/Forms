@@ -75,6 +75,7 @@ public extension Permissions {
         
         public func locationManager(_ manager: CLLocationManager,
                                     didChangeAuthorization status: CLAuthorizationStatus) {
+            guard status != .notDetermined else { return }
             guard self.askAuthStatus != nil else { return }
             self.askCompletion?(status.permissionStatus)
             self.askCompletion = nil

@@ -10,6 +10,7 @@ import Forms
 import FormsAnalytics
 import FormsDemo
 import FormsDeveloperTools
+import FormsHomeShortcuts
 import FormsInjector
 import FormsLogger
 // import Notifications
@@ -21,8 +22,11 @@ import UIKit
 class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
     
-    @Injected
+    @OptionalInjected
     private var logger: LoggerProtocol? // swiftlint:disable:this let_var_whitespace
+    
+    @OptionalInjected
+    private var homeShortcuts: HomeShortcutsProtocol? // swiftlint:disable:this let_var_whitespace
     
     func application(_ application: UIApplication,
                      didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
@@ -30,7 +34,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         Console.configure()
         
         // Forms
-        Forms.configure()
+        Forms.configure(Injector.main, [
+            DemoAssembly()
+        ])
         
         // Analytics
         Analytics.configure()
@@ -43,6 +49,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         // DeveloperTools - LifetimeTracker
         LifetimeTracker.configure()
+        
+        // HomeShortcuts
+        self.homeShortcuts?.add(keys: DemoHomeShortcutsKeys.allCases)
+        self.homeShortcuts?.launch(launchOptions)
         
         // Notifications
         // Notifications.configure(
@@ -59,6 +69,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         SocialKit.configure(
             googleClientID: "513688149579-fhj79mgkeq2rp689dpmfnn7nlkadnf31.apps.googleusercontent.com")
         
+        // Root
         if #available(iOS 13.0, *) {
         } else {
             let window: UIWindow = UIWindow(frame: UIScreen.main.bounds)
@@ -90,5 +101,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication,
                      didReceiveRemoteNotification userInfo: [AnyHashable: Any]) {
         self.logger?.log(.info, userInfo)
+    }
+}
+
+// MARK: Shortcut Item
+extension AppDelegate {
+    func application(_ application: UIApplication,
+                     performActionFor shortcutItem: UIApplicationShortcutItem,
+                     completionHandler: @escaping (Bool) -> Void) {
+        self.homeShortcuts?.launch(shortcutItem)
+        completionHandler(true)
     }
 }

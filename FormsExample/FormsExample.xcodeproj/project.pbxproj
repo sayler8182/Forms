@@ -11,6 +11,10 @@
 		71228E0B2431CF7F00D08B20 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71228E0A2431CF7F00D08B20 /* SceneDelegate.swift */; };
 		71228E122431CF8100D08B20 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 71228E112431CF8100D08B20 /* Assets.xcassets */; };
 		71228E2C2431CFBF00D08B20 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 71228E2B2431CFBF00D08B20 /* LaunchScreen.storyboard */; };
+		7135DF9C248E3E7B00B5807F /* FormsHomeShortcuts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7135DF85248E3E0200B5807F /* FormsHomeShortcuts.framework */; };
+		7135DF9D248E3E7B00B5807F /* FormsHomeShortcuts.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 7135DF85248E3E0200B5807F /* FormsHomeShortcuts.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		7135DFF5248E6E2200B5807F /* FormsLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7135DFED248E6CF400B5807F /* FormsLocation.framework */; };
+		7135DFF6248E6E2300B5807F /* FormsLocation.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 7135DFED248E6CF400B5807F /* FormsLocation.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		7136A00D2486623100298D3B /* FormsAppStoreReview.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7136A007248661AE00298D3B /* FormsAppStoreReview.framework */; };
 		7136A00E2486623100298D3B /* FormsAppStoreReview.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 7136A007248661AE00298D3B /* FormsAppStoreReview.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		7136A05D24866AFC00298D3B /* FormsTabBarKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7136A05724866AE300298D3B /* FormsTabBarKit.framework */; };
@@ -61,6 +65,20 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		7135DF84248E3E0200B5807F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 7135DF78248E3E0100B5807F /* FormsHomeShortcuts.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 7135DF6D248E3E0100B5807F;
+			remoteInfo = FormsHomeShortcuts;
+		};
+		7135DFEC248E6CF400B5807F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 7135DFE8248E6CF300B5807F /* FormsLocation.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 7135DFDD248E6CF300B5807F;
+			remoteInfo = FormsLocation;
+		};
 		71369FDD2486605A00298D3B /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 71CFF419245954B90067D13E /* FormsSideMenuKit.xcodeproj */;
@@ -240,6 +258,7 @@
 				719AE5B22462C49C00A39B0E /* FBSDKCoreKit.framework in Embed Frameworks */,
 				7150CE79247FA9B100F2681B /* FormsSocialKit.framework in Embed Frameworks */,
 				7150CE73247FA9B100F2681B /* FormsNetworking.framework in Embed Frameworks */,
+				7135DFF6248E6E2300B5807F /* FormsLocation.framework in Embed Frameworks */,
 				7150CE65247FA9B100F2681B /* FormsAnalytics.framework in Embed Frameworks */,
 				7150CE7F247FA9B200F2681B /* FormsValidators.framework in Embed Frameworks */,
 				71FCB260247F999500A84D30 /* FormsDemo.framework in Embed Frameworks */,
@@ -254,6 +273,7 @@
 				7136A1252486761500298D3B /* FormsSideMenuKit.framework in Embed Frameworks */,
 				7136A05E24866AFC00298D3B /* FormsTabBarKit.framework in Embed Frameworks */,
 				7136A121248673F300298D3B /* FormsCardKit.framework in Embed Frameworks */,
+				7135DF9D248E3E7B00B5807F /* FormsHomeShortcuts.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -269,6 +289,8 @@
 		71228E162431CF8100D08B20 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		71228E2B2431CFBF00D08B20 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		7132962724487AC2006935C0 /* FormsSocialKit.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = FormsSocialKit.xcodeproj; path = ../FormsSocialKit/FormsSocialKit.xcodeproj; sourceTree = "<group>"; };
+		7135DF78248E3E0100B5807F /* FormsHomeShortcuts.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = FormsHomeShortcuts.xcodeproj; path = ../FormsHomeShortcuts/FormsHomeShortcuts.xcodeproj; sourceTree = "<group>"; };
+		7135DFE8248E6CF300B5807F /* FormsLocation.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = FormsLocation.xcodeproj; path = ../FormsLocation/FormsLocation.xcodeproj; sourceTree = "<group>"; };
 		71369F822486585100298D3B /* FormsToastKit.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = FormsToastKit.xcodeproj; path = ../FormsToast/FormsToastKit.xcodeproj; sourceTree = "<group>"; };
 		7136A002248661AD00298D3B /* FormsAppStoreReview.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = FormsAppStoreReview.xcodeproj; path = ../FormsAppStoreReview/FormsAppStoreReview.xcodeproj; sourceTree = "<group>"; };
 		7136A04124866AE200298D3B /* FormsTabBarKit.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = FormsTabBarKit.xcodeproj; path = ../FormsTabBarKit/FormsTabBarKit.xcodeproj; sourceTree = "<group>"; };
@@ -319,6 +341,7 @@
 				719AE5B12462C49C00A39B0E /* FBSDKCoreKit.framework in Frameworks */,
 				7150CE78247FA9B100F2681B /* FormsSocialKit.framework in Frameworks */,
 				7150CE72247FA9B100F2681B /* FormsNetworking.framework in Frameworks */,
+				7135DFF5248E6E2200B5807F /* FormsLocation.framework in Frameworks */,
 				7150CE64247FA9B100F2681B /* FormsAnalytics.framework in Frameworks */,
 				7150CE7E247FA9B200F2681B /* FormsValidators.framework in Frameworks */,
 				71FCB25F247F999500A84D30 /* FormsDemo.framework in Frameworks */,
@@ -333,6 +356,7 @@
 				7136A1242486761500298D3B /* FormsSideMenuKit.framework in Frameworks */,
 				7136A05D24866AFC00298D3B /* FormsTabBarKit.framework in Frameworks */,
 				7136A120248673F300298D3B /* FormsCardKit.framework in Frameworks */,
+				7135DF9C248E3E7B00B5807F /* FormsHomeShortcuts.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -347,8 +371,10 @@
 				7136A002248661AD00298D3B /* FormsAppStoreReview.xcodeproj */,
 				7136A102248672EE00298D3B /* FormsCardKit.xcodeproj */,
 				7178026124543D2B0057E848 /* FormsDeveloperTools.xcodeproj */,
+				7135DF78248E3E0100B5807F /* FormsHomeShortcuts.xcodeproj */,
 				71DB662D245826C900B16145 /* FormsImagePickerKit.xcodeproj */,
 				713B9B11243D0416001F6E3A /* FormsInjector.xcodeproj */,
+				7135DFE8248E6CF300B5807F /* FormsLocation.xcodeproj */,
 				71BB62652445E7C5002BB31F /* FormsLogger.xcodeproj */,
 				713A75CF2473C0740067C968 /* FormsMock.xcodeproj */,
 				71BB62182445DD16002BB31F /* FormsNetworking.xcodeproj */,
@@ -434,6 +460,22 @@
 			);
 			name = Dependencies;
 			path = ../../Dependencies;
+			sourceTree = "<group>";
+		};
+		7135DF79248E3E0100B5807F /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				7135DF85248E3E0200B5807F /* FormsHomeShortcuts.framework */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		7135DFE9248E6CF300B5807F /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				7135DFED248E6CF400B5807F /* FormsLocation.framework */,
+			);
+			name = Products;
 			sourceTree = "<group>";
 		};
 		71369FCD2486605A00298D3B /* Products */ = {
@@ -724,12 +766,20 @@
 					ProjectRef = 7178026124543D2B0057E848 /* FormsDeveloperTools.xcodeproj */;
 				},
 				{
+					ProductGroup = 7135DF79248E3E0100B5807F /* Products */;
+					ProjectRef = 7135DF78248E3E0100B5807F /* FormsHomeShortcuts.xcodeproj */;
+				},
+				{
 					ProductGroup = 71369FE82486605A00298D3B /* Products */;
 					ProjectRef = 71DB662D245826C900B16145 /* FormsImagePickerKit.xcodeproj */;
 				},
 				{
 					ProductGroup = 7150CE20247FA72D00F2681B /* Products */;
 					ProjectRef = 713B9B11243D0416001F6E3A /* FormsInjector.xcodeproj */;
+				},
+				{
+					ProductGroup = 7135DFE9248E6CF300B5807F /* Products */;
+					ProjectRef = 7135DFE8248E6CF300B5807F /* FormsLocation.xcodeproj */;
 				},
 				{
 					ProductGroup = 7150CE25247FA73300F2681B /* Products */;
@@ -792,6 +842,20 @@
 /* End PBXProject section */
 
 /* Begin PBXReferenceProxy section */
+		7135DF85248E3E0200B5807F /* FormsHomeShortcuts.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = FormsHomeShortcuts.framework;
+			remoteRef = 7135DF84248E3E0200B5807F /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		7135DFED248E6CF400B5807F /* FormsLocation.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = FormsLocation.framework;
+			remoteRef = 7135DFEC248E6CF400B5807F /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
 		71369FDE2486605A00298D3B /* FormsSideMenuKit.framework */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.framework;
@@ -1156,6 +1220,7 @@
 				MARKETING_VERSION = 0.0.0;
 				ONLY_ACTIVE_ARCH = NO;
 				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = com.limbo.FormsExample;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTS_MACCATALYST = YES;
@@ -1184,6 +1249,7 @@
 				);
 				MARKETING_VERSION = 0.0.0;
 				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = com.limbo.FormsExample;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTS_MACCATALYST = YES;

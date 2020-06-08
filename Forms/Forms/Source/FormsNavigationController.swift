@@ -9,12 +9,17 @@
 import FormsAnchor
 import FormsInjector
 import FormsLogger
+import FormsUtils
 import UIKit
 
 // MARK: FormsNavigationController
-open class FormsNavigationController: UINavigationController, Themeable {
+open class FormsNavigationController: UINavigationController, AppLifecycleable, Themeable {
     open var isThemeAutoRegister: Bool {
         return true
+    }
+    
+    open var appLifecycleableEvents: [AppLifecycleEvent] {
+        return []
     }
     
     public init() {
@@ -44,6 +49,7 @@ open class FormsNavigationController: UINavigationController, Themeable {
     }
     
     deinit {
+        self.unregisterAppLifecycle()
         let logger: LoggerProtocol? = Injector.main.resolveOrDefault("Forms")
         logger?.log(.info, "Deinit \(type(of: self))")
     }
@@ -77,8 +83,11 @@ open class FormsNavigationController: UINavigationController, Themeable {
         self.view.backgroundColor = Theme.Colors.primaryBackground
     }
     
+    open func appLifecycleable(event: AppLifecycleEvent) { }
+    
     // MARK: HOOKS
     open func postInit() {
+        self.registerAppLifecycle()
         // HOOK
     }
     

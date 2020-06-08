@@ -13,6 +13,12 @@ public protocol Parseable {
     init(with data: Data) throws
 }
 
+public extension Parseable where Self: Codable {
+    func asData() -> Data? {
+        return try? JSONEncoder().encode(self)
+    }
+}
+
 public extension Parseable where Self: Decodable {
     init(with data: Data) throws {
         self = try JSONDecoder().decode(Self.self, from: data)

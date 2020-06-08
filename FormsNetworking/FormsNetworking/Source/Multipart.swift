@@ -14,9 +14,23 @@ public protocol Multipartable {
 }
 
 // MARK: [Multipartable]
-extension Array where Element == Multipartable {
+public extension Array where Element == Multipartable {
     var multiparts: [MultipartItem] {
         return self.flatMap { $0.multiparts }
+    }
+}
+
+// MARK: [Multipartable]
+public extension Array where Element == MultipartItem {
+    var multipartDescription: Data? {
+        var data: Data = Data()
+        let boundary: String = UUID().uuidString
+        let boundaryData: Data = "--\(boundary)\r\n".data(using: .utf8) ?? Data()
+        for multipartDescription in self.compactMap({ $0.multipartDescription }) {
+            data += boundaryData + multipartDescription
+        }
+        data += "--\(boundary)--".data(using: .utf8) ?? Data()
+        return data
     }
 }
 
@@ -35,10 +49,22 @@ public struct MultipartItem: MultipartDescriptionable {
         return [
             self.disposition.multipartDescription,
             self.type?.multipartDescription,
-            self.body
+            self.body,
+            "\r\n".data(using: .utf8)
             ]
             .compactMap { $0 }
             .reduce(into: Data(), { $0 += $1 })
+    }
+    
+    public init(name: String?,
+                filename: String?,
+                type: ContentType?,
+                body: Data?) {
+        self.disposition = MultipartContentDisposition(
+            name: name,
+            filename: filename)
+        self.type = type
+        self.body = body
     }
     
     public init(disposition: MultipartContentDisposition,
@@ -68,6 +94,12 @@ public struct MultipartContentDisposition: MultipartDescriptionable {
     public let name: String?
     public let filename: String?
     
+    public init(name: String?,
+                filename: String?) {
+        self.name = name
+        self.filename = filename
+    }
+    
     public var multipartDescription: Data? {
         var string: String = ""
         string += "Content-Disposition: form-data"
@@ -85,7 +117,7 @@ public struct MultipartContentDisposition: MultipartDescriptionable {
 // MARK: ContentType
 extension ContentType: MultipartDescriptionable {
     public var multipartDescription: Data? {
-        let string: String = "Content-Type: \(self.rawValue) \r\n"
+        let string: String = "Content-Type: \(self.rawValue)\r\n"
         return string.data(using: .utf8)
     }
 }

@@ -79,6 +79,8 @@
 		71207CFA2487B6000004B840 /* Weak.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71207CF82487B6000004B840 /* Weak.swift */; };
 		7121ABE7245AABFD00F6BEF5 /* FormsSearchController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7121ABE6245AABFC00F6BEF5 /* FormsSearchController.swift */; };
 		71278B53245AC88C00B26870 /* SearchDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71278B52245AC88C00B26870 /* SearchDataSource.swift */; };
+		7135DF9F248E3E8200B5807F /* FormsHomeShortcuts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7135DF9E248E3E8200B5807F /* FormsHomeShortcuts.framework */; };
+		7135DFF2248E6E1300B5807F /* FormsLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7135DFF1248E6E1300B5807F /* FormsLocation.framework */; };
 		71369F9B24865A9C00298D3B /* FormsToastKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71369F9A24865A9C00298D3B /* FormsToastKit.framework */; };
 		71369FAA24865C3600298D3B /* FormsSideMenuKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71369FA924865C3600298D3B /* FormsSideMenuKit.framework */; };
 		71369FBA24865E8100298D3B /* FormsImagePickerKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71369FB924865E8100298D3B /* FormsImagePickerKit.framework */; };
@@ -171,6 +173,8 @@
 		71207CF82487B6000004B840 /* Weak.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Weak.swift; sourceTree = "<group>"; };
 		7121ABE6245AABFC00F6BEF5 /* FormsSearchController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormsSearchController.swift; sourceTree = "<group>"; };
 		71278B52245AC88C00B26870 /* SearchDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchDataSource.swift; sourceTree = "<group>"; };
+		7135DF9E248E3E8200B5807F /* FormsHomeShortcuts.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FormsHomeShortcuts.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		7135DFF1248E6E1300B5807F /* FormsLocation.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FormsLocation.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		71369F9A24865A9C00298D3B /* FormsToastKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FormsToastKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		71369FA924865C3600298D3B /* FormsSideMenuKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FormsSideMenuKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		71369FB924865E8100298D3B /* FormsImagePickerKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FormsImagePickerKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -265,11 +269,13 @@
 				714EF1C7247F940100AE3044 /* FormsNetworking.framework in Frameworks */,
 				714EF1BD247F940100AE3044 /* FormsDeveloperTools.framework in Frameworks */,
 				714EF1C9247F940100AE3044 /* FormsNotifications.framework in Frameworks */,
+				7135DF9F248E3E8200B5807F /* FormsHomeShortcuts.framework in Frameworks */,
 				714EF1D5247F940100AE3044 /* FormsValidators.framework in Frameworks */,
 				7150CE84247FAB5A00F2681B /* FormsTransitions.framework in Frameworks */,
 				71369F9B24865A9C00298D3B /* FormsToastKit.framework in Frameworks */,
 				71369FAA24865C3600298D3B /* FormsSideMenuKit.framework in Frameworks */,
 				7136A0132486624E00298D3B /* FormsAppStoreReview.framework in Frameworks */,
+				7135DFF2248E6E1300B5807F /* FormsLocation.framework in Frameworks */,
 				714EF1D3247F940100AE3044 /* FormsUtils.framework in Frameworks */,
 				714EF1BB247F940100AE3044 /* FormsAnchor.framework in Frameworks */,
 				7136A06024866B0500298D3B /* FormsTabBarKit.framework in Frameworks */,
@@ -506,6 +512,8 @@
 		719469AF243DA7CC00CAD09B /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				7135DFF1248E6E1300B5807F /* FormsLocation.framework */,
+				7135DF9E248E3E8200B5807F /* FormsHomeShortcuts.framework */,
 				714EF1AA247F940100AE3044 /* FormsAnalytics.framework */,
 				714EF1AB247F940100AE3044 /* FormsAnchor.framework */,
 				7136A0122486624E00298D3B /* FormsAppStoreReview.framework */,
@@ -843,6 +851,7 @@
 				);
 				MARKETING_VERSION = 0.0.0;
 				ONLY_ACTIVE_ARCH = NO;
+				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = com.limbo.Forms;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -874,6 +883,7 @@
 					"@loader_path/Frameworks",
 				);
 				MARKETING_VERSION = 0.0.0;
+				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = com.limbo.Forms;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;

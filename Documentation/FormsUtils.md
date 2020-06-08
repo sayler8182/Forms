@@ -65,6 +65,57 @@ UIViewController.swift
 
 Helper classes
 
+### AppLifecycleable
+
+Available events
+
+```swift
+enum AppLifecycleEvent {
+    case didEnterBackground
+    case willEnterForeground
+    case didFinishLaunching
+    case didBecomeActive
+    case willResignActive
+    case didReceiveMemoryWarning
+    case willTerminate
+    case significantTimeChange
+}
+```
+
+Usage
+
+```swift
+class SomeClass: AppLifecycleable {
+    var appLifecycleableEvents: [AppLifecycleEvent] {
+        return [.didEnterBackground, .willEnterForeground]
+    }
+    
+    func appLifecycleable(event: AppLifecycleEvent) {
+        switch event {
+            case .didEnterBackground: // Some action
+            case .willEnterForeground: // Some action
+            default: break
+        }
+    }
+}
+```
+
+Registration
+
+```swift
+let object = SomeClass()
+object.registerAppLifecycle()
+```
+
+or
+
+```swift
+let object = SomeClass()
+object.unregisterAppLifecycle()
+```
+
+By default Forms controllers supports implements *AppLifecycleable*. protocol
+
 ### AttributedString
 
 Generate clickable NSAttributedString

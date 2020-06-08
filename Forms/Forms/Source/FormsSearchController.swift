@@ -7,6 +7,9 @@
 //
 
 import FormsAnchor
+import FormsInjector
+import FormsLogger
+import FormsUtils
 import FormsValidators
 import UIKit
 
@@ -46,7 +49,7 @@ public extension FormsSearchController {
 }
 
 // MARK: FormsSearchController
-open class FormsSearchController: UISearchController, Themeable {
+open class FormsSearchController: UISearchController, AppLifecycleable, Themeable {
     open var animationTime: TimeInterval = 0.2
     open var autocapitalizationType: UITextAutocapitalizationType {
         get { return self.searchBar.autocapitalizationType }
@@ -92,6 +95,10 @@ open class FormsSearchController: UISearchController, Themeable {
         return true
     }
     
+    open var appLifecycleableEvents: [AppLifecycleEvent] {
+        return []
+    }
+    
     public var validateOnBeginEditing: Bool = false
     public var validateOnEndEditing: Bool = false
     public var validateOnTextChange: Bool = false
@@ -132,6 +139,12 @@ open class FormsSearchController: UISearchController, Themeable {
         self.setupSearchBar()
     }
     
+    deinit {
+        self.unregisterAppLifecycle()
+        let logger: LoggerProtocol? = Injector.main.resolveOrDefault("Forms")
+        logger?.log(.info, "Deinit \(type(of: self))")
+    }
+    
     override open func viewDidLoad() {
         super.viewDidLoad()
         self.setupView()
@@ -150,12 +163,15 @@ open class FormsSearchController: UISearchController, Themeable {
         self.textFonts = State<UIFont>(Theme.Fonts.regular(ofSize: 14))
     }
     
+    open func appLifecycleable(event: AppLifecycleEvent) { }
+    
     public func textFieldDelegate<T: UITextFieldDelegate>(of type: T.Type) -> T? {
         return self._textFieldDelegate as? T
     }
     
     // MARK: HOOKS
     open func postInit() {
+        self.registerAppLifecycle()
         // HOOK
     }
     
