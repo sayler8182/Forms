@@ -12,37 +12,53 @@ import FormsPermission
 import UIKit
 import UserNotifications
 
+// MARK: NotificationsProtocol
+public protocol NotificationsProtocol {
+    var badge: Int { get set }
+    
+    func configure(onNewToken: OnNewToken? = nil,
+                   onWillPresent: OnWillPresent? = nil,
+                   onDidReceive: OnDidReceive? = nil)
+    func setAPNSToken(_ deviceToken: Data)
+    func registerRemote()
+}
+
 // MARK: Notifications
 public class Notifications: NSObject {
     public typealias OnNewToken = (_ fcm: String) -> Void
     public typealias OnWillPresent = (_ notification: UNNotification) -> UNNotificationPresentationOptions
     public typealias OnDidReceive = (_ notification: UNNotificationResponse) -> Void
     
-    fileprivate static var shared = Notifications()
-    
     fileprivate var onNewToken: OnNewToken?
     fileprivate var onWillPresent: OnWillPresent?
     fileprivate var onDidReceive: OnDidReceive?
     
-    public static func configure(onNewToken: OnNewToken? = nil,
-                                 onWillPresent: OnWillPresent? = nil,
-                                 onDidReceive: OnDidReceive? = nil) {
-        Self.shared.onNewToken = onNewToken
-        Self.shared.onWillPresent = onWillPresent
-        Self.shared.onDidReceive = onDidReceive
-        FirebaseApp.configure()
-        Messaging.messaging().delegate = Self.shared
+    public var badge: Int {
+        get { return UIApplication.shared.applicationIconBadgeNumber }
+        set { UIApplication.shared.applicationIconBadgeNumber = newValue }
     }
     
-    public static func setAPNSToken(_ deviceToken: Data) {
+    public init() { }
+    
+    public func configure(onNewToken: OnNewToken? = nil,
+                          onWillPresent: OnWillPresent? = nil,
+                          onDidReceive: OnDidReceive? = nil) {
+        self.onNewToken = onNewToken
+        self.onWillPresent = onWillPresent
+        self.onDidReceive = onDidReceive
+        FirebaseApp.configure()
+        Messaging.messaging().delegate = self
+    }
+    
+    public func setAPNSToken(_ deviceToken: Data) {
         Messaging.messaging().setAPNSToken(deviceToken, type: MessagingAPNSTokenType.unknown)
     }
     
-    public static func registerRemote() {
+    public func registerRemote() {
         Permission.notifications.ask { (status) in
             DispatchQueue.main.async {
                 guard status.isAuthorized else { return }
-                UNUserNotificationCenter.current().delegate = Self.shared
+                UNUserNotificationCenter.current().delegate = self
                 UIApplication.shared.registerForRemoteNotifications()
             }
         }

@@ -15,20 +15,23 @@ FormsInjector.framework
 FormsLogger.framework
 ```
 
-## Reachability
+## Usage
+
+### Reachability
 
 Check if has internet connection
 
 ```swift
-Reachability.isConnected
+NetworkReachability.isConnected
 ```
 
-## Request
+### Request
+
+Class should inheritance *NetworkMethod* class
 
 ```swift
-let request = Request(
-    url: "https://postman-echo.com".url,
-    method: .GET)
+let request = NetworkRequest(url: "https://postman-echo.com".url)
+    .with(method: .GET)
 self.call(
     request,
     onSuccess: { (_) in },
@@ -40,10 +43,9 @@ self.call(
 
 ```swift
 let data = Data()
-let request = Request(
-    url: "https://postman-echo.com".url,
-    method: .POST,
-    data: data)
+let request = NetworkRequest(url: "https://postman-echo.com".url)
+    .with(method: .POST)
+    .with(body: data)
 self.call(
     request,
     onSuccess: { (_) in },
@@ -54,12 +56,11 @@ self.call(
 ### Custom headers
 
 ```swift
-let request = Request(
-    url: "https://postman-echo.com".url,
-    method: .POST,
-    headers: [ 
+let request = NetworkRequest(url: "https://postman-echo.com".url)
+    .with(method: .POST)
+    .with(headers: [ 
         "Language": "en"
-    ])
+    ]])
 self.call(
     request,
     onSuccess: { (_) in },
@@ -67,14 +68,13 @@ self.call(
     onCompletion: { (_, _) in })
 ```
 
-### Custom provider
+### Custom interceptor
 
 ```swift
-let request = Request(
-    url: "https://postman-echo.com".url,
-    method: .GET,
-    data: data,
-    provider: AppRequestProvider())
+let request = NetworkRequest(url: "https://postman-echo.com".url)
+    .with(method: .GET)
+    .with(body: data)
+    .with(interceptor: AppNetworkRequestInterceptor())
 self.call(
     request,
     onSuccess: { (_) in },
@@ -83,31 +83,30 @@ self.call(
 ```
 
 ```swift
-class AppRequestProvider: RequestProvider {
-    override func setHeaders(_ request: inout Request) {
+class AppNetworkRequestInterceptor: NetworkRequestInterceptor {
+    override func setHeaders(_ request: Request) {
         let headers = request.headers
-        // set additional headers
+        /* set additional headers */
         request.request.allHTTPHeaderFields = headers
     }
 }
 ```
 
-## Response parser
+### Response parser
 
 ```swift
-let request = Request(
-    url: "https://postman-echo.com".url,
-    method: .GET)
+let request = NetworkRequest(url: "https://postman-echo.com".url)
+    with(method: .GET)
 self.call(
     request,
-    parser: AppResponseParser(),
+    parser: AppNetworkResponseParser(),
     onSuccess: { (_) in },
     onError: { (_) in },
     onCompletion: { (_, _) in })
 ```
 
 ```swift
-class AppResponseParser: ResponseParser { 
+class AppNetworkResponseParser: NetworkResponseParser { 
     override func parseError(data: Data) -> NetworkError? {
         // parse error from success response
         return nil
@@ -115,41 +114,38 @@ class AppResponseParser: ResponseParser {
 }
 ```
 
-## Cache
+### Cache
 
 ```swift
-let request = Request(
-    url: "https://upload.wikimedia.org/wikipedia/commons/0/0f/Welsh_Corgi_Pembroke_WPR_Kamien_07_10_07.jpg".url,
-    method: .GET)
+let request = NetworkRequest(url: "https://upload.wikimedia.org/wikipedia/commons/0/0f/Welsh_Corgi_Pembroke_WPR_Kamien_07_10_07.jpg".url)
+    .with(method: .GET)
 self.call(
     request,
-    cache: NetworkCache(ttl: 60 * 60),
+    cache: NetworkTmpCache(ttl: 60 * 60),
     onSuccess: { (_) in },
     onError: { (_) in },
     onCompletion: { (_, _) in })
 ```
 
-## Logger 
+### Logger 
 
 ```swift
-let request = Request(
-    url: "https://postman-echo.com".url,
-    method: .GET)
+let request = NetworkRequest(url: "https://postman-echo.com".url)
+    .with(method: .GET)
 self.call(
     request,
-    logger: Logger(),
+    logger: ConsoleLogger(),
     onSuccess: { (_) in },
     onError: { (_) in },
     onCompletion: { (_, _) in })
 ```
 
-## Cancellation
+### Cancellation
 
 
 ```swift
-let request = Request(
-    url: "https://postman-echo.com".url,
-    method: .GET)
+let request = NetworkRequest(url: "https://postman-echo.com".url)
+    .with(method: .GET)
 let task: NetworkTask = self.call(
     request,
     onSuccess: { (_) in },
@@ -161,11 +157,43 @@ let task: NetworkTask = self.call(
 task.cancel()
 ```
 
-## SSL Pinning
+### SSL Pinning
 
 ```swift
-SSLPinning.isEnabled = true
-SSLPinning.certificates = [
+NetworkPinning.isEnabled = true
+NetworkPinning.certificates = [
     Bundle.main.url(forResource: "certificate", withExtension: "cer")
 ].compactMap { $0 }
+```
+
+### Images
+
+```swift
+let networkImages = NetworkImages()
+let request = NetworkImageRequest(
+    url: "https://upload.wikimedia.org/wikipedia/commons/0/0f/Welsh_Corgi_Pembroke_WPR_Kamien_07_10_07.jpg".url)
+networkImages.image(
+    request: request,
+    onProgress: { (_, _, _) in },
+    onSuccess: { _ in },
+    onError: { _ in },
+    onCompletion: { (_, _) in })
+request.cancel()
+```
+
+or
+
+```swift
+let request = NetworkImageRequest(
+    url: "https://upload.wikimedia.org/wikipedia/commons/0/0f/Welsh_Corgi_Pembroke_WPR_Kamien_07_10_07.jpg".url)
+imageView.setImage(request: request)
+request.cancel()
+```
+
+or 
+
+```swift 
+let string = "https://upload.wikimedia.org/wikipedia/commons/0/0f/Welsh_Corgi_Pembroke_WPR_Kamien_07_10_07.jpg"
+imageView.setImage(request: string)
+request.cancel()
 ```

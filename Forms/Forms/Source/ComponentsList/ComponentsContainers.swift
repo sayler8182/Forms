@@ -6,11 +6,10 @@
 //  Copyright © 2020 Limbo. All rights reserved.
 //
 
+import FormsUtils
 import UIKit
 
-public struct ComponentsContainers: ComponentsList {
-    private init() { }
-    
+public enum ComponentsContainers: ComponentsList {
     public static func scroll() -> ScrollContainer {
         let component = ScrollContainer()
         component.bounces = true
@@ -23,7 +22,7 @@ public struct ComponentsContainers: ComponentsList {
         component.showsHorizontalScrollIndicator = false
         component.showsVerticalScrollIndicator = false
         component.spacing = 0
-        component.onSetTheme = Strong(component) { component in
+        component.onSetTheme = Strong(component) { (component) in
             component.backgroundColor = Theme.Colors.primaryBackground
         }
         return component
@@ -43,7 +42,7 @@ public struct ComponentsContainers: ComponentsList {
         component.pageCurrentPageIndicatorTintColor = UIColor.gray
         component.pageIsHidden = false
         component.scrollDirection = .horizontal
-        component.onSetTheme = Strong(component) { component in
+        component.onSetTheme = Strong(component) { (component) in
             component.backgroundColor = Theme.Colors.primaryBackground
         }
         return component
@@ -57,7 +56,7 @@ public struct ComponentsContainers: ComponentsList {
         component.marginEdgeInset = UIEdgeInsets(0)
         component.height = 100
         component.paddingEdgeInset = UIEdgeInsets(0)
-        component.onSetTheme = Strong(component) { component in
+        component.onSetTheme = Strong(component) { (component) in
             component.backgroundColor = Theme.Colors.primaryBackground
         }
         return component
@@ -66,7 +65,7 @@ public struct ComponentsContainers: ComponentsList {
     public static func view() -> View {
         let component = View()
         component.height = UITableView.automaticDimension
-        component.onSetTheme = Strong(component) { component in
+        component.onSetTheme = Strong(component) { (component) in
             component.backgroundColor = Theme.Colors.primaryBackground
         }
         return component

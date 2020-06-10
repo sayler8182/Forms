@@ -53,11 +53,13 @@ public extension UIView {
     @objc
     func startShimmering(animated: Bool = true) {
         guard self.isShimmerable else { return }
+        guard !self.isShimmering else { return }
         self.setShimmer(animated: animated)
     }
     
     @objc
     func stopShimmering(animated: Bool = true) {
+        guard self.isShimmering else { return }
         self.removeShimmer(animated: animated)
         if self is UnShimmerable { return }
         if self is ShimmerPlaceholderView { return }
@@ -176,8 +178,13 @@ public struct ShimmerItemGenerator {
     }
 }
 
+// MARK: ShimmerDataSource
+public protocol ShimmerDataSource {
+    func stopShimmering(animated: Bool)
+}
+
 // MARK: ShimmerTableDataSource
-open class ShimmerTableDataSource: TableDataSource {
+open class ShimmerTableDataSource: TableDataSource, ShimmerDataSource {
     private var generators: [ShimmerRowGenerator] = []
     
     override public func prepare(for tableView: UITableView,
@@ -224,7 +231,7 @@ open class ShimmerTableDataSource: TableDataSource {
 }
 
 // MARK: ShimmerCollectionDataSource
-open class ShimmerCollectionDataSource: CollectionDataSource {
+open class ShimmerCollectionDataSource: CollectionDataSource, ShimmerDataSource {
     private var generators: [ShimmerItemGenerator] = []
     
     override public func prepare(for collectionView: UICollectionView,

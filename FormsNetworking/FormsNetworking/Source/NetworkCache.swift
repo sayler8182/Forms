@@ -9,19 +9,19 @@
 import FormsLogger
 import Foundation
 
-// MARK: NetworkCacheProtocol
-public protocol NetworkCacheProtocol {
+// MARK: NetworkCache
+public protocol NetworkCache {
     func write(hash: Any,
                data: Data,
-               logger: LoggerProtocol?) throws
+               logger: Logger?) throws
     func read(hash: Any,
-              logger: LoggerProtocol?) throws -> Data?
+              logger: Logger?) throws -> Data?
     func reset() throws
     func clean() throws
 }
 
 // MARK: NetworkTmpCache
-public class NetworkTmpCache: NetworkCacheProtocol {
+public class NetworkTmpCache: NetworkCache {
     private let fileManager = FileManager.default
     private let directory: URL = FileManager.default.temporaryDirectory.appendingPathComponent("networking_cache")
     private let ttl: TimeInterval
@@ -33,7 +33,7 @@ public class NetworkTmpCache: NetworkCacheProtocol {
     
     public func write(hash: Any,
                       data: Data,
-                      logger: LoggerProtocol? = nil) throws {
+                      logger: Logger? = nil) throws {
         let expirationDate: Int64 = Int64(Date().timeIntervalSince1970 + self.ttl)
         let url: URL = self.directory.appendingPathComponent("_\(hash).\(expirationDate).cache")
         try? self.fileManager.removeItem(at: url)
@@ -42,7 +42,7 @@ public class NetworkTmpCache: NetworkCacheProtocol {
     }
     
     public func read(hash: Any,
-                     logger: LoggerProtocol? = nil) throws -> Data? {
+                     logger: Logger? = nil) throws -> Data? {
         try self.clean()
         guard let url: URL = try self.fileManager.contentsOfDirectory(
             at: self.directory,

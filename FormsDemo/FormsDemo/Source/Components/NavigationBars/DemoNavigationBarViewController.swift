@@ -8,6 +8,7 @@
 
 import Forms
 import FormsAnchor
+import FormsUtils
 import UIKit
 
 // MARK: DemoNavigationBarViewController
@@ -69,6 +70,11 @@ class DemoNavigationBarViewController: FormsTableViewController {
     
     private let divider = Components.utils.divider()
         .with(height: 5.0)
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        self.setNavigationBar(self.defaultNavigationBar)
+    }
     
     override func setupNavigationBar() {
         super.setupNavigationBar()

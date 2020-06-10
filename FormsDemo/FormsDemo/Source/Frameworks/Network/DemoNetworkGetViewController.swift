@@ -63,7 +63,7 @@ private class DemoProvider {
      }
     
     func getContent() {
-        NetworkMethods.demo.get(
+        DemoNetworkMethods.demo.get(
             onSuccess: { [weak self] (data: DemoNetworkGetOutput) in
                 guard let `self` = self else { return }
                 DispatchQueue.main.async {
@@ -79,41 +79,36 @@ private class DemoProvider {
 }
 
 // MARK: NetworkMethods
-private struct NetworkMethods {
-    private init() { }
-    
-    static var demo: NetworkMethodsTest { NetworkMethodsTest() }
+private enum DemoNetworkMethods {
+    static var demo: NetworkMethodsDemo {
+        NetworkMethodsDemo()
+            .with(cache: NetworkTmpCache(ttl: 60 * 60))
+    }
 }
 
 // MARK: NetworkMethodsTest
-private struct NetworkMethodsTest: Requestable {
-    private var parser = ResponseParser()
-    
+private class NetworkMethodsDemo: NetworkMethod {
     @discardableResult
-    func get<T: Parseable>(onSuccess: @escaping (T) -> Void,
-                           onError: @escaping (NetworkError) -> Void,
-                           onCompletion: ((T?, NetworkError?) -> Void)? = nil) -> NetworkTask {
-        let request = Request(
-            url: "https://postman-echo.com/get?foo1=bar1&foo2=bar2".url,
-            method: .GET,
-            headers: [:],
-            body: nil,
-            provider: AppRequestProvider())
-        return self.call(
-            request,
-            cache: NetworkTmpCache(ttl: 60),
-            parser: self.parser,
+    func get<T: Parseable>(onSuccess: @escaping NetworkOnGenericSuccess<T>,
+                           onError: @escaping NetworkOnError,
+                           onCompletion: NetworkOnGenericCompletion<T>? = nil) -> NetworkTask {
+        let request = NetworkRequest(url: "https://postman-echo.com/get?foo1=bar1&foo2=bar2".url)
+            .with(method: .GET)
+            .with(interceptor: DemoNetworkRequestInterceptor())
+        return self.provider.call(
+            request: request,
+            parser: NetworkResponseParser(),
             onSuccess: onSuccess,
             onError: onError,
             onCompletion: onCompletion)
     }
 }
 
-// MARK: AppRequestProvider
-private class AppRequestProvider: RequestProvider {
-    override func setHeaders(_ request: inout Request) {
+// MARK: DemoNetworkRequestInterceptor
+private class DemoNetworkRequestInterceptor: NetworkRequestInterceptor {
+    override func setHeaders(_ request: NetworkRequest) {
         let headers = request.headers
-        request.request.allHTTPHeaderFields = headers
+        request.request?.allHTTPHeaderFields = headers
     }
 }
 

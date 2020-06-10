@@ -61,7 +61,7 @@ public protocol HomeShortcutsProtocol {
 public class HomeShortcuts: HomeShortcutsProtocol {
     private static var launchedShortcutItem: UIApplicationShortcutItem? = nil
     
-    public static var shared: HomeShortcutsProtocol = HomeShortcuts()
+    public init() { }
     
     public var launchedShortcutItem: UIApplicationShortcutItem? {
         return Self.launchedShortcutItem

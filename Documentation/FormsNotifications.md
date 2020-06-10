@@ -49,7 +49,8 @@ In [./Scripts](./Scripts) folder you can find bash script to send push. Just cha
 ### Configuration
 
 ```swift
-Notifications.configure(
+let notifications = Notifications()
+notifications.configure(
     onNewToken: { fcm in print("\n\(fcm)\n") },
     onWillPresent: { _ in .alert },
     onDidReceive: { response in print("\n\(response.notification.request.content.userInfo)\n") })
@@ -60,12 +61,12 @@ Notifications.configure(
 ```swift
 func application(_ application: UIApplication,
                 didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
-    Notifications.setAPNSToken(deviceToken)
+    notifications.setAPNSToken(deviceToken)
 }
 ```
 
 ### Register remote
 
 ```swift
-Notifications.registerRemote()
+notifications.registerRemote()
 ```

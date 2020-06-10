@@ -7,6 +7,7 @@
 //
 
 import FormsAnchor
+import FormsNetworking
 import FormsUtils
 import UIKit
 
@@ -164,5 +165,25 @@ public extension ImageView {
     override func with(width: CGFloat) -> Self {
         self.width = width
         return self
+    }
+}
+
+// MARK: NetworkImages
+public extension ImageView {
+    func setImage(request: NetworkImageRequest,
+                  onProgress: NetworkImagesOnProgress? = nil,
+                  onSuccess: NetworkImagesOnSuccess? = nil,
+                  onError: NetworkImagesOnError? = nil,
+                  onCompletion: NetworkImagesOnCompletion? = nil) {
+        self.imageView.setImage(
+            request: request,
+            onProgress: onProgress,
+            onSuccess: onSuccess,
+            onError: onError,
+            onCompletion: onCompletion)
+    }
+    
+    func cancel() {
+        self.imageView.cancel()
     }
 }

@@ -9,6 +9,7 @@
 import FormsDeveloperTools
 import FormsHomeShortcuts
 import FormsInjector
+// import FormsNotifications
 import UIKit
 
 // MARK: AppAssembly
@@ -17,8 +18,13 @@ public class DemoAssembly: Assembly {
     
     public func assemble(injector: Injector) {
         injector.register(HomeShortcutsProtocol.self) { _ in
-            HomeShortcuts.shared
+            HomeShortcuts()
         }
+        .inScope(InjectorScope.container)
+        // injector.register(NotificationsProtocol.self) { _ in
+        //    Notifications()
+        // }
+        // .inScope(InjectorScope.container)
     }
 }
 
@@ -82,7 +88,7 @@ public enum DemoHomeShortcutsKeys: String, CaseIterable, HomeShortcutsKeysProtoc
                 code: "opt_1",
                 title: "Title option 1",
                 subtitle: "Subtitle option 1",
-                icon: UIApplicationShortcutIcon(systemImageName: "square.and.arrow.up"),
+                icon: UIApplicationShortcutIcon.from(name: "square.and.arrow.up"),
                 userInfo: nil)
         case .option2:
             return HomeShortcutItem(
@@ -90,7 +96,7 @@ public enum DemoHomeShortcutsKeys: String, CaseIterable, HomeShortcutsKeysProtoc
                 code: "opt_2",
                 title: "Title option 2",
                 subtitle: "Subtitle option 2",
-                icon: UIApplicationShortcutIcon(systemImageName: "paperplane.fill"),
+                icon: UIApplicationShortcutIcon.from(name: "paperplane.fill"),
                 userInfo: nil)
         }
     }

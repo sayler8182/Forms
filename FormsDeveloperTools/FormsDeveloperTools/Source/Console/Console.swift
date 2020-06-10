@@ -25,7 +25,7 @@ public class Console {
         UIView.swizzle()
         self.source = DispatchSource.makeReadSource(
             fileDescriptor: self.reader.readingFileDescriptor,
-            queue: .init(label: "com.limbo.DeveloperTools.Console"))
+            queue: .init(label: "com.limbo.FormsDeveloperTools.Console"))
     }
     
     public static func configure(ignore: [String] = Console.defaultIgnore) {
@@ -104,6 +104,6 @@ internal func consoleAssert(_ condition: Bool,
                             _ file: StaticString = #file,
                             _ line: UInt = #line) {
     if condition { return }
-    let logger: LoggerProtocol? = Injector.main.resolveOrDefault("FormsDeveloperTools")
+    let logger: Logger? = Injector.main.resolveOrDefault("FormsDeveloperTools")
     logger?.log(.warning, "[AUTOLAYOUT WARNING]: Unexpected behavior about \(message) in \(file):\(line)")
 }

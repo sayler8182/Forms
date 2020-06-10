@@ -16,7 +16,7 @@ import UIKit
 // MARK: DemoNetworkUploadViewController
 class DemoNetworkUploadViewController: FormsViewController {
     private let statusLabel = Components.label.default()
-        .with(text: " ")
+        .with(text: "Uploaded")
     
     private lazy var provider = DemoProvider(delegate: self)
     
@@ -65,7 +65,7 @@ private class DemoProvider {
         let data = DemoNetworkUploadInput(
             name: "ImageName",
             image: UIImage(color: UIColor.red))
-        NetworkMethods.demo.get(
+        DemoNetworkMethods.demo.get(
             data: data,
             onSuccess: { [weak self] (data: DemoNetworkUploadOutput) in
                 guard let `self` = self else { return }
@@ -82,29 +82,26 @@ private class DemoProvider {
 }
 
 // MARK: NetworkMethods
-private struct NetworkMethods {
-    private init() { }
-    
-    static var demo: NetworkMethodsTest { NetworkMethodsTest() }
+private enum DemoNetworkMethods {
+    static var demo: NetworkMethodsDemo {
+        NetworkMethodsDemo()
+            .with(cache: NetworkTmpCache(ttl: 60))
+    }
 }
 
-// MARK: NetworkMethodsTest
-private struct NetworkMethodsTest: Requestable {
-    private var parser = ResponseParser()
-    
+// MARK: NetworkMethodsDemo
+private class NetworkMethodsDemo: NetworkMethod {
     @discardableResult
     func get<T: Parseable>(data: DemoNetworkUploadInput,
-                           onSuccess: @escaping (T) -> Void,
-                           onError: @escaping (NetworkError) -> Void,
-                           onCompletion: ((T?, NetworkError?) -> Void)? = nil) -> NetworkTask {
-        let request = Request(
-            url: "https://httpbin.org/post".url,
-            method: .POST,
-            body: data.multiparts.multipartDescription)
-        return self.call(
-            request,
-            cache: NetworkTmpCache(ttl: 60),
-            parser: self.parser,
+                           onSuccess: @escaping NetworkOnGenericSuccess<T>,
+                           onError: @escaping NetworkOnError,
+                           onCompletion: NetworkOnGenericCompletion<T>? = nil) -> NetworkTask {
+        let request = NetworkRequest(url: "https://httpbin.org/post".url)
+            .with(method: .POST)
+            .with(body: data.multiparts.multipartDescription)
+        return self.provider.call(
+            request: request,
+            parser: NetworkResponseParser(),
             onSuccess: onSuccess,
             onError: onError,
             onCompletion: onCompletion)

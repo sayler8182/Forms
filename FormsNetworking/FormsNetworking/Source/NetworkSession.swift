@@ -1,5 +1,5 @@
 //
-//  Network.swift
+//  NetworkSession.swift
 //  FormsNetworking
 //
 //  Created by Konrad on 4/14/20.
@@ -40,12 +40,6 @@ public enum ContentType: String {
     }
 }
 
-// MARK: Result
-internal enum Result<T> {
-    case success(T)
-    case failure(NetworkError)
-}
-
 // MARK: HTTPMethod
 public enum HTTPMethod: String {
     case GET = "GET"
@@ -54,35 +48,69 @@ public enum HTTPMethod: String {
     case DELETE = "DELETE"
 }
 
-// MARK: NetworkProvider
-internal enum NetworkProvider {
-    internal static func call(_ request: URLRequest,
-                              _ logger: LoggerProtocol?,
-                              _ cache: NetworkCacheProtocol?,
-                              _ progress: Request.OnProgress? = nil,
-                              _ completion: @escaping (_ result: Result<Data>) -> Void) -> URLSessionDataTask? {
+// MARK: NetworkSessionProtocol
+public protocol NetworkSessionProtocol {
+    func call(request: URLRequest,
+              logger: Logger?,
+              cache: NetworkCache?,
+              onProgress: NetworkOnProgress?,
+              onCompletion: @escaping NetworkOnGenericCompletion<Data>) -> URLSessionDataTask?
+}
+
+public extension NetworkSessionProtocol {
+    func call(request: URLRequest,
+              onProgress: NetworkOnProgress?,
+              onCompletion: @escaping NetworkOnGenericCompletion<Data>) -> URLSessionDataTask? {
+        self.call(
+            request: request,
+            logger: nil,
+            cache: nil,
+            onProgress: onProgress,
+            onCompletion: onCompletion)
+    }
+}
+
+// MARK: NetworkSession
+public class NetworkSession: NetworkSessionProtocol {
+    private var logger: Logger?
+    private var cache: NetworkCache?
+    
+    public init(logger: Logger? = nil,
+                cache: NetworkCache? = nil) {
+        self.logger = logger
+        self.cache = cache
+    }
+    
+    public func call(request: URLRequest,
+                     logger: Logger?,
+                     cache: NetworkCache?,
+                     onProgress: NetworkOnProgress?,
+                     onCompletion: @escaping NetworkOnGenericCompletion<Data>) -> URLSessionDataTask? {
+        let logger: Logger? = logger ?? self.logger
+        let cache: NetworkCache? = cache ?? self.cache
         let hash: Any = request.hashValue
         log(request, logger)
-        if let cache: NetworkCacheProtocol = cache,
+        if let cache: NetworkCache = cache,
             let data: Data = try? cache.read(hash: hash, logger: logger) {
-            let result: Result<Data> = Result.success(data)
             log(request, data, logger)
-            completion(result)
+            onCompletion(data, nil)
             return nil
         }
         
-        guard Reachability.isConnected else {
+        guard NetworkReachability.isConnected else {
             let networkError: NetworkError = .connectionFailure
-            let result: Result<Data> = Result.failure(networkError)
             log(request, networkError, logger)
-            completion(result)
+            onCompletion(nil, networkError)
             return nil
         }
         
-        let sessionDelegate = SessionDelegate(hash, logger, cache, progress, completion)
-        let sessionConfiguration = NetworkProvider.sessionConfiguration()
+        let sessionDelegate = SessionDelegate(hash, logger, cache, onProgress, onCompletion)
+        let configuration = URLSessionConfiguration.default
+        configuration.requestCachePolicy = .reloadIgnoringLocalCacheData
+        configuration.httpShouldSetCookies = true
+        configuration.timeoutIntervalForRequest = 30
         let session = URLSession(
-            configuration: sessionConfiguration,
+            configuration: configuration,
             delegate: sessionDelegate,
             delegateQueue: nil)
         let task: URLSessionDataTask = session.dataTask(with: request)
@@ -90,25 +118,17 @@ internal enum NetworkProvider {
         session.finishTasksAndInvalidate()
         return task
     }
-    
-    private static func sessionConfiguration() -> URLSessionConfiguration {
-        let configuration = URLSessionConfiguration.default
-        configuration.requestCachePolicy = .reloadIgnoringLocalCacheData
-        configuration.httpShouldSetCookies = true
-        configuration.timeoutIntervalForRequest = 30
-        return configuration
-    }
 }
 
 // MARK: SessionDelegate
 internal class SessionDelegate: NSObject, URLSessionDelegate, URLSessionDataDelegate {
     private let requestHash: Any
-    private let logger: LoggerProtocol?
-    private let cache: NetworkCacheProtocol?
+    private let logger: Logger?
+    private let cache: NetworkCache?
     private var data: Data
     private let successStatusCode: Range<Int>
-    private let onProgress: Request.OnProgress?
-    private let onCompletion: (_ result: Result<Data>) -> Void
+    private let onProgress: NetworkOnProgress?
+    private let onCompletion: NetworkOnGenericCompletion<Data>
     
     private var totalSize: Int64 = 0
     private var size: Int64 {
@@ -120,10 +140,10 @@ internal class SessionDelegate: NSObject, URLSessionDelegate, URLSessionDataDele
     }
     
     init(_ requestHash: Any,
-         _ logger: LoggerProtocol?,
-         _ cache: NetworkCacheProtocol?,
-         _ onProgress: Request.OnProgress?,
-         _ onCompletion: @escaping (_ result: Result<Data>) -> Void) {
+         _ logger: Logger?,
+         _ cache: NetworkCache?,
+         _ onProgress: NetworkOnProgress?,
+         _ onCompletion: @escaping NetworkOnGenericCompletion<Data>) {
         self.requestHash = requestHash
         self.logger = logger
         self.cache = cache
@@ -141,24 +161,21 @@ internal class SessionDelegate: NSObject, URLSessionDelegate, URLSessionDataDele
         guard error == nil,
             let response = task.response as? HTTPURLResponse else {
                 let networkError: NetworkError = .init(error)
-                let result: Result<Data> = Result.failure(networkError)
                 log(task, networkError, error, self.logger)
-                self.onCompletion(result)
+                self.onCompletion(nil, networkError)
                 return
         }
         
         guard self.successStatusCode ~= response.statusCode else {
             let networkError: NetworkError = .errorStatusCode(response.statusCode)
-            let result: Result<Data> = Result.failure(networkError)
             log(response, networkError, self.logger)
-            self.onCompletion(result)
+            self.onCompletion(nil, networkError)
             return
         }
         
         log(response, self.data, self.logger)
         try? self.cache?.write(hash: self.requestHash, data: self.data, logger: self.logger)
-        let result: Result<Data> = Result.success(self.data)
-        self.onCompletion(result)
+        self.onCompletion(self.data, nil)
     }
     
     func urlSession(_ session: URLSession,
@@ -181,7 +198,7 @@ internal class SessionDelegate: NSObject, URLSessionDelegate, URLSessionDataDele
     func urlSession(_ session: URLSession,
                     didReceive challenge: URLAuthenticationChallenge,
                     completionHandler: @escaping (URLSession.AuthChallengeDisposition, URLCredential?) -> Void) {
-        SSLPinning.validate(
+        NetworkPinning.validate(
             session,
             didReceive: challenge,
             completionHandler: completionHandler)
@@ -189,8 +206,8 @@ internal class SessionDelegate: NSObject, URLSessionDelegate, URLSessionDataDele
 }
 
 private func log(_ request: URLRequest,
-                 _ logger: LoggerProtocol?) {
-    guard let logger: LoggerProtocol = logger else { return }
+                 _ logger: Logger?) {
+    guard let logger: Logger = logger else { return }
     var string: String = ""
     string += "\nREQUEST"
     string += "\n" + (request.url?.absoluteString ?? "")
@@ -211,8 +228,8 @@ private func log(_ request: URLRequest,
 
 private func log(_ response: HTTPURLResponse,
                  _ body: Data,
-                 _ logger: LoggerProtocol?) {
-    guard let logger: LoggerProtocol = logger else { return }
+                 _ logger: Logger?) {
+    guard let logger: Logger = logger else { return }
     var string: String = ""
     string += "\nRESPONSE"
     string += "\n" + (response.url?.absoluteString ?? "")
@@ -232,8 +249,8 @@ private func log(_ response: HTTPURLResponse,
 
 private func log(_ request: URLRequest,
                  _ body: Data,
-                 _ logger: LoggerProtocol?) {
-    guard let logger: LoggerProtocol = logger else { return }
+                 _ logger: Logger?) {
+    guard let logger: Logger = logger else { return }
     var string: String = ""
     string += "\nCACHE"
     string += "\n" + (request.url?.absoluteString ?? "")
@@ -253,8 +270,8 @@ private func log(_ request: URLRequest,
 
 private func log(_ request: URLRequest,
                  _ networkError: NetworkError,
-                 _ logger: LoggerProtocol?) {
-    guard let logger: LoggerProtocol = logger else { return }
+                 _ logger: Logger?) {
+    guard let logger: Logger = logger else { return }
     var string: String = ""
     string += "\nERROR: \(networkError.debugDescription)"
     string += "\n" + (request.url?.absoluteString ?? "")
@@ -264,8 +281,8 @@ private func log(_ request: URLRequest,
 private func log(_ task: URLSessionTask,
                  _ networkError: NetworkError,
                  _ error: Error?,
-                 _ logger: LoggerProtocol?) {
-    guard let logger: LoggerProtocol = logger else { return }
+                 _ logger: Logger?) {
+    guard let logger: Logger = logger else { return }
     var string: String = ""
     if networkError.isCancelled {
         string += "\nCANCELLED"
@@ -283,8 +300,8 @@ private func log(_ task: URLSessionTask,
 
 private func log(_ response: HTTPURLResponse,
                  _ networkError: NetworkError,
-                 _ logger: LoggerProtocol?) {
-    guard let logger: LoggerProtocol = logger else { return }
+                 _ logger: Logger?) {
+    guard let logger: Logger = logger else { return }
     var string: String = ""
     string += "\nERROR: \(networkError.debugDescription)"
     string += "\n" + (response.url?.absoluteString ?? "")
@@ -294,8 +311,8 @@ private func log(_ response: HTTPURLResponse,
 private func log(_ size: Int64,
                  _ totalSize: Int64,
                  _ progress: Double,
-                 _ logger: LoggerProtocol?) {
-    guard let logger: LoggerProtocol = logger else { return }
+                 _ logger: Logger?) {
+    guard let logger: Logger = logger else { return }
     var string: String = ""
     string += size == 0 ? "\n" : ""
     string += "PROGRESS: \(size) / \(totalSize) - \(Int(progress * 100))%"

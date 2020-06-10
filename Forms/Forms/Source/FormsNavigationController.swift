@@ -50,7 +50,7 @@ open class FormsNavigationController: UINavigationController, AppLifecycleable, 
     
     deinit {
         self.unregisterAppLifecycle()
-        let logger: LoggerProtocol? = Injector.main.resolveOrDefault("Forms")
+        let logger: Logger? = Injector.main.resolveOrDefault("Forms")
         logger?.log(.info, "Deinit \(type(of: self))")
     }
     

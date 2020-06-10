@@ -8,6 +8,7 @@
 
 import Forms
 import FormsPermissions
+import FormsUtils
 import UIKit
 
 // MARK: DemoPermissionsViewController

@@ -8,9 +8,7 @@
 
 import Foundation
 
-public struct TextFieldDelegates {
-    private init() { }
-    
+public enum TextFieldDelegates {
     typealias amount = TextFieldAmountDelegate
     typealias `default` = TextFieldDelegate
     typealias email = TextFieldEmailDelegate

@@ -6,11 +6,10 @@
 //  Copyright © 2020 Limbo. All rights reserved.
 //
 
+import FormsUtils
 import UIKit
 
-public struct ComponentsSwitches: ComponentsList {
-    private init() { }
-    
+public enum ComponentsSwitches: ComponentsList {
     public static func `default`() -> Switch {
         let component = Switch()
         component.animationTime = 0.1
@@ -22,7 +21,7 @@ public struct ComponentsSwitches: ComponentsList {
             horizontal: 16)
         component.title = nil
         component.value = nil
-        component.onSetTheme = Strong(component) { component in
+        component.onSetTheme = Strong(component) { (component) in
             component.backgroundColors = Switch.State<UIColor?>(Theme.Colors.primaryBackground)
             component.switchColors = Switch.State<UIColor?>(Theme.Colors.blue)
             component.switchThumbColors = Switch.State<UIColor?>(

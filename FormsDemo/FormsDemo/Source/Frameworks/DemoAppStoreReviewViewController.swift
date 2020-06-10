@@ -9,6 +9,7 @@
 import Forms
 import FormsAnchor
 import FormsAppStoreReview
+import FormsUtils
 import UIKit
 
 // MARK: DemoAppStoreReviewViewController

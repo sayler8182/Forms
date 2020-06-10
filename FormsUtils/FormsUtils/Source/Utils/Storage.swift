@@ -1,8 +1,8 @@
 //
 //  Storage.swift
-//  Forms
+//  FormsUtils
 //
-//  Created by Konrad on 4/23/20.
+//  Created by Konrad on 6/9/20.
 //  Copyright © 2020 Limbo. All rights reserved.
 //
 
@@ -28,8 +28,17 @@ public class StorageUserDefaultsContainer: StorageContainerProtocol, StorageSecu
         return self.userDefaults.object(forKey: key.rawValue) as? T
     }
     
+    public func get<T: Decodable>(forKey key: StorageKey) -> T? {
+        return self.userDefaults.decodable(forKey: key.rawValue, of: T.self)
+    }
+    
     public func set<T: Any>(value: T?, forKey key: StorageKey) {
         self.userDefaults.set(value, forKey: key.rawValue)
+        self.userDefaults.synchronize()
+    }
+    
+    public func set<T: Encodable>(value: T?, forKey key: StorageKey) {
+        self.userDefaults.encodable(value, forKey: key.rawValue)
         self.userDefaults.synchronize()
     }
     
@@ -62,8 +71,7 @@ public struct StorageSecureInfo {
 // MARK: StorageSecureContainerProtocol
 public protocol StorageSecureContainerProtocol {
     func get<T: KeychainValue>(info: StorageSecureInfo) throws -> T?
-    func set<T: KeychainValue>(value: T?,
-                               info: StorageSecureInfo) throws
+    func set<T: KeychainValue>(value: T?, info: StorageSecureInfo) throws
     func remove(info: StorageSecureInfo) throws
 }
 
@@ -85,8 +93,7 @@ public class StorageKeychainContainer: StorageSecureContainerProtocol {
         return try T(with: data)
     }
     
-    public func set<T: KeychainValue>(value: T?,
-                                      info: StorageSecureInfo) throws {
+    public func set<T: KeychainValue>(value: T?, info: StorageSecureInfo) throws {
         guard let value: T = value else {
             try self.remove(info: info)
             return
@@ -220,7 +227,7 @@ public struct StorageSecure<T: KeychainValue>: StorageProvider {
     private let info: StorageSecureInfo
      
     public init(_ key: StorageKey,
-                service: String = "com.limbo.forms",
+                service: String = "com.limbo.Forms",
                 group: String? = nil,
                 accessibility: CFString? = kSecAttrAccessibleAfterFirstUnlock) {
         self.info = StorageSecureInfo(
@@ -257,7 +264,7 @@ public struct StorageSecureWithDefault<T: KeychainValue>: StorageProvider {
     
     public init(_ key: StorageKey,
                 _ defaultValue: T,
-                service: String = "com.limbo.forms",
+                service: String = "com.limbo.Forms",
                 group: String? = nil,
                 accessibility: CFString? = kSecAttrAccessibleAfterFirstUnlock) {
         self.info = StorageSecureInfo(

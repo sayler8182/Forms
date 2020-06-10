@@ -8,6 +8,7 @@
 
 import Forms
 import FormsTabBarKit
+import FormsUtils
 import UIKit
 
 // MARK: Keys

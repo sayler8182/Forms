@@ -31,7 +31,7 @@ enum LogType: Int {
 ### Custom logger
 
 ```swift
-class AppLogger: LoggerProtocol {
+class AppLogger: Logger {
     func log(_ type: LogType,
              _ string: String) {
        print(string)

@@ -8,9 +8,7 @@
 
 import UIKit
 
-public struct ComponentsImageViews: ComponentsList {
-    private init() { }
-    
+public enum ComponentsImageViews: ComponentsList {
     public static func `default`() -> ImageView {
         let component = ImageView()
         component.contentMode = .center

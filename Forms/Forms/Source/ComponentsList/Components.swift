@@ -8,9 +8,7 @@
 
 import Foundation
 
-public struct Components {
-    private init() { }
-    
+public enum Components {
     public typealias button = ComponentsButtons
     public typealias checkbox = ComponentsCheckboxes
     public typealias container = ComponentsContainers
@@ -21,6 +19,7 @@ public struct Components {
     public typealias other = ComponentsOthers
     public typealias progress = ComponentsProgresses
     public typealias section = ComponentsSections
+    public typealias segment = ComponentsSegments
     public typealias `switch` = ComponentsSwitches
     public typealias utils = ComponentsUtils
 }

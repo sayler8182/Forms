@@ -8,6 +8,7 @@
 
 import Forms
 import FormsPagerKit
+import FormsUtils
 import UIKit
 
 // MARK: DemoPagerKitController

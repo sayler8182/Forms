@@ -6,11 +6,10 @@
 //  Copyright © 2020 Limbo. All rights reserved.
 //
 
+import FormsUtils
 import UIKit
 
-public struct ComponentsCheckboxes: ComponentsList {
-    private init() { }
-    
+public enum ComponentsCheckboxes: ComponentsList {
     public static func checkbox() -> Checkbox {
         let component = Checkbox()
         component.animationTime = 0.1
@@ -26,7 +25,7 @@ public struct ComponentsCheckboxes: ComponentsList {
             horizontal: 16)
         component.title = nil
         component.value = nil
-        component.onSetTheme = Strong(component) { component in
+        component.onSetTheme = Strong(component) { (component) in
             component.backgroundColors = Checkbox.State<UIColor?>(Theme.Colors.primaryBackground)
             component.imageColors = Checkbox.State<UIColor?>(
                 active: Theme.Colors.primaryText,
@@ -62,7 +61,7 @@ public struct ComponentsCheckboxes: ComponentsList {
             horizontal: 16)
         component.title = nil
         component.value = nil
-        component.onSetTheme = Strong(component) { component in
+        component.onSetTheme = Strong(component) { (component) in
             component.backgroundColors = Checkbox.State<UIColor?>(Theme.Colors.primaryBackground)
             component.imageColors = Checkbox.State<UIColor?>(
                 active: Theme.Colors.primaryText,

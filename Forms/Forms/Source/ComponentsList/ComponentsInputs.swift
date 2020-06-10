@@ -6,11 +6,10 @@
 //  Copyright © 2020 Limbo. All rights reserved.
 //
 
+import FormsUtils
 import UIKit
 
-public struct ComponentsInputs: ComponentsList {
-    private init() { }
-    
+public enum ComponentsInputs: ComponentsList {
     public enum pin {
         public static func `default`() -> PinView {
             let component = PinView()
@@ -30,7 +29,7 @@ public struct ComponentsInputs: ComponentsList {
             component.text = nil
             component.textAlignment = .center
             component.title = nil
-            component.onSetTheme = Strong(component) { component in
+            component.onSetTheme = Strong(component) { (component) in
                 component.backgroundColors = PinView.State<UIColor?>(Theme.Colors.primaryBackground)
                 component.errorColor = Theme.Colors.red
                 component.errorFont = Theme.Fonts.regular(ofSize: 12)
@@ -73,7 +72,7 @@ public struct ComponentsInputs: ComponentsList {
             component.placeholder = nil
             component.text = nil
             component.textFieldDelegate = TextFieldDelegates.default()
-            component.onSetTheme = Strong(component) { component in
+            component.onSetTheme = Strong(component) { (component) in
                 component.backgroundColors = SearchBar.State<UIColor?>(Theme.Colors.primaryBackground)
                 component.textColors = SearchBar.State<UIColor?>(
                     active: Theme.Colors.primaryText,
@@ -167,7 +166,7 @@ public struct ComponentsInputs: ComponentsList {
             component.text = nil
             component.textFieldDelegate = TextFieldDelegates.default()
             component.title = nil
-            component.onSetTheme = Strong(component) { component in
+            component.onSetTheme = Strong(component) { (component) in
                 component.backgroundColors = TextField.State<UIColor?>(Theme.Colors.primaryBackground)
                 component.errorColor = Theme.Colors.red
                 component.errorFont = Theme.Fonts.regular(ofSize: 12)
@@ -213,7 +212,7 @@ public struct ComponentsInputs: ComponentsList {
             component.text = nil
             component.textViewDelegate = nil
             component.title = nil
-            component.onSetTheme = Strong(component) { component in
+            component.onSetTheme = Strong(component) { (component) in
                 component.backgroundColors = TextView.State<UIColor?>(Theme.Colors.primaryBackground)
                 component.errorColor = Theme.Colors.red
                 component.errorFont = Theme.Fonts.regular(ofSize: 12)

@@ -27,5 +27,5 @@ binary "https://dl.google.com/dl/firebase/ios/carthage/FirebaseProtobufBinary.js
 binary "https://dl.google.com/dl/firebase/ios/carthage/FirebaseRemoteConfigBinary.json"
 binary "https://dl.google.com/dl/firebase/ios/carthage/FirebaseStorageBinary.json"
 
-
 github "facebook/facebook-ios-sdk"
+github "realm/realm-cocoa"

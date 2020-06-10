@@ -13,7 +13,7 @@ import FormsDeveloperTools
 import FormsHomeShortcuts
 import FormsInjector
 import FormsLogger
-// import Notifications
+// import FormsNotifications
 import FormsPermissions
 import FormsSocialKit
 import UIKit
@@ -23,10 +23,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
     
     @OptionalInjected
-    private var logger: LoggerProtocol? // swiftlint:disable:this let_var_whitespace
+    private var homeShortcuts: HomeShortcutsProtocol? // swiftlint:disable:this let_var_whitespace
     
     @OptionalInjected
-    private var homeShortcuts: HomeShortcutsProtocol? // swiftlint:disable:this let_var_whitespace
+    private var logger: Logger? // swiftlint:disable:this let_var_whitespace
+    
+    // @OptionalInjected
+    // private var notifications: NotificationsProtocol?
     
     func application(_ application: UIApplication,
                      didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
@@ -55,14 +58,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         self.homeShortcuts?.launch(launchOptions)
         
         // Notifications
-        // Notifications.configure(
+        // self.notifications?.configure(
         //    onNewToken: { fcm in logger?.log(.info, "\n\(fcm)\n") },
         //    onWillPresent: { _ in .alert },
         //    onDidReceive: { response in logger?.log(.info, "\n\(response.notification.request.content.userInfo)\n") })
-        
-        // Permission
-        // Permission.notifications.ask { (_) in
-        //    Notifications.registerRemote()
+        //    self.notifications?.registerRemote()
         // }
         
         // SocialKit
@@ -82,7 +82,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func application(_ application: UIApplication,
                      didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
-         // Notifications.setAPNSToken(deviceToken)
+         // self.notifications?.setAPNSToken(deviceToken)
     }
 
     @available(iOS 13.0, *)

@@ -14,8 +14,8 @@ public extension UIImage {
         return self.withRenderingMode(.alwaysTemplate)
     }
     
-    var hasAlphaChannel: Bool {
-        return [
+    var isOpaque: Bool {
+        return ![
             CGImageAlphaInfo.first,
             CGImageAlphaInfo.last,
             CGImageAlphaInfo.premultipliedFirst,
@@ -44,54 +44,90 @@ public extension UIImage {
         }
     }
     
-    func scaledToFill(to size: CGSize,
-                      scale: CGFloat = UIScreen.main.scale) -> UIImage {
-        let image: UIImage = self
-        let imageAspectRatio: CGFloat = image.size.width / image.size.height
-        let canvasAspectRatio: CGFloat = size.width / size.height
+    func circled() -> UIImage {
+        var image: UIImage = self
+        let radius: CGFloat = min(self.size.width, self.size.height) / 2.0
+        if self.size.width != self.size.height {
+            let size: CGFloat = min(self.size.width, self.size.height)
+            image = image.scaled(toFill: CGSize(width: size, height: size))
+        }
         
-        let resizeFactor: CGFloat = imageAspectRatio > canvasAspectRatio
-            ? size.height / image.size.height
-            : size.width / image.size.width
-        
-        let scaledSize: CGSize = CGSize(
-            width: image.size.width * resizeFactor,
-            height: image.size.height * resizeFactor)
-        let origin: CGPoint = CGPoint(
-            x: (size.width - scaledSize.width) / 2.0,
-            y: (size.height - scaledSize.height) / 2.0)
-        
-        UIGraphicsBeginImageContextWithOptions(size, !image.hasAlphaChannel, scale)
-        self.draw(in: CGRect(origin: origin, size: scaledSize))
-        let scaledImage: UIImage? = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsBeginImageContextWithOptions(image.size, self.isOpaque, self.scale)
+        let path = UIBezierPath(
+            roundedRect: CGRect(origin: CGPoint.zero, size: image.size),
+            cornerRadius: radius)
+        path.addClip()
+        image.draw(in: CGRect(origin: CGPoint.zero, size: image.size))
+        image = UIGraphicsGetImageFromCurrentImageContext() ?? image
         UIGraphicsEndImageContext()
-        
-        return scaledImage ?? image
+        return image
     }
     
-    func scaledToFit(to size: CGSize,
-                     scale: CGFloat = UIScreen.main.scale) -> UIImage {
-        let image: UIImage = self
-        let scale: CGFloat = scale
-        let imageAspectRatio: CGFloat = image.size.width / image.size.height
-        let canvasAspectRatio: CGFloat = size.width / size.height
-        
-        let resizeFactor: CGFloat = imageAspectRatio > canvasAspectRatio
-            ? size.width / image.size.width
-            : size.height / image.size.height
-        
-        let scaledSize: CGSize = CGSize(
-            width: image.size.width * resizeFactor,
-            height: image.size.height * resizeFactor)
-        let origin: CGPoint = CGPoint(
-            x: (size.width - scaledSize.width) / 2.0,
-            y: (size.height - scaledSize.height) / 2.0)
-        
-        UIGraphicsBeginImageContextWithOptions(size, !image.hasAlphaChannel, scale)
-        self.draw(in: CGRect(origin: origin, size: scaledSize))
-        let scaledImage: UIImage? = UIGraphicsGetImageFromCurrentImageContext()
+    func filtered(name: String,
+                  parameters: [String: Any] = [:]) -> UIImage {
+        var _image: CIImage? = self.ciImage
+        if _image == nil, let cgImage = self.cgImage {
+            _image = CIImage(cgImage: cgImage)
+        }
+        guard let image: CIImage = _image else { return self }
+        let context = CIContext(options: [.priorityRequestLow: true])
+        var parameters: [String: Any] = parameters
+        parameters[kCIInputImageKey] = image
+        guard let filter: CIFilter = CIFilter(name: name, parameters: parameters) else { return self }
+        guard let output: CIImage = filter.outputImage else { return self }
+        guard let cgImage: CGImage = context.createCGImage(output, from: output.extent) else { return self }
+        return UIImage(cgImage: cgImage, scale: self.scale, orientation: self.imageOrientation)
+    }
+    
+    func rounded(radius: CGFloat) -> UIImage {
+        UIGraphicsBeginImageContextWithOptions(self.size, self.isOpaque, self.scale)
+        let path = UIBezierPath(
+            roundedRect: CGRect(origin: CGPoint.zero, size: self.size),
+            cornerRadius: radius)
+        path.addClip()
+        self.draw(in: CGRect(origin: CGPoint.zero, size: size))
+        let image: UIImage = UIGraphicsGetImageFromCurrentImageContext() ?? self
         UIGraphicsEndImageContext()
-        
-        return scaledImage ?? image
+        return image
+    }
+    
+    func scaled(toFit size: CGSize) -> UIImage {
+        guard size.width > 0 && size.height > 0 else { return self }
+        let oldRatio: CGFloat = self.size.width / self.size.height
+        let newRatio: CGFloat = size.width / size.height
+        let factor: CGFloat = oldRatio > newRatio
+            ? size.width / self.size.width
+            : size.height / self.size.height
+        let newSize: CGSize = CGSize(
+            width: self.size.width * factor,
+            height: self.size.height * factor)
+        let newOrigin = CGPoint(
+            x: (size.width - newSize.width) / 2.0,
+            y: (size.height - newSize.height) / 2.0)
+        UIGraphicsBeginImageContextWithOptions(size, self.isOpaque, self.scale)
+        self.draw(in: CGRect(origin: newOrigin, size: newSize))
+        let newImage: UIImage = UIGraphicsGetImageFromCurrentImageContext() ?? self
+        UIGraphicsEndImageContext()
+        return newImage
+    }
+    
+    func scaled(toFill size: CGSize) -> UIImage {
+        guard size.width > 0 && size.height > 0 else { return self }
+        let oldRatio: CGFloat = self.size.width / self.size.height
+        let newRatio: CGFloat = size.width / size.height
+        let factor: CGFloat = oldRatio > newRatio
+            ? size.height / self.size.height
+            : size.width / self.size.width
+        let newSize = CGSize(
+            width: self.size.width * factor,
+            height: self.size.height * factor)
+        let newOrigin = CGPoint(
+            x: (size.width - newSize.width) / 2.0,
+            y: (size.height - newSize.height) / 2.0)
+        UIGraphicsBeginImageContextWithOptions(size, self.isOpaque, self.scale)
+        self.draw(in: CGRect(origin: newOrigin, size: newSize))
+        let newImage: UIImage = UIGraphicsGetImageFromCurrentImageContext() ?? self
+        UIGraphicsEndImageContext()
+        return newImage
     }
 }

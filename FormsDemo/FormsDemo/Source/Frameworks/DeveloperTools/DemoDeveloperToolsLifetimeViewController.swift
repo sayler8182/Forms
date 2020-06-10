@@ -8,6 +8,7 @@
 
 import Forms
 import FormsDeveloperTools
+import FormsUtils
 import UIKit
 
 // MARK: DemoDeveloperToolsLifetimeViewController

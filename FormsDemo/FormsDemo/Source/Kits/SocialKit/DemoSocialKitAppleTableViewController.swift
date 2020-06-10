@@ -9,6 +9,7 @@
 import Forms
 import FormsSocialKit
 import FormsToastKit
+import FormsUtils
 import UIKit
 
 // MARK: DemoSocialKitAppleTableViewController

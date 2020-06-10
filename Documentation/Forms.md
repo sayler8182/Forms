@@ -496,40 +496,6 @@ let dataSource = CollectionDataSource()
 
 ```
 
-### ScrollSteps
-
-Allows you update view in certain offsets
-
-```swift
-var scrollTopSteps = ScrollStep(0..<200)
-var scrollBottomSteps = ScrollStep(200..<800)
-var scrollSteps = ScrollSteps([scrollTopSteps, scrollBottomSteps])
-```
-
-ScrollContainer has *scrollSteps* property to manage steps and send *onUpdate* callbacks.
-
-For other scroll you can perform *update* method when offset did change
-
-```swift
-func scrollViewDidScroll(_ scrollView: UIScrollView) {
-    scrollSteps.update(scrollView.contentOffset)
-}
-```
-
-You can use *onUpdateVertical* and *onUpdateHorizontal* callbacks.
-
-```swift
-scrollSteps.onUpdateVertical = { (step: ScrollStep, progress: CGFloat) in
-    switch step {
-    case scrollTopSteps:
-        // some changes
-    case scrollBottomSteps:
-        // some changes
-    default: break
-    }
-}
-```
-
 ### Shimmer
 
 FormsViewController and other Forms controllers supports Shimmering.
@@ -577,58 +543,6 @@ class ShimmerLongDemoTableViewCell: FormsTableViewCell {
 
 ```swift
 startShimmering(shimmerDataSource)
-```
-
-### Storage
-
-Storage keys
-
-```swift
-enum StorageKeys: String, StorageKey {
-    case token
-}
-```
-
-Storage wrappers
-
-```swift
-@Storage(StorageKeys.token)
-let token: String?
-
-@StorageWithDefault(StorageKeys.token, "some_token")
-let token: String
-
-@StorageSecure(StorageKeys.token)
-let token: String?
-
-@StorageSecureWithDefault(StorageKeys.token)
-let token: String
-```
-
-Property wrapper read / write
-
-```swift 
-let value = token
-token = "New value"
-```
-
-or standard read / write
-
-```swift
-let token = Storage<String>(StorageKeys.token)
-let value = token
-token.value = "New value"
-```
-
-Inject storage container
-
-```swift
-injector.register(StorageContainerProtocol.self) { _ in
-    StorageUserDefaultsContainer.shared
-}
-injector.register(StorageSecureContainerProtocol.self) { _ in
-    StorageKeychainContainer.shared
-}
 ```
 
 ### Theme

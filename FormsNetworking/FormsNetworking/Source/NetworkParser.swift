@@ -1,5 +1,5 @@
 //
-//  Parser.swift
+//  NetworkParser.swift
 //  FormsNetworking
 //
 //  Created by Konrad on 4/14/20.
@@ -25,15 +25,15 @@ public extension Parseable where Self: Decodable {
     }
 }
 
-// MARK: ResponseParser
-open class ResponseParser {
+// MARK: NetworkResponseParser
+open class NetworkResponseParser {
     public init() { }
      
     open func parse<T: Parseable>(data: Data?,
                                   error: NetworkError?,
-                                  onSuccess: (T) -> Void,
-                                  onError: (NetworkError) -> Void,
-                                  onCompletion: ((T?, NetworkError?) -> Void)? = nil) {
+                                  onSuccess: NetworkOnGenericSuccess<T>,
+                                  onError: NetworkOnError,
+                                  onCompletion: NetworkOnGenericCompletion<T>? = nil) {
         guard let data: Data = data else {
             let error: NetworkError = error ?? NetworkError.incorrectResponseFormat
             onError(error)

@@ -33,6 +33,7 @@ open class FormsTableViewController: FormsViewController, UITableViewDelegate, U
         style: .plain)
     private var refreshControl: UIRefreshControl? = nil
     private var shimmerDataSource: ShimmerTableDataSource? = nil
+    private var isComponentsShimmering: Bool = false
     
     open var cellBackgroundColor: UIColor = UIColor.clear {
         didSet { self.tableView.reloadData() }
@@ -107,11 +108,8 @@ open class FormsTableViewController: FormsViewController, UITableViewDelegate, U
     }
      
     override public func startShimmering(animated: Bool = true) {
-        let shimmerDataSource = ShimmerTableDataSource()
-            .with(generators: [ShimmerRowGenerator(type: ShimmerTableViewCell.self, count: 20)])
-        self.startShimmering(
-            shimmerDataSource,
-            animated: animated)
+        self.isComponentsShimmering = true
+        self.reloadData()
     }
     
     public func startShimmering(_ shimmerDataSource: ShimmerTableDataSource,
@@ -128,7 +126,8 @@ open class FormsTableViewController: FormsViewController, UITableViewDelegate, U
     }
     
     override public func stopShimmering(animated: Bool = true) {
-        self.shimmerDataSource?.stopShimmering(animated: animated)
+        self.isComponentsShimmering = false
+        self.reloadData()
     }
     
     public func stopShimmering(newDataSource: TableDataSource?,
@@ -602,6 +601,9 @@ public extension FormsTableViewController {
         cell.contentView.addSubview(view, with: [
             Anchor.to(cell.contentView).fill
         ])
+        self.isComponentsShimmering
+            ? view.startShimmering()
+            : view.stopShimmering()
         return cell
     }
     

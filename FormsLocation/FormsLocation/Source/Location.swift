@@ -118,7 +118,7 @@ extension Location: CLLocationManagerDelegate {
         Self._lastLocation = location
         self.handleLocationOnce(location)
         self.handleLocationChanged(location)
-        let logger: LoggerProtocol? = Injector.main.resolveOrDefault("FormsLocation")
+        let logger: Logger? = Injector.main.resolveOrDefault("FormsLocation")
         let log: String = String(
             format: "[LOCATION]: (%@,%@)",
             location?.coordinate.latitude.description ?? "",

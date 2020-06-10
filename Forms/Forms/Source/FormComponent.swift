@@ -110,7 +110,7 @@ open class FormsComponent: UIView, Componentable {
     }
     
     open func disable(animated: Bool) {
-        self.isUserInteractionEnabled = true
+        self.isUserInteractionEnabled = false
         let subviews: [UIView] = self.subviews.exclude { $0 is Separatorable }
         for view in subviews {
             view.alpha = 0.3

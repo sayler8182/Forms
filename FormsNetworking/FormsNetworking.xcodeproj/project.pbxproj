@@ -7,31 +7,33 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		712AB488248FAEB9009C6905 /* NetworkImages.swift in Sources */ = {isa = PBXBuildFile; fileRef = 712AB487248FAEB9009C6905 /* NetworkImages.swift */; };
 		71385EF724853A6C0032BB5F /* Multipart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71385EF624853A6C0032BB5F /* Multipart.swift */; };
 		7150CE5F247FA85800F2681B /* FormsInjector.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7150CE5D247FA85800F2681B /* FormsInjector.framework */; };
 		7150CE61247FA85800F2681B /* FormsLogger.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7150CE5E247FA85800F2681B /* FormsLogger.framework */; };
 		71BB620F2445DD16002BB31F /* FormsNetworking.h in Headers */ = {isa = PBXBuildFile; fileRef = 71BB62012445DD16002BB31F /* FormsNetworking.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		71BB62392445DD62002BB31F /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71BB62342445DD62002BB31F /* Network.swift */; };
-		71BB623A2445DD62002BB31F /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71BB62352445DD62002BB31F /* Reachability.swift */; };
-		71BB623B2445DD62002BB31F /* Request.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71BB62362445DD62002BB31F /* Request.swift */; };
-		71BB623C2445DD62002BB31F /* Parser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71BB62372445DD62002BB31F /* Parser.swift */; };
-		71BB623D2445DD62002BB31F /* SSLPinning.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71BB62382445DD62002BB31F /* SSLPinning.swift */; };
-		71BB628B24460437002BB31F /* Cache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71BB628A24460437002BB31F /* Cache.swift */; };
+		71BB62392445DD62002BB31F /* NetworkSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71BB62342445DD62002BB31F /* NetworkSession.swift */; };
+		71BB623A2445DD62002BB31F /* NetworkReachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71BB62352445DD62002BB31F /* NetworkReachability.swift */; };
+		71BB623B2445DD62002BB31F /* NetworkProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71BB62362445DD62002BB31F /* NetworkProvider.swift */; };
+		71BB623C2445DD62002BB31F /* NetworkParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71BB62372445DD62002BB31F /* NetworkParser.swift */; };
+		71BB623D2445DD62002BB31F /* NetworkPinning.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71BB62382445DD62002BB31F /* NetworkPinning.swift */; };
+		71BB628B24460437002BB31F /* NetworkCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71BB628A24460437002BB31F /* NetworkCache.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		712AB487248FAEB9009C6905 /* NetworkImages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkImages.swift; sourceTree = "<group>"; };
 		71385EF624853A6C0032BB5F /* Multipart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Multipart.swift; sourceTree = "<group>"; };
 		7150CD95247FA05F00F2681B /* FormsNetworking.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = FormsNetworking.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7150CE5D247FA85800F2681B /* FormsInjector.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FormsInjector.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7150CE5E247FA85800F2681B /* FormsLogger.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FormsLogger.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		71BB62012445DD16002BB31F /* FormsNetworking.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FormsNetworking.h; sourceTree = "<group>"; };
 		71BB62022445DD16002BB31F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		71BB62342445DD62002BB31F /* Network.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
-		71BB62352445DD62002BB31F /* Reachability.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Reachability.swift; sourceTree = "<group>"; };
-		71BB62362445DD62002BB31F /* Request.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Request.swift; sourceTree = "<group>"; };
-		71BB62372445DD62002BB31F /* Parser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Parser.swift; sourceTree = "<group>"; };
-		71BB62382445DD62002BB31F /* SSLPinning.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SSLPinning.swift; sourceTree = "<group>"; };
-		71BB628A24460437002BB31F /* Cache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cache.swift; sourceTree = "<group>"; };
+		71BB62342445DD62002BB31F /* NetworkSession.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkSession.swift; sourceTree = "<group>"; };
+		71BB62352445DD62002BB31F /* NetworkReachability.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkReachability.swift; sourceTree = "<group>"; };
+		71BB62362445DD62002BB31F /* NetworkProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkProvider.swift; sourceTree = "<group>"; };
+		71BB62372445DD62002BB31F /* NetworkParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkParser.swift; sourceTree = "<group>"; };
+		71BB62382445DD62002BB31F /* NetworkPinning.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkPinning.swift; sourceTree = "<group>"; };
+		71BB628A24460437002BB31F /* NetworkCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkCache.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -78,12 +80,13 @@
 		71BB62332445DD62002BB31F /* Source */ = {
 			isa = PBXGroup;
 			children = (
-				71BB628A24460437002BB31F /* Cache.swift */,
-				71BB62342445DD62002BB31F /* Network.swift */,
-				71BB62352445DD62002BB31F /* Reachability.swift */,
-				71BB62362445DD62002BB31F /* Request.swift */,
-				71BB62372445DD62002BB31F /* Parser.swift */,
-				71BB62382445DD62002BB31F /* SSLPinning.swift */,
+				71BB628A24460437002BB31F /* NetworkCache.swift */,
+				712AB487248FAEB9009C6905 /* NetworkImages.swift */,
+				71BB62372445DD62002BB31F /* NetworkParser.swift */,
+				71BB62382445DD62002BB31F /* NetworkPinning.swift */,
+				71BB62362445DD62002BB31F /* NetworkProvider.swift */,
+				71BB62352445DD62002BB31F /* NetworkReachability.swift */,
+				71BB62342445DD62002BB31F /* NetworkSession.swift */,
 				71385EF624853A6C0032BB5F /* Multipart.swift */,
 			);
 			path = Source;
@@ -169,13 +172,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				71BB623A2445DD62002BB31F /* Reachability.swift in Sources */,
-				71BB623B2445DD62002BB31F /* Request.swift in Sources */,
+				71BB623A2445DD62002BB31F /* NetworkReachability.swift in Sources */,
+				71BB623B2445DD62002BB31F /* NetworkProvider.swift in Sources */,
 				71385EF724853A6C0032BB5F /* Multipart.swift in Sources */,
-				71BB62392445DD62002BB31F /* Network.swift in Sources */,
-				71BB623C2445DD62002BB31F /* Parser.swift in Sources */,
-				71BB628B24460437002BB31F /* Cache.swift in Sources */,
-				71BB623D2445DD62002BB31F /* SSLPinning.swift in Sources */,
+				71BB62392445DD62002BB31F /* NetworkSession.swift in Sources */,
+				71BB623C2445DD62002BB31F /* NetworkParser.swift in Sources */,
+				712AB488248FAEB9009C6905 /* NetworkImages.swift in Sources */,
+				71BB628B24460437002BB31F /* NetworkCache.swift in Sources */,
+				71BB623D2445DD62002BB31F /* NetworkPinning.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -155,7 +155,7 @@ open class Switch: FormsComponent, FormsComponentWithGroup, FormsComponentWithMa
         super.setupActions()
         self.switchView.addTarget(self, action: #selector(handleOnValueChanged), for: .valueChanged)
         self.gestureRecognizer.addTarget(self, action: #selector(handleGesture))
-            self.backgroundView.addGestureRecognizer(self.gestureRecognizer)
+        self.backgroundView.addGestureRecognizer(self.gestureRecognizer)
     }
     
     @objc
@@ -253,7 +253,7 @@ open class Switch: FormsComponent, FormsComponentWithGroup, FormsComponentWithMa
         self.contentView.constraint(to: self.backgroundView, position: .leading)?.constant = edgeInset.leading
         self.contentView.constraint(to: self.backgroundView, position: .bottom)?.constant = -edgeInset.bottom
     }
-     
+    
     private func updateState(animated: Bool) {
         if !self.isEnabled && !self.isSelected {
             self.setState(.disabled, animated: animated)

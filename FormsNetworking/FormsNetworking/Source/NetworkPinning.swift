@@ -1,5 +1,5 @@
 //
-//  SSLPinning.swift
+//  NetworkPinning.swift
 //  FormsNetworking
 //
 //  Created by Konrad on 4/14/20.
@@ -8,14 +8,14 @@
 
 import Foundation
 
-public enum SSLPinning {
+public enum NetworkPinning {
     public static var isEnabled: Bool = false
     public static var certificates: [URL] = []
     
     public static func validate(_ session: URLSession,
                                 didReceive challenge: URLAuthenticationChallenge,
                                 completionHandler: @escaping (URLSession.AuthChallengeDisposition, URLCredential?) -> Void) {
-        guard SSLPinning.isEnabled else {
+        guard Self.isEnabled else {
             completionHandler(.performDefaultHandling, nil)
             return
         }
@@ -30,7 +30,7 @@ public enum SSLPinning {
                 status = SecTrustEvaluate(serverTrust, &result) == errSecSuccess
             }
             if status {
-                let localCertificates = SSLPinning.localCertificates()
+                let localCertificates = Self.localCertificates()
                 let certificateNumber = SecTrustGetCertificateCount(serverTrust)
                 for index in 0..<certificateNumber {
                     if let serverCertificate = SecTrustGetCertificateAtIndex(serverTrust, index) {
@@ -52,7 +52,7 @@ public enum SSLPinning {
     
     private static func localCertificates() -> [Data] {
         var data: [Data] = []
-        for certificate in self.certificates {
+        for certificate in Self.certificates {
             guard let certificateData = try? Data(contentsOf: certificate) else { continue }
             data.append(certificateData)
         }

@@ -10,7 +10,7 @@ import FormsAnchor
 import UIKit
 
 // MARK: Divider
-open class Divider: FormsComponent {
+open class Divider: FormsComponent, UnShimmerable {
     open var color: UIColor? {
         get { return self.backgroundColor }
         set { self.backgroundColor = newValue }

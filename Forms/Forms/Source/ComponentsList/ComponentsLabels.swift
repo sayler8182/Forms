@@ -6,11 +6,10 @@
 //  Copyright © 2020 Limbo. All rights reserved.
 //
 
+import FormsUtils
 import UIKit
 
-public struct ComponentsLabels: ComponentsList {
-    private init() { }
-    
+public enum ComponentsLabels: ComponentsList {
     public static func `default`() -> Label {
         let component = Label()
         component.alignment = .natural
@@ -24,7 +23,7 @@ public struct ComponentsLabels: ComponentsList {
         component.numberOfLines = 1
         component.paddingEdgeInset = UIEdgeInsets(0)
         component.text = nil
-        component.onSetTheme = Strong(component) { component in
+        component.onSetTheme = Strong(component) { (component) in
             component.backgroundColor = UIColor.clear
             component.color = Theme.Colors.primaryText
             component.font = Theme.Fonts.regular(ofSize: 14)}

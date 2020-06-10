@@ -9,6 +9,7 @@
 import Forms
 import FormsAnalytics
 import FormsToastKit
+import FormsUtils
 import UIKit
 
 // MARK: DemoAnalyticsViewController

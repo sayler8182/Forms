@@ -7,6 +7,7 @@
 //
 
 import Forms
+import FormsUtils
 import UIKit
 
 // MARK: DemoNavigationProgressBarViewController

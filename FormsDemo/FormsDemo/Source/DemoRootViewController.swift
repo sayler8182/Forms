@@ -34,6 +34,7 @@ public protocol DemoSection {
 // MARK: Sections
 private enum Demo {
     enum RowType: String, DemoRowType {
+        case root
         // Section Type
         case custom
         case demo
@@ -63,6 +64,8 @@ private enum Demo {
         case componentsNavigationBarsNavigationBarWithClose
         case componentsOthers
         case componentsProgresses
+        case componentsSections
+        case componentsSegments
         case componentsSwitches
         case componentsNavigationProgressBar
         case componentsProgressBars
@@ -189,6 +192,8 @@ private enum Demo {
                                 Row(type: RowType.componentsProgressBars, title: "ProgressBar")
                             ])
                     ]),
+                    Row(type: RowType.componentsSections, title: "Sections"),
+                    Row(type: RowType.componentsSegments, title: "Segments"),
                     Row(type: RowType.componentsSwitches, title: "Switches"),
                     Row(type: RowType.componentsUtils, title: "Utils")
                 ]),
@@ -371,7 +376,7 @@ public class DemoRootViewController: FormsNavigationController {
     
     override public func setupView() {
         super.setupView()
-        self.autoroute(to: nil)
+        self.autoroute(to: Demo.RowType.componentsSegments)
         self.homeShortcuts?.handleIfNeeded { (item) in
             guard let controller = self.rootViewController(of: DemoListViewController.self) else { return }
             controller.searchController.text = item.localizedTitle
@@ -557,6 +562,8 @@ private class DemoListViewController: FormsViewController {
         case .componentsNavigationBarsNavigationBarWithClose:   return DemoNavigationBarWithBackOrCloseViewController().embeded
         case .componentsNavigationProgressBar:                  return DemoNavigationProgressBarViewController()
         case .componentsOthers:                                 return DemoOthersViewController()
+        case .componentsSections:                               return DemoSectionsViewController()
+        case .componentsSegments:                               return DemoSegmentsViewController()
         case .componentsSwitches:                               return DemoSwitchesViewController()
         case .componentsProgressBars:                           return DemoProgressBarViewController()
         case .componentsUtils:                                  return DemoUtilsViewController()

@@ -8,6 +8,7 @@
 
 import Forms
 import FormsSideMenuKit
+import FormsUtils
 import UIKit
 
 // MARK: DemoSideMenuKitController

@@ -6,11 +6,10 @@
 //  Copyright © 2020 Limbo. All rights reserved.
 //
 
+import FormsUtils
 import UIKit
 
-public struct ComponentsNavigationBars: ComponentsList {
-    private init() { }
-        
+public enum ComponentsNavigationBars: ComponentsList {
     public static func `default`() -> NavigationBar {
         let component = NavigationBar()
         component.backImage = { UIImage.from(name: "chevron.left") }
@@ -22,7 +21,7 @@ public struct ComponentsNavigationBars: ComponentsList {
         component.rightBarButtonItems = []
         component.title = nil
         component.titleView = nil
-        component.onSetTheme = Strong(component) { component in
+        component.onSetTheme = Strong(component) { (component) in
             component.backgroundColor = Theme.Colors.primaryBackground
             component.tintColor = Theme.Colors.primaryText
         }

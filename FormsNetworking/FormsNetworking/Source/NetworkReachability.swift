@@ -1,5 +1,5 @@
 //
-//  Reachability.swift
+//  NetworkReachability.swift
 //  FormsNetworking
 //
 //  Created by Konrad on 4/14/20.
@@ -8,7 +8,8 @@
 
 import SystemConfiguration
 
-public enum Reachability {
+// MARK: NetworkReachability
+public enum NetworkReachability {
     static var isConnected: Bool {
         var address = sockaddr_in(sin_len: 0, sin_family: 0, sin_port: 0, sin_addr: in_addr(s_addr: 0), sin_zero: (0, 0, 0, 0, 0, 0, 0, 0))
         address.sin_len = UInt8(MemoryLayout.size(ofValue: address))

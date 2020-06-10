@@ -1,8 +1,8 @@
 //
 //  Pagination.swift
-//  Forms
+//  FormsUtils
 //
-//  Created by Konrad on 4/8/20.
+//  Created by Konrad on 6/9/20.
 //  Copyright © 2020 Limbo. All rights reserved.
 //
 
@@ -41,7 +41,7 @@ public class Pagination<ID, D> {
         self.pages = pages
         self.isLoading = false
         self.onNextPageId = onNextPageId
-    } 
+    }
     
     public func startLoading() -> ID? {
         self.isLoading = true

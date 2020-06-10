@@ -1,12 +1,12 @@
 //
-//  Weak.swift
-//  Forms
+//  Reference.swift
+//  FormsUtils
 //
-//  Created by Konrad on 6/3/20.
+//  Created by Konrad on 6/9/20.
 //  Copyright © 2020 Limbo. All rights reserved.
 //
 
-import UIKit
+import Foundation
 
 // MARK: Weak
 public func Weak<T: AnyObject>(_ object: T,

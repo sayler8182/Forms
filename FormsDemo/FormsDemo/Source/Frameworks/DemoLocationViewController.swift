@@ -9,6 +9,7 @@
 import Forms
 import FormsInjector
 import FormsLocation
+import FormsUtils
 import UIKit
 
 // MARK: DemoLocationViewController

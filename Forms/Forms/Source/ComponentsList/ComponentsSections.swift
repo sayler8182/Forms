@@ -6,11 +6,10 @@
 //  Copyright © 2020 Limbo. All rights reserved.
 //
 
+import FormsUtils
 import UIKit
 
-public struct ComponentsSections: ComponentsList {
-    private init() { }
-    
+public enum ComponentsSections: ComponentsList {    
     public static func `default`() -> SectionView {
         let component = SectionView()
         component.translatesAutoresizingMaskIntoConstraints = true
@@ -25,7 +24,7 @@ public struct ComponentsSections: ComponentsList {
         component.numberOfLines = 1
         component.paddingEdgeInset = UIEdgeInsets(top: 15, left: 15, bottom: 4, right: 15)
         component.text = nil
-        component.onSetTheme = Strong(component) { component in
+        component.onSetTheme = Strong(component) { (component) in
             component.backgroundColor = Theme.Colors.secondaryBackground
             component.color = Theme.Colors.primaryText
             component.font = Theme.Fonts.bold(ofSize: 14)

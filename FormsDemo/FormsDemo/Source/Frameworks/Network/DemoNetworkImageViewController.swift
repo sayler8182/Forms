@@ -13,19 +13,28 @@ import FormsLogger
 import FormsMock
 import FormsNetworking
 import FormsToastKit
+import FormsUtils
 import UIKit
 
 // MARK: DemoNetworkImageViewController
-class DemoNetworkImageViewController: FormsViewController {
+class DemoNetworkImageViewController: FormsTableViewController {
     private let progressBar = Components.progress.progressBar()
     private let imageView = Components.image.default()
         .with(contentMode: .scaleAspectFit)
+        .with(height: 400.0)
     private let reloadButton = Components.button.default()
         .with(title: "Reload")
     private let reloadAndCancelButton = Components.button.default()
         .with(title: "Reload and Cancel")
+    private let networkImagesButton = Components.button.default()
+        .with(title: "Load from NetworkImages")
+    private let imageViewButton = Components.button.default()
+        .with(title: "Load from UIImageView")
     
     private lazy var provider = DemoProvider(delegate: self)
+    
+    private let divider = Components.utils.divider()
+        .with(height: 5.0)
     
     override func setupView() {
         super.setupView()
@@ -34,23 +43,14 @@ class DemoNetworkImageViewController: FormsViewController {
     
     override func setupContent() {
         super.setupContent()
-        self.view.addSubview(self.progressBar, with: [
-            Anchor.to(self.view).top.safeArea.offset(16),
-            Anchor.to(self.view).horizontal.offset(16)
-        ])
-        self.view.addSubview(self.imageView, with: [
-            Anchor.to(self.progressBar).topToBottom,
-            Anchor.to(self.view).horizontal.offset(16)
-        ])
-        self.view.addSubview(self.reloadButton, with: [
-            Anchor.to(self.imageView).topToBottom.offset(8),
-            Anchor.to(self.view).horizontal.offset(16)
-        ])
-        self.view.addSubview(self.reloadAndCancelButton, with: [
-            Anchor.to(self.reloadButton).topToBottom.offset(8),
-            Anchor.to(self.view).horizontal.offset(16),
-            Anchor.to(self.view).bottom.safeArea
-        ])
+        self.build([
+            self.progressBar,
+            self.imageView,
+            self.reloadButton,
+            self.reloadAndCancelButton,
+            self.networkImagesButton,
+            self.imageViewButton
+        ], divider: self.divider)
     }
     
     override func setupActions() {
@@ -63,6 +63,19 @@ class DemoNetworkImageViewController: FormsViewController {
             _self.getContent()
             _self.getContentCancel()
         }
+        self.networkImagesButton.onClick = Unowned(self) { (_self) in
+            _self.reloadButton.startLoading()
+            _self.getContentFromNetworkImages()
+        }
+        self.imageViewButton.onClick = Unowned(self) { (_self) in
+            _self.startShimmering()
+            let request = NetworkImageRequest(
+                url: Mock().imageUrl([.quality(.high)]))
+            _self.imageView.setImage(request: request) { [weak _self] (_, _) in
+                guard let _self = _self else { return }
+                _self.stopShimmering()
+            }
+        }
     }
 }
 
@@ -72,6 +85,12 @@ extension DemoNetworkImageViewController: DemoDisplayLogic {
         self.progressBar.progress = 0.0
         self.startShimmering()
         self.provider.getContent()
+    }
+    
+    func getContentFromNetworkImages() {
+        self.progressBar.progress = 0.0
+        self.startShimmering()
+        self.provider.getContentFromNetworkImages()
     }
     
     func getContentCancel() {
@@ -109,16 +128,19 @@ private protocol DemoDisplayLogic: class {
 
 // MARK: DemoProvider
 private class DemoProvider {
-     private weak var delegate: DemoDisplayLogic?
-     
+    private weak var delegate: DemoDisplayLogic?
+    
+    private let networkImages = NetworkImages()
+    
+    private var networkImageRequest: NetworkImageRequest? = nil
     private var contentTask: NetworkTask? = nil
     
-     init(delegate: DemoDisplayLogic) {
-         self.delegate = delegate
-     }
+    init(delegate: DemoDisplayLogic) {
+        self.delegate = delegate
+    }
     
     func getContent() {
-        self.contentTask = NetworkMethods.images.get(
+        self.contentTask = DemoNetworkMethods.images.get(
             onProgress: { [weak self] (_, _, progress: Double) in
                 guard let `self` = self else { return }
                 DispatchQueue.main.async {
@@ -131,39 +153,65 @@ private class DemoProvider {
                 DispatchQueue.main.async {
                     self.delegate?.displayContent(image)
                 }
-        }, onError: { [weak self] (error) in
-            guard let `self` = self else { return }
-            DispatchQueue.main.async {
-                self.delegate?.displayContentError(error.debugDescription, error.isCancelled)
-            }
+            }, onError: { [weak self] (error: NetworkError) in
+                guard let `self` = self else { return }
+                DispatchQueue.main.async {
+                    self.delegate?.displayContentError(error.debugDescription, error.isCancelled)
+                }
         })
+    }
+    
+    func getContentFromNetworkImages() {
+        let request = NetworkImageRequest(
+            url: Mock().imageUrl([.quality(.high)]))
+        self.networkImages.image(
+            request: request,
+            onProgress: { [weak self] (_, _, progress: Double) in
+                guard let `self` = self else { return }
+                DispatchQueue.main.async {
+                    self.delegate?.displayContentProgress(progress)
+                }
+            },
+            onSuccess: { [weak self] (image: UIImage) in
+                guard let `self` = self else { return }
+                DispatchQueue.main.async {
+                    self.delegate?.displayContent(image)
+                }
+            }, onError: { [weak self] (error: NetworkError) in
+                guard let `self` = self else { return }
+                DispatchQueue.main.async {
+                    self.delegate?.displayContentError(error.debugDescription, error.isCancelled)
+                }
+        })
+        self.networkImageRequest = request
     }
     
     func getContentCancel() {
         self.contentTask?.cancel()
+        self.networkImageRequest?.cancel()
     }
 }
 
-// MARK: NetworkMethods
-private struct NetworkMethods {
-    private init() { }
-    
-    static var images: NetworkMethodsImages { NetworkMethodsImages() }
+// MARK: DemoNetworkMethods
+private enum DemoNetworkMethods {
+    static var images: NetworkMethodsImages {
+        NetworkMethodsImages()
+            .with(logger: ConsoleLogger())
+            .with(cache: NetworkTmpCache(ttl: 60 * 60))
+    }
 }
 
 // MARK: NetworkMethodsImages
-private struct NetworkMethodsImages: Requestable {
+private class NetworkMethodsImages: NetworkMethod {
     @discardableResult
-    func get(onProgress: @escaping (Int64, Int64, Double) -> Void,
-             onSuccess: @escaping (Data) -> Void,
-             onError: @escaping (NetworkError) -> Void,
-             onCompletion: ((Data?, NetworkError?) -> Void)? = nil) -> NetworkTask {
-        let request = Request(
+    func get(onProgress: @escaping NetworkOnProgress,
+             onSuccess: @escaping NetworkOnSuccess,
+             onError: @escaping NetworkOnError,
+             onCompletion: NetworkOnCompletion? = nil) -> NetworkTask {
+        let request = NetworkRequest(
             url: Mock().imageUrl([.quality(.high)]))
-        return self.call(
-            request,
-            logger: ConsoleLogger(),
-            cache: NetworkTmpCache(ttl: 60 * 60),
+        return self.provider.call(
+            request: request,
             onProgress: onProgress,
             onSuccess: onSuccess,
             onError: onError,

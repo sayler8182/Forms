@@ -31,7 +31,7 @@ public enum Analytics {
     public static func log(_ tag: AnalyticsTag,
                            _ parameters: [AnalyticsTagParameter] = []) {
         guard tag.rawValue.count <= 40 else {
-            let logger: LoggerProtocol? = Injector.main.resolveOrDefault("FormsAnalytics")
+            let logger: Logger? = Injector.main.resolveOrDefault("FormsAnalytics")
             logger?.log(.warning, "----------\n----------\n\n\nTAG NAME ID TO LONG\n\n\n----------\n----------\n")
             return
         }

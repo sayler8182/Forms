@@ -8,6 +8,7 @@
 
 import FormsInjector
 import FormsLogger
+import FormsNetworking
 import FormsUtils
 import FormsValidators
 import UIKit
@@ -39,25 +40,24 @@ enum Module: String {
 }
 
 // MARK: Forms
-public struct Forms {
+public enum Forms {
     public private (set) static var injector: Injector = Injector.main
-    
-    private init() { }
     
     public static func configure(_ injector: Injector = Injector.main,
                                  _ assemblies: [Assembly] = []) {
         Forms.injector = injector
         Forms.configureBase(injector)
         Forms.configureConfigurations(injector)
+        Forms.configureNetworking(injector)
         Forms.configureAssemblies(injector, assemblies)
     }
     
     private static func configureBase(_ injector: Injector) {
         // logger
-        injector.register(LoggerProtocol.self) { _ in
+        injector.register(Logger.self) { _ in
             ConsoleLogger()
         }
-        injector.register(LoggerProtocol.self, module: Module.formsNetworking.rawValue) { _ in
+        injector.register(Logger.self, module: Module.formsNetworking.rawValue) { _ in
             ConsoleLogger()
         }
         // validators
@@ -123,6 +123,19 @@ public struct Forms {
         // modal
         injector.register(ConfigurationModalProtocol.self) { _ in
             Configuration.Modal()
+        }
+    }
+    
+    private static func configureNetworking(_ injector: Injector) {
+        injector.register(NetworkProviderProtocol.self) { (r) in
+            let session: NetworkSessionProtocol? = r.resolve(NetworkSessionProtocol.self)
+            return NetworkProvider(session: session)
+        }
+        injector.register(NetworkSessionProtocol.self) { _ in
+            NetworkSession()
+        }
+        injector.register(NetworkImagesProtocol.self) { _ in
+            NetworkImages()
         }
     }
     

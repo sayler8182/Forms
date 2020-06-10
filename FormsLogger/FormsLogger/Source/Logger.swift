@@ -9,8 +9,8 @@
 import Foundation
 import os.log
 
-// MARK: LoggerProtocol
-public protocol LoggerProtocol {
+// MARK: Logger
+public protocol Logger {
     func log(_ type: LogType,
              _ item: Any)
 }
@@ -23,7 +23,7 @@ public enum LogType: Int {
 }
 
 // MARK: ConsoleLogger
-public class ConsoleLogger: LoggerProtocol {
+public class ConsoleLogger: Logger {
     public init() { }
     
     public func log(_ type: LogType,

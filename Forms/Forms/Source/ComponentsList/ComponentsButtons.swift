@@ -6,11 +6,10 @@
 //  Copyright © 2020 Limbo. All rights reserved.
 //
 
+import FormsUtils
 import UIKit
 
-public struct ComponentsButtons: ComponentsList {
-    private init() { }
-    
+public enum ComponentsButtons: ComponentsList {
     public static func `default`() -> Button {
         let component = Button()
         component.animationTime = 0.1
@@ -26,7 +25,7 @@ public struct ComponentsButtons: ComponentsList {
             horizontal: 16)
         component.titleNumberOfLines = 2
         component.titleTextAlignment = NSTextAlignment.center
-        component.onSetTheme = Strong(component) { component in
+        component.onSetTheme = Strong(component) { (component) in
             component.backgroundColors = Button.State<UIColor?>(
                 active: Theme.Colors.blue,
                 selected: Theme.Colors.blue.withAlphaComponent(0.7),
