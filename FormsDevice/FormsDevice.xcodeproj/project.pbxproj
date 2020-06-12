@@ -7,66 +7,58 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		715C4401248120840093EBFF /* FormsLogger.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 715C4400248120840093EBFF /* FormsLogger.framework */; };
-		715C4405248120E00093EBFF /* FormsInjector.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 715C4404248120E00093EBFF /* FormsInjector.framework */; };
-		71DB5CB12457609000B16145 /* FormsAnalytics.h in Headers */ = {isa = PBXBuildFile; fileRef = 71DB5CA32457609000B16145 /* FormsAnalytics.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		71DB5CC5245760E900B16145 /* Analytics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71DB5CC4245760E900B16145 /* Analytics.swift */; };
+		71E445262493609500AC38C1 /* FormsDevice.h in Headers */ = {isa = PBXBuildFile; fileRef = 71E445242493609500AC38C1 /* FormsDevice.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		71E4454D249360AD00AC38C1 /* Device.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71E4454C249360AD00AC38C1 /* Device.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		7150CD85247FA05F00F2681B /* FormsAnalytics.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = FormsAnalytics.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		715C4400248120840093EBFF /* FormsLogger.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FormsLogger.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		715C4404248120E00093EBFF /* FormsInjector.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FormsInjector.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		71DB5CA32457609000B16145 /* FormsAnalytics.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FormsAnalytics.h; sourceTree = "<group>"; };
-		71DB5CA42457609000B16145 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		71DB5CC4245760E900B16145 /* Analytics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Analytics.swift; sourceTree = "<group>"; };
+		71E445212493609500AC38C1 /* FormsDevice.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = FormsDevice.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		71E445242493609500AC38C1 /* FormsDevice.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FormsDevice.h; sourceTree = "<group>"; };
+		71E445252493609500AC38C1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		71E4454C249360AD00AC38C1 /* Device.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Device.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		71DB5C9D2457609000B16145 /* Frameworks */ = {
+		71E4451E2493609500AC38C1 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				715C4405248120E00093EBFF /* FormsInjector.framework in Frameworks */,
-				715C4401248120840093EBFF /* FormsLogger.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		715C43FF248120840093EBFF /* Frameworks */ = {
+		71E445172493609500AC38C1 = {
 			isa = PBXGroup;
 			children = (
-				715C4404248120E00093EBFF /* FormsInjector.framework */,
-				715C4400248120840093EBFF /* FormsLogger.framework */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		71DB5C962457609000B16145 = {
-			isa = PBXGroup;
-			children = (
-				71DB5CA22457609000B16145 /* FormsAnalytics */,
-				7150CD85247FA05F00F2681B /* FormsAnalytics.framework */,
-				715C43FF248120840093EBFF /* Frameworks */,
+				71E445232493609500AC38C1 /* FormsDevice */,
+				71E445222493609500AC38C1 /* Products */,
 			);
 			sourceTree = "<group>";
 		};
-		71DB5CA22457609000B16145 /* FormsAnalytics */ = {
+		71E445222493609500AC38C1 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				71DB5CC3245760D700B16145 /* Source */,
-				71DB5CA32457609000B16145 /* FormsAnalytics.h */,
-				71DB5CA42457609000B16145 /* Info.plist */,
+				71E445212493609500AC38C1 /* FormsDevice.framework */,
 			);
-			path = FormsAnalytics;
+			name = Products;
 			sourceTree = "<group>";
 		};
-		71DB5CC3245760D700B16145 /* Source */ = {
+		71E445232493609500AC38C1 /* FormsDevice */ = {
 			isa = PBXGroup;
 			children = (
-				71DB5CC4245760E900B16145 /* Analytics.swift */,
+				71E4454B249360A100AC38C1 /* Source */,
+				71E445242493609500AC38C1 /* FormsDevice.h */,
+				71E445252493609500AC38C1 /* Info.plist */,
+			);
+			path = FormsDevice;
+			sourceTree = "<group>";
+		};
+		71E4454B249360A100AC38C1 /* Source */ = {
+			isa = PBXGroup;
+			children = (
+				71E4454C249360AD00AC38C1 /* Device.swift */,
 			);
 			path = Source;
 			sourceTree = "<group>";
@@ -74,52 +66,51 @@
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
-		71DB5C9B2457609000B16145 /* Headers */ = {
+		71E4451C2493609500AC38C1 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				71DB5CB12457609000B16145 /* FormsAnalytics.h in Headers */,
+				71E445262493609500AC38C1 /* FormsDevice.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		71DB5C9F2457609000B16145 /* FormsAnalytics */ = {
+		71E445202493609500AC38C1 /* FormsDevice */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 71DB5CB42457609000B16145 /* Build configuration list for PBXNativeTarget "FormsAnalytics" */;
+			buildConfigurationList = 71E445292493609500AC38C1 /* Build configuration list for PBXNativeTarget "FormsDevice" */;
 			buildPhases = (
-				71DB5C9B2457609000B16145 /* Headers */,
-				71DB5C9C2457609000B16145 /* Sources */,
-				71DB5C9D2457609000B16145 /* Frameworks */,
-				71DB5C9E2457609000B16145 /* Resources */,
+				71E4451C2493609500AC38C1 /* Headers */,
+				71E4451D2493609500AC38C1 /* Sources */,
+				71E4451E2493609500AC38C1 /* Frameworks */,
+				71E4451F2493609500AC38C1 /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
-			name = FormsAnalytics;
-			productName = Analytics;
-			productReference = 7150CD85247FA05F00F2681B /* FormsAnalytics.framework */;
+			name = FormsDevice;
+			productName = FormsDevice;
+			productReference = 71E445212493609500AC38C1 /* FormsDevice.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		71DB5C972457609000B16145 /* Project object */ = {
+		71E445182493609500AC38C1 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 1140;
-				LastUpgradeCheck = 1140;
+				LastUpgradeCheck = 1150;
 				ORGANIZATIONNAME = Limbo;
 				TargetAttributes = {
-					71DB5C9F2457609000B16145 = {
-						CreatedOnToolsVersion = 11.4;
-						LastSwiftMigration = 1140;
+					71E445202493609500AC38C1 = {
+						CreatedOnToolsVersion = 11.5;
+						LastSwiftMigration = 1150;
 					};
 				};
 			};
-			buildConfigurationList = 71DB5C9A2457609000B16145 /* Build configuration list for PBXProject "FormsAnalytics" */;
+			buildConfigurationList = 71E4451B2493609500AC38C1 /* Build configuration list for PBXProject "FormsDevice" */;
 			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -127,18 +118,18 @@
 				en,
 				Base,
 			);
-			mainGroup = 71DB5C962457609000B16145;
-			productRefGroup = 71DB5C962457609000B16145;
+			mainGroup = 71E445172493609500AC38C1;
+			productRefGroup = 71E445222493609500AC38C1 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				71DB5C9F2457609000B16145 /* FormsAnalytics */,
+				71E445202493609500AC38C1 /* FormsDevice */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		71DB5C9E2457609000B16145 /* Resources */ = {
+		71E4451F2493609500AC38C1 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -148,18 +139,18 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		71DB5C9C2457609000B16145 /* Sources */ = {
+		71E4451D2493609500AC38C1 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				71DB5CC5245760E900B16145 /* Analytics.swift in Sources */,
+				71E4454D249360AD00AC38C1 /* Device.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin XCBuildConfiguration section */
-		71DB5CB22457609000B16145 /* Debug */ = {
+		71E445272493609500AC38C1 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -210,7 +201,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.5;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -222,7 +213,7 @@
 			};
 			name = Debug;
 		};
-		71DB5CB32457609000B16145 /* Release */ = {
+		71E445282493609500AC38C1 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -267,7 +258,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.5;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -279,12 +270,12 @@
 			};
 			name = Release;
 		};
-		71DB5CB52457609000B16145 /* Debug */ = {
+		71E4452A2493609500AC38C1 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
-				DEFINES_MODULE = NO;
+				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = KB85VH6WG5;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
@@ -293,7 +284,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/../Dependencies",
 				);
-				INFOPLIST_FILE = FormsAnalytics/Info.plist;
+				INFOPLIST_FILE = FormsDevice/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -301,10 +292,9 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				MARKETING_VERSION = 0.0.0;
 				ONLY_ACTIVE_ARCH = NO;
 				OTHER_LDFLAGS = "-ObjC";
-				PRODUCT_BUNDLE_IDENTIFIER = com.limbo.Forms.Analytics;
+				PRODUCT_BUNDLE_IDENTIFIER = com.limbo.FormsDevice;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -313,12 +303,12 @@
 			};
 			name = Debug;
 		};
-		71DB5CB62457609000B16145 /* Release */ = {
+		71E4452B2493609500AC38C1 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
-				DEFINES_MODULE = NO;
+				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = KB85VH6WG5;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
@@ -327,7 +317,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/../Dependencies",
 				);
-				INFOPLIST_FILE = FormsAnalytics/Info.plist;
+				INFOPLIST_FILE = FormsDevice/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -335,9 +325,9 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				MARKETING_VERSION = 0.0.0;
+				ONLY_ACTIVE_ARCH = NO;
 				OTHER_LDFLAGS = "-ObjC";
-				PRODUCT_BUNDLE_IDENTIFIER = com.limbo.Forms.Analytics;
+				PRODUCT_BUNDLE_IDENTIFIER = com.limbo.FormsDevice;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 5.0;
@@ -348,25 +338,25 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		71DB5C9A2457609000B16145 /* Build configuration list for PBXProject "FormsAnalytics" */ = {
+		71E4451B2493609500AC38C1 /* Build configuration list for PBXProject "FormsDevice" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				71DB5CB22457609000B16145 /* Debug */,
-				71DB5CB32457609000B16145 /* Release */,
+				71E445272493609500AC38C1 /* Debug */,
+				71E445282493609500AC38C1 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		71DB5CB42457609000B16145 /* Build configuration list for PBXNativeTarget "FormsAnalytics" */ = {
+		71E445292493609500AC38C1 /* Build configuration list for PBXNativeTarget "FormsDevice" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				71DB5CB52457609000B16145 /* Debug */,
-				71DB5CB62457609000B16145 /* Release */,
+				71E4452A2493609500AC38C1 /* Debug */,
+				71E4452B2493609500AC38C1 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
-	rootObject = 71DB5C972457609000B16145 /* Project object */;
+	rootObject = 71E445182493609500AC38C1 /* Project object */;
 }

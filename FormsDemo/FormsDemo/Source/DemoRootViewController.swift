@@ -88,6 +88,7 @@ private enum Demo {
         // Frameworks
         case frameworkAnalytics
         case frameworkAppStoreReview
+        case frameworkDevice
         case frameworkDeveloperTools
         case frameworkDeveloperToolsConsole
         case frameworkDeveloperToolsLifetime
@@ -221,6 +222,7 @@ private enum Demo {
                 Section(title: "Frameworks", rows: [
                     Row(type: RowType.frameworkAnalytics, title: "Analytics"),
                     Row(type: RowType.frameworkAppStoreReview, title: "AppStoreReview"),
+                    Row(type: RowType.frameworkDevice, title: "Device"),
                     Row(
                         type: RowType.frameworkDeveloperTools,
                         title: "DeveloperTools",
@@ -376,7 +378,7 @@ public class DemoRootViewController: FormsNavigationController {
     
     override public func setupView() {
         super.setupView()
-        self.autoroute(to: Demo.RowType.componentsSegments)
+        self.autoroute(to: nil)
         self.homeShortcuts?.handleIfNeeded { (item) in
             guard let controller = self.rootViewController(of: DemoListViewController.self) else { return }
             controller.searchController.text = item.localizedTitle
@@ -483,6 +485,11 @@ private class DemoListViewController: FormsViewController {
         return true
     }
     
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        self.searchController.isActive = false
+    }
+    
     override func postInit() {
         super.postInit()
         self.searchDataSource.onFilter = { (items, query) in
@@ -503,6 +510,7 @@ private class DemoListViewController: FormsViewController {
         self.tableView.dataSource = self
         self.tableView.keyboardDismissMode = .interactive
         self.tableView.estimatedRowHeight = 44
+        self.tableView.backgroundView = UIView()
         self.tableView.backgroundColor = UIColor.clear
         self.tableView.rowHeight = UITableView.automaticDimension
         self.tableView.separatorStyle = UITableViewCell.SeparatorStyle.none
@@ -516,7 +524,13 @@ private class DemoListViewController: FormsViewController {
     
     override func setupSearchBar() {
         super.setupSearchBar()
-        self.setSearchBar(self.searchController)
+        
+        if #available(iOS 13.0, *) {
+            self.setSearchBar(self.searchController)
+        } else {
+            self.navigationController?.navigationBar.setValue(true, forKey: "hidesShadow")
+            self.tableView.tableHeaderView = self.searchController.searchBar
+        }
     }
     
     fileprivate func select(row: DemoRow, animated: Bool = true) {
@@ -583,6 +597,7 @@ private class DemoListViewController: FormsViewController {
         // frameworks
         case .frameworkAnalytics:                               return DemoAnalyticsViewController()
         case .frameworkAppStoreReview:                          return DemoAppStoreReviewViewController()
+        case .frameworkDevice:                                  return DemoDeviceViewController()
         case .frameworkDeveloperToolsConsole:                   return DemoDeveloperToolsConsoleViewController()
         case .frameworkDeveloperToolsLifetime:                  return DemoDeveloperToolsLifetimeViewController()
         case .frameworkDeveloperToolsMenu:                      return DemoDeveloperToolsMenuViewController()
@@ -638,6 +653,9 @@ extension DemoListViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        performFor(osVersion: 10..<13) {
+            self.searchController.isActive = false
+        }
         tableView.deselectRow(at: indexPath, animated: true)
         let item: DemoSection = self.items[indexPath.section]
         let row: DemoRow = item.rows[indexPath.row]

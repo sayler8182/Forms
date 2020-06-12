@@ -1,7 +1,6 @@
 # FormsAnalytics
 
-FormsAnalytics collect user events.
-By default integrate Firebase.
+FormsAnalytics collect user events and sends to multiple providers.
 
 ## Import
 
@@ -31,10 +30,6 @@ nanopb.framework
 PromisesObjC.framework
 ```
 
-## NOTICE
-Currently firebase DOSN'T support dynamic framework. You can't use *Analytics* and *Notifications* framework together
-see https://github.com/firebase/firebase-ios-sdk/blob/master/docs/firebase_in_libraries.md
-
 ## Integration
 
 Library uses Firebase service. You should create and configure project [here](https://console.firebase.google.com/). Then download *GoogleService-Info.plist* and add to your project. It's also important to add *URL Type* in your Target Info's - *URL Schemas* is your *REVERSED_CLIENT_ID* from *GoogleService-Info.plist*.
@@ -44,7 +39,32 @@ Library uses Firebase service. You should create and configure project [here](ht
 ### Configuration
 
 ```swift
-Analytics.configure()
+class DemoAnalyticsFirebaseProvider: AnalyticsProvider {
+    let name: String = "Firebase"
+    
+    func logEvent(_ event: AnalyticsEvent,
+                  _ parameters: [String: Any],
+                  _ userProperties: [String: String]) {
+        for userProperty in userProperties {
+            FirebaseAnalytics.Analytics.setUserProperty(
+                userProperty.value,
+                forName: userProperty.key)
+        }
+        FirebaseAnalytics.Analytics.logEvent(
+            event.name,
+            parameters: parameters)
+    }
+    
+    func setUserId(_ userId: String?) {
+        FirebaseAnalytics.Analytics.setUserID(userId)
+    }
+}
+```
+
+```swift
+Analytics.register([
+    DemoAnalyticsFirebaseProvider()
+])
 ```
 
 ### Event definition 
@@ -58,23 +78,24 @@ enum DemoEvent: String, AnalyticsTag {
 ### Event parameters definition 
  
 ```swift
-enum DemoEvent: String, AnalyticsTag {
-    case demoEvent = "demo_event"
-    
-    enum Parameter: AnalyticsTagParameter {
-        case demoParameter(value: String)
+enum DemoEvent: AnalyticsEvent {
+    case demoEvent(value: Int?)
         
-        var parameters: [String: Any?] {
-            switch self {
-            case .demoParameter(let value):
-                return ["value": value]
-            }
+    var name: String {
+        switch self {
+        case .demoEvent: return "demo_event"
         }
-        var userProperties: [String: String?] {
-            switch self {
-            case .demoParameter(let value):
-                return ["value": value]
-            }
+    }
+    var parameters: [String: Any?] {
+        switch self {
+        case .demoEvent(let value):
+            return ["value": value]
+        }
+    }
+    var userProperties: [String: String?] {
+        switch self {
+        case .demoEvent(let value):
+            return ["value": value.description]
         }
     }
 }
@@ -83,13 +104,5 @@ enum DemoEvent: String, AnalyticsTag {
 ### Sending event
 
 ```swift
-Analytics.log(DemoEvent.demoEvent)
-```
-
-### Sending event with parameters
-
-```swift
-Analytics.log(DemoEvent.demoEvent, [
-    DemoEvent.Parameter.demoParameter(value: "value")
-])
+Analytics.log(DemoEvent.demoEvent(value: 12))
 ```

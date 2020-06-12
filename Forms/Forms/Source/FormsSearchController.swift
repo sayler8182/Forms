@@ -59,6 +59,12 @@ open class FormsSearchController: UISearchController, AppLifecycleable, Themeabl
         get { return self.searchBar.autocorrectionType }
         set { self.searchBar.autocorrectionType = newValue }
     }
+    open var backgroundColors: State<UIColor?> = State<UIColor?>(UIColor.clear) {
+        didSet { self.updateState() }
+    }
+    open var barTintColors: State<UIColor?> = State<UIColor?>(Theme.Colors.primaryBackground) {
+        didSet { self.updateState() }
+    }
     open var keyboardType: UIKeyboardType {
         get { return self.searchBar.keyboardType }
         set { self.searchBar.keyboardType = newValue }
@@ -117,6 +123,7 @@ open class FormsSearchController: UISearchController, AppLifecycleable, Themeabl
     public convenience init(_ updater: SearchUpdater) {
         self.init(searchResultsController: nil)
         updater.searchController = self
+        self.definesPresentationContext = true
         self.searchResultsUpdater = updater
     }
     
@@ -159,8 +166,7 @@ open class FormsSearchController: UISearchController, AppLifecycleable, Themeabl
     }
     
     open func setTheme() {
-        self.textColors = State<UIColor?>(Theme.Colors.primaryText)
-        self.textFonts = State<UIFont>(Theme.Fonts.regular(ofSize: 14))
+        self.updateState()
     }
     
     open func appLifecycleable(event: AppLifecycleEvent) { }
@@ -233,6 +239,8 @@ private extension FormsSearchController {
                   force: Bool = false) {
         guard self.state != state || force else { return }
         self.searchBar.animation(animated, duration: self.animationTime) {
+            self.searchBar.backgroundColor = self.backgroundColors.value(for: state)
+            self.searchBar.barTintColor = self.barTintColors.value(for: state)
             self.searchBar.textField?.textColor = self.textColors.value(for: state)
             self.searchBar.textField?.font = self.textFonts.value(for: state)
         }
@@ -312,6 +320,23 @@ public extension FormsSearchController {
     }
     func with(autocorrectionType: UITextAutocorrectionType) -> Self {
         self.autocorrectionType = autocorrectionType
+        return self
+    }
+    @objc
+    override func with(backgroundColor: UIColor?) -> Self {
+        self.backgroundColors = State<UIColor?>(backgroundColor)
+        return self
+    }
+    func with(backgroundColors: State<UIColor?>) -> Self {
+        self.backgroundColors = backgroundColors
+        return self
+    }
+    func with(barTintColor: UIColor?) -> Self {
+        self.barTintColors = State<UIColor?>(barTintColor)
+        return self
+    }
+    func with(barTintColors: State<UIColor?>) -> Self {
+        self.barTintColors = barTintColors
         return self
     }
     func with(isActive: Bool) -> Self {

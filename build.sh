@@ -29,6 +29,7 @@ frameworks=(
     FormsAppStoreReview
     FormsCardKit
     FormsDeveloperTools
+    FormsDevice
     FormsHomeShortcuts
     FormsImagePickerKit
     FormsInjector

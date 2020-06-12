@@ -1,18 +1,11 @@
 # FormsNotifications
 
 FormsNotifications handles user notifications.
-By default integrate Firebase.
 
 ## Import
 
 ```swift
 import FormsNotifications
-```
-
-## Dependencies
-
-```
-FormsPermissions.framework
 ```
 
 ## External dependencies
@@ -34,10 +27,6 @@ Protobuf.framework
 StoreKit.framework
 ```
 
-## NOTICE
-Currently firebase DOSN'T support dynamic framework. You can't use *Analytics* and *Notifications* framework together
-see https://github.com/firebase/firebase-ios-sdk/blob/master/docs/firebase_in_libraries.md
-
 ## Integration
 
 Library uses Firebase service. You should create and configure project [here](https://console.firebase.google.com/). In settings add iOS project set *BundleId*, *TeemId* and upload *APNs* .p12 key. Then download *GoogleService-Info.plist* and add to your project. It's also important to add *URL Type* in your Target Info's - *URL Schemas* is your *REVERSED_CLIENT_ID* from *GoogleService-Info.plist*.
@@ -49,11 +38,27 @@ In [./Scripts](./Scripts) folder you can find bash script to send push. Just cha
 ### Configuration
 
 ```swift
-let notifications = Notifications()
-notifications.configure(
-    onNewToken: { fcm in print("\n\(fcm)\n") },
+Notifications.configure(
+    provider: DemoNotificationsFirebaseProvider(),
+    onNewToken: { (fcm) in print("\n\(fcm)\n") },
     onWillPresent: { _ in .alert },
-    onDidReceive: { response in print("\n\(response.notification.request.content.userInfo)\n") })
+    onReceive: { (notification) in print("\(notification.request.content.userInfo)") },
+    onOpen: { (response) in print("\(response.notification.request.content.userInfo)") })
+```
+
+### Provider
+
+```swift
+protocol NotificationsProvider: class {
+    var badge: Int? { get set }
+    var onNewToken: NotificationsOnNewToken? { get set }
+    var onWillPresent: NotificationsOnWillPresent? { get set }
+    var onReceive: NotificationsOnReceive? { get set }
+    var onOpen: NotificationsOnOpen? { get set }
+    
+    func setAPNSToken(_ deviceToken: Data)
+    func registerRemote()
+}
 ```
 
 ### Set APNS token in AppDelegate
@@ -61,12 +66,13 @@ notifications.configure(
 ```swift
 func application(_ application: UIApplication,
                 didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
-    notifications.setAPNSToken(deviceToken)
+    Notifications.setAPNSToken(deviceToken)
 }
 ```
 
-### Register remote
+### Register / unregister remote
 
 ```swift
-notifications.registerRemote()
+Notifications.registerRemote()
+Notifications.unregisterRemote()
 ```

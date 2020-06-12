@@ -155,6 +155,7 @@
 		71E0F5F7246C3E100051F043 /* SectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71E0F5F6246C3E100051F043 /* SectionView.swift */; };
 		71E0F60B246D30EC0051F043 /* TextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71E0F60A246D30EC0051F043 /* TextView.swift */; };
 		71E0F60D246D32EC0051F043 /* TitleTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71E0F60C246D32EC0051F043 /* TitleTextView.swift */; };
+		71E4454F2493668000AC38C1 /* FormsDevice.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71E4454E2493668000AC38C1 /* FormsDevice.framework */; };
 		71FCB2BC247F9C4800A84D30 /* FormsPermissions.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71FCB2BB247F9C4800A84D30 /* FormsPermissions.framework */; };
 /* End PBXBuildFile section */
 
@@ -244,6 +245,7 @@
 		71E0F5F6246C3E100051F043 /* SectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionView.swift; sourceTree = "<group>"; };
 		71E0F60A246D30EC0051F043 /* TextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextView.swift; sourceTree = "<group>"; };
 		71E0F60C246D32EC0051F043 /* TitleTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleTextView.swift; sourceTree = "<group>"; };
+		71E4454E2493668000AC38C1 /* FormsDevice.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FormsDevice.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		71FCB2BB247F9C4800A84D30 /* FormsPermissions.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FormsPermissions.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -268,6 +270,7 @@
 				7150CE84247FAB5A00F2681B /* FormsTransitions.framework in Frameworks */,
 				71369F9B24865A9C00298D3B /* FormsToastKit.framework in Frameworks */,
 				71369FAA24865C3600298D3B /* FormsSideMenuKit.framework in Frameworks */,
+				71E4454F2493668000AC38C1 /* FormsDevice.framework in Frameworks */,
 				7136A0132486624E00298D3B /* FormsAppStoreReview.framework in Frameworks */,
 				7135DFF2248E6E1300B5807F /* FormsLocation.framework in Frameworks */,
 				714EF1D3247F940100AE3044 /* FormsUtils.framework in Frameworks */,
@@ -512,6 +515,7 @@
 		719469AF243DA7CC00CAD09B /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				71E4454E2493668000AC38C1 /* FormsDevice.framework */,
 				7135DFF1248E6E1300B5807F /* FormsLocation.framework */,
 				7135DF9E248E3E8200B5807F /* FormsHomeShortcuts.framework */,
 				714EF1AA247F940100AE3044 /* FormsAnalytics.framework */,

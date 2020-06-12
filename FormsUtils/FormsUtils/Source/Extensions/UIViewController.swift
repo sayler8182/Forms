@@ -27,16 +27,19 @@ public extension UIViewController {
 }
 
 // MARK: Builder
-public extension UIViewController {
-    func with(backgroundColor: UIColor?) -> Self {
+extension UIViewController {
+    @objc
+    open func with(backgroundColor: UIColor?) -> Self {
         self.view.backgroundColor = backgroundColor
         return self
     }
-    func with(navigationController: UINavigationController) -> UINavigationController {
+    @objc
+    open func with(navigationController: UINavigationController) -> UINavigationController {
         navigationController.viewControllers = [self]
         return navigationController
     }
-    func with(title: String?) -> Self {
+    @objc
+    open func with(title: String?) -> Self {
         self.title = title
         return self
     }

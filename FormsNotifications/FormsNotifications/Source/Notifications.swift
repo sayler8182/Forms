@@ -6,86 +6,57 @@
 //  Copyright © 2020 Limbo. All rights reserved.
 //
 
-import FirebaseCore
-import FirebaseMessaging
-import FormsPermission
 import UIKit
 import UserNotifications
 
-// MARK: NotificationsProtocol
-public protocol NotificationsProtocol {
-    var badge: Int { get set }
+public typealias NotificationsOnNewToken = (_ fcm: String) -> Void
+public typealias NotificationsOnWillPresent = (_ notification: UNNotification) -> UNNotificationPresentationOptions
+public typealias NotificationsOnReceive = (_ notification: UNNotification) -> Void
+public typealias NotificationsOnOpen = (_ notification: UNNotificationResponse) -> Void
+
+// MARK: NotificationsProvider
+public protocol NotificationsProvider: class {
+    var badge: Int? { get set }
+    var onNewToken: NotificationsOnNewToken? { get set }
+    var onWillPresent: NotificationsOnWillPresent? { get set }
+    var onReceive: NotificationsOnReceive? { get set }
+    var onOpen: NotificationsOnOpen? { get set }
     
-    func configure(onNewToken: OnNewToken? = nil,
-                   onWillPresent: OnWillPresent? = nil,
-                   onDidReceive: OnDidReceive? = nil)
     func setAPNSToken(_ deviceToken: Data)
     func registerRemote()
+    func unregisterRemote()
 }
 
 // MARK: Notifications
 public class Notifications: NSObject {
-    public typealias OnNewToken = (_ fcm: String) -> Void
-    public typealias OnWillPresent = (_ notification: UNNotification) -> UNNotificationPresentationOptions
-    public typealias OnDidReceive = (_ notification: UNNotificationResponse) -> Void
+    private static var provider: NotificationsProvider?
     
-    fileprivate var onNewToken: OnNewToken?
-    fileprivate var onWillPresent: OnWillPresent?
-    fileprivate var onDidReceive: OnDidReceive?
-    
-    public var badge: Int {
-        get { return UIApplication.shared.applicationIconBadgeNumber }
-        set { UIApplication.shared.applicationIconBadgeNumber = newValue }
+    public static var badge: Int? {
+        get { return Self.provider?.badge }
+        set { Self.provider?.badge = newValue }
     }
     
-    public init() { }
-    
-    public func configure(onNewToken: OnNewToken? = nil,
-                          onWillPresent: OnWillPresent? = nil,
-                          onDidReceive: OnDidReceive? = nil) {
-        self.onNewToken = onNewToken
-        self.onWillPresent = onWillPresent
-        self.onDidReceive = onDidReceive
-        FirebaseApp.configure()
-        Messaging.messaging().delegate = self
+    public static func configure(provider: NotificationsProvider,
+                                 onNewToken: NotificationsOnNewToken? = nil,
+                                 onWillPresent: NotificationsOnWillPresent? = nil,
+                                 onReceive: NotificationsOnReceive? = nil,
+                                 onOpen: NotificationsOnOpen? = nil) {
+        Self.provider = provider
+        provider.onNewToken = onNewToken
+        provider.onWillPresent = onWillPresent
+        provider.onReceive = onReceive
+        provider.onOpen = onOpen
     }
     
-    public func setAPNSToken(_ deviceToken: Data) {
-        Messaging.messaging().setAPNSToken(deviceToken, type: MessagingAPNSTokenType.unknown)
+    public static func setAPNSToken(_ deviceToken: Data) {
+        Self.provider?.setAPNSToken(deviceToken)
     }
     
-    public func registerRemote() {
-        Permission.notifications.ask { (status) in
-            DispatchQueue.main.async {
-                guard status.isAuthorized else { return }
-                UNUserNotificationCenter.current().delegate = self
-                UIApplication.shared.registerForRemoteNotifications()
-            }
-        }
-    }
-}
-
-// MARK: MessagingDelegate
-extension Notifications: MessagingDelegate {
-    public func messaging(_ messaging: Messaging,
-                          didReceiveRegistrationToken fcmToken: String) {
-        self.onNewToken?(fcmToken)
-    }
-}
-
-// MARK: UNUserNotificationCenterDelegate
-extension Notifications: UNUserNotificationCenterDelegate {
-    public func userNotificationCenter(_ center: UNUserNotificationCenter,
-                                       willPresent notification: UNNotification,
-                                       withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
-        let options: UNNotificationPresentationOptions = self.onWillPresent?(notification) ?? UNNotificationPresentationOptions.alert
-        completionHandler(options)
+    public static func registerRemote() {
+        Self.provider?.registerRemote()
     }
     
-    public func userNotificationCenter(_ center: UNUserNotificationCenter,
-                                       didReceive response: UNNotificationResponse,
-                                       withCompletionHandler completionHandler: @escaping () -> Void) {
-        self.onDidReceive?(response)
-        completionHandler()
+    public static func unregisterRemote() {
+        Self.provider?.unregisterRemote()
     }
 }

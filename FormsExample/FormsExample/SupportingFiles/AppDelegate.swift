@@ -6,6 +6,7 @@
 //  Copyright © 2020 Limbo. All rights reserved.
 //
 
+import FirebaseCore
 import Forms
 import FormsAnalytics
 import FormsDemo
@@ -13,7 +14,7 @@ import FormsDeveloperTools
 import FormsHomeShortcuts
 import FormsInjector
 import FormsLogger
-// import FormsNotifications
+import FormsNotifications
 import FormsPermissions
 import FormsSocialKit
 import UIKit
@@ -28,9 +29,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     @OptionalInjected
     private var logger: Logger? // swiftlint:disable:this let_var_whitespace
     
-    // @OptionalInjected
-    // private var notifications: NotificationsProtocol?
-    
     func application(_ application: UIApplication,
                      didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // DeveloperTools - Console
@@ -41,8 +39,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             DemoAssembly()
         ])
         
+        // Firebase
+        FirebaseApp.configure()
+        
         // Analytics
-        Analytics.configure()
+        Analytics.register([
+            DemoAnalyticsFirebaseProvider()
+        ])
         
         // DeveloperTools
         DeveloperTools.configure(
@@ -58,16 +61,26 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         self.homeShortcuts?.launch(launchOptions)
         
         // Notifications
-        // self.notifications?.configure(
-        //    onNewToken: { fcm in logger?.log(.info, "\n\(fcm)\n") },
-        //    onWillPresent: { _ in .alert },
-        //    onDidReceive: { response in logger?.log(.info, "\n\(response.notification.request.content.userInfo)\n") })
-        //    self.notifications?.registerRemote()
-        // }
+        Notifications.configure(
+            provider: DemoNotificationsFirebaseProvider(),
+            onNewToken: { [weak self] (fcm) in
+                guard let `self` = self else { return }
+                self.logger?.log(.info, "FCM: \(fcm)")
+            },
+            onWillPresent: { _ in .alert },
+            onReceive: { [weak self] (notification) in
+                guard let `self` = self else { return }
+                self.logger?.log(.info, "Receive: \(notification.request.content.userInfo.prettyPrinted.or(""))")
+            },
+            onOpen: { [weak self] (response) in
+                guard let `self` = self else { return }
+                self.logger?.log(.info, "Open: \(response.notification.request.content.userInfo.prettyPrinted.or(""))")
+        })
+        Notifications.registerRemote()
         
         // SocialKit
         SocialKit.configure(
-            googleClientID: "513688149579-fhj79mgkeq2rp689dpmfnn7nlkadnf31.apps.googleusercontent.com")
+            googleClientId: "513688149579-fhj79mgkeq2rp689dpmfnn7nlkadnf31.apps.googleusercontent.com")
         
         // Root
         if #available(iOS 13.0, *) {
@@ -82,7 +95,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func application(_ application: UIApplication,
                      didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
-         // self.notifications?.setAPNSToken(deviceToken)
+        Notifications.setAPNSToken(deviceToken)
     }
 
     @available(iOS 13.0, *)
@@ -90,17 +103,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                      configurationForConnecting connectingSceneSession: UISceneSession,
                      options: UIScene.ConnectionOptions) -> UISceneConfiguration {
         return UISceneConfiguration(name: "Default Configuration", sessionRole: connectingSceneSession.role)
-    }
-    
-    func application(_ application: UIApplication,
-                     didReceiveRemoteNotification userInfo: [AnyHashable: Any],
-                     fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
-        self.logger?.log(.info, userInfo)
-    }
-    
-    func application(_ application: UIApplication,
-                     didReceiveRemoteNotification userInfo: [AnyHashable: Any]) {
-        self.logger?.log(.info, userInfo)
     }
 }
 

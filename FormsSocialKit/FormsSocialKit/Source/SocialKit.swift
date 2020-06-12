@@ -32,10 +32,10 @@ import GTMSessionFetcher
 #endif
 
 public enum SocialKit {
-    private static var googleClientID: String? = nil
+    private static var googleClientId: String? = nil
     
-    public static func configure(googleClientID: String? = nil) {
-        Self.googleClientID = googleClientID
+    public static func configure(googleClientId: String? = nil) {
+        Self.googleClientId = googleClientId
         
         Self.configureApple()
         Self.configureFacebook()
@@ -48,7 +48,7 @@ public enum SocialKit {
     
     private static func configureGoogle() {
         #if canImport(GoogleSignIn)
-        GIDSignIn.sharedInstance().clientID = Self.googleClientID
+        GIDSignIn.sharedInstance().clientID = Self.googleClientId
         #endif
     }
 }

@@ -48,6 +48,7 @@
 		718B43242490E25D000DBC05 /* UIApplicationShortcutIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 718B43232490E25D000DBC05 /* UIApplicationShortcutIcon.swift */; };
 		719469C6243DB21D00CAD09B /* UIImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 719469C5243DB21D00CAD09B /* UIImageView.swift */; };
 		71E0F611246D46EF0051F043 /* UITextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71E0F610246D46EF0051F043 /* UITextField.swift */; };
+		71E446622493A8AD00AC38C1 /* Dictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71E446612493A8AD00AC38C1 /* Dictionary.swift */; };
 		71F83AA5248A24AA00D6B579 /* SVG.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71F83AA4248A24AA00D6B579 /* SVG.swift */; };
 		71F83AA7248A251D00D6B579 /* CGPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71F83AA6248A251D00D6B579 /* CGPoint.swift */; };
 /* End PBXBuildFile section */
@@ -96,6 +97,7 @@
 		718B43232490E25D000DBC05 /* UIApplicationShortcutIcon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIApplicationShortcutIcon.swift; sourceTree = "<group>"; };
 		719469C5243DB21D00CAD09B /* UIImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageView.swift; sourceTree = "<group>"; };
 		71E0F610246D46EF0051F043 /* UITextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITextField.swift; sourceTree = "<group>"; };
+		71E446612493A8AD00AC38C1 /* Dictionary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dictionary.swift; sourceTree = "<group>"; };
 		71F83AA4248A24AA00D6B579 /* SVG.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SVG.swift; sourceTree = "<group>"; };
 		71F83AA6248A251D00D6B579 /* CGPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CGPoint.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -166,6 +168,7 @@
 				713B9BC2243D07BC001F6E3A /* CGRect.swift */,
 				713B9BC3243D07BC001F6E3A /* CGSize.swift */,
 				713A76092473F4FD0067C968 /* Date.swift */,
+				71E446612493A8AD00AC38C1 /* Dictionary.swift */,
 				710624F524404C9D00C267FE /* IndexPath.swift */,
 				713B9BBB243D07BB001F6E3A /* Number.swift */,
 				713B9BB2243D06C3001F6E3A /* Optional.swift */,
@@ -294,6 +297,7 @@
 				711AF55C2461DDEC00CE8666 /* UISearchBar.swift in Sources */,
 				713B9BB9243D07A8001F6E3A /* AttributedString.swift in Sources */,
 				71E0F611246D46EF0051F043 /* UITextField.swift in Sources */,
+				71E446622493A8AD00AC38C1 /* Dictionary.swift in Sources */,
 				7103EA24246047C200A11A96 /* UINavigationController.swift in Sources */,
 				7150CEDE247FE82D00F2681B /* UIStatusBarStyle.swift in Sources */,
 				713B9BCF243D07BC001F6E3A /* UIAlertViewController.swift in Sources */,

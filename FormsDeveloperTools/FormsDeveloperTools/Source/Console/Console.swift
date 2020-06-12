@@ -66,6 +66,7 @@ extension Console: TextOutputStream {
 public extension Console {
     static var defaultIgnore: [String] {
         return [
+            "[Firebase/Messaging]",
             "FacebookAdvertiserIDCollectionEnabled is currently",
             "Attempting to load the view of a view controller",
             "Connection 5: unable to determine",
@@ -77,6 +78,7 @@ public extension Console {
             "Simulator user has requested new graphics quality",
             "[BoringSSL]",
             "[] tcp_input",
+            "[] tcp_output",
             "Domain=AKAuthenticationError Code=-7003",
             "[] nw_read_request_report",
             "[TableView] Warning once only",
@@ -93,7 +95,10 @@ public extension Console {
             "Make a symbolic breakpoint at UICollectionViewFlowLayoutBreakForInvalidSizes",
             "[Touch] unexpected nil window in __sendSystemGestureLatentClientUpdate",
             "[Snapshotting] Snapshotting a view",
-            "invalid mode 'kCFRunLoopCommonModes'"
+            "invalid mode 'kCFRunLoopCommonModes'",
+            "[MC] System group container for systemgroup.com.apple.configurationprofiles path is",
+            "[MC] Reading from private effective user settings.",
+            "[Assert] Unexpected code path for search bar hosted by navigation bar. This is a UIKit problem"
         ]
     }
 }

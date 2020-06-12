@@ -186,6 +186,7 @@ public extension FormsViewController {
 
 // MARK: SearchBar
 public extension FormsViewController {
+    @objc
     func setSearchBar(_ searchController: UISearchController) {
         if #available(iOS 11.0, *) {
             self.navigationItem.hidesSearchBarWhenScrolling = false

@@ -18,6 +18,7 @@ Forms is all in one iOS framework
 - [x] [FormsAnchor](./Documentation/FormsAnchor.md) - DSL
 - [x] [FormsAppStoreReview](./Documentation/FormsAppStoreReview.md) - AppStore review helper
 - [x] [FormsDeveloperTools](./Documentation/FormsDeveloperTools.md) - Developer Tools
+- [x] [FormsDevice](./Documentation/FormsDeveloperTools.md) - Device info
 - [x] [FormsHomeShortcuts](./Documentation/FormsHomeShortcuts.md) - Home shortcuts
 - [x] [FormsInjector](./Documentation/FormsInjector.md) - Dependency Injection
 - [x] [FormsLocation](./Documentation/FormsLocation.md) - Location service
@@ -40,10 +41,6 @@ Kits extend Forms module
 - [x] [FormsTabBarKit](./Documentation/FormsSideMenuKit.md) - TabBar
 - [x] [FormsToastKit](./Documentation/ToastKit.md) - Toast
 
-## NOTICE
-Currently firebase DOSN'T support dynamic framework. You can't use Analytics and Notifications framework together
-see https://github.com/firebase/firebase-ios-sdk/blob/master/docs/firebase_in_libraries.md
-
 ## Requirements
 
 - iOS 10.0+ 
@@ -51,7 +48,7 @@ see https://github.com/firebase/firebase-ios-sdk/blob/master/docs/firebase_in_li
 - Xcode 11.0+
 
 Stable version<br/>
-XCode  11.5 (11E608c)
+XCode 11.5 (11E608c)
 
 ## Installation
 
@@ -62,6 +59,7 @@ Forms.framework
 FormsAnalytics.framework
 FormsAnchor.framework
 FormsAppStoreReview.framework
+FormsDevice.framework
 FormsDeveloperTools.framework
 FormsHomeShortcuts.framework
 FormsImagePickerKit.framework
@@ -127,18 +125,20 @@ The Forms framework is inspired by:
 - *Atchitectures*<br/>
 [Clean Swift](https://clean-swift.com/)
 
-- *DeveloperTools*<br/>
+- *FormsAnalytics*<br/>
+[Umbrella](https://github.com/devxoul/Umbrella),
+
+- *FormsDeveloperTools*<br/>
 [Gedatsu](https://github.com/bannzai/Gedatsu),
 [LifetimeTracker](https://github.com/krzysztofzablocki/LifetimeTracker)
 
-- *Injector*<br/>
+- *FormsDevice*<br/>
+[DeviceKit](https://github.com/devicekit/DeviceKit)
+
+- *FormsInjector*<br/>
 [Swinject](https://github.com/Swinject/Swinject)
 
 
 ## License
 
 MIT license. See the [LICENSE file](LICENSE) for details.
-
-## TODO:
-
-- [ ] Firebase dynamic frameworks

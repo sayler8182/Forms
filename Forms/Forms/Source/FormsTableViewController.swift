@@ -218,6 +218,14 @@ open class FormsTableViewController: FormsViewController, UITableViewDelegate, U
         }
     }
     
+    override public func setSearchBar(_ searchController: UISearchController) {
+        if #available(iOS 13.0, *) {
+            super.setSearchBar(searchController)
+        } else {
+            self.tableView.tableHeaderView = searchController.searchBar
+        }
+    }
+    
     // MARK: HOOKS 
     open func setupHeader() {
         // HOOK

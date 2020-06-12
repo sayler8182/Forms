@@ -30,9 +30,7 @@ class DemoAnalyticsViewController: FormsTableViewController {
     override func setupActions() {
         super.setupActions()
         self.logEventButton.onClick = Unowned(self) { (_self) in
-            Analytics.log(DemoAnalytics.DemoEvent.demoEvent, [
-                DemoAnalytics.DemoEvent.Parameter.demoParameter(value: "value")
-            ])
+            Analytics.log(DemoAnalytics.DemoEvent.demoEvent(value: 12))
             Toast.success()
                 .with(title: "Logged")
                 .show(in: _self.navigationController)
@@ -42,23 +40,24 @@ class DemoAnalyticsViewController: FormsTableViewController {
 
 // MARK: DemoAnalytics
 private enum DemoAnalytics {
-    enum DemoEvent: String, AnalyticsTag {
-        case demoEvent = "demo_event"
-        
-        enum Parameter: AnalyticsTagParameter {
-            case demoParameter(value: String)
+    enum DemoEvent: AnalyticsEvent {
+        case demoEvent(value: Int)
             
-            var parameters: [String: Any?] {
-                switch self {
-                case .demoParameter(let value):
-                    return ["value": value]
-                }
+        var name: String {
+            switch self {
+            case .demoEvent: return "demo_event"
             }
-            var userProperties: [String: String?] {
-                switch self {
-                case .demoParameter(let value):
-                    return ["value": value]
-                }
+        }
+        var parameters: [String: Any?] {
+            switch self {
+            case .demoEvent(let value):
+                return ["value": value]
+            }
+        }
+        var userProperties: [String: String?] {
+            switch self {
+            case .demoEvent(let value):
+                return ["value": value.description]
             }
         }
     }
