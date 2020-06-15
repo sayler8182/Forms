@@ -23,7 +23,7 @@ class DemoCardKitController: FormsTableViewController {
     private let divider = Components.utils.divider()
         .with(height: 5)
     private let overlayView = Components.container.view()
-        .with(backgroundColor: Theme.Colors.tertiaryBackground.withAlphaComponent(0.3))
+        .with(backgroundColor: Theme.Colors.tertiaryLight.withAlphaComponent(0.3))
     
     private lazy var demoCardController = CardController(self.demoCardContentController)
     private lazy var demoCardContentController = DemoFormsCardContentController()
@@ -66,7 +66,7 @@ private class DemoFormsCardContentController: FormsTableViewController {
     
     override func setTheme() {
         super.setTheme()
-        self.view.backgroundColor = Theme.Colors.tertiaryBackground
+        self.view.backgroundColor = Theme.Colors.tertiaryLight
     }
     
     override func setupContent() {

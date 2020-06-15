@@ -13,15 +13,15 @@ import FormsUtils
 import UIKit
 
 // MARK: DemoSocialKitAppleTableViewController
-@available(iOS 13.0, *)
 class DemoSocialKitAppleTableViewController: FormsTableViewController {
     private let signInWithApple = Components.social.signInWithApple()
-        .with(padding: 16)
+        .with(margin: 16)
     
     private let divider = Components.utils.divider()
         .with(height: 5.0)
     
-    private lazy var signInWithAppleProvider = SignInWithAppleProvider(context: self)
+    @available(iOS 13.0, *)
+    private lazy var signInWithAppleProvider = DemoSignInWithAppleProvider(context: self)
     
     override func setupContent() {
         super.setupContent()
@@ -33,7 +33,9 @@ class DemoSocialKitAppleTableViewController: FormsTableViewController {
     override func setupActions() {
         super.setupActions()
         self.signInWithApple.onClick = Unowned(self) { (_self) in
-            _self.signInWithAppleAuthorization()
+            if #available(iOS 13.0, *) {
+                _self.signInWithAppleAuthorization()
+            } 
         }
     }
 }
@@ -42,6 +44,7 @@ class DemoSocialKitAppleTableViewController: FormsTableViewController {
 @available(iOS 13.0, *)
 extension DemoSocialKitAppleTableViewController {
     func signInWithAppleAuthorization() {
+        self.signInWithApple.startLoading()
         self.signInWithAppleProvider.authorization(
             onSuccess: { [weak self] (data) in
                 guard let `self` = self else { return }
@@ -55,6 +58,9 @@ extension DemoSocialKitAppleTableViewController {
                 Toast.error()
                     .with(title: error.localizedDescription)
                     .show(in: self.navigationController)
+            }, onCompletion: { [weak self] (_, _) in
+                guard let `self` = self else { return }
+                self.signInWithApple.stopLoading()
         })
     }
 }

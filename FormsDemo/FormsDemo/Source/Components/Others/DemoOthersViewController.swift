@@ -12,10 +12,10 @@ import UIKit
 // MARK: DemoOthersViewController
 class DemoOthersViewController: FormsTableViewController {
     private let activityIndicator = Components.other.activityIndicator()
-            .with(backgroundColor: Theme.Colors.gray)
-            .with(color: UIColor.white)
-            .with(height: 60)
-     
+        .with(backgroundColor: Theme.Colors.gray)
+        .with(color: Theme.Colors.white)
+        .with(height: 60)
+    
     private let divider = Components.utils.divider()
         .with(height: 5.0)
     

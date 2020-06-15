@@ -22,7 +22,7 @@ open class CardController: FormsViewController {
     private var contentController: UIViewController? = nil
     private var overlayView: UIView? = nil
     
-    open var backgroundColor: UIColor? = Theme.Colors.secondaryBackground {
+    open var backgroundColor: UIColor? = Theme.Colors.secondaryLight {
         didSet { self.contentView.backgroundColor = self.backgroundColor }
     }
     open var cornerRadius: CGFloat = 8.0 {
@@ -35,10 +35,10 @@ open class CardController: FormsViewController {
             self.contentHeight = newValue
         }
     }
-    open var indicatorBackgroundColor: UIColor? = Theme.Colors.secondaryBackground {
+    open var indicatorBackgroundColor: UIColor? = Theme.Colors.secondaryLight {
         didSet { self.indicatorBackgroundView.backgroundColor = self.indicatorBackgroundColor }
     }
-    open var indicatorColor: UIColor? = Theme.Colors.tertiaryBackground {
+    open var indicatorColor: UIColor? = Theme.Colors.tertiaryLight {
         didSet { self.indicatorView.backgroundColor = self.indicatorColor }
     }
     open lazy var minHeight: CGFloat = 80.0
@@ -78,9 +78,9 @@ open class CardController: FormsViewController {
     }
     
     override open func setTheme() {
-        self.backgroundColor = Theme.Colors.secondaryBackground
-        self.indicatorBackgroundColor = Theme.Colors.secondaryBackground
-        self.indicatorColor = Theme.Colors.tertiaryBackground
+        self.backgroundColor = Theme.Colors.secondaryLight
+        self.indicatorBackgroundColor = Theme.Colors.secondaryLight
+        self.indicatorColor = Theme.Colors.tertiaryLight
         super.setTheme()
     }
     
@@ -144,7 +144,7 @@ open class CardController: FormsViewController {
     }
     
     private func setupIndicatorView() {
-        self.view.backgroundColor = UIColor.clear
+        self.view.backgroundColor = Theme.Colors.clear
         self.indicatorBackgroundView.backgroundColor = self.indicatorBackgroundColor
         self.view.addSubview(self.indicatorBackgroundView, with: [
             Anchor.to(self.view).top,

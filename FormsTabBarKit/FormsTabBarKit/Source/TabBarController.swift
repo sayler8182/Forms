@@ -23,28 +23,28 @@ open class TabBarController: FormsViewController {
     private var selectedIndex: Int = 0
     private var selectedKey: TabBarKey? = nil
     
-    open var backgroundColor: UIColor? = Theme.Colors.primaryBackground {
+    open var backgroundColor: UIColor? = Theme.Colors.primaryLight {
         didSet { self.container.backgroundColor = self.backgroundColor }
     }
     open var isTranslucent: Bool = false {
         didSet { self.updateTranslucent() }
     }
-    open var tabBarBackgroundColor: UIColor? = Theme.Colors.primaryBackground {
+    open var tabBarBackgroundColor: UIColor? = Theme.Colors.primaryLight {
         didSet { self.tabBar.backgroundColor = self.tabBarBackgroundColor }
     }
-    open var tabBarImageColor: UIColor? = Theme.Colors.primaryText {
+    open var tabBarImageColor: UIColor? = Theme.Colors.primaryDark {
         didSet { self.tabBar.imageColor = self.tabBarImageColor }
     }
-    open var tabBarImageSelectedColor: UIColor? = Theme.Colors.primaryText {
+    open var tabBarImageSelectedColor: UIColor? = Theme.Colors.primaryDark {
         didSet { return self.tabBar.imageSelectedColor = self.tabBarImageSelectedColor }
     }
-    open var tabBarTitleColor: UIColor? = Theme.Colors.primaryText {
+    open var tabBarTitleColor: UIColor? = Theme.Colors.primaryDark {
         didSet { self.tabBar.titleColor = self.tabBarTitleColor }
     }
     open var tabBarTitleFont: UIFont = Theme.Fonts.regular(ofSize: 10) {
         didSet { self.tabBar.titleFont = self.tabBarTitleFont }
     }
-    open var tabBarTitleSelectedColor: UIColor? = Theme.Colors.primaryText {
+    open var tabBarTitleSelectedColor: UIColor? = Theme.Colors.primaryDark {
         didSet { return self.tabBar.titleSelectedColor = self.tabBarTitleSelectedColor }
     }
     open var tabBarTitleSelectedFont: UIFont = Theme.Fonts.bold(ofSize: 10) {
@@ -103,13 +103,13 @@ open class TabBarController: FormsViewController {
     }
     
     override open func setTheme() {
-        self.backgroundColor = Theme.Colors.primaryBackground
-        self.tabBarBackgroundColor = Theme.Colors.primaryBackground
-        self.tabBarImageColor = Theme.Colors.primaryText
-        self.tabBarImageSelectedColor = Theme.Colors.primaryText
-        self.tabBarTitleColor = Theme.Colors.primaryText
+        self.backgroundColor = Theme.Colors.primaryLight
+        self.tabBarBackgroundColor = Theme.Colors.primaryLight
+        self.tabBarImageColor = Theme.Colors.primaryDark
+        self.tabBarImageSelectedColor = Theme.Colors.primaryDark
+        self.tabBarTitleColor = Theme.Colors.primaryDark
         self.tabBarTitleFont = Theme.Fonts.regular(ofSize: 10)
-        self.tabBarTitleSelectedColor = Theme.Colors.primaryText
+        self.tabBarTitleSelectedColor = Theme.Colors.primaryDark
         self.tabBarTitleSelectedFont = Theme.Fonts.bold(ofSize: 10)
         super.setTheme()
     }

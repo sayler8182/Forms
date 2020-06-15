@@ -11,7 +11,6 @@
 		711071912476C1910056BBB5 /* FBSDKCoreKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 711071722476C0990056BBB5 /* FBSDKCoreKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		711071922476C1930056BBB5 /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7110716F2476C0990056BBB5 /* FBSDKLoginKit.framework */; };
 		711071932476C1930056BBB5 /* FBSDKLoginKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 7110716F2476C0990056BBB5 /* FBSDKLoginKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		711AF5562461524700CE8666 /* FormsIntegrationPermissionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 711AF5552461524700CE8666 /* FormsIntegrationPermissionsViewController.swift */; };
 		7136A13E248692B700298D3B /* FormsImagePickerKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7136A1342486927500298D3B /* FormsImagePickerKit.framework */; };
 		7136A13F248692B700298D3B /* FormsImagePickerKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 7136A1342486927500298D3B /* FormsImagePickerKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		7136A140248692B900298D3B /* FormsAppStoreReview.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7136A1372486927500298D3B /* FormsAppStoreReview.framework */; };
@@ -50,18 +49,11 @@
 		7150CEC5247FACAE00F2681B /* FormsUtils.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 7150CE99247FAC8900F2681B /* FormsUtils.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		7150CEC6247FACB000F2681B /* FormsValidators.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7150CE97247FAC8900F2681B /* FormsValidators.framework */; };
 		7150CEC7247FACB000F2681B /* FormsValidators.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 7150CE97247FAC8900F2681B /* FormsValidators.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		71CFF4492459A1C40067D13E /* FormsIntegrationDeveloperToolsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71CFF4482459A1C40067D13E /* FormsIntegrationDeveloperToolsViewController.swift */; };
-		71CFF44B2459A1CD0067D13E /* FormsIntegrationSideMenuKitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71CFF44A2459A1CD0067D13E /* FormsIntegrationSideMenuKitViewController.swift */; };
 		71DB65C62458064F00B16145 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71DB65BF2458064F00B16145 /* SceneDelegate.swift */; };
 		71DB65C82458064F00B16145 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 71DB65C32458064F00B16145 /* Assets.xcassets */; };
 		71DB65C92458064F00B16145 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71DB65C42458064F00B16145 /* AppDelegate.swift */; };
 		71DB65CA2458064F00B16145 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 71DB65C52458064F00B16145 /* LaunchScreen.storyboard */; };
-		71DB65CC245806AF00B16145 /* FormsIntegrationSocialKitGoogleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71DB65CB245806AF00B16145 /* FormsIntegrationSocialKitGoogleViewController.swift */; };
-		71DB65DA24580C8500B16145 /* FormsIntegrationRootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71DB65D924580C8500B16145 /* FormsIntegrationRootViewController.swift */; };
-		71DB65DC245817CD00B16145 /* FormsIntegrationSocialKitAppleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71DB65DB245817CD00B16145 /* FormsIntegrationSocialKitAppleViewController.swift */; };
-		71DB65DE245817DC00B16145 /* FormsIntegrationSocialKitFacebookViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71DB65DD245817DC00B16145 /* FormsIntegrationSocialKitFacebookViewController.swift */; };
 		71DB65E0245818F700B16145 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 71DB65DF245818F700B16145 /* GoogleService-Info.plist */; };
-		71DB65E324581AE200B16145 /* FormsIntegrationAnalyticsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71DB65E224581AE200B16145 /* FormsIntegrationAnalyticsViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -101,7 +93,6 @@
 /* Begin PBXFileReference section */
 		7110716F2476C0990056BBB5 /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKLoginKit.framework; sourceTree = "<group>"; };
 		711071722476C0990056BBB5 /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKCoreKit.framework; sourceTree = "<group>"; };
-		711AF5552461524700CE8666 /* FormsIntegrationPermissionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormsIntegrationPermissionsViewController.swift; sourceTree = "<group>"; };
 		7136A1322486927500298D3B /* FormsToastKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FormsToastKit.framework; sourceTree = "<group>"; };
 		7136A1332486927500298D3B /* FormsCardKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FormsCardKit.framework; sourceTree = "<group>"; };
 		7136A1342486927500298D3B /* FormsImagePickerKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FormsImagePickerKit.framework; sourceTree = "<group>"; };
@@ -121,8 +112,6 @@
 		7150CE98247FAC8900F2681B /* FormsSocialKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FormsSocialKit.framework; sourceTree = "<group>"; };
 		7150CE99247FAC8900F2681B /* FormsUtils.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FormsUtils.framework; sourceTree = "<group>"; };
 		7150CE9A247FAC8A00F2681B /* FormsAnchor.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FormsAnchor.framework; sourceTree = "<group>"; };
-		71CFF4482459A1C40067D13E /* FormsIntegrationDeveloperToolsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormsIntegrationDeveloperToolsViewController.swift; sourceTree = "<group>"; };
-		71CFF44A2459A1CD0067D13E /* FormsIntegrationSideMenuKitViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormsIntegrationSideMenuKitViewController.swift; sourceTree = "<group>"; };
 		71DB656C2458023700B16145 /* FormsIntegration.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FormsIntegration.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		71DB65BF2458064F00B16145 /* SceneDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		71DB65C12458064F00B16145 /* FormsIntegration.entitlements */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.entitlements; path = FormsIntegration.entitlements; sourceTree = "<group>"; };
@@ -130,12 +119,7 @@
 		71DB65C32458064F00B16145 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		71DB65C42458064F00B16145 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		71DB65C52458064F00B16145 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
-		71DB65CB245806AF00B16145 /* FormsIntegrationSocialKitGoogleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormsIntegrationSocialKitGoogleViewController.swift; sourceTree = "<group>"; };
-		71DB65D924580C8500B16145 /* FormsIntegrationRootViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormsIntegrationRootViewController.swift; sourceTree = "<group>"; };
-		71DB65DB245817CD00B16145 /* FormsIntegrationSocialKitAppleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormsIntegrationSocialKitAppleViewController.swift; sourceTree = "<group>"; };
-		71DB65DD245817DC00B16145 /* FormsIntegrationSocialKitFacebookViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormsIntegrationSocialKitFacebookViewController.swift; sourceTree = "<group>"; };
 		71DB65DF245818F700B16145 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
-		71DB65E224581AE200B16145 /* FormsIntegrationAnalyticsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormsIntegrationAnalyticsViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -170,30 +154,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		711AF5542461523900CE8666 /* Permissions */ = {
-			isa = PBXGroup;
-			children = (
-				711AF5552461524700CE8666 /* FormsIntegrationPermissionsViewController.swift */,
-			);
-			path = Permissions;
-			sourceTree = "<group>";
-		};
-		71CFF4462459A18B0067D13E /* DeveloperTools */ = {
-			isa = PBXGroup;
-			children = (
-				71CFF4482459A1C40067D13E /* FormsIntegrationDeveloperToolsViewController.swift */,
-			);
-			path = DeveloperTools;
-			sourceTree = "<group>";
-		};
-		71CFF4472459A1960067D13E /* SideMenuKit */ = {
-			isa = PBXGroup;
-			children = (
-				71CFF44A2459A1CD0067D13E /* FormsIntegrationSideMenuKitViewController.swift */,
-			);
-			path = SideMenuKit;
-			sourceTree = "<group>";
-		};
 		71DB65632458023700B16145 = {
 			isa = PBXGroup;
 			children = (
@@ -251,12 +211,6 @@
 		71DB65BD2458060500B16145 /* Source */ = {
 			isa = PBXGroup;
 			children = (
-				71DB65D924580C8500B16145 /* FormsIntegrationRootViewController.swift */,
-				71DB65E124581ACA00B16145 /* Analytics */,
-				71CFF4462459A18B0067D13E /* DeveloperTools */,
-				711AF5542461523900CE8666 /* Permissions */,
-				71CFF4472459A1960067D13E /* SideMenuKit */,
-				71DB65D824580C4C00B16145 /* SocialKit */,
 			);
 			path = Source;
 			sourceTree = "<group>";
@@ -281,24 +235,6 @@
 				71DB65C22458064F00B16145 /* Info.plist */,
 			);
 			path = Config;
-			sourceTree = "<group>";
-		};
-		71DB65D824580C4C00B16145 /* SocialKit */ = {
-			isa = PBXGroup;
-			children = (
-				71DB65DB245817CD00B16145 /* FormsIntegrationSocialKitAppleViewController.swift */,
-				71DB65DD245817DC00B16145 /* FormsIntegrationSocialKitFacebookViewController.swift */,
-				71DB65CB245806AF00B16145 /* FormsIntegrationSocialKitGoogleViewController.swift */,
-			);
-			path = SocialKit;
-			sourceTree = "<group>";
-		};
-		71DB65E124581ACA00B16145 /* Analytics */ = {
-			isa = PBXGroup;
-			children = (
-				71DB65E224581AE200B16145 /* FormsIntegrationAnalyticsViewController.swift */,
-			);
-			path = Analytics;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -374,15 +310,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				71DB65C92458064F00B16145 /* AppDelegate.swift in Sources */,
-				71DB65DA24580C8500B16145 /* FormsIntegrationRootViewController.swift in Sources */,
-				71DB65CC245806AF00B16145 /* FormsIntegrationSocialKitGoogleViewController.swift in Sources */,
-				71CFF44B2459A1CD0067D13E /* FormsIntegrationSideMenuKitViewController.swift in Sources */,
 				71DB65C62458064F00B16145 /* SceneDelegate.swift in Sources */,
-				71DB65DC245817CD00B16145 /* FormsIntegrationSocialKitAppleViewController.swift in Sources */,
-				711AF5562461524700CE8666 /* FormsIntegrationPermissionsViewController.swift in Sources */,
-				71DB65E324581AE200B16145 /* FormsIntegrationAnalyticsViewController.swift in Sources */,
-				71CFF4492459A1C40067D13E /* FormsIntegrationDeveloperToolsViewController.swift in Sources */,
-				71DB65DE245817DC00B16145 /* FormsIntegrationSocialKitFacebookViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

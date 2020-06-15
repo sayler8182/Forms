@@ -15,12 +15,12 @@ import UIKit
 // MARK: DemoSocialKitFacebookTableViewController
 class DemoSocialKitFacebookTableViewController: FormsTableViewController {
     private let signInWithFacebook = Components.social.signInWithFacebook()
-        .with(padding: 16)
+        .with(margin: 16)
     
     private let divider = Components.utils.divider()
         .with(height: 5.0)
     
-    private lazy var signInWithFacebookProvider = SignInWithFacebookProvider(context: self)
+    private lazy var signInWithFacebookProvider = DemoSignInWithFacebookProvider(context: self)
     
     override func setupContent() {
         super.setupContent()
@@ -40,6 +40,7 @@ class DemoSocialKitFacebookTableViewController: FormsTableViewController {
 // MARK: SignInWithFacebook
 extension DemoSocialKitFacebookTableViewController {
     func signInWithFacebookAuthorization() {
+        self.signInWithFacebook.startLoading()
         self.signInWithFacebookProvider.authorization(
             onSuccess: { [weak self] (data) in
                 guard let `self` = self else { return }
@@ -53,6 +54,9 @@ extension DemoSocialKitFacebookTableViewController {
                 Toast.error()
                     .with(title: error.localizedDescription)
                     .show(in: self.navigationController)
+            }, onCompletion: { [weak self] (_, _) in
+                guard let `self` = self else { return }
+                self.signInWithFacebook.stopLoading()
         })
     }
 }

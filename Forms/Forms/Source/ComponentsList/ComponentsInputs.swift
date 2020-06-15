@@ -30,28 +30,28 @@ public enum ComponentsInputs: ComponentsList {
             component.textAlignment = .center
             component.title = nil
             component.onSetTheme = Strong(component) { (component) in
-                component.backgroundColors = PinView.State<UIColor?>(Theme.Colors.primaryBackground)
+                component.backgroundColors = PinView.State<UIColor?>(Theme.Colors.primaryLight)
                 component.errorColor = Theme.Colors.red
                 component.errorFont = Theme.Fonts.regular(ofSize: 12)
                 component.infoColor = Theme.Colors.gray
                 component.infoFont = Theme.Fonts.regular(ofSize: 12)
-                component.placeholderColors = PinView.State<UIColor?>(Theme.Colors.primaryText.withAlphaComponent(0.3))
+                component.placeholderColors = PinView.State<UIColor?>(Theme.Colors.primaryDark.withAlphaComponent(0.3))
                 component.placeholderFonts = PinView.State<UIFont>(Theme.Fonts.regular(ofSize: 32))
                 component.textColors = PinView.State<UIColor?>(
-                    active: Theme.Colors.primaryText,
-                    selected: Theme.Colors.primaryText,
-                    disabled: Theme.Colors.primaryText,
+                    active: Theme.Colors.primaryDark,
+                    selected: Theme.Colors.primaryDark,
+                    disabled: Theme.Colors.primaryDark,
                     error: Theme.Colors.red)
                 component.textFonts = PinView.State<UIFont>(Theme.Fonts.regular(ofSize: 32))
                 component.titleColors = PinView.State<UIColor?>(
-                    active: Theme.Colors.primaryText,
-                    selected: Theme.Colors.primaryText,
-                    disabled: Theme.Colors.primaryText,
+                    active: Theme.Colors.primaryDark,
+                    selected: Theme.Colors.primaryDark,
+                    disabled: Theme.Colors.primaryDark,
                     error: Theme.Colors.red)
                 component.titleFonts = PinView.State<UIFont>(Theme.Fonts.regular(ofSize: 12))
                 component.underscoreColors = PinView.State<UIColor?>(
                     active: Theme.Colors.gray,
-                    selected: Theme.Colors.primaryText,
+                    selected: Theme.Colors.primaryDark,
                     disabled: Theme.Colors.gray,
                     error: Theme.Colors.red)
             }
@@ -73,11 +73,11 @@ public enum ComponentsInputs: ComponentsList {
             component.text = nil
             component.textFieldDelegate = TextFieldDelegates.default()
             component.onSetTheme = Strong(component) { (component) in
-                component.backgroundColors = SearchBar.State<UIColor?>(Theme.Colors.primaryBackground)
+                component.backgroundColors = SearchBar.State<UIColor?>(Theme.Colors.primaryLight)
                 component.textColors = SearchBar.State<UIColor?>(
-                    active: Theme.Colors.primaryText,
-                    selected: Theme.Colors.primaryText,
-                    disabled: Theme.Colors.primaryText)
+                    active: Theme.Colors.primaryDark,
+                    selected: Theme.Colors.primaryDark,
+                    disabled: Theme.Colors.primaryDark)
                 component.textFonts = SearchBar.State<UIFont>(Theme.Fonts.regular(ofSize: 16))
             }
             return component
@@ -167,30 +167,30 @@ public enum ComponentsInputs: ComponentsList {
             component.textFieldDelegate = TextFieldDelegates.default()
             component.title = nil
             component.onSetTheme = Strong(component) { (component) in
-                component.backgroundColors = TextField.State<UIColor?>(Theme.Colors.primaryBackground)
+                component.backgroundColors = TextField.State<UIColor?>(Theme.Colors.primaryLight)
                 component.errorColor = Theme.Colors.red
                 component.errorFont = Theme.Fonts.regular(ofSize: 12)
                 component.infoColor = Theme.Colors.gray
                 component.infoFont = Theme.Fonts.regular(ofSize: 12)
-                component.maskColors = TextField.State<UIColor?>(Theme.Colors.primaryText.withAlphaComponent(0.3))
+                component.maskColors = TextField.State<UIColor?>(Theme.Colors.primaryDark.withAlphaComponent(0.3))
                 component.maskFonts = TextField.State<UIFont>(Theme.Fonts.regular(ofSize: 16))
-                component.placeholderColors = TextField.State<UIColor?>(Theme.Colors.primaryText.withAlphaComponent(0.3))
+                component.placeholderColors = TextField.State<UIColor?>(Theme.Colors.primaryDark.withAlphaComponent(0.3))
                 component.placeholderFonts = TextField.State<UIFont>(Theme.Fonts.regular(ofSize: 16))
                 component.textColors = TextField.State<UIColor?>(
-                    active: Theme.Colors.primaryText,
-                    selected: Theme.Colors.primaryText,
-                    disabled: Theme.Colors.primaryText,
+                    active: Theme.Colors.primaryDark,
+                    selected: Theme.Colors.primaryDark,
+                    disabled: Theme.Colors.primaryDark,
                     error: Theme.Colors.red)
                 component.textFonts = TextField.State<UIFont>(Theme.Fonts.regular(ofSize: 16))
                 component.titleColors = TextField.State<UIColor?>(
-                    active: Theme.Colors.primaryText,
-                    selected: Theme.Colors.primaryText,
-                    disabled: Theme.Colors.primaryText,
+                    active: Theme.Colors.primaryDark,
+                    selected: Theme.Colors.primaryDark,
+                    disabled: Theme.Colors.primaryDark,
                     error: Theme.Colors.red)
                 component.titleFonts = TextField.State<UIFont>(Theme.Fonts.regular(ofSize: 12))
                 component.underscoreColors = TextField.State<UIColor?>(
                     active: Theme.Colors.gray,
-                    selected: Theme.Colors.primaryText,
+                    selected: Theme.Colors.primaryDark,
                     disabled: Theme.Colors.gray,
                     error: Theme.Colors.red)
             }
@@ -213,28 +213,28 @@ public enum ComponentsInputs: ComponentsList {
             component.textViewDelegate = nil
             component.title = nil
             component.onSetTheme = Strong(component) { (component) in
-                component.backgroundColors = TextView.State<UIColor?>(Theme.Colors.primaryBackground)
+                component.backgroundColors = TextView.State<UIColor?>(Theme.Colors.primaryLight)
                 component.errorColor = Theme.Colors.red
                 component.errorFont = Theme.Fonts.regular(ofSize: 12)
                 component.infoColor = Theme.Colors.gray
                 component.infoFont = Theme.Fonts.regular(ofSize: 12)
-                component.placeholderColors = TextView.State<UIColor?>(Theme.Colors.primaryText.withAlphaComponent(0.3))
+                component.placeholderColors = TextView.State<UIColor?>(Theme.Colors.primaryDark.withAlphaComponent(0.3))
                 component.placeholderFonts = TextView.State<UIFont>(Theme.Fonts.regular(ofSize: 16))
                 component.textColors = TextView.State<UIColor?>(
-                    active: Theme.Colors.primaryText,
-                    selected: Theme.Colors.primaryText,
-                    disabled: Theme.Colors.primaryText,
+                    active: Theme.Colors.primaryDark,
+                    selected: Theme.Colors.primaryDark,
+                    disabled: Theme.Colors.primaryDark,
                     error: Theme.Colors.red)
                 component.textFonts = TextView.State<UIFont>(Theme.Fonts.regular(ofSize: 16))
                 component.titleColors = TextView.State<UIColor?>(
-                    active: Theme.Colors.primaryText,
-                    selected: Theme.Colors.primaryText,
-                    disabled: Theme.Colors.primaryText,
+                    active: Theme.Colors.primaryDark,
+                    selected: Theme.Colors.primaryDark,
+                    disabled: Theme.Colors.primaryDark,
                     error: Theme.Colors.red)
                 component.titleFonts = TextView.State<UIFont>(Theme.Fonts.regular(ofSize: 12))
                 component.underscoreColors = TextView.State<UIColor?>(
                     active: Theme.Colors.gray,
-                    selected: Theme.Colors.primaryText,
+                    selected: Theme.Colors.primaryDark,
                     disabled: Theme.Colors.gray,
                     error: Theme.Colors.red)
             }

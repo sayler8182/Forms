@@ -41,28 +41,28 @@ public extension SegmentControl {
         let disabled: T
         let disabledSelected: T
         
-        init(_ value: T) {
+        public init(_ value: T) {
             self.active = value
             self.selected = value
             self.disabled = value
             self.disabledSelected = value
         }
         
-        init(active: T, selected: T) {
+        public init(active: T, selected: T) {
             self.active = active
             self.selected = selected
             self.disabled = active
             self.disabledSelected = selected
         }
         
-        init(active: T, selected: T, disabled: T) {
+        public init(active: T, selected: T, disabled: T) {
             self.active = active
             self.selected = selected
             self.disabled = disabled
             self.disabledSelected = disabled
         }
         
-        init(active: T, selected: T, disabled: T, disabledSelected: T) {
+        public init(active: T, selected: T, disabled: T, disabledSelected: T) {
             self.active = active
             self.selected = selected
             self.disabled = disabled
@@ -94,7 +94,7 @@ open class SegmentControl: FormsComponent, FormsComponentWithMarginEdgeInset, Fo
         .with(width: 320, height: 40)
     
     open var animationTime: TimeInterval = 0.2
-    open var backgroundColors: State<UIColor?> = State<UIColor?>(Theme.Colors.primaryBackground) {
+    open var backgroundColors: State<UIColor?> = State<UIColor?>(Theme.Colors.primaryLight) {
         didSet { self.updateState() }
     }
     open var disabled: [SegmentItem] = [] {
@@ -123,13 +123,13 @@ open class SegmentControl: FormsComponent, FormsComponentWithMarginEdgeInset, Fo
             self.segmentControl.selectedSegmentIndex = newValue?.rawValue ?? -1
         }
     }
-    open var textColors: State<UIColor> = State<UIColor>(Theme.Colors.primaryText) {
+    open var textColors: State<UIColor> = State<UIColor>(Theme.Colors.primaryDark) {
         didSet { self.updateState() }
     }
     open var textFonts: State<UIFont> = State<UIFont>(Theme.Fonts.regular(ofSize: 12)) {
         didSet { self.updateState() }
     }
-    open var tintColors: State<UIColor?> = State<UIColor?>(Theme.Colors.primaryBackground) {
+    open var tintColors: State<UIColor?> = State<UIColor?>(Theme.Colors.primaryLight) {
         didSet { self.updateState() }
     }
     

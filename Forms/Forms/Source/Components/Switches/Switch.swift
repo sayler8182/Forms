@@ -24,14 +24,14 @@ public extension Switch {
         let disabled: T
         let disabledSelected: T
         
-        init(_ value: T) {
+        public init(_ value: T) {
             self.active = value
             self.selected = value
             self.disabled = value
             self.disabledSelected = value
         }
         
-        init(active: T, selected: T) {
+        public init(active: T, selected: T) {
             self.active = active
             self.selected = selected
             self.disabled = active
@@ -84,7 +84,7 @@ open class Switch: FormsComponent, FormsComponentWithGroup, FormsComponentWithMa
     private let gestureRecognizer = UITapGestureRecognizer()
     
     open var animationTime: TimeInterval = 0.2
-    open var backgroundColors: State<UIColor?> = State<UIColor?>(Theme.Colors.primaryBackground) {
+    open var backgroundColors: State<UIColor?> = State<UIColor?>(Theme.Colors.primaryLight) {
         didSet { self.updateState() }
     }
     open var groupKey: String? = nil
@@ -111,17 +111,17 @@ open class Switch: FormsComponent, FormsComponentWithGroup, FormsComponentWithMa
     open var paddingEdgeInset: UIEdgeInsets = UIEdgeInsets(0) {
         didSet { self.updatePaddingEdgeInset() }
     }
-    open var switchColors: State<UIColor?> = State<UIColor?>(Theme.Colors.tertiaryBackground) {
+    open var switchColors: State<UIColor?> = State<UIColor?>(Theme.Colors.tertiaryLight) {
         didSet { self.updateState() }
     }
-    open var switchThumbColors: State<UIColor?> = State<UIColor?>(Theme.Colors.primaryText) {
+    open var switchThumbColors: State<UIColor?> = State<UIColor?>(Theme.Colors.primaryDark) {
         didSet { self.updateState() }
     }
     open var title: String? {
         get { return self.titleLabel.text }
         set { self.titleLabel.text = newValue }
     }
-    open var titleColors: State<UIColor?> = State<UIColor?>(Theme.Colors.primaryText) {
+    open var titleColors: State<UIColor?> = State<UIColor?>(Theme.Colors.primaryDark) {
         didSet { self.updateState() }
     }
     open var titleFonts: State<UIFont> = State<UIFont>(Theme.Fonts.bold(ofSize: 12)) {
@@ -131,7 +131,7 @@ open class Switch: FormsComponent, FormsComponentWithGroup, FormsComponentWithMa
         get { return self.valueLabel.text }
         set { self.valueLabel.text = newValue }
     }
-    open var valueColors: State<UIColor?> = State<UIColor?>(Theme.Colors.primaryText) {
+    open var valueColors: State<UIColor?> = State<UIColor?>(Theme.Colors.primaryDark) {
         didSet { self.updateState() }
     }
     open var valueFonts: State<UIFont> = State<UIFont>(Theme.Fonts.regular(ofSize: 10)) {

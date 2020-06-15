@@ -14,7 +14,7 @@ public enum ComponentsUtils: ComponentsList {
         let component = Divider()
         component.height = 1
         component.onSetTheme = Strong(component) { (component) in
-            component.color = Theme.Colors.primaryBackground
+            component.color = Theme.Colors.primaryLight
         }
         return component
     } 

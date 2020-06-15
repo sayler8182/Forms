@@ -19,7 +19,7 @@ public enum ComponentsProgresses: ComponentsList {
         component.paddingEdgeInset = UIEdgeInsets(0)
         component.progress = 0
         component.onSetTheme = Strong(component) { (component) in
-            component.backgroundColor = Theme.Colors.primaryBackground
+            component.backgroundColor = Theme.Colors.primaryLight
             component.primaryColor = Theme.Colors.blue.withAlphaComponent(0.5)
             component.secondaryColor = Theme.Colors.blue
         }

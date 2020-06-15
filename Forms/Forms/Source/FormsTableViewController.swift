@@ -35,16 +35,16 @@ open class FormsTableViewController: FormsViewController, UITableViewDelegate, U
     private var shimmerDataSource: ShimmerTableDataSource? = nil
     private var isComponentsShimmering: Bool = false
     
-    open var cellBackgroundColor: UIColor = UIColor.clear {
+    open var cellBackgroundColor: UIColor = Theme.Colors.clear {
         didSet { self.tableView.reloadData() }
     }
-    open var footerBackgroundColor: UIColor = UIColor.clear {
+    open var footerBackgroundColor: UIColor = Theme.Colors.clear {
         didSet { self.footerView.backgroundColor = self.footerBackgroundColor }
     }
     open var footerSpacing: CGFloat = 8 {
         didSet { self.footerView.spacing = self.footerSpacing }
     }
-    open var headerBackgroundColor: UIColor = UIColor.clear {
+    open var headerBackgroundColor: UIColor = Theme.Colors.clear {
         didSet { self.headerView.backgroundColor = self.headerBackgroundColor }
     }
     open var isBottomToSafeArea: Bool = true
@@ -66,7 +66,7 @@ open class FormsTableViewController: FormsViewController, UITableViewDelegate, U
     open var tableAlwaysBounceVertical: Bool = false {
         didSet { self.tableView.alwaysBounceVertical = self.tableAlwaysBounceVertical }
     }
-    open var tableBackgroundColor: UIColor = UIColor.clear {
+    open var tableBackgroundColor: UIColor = Theme.Colors.clear {
         didSet { self.tableView.backgroundColor = self.tableBackgroundColor }
     }
     open var tableContentInset: UIEdgeInsets = UIEdgeInsets(0) {

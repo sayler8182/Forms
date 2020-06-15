@@ -18,20 +18,27 @@ public extension Button {
         case loading
     }
     
-    class State<T> {
+    struct State<T> {
         var active: T
         var selected: T
         var disabled: T
         var loading: T
         
-        init(_ value: T) {
+        public init(_ value: T) {
             self.active = value
             self.selected = value
             self.disabled = value
             self.loading = value
         }
         
-        init(active: T, selected: T, disabled: T, loading: T) {
+        public init(active: T, selected: T, disabled: T) {
+            self.active = active
+            self.selected = selected
+            self.disabled = disabled
+            self.loading = active
+        }
+        
+        public init(active: T, selected: T, disabled: T, loading: T) {
             self.active = active
             self.selected = selected
             self.disabled = disabled
@@ -50,7 +57,7 @@ public extension Button {
 }
 
 // MARK: Button
-open class Button: FormsComponent, Clickable, FormsComponentWithLoading, FormsComponentWithMarginEdgeInset {
+open class Button: FormsComponent, Clickable, FormsComponentWithLoading, FormsComponentWithMarginEdgeInset, FormsComponentWithPaddingEdgeInset {
     private let backgroundView = UnShimmerableView()
         .with(isUserInteractionEnabled: true)
     private let titleLabel = UnShimmerableLabel()
@@ -59,11 +66,12 @@ open class Button: FormsComponent, Clickable, FormsComponentWithLoading, FormsCo
     private let gestureRecognizer = UILongPressGestureRecognizer()
     
     open var animationTime: TimeInterval = 0.2
-    open var backgroundColors: State<UIColor?> = State<UIColor?>(Theme.Colors.primaryBackground) {
+    open var backgroundColors: State<UIColor?> = State<UIColor?>(Theme.Colors.primaryLight) {
         didSet { self.updateState() }
     }
-    open var marginEdgeInset: UIEdgeInsets = UIEdgeInsets(0) {
-        didSet { self.updateMarginEdgeInset() }
+    open var cornerRadius: CGFloat {
+        get { return self.backgroundView.layer.cornerRadius }
+        set { self.backgroundView.layer.cornerRadius = newValue }
     }
     open var height: CGFloat = UITableView.automaticDimension
     open var isEnabled: Bool = true {
@@ -72,21 +80,24 @@ open class Button: FormsComponent, Clickable, FormsComponentWithLoading, FormsCo
     open var isLoading: Bool = false {
         didSet { self.updateGesture() }
     }
+    open var marginEdgeInset: UIEdgeInsets = UIEdgeInsets(0) {
+        didSet { self.updateMarginEdgeInset() }
+    }
     open var maxHeight: CGFloat = CGFloat.greatestConstraintConstant {
         didSet { self.updateMaxHeight() }
     }
     open var minHeight: CGFloat = 0.0 {
         didSet { self.updateMinHeight() }
     }
+    open var paddingEdgeInset: UIEdgeInsets = UIEdgeInsets(0) {
+        didSet { self.updatePaddingEdgeInset() }
+    }
     open var title: String? {
         get { return self.titleLabel.text }
         set { self.titleLabel.text = newValue }
     }
-    open var titleColors: State<UIColor?> = State<UIColor?>(Theme.Colors.primaryText) {
+    open var titleColors: State<UIColor?> = State<UIColor?>(Theme.Colors.primaryDark) {
         didSet { self.updateState() }
-    }
-    open var titleEdgeInset: UIEdgeInsets = UIEdgeInsets(0) {
-        didSet { self.updateTitleEdgeInset() }
     }
     open var titleFonts: State<UIFont> = State<UIFont>(Theme.Fonts.regular(ofSize: 14)) {
         didSet { self.updateState() }
@@ -202,8 +213,8 @@ open class Button: FormsComponent, Clickable, FormsComponentWithLoading, FormsCo
         self.backgroundView.constraint(to: self, position: .trailing)?.constant = -edgeInset.trailing
     }
     
-    private func updateTitleEdgeInset() {
-        let edgeInset: UIEdgeInsets = self.titleEdgeInset
+    private func updatePaddingEdgeInset() {
+        let edgeInset: UIEdgeInsets = self.paddingEdgeInset
         self.titleLabel.frame = self.backgroundView.bounds.with(inset: edgeInset)
         self.titleLabel.constraint(to: self.backgroundView, position: .top)?.constant = edgeInset.top
         self.titleLabel.constraint(to: self.backgroundView, position: .bottom)?.constant = -edgeInset.bottom
@@ -330,10 +341,6 @@ public extension Button {
     }
     func with(titleColors: State<UIColor?>) -> Self {
         self.titleColors = titleColors
-        return self
-    }
-    func with(titleEdgeInset: UIEdgeInsets) -> Self {
-        self.titleEdgeInset = titleEdgeInset
         return self
     }
     func with(titleFont: UIFont) -> Self {

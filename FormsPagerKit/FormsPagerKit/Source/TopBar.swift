@@ -46,7 +46,7 @@ open class TopBar: FormsComponent {
     open var separatorColor: UIColor? = Theme.Colors.gray {
         didSet { self.separatorView.backgroundColor = self.separatorColor }
     }
-    open var titleColor: UIColor? = Theme.Colors.primaryText {
+    open var titleColor: UIColor? = Theme.Colors.primaryDark {
         didSet { self.collectionView.reloadData() }
     }
     open var titleEdgeInset: UIEdgeInsets = UIEdgeInsets(vertical: 8, horizontal: 16) {
@@ -55,13 +55,13 @@ open class TopBar: FormsComponent {
     open var titleFont: UIFont = Theme.Fonts.regular(ofSize: 14) {
         didSet { self.collectionView.reloadData() }
     }
-    open var titleSelectedColor: UIColor? = Theme.Colors.primaryText {
+    open var titleSelectedColor: UIColor? = Theme.Colors.primaryDark {
         didSet { self.collectionView.reloadData() }
     }
     open var titleSelectedFont: UIFont = Theme.Fonts.bold(ofSize: 14) {
         didSet { self.collectionView.reloadData() }
     }
-    open var underlineColor: UIColor? = Theme.Colors.primaryText {
+    open var underlineColor: UIColor? = Theme.Colors.primaryDark {
         didSet { self.underlineView.backgroundColor = self.underlineColor }
     }
     
@@ -95,7 +95,7 @@ open class TopBar: FormsComponent {
         if #available(iOS 11.0, *) {
             self.collectionView.contentInsetAdjustmentBehavior = .never
         }
-        self.collectionView.backgroundColor = UIColor.clear
+        self.collectionView.backgroundColor = Theme.Colors.clear
         self.collectionView.frame = self.bounds
         self.collectionView.delegate = self
         self.collectionView.dataSource = self

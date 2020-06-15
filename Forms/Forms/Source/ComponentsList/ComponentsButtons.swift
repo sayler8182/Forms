@@ -19,10 +19,10 @@ public enum ComponentsButtons: ComponentsList {
         component.marginEdgeInset = UIEdgeInsets(0)
         component.minHeight = 44.0
         component.maxHeight = CGFloat.greatestConstraintConstant
-        component.title = nil
-        component.titleEdgeInset = UIEdgeInsets(
-            vertical: 5,
+        component.paddingEdgeInset = UIEdgeInsets(
+            vertical: 6,
             horizontal: 16)
+        component.title = nil
         component.titleNumberOfLines = 2
         component.titleTextAlignment = NSTextAlignment.center
         component.onSetTheme = Strong(component) { (component) in
@@ -31,7 +31,7 @@ public enum ComponentsButtons: ComponentsList {
                 selected: Theme.Colors.blue.withAlphaComponent(0.7),
                 disabled: Theme.Colors.gray,
                 loading: Theme.Colors.blue)
-            component.titleColors = Button.State<UIColor?>(UIColor.white)
+            component.titleColors = Button.State<UIColor?>(Theme.Colors.white)
             component.titleFonts = Button.State<UIFont>(Theme.Fonts.regular(ofSize: 14))
         }
         return component

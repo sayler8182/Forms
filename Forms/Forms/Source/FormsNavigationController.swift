@@ -76,11 +76,11 @@ open class FormsNavigationController: UINavigationController, AppLifecycleable, 
     open func setTheme() {
         self.setNeedsStatusBarAppearanceUpdate()
         self.navigationBar.titleTextAttributes = [
-            NSAttributedString.Key.foregroundColor: Theme.Colors.primaryText
+            NSAttributedString.Key.foregroundColor: Theme.Colors.primaryDark
         ]
-        self.navigationBar.tintColor = Theme.Colors.primaryText
-        self.navigationBar.barTintColor = Theme.Colors.primaryBackground
-        self.view.backgroundColor = Theme.Colors.primaryBackground
+        self.navigationBar.tintColor = Theme.Colors.primaryDark
+        self.navigationBar.barTintColor = Theme.Colors.primaryLight
+        self.view.backgroundColor = Theme.Colors.primaryLight
     }
     
     open func appLifecycleable(event: AppLifecycleEvent) { }

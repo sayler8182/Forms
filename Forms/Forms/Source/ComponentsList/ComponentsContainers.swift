@@ -23,7 +23,7 @@ public enum ComponentsContainers: ComponentsList {
         component.showsVerticalScrollIndicator = false
         component.spacing = 0
         component.onSetTheme = Strong(component) { (component) in
-            component.backgroundColor = Theme.Colors.primaryBackground
+            component.backgroundColor = Theme.Colors.primaryLight
         }
         return component
     }
@@ -37,13 +37,14 @@ public enum ComponentsContainers: ComponentsList {
         component.isAutomatic = false
         component.isPagingEnabled = true
         component.paddingEdgeInset = UIEdgeInsets(0)
-        component.pageBackgroundColor = UIColor.clear
-        component.pageIndicatorTintColor = Theme.Colors.gray
-        component.pageCurrentPageIndicatorTintColor = UIColor.gray
+        
         component.pageIsHidden = false
         component.scrollDirection = .horizontal
         component.onSetTheme = Strong(component) { (component) in
-            component.backgroundColor = Theme.Colors.primaryBackground
+            component.backgroundColor = Theme.Colors.primaryLight
+            component.pageBackgroundColor = Theme.Colors.clear
+            component.pageCurrentPageIndicatorTintColor = Theme.Colors.primaryDark
+            component.pageIndicatorTintColor = Theme.Colors.gray
         }
         return component
     }
@@ -57,7 +58,7 @@ public enum ComponentsContainers: ComponentsList {
         component.height = 100
         component.paddingEdgeInset = UIEdgeInsets(0)
         component.onSetTheme = Strong(component) { (component) in
-            component.backgroundColor = Theme.Colors.primaryBackground
+            component.backgroundColor = Theme.Colors.primaryLight
         }
         return component
     }
@@ -66,7 +67,7 @@ public enum ComponentsContainers: ComponentsList {
         let component = View()
         component.height = UITableView.automaticDimension
         component.onSetTheme = Strong(component) { (component) in
-            component.backgroundColor = Theme.Colors.primaryBackground
+            component.backgroundColor = Theme.Colors.primaryLight
         }
         return component
     }

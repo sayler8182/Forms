@@ -92,7 +92,7 @@ open class ScrollContainer: FormsComponent, FormsComponentWithMarginEdgeInset, F
     }
     
     private func setupScrollView() {
-        self.scrollView.backgroundColor = UIColor.clear
+        self.scrollView.backgroundColor = Theme.Colors.clear
         self.scrollView.delegate = self
         self.scrollView.frame = self.backgroundView.bounds
         self.scrollView.clipsToBounds = true

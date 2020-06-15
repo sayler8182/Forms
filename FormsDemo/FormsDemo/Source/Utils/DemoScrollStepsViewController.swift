@@ -22,7 +22,7 @@ class DemoScrollStepsViewController: FormsViewController {
         .with(showsVerticalScrollIndicator: true)
     private let scrollContentView = Components.container.view()
         .with(anchors: { [Anchor.to($0).height(4_000)] })
-        .with(backgroundColor: Theme.Colors.secondaryBackground)
+        .with(backgroundColor: Theme.Colors.secondaryLight)
     private let bottomView = Components.container.view()
         .with(backgroundColor: Theme.Colors.red)
 

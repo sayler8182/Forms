@@ -24,28 +24,28 @@ public extension Checkbox {
         let disabled: T
         let disabledSelected: T
         
-        init(_ value: T) {
+        public init(_ value: T) {
             self.active = value
             self.selected = value
             self.disabled = value
             self.disabledSelected = value
         }
         
-        init(active: T, selected: T) {
+        public init(active: T, selected: T) {
             self.active = active
             self.selected = selected
             self.disabled = active
             self.disabledSelected = selected
         }
         
-        init(active: T, selected: T, disabled: T) {
+        public init(active: T, selected: T, disabled: T) {
             self.active = active
             self.selected = selected
             self.disabled = disabled
             self.disabledSelected = disabled
         }
         
-        init(active: T, selected: T, disabled: T, disabledSelected: T) {
+        public init(active: T, selected: T, disabled: T, disabledSelected: T) {
             self.active = active
             self.selected = selected
             self.disabled = disabled
@@ -83,14 +83,14 @@ open class Checkbox: FormsComponent, FormsComponentWithGroup, FormsComponentWith
     private let gestureRecognizer = UITapGestureRecognizer()
     
     open var animationTime: TimeInterval = 0.2
-    open var backgroundColors: State<UIColor?> = State<UIColor?>(Theme.Colors.primaryBackground) {
+    open var backgroundColors: State<UIColor?> = State<UIColor?>(Theme.Colors.primaryLight) {
         didSet { self.updateState() }
     }
     open var groupKey: String? = nil
     open var images: State<(() -> UIImage?)?> = State<(() -> UIImage?)?>(nil) {
         didSet { self.updateState() }
     }
-    open var imageColors: State<UIColor?> = State<UIColor?>(Theme.Colors.primaryText) {
+    open var imageColors: State<UIColor?> = State<UIColor?>(Theme.Colors.primaryDark) {
         didSet { self.updateState() }
     }
     open var imageSize: CGSize? = nil {
@@ -120,7 +120,7 @@ open class Checkbox: FormsComponent, FormsComponentWithGroup, FormsComponentWith
         get { return self.titleLabel.text }
         set { self.titleLabel.text = newValue }
     }
-    open var titleColors: State<UIColor?> = State<UIColor?>(Theme.Colors.primaryText) {
+    open var titleColors: State<UIColor?> = State<UIColor?>(Theme.Colors.primaryDark) {
         didSet { self.updateState() }
     }
     open var titleFonts: State<UIFont> = State<UIFont>(Theme.Fonts.bold(ofSize: 12)) {
@@ -130,7 +130,7 @@ open class Checkbox: FormsComponent, FormsComponentWithGroup, FormsComponentWith
         get { return self.valueLabel.text }
         set { self.valueLabel.text = newValue }
     }
-    open var valueColors: State<UIColor?> = State<UIColor?>(Theme.Colors.primaryText) {
+    open var valueColors: State<UIColor?> = State<UIColor?>(Theme.Colors.primaryDark) {
         didSet { self.updateState() }
     }
     open var valueFonts: State<UIFont> = State<UIFont>(Theme.Fonts.regular(ofSize: 10)) {

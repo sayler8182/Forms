@@ -25,6 +25,7 @@ FBSDKLoginKit.framework
 Sign in with Google
 
 ```
+LocalAuthentication.framework
 AppAuth.framework
 GTMAppAuth.framework
 GTMSessionFetcher.framework
@@ -37,18 +38,12 @@ GoogleSignIn.framework
 - [x] Sign in with Facebook
 - [x] Sign in with Google
 
-## NOTICE
-Currently firebase DOSN'T support dynamic framework. There could be a problem with *Sign in with Google* when you use *Analytics* or *Notifications* framework 
-see https://github.com/firebase/firebase-ios-sdk/blob/master/docs/firebase_in_libraries.md
-
 ## Usage
 
 ## Configuration
 
 ```swift
-SocialKit.configure(
-    googleClientID: "CLIENT_ID"
-)
+SocialKit.configure()
 ```
 
 ## Usage - Sign in with Apple - iOS 13+ only
@@ -62,7 +57,7 @@ import AuthenticationServices
 ### Authorization
 
 ```swift
-let provider = SignInWithAppleProvider(context: context)
+let provider = DemoSignInWithAppleProvider(context: context)
 self.provider.authorization(
     scopes: [.email],
     onSuccess: { (_) in },
@@ -100,7 +95,7 @@ import FBSDKLoginKit
 ### Authorization
 
 ```swift
-let provider = SignInWithFacebookProvider(context: context)
+let provider = DemoSignInWithFacebookProvider(context: context)
 self.provider.authorization(
     permissions: ["email"],
     onSuccess: { (_) in },
@@ -133,7 +128,7 @@ Library uses Firebase service. You should create and configure project [here](ht
 ### Authorization
 
 ```swift
-let provider = SignInWithGoogleProvider(context: context)
+let provider = DemoSignInWithGoogleProvider(context: context)
 self.provider.authorization(
     onSuccess: { (_) in },
     onError: { (_) in },

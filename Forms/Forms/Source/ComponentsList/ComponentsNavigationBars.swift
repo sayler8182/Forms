@@ -22,8 +22,8 @@ public enum ComponentsNavigationBars: ComponentsList {
         component.title = nil
         component.titleView = nil
         component.onSetTheme = Strong(component) { (component) in
-            component.backgroundColor = Theme.Colors.primaryBackground
-            component.tintColor = Theme.Colors.primaryText
+            component.backgroundColor = Theme.Colors.primaryLight
+            component.tintColor = Theme.Colors.primaryDark
         }
         return component
     }

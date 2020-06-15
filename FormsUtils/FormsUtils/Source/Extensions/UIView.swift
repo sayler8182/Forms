@@ -25,7 +25,7 @@ public extension UIView {
     static var safeArea: UIEdgeInsets {
         if #available(iOS 13.0, *) {
             let _window: UIWindow? = UIApplication.shared.connectedScenes
-                .filter { $0.activationState == .foregroundActive }
+                .filter { $0.activationState == .foregroundActive || $0.activationState == .foregroundInactive }
                 .map { $0 as? UIWindowScene }
                 .compactMap { $0 }
                 .flatMap { $0.windows }

@@ -6,12 +6,6 @@
 //  Copyright © 2020 Limbo. All rights reserved.
 //
 
-#if canImport(GoogleSignIn)
-
-import AppAuth
-import GoogleSignIn
-import GTMAppAuth
-import GTMSessionFetcher
 import UIKit
 
 // MARK: SignInWithGoogleError
@@ -27,17 +21,31 @@ public struct SignInWithGoogleData {
     public let fullName: String?
     public let givenName: String?
     public let familyName: String?
+    
+    public init(userId: String,
+                authenticationToken: String,
+                email: String?,
+                fullName: String?,
+                givenName: String?,
+                familyName: String?) {
+        self.userId = userId
+        self.authenticationToken = authenticationToken
+        self.email = email
+        self.fullName = fullName
+        self.givenName = givenName
+        self.familyName = familyName
+    }
 }
 
-// MARK: SignInWithGoogleProvider
-public class SignInWithGoogleProvider: NSObject {
-    private weak var context: UIViewController!
+// MARK: SignInWithGoogleProviderBase
+open class SignInWithGoogleProviderBase: NSObject {
+    public weak var context: UIViewController!
     
-    private var inProgress: Bool = false
-    private var onSuccess: ((SignInWithGoogleData) -> Void)? = nil
-    private var onError: ((Error) -> Void)? = nil
-    private var onCancel: (() -> Void)? = nil
-    private var onCompletion: ((SignInWithGoogleData?, Error?) -> Void)? = nil
+    public var inProgress: Bool = false
+    public var onSuccess: ((SignInWithGoogleData) -> Void)? = nil
+    public var onError: ((Error) -> Void)? = nil
+    public var onCancel: (() -> Void)? = nil
+    public var onCompletion: ((SignInWithGoogleData?, Error?) -> Void)? = nil
     
     public init(context: UIViewController) {
         self.context = context
@@ -56,58 +64,18 @@ public class SignInWithGoogleProvider: NSObject {
         self.authorization()
     }
     
-    public func authorization() {
-        GIDSignIn.sharedInstance()?.delegate = self
-        GIDSignIn.sharedInstance()?.presentingViewController = self.context
-        GIDSignIn.sharedInstance().signIn()
+    open func authorization() {
+        // HOOK
     }
     
-    private func clear() {
+    open func logout() {
+        // HOOK
+    }
+    
+    public func clear() {
         self.inProgress = false
         self.onSuccess = nil
         self.onError = nil
         self.onCompletion = nil
     }
 }
-
-// MARK: SignInWithGoogleProvider
-extension SignInWithGoogleProvider: GIDSignInDelegate {
-    public func sign(_ signIn: GIDSignIn!,
-                     didDisconnectWith user: GIDGoogleUser!,
-                     withError error: Error!) {
-        defer { self.clear() }
-        self.onError?(error)
-        self.onCompletion?(nil, error)
-    }
-    
-    public func sign(_ signIn: GIDSignIn!,
-                     didSignInFor user: GIDGoogleUser!,
-                     withError error: Error!) {
-        defer { self.clear() }
-        if let error: NSError = error as NSError? {
-            if error.code == GIDSignInErrorCode.canceled.rawValue {
-                self.onCancel?()
-                self.onCompletion?(nil, nil)
-            } else {
-                self.onError?(error)
-                self.onCompletion?(nil, error)
-            }
-        } else if let user: GIDGoogleUser = user {
-            let data = SignInWithGoogleData(
-                userId: user.userID,
-                authenticationToken: user.authentication.idToken,
-                email: user.profile.email,
-                fullName: user.profile.name,
-                givenName: user.profile.givenName,
-                familyName: user.profile.familyName)
-            self.onSuccess?(data)
-            self.onCompletion?(data, nil)
-        } else {
-            let error: SignInWithGoogleError = .unableToLogIn
-            self.onError?(error)
-            self.onCompletion?(nil, error)
-        }
-    }
-}
-
-#endif

@@ -64,7 +64,7 @@ private class DemoProvider {
     func getContent() {
         let data = DemoNetworkUploadInput(
             name: "ImageName",
-            image: UIImage(color: UIColor.red))
+            image: UIImage(color: Theme.Colors.red))
         DemoNetworkMethods.demo.get(
             data: data,
             onSuccess: { [weak self] (data: DemoNetworkUploadOutput) in

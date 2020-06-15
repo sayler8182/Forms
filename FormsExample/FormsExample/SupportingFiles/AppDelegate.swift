@@ -17,6 +17,7 @@ import FormsLogger
 import FormsNotifications
 import FormsPermissions
 import FormsSocialKit
+import GoogleSignIn
 import UIKit
 
 @UIApplicationMain
@@ -41,6 +42,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         // Firebase
         FirebaseApp.configure()
+        
+        // GoogleSignIn
+        GIDSignIn.sharedInstance().clientID = "513688149579-fhj79mgkeq2rp689dpmfnn7nlkadnf31.apps.googleusercontent.com"
         
         // Analytics
         Analytics.register([
@@ -79,8 +83,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         Notifications.registerRemote()
         
         // SocialKit
-        SocialKit.configure(
-            googleClientId: "513688149579-fhj79mgkeq2rp689dpmfnn7nlkadnf31.apps.googleusercontent.com")
+        SocialKit.configure()
         
         // Root
         if #available(iOS 13.0, *) {

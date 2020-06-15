@@ -25,14 +25,14 @@ public extension TextField {
         let disabled: T
         let error: T
         
-        init(_ value: T) {
+        public init(_ value: T) {
             self.active = value
             self.selected = value
             self.disabled = value
             self.error = value
         }
         
-        init(active: T, selected: T, disabled: T, error: T) {
+        public init(active: T, selected: T, disabled: T, error: T) {
             self.active = active
             self.selected = selected
             self.disabled = disabled
@@ -244,7 +244,7 @@ open class TextField: FormsComponent, FormsComponentWithMarginEdgeInset, FormsCo
         get { return self.textField.autocorrectionType }
         set { self.textField.autocorrectionType = newValue }
     }
-    open var backgroundColors: State<UIColor?> = State<UIColor?>(Theme.Colors.primaryBackground) {
+    open var backgroundColors: State<UIColor?> = State<UIColor?>(Theme.Colors.primaryLight) {
         didSet { self.updateState() }
     }
     open var error: String? {
@@ -282,7 +282,7 @@ open class TextField: FormsComponent, FormsComponentWithMarginEdgeInset, FormsCo
         get { return self.textField.maskText }
         set { self.textField.maskText = newValue }
     }
-    open var maskColors: State<UIColor?> = State<UIColor?>(Theme.Colors.primaryText.withAlphaComponent(0.3)) {
+    open var maskColors: State<UIColor?> = State<UIColor?>(Theme.Colors.primaryDark.withAlphaComponent(0.3)) {
         didSet { self.updateState() }
     }
     open var maskFonts: State<UIFont> = State<UIFont>(Theme.Fonts.regular(ofSize: 16)) {
@@ -298,7 +298,7 @@ open class TextField: FormsComponent, FormsComponentWithMarginEdgeInset, FormsCo
         get { return self.textField.placeholder }
         set { self.textField.placeholder = newValue }
     }
-    open var placeholderColors: State<UIColor?> = State<UIColor?>(Theme.Colors.primaryText.withAlphaComponent(0.3)) {
+    open var placeholderColors: State<UIColor?> = State<UIColor?>(Theme.Colors.primaryDark.withAlphaComponent(0.3)) {
         didSet { self.updateState() }
     }
     open var placeholderFonts: State<UIFont> = State<UIFont>(Theme.Fonts.regular(ofSize: 16)) {
@@ -313,7 +313,7 @@ open class TextField: FormsComponent, FormsComponentWithMarginEdgeInset, FormsCo
         get { return self.textField.text }
         set { self.textField.text = newValue }
     }
-    open var textColors: State<UIColor?> = State<UIColor?>(Theme.Colors.primaryText) {
+    open var textColors: State<UIColor?> = State<UIColor?>(Theme.Colors.primaryDark) {
         didSet { self.updateState() }
     }
     private var _textFieldDelegate: UITextFieldDelegate? // swiftlint:disable:this weak_delegate
@@ -331,7 +331,7 @@ open class TextField: FormsComponent, FormsComponentWithMarginEdgeInset, FormsCo
         get { return self.titleLabel.text }
         set { self.titleLabel.text = newValue }
     }
-    open var titleColors: State<UIColor?> = State<UIColor?>(Theme.Colors.primaryText) {
+    open var titleColors: State<UIColor?> = State<UIColor?>(Theme.Colors.primaryDark) {
         didSet { self.updateState() }
     }
     open var titleFonts: State<UIFont> = State<UIFont>(Theme.Fonts.regular(ofSize: 10)) {

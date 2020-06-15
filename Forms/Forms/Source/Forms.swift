@@ -84,35 +84,40 @@ public enum Forms {
                 .blue: UIColor(rgba: 0x007AFFFF),
                 .gray: UIColor(rgba: 0x8E8E93FF),
                 .green: UIColor(rgba: 0x34C759FF),
+                .orange: UIColor(rgba: 0xFFA500FF),
                 .red: UIColor(rgba: 0xFF3B30FF),
-                .primaryText: UIColor(rgba: 0x000000FF),
-                .secondaryText: UIColor(rgba: 0x3C3C4399),
-                .tertiaryText: UIColor(rgba: 0x3C3C434D),
-                .primaryBackground: UIColor(rgba: 0xFFFFFFFF),
-                .secondaryBackground: UIColor(rgba: 0xF2F2F7FF),
-                .tertiaryBackground: UIColor(rgba: 0xFFFFFFFF)
+                .primaryDark: UIColor(rgba: 0x000000FF),
+                .secondaryDark: UIColor(rgba: 0x3C3C4399),
+                .tertiaryDark: UIColor(rgba: 0x3C3C434D),
+                .primaryLight: UIColor(rgba: 0xFFFFFFFF),
+                .secondaryLight: UIColor(rgba: 0xF2F2F7FF),
+                .tertiaryLight: UIColor(rgba: 0xFFFFFFFF)
             ], statusBar: .dark)
         }
+        .inScope(InjectorScope.container)
         injector.register(ThemeColorsProtocol.self, name: ThemeType.dark.key) { _ in
             ThemeColors(colors: [
                 .blue: UIColor(rgba: 0x0A84FFFF),
                 .gray: UIColor(rgba: 0x8E8E93FF),
                 .green: UIColor(rgba: 0x30D158FF),
+                .orange: UIColor(rgba: 0xFFA500FF),
                 .red: UIColor(rgba: 0xFF375FFF),
-                .primaryText: UIColor(rgba: 0xFFFFFFFF),
-                .secondaryText: UIColor(rgba: 0xEBEBF599),
-                .tertiaryText: UIColor(rgba: 0xEBEBF54D),
-                .primaryBackground: UIColor(rgba: 0x000000FF),
-                .secondaryBackground: UIColor(rgba: 0x1C1C1EFF),
-                .tertiaryBackground: UIColor(rgba: 0x2C2C2EFF)
+                .primaryDark: UIColor(rgba: 0xFFFFFFFF),
+                .secondaryDark: UIColor(rgba: 0xEBEBF599),
+                .tertiaryDark: UIColor(rgba: 0xEBEBF54D),
+                .primaryLight: UIColor(rgba: 0x000000FF),
+                .secondaryLight: UIColor(rgba: 0x1C1C1EFF),
+                .tertiaryLight: UIColor(rgba: 0x2C2C2EFF)
             ], statusBar: .light)
         }
+        .inScope(InjectorScope.container)
         injector.register(ThemeFontsProtocol.self) { _ in
             ThemeFonts(fonts: [
                 .bold: { UIFont.boldSystemFont(ofSize: $0) },
                 .regular: { UIFont.systemFont(ofSize: $0) }
             ])
-        } 
+        }
+        .inScope(InjectorScope.container)
     }
     
     private static func configureConfigurations(_ injector: Injector) {

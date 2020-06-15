@@ -24,13 +24,13 @@ public extension Configuration {
     struct Toast: ConfigurationToastProtocol {
         public var lifeTime: TimeInterval = 3
         public var backgroundColor = ToastStyle(
-            info: Theme.Colors.primaryBackground,
+            info: Theme.Colors.primaryLight,
             success: Theme.Colors.green,
             error: Theme.Colors.red)
         public var titleColor = ToastStyle(
-            info: Theme.Colors.primaryText,
-            success: UIColor.black,
-            error: UIColor.white)
+            info: Theme.Colors.primaryDark,
+            success: Theme.Colors.black,
+            error: Theme.Colors.white)
         public var titleFont = ToastStyle(Theme.Fonts.bold(ofSize: 14))
         public var toastView: () -> ToastView = { ToastView() }
     }
@@ -157,7 +157,7 @@ open class ToastView: FormsComponent {
             animated: animated,
             completion: completion)
         let lifeTime: TimeInterval = self.lifeTime.or(Toast.configuration.lifeTime)
-        self.lifeTimer = Timer.scheduledTimer(withTimeInterval: lifeTime, repeats: false, block: { [weak self] (_) in
+        self.lifeTimer = Timer.scheduledTimer(withTimeInterval: lifeTime, repeats: false, block: { [weak self] _ in
             guard let `self` = self else { return }
             self.hide(animated: true, completion: nil)
         })

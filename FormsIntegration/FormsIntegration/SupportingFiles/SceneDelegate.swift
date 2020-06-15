@@ -16,23 +16,5 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     func scene(_ scene: UIScene,
                willConnectTo session: UISceneSession,
                options connectionOptions: UIScene.ConnectionOptions) {
-        guard let windowScene = (scene as? UIWindowScene) else { return }
-        let window: UIWindow = UIWindow(windowScene: windowScene)
-        Theme.setUserInterfaceStyle(window.traitCollection.userInterfaceStyle)
-        window.rootViewController = FormsIntegrationRootViewController()
-        self.window = window
-        window.makeKeyAndVisible()
-    }
-    
-    func sceneWillEnterForeground(_ scene: UIScene) {
-        guard let window: UIWindow = self.window else { return }
-        Theme.setUserInterfaceStyle(window.traitCollection.userInterfaceStyle)
-    }
-    
-    func windowScene(_ windowScene: UIWindowScene,
-                     didUpdate previousCoordinateSpace: UICoordinateSpace,
-                     interfaceOrientation previousInterfaceOrientation: UIInterfaceOrientation,
-                     traitCollection previousTraitCollection: UITraitCollection) {
-        Theme.setUserInterfaceStyle(windowScene.traitCollection.userInterfaceStyle)
     }
 }

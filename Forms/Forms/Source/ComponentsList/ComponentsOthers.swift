@@ -17,7 +17,7 @@ public enum ComponentsOthers: ComponentsList {
         component.isAnimating = true
         component.paddingEdgeInset = UIEdgeInsets(0)
         component.onSetTheme = Strong(component) { (component) in
-            component.backgroundColor = UIColor.clear
+            component.backgroundColor = Theme.Colors.clear
             component.color = Theme.Colors.gray
         }
         return component

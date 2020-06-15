@@ -25,14 +25,14 @@ public extension TextView {
         let disabled: T
         let error: T
         
-        init(_ value: T) {
+        public init(_ value: T) {
             self.active = value
             self.selected = value
             self.disabled = value
             self.error = value
         }
         
-        init(active: T, selected: T, disabled: T, error: T) {
+        public init(active: T, selected: T, disabled: T, error: T) {
             self.active = active
             self.selected = selected
             self.disabled = disabled
@@ -171,7 +171,7 @@ open class TextView: FormsComponent, FormsComponentWithMarginEdgeInset, FormsCom
         get { return self.textView.autocorrectionType }
         set { self.textView.autocorrectionType = newValue }
     }
-    open var backgroundColors: State<UIColor?> = State<UIColor?>(Theme.Colors.primaryBackground) {
+    open var backgroundColors: State<UIColor?> = State<UIColor?>(Theme.Colors.primaryLight) {
         didSet { self.updateState() }
     }
     open var marginEdgeInset: UIEdgeInsets = UIEdgeInsets(0) {
@@ -211,7 +211,7 @@ open class TextView: FormsComponent, FormsComponentWithMarginEdgeInset, FormsCom
         get { return self.textView.placeholder }
         set { self.textView.placeholder = newValue }
     }
-    open var placeholderColors: State<UIColor?> = State<UIColor?>(Theme.Colors.primaryText.withAlphaComponent(0.3)) {
+    open var placeholderColors: State<UIColor?> = State<UIColor?>(Theme.Colors.primaryDark.withAlphaComponent(0.3)) {
         didSet { self.updateState() }
     }
     open var placeholderFonts: State<UIFont> = State<UIFont>(Theme.Fonts.regular(ofSize: 16)) {
@@ -226,7 +226,7 @@ open class TextView: FormsComponent, FormsComponentWithMarginEdgeInset, FormsCom
         get { return self.textView.text }
         set { self.textView.text = newValue }
     }
-    open var textColors: State<UIColor?> = State<UIColor?>(Theme.Colors.primaryText) {
+    open var textColors: State<UIColor?> = State<UIColor?>(Theme.Colors.primaryDark) {
         didSet { self.updateState() }
     }
     open var textFonts: State<UIFont> = State<UIFont>(Theme.Fonts.regular(ofSize: 16)) {
@@ -241,13 +241,13 @@ open class TextView: FormsComponent, FormsComponentWithMarginEdgeInset, FormsCom
         get { return self.titleLabel.text }
         set { self.titleLabel.text = newValue }
     }
-    open var titleColors: State<UIColor?> = State<UIColor?>(Theme.Colors.primaryText) {
+    open var titleColors: State<UIColor?> = State<UIColor?>(Theme.Colors.primaryDark) {
         didSet { self.updateState() }
     }
     open var titleFonts: State<UIFont> = State<UIFont>(Theme.Fonts.regular(ofSize: 10)) {
         didSet { self.updateState() }
     }
-    open var underscoreColors: State<UIColor?> = State<UIColor?>(Theme.Colors.primaryText) {
+    open var underscoreColors: State<UIColor?> = State<UIColor?>(Theme.Colors.primaryDark) {
         didSet { self.updateState() }
     }
     

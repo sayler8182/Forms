@@ -33,16 +33,16 @@ open class FormsCollectionViewController: FormsViewController, UICollectionViewD
     private var refreshControl: UIRefreshControl? = nil
     private var shimmerDataSource: ShimmerCollectionDataSource? = nil
     
-    open var cellBackgroundColor: UIColor = UIColor.clear {
+    open var cellBackgroundColor: UIColor = Theme.Colors.clear {
         didSet { self.collectionView.reloadData() }
     }
-    open var footerBackgroundColor: UIColor = UIColor.clear {
+    open var footerBackgroundColor: UIColor = Theme.Colors.clear {
         didSet { self.footerView.backgroundColor = self.footerBackgroundColor }
     }
     open var footerSpacing: CGFloat = 8 {
         didSet { self.footerView.spacing = self.footerSpacing }
     }
-    open var headerBackgroundColor: UIColor = UIColor.clear {
+    open var headerBackgroundColor: UIColor = Theme.Colors.clear {
         didSet { self.headerView.backgroundColor = self.headerBackgroundColor }
     }
     open var isBottomToSafeArea: Bool = true
@@ -67,7 +67,7 @@ open class FormsCollectionViewController: FormsViewController, UICollectionViewD
     open var collectionAlwaysBounceVertical: Bool = false {
         didSet { self.collectionView.alwaysBounceVertical = self.collectionAlwaysBounceVertical }
     }
-    open var collectionBackgroundColor: UIColor = UIColor.clear {
+    open var collectionBackgroundColor: UIColor = Theme.Colors.clear {
         didSet { self.collectionView.backgroundColor = self.collectionBackgroundColor }
     }
     open var collectionContentInset: UIEdgeInsets = UIEdgeInsets(0) {

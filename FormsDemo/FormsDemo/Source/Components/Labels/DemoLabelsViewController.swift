@@ -24,7 +24,7 @@ class DemoLabelsViewController: FormsTableViewController {
     private let veryLongLabel = Components.label.default()
         .with(alignment: .notNatural)
         .with(backgroundColor: Theme.Colors.blue)
-        .with(color: UIColor.white)
+        .with(color: Theme.Colors.white)
         .with(numberOfLines: 0)
         .with(padding: 16)
         .with(text: LoremIpsum.paragraph(sentences: 15))

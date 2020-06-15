@@ -15,15 +15,15 @@ class DemoSocialKitAllTableViewController: FormsTableViewController {
     private let signInWithApple: FormsComponent? = {
         if #available(iOS 13.0, *) {
             return Components.social.signInWithApple()
-                .with(paddingEdgeInset: UIEdgeInsets(top: 16, leading: 16, bottom: 0, trailing: 16))
+                .with(marginEdgeInset: UIEdgeInsets(top: 16, leading: 16, bottom: 0, trailing: 16))
         } else {
             return nil
         }
     }()
     private let signInWithFacebook = Components.social.signInWithFacebook()
-        .with(paddingHorizontal: 16)
+        .with(marginHorizontal: 16)
     private let signInWithGoogle = Components.social.signInWithGoogle()
-        .with(paddingHorizontal: 16)
+        .with(marginHorizontal: 16)
     
     private let divider = Components.utils.divider()
         .with(height: 5.0)

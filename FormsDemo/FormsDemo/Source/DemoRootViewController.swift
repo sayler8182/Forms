@@ -485,11 +485,6 @@ private class DemoListViewController: FormsViewController {
         return true
     }
     
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        self.searchController.isActive = false
-    }
-    
     override func postInit() {
         super.postInit()
         self.searchDataSource.onFilter = { (items, query) in
@@ -511,7 +506,7 @@ private class DemoListViewController: FormsViewController {
         self.tableView.keyboardDismissMode = .interactive
         self.tableView.estimatedRowHeight = 44
         self.tableView.backgroundView = UIView()
-        self.tableView.backgroundColor = UIColor.clear
+        self.tableView.backgroundColor = Theme.Colors.clear
         self.tableView.rowHeight = UITableView.automaticDimension
         self.tableView.separatorStyle = UITableViewCell.SeparatorStyle.none
         self.tableView.allowsSelection = true
@@ -616,12 +611,7 @@ private class DemoListViewController: FormsViewController {
         case .kitPagerKit:                                      return DemoPagerKitController()
         case .kitSideMenuKit:                                   return DemoSideMenuKitController()
         case .kitSocialKitAll:                                  return DemoSocialKitAllTableViewController()
-        case .kitSocialKitApple:
-            if #available(iOS 13.0, *) {
-                return DemoSocialKitAppleTableViewController()
-            } else {
-                return nil
-            }
+        case .kitSocialKitApple:                                return DemoSocialKitAppleTableViewController()
         case .kitSocialKitFacebook:                             return DemoSocialKitFacebookTableViewController()
         case .kitSocialKitGoogle:                               return DemoSocialKitGoogleTableViewController()
         case .kitTabBarKit:                                     return DemoTabBarKitController()
@@ -674,9 +664,9 @@ extension DemoListViewController: UITableViewDelegate, UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: self.defaultCellIdentifier, for: indexPath)
         let item: DemoSection = self.items[indexPath.section]
         let row: DemoRow = item.rows[indexPath.row]
-        cell.backgroundColor = UIColor.clear
-        cell.textLabel?.textColor = Theme.Colors.primaryText
-        cell.detailTextLabel?.textColor = Theme.Colors.secondaryText
+        cell.backgroundColor = Theme.Colors.clear
+        cell.textLabel?.textColor = Theme.Colors.primaryDark
+        cell.detailTextLabel?.textColor = Theme.Colors.secondaryDark
         cell.accessoryType = .disclosureIndicator
         cell.selectionStyle = .gray
         cell.textLabel?.text = row.title

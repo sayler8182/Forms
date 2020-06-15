@@ -25,8 +25,8 @@ public enum ComponentsSections: ComponentsList {
         component.paddingEdgeInset = UIEdgeInsets(top: 15, left: 15, bottom: 4, right: 15)
         component.text = nil
         component.onSetTheme = Strong(component) { (component) in
-            component.backgroundColor = Theme.Colors.secondaryBackground
-            component.color = Theme.Colors.primaryText
+            component.backgroundColor = Theme.Colors.secondaryLight
+            component.color = Theme.Colors.primaryDark
             component.font = Theme.Fonts.bold(ofSize: 14)
         }
         return component

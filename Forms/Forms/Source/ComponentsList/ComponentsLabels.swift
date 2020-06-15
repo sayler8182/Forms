@@ -24,8 +24,8 @@ public enum ComponentsLabels: ComponentsList {
         component.paddingEdgeInset = UIEdgeInsets(0)
         component.text = nil
         component.onSetTheme = Strong(component) { (component) in
-            component.backgroundColor = UIColor.clear
-            component.color = Theme.Colors.primaryText
+            component.backgroundColor = Theme.Colors.clear
+            component.color = Theme.Colors.primaryDark
             component.font = Theme.Fonts.regular(ofSize: 14)}
         return component
     }

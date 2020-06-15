@@ -15,12 +15,12 @@ import UIKit
 // MARK: DemoSocialKitGoogleTableViewController
 class DemoSocialKitGoogleTableViewController: FormsTableViewController {
     private let signInWithGoogle = Components.social.signInWithGoogle()
-        .with(padding: 16)
+        .with(margin: 16)
 
     private let divider = Components.utils.divider()
         .with(height: 5.0)
 
-    private lazy var signInWithGoogleProvider = SignInWithGoogleProvider(context: self)
+    private lazy var signInWithGoogleProvider = DemoSignInWithGoogleProvider(context: self)
 
     override func setupContent() {
         super.setupContent()
@@ -40,6 +40,7 @@ class DemoSocialKitGoogleTableViewController: FormsTableViewController {
 // MARK: SignInWithGoogle
 extension DemoSocialKitGoogleTableViewController {
     func signInWithGoogleAuthorization() {
+        self.signInWithGoogle.startLoading()
         self.signInWithGoogleProvider.authorization(
             onSuccess: { [weak self] (data) in
                 guard let `self` = self else { return }
@@ -53,6 +54,9 @@ extension DemoSocialKitGoogleTableViewController {
                 Toast.error()
                     .with(title: error.localizedDescription)
                     .show(in: self.navigationController)
+            }, onCompletion: { [weak self] (_, _) in
+                guard let `self` = self else { return }
+                self.signInWithGoogle.stopLoading()
         })
     }
 }

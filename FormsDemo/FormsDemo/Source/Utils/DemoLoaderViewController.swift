@@ -75,9 +75,9 @@ private class TitleLoaderView: LoaderView {
     
     override func setupView() {
         super.setupView()
-        self.backgroundColor = Theme.Colors.secondaryBackground
+        self.backgroundColor = Theme.Colors.secondaryLight
         self.layer.cornerRadius = 8
-        self.layer.shadowColor = UIColor.black.cgColor
+        self.layer.shadowColor = Theme.Colors.black.cgColor
     }
     
     func setTitle(_ title: String) {

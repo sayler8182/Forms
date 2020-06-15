@@ -103,7 +103,7 @@ open class FormsViewController: UIViewController, UIGestureRecognizerDelegate, A
     
     open func setTheme() {
         self.setNeedsStatusBarAppearanceUpdate()
-        self.view.backgroundColor = Theme.Colors.primaryBackground  
+        self.view.backgroundColor = Theme.Colors.primaryLight  
         self.view.flatSubviews
             .compactMap { $0 as? Themeable }
             .forEach { $0.setTheme() }

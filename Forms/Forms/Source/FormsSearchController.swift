@@ -26,13 +26,13 @@ public extension FormsSearchController {
         let selected: T
         let disabled: T
         
-        init(_ value: T) {
+        public init(_ value: T) {
             self.active = value
             self.selected = value
             self.disabled = value
         }
         
-        init(active: T, selected: T, disabled: T) {
+        public init(active: T, selected: T, disabled: T) {
             self.active = active
             self.selected = selected
             self.disabled = disabled
@@ -59,10 +59,10 @@ open class FormsSearchController: UISearchController, AppLifecycleable, Themeabl
         get { return self.searchBar.autocorrectionType }
         set { self.searchBar.autocorrectionType = newValue }
     }
-    open var backgroundColors: State<UIColor?> = State<UIColor?>(UIColor.clear) {
+    open var backgroundColors: State<UIColor?> = State<UIColor?>(Theme.Colors.clear) {
         didSet { self.updateState() }
     }
-    open var barTintColors: State<UIColor?> = State<UIColor?>(Theme.Colors.primaryBackground) {
+    open var barTintColors: State<UIColor?> = State<UIColor?>(Theme.Colors.primaryLight) {
         didSet { self.updateState() }
     }
     open var keyboardType: UIKeyboardType {
@@ -82,7 +82,7 @@ open class FormsSearchController: UISearchController, AppLifecycleable, Themeabl
         get { return self.searchBar.text }
         set { self.searchBar.text = newValue }
     }
-    open var textColors: State<UIColor?> = State<UIColor?>(Theme.Colors.primaryText) {
+    open var textColors: State<UIColor?> = State<UIColor?>(Theme.Colors.primaryDark) {
         didSet { self.updateState() }
     }
     private var _textFieldDelegate: UITextFieldDelegate? // swiftlint:disable:this weak_delegate
@@ -194,7 +194,7 @@ open class FormsSearchController: UISearchController, AppLifecycleable, Themeabl
     
     open func setupContent() {
         self.obscuresBackgroundDuringPresentation = false
-        self.view.backgroundColor = UIColor.clear
+        self.view.backgroundColor = Theme.Colors.clear
         // HOOK
     }
     

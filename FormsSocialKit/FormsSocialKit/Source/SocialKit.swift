@@ -2,53 +2,50 @@
 //  SocialKit.swift
 //  FormsSocialKit
 //
-//  Created by Konrad on 4/17/20.
+//  Created by Konrad on 6/13/20.
 //  Copyright © 2020 Limbo. All rights reserved.
-// 
+//
 
-#if canImport(FBSDKLoginKit)
-#if !canImport(FBSDKCoreKit)
-#warning("If you import FBSDKLoginKit you need also import FBSDKCoreKit")
-#endif
+import Forms
+import FormsInjector
+import UIKit
 
-#endif
+// MARK: ThemeColorsKey
+public extension ThemeColorsKey {
+    static var appleSocialKit = ThemeColorsKey("appleSocialKit")
+    static var facebookSocialKit = ThemeColorsKey("facebookSocialKit")
+    static var googleSocialKit = ThemeColorsKey("googleSocialKit")
+}
 
-#if canImport(GoogleSignIn)
-#if !canImport(AppAuth) || !canImport(GTMAppAuth) || !canImport(GTMSessionFetcher)
-#warning("If you import GoogleSignIn you need also import AppAuth, GTMAppAuth and GTMSessionFetcher")
-#endif
-#endif
-
-import Foundation
-#if canImport(FBSDKLoginKit)
-import FBSDKCoreKit
-import FBSDKLoginKit
-#endif
-#if canImport(GoogleSignIn)
-import AppAuth
-import GoogleSignIn
-import GTMAppAuth
-import GTMSessionFetcher
-#endif
-
-public enum SocialKit {
-    private static var googleClientId: String? = nil
-    
-    public static func configure(googleClientId: String? = nil) {
-        Self.googleClientId = googleClientId
-        
-        Self.configureApple()
-        Self.configureFacebook()
-        Self.configureGoogle()
+// MARK: ThemeColorsProtocol
+public extension ThemeColorsProtocol {
+    var appleSocialKit: UIColor {
+        return self.color(.appleSocialKit)
     }
     
-    private static func configureApple() { }
+    var facebookSocialKit: UIColor {
+        return self.color(.facebookSocialKit)
+    }
     
-    private static func configureFacebook() { }
-    
-    private static func configureGoogle() {
-        #if canImport(GoogleSignIn)
-        GIDSignIn.sharedInstance().clientID = Self.googleClientId
-        #endif
+    var googleSocialKit: UIColor {
+        return self.color(.googleSocialKit)
+    }
+}
+
+// MARK: SocialKit
+public enum SocialKit {
+    public static func configure() {
+        let lightTheme: ThemeColorsProtocol? = Injector.main.resolve(ThemeType.light.key)
+        lightTheme?.register([
+            .appleSocialKit: UIColor.black,
+            .facebookSocialKit: UIColor(0x3B5998),
+            .googleSocialKit: UIColor(0xDF4930)
+        ])
+        let darkTheme: ThemeColorsProtocol? = Injector.main.resolve(ThemeType.dark.key)
+        darkTheme?.register([
+            .appleSocialKit: UIColor.white,
+            .facebookSocialKit: UIColor(0x3B5998),
+            .googleSocialKit: UIColor(0xDF4930)
+        ])
     }
 }

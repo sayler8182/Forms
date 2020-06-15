@@ -22,21 +22,21 @@ public enum ComponentsSwitches: ComponentsList {
         component.title = nil
         component.value = nil
         component.onSetTheme = Strong(component) { (component) in
-            component.backgroundColors = Switch.State<UIColor?>(Theme.Colors.primaryBackground)
+            component.backgroundColors = Switch.State<UIColor?>(Theme.Colors.primaryLight)
             component.switchColors = Switch.State<UIColor?>(Theme.Colors.blue)
             component.switchThumbColors = Switch.State<UIColor?>(
-                active: Theme.Colors.primaryText,
-                selected: Theme.Colors.primaryText,
-                disabled: Theme.Colors.tertiaryText)
+                active: Theme.Colors.primaryDark,
+                selected: Theme.Colors.primaryDark,
+                disabled: Theme.Colors.tertiaryDark)
             component.titleColors = Switch.State<UIColor?>(
-                active: Theme.Colors.primaryText,
-                selected: Theme.Colors.primaryText,
-                disabled: Theme.Colors.tertiaryText)
+                active: Theme.Colors.primaryDark,
+                selected: Theme.Colors.primaryDark,
+                disabled: Theme.Colors.tertiaryDark)
             component.titleFonts = Switch.State<UIFont>(Theme.Fonts.bold(ofSize: 12))
             component.valueColors = Switch.State<UIColor?>(
-                active: Theme.Colors.secondaryText,
-                selected: Theme.Colors.secondaryText,
-                disabled: Theme.Colors.tertiaryText)
+                active: Theme.Colors.secondaryDark,
+                selected: Theme.Colors.secondaryDark,
+                disabled: Theme.Colors.tertiaryDark)
             component.valueFonts = Switch.State<UIFont>(Theme.Fonts.regular(ofSize: 10))
         }
         return component

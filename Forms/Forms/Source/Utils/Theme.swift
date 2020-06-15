@@ -165,22 +165,26 @@ public extension Theme {
 
 // MARK: ThemeColorsKey
 public struct ThemeColorsKey: Hashable {
-    static var blue = ThemeColorsKey("blue")
-    static var gray = ThemeColorsKey("gray")
-    static var green = ThemeColorsKey("green")
-    static var red = ThemeColorsKey("red")
+    public static var black = ThemeColorsKey("black")
+    public static var blue = ThemeColorsKey("blue")
+    public static var clear = ThemeColorsKey("clear")
+    public static var gray = ThemeColorsKey("gray")
+    public static var green = ThemeColorsKey("green")
+    public static var orange = ThemeColorsKey("orange")
+    public static var red = ThemeColorsKey("red")
+    public static var white = ThemeColorsKey("white")
     
-    static var primaryText = ThemeColorsKey("primaryText")
-    static var secondaryText = ThemeColorsKey("secondaryText")
-    static var tertiaryText = ThemeColorsKey("tertiaryText")
+    public static var primaryDark = ThemeColorsKey("primaryDark")
+    public static var secondaryDark = ThemeColorsKey("secondaryDark")
+    public static var tertiaryDark = ThemeColorsKey("tertiaryDark")
     
-    static var primaryBackground = ThemeColorsKey("primaryBackground")
-    static var secondaryBackground = ThemeColorsKey("secondaryBackground")
-    static var tertiaryBackground = ThemeColorsKey("tertiaryBackground")
+    public static var primaryLight = ThemeColorsKey("primaryLight")
+    public static var secondaryLight = ThemeColorsKey("secondaryLight")
+    public static var tertiaryLight = ThemeColorsKey("tertiaryLight")
     
-    let key: String
+    public let key: String
     
-    init(_ key: String) {
+    public init(_ key: String) {
         self.key = key
     }
 }
@@ -190,7 +194,7 @@ public enum ThemeBarStyle {
     case light
     case dark
     
-    var style: UIStatusBarStyle {
+    public var style: UIStatusBarStyle {
         if #available(iOS 13.0, *) {
             switch self {
             case .light:
@@ -209,15 +213,16 @@ public protocol ThemeColorsProtocol {
     var colors: [ThemeColorsKey: UIColor] { get }
     var statusBar: ThemeBarStyle { get }
     
+    func register(_ colors: [ThemeColorsKey: UIColor])
     func color(_ key: ThemeColorsKey) -> UIColor
     func color(_ key: ThemeColorsKey,
                or defaultValue: UIColor) -> UIColor
 }
 
 // MARK: ThemeColors
-public struct ThemeColors: ThemeColorsProtocol {
-    public let colors: [ThemeColorsKey: UIColor]
-    public let statusBar: ThemeBarStyle
+public class ThemeColors: ThemeColorsProtocol {
+    public private (set) var colors: [ThemeColorsKey: UIColor]
+    public private (set) var statusBar: ThemeBarStyle
     
     public init(colors: [ThemeColorsKey: UIColor] = [:],
                 statusBar: ThemeBarStyle = .dark) {
@@ -225,8 +230,14 @@ public struct ThemeColors: ThemeColorsProtocol {
         self.statusBar = statusBar
     }
     
+    public func register(_ colors: [ThemeColorsKey: UIColor]) {
+        for color in colors {
+            self.colors[color.key] = color.value
+        }
+    }
+    
     public func color(_ key: ThemeColorsKey) -> UIColor {
-        return self.color(key, or: UIColor.red)
+        return self.color(key, or: UIColor.clear)
     }
     
     public func color(_ key: ThemeColorsKey,
@@ -237,12 +248,12 @@ public struct ThemeColors: ThemeColorsProtocol {
 
 // MARK: ThemeFontsKey
 public struct ThemeFontsKey: Hashable {
-    static var bold = ThemeFontsKey("bold")
-    static var regular = ThemeFontsKey("regular")
+    public static var bold = ThemeFontsKey("bold")
+    public static var regular = ThemeFontsKey("regular")
     
     let key: String
     
-    init(_ key: String) {
+    public init(_ key: String) {
         self.key = key
     }
 }
@@ -253,6 +264,7 @@ public protocol ThemeFontsProtocol {
     
     var fonts: [ThemeFontsKey: ThemeFont] { get }
     
+    func register(_ fonts: [ThemeFontsKey: ThemeFont])
     func font(_ key: ThemeFontsKey,
               ofSize size: CGFloat) -> UIFont
     func font(_ key: ThemeFontsKey,
@@ -261,16 +273,22 @@ public protocol ThemeFontsProtocol {
 }
 
 // MARK: ThemeFonts
-public struct ThemeFonts: ThemeFontsProtocol {
-    public let fonts: [ThemeFontsKey: ThemeFont]
+public class ThemeFonts: ThemeFontsProtocol {
+    public private (set) var fonts: [ThemeFontsKey: ThemeFont]
     
     public init(fonts: [ThemeFontsKey: ThemeFont] = [:]) {
         self.fonts = fonts
     }
     
+    public func register(_ fonts: [ThemeFontsKey: ThemeFont]) {
+        for font in fonts {
+            self.fonts[font.key] = font.value
+        }
+    }
+    
     public func font(_ key: ThemeFontsKey,
                      ofSize size: CGFloat) -> UIFont {
-        return self.font(key, ofSize: size, or: UIFont.systemFont(ofSize: 14))
+        return self.font(key, ofSize: size, or: UIFont.systemFont(ofSize: size))
     }
     
     public func font(_ key: ThemeFontsKey,
@@ -282,47 +300,59 @@ public struct ThemeFonts: ThemeFontsProtocol {
 
 // MARK: Colors
 public extension ThemeColorsProtocol {
+    var black: UIColor {
+        return self.color(.black, or: UIColor(rgba: 0x000000FF))
+    }
     var blue: UIColor {
-        return self.color(.blue)
+        return self.color(.blue, or: UIColor(rgba: 0x007AFFFF))
+    }
+    var clear: UIColor {
+        return self.color(.clear, or: UIColor(rgba: 0xFFFFFF00))
     }
     var gray: UIColor {
-        return self.color(.gray)
+        return self.color(.gray, or: UIColor(rgba: 0x8E8E93FF))
     }
     var green: UIColor {
-        return self.color(.green)
+        return self.color(.green, or: UIColor(rgba: 0x34C759FF))
+    }
+    var orange: UIColor {
+        return self.color(.orange, or: UIColor(rgba: 0xFFA500FF))
     }
     var red: UIColor {
-        return self.color(.red)
+        return self.color(.red, or: UIColor(rgba: 0xFF3B30FF))
+    }
+    var white: UIColor {
+        return self.color(.black, or: UIColor(rgba: 0xFFFFFFFF))
     }
     
-    var primaryText: UIColor {
-        return self.color(.primaryText)
+    var primaryDark: UIColor {
+        return self.color(.primaryDark, or: UIColor(rgba: 0x000000FF))
     }
-    var secondaryText: UIColor {
-        return self.color(.secondaryText)
+    var secondaryDark: UIColor {
+        return self.color(.secondaryDark, or: UIColor(rgba: 0x3C3C4399))
     }
-    var tertiaryText: UIColor {
-        return self.color(.tertiaryText)
+    var tertiaryDark: UIColor {
+        return self.color(.tertiaryDark, or: UIColor(rgba: 0x3C3C434D))
     }
     
-    var primaryBackground: UIColor {
-        return self.color(.primaryBackground)
+    var primaryLight: UIColor {
+        return self.color(.primaryLight, or: UIColor(rgba: 0xFFFFFFFF))
     }
-    var secondaryBackground: UIColor {
-        return self.color(.secondaryBackground)
+    var secondaryLight: UIColor {
+        return self.color(.secondaryLight, or: UIColor(rgba: 0xF2F2F7FF))
     }
-    var tertiaryBackground: UIColor {
-        return self.color(.tertiaryBackground)
+    var tertiaryLight: UIColor {
+        return self.color(.tertiaryLight, or: UIColor(rgba: 0xFFFFFFFF))
     }
 }
 
 // MARK: Fonts
 public extension ThemeFontsProtocol {
     func bold(ofSize size: CGFloat) -> UIFont {
-        return self.font(.bold, ofSize: size)
+        return self.font(.bold, ofSize: size, or: UIFont.boldSystemFont(ofSize: size))
     }
     func regular(ofSize size: CGFloat) -> UIFont {
-        return self.font(.regular, ofSize: size)
+        return self.font(.regular, ofSize: size, or: UIFont.systemFont(ofSize: size))
     }
 }
 

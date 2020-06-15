@@ -26,14 +26,14 @@ public extension PinView {
         let disabled: T
         let error: T
         
-        init(_ value: T) {
+        public init(_ value: T) {
             self.active = value
             self.selected = value
             self.disabled = value
             self.error = value
         }
         
-        init(active: T, selected: T, disabled: T, error: T) {
+        public init(active: T, selected: T, disabled: T, error: T) {
             self.active = active
             self.selected = selected
             self.disabled = disabled
@@ -80,7 +80,7 @@ open class PinView: FormsComponent, FormsComponentWithMarginEdgeInset, FormsComp
     open var autocorrectionType: UITextAutocorrectionType = .no {
         didSet { self.textFields.forEach { $0.autocorrectionType = self.autocorrectionType } }
     }
-    open var backgroundColors: State<UIColor?> = State<UIColor?>(Theme.Colors.primaryBackground) {
+    open var backgroundColors: State<UIColor?> = State<UIColor?>(Theme.Colors.primaryLight) {
         didSet { self.updateState() }
     }
     open var error: String? {
@@ -133,7 +133,7 @@ open class PinView: FormsComponent, FormsComponentWithMarginEdgeInset, FormsComp
     open var placeholder: String? {
         didSet { self.updatePlaceholder() }
     }
-    open var placeholderColors: State<UIColor?> = State<UIColor?>(Theme.Colors.primaryText.withAlphaComponent(0.3)) {
+    open var placeholderColors: State<UIColor?> = State<UIColor?>(Theme.Colors.primaryDark.withAlphaComponent(0.3)) {
         didSet { self.updateState() }
     }
     open var placeholderFonts: State<UIFont> = State<UIFont>(Theme.Fonts.regular(ofSize: 32)) {
@@ -160,7 +160,7 @@ open class PinView: FormsComponent, FormsComponentWithMarginEdgeInset, FormsComp
             self.infoLabel.textAlignment = self.textAlignment
         }
     }
-    open var textColors: State<UIColor?> = State<UIColor?>(Theme.Colors.primaryText) {
+    open var textColors: State<UIColor?> = State<UIColor?>(Theme.Colors.primaryDark) {
         didSet { self.updateState() }
     }
     open var textFonts: State<UIFont> = State<UIFont>(Theme.Fonts.regular(ofSize: 32)) {
@@ -170,7 +170,7 @@ open class PinView: FormsComponent, FormsComponentWithMarginEdgeInset, FormsComp
         get { return self.titleLabel.text }
         set { self.titleLabel.text = newValue }
     }
-    open var titleColors: State<UIColor?> = State<UIColor?>(Theme.Colors.primaryText) {
+    open var titleColors: State<UIColor?> = State<UIColor?>(Theme.Colors.primaryDark) {
         didSet { self.updateState() }
     }
     open var titleFonts: State<UIFont> = State<UIFont>(Theme.Fonts.regular(ofSize: 10)) {

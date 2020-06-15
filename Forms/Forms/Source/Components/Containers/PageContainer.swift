@@ -95,7 +95,7 @@ open class PageContainer: FormsComponent, FormsComponentWithMarginEdgeInset, For
     }
     
     private func setupCollectionView() {
-        self.collectionView.backgroundColor = UIColor.clear
+        self.collectionView.backgroundColor = Theme.Colors.clear
         self.collectionView.frame = self.backgroundView.bounds
         self.collectionView.clipsToBounds = true
         if #available(iOS 11.0, *) {

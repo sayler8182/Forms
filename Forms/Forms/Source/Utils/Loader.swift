@@ -18,7 +18,7 @@ public protocol ConfigurationLoaderProtocol {
 
 public extension Configuration {
     struct Loader: ConfigurationLoaderProtocol {
-        public var backgroundColor: UIColor? = Theme.Colors.primaryBackground.withAlphaComponent(0.3)
+        public var backgroundColor: UIColor? = Theme.Colors.primaryLight.withAlphaComponent(0.3)
         public var loaderView: () -> LoaderView = { DefaultLoaderView() }
     }
 }
@@ -199,9 +199,9 @@ private class DefaultLoaderView: LoaderView {
     
     override func setupView() {
         super.setupView()
-        self.backgroundColor = Theme.Colors.secondaryBackground
+        self.backgroundColor = Theme.Colors.secondaryLight
         self.layer.cornerRadius = 8
-        self.layer.shadowColor = Theme.Colors.primaryText.cgColor
+        self.layer.shadowColor = Theme.Colors.primaryDark.cgColor
     }
     
     override func add(to parent: UIView) {

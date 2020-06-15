@@ -32,7 +32,7 @@ class DemoPageContainerViewController: FormsTableViewController {
     private let secondGreenView = Components.container.view()
         .with(backgroundColor: Theme.Colors.green)
     private let secondOrangeView = Components.container.view()
-        .with(backgroundColor: UIColor.orange)
+        .with(backgroundColor: Theme.Colors.orange)
     
     private let divider = Components.utils.divider()
         .with(height: 5.0)

@@ -114,6 +114,13 @@ carthage bootstrap
 
 and copy downloaded framework to [./Dependencies](./Dependencies) folder
 
+## Demo
+FormsDemo contains demo implementations for some providers etc. Just check [FormsDemo/FormsDemo/Source/Implementations](./FormsDemo/FormsDemo/Source/Implementations) folder
+
+## Recommended tools
+
+- [R.swift](https://github.com/mac-cain13/R.swift)
+
 ## Contribution Guide or Questions
 
 You can submit issues, ask general questions, or open pull requests.
