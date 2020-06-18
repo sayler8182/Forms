@@ -53,12 +53,14 @@ extension DemoSocialKitAppleTableViewController {
                     .with(message: "uid: \(data.uid)")
                     .with(action: "Ok")
                     .present(on: self)
-            }, onError: { [weak self] (error) in
+            },
+            onError: { [weak self] (error) in
                 guard let `self` = self else { return }
                 Toast.error()
                     .with(title: error.localizedDescription)
                     .show(in: self.navigationController)
-            }, onCompletion: { [weak self] (_, _) in
+            },
+            onCompletion: { [weak self] (_, _) in
                 guard let `self` = self else { return }
                 self.signInWithApple.stopLoading()
         })

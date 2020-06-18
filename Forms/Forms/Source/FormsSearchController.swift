@@ -149,7 +149,7 @@ open class FormsSearchController: UISearchController, AppLifecycleable, Themeabl
     deinit {
         self.unregisterAppLifecycle()
         let logger: Logger? = Injector.main.resolveOrDefault("Forms")
-        logger?.log(.info, "Deinit \(type(of: self))")
+        logger?.log(LogType.info, "Deinit \(type(of: self))")
     }
     
     override open func viewDidLoad() {

@@ -6,7 +6,7 @@ rm -rf "${OUTPUT}"
 mkdir -p "${OUTPUT}"
 
 # clear cache
-~/Library/Developer/Xcode/DerivedData
+rm -rf ~/Library/Developer/Xcode/DerivedData
 rm -rf "${BUILD_DIR}"
 mkdir -p "${BUILD_DIR}" 
 rm -rf "${OUTPUT}"

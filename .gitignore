@@ -2,3 +2,4 @@ Dependencies/Carthage
 Cartfile.resolved
 FormsIntegration/FormsIntegration/Dependencies
 build
+build_result.txt

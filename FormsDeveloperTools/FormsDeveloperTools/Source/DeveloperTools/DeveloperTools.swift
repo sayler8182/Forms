@@ -47,7 +47,12 @@ public struct DeveloperToolsAppVersion {
     public let buildDate: String
     
     public var fullVersion: String {
-        return [self.shortVersion, self.buildVersion].filter { !$0.isEmpty }.joined(separator: ".")
+        return [
+            self.shortVersion,
+            self.buildVersion
+            ]
+            .filter { !$0.isEmpty }
+            .joined(separator: ".")
     }
     
     init() {
@@ -75,7 +80,7 @@ public class DeveloperTools: NSObject {
     }
     
     private static var window: UIWindow = {
-        let window = DeveloperTools.newWindow
+        let window: UIWindow = DeveloperTools.newWindow
         window.windowLevel = UIWindow.Level.statusBar - 1
         let rootViewController = UIViewController()
         window.rootViewController = rootViewController

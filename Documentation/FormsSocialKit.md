@@ -51,7 +51,7 @@ SocialKit.configure()
 ### Required Dependencies
 
 ```swift 
-import AuthenticationServices
+AuthenticationServices.framework
 ```
 
 ### Authorization
@@ -88,8 +88,8 @@ LSApplicationQueriesSchemes -> ["fbapi", "fb-messenger-api", "fbauth2", "fbshare
 ### Required Dependencies
 
 ```swift 
-import FBSDKCoreKit
-import FBSDKLoginKit
+import FBSDKCoreKit.framework
+import FBSDKLoginKit.framework
 ```
 
 ### Authorization
@@ -115,10 +115,11 @@ let signInWithFacebook = Components.social.signInWithFacebook()
 ### Required Dependencies
 
 ```swift 
-import AppAuth
-import GoogleSignIn
-import GTMAppAuth
-import GTMSessionFetcher
+AuthenticationServices.framework
+AppAuth.framework
+GoogleSignIn.framework
+GTMAppAuth.framework
+GTMSessionFetcher.framework
 ```
 
 ### Integration

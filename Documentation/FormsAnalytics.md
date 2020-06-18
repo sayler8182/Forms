@@ -106,3 +106,21 @@ enum DemoEvent: AnalyticsEvent {
 ```swift
 Analytics.log(DemoEvent.demoEvent(value: 12))
 ```
+
+### Custom provider
+
+```swift
+class DemoAnalyticsCustomProvider: AnalyticsProvider {
+    let name: String = "Custom"
+    
+    func logEvent(_ event: AnalyticsEvent,
+                  _ parameters: [String: Any],
+                  _ userProperties: [String: String]) {
+        print("Some log")
+    }
+    
+    func setUserId(_ userId: String?) {
+        print("Some set")
+    }
+}
+```

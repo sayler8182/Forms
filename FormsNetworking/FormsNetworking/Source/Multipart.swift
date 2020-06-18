@@ -27,7 +27,8 @@ public extension Array where Element == MultipartItem {
         let boundary: String = UUID().uuidString
         let boundaryData: Data = "--\(boundary)\r\n".data(using: .utf8) ?? Data()
         for multipartDescription in self.compactMap({ $0.multipartDescription }) {
-            data += boundaryData + multipartDescription
+            data.append(boundaryData)
+            data.append(multipartDescription)
         }
         data += "--\(boundary)--".data(using: .utf8) ?? Data()
         return data

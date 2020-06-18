@@ -378,10 +378,14 @@ public extension Device {
         var systemInfo: utsname = utsname()
         uname(&systemInfo)
         let mirror: Mirror = Mirror(reflecting: systemInfo.machine)
-        return mirror.children.reduce(into: "") { (result: inout String, element: Mirror.Child) in
-            guard let value: Int8 = element.value as? Int8, value != 0 else { return }
-            result += String(UnicodeScalar(UInt8(value)))
+        var result: String = ""
+        for item in mirror.children {
+            guard let value: Int8 = item.value as? Int8, value != 0 else { continue }
+            let uInt: UInt8 = UInt8(value)
+            let unicodeScalar: UnicodeScalar = UnicodeScalar(uInt)
+            result.append("\(unicodeScalar)")
         }
+        return result
     }()
     
     var realDevice: Device {

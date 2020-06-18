@@ -124,7 +124,7 @@ internal enum ConsoleAutolayoutFormatter {
     
     fileprivate static func buildTreeContent(_ context: ConsoleAutolayoutContext) -> String {
         var content = ""
-        context.tree.enumerated().forEach { (offset, node) in
+        context.tree.enumerated().forEach { (offset: Int, node: ConsoleAutolayoutNode) in
             if offset == 0 { content += "- " + Self.debugContent(node) + "\n" }
             node.children.forEach { content += Self.space(offset) + "|- " + Self.debugContent($0) + "\n" }
         }

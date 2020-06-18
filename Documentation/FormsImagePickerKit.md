@@ -30,11 +30,13 @@ NSMicrophoneUsageDescription
 Pick image 
 
 ```swift
+let request = ImagePickerRequest()
+    .with(allowsEditing: true)
+    .with(mediaTypes: [.image])
 ImagePicker.pick(
     on: controller,
     pickerType: SystemImagePickerView.self,
-    allowsEditing: true,
-    mediaTypes: [.image],
+    request: request,
     onSelect: { (data: ImagePickerData) in }, 
     onCancel: { })
 ```
@@ -42,11 +44,13 @@ ImagePicker.pick(
 Pick video 
 
 ```swift
+let request = ImagePickerRequest()
+    .with(allowsEditing: true)
+    .with(mediaTypes: [.video])
 ImagePicker.pick(
     on: controller,
     pickerType: SystemImagePickerView.self,
-    allowsEditing: true,
-    mediaTypes: [.video],
+    request: request,
     onSelect: { (data: ImagePickerData) in }, 
     onCancel: { })
 ```
@@ -54,11 +58,12 @@ ImagePicker.pick(
 Pick image and video 
 
 ```swift
+let request = ImagePickerRequest()
+    .with(mediaTypes: [.image, .video])
 ImagePicker.pick(
     on: controller,
     pickerType: SystemImagePickerView.self,
-    allowsEditing: true,
-    mediaTypes: [.image, .video],
+    request: request,
     onSelect: { (data: ImagePickerData) in }, 
     onCancel: { })
 ```
@@ -66,13 +71,46 @@ ImagePicker.pick(
 Handle rejected permissions
 
 ```swift
+let request = ImagePickerRequest() 
+    .with(mediaTypes: [.image]) 
 ImagePicker.pick(
     on: controller,
     pickerType: SystemImagePickerView.self,
-    allowsEditing: true,
-    mediaTypes: [.image, .video],
+    request: request,
     onSelect: { (data: ImagePickerData) in }, 
     onFail: { },
+    onCancel: { })
+```
+
+Source
+
+```swift
+let request = ImagePickerRequest() 
+    .with(mediaTypes: [.image]) 
+    .with(source: [.photoLibrary]) 
+ImagePicker.pick(
+    on: controller,
+    pickerType: SystemImagePickerView.self,
+    request: request,
+    onSelect: { (data: ImagePickerData) in }, 
+    onCancel: { })
+```
+
+### WDImagePicker
+
+Pick image 
+
+```swift
+let request = ImagePickerRequest()
+    .with(allowsEditing: true)
+    .with(cropSize: CGSize(size: 300))
+    .with(mediaTypes: [.image])
+    .with(resizableCropArea: true)
+ImagePicker.pick(
+    on: controller,
+    pickerType: WDImagePickerView.self,
+    request: request,
+    onSelect: { (data: ImagePickerData) in }, 
     onCancel: { })
 ```
 

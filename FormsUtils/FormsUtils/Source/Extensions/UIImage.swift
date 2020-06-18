@@ -130,4 +130,31 @@ public extension UIImage {
         UIGraphicsEndImageContext()
         return newImage
     }
+    
+    func tinted(_ color: UIColor) -> UIImage {
+        var image: UIImage = self.withRenderingMode(.alwaysTemplate)
+        UIGraphicsBeginImageContextWithOptions(self.size, false, self.scale)
+        color.set()
+        image.draw(in: CGRect(x: 0, y: 0, width: self.size.width, height: self.size.height))
+        image = UIGraphicsGetImageFromCurrentImageContext() ?? self
+        UIGraphicsEndImageContext()
+        return image
+    }
+    
+    func tinted(_ color: UIColor,
+                blend: CGBlendMode) -> UIImage {
+        let image: UIImage = self
+        let imageColored: UIImage = image.tinted(color)
+        let rect: CGRect = CGRect(origin: CGPoint.zero, size: image.size)
+        UIGraphicsBeginImageContextWithOptions(image.size, false, 0)
+        guard let context: CGContext = UIGraphicsGetCurrentContext() else { return self }
+        context.clear(rect)
+        context.setFillColor(UIColor.clear.cgColor)
+        context.fill(rect)
+        image.draw(in: rect, blendMode: .normal, alpha: 1)
+        imageColored.draw(in: rect, blendMode: .multiply, alpha: 1)
+        let result: UIImage = UIGraphicsGetImageFromCurrentImageContext() ?? self
+        UIGraphicsEndImageContext()
+        return result
+    }
 }

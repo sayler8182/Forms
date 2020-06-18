@@ -142,6 +142,39 @@ let attributedString = AttributedString()
     .with(string: "\nSome text")
 ```
 
+### Debouncer
+
+Allows delay action call
+
+```swift
+let debouncer = Debouncer(interval: 0.5)
+for i in 0..10 {
+    DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.3) {
+        debouncer.debounce {
+            print("test")
+        }
+    }
+}
+```
+
+or 
+
+```swift
+let debouncer = Debouncer(interval: 0.5)
+debouncer.onHandle = { print("test") }
+for i in 0..10 {
+    DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.3) {
+        debouncer.debounce()
+    }
+}
+```
+
+will produce output below:
+
+```
+test
+```
+
 ### LoremIpsum
 
 Generates lorem ipsum text

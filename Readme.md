@@ -121,6 +121,18 @@ FormsDemo contains demo implementations for some providers etc. Just check [Form
 
 - [R.swift](https://github.com/mac-cain13/R.swift)
 
+## Custom framework
+
+Frameworks should have consistent build settings:
+
+- [x] Version
+- [x] Build Active Architecture Only -> No (for Debug)
+- [x] iOS Deployment Target -> iOS 10.0
+- [x] Framework Search Path -> $(inherited) and $(PROJECT_DIR)/../Dependencies
+- [x] Other Linker Flags -> -ObjC
+- [x] Other Swift Flags -> -Xfrontend -warn-long-function-bodies=1000 -Xfrontend -warn-long-expression-type-checking=1000
+- [x] Swift Language version -> Swift 5
+
 ## Contribution Guide or Questions
 
 You can submit issues, ask general questions, or open pull requests.
@@ -142,9 +154,11 @@ The Forms framework is inspired by:
 - *FormsDevice*<br/>
 [DeviceKit](https://github.com/devicekit/DeviceKit)
 
+- *FormsImagePicker*<br/>
+[WDImagePicker](https://github.com/justwudi/WDImagePicker)
+
 - *FormsInjector*<br/>
 [Swinject](https://github.com/Swinject/Swinject)
-
 
 ## License
 

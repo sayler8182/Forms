@@ -1,0 +1,1 @@
+xcrun simctl push $1 push_example.apns

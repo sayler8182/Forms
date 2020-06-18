@@ -153,7 +153,8 @@ private class DemoProvider {
                 DispatchQueue.main.async {
                     self.delegate?.displayContent(image)
                 }
-            }, onError: { [weak self] (error: NetworkError) in
+            },
+            onError: { [weak self] (error: NetworkError) in
                 guard let `self` = self else { return }
                 DispatchQueue.main.async {
                     self.delegate?.displayContentError(error.debugDescription, error.isCancelled)
@@ -177,7 +178,8 @@ private class DemoProvider {
                 DispatchQueue.main.async {
                     self.delegate?.displayContent(image)
                 }
-            }, onError: { [weak self] (error: NetworkError) in
+            },
+            onError: { [weak self] (error: NetworkError) in
                 guard let `self` = self else { return }
                 DispatchQueue.main.async {
                     self.delegate?.displayContentError(error.debugDescription, error.isCancelled)

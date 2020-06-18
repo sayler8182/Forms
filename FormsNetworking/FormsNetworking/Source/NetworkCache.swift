@@ -34,11 +34,12 @@ public class NetworkTmpCache: NetworkCache {
     public func write(hash: Any,
                       data: Data,
                       logger: Logger? = nil) throws {
-        let expirationDate: Int64 = Int64(Date().timeIntervalSince1970 + self.ttl)
+        let timeInterval: TimeInterval = Date().timeIntervalSince1970 + self.ttl
+        let expirationDate: Int64 = Int64(timeInterval)
         let url: URL = self.directory.appendingPathComponent("_\(hash).\(expirationDate).cache")
         try? self.fileManager.removeItem(at: url)
         try data.write(to: url)
-        logger?.log(.info, "Write to cache: \(url.absoluteString)")
+        logger?.log(LogType.info, "Write to cache: \(url.absoluteString)")
     }
     
     public func read(hash: Any,
@@ -48,7 +49,7 @@ public class NetworkTmpCache: NetworkCache {
             at: self.directory,
             includingPropertiesForKeys: nil)
             .first(where: { $0.absoluteString.contains("_\(hash).") }) else { return nil }
-        logger?.log(.info, "Read from cache: \(url.absoluteString)")
+        logger?.log(LogType.info, "Read from cache: \(url.absoluteString)")
         return try Data(contentsOf: url)
     }
     

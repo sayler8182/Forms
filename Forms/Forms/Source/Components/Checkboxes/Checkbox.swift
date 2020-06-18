@@ -219,12 +219,14 @@ open class Checkbox: FormsComponent, FormsComponentWithGroup, FormsComponentWith
     }
     
     open func updateGroup() {
-        self.table?.views
-            .compactMap { $0 as? Checkbox }
-            .filter { $0.groupKey.isNotNil }
-            .filter { $0.groupKey == self.groupKey }
-            .filter { $0 !== self }
-            .forEach { $0._isSelected = false }
+        let views: [UIView] = self.table?.views ?? []
+        for view in views {
+            guard let checkbox: Checkbox = view as? Checkbox else { continue }
+            guard checkbox.groupKey != nil else { continue }
+            guard checkbox.groupKey == self.groupKey else { continue }
+            guard checkbox !== self else { continue }
+            checkbox._isSelected = false
+        }
     }
     
     private func updateImageSize() {

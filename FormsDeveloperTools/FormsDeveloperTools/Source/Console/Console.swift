@@ -98,7 +98,8 @@ public extension Console {
             "invalid mode 'kCFRunLoopCommonModes'",
             "[MC] System group container for systemgroup.com.apple.configurationprofiles path is",
             "[MC] Reading from private effective user settings.",
-            "[Assert] Unexpected code path for search bar hosted by navigation bar. This is a UIKit problem"
+            "[Assert] Unexpected code path for search bar hosted by navigation bar. This is a UIKit problem",
+            ": encountered error(1:53)"
         ]
     }
 }
@@ -110,5 +111,5 @@ internal func consoleAssert(_ condition: Bool,
                             _ line: UInt = #line) {
     if condition { return }
     let logger: Logger? = Injector.main.resolveOrDefault("FormsDeveloperTools")
-    logger?.log(.warning, "[AUTOLAYOUT WARNING]: Unexpected behavior about \(message) in \(file):\(line)")
+    logger?.log(LogType.error, "Unexpected behavior about \(message) in \(file):\(line)")
 }

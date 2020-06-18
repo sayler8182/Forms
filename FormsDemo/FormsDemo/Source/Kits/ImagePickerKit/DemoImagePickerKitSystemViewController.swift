@@ -35,36 +35,44 @@ class DemoImagePickerKitSystemViewController: FormsTableViewController {
     override func setupActions() {
         super.setupActions()
         self.chooseImageButton.onClick = {
+            let request = ImagePickerRequest()
+                .with(allowsEditing: true)
+                .with(mediaTypes: [.image])
             ImagePicker.pick(
                 on: self,
                 pickerType: SystemImagePickerView.self,
-                allowsEditing: true,
-                mediaTypes: [.image],
+                request: request,
                 onSelect: { [unowned self] (data) in
                     self.updateImages(data)
-                }, onFail: { [unowned self] in
+                },
+                onFail: { [unowned self] in
                     Toast.info()
                         .with(title: "Fail")
                         .show(in: self.navigationController)
-                }, onCancel: { [unowned self] in
+                },
+                onCancel: { [unowned self] in
                     Toast.info()
                         .with(title: "Cancel")
                         .show(in: self.navigationController)
             })
         }
         self.chooseVideoButton.onClick = {
+            let request = ImagePickerRequest()
+                .with(allowsEditing: true)
+                .with(mediaTypes: [.video])
             ImagePicker.pick(
                 on: self,
                 pickerType: SystemImagePickerView.self,
-                allowsEditing: true,
-                mediaTypes: [.video],
+                request: request,
                 onSelect: { [unowned self] (data) in
                     self.updateVideos(data)
-                }, onFail: { [unowned self] in
+                },
+                onFail: { [unowned self] in
                     Toast.info()
                         .with(title: "Fail")
                         .show(in: self.navigationController)     
-                }, onCancel: { [unowned self] in
+                },
+                onCancel: { [unowned self] in
                     Toast.info()
                         .with(title: "Cancel")
                         .show(in: self.navigationController)

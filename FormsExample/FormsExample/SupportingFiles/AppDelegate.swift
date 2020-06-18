@@ -6,6 +6,7 @@
 //  Copyright © 2020 Limbo. All rights reserved.
 //
 
+import FBSDKCoreKit
 import FirebaseCore
 import Forms
 import FormsAnalytics
@@ -40,6 +41,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             DemoAssembly()
         ])
         
+        // Facebook
+        ApplicationDelegate.initializeSDK(launchOptions)
+        ApplicationDelegate.shared.application(
+            application,
+            didFinishLaunchingWithOptions: launchOptions)
+        
         // Firebase
         FirebaseApp.configure()
         
@@ -48,6 +55,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         // Analytics
         Analytics.register([
+            DemoAnalyticsCustomProvider(),
+            DemoAnalyticsFacebookProvider(),
             DemoAnalyticsFirebaseProvider()
         ])
         
@@ -69,16 +78,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             provider: DemoNotificationsFirebaseProvider(),
             onNewToken: { [weak self] (fcm) in
                 guard let `self` = self else { return }
-                self.logger?.log(.info, "FCM: \(fcm)")
+                self.logger?.log(LogType.info, "FCM: \(fcm)")
             },
             onWillPresent: { _ in .alert },
             onReceive: { [weak self] (notification) in
                 guard let `self` = self else { return }
-                self.logger?.log(.info, "Receive: \(notification.request.content.userInfo.prettyPrinted.or(""))")
+                self.logger?.log(LogType.info, "Receive: \(notification.request.content.userInfo.prettyPrinted.or(""))")
             },
             onOpen: { [weak self] (response) in
                 guard let `self` = self else { return }
-                self.logger?.log(.info, "Open: \(response.notification.request.content.userInfo.prettyPrinted.or(""))")
+                self.logger?.log(LogType.info, "Open: \(response.notification.request.content.userInfo.prettyPrinted.or(""))")
         })
         Notifications.registerRemote()
         
@@ -94,6 +103,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             window.makeKeyAndVisible()
         }
         return true
+    }
+    
+    func application(_ app: UIApplication,
+                     open url: URL,
+                     options: [UIApplication.OpenURLOptionsKey: Any] = [:]) -> Bool {
+        ApplicationDelegate.shared.application(
+            app,
+            open: url,
+            sourceApplication: options[UIApplication.OpenURLOptionsKey.sourceApplication] as? String,
+            annotation: options[UIApplication.OpenURLOptionsKey.annotation])
     }
     
     func application(_ application: UIApplication,

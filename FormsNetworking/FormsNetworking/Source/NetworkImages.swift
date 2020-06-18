@@ -200,7 +200,7 @@ extension NetworkImages {
         let method = NetworkImagesMethod()
             .with(logger: self.logger)
             .with(cache: self.cache)
-        return method.fetch(
+        let task = method.fetch(
             url: url,
             onProgress: { (size: Int64, totalSize: Int64, progress: Double) in
                 guard let onProgress = onProgress else { return }
@@ -240,6 +240,7 @@ extension NetworkImages {
                 }
             }
         })
+        return task
     }
 }
 

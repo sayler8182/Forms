@@ -51,7 +51,7 @@ open class FormsNavigationController: UINavigationController, AppLifecycleable, 
     deinit {
         self.unregisterAppLifecycle()
         let logger: Logger? = Injector.main.resolveOrDefault("Forms")
-        logger?.log(.info, "Deinit \(type(of: self))")
+        logger?.log(LogType.info, "Deinit \(type(of: self))")
     }
     
     override open var preferredStatusBarStyle: UIStatusBarStyle {

@@ -21,6 +21,13 @@ public extension Optional {
         return !self.isNil
     }
     
+    func or(_ defaultValue: Wrapped?) -> Wrapped? {
+        switch self {
+        case .none: return defaultValue
+        case .some(let value): return value
+        }
+    }
+    
     func or(_ defaultValue: Wrapped) -> Wrapped {
         switch self {
         case .none: return defaultValue

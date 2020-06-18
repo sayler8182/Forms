@@ -61,7 +61,7 @@ open class FormsViewController: UIViewController, UIGestureRecognizerDelegate, A
     deinit {
         self.unregisterAppLifecycle()
         let logger: Logger? = Injector.main.resolveOrDefault("Forms")
-        logger?.log(.info, "Deinit \(type(of: self))")
+        logger?.log(LogType.info, "Deinit \(type(of: self))")
     }
     
     override open func viewWillAppear(_ animated: Bool) {

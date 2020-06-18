@@ -17,19 +17,8 @@ open class Divider: FormsComponent, UnShimmerable {
     }
     open var height: CGFloat = 1
     
-    override open func setupView() {
-        self.setupComponent()
-        super.setupView()
-    }
-    
     override open func componentHeight() -> CGFloat {
         return self.height
-    }
-    
-    private func setupComponent() {
-        self.anchors([
-            Anchor.to(self).fill
-        ])
     }
 }
 

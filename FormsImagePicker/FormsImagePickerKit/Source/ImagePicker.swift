@@ -34,6 +34,26 @@ public struct ImagePickerData {
     
     public let images: [Image]
     public let videos: [Video]
+    
+    public var image: Image? {
+        return self.images.first
+    }
+    
+    public var video: Video? {
+        return self.videos.first
+    }
+    
+    public var hasOnlyOneImage: Bool {
+        return !self.hasVideos && self.images.count == 1
+    }
+    
+    public var hasImages: Bool {
+        return !self.images.isEmpty
+    }
+    
+    public var hasVideos: Bool {
+        return !self.videos.isEmpty
+    }
 }
 
 // MARK: ImagePicker
@@ -44,16 +64,14 @@ public enum ImagePicker {
     
     public static func pick(on controller: UIViewController?,
                             pickerType: ImagePickerView.Type = SystemImagePickerView.self,
-                            allowsEditing: Bool = true,
-                            mediaTypes: [ImagePickerMediaType] = [.image],
+                            request: ImagePickerRequest,
                             onSelect: OnSelect?,
                             onFail: OnFail? = nil,
                             onCancel: OnCancel? = nil) {
         guard let controller: UIViewController = controller else { return }
         pickerType.present(
             on: controller,
-            allowsEditing: allowsEditing,
-            mediaTypes: mediaTypes,
+            request: request,
             onSelect: onSelect,
             onFail: onFail,
             onCancel: onCancel)

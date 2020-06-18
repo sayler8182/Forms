@@ -6,6 +6,7 @@
 //  Copyright © 2020 Limbo. All rights reserved.
 //
 
+import CoreLocation
 import FormsInjector
 import FormsLogger
 import FormsPermissions
@@ -123,7 +124,7 @@ extension Location: CLLocationManagerDelegate {
             format: "[LOCATION]: (%@,%@)",
             location?.coordinate.latitude.description ?? "",
             location?.coordinate.longitude.description ?? "")
-        logger?.log(.info, log)
+        logger?.log(LogType.info, log)
     }
     
     public func locationManager(_ manager: CLLocationManager,

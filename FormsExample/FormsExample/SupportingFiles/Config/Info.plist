@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>CFBuildDate</key>
-	<string>Mon Jun 15 10:08:30 CEST 2020</string>
+	<string>Thu Jun 18 12:51:02 CEST 2020</string>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
 	<key>CFBundleDisplayName</key>
@@ -27,7 +27,7 @@
 			<string>Editor</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>fb1234</string>
+				<string>fb2620701171551433</string>
 			</array>
 		</dict>
 		<dict>
@@ -44,11 +44,13 @@
 	<key>FacebookAdvertiserIDCollectionEnabled</key>
 	<string>YES</string>
 	<key>FacebookAppID</key>
-	<string>1234</string>
+	<string>2620701171551433</string>
+	<key>FacebookAutoInitEnabled</key>
+	<string>NO</string>
 	<key>FacebookAutoLogAppEventsEnabled</key>
 	<string>NO</string>
 	<key>FacebookDisplayName</key>
-	<string>Forms</string>
+	<string>FormsExample</string>
 	<key>FirebaseScreenReportingEnabled</key>
 	<string>NO</string>
 	<key>ITSAppUsesNonExemptEncryption</key>

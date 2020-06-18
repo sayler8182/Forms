@@ -30,7 +30,7 @@ class DemoAnalyticsViewController: FormsTableViewController {
     override func setupActions() {
         super.setupActions()
         self.logEventButton.onClick = Unowned(self) { (_self) in
-            Analytics.log(DemoAnalytics.DemoEvent.demoEvent(value: 12))
+            Analytics.log(DemoAnalytics.DemoEvent.demoEvent(email: "some@email.com", value: 12))
             Toast.success()
                 .with(title: "Logged")
                 .show(in: _self.navigationController)
@@ -41,7 +41,7 @@ class DemoAnalyticsViewController: FormsTableViewController {
 // MARK: DemoAnalytics
 private enum DemoAnalytics {
     enum DemoEvent: AnalyticsEvent {
-        case demoEvent(value: Int)
+        case demoEvent(email: String, value: Int)
             
         var name: String {
             switch self {
@@ -50,14 +50,14 @@ private enum DemoAnalytics {
         }
         var parameters: [String: Any?] {
             switch self {
-            case .demoEvent(let value):
-                return ["value": value]
+            case .demoEvent(_, let value):
+                return ["value": NSNumber(value: value)]
             }
         }
         var userProperties: [String: String?] {
             switch self {
-            case .demoEvent(let value):
-                return ["value": value.description]
+            case .demoEvent(let email, _):
+                return ["email": email]
             }
         }
     }

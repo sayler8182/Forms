@@ -16,7 +16,7 @@ public enum NetworkPinning {
                                 didReceive challenge: URLAuthenticationChallenge,
                                 completionHandler: @escaping (URLSession.AuthChallengeDisposition, URLCredential?) -> Void) {
         guard Self.isEnabled else {
-            completionHandler(.performDefaultHandling, nil)
+            completionHandler(URLSession.AuthChallengeDisposition.performDefaultHandling, nil)
             return
         }
         
@@ -30,24 +30,24 @@ public enum NetworkPinning {
                 status = SecTrustEvaluate(serverTrust, &result) == errSecSuccess
             }
             if status {
-                let localCertificates = Self.localCertificates()
-                let certificateNumber = SecTrustGetCertificateCount(serverTrust)
+                let localCertificates: [Data] = Self.localCertificates()
+                let certificateNumber: CFIndex = SecTrustGetCertificateCount(serverTrust)
                 for index in 0..<certificateNumber {
-                    if let serverCertificate = SecTrustGetCertificateAtIndex(serverTrust, index) {
-                        let serverCertificateRawData = SecCertificateCopyData(serverCertificate)
-                        let data = CFDataGetBytePtr(serverCertificateRawData)
-                        let size = CFDataGetLength(serverCertificateRawData)
-                        let serverCertificateData = NSData(bytes: data, length: size) as Data
+                    if let serverCertificate: SecCertificate = SecTrustGetCertificateAtIndex(serverTrust, index) {
+                        let serverCertificateRawData: CFData = SecCertificateCopyData(serverCertificate)
+                        let data: UnsafePointer<UInt8>? = CFDataGetBytePtr(serverCertificateRawData)
+                        let size: CFIndex = CFDataGetLength(serverCertificateRawData)
+                        let serverCertificateData: Data = NSData(bytes: data, length: size) as Data
                         if localCertificates.contains(where: { serverCertificateData == $0 }) {
-                            let credential = URLCredential(trust: serverTrust)
-                            completionHandler(.useCredential, credential)
+                            let credential: URLCredential = URLCredential(trust: serverTrust)
+                            completionHandler(URLSession.AuthChallengeDisposition.useCredential, credential)
                             return
                         }
                     }
                 }
             } 
         }
-        completionHandler(.cancelAuthenticationChallenge, nil)
+        completionHandler(URLSession.AuthChallengeDisposition.cancelAuthenticationChallenge, nil)
     }
     
     private static func localCertificates() -> [Data] {

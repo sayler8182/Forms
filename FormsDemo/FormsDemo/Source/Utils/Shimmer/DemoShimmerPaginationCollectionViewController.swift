@@ -181,9 +181,11 @@ private extension DemoProvider {
             let pageId: Int = pageId.or(0)
             var items: [DemoCellModel] = []
             for i in 0..<limit {
-                let item = DemoCellModel(
-                    color: Theme.Colors.red.withAlphaComponent(CGFloat.random(in: 0...1)),
-                    title: "Some title \(pageId * limit + i + 1)",
+                let alpha: CGFloat = CGFloat.random(in: 0...1)
+                let title: String = "Some title \(pageId * limit + i + 1)"
+                let item: DemoCellModel = DemoCellModel(
+                    color: Theme.Colors.red.withAlphaComponent(alpha),
+                    title: title,
                     subtitle: "Some ubtitle",
                     info: LoremIpsum.paragraph(sentences: 2))
                 items.append(item)

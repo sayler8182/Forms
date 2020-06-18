@@ -227,12 +227,14 @@ open class Switch: FormsComponent, FormsComponentWithGroup, FormsComponentWithMa
     }
     
     open func updateGroup() {
-        self.table?.views
-            .compactMap { $0 as? Switch }
-            .filter { $0.groupKey.isNotNil }
-            .filter { $0.groupKey == self.groupKey }
-            .filter { $0 !== self }
-            .forEach { $0._isSelected = false }
+        let views: [UIView] = self.table?.views ?? []
+        for view in views {
+            guard let _switch: Switch = view as? Switch else { continue }
+            guard _switch.groupKey != nil else { continue }
+            guard _switch.groupKey == self.groupKey else { continue }
+            guard _switch !== self else { continue }
+            _switch._isSelected = false
+        }
     }
     
     private func updateMarginEdgeInset() {

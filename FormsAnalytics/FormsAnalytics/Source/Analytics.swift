@@ -6,15 +6,13 @@
 //  Copyright © 2020 Limbo. All rights reserved.
 //
 
-import FirebaseAnalytics
-import FirebaseCore
 import FormsInjector
 import FormsLogger
 
 public typealias AnalyticsEventParameters = [String: Any?]
 public typealias AnalyticsEventUserProperties = [String: String?]
 
-// MARK: AnalyticsTag
+// MARK: AnalyticsEvent
 public protocol AnalyticsEvent {
     var name: String { get }
     var parameters: AnalyticsEventParameters { get }
@@ -48,7 +46,7 @@ public enum Analytics {
     public static func log(_ event: AnalyticsEvent) {
         guard event.name.count <= 40 else {
             let logger: Logger? = Injector.main.resolveOrDefault("FormsAnalytics")
-            logger?.log(.warning, "----------\n----------\n\n\nTAG NAME ID TO LONG\n\n\n----------\n----------\n")
+            logger?.log(LogType.error, "EVENT NAME IS TO LONG: \(event.name)")
             return
         }
         

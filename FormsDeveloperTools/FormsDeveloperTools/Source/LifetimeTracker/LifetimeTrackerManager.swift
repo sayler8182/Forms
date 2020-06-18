@@ -86,32 +86,32 @@ public class LifetimeTrackerManager: NSObject {
         var groups: [GroupModel] = []
         var leaksCount: Int = 0
         var groupLeaksCount: Int = 0
-        trackedGroups
+        let trackedGroupsSorted: [(String, LifetimeEntriesGroup)] = trackedGroups
             .filter { !$0.value.isEmpty }
             .sorted { ($0.value.maxCount - $0.value.count) < ($1.value.maxCount - $1.value.count) }
-            .forEach { (name: String, group: LifetimeEntriesGroup) in
-                if group.lifetimeState == .leaky {
-                    groupLeaksCount += group.count - group.maxCount
-                }
-                var entries: [EntryModel] = []
-                group.entries
-                    .sorted { $0.value.count > $1.value.count }
-                    .filter { !$0.value.isEmpty }
-                    .forEach { (_, entry: LifetimeEntry) in
-                        if entry.lifetimeState == .leaky {
-                            leaksCount += entry.count - entry.maxCount
-                        }
-                        entries.append(EntryModel(
-                            color: entry.lifetimeState.color,
-                            description: entry.debugDescription))
-                }
-                groups.append(GroupModel(
-                    color: group.lifetimeState.color,
-                    title: group.debugDescription,
-                    groupName: group.name,
-                    groupCount: group.count,
-                    groupMaxCount: group.maxCount,
-                    entries: entries))
+        for (_, group) in trackedGroupsSorted {
+            if group.lifetimeState == .leaky {
+                groupLeaksCount += group.count - group.maxCount
+            }
+            var entries: [EntryModel] = []
+            group.entries
+                .sorted { $0.value.count > $1.value.count }
+                .filter { !$0.value.isEmpty }
+                .forEach { (_, entry: LifetimeEntry) in
+                    if entry.lifetimeState == .leaky {
+                        leaksCount += entry.count - entry.maxCount
+                    }
+                    entries.append(EntryModel(
+                        color: entry.lifetimeState.color,
+                        description: entry.debugDescription))
+            }
+            groups.append(GroupModel(
+                color: group.lifetimeState.color,
+                title: group.debugDescription,
+                groupName: group.name,
+                groupCount: group.count,
+                groupMaxCount: group.maxCount,
+                entries: entries))
         }
         return EntryGroupModel(
             groups: groups,

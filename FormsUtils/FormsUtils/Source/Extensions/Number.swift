@@ -56,6 +56,7 @@ public extension String {
             .replacingOccurrences(of: ",", with: ".")
         return Double(string)
     }
+    var asFloat: Float? { self.asDouble?.asFloat }
     var asInt: Int? { self.asDouble?.asInt }
     var asNumber: NSNumber? { self.asDouble?.asNumber }
     var asString: String { self }
@@ -67,6 +68,7 @@ public extension Optional where Wrapped == String {
     var asCGFloat: CGFloat? { self?.asCGFloat }
     var asDecimal: Decimal? { self?.asDecimal }
     var asDouble: Double? { self?.asDouble }
+    var asFloat: Float? { self?.asDouble?.asFloat }
     var asInt: Int? { self?.asInt }
     var asNumber: NSNumber? { self?.asNumber }
     var asString: String? { self?.asString }
@@ -79,6 +81,7 @@ public protocol Number: Comparable {
     var asCGFloat: CGFloat { get }
     var asDecimal: Decimal { get }
     var asDouble: Double { get }
+    var asFloat: Float { get }
     var asInt: Int { get }
     var asNumber: NSNumber { get }
     var asString: String { get }
@@ -181,6 +184,7 @@ extension CGFloat: Number, NumberFormattable {
     public var asCGFloat: CGFloat { self }
     public var asDecimal: Decimal { self.asDouble.asDecimal }
     public var asDouble: Double { Double(self) }
+    public var asFloat: Float { Float(self) }
     public var asInt: Int { Int(self) }
     public var asNumber: NSNumber { self as NSNumber }
     public var asString: String { self.asDouble.asString }
@@ -209,6 +213,7 @@ extension Double: Number, NumberFormattable {
     public var asCGFloat: CGFloat { CGFloat(self) }
     public var asDecimal: Decimal { Decimal(self) }
     public var asDouble: Double { self }
+    public var asFloat: Float { Float(self) }
     public var asInt: Int { Int(self) }
     public var asNumber: NSNumber { self as NSNumber }
     public var asString: String { String(self) }
@@ -237,6 +242,7 @@ extension Int: Number, NumberFormattable {
     public var asCGFloat: CGFloat { CGFloat(self) }
     public var asDecimal: Decimal { Decimal(self) }
     public var asDouble: Double { Double(self) }
+    public var asFloat: Float { Float(self) }
     public var asInt: Int { self }
     public var asNumber: NSNumber { self as NSNumber }
     public var asString: String { String(self) }

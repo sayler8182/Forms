@@ -11,25 +11,46 @@ import os.log
 
 // MARK: Logger
 public protocol Logger {
-    func log(_ type: LogType,
+    func log(_ type: LogTypeProtocol,
              _ item: Any)
 }
 
+// MARK: LogTypeProtocol
+public protocol LogTypeProtocol {
+    var rawValue: String { get }
+}
+
 // MARK: LogType
-public enum LogType: Int {
-    case info = 0
-    case warning = 1
-    case error = 2
+public enum LogType: String, CaseIterable, LogTypeProtocol {
+    case info = "_info"
+    case warning = "_warning"
+    case error = "_error"
 }
 
 // MARK: ConsoleLogger
 public class ConsoleLogger: Logger {
-    public init() { }
+    public let whitelist: [LogTypeProtocol]
     
-    public func log(_ type: LogType,
+    public init(whitelist: [LogTypeProtocol]) {
+        self.whitelist = whitelist
+    }
+    
+    public init() {
+        self.whitelist = LogType.allCases
+    }
+    
+    public func log(_ type: LogTypeProtocol,
                     _ item: Any) {
+        guard self.shouldLog(type) else { return }
         self.logConsole(item)
         self.logSystem(item)
+    }
+    
+    internal func shouldLog(_ type: LogTypeProtocol) -> Bool {
+        let result: Bool = self.whitelist
+            .map { $0.rawValue }
+            .contains(type.rawValue)
+        return result
     }
     
     internal func logConsole(_ item: Any) {
@@ -48,22 +69,9 @@ public class ConsoleLogger: Logger {
     }
 }
 
-// MARK: WarningOnlyLogger
-public class WarningOnlyLogger: ConsoleLogger {
-    override public func log(_ type: LogType,
-                             _ item: Any) {
-        guard type.rawValue >= LogType.warning.rawValue else { return }
-        super.log(type, item)
-    }
-}
-
-// MARK: ErrorOnlyLogger
-public class ErrorOnlyLogger: ConsoleLogger {
-    override public func log(_ type: LogType,
-                             _ item: Any) {
-        guard type.rawValue >= LogType.error.rawValue else { return }
-        super.log(type, item)
-    }
+// MARK: ConsoleOnlyLogger
+public class ConsoleOnlyLogger: ConsoleLogger {
+    override internal func logSystem(_ item: Any) { }
 }
 
 // MARK: SystemOnlyLogger

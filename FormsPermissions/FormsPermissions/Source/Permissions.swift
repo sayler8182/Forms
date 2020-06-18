@@ -79,7 +79,7 @@ public enum Permissions {
                             _ permissions: [Permissionable],
                             _ index: Int,
                             _ completion: @escaping (Bool) -> Void) {
-        permissions[index].ask { askStatus in
+        permissions[index].ask { (askStatus: PermissionsStatus) in
             let status = status && askStatus.isAuthorized
             let index: Int = index + 1
             if index < permissions.count {

@@ -132,7 +132,8 @@ internal class SessionDelegate: NSObject, URLSessionDelegate, URLSessionDataDele
     
     private var totalSize: Int64 = 0
     private var size: Int64 {
-        return Int64(self.data.count)
+        let count: Int = self.data.count
+        return Int64(count)
     }
     private var progress: Double {
         guard self.totalSize != 0 else { return 0.0 }
@@ -223,7 +224,7 @@ private func log(_ request: URLRequest,
         string += "\n\t" + "BODY:"
         string += "" + dataToString(body).replacingOccurrences(of: "\n", with: "\n\t")
     }
-    logger.log(.info, string)
+    logger.log(LogType.info, string)
 }
 
 private func log(_ response: HTTPURLResponse,
@@ -244,7 +245,7 @@ private func log(_ response: HTTPURLResponse,
         string += "\n\t" + "BODY:"
         string += "\n\t" + dataToString(body).replacingOccurrences(of: "\n", with: "\n\t")
     }
-    logger.log(.info, string)
+    logger.log(LogType.info, string)
 }
 
 private func log(_ request: URLRequest,
@@ -265,7 +266,7 @@ private func log(_ request: URLRequest,
         string += "\n\t" + "BODY:"
         string += "\n\t" + dataToString(body).replacingOccurrences(of: "\n", with: "\n\t")
     }
-    logger.log(.info, string)
+    logger.log(LogType.info, string)
 }
 
 private func log(_ request: URLRequest,
@@ -275,7 +276,7 @@ private func log(_ request: URLRequest,
     var string: String = ""
     string += "\nERROR: \(networkError.debugDescription)"
     string += "\n" + (request.url?.absoluteString ?? "")
-    logger.log(.warning, string)
+    logger.log(LogType.warning, string)
 }
 
 private func log(_ task: URLSessionTask,
@@ -287,14 +288,14 @@ private func log(_ task: URLSessionTask,
     if networkError.isCancelled {
         string += "\nCANCELLED"
         string += "\n" + (task.originalRequest?.url?.absoluteString ?? "")
-        logger.log(.info, string)
+        logger.log(LogType.info, string)
     } else {
         string += "\nERROR: \(networkError.debugDescription)"
         string += "\n" + (task.originalRequest?.url?.absoluteString ?? "")
         if let error = error {
             string += "\n\(error.localizedDescription)"
         }
-        logger.log(.warning, string)
+        logger.log(LogType.warning, string)
     }
 }
 
@@ -305,7 +306,7 @@ private func log(_ response: HTTPURLResponse,
     var string: String = ""
     string += "\nERROR: \(networkError.debugDescription)"
     string += "\n" + (response.url?.absoluteString ?? "")
-    logger.log(.warning, string)
+    logger.log(LogType.warning, string)
 }
 
 private func log(_ size: Int64,
@@ -316,7 +317,7 @@ private func log(_ size: Int64,
     var string: String = ""
     string += size == 0 ? "\n" : ""
     string += "PROGRESS: \(size) / \(totalSize) - \(Int(progress * 100))%"
-    logger.log(.info, string)
+    logger.log(LogType.info, string)
 }
 
 private func dataToString(_ data: Data) -> String {

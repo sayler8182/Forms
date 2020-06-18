@@ -73,6 +73,7 @@ private enum Demo {
         // Utils
         case utils
         case utilsAttributedString
+        case utilsDebouncer
         case utilsLoader
         case utilsModal
         case utilsScrollSteps
@@ -108,6 +109,7 @@ private enum Demo {
         case kitCardKit
         case kitImagePickerKit
         case kitImagePickerKitSystem
+        case kitImagePickerKitWDImagePicker
         case kitPagerKit
         case kitSideMenuKit
         case kitSocialKit
@@ -200,6 +202,7 @@ private enum Demo {
                 ]),
                 Section(title: "Utils", rows: [
                     Row(type: RowType.utilsAttributedString, title: "AttributedString"),
+                    Row(type: RowType.utilsDebouncer, title: "Debouncer"),
                     Row(type: RowType.utilsLoader, title: "Loader"),
                     Row(type: RowType.utilsModal, title: "Modal"),
                     Row(type: RowType.utilsScrollSteps, title: "ScrollSteps"),
@@ -264,7 +267,8 @@ private enum Demo {
                         title: "ImagePickerKit",
                         sections: [
                             Section(rows: [
-                                Row(type: RowType.kitImagePickerKitSystem, title: "System")
+                                Row(type: RowType.kitImagePickerKitSystem, title: "System"),
+                                Row(type: RowType.kitImagePickerKitWDImagePicker, title: "WDImagePicker")
                             ])
                     ]),
                     Row(type: RowType.kitPagerKit, title: "PagerKit"),
@@ -578,6 +582,7 @@ private class DemoListViewController: FormsViewController {
         case .componentsUtils:                                  return DemoUtilsViewController()
         // utils
         case .utilsAttributedString:                            return DemoAttributedStringViewController()
+        case .utilsDebouncer:                                   return DemoDebouncerViewController()
         case .utilsLoader:                                      return DemoLoaderViewController()
         case .utilsModal:                                       return DemoModalViewController()
         case .utilsScrollSteps:                                 return DemoScrollStepsViewController()
@@ -608,6 +613,7 @@ private class DemoListViewController: FormsViewController {
         // kits
         case .kitCardKit:                                       return DemoCardKitController()
         case .kitImagePickerKitSystem:                          return DemoImagePickerKitSystemViewController()
+        case .kitImagePickerKitWDImagePicker:                   return DemoImagePickerKitWDImagePickerViewController()
         case .kitPagerKit:                                      return DemoPagerKitController()
         case .kitSideMenuKit:                                   return DemoSideMenuKitController()
         case .kitSocialKitAll:                                  return DemoSocialKitAllTableViewController()

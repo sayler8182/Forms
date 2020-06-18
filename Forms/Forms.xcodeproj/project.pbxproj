@@ -104,6 +104,7 @@
 		7150CE89247FAC2100F2681B /* FormsUtils.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 714EF1B7247F940100AE3044 /* FormsUtils.framework */; };
 		7150CE8A247FAC2400F2681B /* FormsValidators.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 714EF1B8247F940100AE3044 /* FormsValidators.framework */; };
 		7150CE8B247FAC2700F2681B /* FormsLogger.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 714EF1AF247F940100AE3044 /* FormsLogger.framework */; };
+		7151A16B249A4A100066A166 /* Confetti.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71D837D42497F89C00B20FE0 /* Confetti.swift */; };
 		7156F831246486F40078AA75 /* TextFieldFormatDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7156F830246486F40078AA75 /* TextFieldFormatDelegate.swift */; };
 		718B43182490B680000DBC05 /* SegmentControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 718B43172490B680000DBC05 /* SegmentControl.swift */; };
 		718B43192490B680000DBC05 /* SegmentControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 718B43172490B680000DBC05 /* SegmentControl.swift */; };
@@ -148,6 +149,7 @@
 		71C9369B247E503700603A6F /* PinView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71C9369A247E503700603A6F /* PinView.swift */; };
 		71C9369C247E503700603A6F /* PinView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71C9369A247E503700603A6F /* PinView.swift */; };
 		71D3E43F246D61A1008BA211 /* Keyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71D3E43E246D61A1008BA211 /* Keyboard.swift */; };
+		71D837D52497F89C00B20FE0 /* Confetti.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71D837D42497F89C00B20FE0 /* Confetti.swift */; };
 		71DB66FC2458385400B16145 /* ImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71DB66FB2458385400B16145 /* ImageView.swift */; };
 		71DB66FE245839F400B16145 /* ComponentsImageViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71DB66FD245839F400B16145 /* ComponentsImageViews.swift */; };
 		71DB67002458441700B16145 /* ScrollContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71DB66FF2458441700B16145 /* ScrollContainer.swift */; };
@@ -238,6 +240,7 @@
 		719469DB243DDB7600CAD09B /* TableDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableDataSource.swift; sourceTree = "<group>"; };
 		71C9369A247E503700603A6F /* PinView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinView.swift; sourceTree = "<group>"; };
 		71D3E43E246D61A1008BA211 /* Keyboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Keyboard.swift; sourceTree = "<group>"; };
+		71D837D42497F89C00B20FE0 /* Confetti.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Confetti.swift; sourceTree = "<group>"; };
 		71DB66FB2458385400B16145 /* ImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageView.swift; sourceTree = "<group>"; };
 		71DB66FD245839F400B16145 /* ComponentsImageViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComponentsImageViews.swift; sourceTree = "<group>"; };
 		71DB66FF2458441700B16145 /* ScrollContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrollContainer.swift; sourceTree = "<group>"; };
@@ -484,6 +487,7 @@
 			isa = PBXGroup;
 			children = (
 				7194697A243DA7BE00CAD09B /* Divider.swift */,
+				71D837D42497F89C00B20FE0 /* Confetti.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -714,6 +718,7 @@
 				711070F02476BF610056BBB5 /* Divider.swift in Sources */,
 				711070F12476BF610056BBB5 /* Shimmer.swift in Sources */,
 				711070F32476BF610056BBB5 /* ProgressBar.swift in Sources */,
+				7151A16B249A4A100066A166 /* Confetti.swift in Sources */,
 				71207CED24877E610004B840 /* Checkbox.swift in Sources */,
 				711070F42476BF610056BBB5 /* Theme.swift in Sources */,
 				711070F52476BF610056BBB5 /* Loader.swift in Sources */,
@@ -781,6 +786,7 @@
 				719469A0243DA7BE00CAD09B /* Divider.swift in Sources */,
 				719469C2243DAB6500CAD09B /* Shimmer.swift in Sources */,
 				7103EA182460234E00A11A96 /* ProgressBar.swift in Sources */,
+				71D837D52497F89C00B20FE0 /* Confetti.swift in Sources */,
 				71207CEC24877E610004B840 /* Checkbox.swift in Sources */,
 				71946997243DA7BE00CAD09B /* Theme.swift in Sources */,
 				71946996243DA7BE00CAD09B /* Loader.swift in Sources */,
@@ -832,7 +838,6 @@
 			buildSettings = {
 				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
-				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = KB85VH6WG5;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
@@ -865,7 +870,6 @@
 			buildSettings = {
 				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
-				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = KB85VH6WG5;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
@@ -1015,9 +1019,7 @@
 		71946951243DA7A800CAD09B /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
-				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = KB85VH6WG5;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
@@ -1036,6 +1038,8 @@
 				);
 				MARKETING_VERSION = 0.0.0;
 				ONLY_ACTIVE_ARCH = NO;
+				OTHER_LDFLAGS = "-ObjC";
+				OTHER_SWIFT_FLAGS = "-Xfrontend -warn-long-function-bodies=1000 -Xfrontend -warn-long-expression-type-checking=1000";
 				PRODUCT_BUNDLE_IDENTIFIER = com.limbo.Forms;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
@@ -1047,9 +1051,7 @@
 		71946952243DA7A800CAD09B /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
-				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = KB85VH6WG5;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
@@ -1067,6 +1069,8 @@
 					"@loader_path/Frameworks",
 				);
 				MARKETING_VERSION = 0.0.0;
+				OTHER_LDFLAGS = "-ObjC";
+				OTHER_SWIFT_FLAGS = "-Xfrontend -warn-long-function-bodies=1000 -Xfrontend -warn-long-expression-type-checking=1000";
 				PRODUCT_BUNDLE_IDENTIFIER = com.limbo.Forms;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;

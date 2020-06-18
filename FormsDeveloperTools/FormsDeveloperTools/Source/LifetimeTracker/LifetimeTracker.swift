@@ -120,8 +120,8 @@ public class LifetimeTracker: NSObject {
     override public var debugDescription: String {
         self.lock.lock()
         let keys: [String] = self.trackedGroups.keys.sorted(by: >)
-        let description: String = keys.reduce(into: "") { (acc, key) in
-            guard let group = self.trackedGroups[key],
+        let description: String = keys.reduce(into: "") { (acc: inout String, key: String) in
+            guard let group: LifetimeEntriesGroup = self.trackedGroups[key],
                 group.lifetimeState == .leaky else { return }
             acc += "\(String(describing: group.name)): \(group.count)\n"
         }

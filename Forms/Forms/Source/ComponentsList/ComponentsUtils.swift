@@ -17,5 +17,20 @@ public enum ComponentsUtils: ComponentsList {
             component.color = Theme.Colors.primaryLight
         }
         return component
-    } 
+    }
+    
+    public static func confetti() -> Confetti {
+        let component = Confetti()
+        component.intensity = 1.0
+        component.items = [
+            .shape(.circle, Theme.Colors.primaryDark),
+            .shape(.rectangle(4, 16), Theme.Colors.primaryDark),
+            .shape(.bezierPath(UIBezierPath(size: CGSize(size: 16))), Theme.Colors.primaryDark)
+            ]
+            .compactMap { $0 }
+        component.onSetTheme = Strong(component) { (component) in
+            component.color = Theme.Colors.primaryLight
+        }
+        return component
+    }
 }

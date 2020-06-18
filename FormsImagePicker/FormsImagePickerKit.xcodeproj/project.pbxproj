@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		711071F724989C33000F6EB6 /* WDImageCropOverlayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 711071F124989C32000F6EB6 /* WDImageCropOverlayView.swift */; };
+		711071F824989C33000F6EB6 /* WDImagePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 711071F224989C32000F6EB6 /* WDImagePickerView.swift */; };
+		711071F924989C33000F6EB6 /* WDImageResizableCropOverlayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 711071F324989C32000F6EB6 /* WDImageResizableCropOverlayView.swift */; };
+		711071FA24989C33000F6EB6 /* WDImageCropBorderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 711071F424989C32000F6EB6 /* WDImageCropBorderView.swift */; };
+		711071FB24989C33000F6EB6 /* WDImageCropView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 711071F524989C33000F6EB6 /* WDImageCropView.swift */; };
+		711071FC24989C33000F6EB6 /* WDImageCropViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 711071F624989C33000F6EB6 /* WDImageCropViewController.swift */; };
 		71207D152487EC710004B840 /* FormsPermissions.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71207D142487EC710004B840 /* FormsPermissions.framework */; };
 		7150CE59247FA81500F2681B /* Forms.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7150CE58247FA81500F2681B /* Forms.framework */; };
 		71DB6624245826B600B16145 /* FormsImagePickerKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 71DB6616245826B600B16145 /* FormsImagePickerKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -16,6 +22,12 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		711071F124989C32000F6EB6 /* WDImageCropOverlayView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WDImageCropOverlayView.swift; sourceTree = "<group>"; };
+		711071F224989C32000F6EB6 /* WDImagePickerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WDImagePickerView.swift; sourceTree = "<group>"; };
+		711071F324989C32000F6EB6 /* WDImageResizableCropOverlayView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WDImageResizableCropOverlayView.swift; sourceTree = "<group>"; };
+		711071F424989C32000F6EB6 /* WDImageCropBorderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WDImageCropBorderView.swift; sourceTree = "<group>"; };
+		711071F524989C33000F6EB6 /* WDImageCropView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WDImageCropView.swift; sourceTree = "<group>"; };
+		711071F624989C33000F6EB6 /* WDImageCropViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WDImageCropViewController.swift; sourceTree = "<group>"; };
 		71207D142487EC710004B840 /* FormsPermissions.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FormsPermissions.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7150CD8D247FA05F00F2681B /* FormsImagePickerKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = FormsImagePickerKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7150CE58247FA81500F2681B /* Forms.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Forms.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -39,6 +51,27 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		711071E624989B03000F6EB6 /* WDImagePicker */ = {
+			isa = PBXGroup;
+			children = (
+				711072032498D1CB000F6EB6 /* Source */,
+				711071F224989C32000F6EB6 /* WDImagePickerView.swift */,
+			);
+			path = WDImagePicker;
+			sourceTree = "<group>";
+		};
+		711072032498D1CB000F6EB6 /* Source */ = {
+			isa = PBXGroup;
+			children = (
+				711071F424989C32000F6EB6 /* WDImageCropBorderView.swift */,
+				711071F124989C32000F6EB6 /* WDImageCropOverlayView.swift */,
+				711071F524989C33000F6EB6 /* WDImageCropView.swift */,
+				711071F624989C33000F6EB6 /* WDImageCropViewController.swift */,
+				711071F324989C32000F6EB6 /* WDImageResizableCropOverlayView.swift */,
+			);
+			path = Source;
+			sourceTree = "<group>";
+		};
 		7150CE57247FA81500F2681B /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -71,6 +104,7 @@
 			isa = PBXGroup;
 			children = (
 				71DB66F3245831C100B16145 /* System */,
+				711071E624989B03000F6EB6 /* WDImagePicker */,
 				71DB66F124582C6100B16145 /* ImagePickerView.swift */,
 				71DB66EF24582C3900B16145 /* ImagePicker.swift */,
 			);
@@ -166,8 +200,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				711071F924989C33000F6EB6 /* WDImageResizableCropOverlayView.swift in Sources */,
 				71DB66EE24582AAD00B16145 /* SystemImagePickerView.swift in Sources */,
+				711071FA24989C33000F6EB6 /* WDImageCropBorderView.swift in Sources */,
 				71DB66F224582C6100B16145 /* ImagePickerView.swift in Sources */,
+				711071F724989C33000F6EB6 /* WDImageCropOverlayView.swift in Sources */,
+				711071FC24989C33000F6EB6 /* WDImageCropViewController.swift in Sources */,
+				711071FB24989C33000F6EB6 /* WDImageCropView.swift in Sources */,
+				711071F824989C33000F6EB6 /* WDImagePickerView.swift in Sources */,
 				71DB66F024582C3900B16145 /* ImagePicker.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -300,7 +340,6 @@
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
-				DEFINES_MODULE = NO;
 				DEVELOPMENT_TEAM = KB85VH6WG5;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
@@ -320,6 +359,7 @@
 				MARKETING_VERSION = 0.0.0;
 				ONLY_ACTIVE_ARCH = NO;
 				OTHER_LDFLAGS = "-ObjC";
+				OTHER_SWIFT_FLAGS = "-Xfrontend -warn-long-function-bodies=1000 -Xfrontend -warn-long-expression-type-checking=1000";
 				PRODUCT_BUNDLE_IDENTIFIER = com.limbo.Forms.ImagePickerKit;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
@@ -334,7 +374,6 @@
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
-				DEFINES_MODULE = NO;
 				DEVELOPMENT_TEAM = KB85VH6WG5;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
@@ -353,6 +392,7 @@
 				);
 				MARKETING_VERSION = 0.0.0;
 				OTHER_LDFLAGS = "-ObjC";
+				OTHER_SWIFT_FLAGS = "-Xfrontend -warn-long-function-bodies=1000 -Xfrontend -warn-long-expression-type-checking=1000";
 				PRODUCT_BUNDLE_IDENTIFIER = com.limbo.Forms.ImagePickerKit;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
