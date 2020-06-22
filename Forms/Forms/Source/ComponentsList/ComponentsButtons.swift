@@ -12,27 +12,37 @@ import UIKit
 public enum ComponentsButtons: ComponentsList {
     public static func `default`() -> Button {
         let component = Button()
-        component.animationTime = 0.1
-        component.height = UITableView.automaticDimension
-        component.isEnabled = true
-        component.isLoading = false
+        component.minHeight = 44.0
+        component.maxHeight = CGFloat.greatestConstraintConstant
+        component.paddingEdgeInset = UIEdgeInsets(
+            vertical: 6,
+            horizontal: 16)
+        component.titleNumberOfLines = 2
+        component.titleTextAlignment = .center
+        component.onSetTheme = Strong(component) { (component) in
+            component.backgroundColors = .init(default: Theme.Colors.blue)
+            component.borderColors = .init(Theme.Colors.clear)
+            component.titleColors = .init(Theme.Colors.white)
+            component.titleFonts = .init(Theme.Fonts.regular(ofSize: 14))
+        }
+        return component
+    }
+    
+    public static func gradient() -> GradientButton {
+        let component = GradientButton()
         component.marginEdgeInset = UIEdgeInsets(0)
         component.minHeight = 44.0
         component.maxHeight = CGFloat.greatestConstraintConstant
         component.paddingEdgeInset = UIEdgeInsets(
             vertical: 6,
             horizontal: 16)
-        component.title = nil
         component.titleNumberOfLines = 2
-        component.titleTextAlignment = NSTextAlignment.center
+        component.titleTextAlignment = .center
         component.onSetTheme = Strong(component) { (component) in
-            component.backgroundColors = Button.State<UIColor?>(
-                active: Theme.Colors.blue,
-                selected: Theme.Colors.blue.withAlphaComponent(0.7),
-                disabled: Theme.Colors.gray,
-                loading: Theme.Colors.blue)
-            component.titleColors = Button.State<UIColor?>(Theme.Colors.white)
-            component.titleFonts = Button.State<UIFont>(Theme.Fonts.regular(ofSize: 14))
+            component.borderColors = .init(Theme.Colors.clear)
+            component.gradientColors = .init(default: [Theme.Colors.blue, Theme.Colors.blue.with(alpha: 0.7)])
+            component.titleColors = .init(Theme.Colors.white)
+            component.titleFonts = .init(Theme.Fonts.regular(ofSize: 14))
         }
         return component
     }

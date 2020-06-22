@@ -249,6 +249,8 @@ public class ThemeColors: ThemeColorsProtocol {
 // MARK: ThemeFontsKey
 public struct ThemeFontsKey: Hashable {
     public static var bold = ThemeFontsKey("bold")
+    public static var light = ThemeFontsKey("light")
+    public static var medium = ThemeFontsKey("medium")
     public static var regular = ThemeFontsKey("regular")
     
     let key: String
@@ -322,7 +324,7 @@ public extension ThemeColorsProtocol {
         return self.color(.red, or: UIColor(rgba: 0xFF3B30FF))
     }
     var white: UIColor {
-        return self.color(.black, or: UIColor(rgba: 0xFFFFFFFF))
+        return self.color(.white, or: UIColor(rgba: 0xFFFFFFFF))
     }
     
     var primaryDark: UIColor {

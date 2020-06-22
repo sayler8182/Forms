@@ -14,13 +14,6 @@ public enum ComponentsNavigationBars: ComponentsList {
         let component = NavigationBar()
         component.backImage = { UIImage.from(name: "chevron.left") }
         component.closeImage = { UIImage.from(name: "xmark") }
-        component.isBack = true
-        component.isShadow = true
-        component.isTranslucent = false
-        component.leftBarButtonItems = []
-        component.rightBarButtonItems = []
-        component.title = nil
-        component.titleView = nil
         component.onSetTheme = Strong(component) { (component) in
             component.backgroundColor = Theme.Colors.primaryLight
             component.tintColor = Theme.Colors.primaryDark

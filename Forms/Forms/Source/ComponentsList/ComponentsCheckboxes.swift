@@ -12,71 +12,53 @@ import UIKit
 public enum ComponentsCheckboxes: ComponentsList {
     public static func checkbox() -> Checkbox {
         let component = Checkbox()
-        component.animationTime = 0.1
-        component.images = Checkbox.State<(() -> UIImage?)?>(
-            active: { UIImage.from(name: "stop") },
-            selected: { UIImage.from(name: "checkmark.square.fill") })
+        component.images = Checkbox.State<LazyImage?>({ UIImage.from(name: "stop") })
+            .with(selected: { UIImage.from(name: "checkmark.square.fill") })
+            .with(disabledSelected: { UIImage.from(name: "checkmark.square.fill") })
         component.imageSize = CGSize(size: 22)
-        component.isEnabled = true
-        component.isSelected = false
-        component.marginEdgeInset = UIEdgeInsets(0)
-        component.paddingEdgeInset = UIEdgeInsets(
+        component.marginEdgeInset = UIEdgeInsets(
             vertical: 8,
             horizontal: 16)
-        component.title = nil
-        component.value = nil
         component.onSetTheme = Strong(component) { (component) in
-            component.backgroundColors = Checkbox.State<UIColor?>(Theme.Colors.primaryLight)
-            component.imageColors = Checkbox.State<UIColor?>(
-                active: Theme.Colors.primaryDark,
-                selected: Theme.Colors.primaryDark,
-                disabled: Theme.Colors.tertiaryDark)
-            component.titleColors = Checkbox.State<UIColor?>(
-                active: Theme.Colors.primaryDark,
-                selected: Theme.Colors.primaryDark,
-                disabled: Theme.Colors.tertiaryDark)
-            component.titleFonts = Checkbox.State<UIFont>(Theme.Fonts.bold(ofSize: 12))
-            component.valueColors = Checkbox.State<UIColor?>(
-                active: Theme.Colors.secondaryDark,
-                selected: Theme.Colors.secondaryDark,
-                disabled: Theme.Colors.tertiaryDark)
-            component.valueFonts = Checkbox.State<UIFont>(Theme.Fonts.regular(ofSize: 10))
+            component.backgroundColors = .init(Theme.Colors.primaryLight)
+            component.imageColors = Checkbox.State<UIColor?>(Theme.Colors.primaryDark)
+                .with(disabled: Theme.Colors.tertiaryDark)
+                .with(disabledSelected: Theme.Colors.tertiaryDark)
+            component.titleColors = Checkbox.State<UIColor?>(Theme.Colors.primaryDark)
+                .with(disabled: Theme.Colors.tertiaryDark)
+                .with(disabledSelected: Theme.Colors.tertiaryDark)
+            component.titleFonts = .init(Theme.Fonts.bold(ofSize: 12))
+            component.valueColors = Checkbox.State<UIColor?>(Theme.Colors.secondaryDark)
+                .with(disabled: Theme.Colors.tertiaryDark)
+                .with(disabledSelected: Theme.Colors.tertiaryDark)
+            component.valueFonts = .init(Theme.Fonts.regular(ofSize: 10))
         }
         return component
     }
     
     public static func radio() -> Checkbox {
         let component = Checkbox()
-        component.animationTime = 0.1
         component.groupKey = "_radio_group"
-        component.images = Checkbox.State<(() -> UIImage?)?>(
-            active: { UIImage.from(name: "circle") },
-            selected: { UIImage.from(name: "stop.circle") })
+        component.images = Checkbox.State<LazyImage?>({ UIImage.from(name: "circle") })
+            .with(selected: { UIImage.from(name: "stop.circle") })
+            .with(disabledSelected: { UIImage.from(name: "stop.circle") })
         component.imageSize = CGSize(size: 22)
-        component.isEnabled = true
-        component.isSelected = false
-        component.marginEdgeInset = UIEdgeInsets(0)
-        component.paddingEdgeInset = UIEdgeInsets(
+        component.marginEdgeInset = UIEdgeInsets(
             vertical: 8,
             horizontal: 16)
-        component.title = nil
-        component.value = nil
         component.onSetTheme = Strong(component) { (component) in
-            component.backgroundColors = Checkbox.State<UIColor?>(Theme.Colors.primaryLight)
-            component.imageColors = Checkbox.State<UIColor?>(
-                active: Theme.Colors.primaryDark,
-                selected: Theme.Colors.primaryDark,
-                disabled: Theme.Colors.tertiaryDark)
-            component.titleColors = Checkbox.State<UIColor?>(
-                active: Theme.Colors.primaryDark,
-                selected: Theme.Colors.primaryDark,
-                disabled: Theme.Colors.tertiaryDark)
-            component.titleFonts = Checkbox.State<UIFont>(Theme.Fonts.bold(ofSize: 12))
-            component.valueColors = Checkbox.State<UIColor?>(
-                active: Theme.Colors.secondaryDark,
-                selected: Theme.Colors.secondaryDark,
-                disabled: Theme.Colors.tertiaryDark)
-            component.valueFonts = Checkbox.State<UIFont>(Theme.Fonts.regular(ofSize: 10))
+            component.backgroundColors = .init(Theme.Colors.primaryLight)
+            component.imageColors = Checkbox.State<UIColor?>(Theme.Colors.primaryDark)
+                .with(disabled: Theme.Colors.tertiaryDark)
+                .with(disabledSelected: Theme.Colors.tertiaryDark)
+            component.titleColors = Checkbox.State<UIColor?>(Theme.Colors.primaryDark)
+                .with(disabled: Theme.Colors.tertiaryDark)
+                .with(disabledSelected: Theme.Colors.tertiaryDark)
+            component.titleFonts = .init(Theme.Fonts.bold(ofSize: 12))
+            component.valueColors = Checkbox.State<UIColor?>(Theme.Colors.secondaryDark)
+                .with(disabled: Theme.Colors.tertiaryDark)
+                .with(disabledSelected: Theme.Colors.tertiaryDark)
+            component.valueFonts = .init(Theme.Fonts.regular(ofSize: 10))
         }
         return component
     }

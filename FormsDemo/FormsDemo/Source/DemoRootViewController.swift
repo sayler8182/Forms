@@ -11,6 +11,7 @@ import FormsAnchor
 import FormsHomeShortcuts
 import FormsInjector
 import FormsUtils
+import FormsUtilsUI
 import UIKit
 
 // MARK: Protocols
@@ -46,7 +47,8 @@ private enum Demo {
         // Components
         case components
         case componentsButtons
-        case componentsButtonsPrimaryButton
+        case componentsButtonsDefaultButton
+        case componentsButtonsGradientButton
         case componentsCheckboxes
         case componentsContainers
         case componentsContainersPage
@@ -99,11 +101,13 @@ private enum Demo {
         case frameworkNetwork
         case frameworkNetworkGet
         case frameworkNetworkImage
+        case frameworkNetworkListImage
         case frameworkNetworkUpload
         case frameworkPermissions
         case frameworkTransitions
         case frameworkTransitionsController
         case frameworkTransitionsNavigation
+        case frameworkTransitionsNavigationTable
         case frameworkValidators
         // Kits
         case kitCardKit
@@ -149,7 +153,8 @@ private enum Demo {
                         title: "Buttons",
                         sections: [
                             Section(rows: [
-                                Row(type: RowType.componentsButtonsPrimaryButton, title: "PrimaryButton")
+                                Row(type: RowType.componentsButtonsDefaultButton, title: "DefaultButton"),
+                                Row(type: RowType.componentsButtonsGradientButton, title: "GradientButton")
                             ])
                     ]),
                     Row(type: RowType.componentsCheckboxes, title: "Checkboxes"),
@@ -245,6 +250,7 @@ private enum Demo {
                             Section(rows: [
                                 Row(type: RowType.frameworkNetworkGet, title: "Network Get"),
                                 Row(type: RowType.frameworkNetworkImage, title: "Network Image"),
+                                Row(type: RowType.frameworkNetworkListImage, title: "Network List Image"),
                                 Row(type: RowType.frameworkNetworkUpload, title: "Network Upload")
                             ])
                     ]),
@@ -255,7 +261,8 @@ private enum Demo {
                         sections: [
                             Section(rows: [
                                 Row(type: RowType.frameworkTransitionsController, title: "Transitions Controller"),
-                                Row(type: RowType.frameworkTransitionsNavigation, title: "Transitions Navigation", shouldPresent: true)
+                                Row(type: RowType.frameworkTransitionsNavigation, title: "Transitions Navigation", shouldPresent: true),
+                                Row(type: RowType.frameworkTransitionsNavigationTable, title: "Transitions Navigation Table", shouldPresent: true)
                             ])
                     ]),
                     Row(type: RowType.frameworkValidators, title: "Validators")
@@ -560,7 +567,8 @@ private class DemoListViewController: FormsViewController {
         case .tableViewController:                              return DemoTableViewController()
         case .viewController:                                   return DemoViewController()
         // components
-        case .componentsButtonsPrimaryButton:                   return DemoPrimaryButtonViewController()
+        case .componentsButtonsDefaultButton:                   return DemoDefaultButtonViewController()
+        case .componentsButtonsGradientButton:                  return DemoGradientButtonViewController()
         case .componentsCheckboxes:                             return DemoCheckboxesViewController()
         case .componentsContainersPage:                         return DemoPageContainerViewController()
         case .componentsContainersScroll:                       return DemoScrollContainerViewController()
@@ -605,10 +613,12 @@ private class DemoListViewController: FormsViewController {
         case .frameworkMock:                                    return DemoMockViewController()
         case .frameworkNetworkGet:                              return DemoNetworkGetViewController()
         case .frameworkNetworkImage:                            return DemoNetworkImageViewController()
+        case .frameworkNetworkListImage:                        return DemoNetworkListImageViewController()
         case .frameworkNetworkUpload:                           return DemoNetworkUploadViewController()
         case .frameworkPermissions:                             return DemoPermissionsViewController()
         case .frameworkTransitionsController:                   return DemoTransitionControllerViewController()
         case .frameworkTransitionsNavigation:                   return DemoTransitionNavigationViewController()
+        case .frameworkTransitionsNavigationTable:              return DemoTransitionNavigationTableViewController()
         case .frameworkValidators:                              return DemoValidatorsViewController()
         // kits
         case .kitCardKit:                                       return DemoCardKitController()

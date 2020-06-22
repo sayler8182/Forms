@@ -12,6 +12,7 @@ import FormsInjector
 import FormsLogger
 import FormsMock
 import FormsNetworking
+import FormsNetworkingImage
 import FormsToastKit
 import FormsUtils
 import UIKit
@@ -22,6 +23,7 @@ class DemoNetworkImageViewController: FormsTableViewController {
     private let imageView = Components.image.default()
         .with(contentMode: .scaleAspectFit)
         .with(height: 400.0)
+        .with(isPreviewable: true)
     private let reloadButton = Components.button.default()
         .with(title: "Reload")
     private let reloadAndCancelButton = Components.button.default()
@@ -30,6 +32,8 @@ class DemoNetworkImageViewController: FormsTableViewController {
         .with(title: "Load from NetworkImages")
     private let imageViewButton = Components.button.default()
         .with(title: "Load from UIImageView")
+    private let imageViewAndCancelButton = Components.button.default()
+        .with(title: "Load from UIImageView and Cancel")
     
     private lazy var provider = DemoProvider(delegate: self)
     
@@ -49,7 +53,8 @@ class DemoNetworkImageViewController: FormsTableViewController {
             self.reloadButton,
             self.reloadAndCancelButton,
             self.networkImagesButton,
-            self.imageViewButton
+            self.imageViewButton,
+            self.imageViewAndCancelButton
         ], divider: self.divider)
     }
     
@@ -68,12 +73,18 @@ class DemoNetworkImageViewController: FormsTableViewController {
             _self.getContentFromNetworkImages()
         }
         self.imageViewButton.onClick = Unowned(self) { (_self) in
-            _self.startShimmering()
             let request = NetworkImageRequest(
                 url: Mock().imageUrl([.quality(.high)]))
-            _self.imageView.setImage(request: request) { [weak _self] (_, _) in
-                guard let _self = _self else { return }
-                _self.stopShimmering()
+                .with(isAutoShimmer: true)
+            _self.imageView.setImage(request: request)
+        }
+        self.imageViewAndCancelButton.onClick = Unowned(self) { (_self) in
+            let request = NetworkImageRequest(
+                url: Mock().imageUrl([.quality(.high)]))
+                .with(isAutoShimmer: true)
+            _self.imageView.setImage(request: request, cache: NetworkTmpCache(ttl: 60 * 60))
+            delay(0.1) {
+                _self.imageView.cancel()
             }
         }
     }
@@ -140,7 +151,8 @@ private class DemoProvider {
     }
     
     func getContent() {
-        self.contentTask = DemoNetworkMethods.images.get(
+        let url = Mock().imageUrl([.quality(.high)])
+        self.contentTask = DemoNetworkMethods.image(url: url).call(
             onProgress: { [weak self] (_, _, progress: Double) in
                 guard let `self` = self else { return }
                 DispatchQueue.main.async {
@@ -163,8 +175,8 @@ private class DemoProvider {
     }
     
     func getContentFromNetworkImages() {
-        let request = NetworkImageRequest(
-            url: Mock().imageUrl([.quality(.high)]))
+        let url = Mock().imageUrl([.quality(.high)])
+        let request = NetworkImageRequest(url: url)
         self.networkImages.image(
             request: request,
             onProgress: { [weak self] (_, _, progress: Double) in
@@ -196,27 +208,14 @@ private class DemoProvider {
 
 // MARK: DemoNetworkMethods
 private enum DemoNetworkMethods {
-    static var images: NetworkMethodsImages {
-        NetworkMethodsImages()
-            .with(logger: ConsoleLogger())
-            .with(cache: NetworkTmpCache(ttl: 60 * 60))
-    }
+    typealias image = DemoNetworkMethodsImage
 }
 
-// MARK: NetworkMethodsImages
-private class NetworkMethodsImages: NetworkMethod {
-    @discardableResult
-    func get(onProgress: @escaping NetworkOnProgress,
-             onSuccess: @escaping NetworkOnSuccess,
-             onError: @escaping NetworkOnError,
-             onCompletion: NetworkOnCompletion? = nil) -> NetworkTask {
-        let request = NetworkRequest(
-            url: Mock().imageUrl([.quality(.high)]))
-        return self.provider.call(
-            request: request,
-            onProgress: onProgress,
-            onSuccess: onSuccess,
-            onError: onError,
-            onCompletion: onCompletion)
+// MARK: DemoNetworkMethodsImage
+private class DemoNetworkMethodsImage: NetworkMethod {
+    var url: URL!
+    
+    init(url: URL!) {
+        self.url = url
     }
 }

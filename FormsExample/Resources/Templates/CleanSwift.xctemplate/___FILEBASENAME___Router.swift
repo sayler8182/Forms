@@ -6,6 +6,8 @@
 //  Copyright © ___YEAR___ ___ORGANIZATIONNAME___. All rights reserved.
 //
 
+import Forms
+import FormsInjector
 import UIKit
 
 // MARK: ___VARIABLE_sceneName___RoutingLogic

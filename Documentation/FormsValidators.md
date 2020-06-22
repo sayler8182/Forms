@@ -29,9 +29,11 @@ LengthValidator(
     minLength: 1, 
     maxLength: 20)
 NotEmptyValidator()
+PasswordValidator()
 PeselValidator()
 PhoneValidator(isRequired: false)
 PostCodeValidator(format: "XX-XXX")
+StringValidator()
 ```
 
 ### Validation

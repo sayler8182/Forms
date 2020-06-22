@@ -48,6 +48,7 @@ func number(_ range: ClosedRange<Int>, _ options: [MockOptions] = [.none]) -> In
 func number(_ range: Range<Int>, _ options: [MockOptions] = [.none]) -> Int!
 func number(_ range: ClosedRange<Double>, _ options: [MockOptions] = [.none]) -> Double!
 func number(_ range: Range<Double>, _ options: [MockOptions] = [.none]) -> Double!
+func password(_ options: [MockOptions] = [.none]) -> String!
 func phone(prefix: String? = nil, length: Int = 9, groupingSeparator: String? = " ", options: [MockOptions] = [.none]) -> String!
 func postCode(format: String = "XX-XXX", options: [MockOptions] = [.none]) -> String!
 func string(_ options: [MockOptions] = [.none]) -> String!

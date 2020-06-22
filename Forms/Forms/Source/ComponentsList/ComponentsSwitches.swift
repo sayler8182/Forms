@@ -12,32 +12,23 @@ import UIKit
 public enum ComponentsSwitches: ComponentsList {
     public static func `default`() -> Switch {
         let component = Switch()
-        component.animationTime = 0.1
-        component.isEnabled = true
-        component.isSelected = false
-        component.marginEdgeInset = UIEdgeInsets(0)
-        component.paddingEdgeInset = UIEdgeInsets(
+        component.marginEdgeInset = UIEdgeInsets(
             vertical: 8,
             horizontal: 16)
-        component.title = nil
-        component.value = nil
         component.onSetTheme = Strong(component) { (component) in
-            component.backgroundColors = Switch.State<UIColor?>(Theme.Colors.primaryLight)
-            component.switchColors = Switch.State<UIColor?>(Theme.Colors.blue)
-            component.switchThumbColors = Switch.State<UIColor?>(
-                active: Theme.Colors.primaryDark,
-                selected: Theme.Colors.primaryDark,
-                disabled: Theme.Colors.tertiaryDark)
-            component.titleColors = Switch.State<UIColor?>(
-                active: Theme.Colors.primaryDark,
-                selected: Theme.Colors.primaryDark,
-                disabled: Theme.Colors.tertiaryDark)
-            component.titleFonts = Switch.State<UIFont>(Theme.Fonts.bold(ofSize: 12))
-            component.valueColors = Switch.State<UIColor?>(
-                active: Theme.Colors.secondaryDark,
-                selected: Theme.Colors.secondaryDark,
-                disabled: Theme.Colors.tertiaryDark)
-            component.valueFonts = Switch.State<UIFont>(Theme.Fonts.regular(ofSize: 10))
+            component.backgroundColors = .init(Theme.Colors.primaryLight)
+            component.switchColors = .init(Theme.Colors.blue)
+            component.switchThumbColors = Switch.State<UIColor?>(Theme.Colors.primaryDark)
+                .with(disabled: Theme.Colors.tertiaryDark)
+                .with(disabledSelected: Theme.Colors.tertiaryDark)
+            component.titleColors = Switch.State<UIColor?>(Theme.Colors.primaryDark)
+                .with(disabled: Theme.Colors.tertiaryDark)
+                .with(disabledSelected: Theme.Colors.tertiaryDark)
+            component.titleFonts = .init(Theme.Fonts.bold(ofSize: 12))
+            component.valueColors = Switch.State<UIColor?>(Theme.Colors.secondaryDark)
+                .with(disabled: Theme.Colors.tertiaryDark)
+                .with(disabledSelected: Theme.Colors.tertiaryDark)
+            component.valueFonts = .init(Theme.Fonts.regular(ofSize: 10))
         }
         return component
     }

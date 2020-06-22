@@ -69,7 +69,7 @@ internal class WDImageResizableCropOverlayView: WDImageCropOverlayView {
     }
 
     override func draw(_ rect: CGRect) {
-        Theme.Colors.white.withAlphaComponent(0.5).set()
+        Theme.Colors.white.with(alpha: 0.5).set()
         UIRectFill(self.bounds)
         Theme.Colors.clear.set()
         UIRectFill(self.contentView.frame)

@@ -11,6 +11,9 @@ import Foundation
 
 // MARK: NetworkCache
 public protocol NetworkCache {
+    init(ttl: TimeInterval)
+    
+    func isCached(hash: Any) throws -> Bool
     func write(hash: Any,
                data: Data,
                logger: Logger?) throws
@@ -20,15 +23,35 @@ public protocol NetworkCache {
     func clean() throws
 }
 
+// MARK: NetworkVoidCache
+public class NetworkVoidCache: NetworkCache {
+    public required init(ttl: TimeInterval) { }
+    
+    public func isCached(hash: Any) throws -> Bool { return false }
+    public func write(hash: Any, data: Data, logger: Logger?) throws { }
+    public func read(hash: Any, logger: Logger?) throws -> Data? { return nil }
+    public func reset() throws { }
+    public func clean() throws { }
+}
+
 // MARK: NetworkTmpCache
 public class NetworkTmpCache: NetworkCache {
     private let fileManager = FileManager.default
     private let directory: URL = FileManager.default.temporaryDirectory.appendingPathComponent("networking_cache")
     private let ttl: TimeInterval
     
-    public init(ttl: TimeInterval) {
+    public required init(ttl: TimeInterval) {
         self.ttl = ttl
         try? self.fileManager.createDirectory(at: self.directory, withIntermediateDirectories: false, attributes: .none)
+    }
+    
+    public func isCached(hash: Any) throws -> Bool {
+        try self.clean()
+        guard let _: URL = try self.fileManager.contentsOfDirectory(
+            at: self.directory,
+            includingPropertiesForKeys: nil)
+            .first(where: { $0.absoluteString.contains("_\(hash).") }) else { return false }
+        return true
     }
     
     public func write(hash: Any,

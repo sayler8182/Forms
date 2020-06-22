@@ -45,6 +45,7 @@ public extension InjectorStorage {
 public final class GraphStorage: InjectorStorage {
     private var instances: [GraphIdentifier: Weak<AnyObject>] = [:]
     public var instance: Any?
+    private var lock: NSLock = NSLock()
     
     public init() {}
     
@@ -53,17 +54,22 @@ public final class GraphStorage: InjectorStorage {
     }
     
     public func getInstance(from graph: GraphIdentifier) -> Any? {
-        return self.instances[graph]?.value
+        self.lock.lock()
+        let instance: Any? = self.instances[graph]?.value
+        self.lock.unlock()
+        return instance
     }
     
     public func setInstance(_ instance: Any?,
                             in graph: GraphIdentifier) {
+        self.lock.lock()
         self.instance = instance
         
         if self.instances[graph] == nil {
             self.instances[graph] = Weak()
         }
         self.instances[graph]?.value = instance as AnyObject?
+        self.lock.unlock()
     }
 }
 

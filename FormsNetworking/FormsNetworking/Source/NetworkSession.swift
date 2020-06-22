@@ -70,6 +70,40 @@ public extension NetworkSessionProtocol {
     }
 }
 
+// MARK: FileNetworkSession
+public class FileNetworkSession: NetworkSessionProtocol {
+    private let filename: String?
+    private let delay: Double
+    
+    public init(filename: String? = nil,
+                delay: Double = 0.5) {
+        self.filename = filename
+        self.delay = delay
+    }
+    
+    public func call(request: URLRequest,
+                     logger: Logger?,
+                     cache: NetworkCache?,
+                     onProgress: NetworkOnProgress?,
+                     onCompletion: @escaping NetworkOnGenericCompletion<Data>) -> URLSessionDataTask? {
+        log(request, logger)
+        DispatchQueue.global().asyncAfter(deadline: DispatchTime.now() + self.delay) {
+            let _filename: String? = self.filename ?? request.url?.lastPathComponent
+            guard let filename: String = _filename,
+                let url: URL = Bundle.main.url(forResource: filename, withExtension: "json"),
+                let data: Data = try? Data(contentsOf: url) else {
+                    let networkError: NetworkError = .connectionFailure
+                    log(request, networkError, logger)
+                    onCompletion(nil, networkError)
+                    return
+            }
+            log(request, data, logger)
+            onCompletion(data, nil)
+        }
+        return nil
+    }
+}
+
 // MARK: NetworkSession
 public class NetworkSession: NetworkSessionProtocol {
     private var logger: Logger?

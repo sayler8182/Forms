@@ -6,10 +6,10 @@
 //  Copyright © 2020 Limbo. All rights reserved.
 //
 
-import UIKit
+import Foundation
 import UserNotifications
 
-public typealias NotificationsOnNewToken = (_ fcm: String) -> Void
+public typealias NotificationsOnNewToken = (_ token: String) -> Void
 public typealias NotificationsOnWillPresent = (_ notification: UNNotification) -> UNNotificationPresentationOptions
 public typealias NotificationsOnReceive = (_ notification: UNNotification) -> Void
 public typealias NotificationsOnOpen = (_ notification: UNNotificationResponse) -> Void

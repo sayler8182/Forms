@@ -7,14 +7,17 @@
 //
 
 import FormsAnchor
+import FormsLogger
 import FormsNetworking
+import FormsNetworkingImage
 import FormsUtils
+import FormsUtilsUI
 import UIKit
 
 // MARK: ImageView
 open class ImageView: FormsComponent, SVGView, FormsComponentWithMarginEdgeInset, FormsComponentWithPaddingEdgeInset {
-    private let backgroundView = UIView()
-    private let imageView = UIImageView()
+    public let backgroundView = UIView()
+    public let imageView = UIImageView()
     
     private let imageHeightAnchor = AnchorConnection()
     private let imageWidthAnchor = AnchorConnection()
@@ -71,14 +74,24 @@ open class ImageView: FormsComponent, SVGView, FormsComponentWithMarginEdgeInset
         return UITableView.automaticDimension
     }
     
-    private func setupBackgroundView() {
+    override open func startShimmering(animated: Bool = true) {
+        super.startShimmering(animated: animated)
+        self.imageView.isPreviewEnabled = false
+    }
+    
+    override open func stopShimmering(animated: Bool = true) {
+        super.stopShimmering(animated: animated)
+        self.imageView.isPreviewEnabled = true
+    }
+    
+    open func setupBackgroundView() {
         self.backgroundView.frame = self.bounds
         self.addSubview(self.backgroundView, with: [
             Anchor.to(self).fill
         ])
     }
     
-    private func setupImageView() {
+    open func setupImageView() {
         self.imageView.clipsToBounds = true
         self.imageView.frame = self.bounds
         self.backgroundView.addSubview(self.imageView, with: [
@@ -88,7 +101,7 @@ open class ImageView: FormsComponent, SVGView, FormsComponentWithMarginEdgeInset
         ])
     }
     
-    private func updateAspectRatio() {
+    open func updateAspectRatio() {
         guard let aspectRatio: CGFloat = self.aspectRatio else { return }
         if self.height != UITableView.automaticDimension {
             let imageWidthConstraint: NSLayoutConstraint? = self.imageWidthAnchor.constraint
@@ -101,7 +114,7 @@ open class ImageView: FormsComponent, SVGView, FormsComponentWithMarginEdgeInset
         }
     }
     
-    private func updateMarginEdgeInset() {
+    open func updateMarginEdgeInset() {
         let edgeInset: UIEdgeInsets = self.marginEdgeInset
         self.backgroundView.frame = self.bounds.with(inset: edgeInset)
         self.backgroundView.constraint(to: self, position: .top)?.constant = edgeInset.top
@@ -110,7 +123,7 @@ open class ImageView: FormsComponent, SVGView, FormsComponentWithMarginEdgeInset
         self.backgroundView.constraint(to: self, position: .trailing)?.constant = -edgeInset.trailing
     }
     
-    private func updatePaddingEdgeInset() {
+    open func updatePaddingEdgeInset() {
         let edgeInset: UIEdgeInsets = self.paddingEdgeInset
         self.imageView.frame = self.bounds.with(inset: edgeInset)
         self.imageView.constraint(to: self.backgroundView, position: .top)?.constant = edgeInset.top
@@ -119,7 +132,7 @@ open class ImageView: FormsComponent, SVGView, FormsComponentWithMarginEdgeInset
         self.imageView.constraint(to: self.backgroundView, position: .trailing)?.constant = -edgeInset.trailing
     }
     
-    private func updateHeight() {
+    open func updateHeight() {
         let imageHeightConstraint: NSLayoutConstraint? = self.imageHeightAnchor.constraint
         if self.height == UITableView.automaticDimension {
             imageHeightConstraint?.isActive = false
@@ -130,7 +143,7 @@ open class ImageView: FormsComponent, SVGView, FormsComponentWithMarginEdgeInset
         }
     }
     
-    private func updateWidth() {
+    open func updateWidth() {
         let imageWidthConstraint: NSLayoutConstraint? = self.imageWidthAnchor.constraint
         if self.width == UITableView.automaticDimension {
             imageWidthConstraint?.isActive = false
@@ -168,22 +181,53 @@ public extension ImageView {
     }
 }
 
+// MARK: ImagePreview
+public extension ImageView {
+    func with(isPreviewable: Bool) -> Self {
+        self.imageView.isPreviewable = isPreviewable
+        return self
+    }
+    func with(isPreviewEnabled: Bool) -> Self {
+        self.imageView.isPreviewEnabled = isPreviewEnabled
+        return self
+    }
+}
+
 // MARK: NetworkImages
 public extension ImageView {
+    func isCached(request: NetworkImageRequest) -> Bool {
+        return self.imageView.isCached(request)
+    }
+    
     func setImage(request: NetworkImageRequest,
+                  logger: Logger? = nil,
+                  cache: NetworkCache? = nil,
                   onProgress: NetworkImagesOnProgress? = nil,
                   onSuccess: NetworkImagesOnSuccess? = nil,
                   onError: NetworkImagesOnError? = nil,
                   onCompletion: NetworkImagesOnCompletion? = nil) {
+        if request.isStartAutoShimmer == true {
+            self.startShimmering(animated: false)
+        }
         self.imageView.setImage(
             request: request,
+            logger: logger,
+            cache: cache,
             onProgress: onProgress,
             onSuccess: onSuccess,
             onError: onError,
-            onCompletion: onCompletion)
+            onCompletion: { [weak self] (image, _) in
+                guard let `self` = self else { return }
+                guard self.imageView.isValid(request) else { return }
+                self.image = image
+                if request.isStopAutoShimmer == true {
+                    self.stopShimmering(animated: true)
+                }
+        })
     }
     
     func cancel() {
+        self.imageView.stopShimmering(animated: false)
         self.imageView.cancel()
     }
 }

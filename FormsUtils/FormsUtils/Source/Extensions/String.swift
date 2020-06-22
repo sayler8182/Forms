@@ -6,7 +6,7 @@
 //  Copyright © 2020 Limbo. All rights reserved.
 //
 
-import UIKit
+import Foundation
 
 // MARK: String
 public extension String {
@@ -44,7 +44,8 @@ public extension String {
     }
     
     var url: URL! {
-        return URL(string: self)
+        let string: String = self.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? self
+        return URL(string: string)
     }
     
     func matches(_ string: String,
@@ -111,36 +112,7 @@ public extension String {
         _ arguments: CVarArg) -> String {
         return String(format: self.localized, locale: locale, arguments)
     }
-}
-
-// MARK: Size
-public extension String {
-    func height(for width: CGFloat,
-                font: UIFont) -> CGFloat {
-        let size: CGSize = CGSize(
-            width: width,
-            height: .greatestFiniteMagnitude)
-        let boundingBox: CGRect = self.boundingRect(
-            with: size,
-            options: .usesLineFragmentOrigin,
-            attributes: [NSAttributedString.Key.font: font],
-            context: nil)
-        return ceil(boundingBox.height)
-    }
-    
-    func width(for height: CGFloat,
-               font: UIFont) -> CGFloat {
-        let size: CGSize = CGSize(
-            width: .greatestFiniteMagnitude,
-            height: height)
-        let boundingBox: CGRect = self.boundingRect(
-            with: size,
-            options: .usesLineFragmentOrigin,
-            attributes: [NSAttributedString.Key.font: font],
-            context: nil)
-        return ceil(boundingBox.width)
-    }
-}
+} 
 
 // MARK: String.Element
 public extension String.Element {

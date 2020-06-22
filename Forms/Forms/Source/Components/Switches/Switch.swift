@@ -11,77 +11,35 @@ import UIKit
 
 // MARK: State
 public extension Switch {
-    enum StateType {
-        case active
-        case selected
-        case disabled
-        case disabledSelected
-    }
-    
-    struct State<T> {
-        let active: T
-        let selected: T
-        let disabled: T
-        let disabledSelected: T
+    struct State<T>: FormsComponentStateActiveSelectedDisabledDisabledSelected {
+        public var active: T!
+        public var selected: T!
+        public var disabled: T!
+        public var disabledSelected: T!
         
-        public init(_ value: T) {
-            self.active = value
-            self.selected = value
-            self.disabled = value
-            self.disabledSelected = value
-        }
-        
-        public init(active: T, selected: T) {
-            self.active = active
-            self.selected = selected
-            self.disabled = active
-            self.disabledSelected = selected
-        }
-        
-        init(active: T, selected: T, disabled: T) {
-            self.active = active
-            self.selected = selected
-            self.disabled = disabled
-            self.disabledSelected = disabled
-        }
-        
-        init(active: T, selected: T, disabled: T, disabledSelected: T) {
-            self.active = active
-            self.selected = selected
-            self.disabled = disabled
-            self.disabledSelected = disabledSelected
-        }
-        
-        func value(for state: StateType) -> T {
-            switch state {
-            case .active: return self.active
-            case .selected: return self.selected
-            case .disabled: return self.disabled
-            case .disabledSelected: return self.disabledSelected
-            }
-        }
+        public init() { }
     }
 }
 
 // MARK: Switch
 open class Switch: FormsComponent, FormsComponentWithGroup, FormsComponentWithMarginEdgeInset, FormsComponentWithPaddingEdgeInset {
-    private let backgroundView = UIView()
+    public let backgroundView = UIView()
         .with(width: 320, height: 40)
         .with(isUserInteractionEnabled: true)
-    private let switchView = UISwitch()
+    public let switchView = UISwitch()
         .with(contentHuggingPriority: .required, axis: .horizontal)
         .with(contentCompressionResistancePriority: .required, axis: .horizontal)
         .with(contentMode: .center)
         .with(width: 40, height: 40)
-    private let contentView = UIView()
+    public let contentView = UIView()
         .with(width: 200, height: 40)
-    private let titleLabel = UILabel()
+    public let titleLabel = UILabel()
         .with(numberOfLines: 0)
         .with(width: 200, height: 40)
-    private let valueLabel = UILabel()
+    public let valueLabel = UILabel()
         .with(numberOfLines: 0)
         .with(width: 200, height: 40)
-    private let gestureRecognizer = UITapGestureRecognizer()
+    public let gestureRecognizer = UITapGestureRecognizer()
     
     open var animationTime: TimeInterval = 0.2
     open var backgroundColors: State<UIColor?> = State<UIColor?>(Theme.Colors.primaryLight) {
@@ -140,7 +98,7 @@ open class Switch: FormsComponent, FormsComponentWithGroup, FormsComponentWithMa
     
     public var onValueChanged: ((Bool) -> Void)? = nil
     
-    private (set) var state: StateType = StateType.active
+    private (set) var state: FormsComponentStateType = .active
     
     override open func setupView() {
         self.setupBackgroundView()
@@ -171,13 +129,11 @@ open class Switch: FormsComponent, FormsComponentWithGroup, FormsComponentWithMa
     }
     
     override open func enable(animated: Bool) {
-        guard !self.isUserInteractionEnabled else { return }
         self.isUserInteractionEnabled = true
         self.setState(.active, animated: animated)
     }
     
     override open func disable(animated: Bool) {
-        guard self.isUserInteractionEnabled else { return }
         self.isUserInteractionEnabled = false
         if !self.isSelected {
             self.setState(.disabled, animated: animated)
@@ -237,7 +193,7 @@ open class Switch: FormsComponent, FormsComponentWithGroup, FormsComponentWithMa
         }
     }
     
-    private func updateMarginEdgeInset() {
+    open func updateMarginEdgeInset() {
         let edgeInset: UIEdgeInsets = self.marginEdgeInset
         self.backgroundView.frame = self.bounds.with(inset: edgeInset)
         self.backgroundView.constraint(to: self, position: .top)?.constant = edgeInset.top
@@ -246,7 +202,7 @@ open class Switch: FormsComponent, FormsComponentWithGroup, FormsComponentWithMa
         self.backgroundView.constraint(to: self, position: .trailing)?.constant = -edgeInset.trailing
     }
     
-    private func updatePaddingEdgeInset() {
+    open func updatePaddingEdgeInset() {
         let edgeInset: UIEdgeInsets = self.paddingEdgeInset
         self.switchView.constraint(to: self.backgroundView, position: .top)?.constant = edgeInset.top
         self.switchView.constraint(to: self.backgroundView, position: .trailing)?.constant = -edgeInset.trailing
@@ -256,7 +212,7 @@ open class Switch: FormsComponent, FormsComponentWithGroup, FormsComponentWithMa
         self.contentView.constraint(to: self.backgroundView, position: .bottom)?.constant = -edgeInset.bottom
     }
     
-    private func updateState(animated: Bool) {
+    public func updateState(animated: Bool) {
         if !self.isEnabled && !self.isSelected {
             self.setState(.disabled, animated: animated)
         } else if !self.isEnabled && self.isSelected {
@@ -268,29 +224,28 @@ open class Switch: FormsComponent, FormsComponentWithGroup, FormsComponentWithMa
         }
     }
     
-    private func updateState() {
-        switch self.state {
-        case .active: self.setState(.active, animated: false, force: true)
-        case .selected: self.setState(.selected, animated: false, force: true)
-        case .disabled: self.setState(.disabled, animated: false, force: true)
-        case .disabledSelected: self.setState(.disabledSelected, animated: false, force: true)
-        }
+    public func updateState() {
+        self.setState(self.state, animated: false, force: true)
     }
     
-    private func setState(_ state: StateType,
-                          animated: Bool,
-                          force: Bool = false) {
+    public func setState(_ state: FormsComponentStateType,
+                         animated: Bool,
+                         force: Bool = false) {
         guard self.state != state || force else { return }
         self.animation(animated, duration: self.animationTime) {
-            self.backgroundView.backgroundColor = self.backgroundColors.value(for: state)
-            self.switchView.onTintColor = self.switchColors.value(for: state)
-            self.switchView.thumbTintColor = self.switchThumbColors.value(for: state)
-            self.titleLabel.textColor = self.titleColors.value(for: state)
-            self.titleLabel.font = self.titleFonts.value(for: state)
-            self.valueLabel.textColor = self.valueColors.value(for: state)
-            self.valueLabel.font = self.valueFonts.value(for: state)
+            self.setStateAnimation(state)
         }
         self.state = state
+    }
+    
+    open func setStateAnimation(_ state: FormsComponentStateType) {
+        self.backgroundView.backgroundColor = self.backgroundColors.value(for: state)
+        self.switchView.onTintColor = self.switchColors.value(for: state)
+        self.switchView.thumbTintColor = self.switchThumbColors.value(for: state)
+        self.titleLabel.textColor = self.titleColors.value(for: state)
+        self.titleLabel.font = self.titleFonts.value(for: state)
+        self.valueLabel.textColor = self.valueColors.value(for: state)
+        self.valueLabel.font = self.valueFonts.value(for: state)
     }
 }
 

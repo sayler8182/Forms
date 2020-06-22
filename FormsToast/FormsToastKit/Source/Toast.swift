@@ -127,7 +127,7 @@ open class ToastView: FormsComponent {
     
     var onDismiss: ((ToastView) -> Void)? = nil
     
-    override public required init() {
+    public required init() {
         super.init()
     }
     

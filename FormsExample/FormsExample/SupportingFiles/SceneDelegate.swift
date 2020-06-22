@@ -39,7 +39,6 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     
     func scene(_ scene: UIScene, openURLContexts URLContexts: Set<UIOpenURLContext>) {
         guard let url: URL = URLContexts.first?.url else { return }
-
         ApplicationDelegate.shared.application(
             UIApplication.shared,
             open: url,

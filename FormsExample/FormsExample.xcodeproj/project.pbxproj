@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7103190224A0B83F00BFD88A /* get.json in Resources */ = {isa = PBXBuildFile; fileRef = 7103190124A0B83F00BFD88A /* get.json */; };
 		71228E092431CF7F00D08B20 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71228E082431CF7F00D08B20 /* AppDelegate.swift */; };
 		71228E0B2431CF7F00D08B20 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71228E0A2431CF7F00D08B20 /* SceneDelegate.swift */; };
 		71228E122431CF8100D08B20 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 71228E112431CF8100D08B20 /* Assets.xcassets */; };
@@ -62,6 +63,8 @@
 		71E4455624937B2700AC38C1 /* FormsDevice.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 71E445392493609600AC38C1 /* FormsDevice.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		71E4465F24939E9100AC38C1 /* FormsNotifications.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7150CE38247FA75A00F2681B /* FormsNotifications.framework */; };
 		71E4466024939E9100AC38C1 /* FormsNotifications.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 7150CE38247FA75A00F2681B /* FormsNotifications.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		71EA274B24A9C8F900985392 /* FormsNetworkingImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71EA273824A9C80700985392 /* FormsNetworkingImage.framework */; };
+		71EA274C24A9C8F900985392 /* FormsNetworkingImage.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 71EA273824A9C80700985392 /* FormsNetworkingImage.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		71FCB25F247F999500A84D30 /* FormsDemo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 713B9C13243D08E1001F6E3A /* FormsDemo.framework */; };
 		71FCB260247F999500A84D30 /* FormsDemo.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 713B9C13243D08E1001F6E3A /* FormsDemo.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		71FCB279247F9A1800A84D30 /* Forms.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7194695C243DA7A900CAD09B /* Forms.framework */; };
@@ -251,6 +254,20 @@
 			remoteGlobalIDString = 71E445212493609500AC38C1;
 			remoteInfo = FormsDevice;
 		};
+		71EA26B824A9C05900985392 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 71EA26B424A9C05800985392 /* FormsUtilsUI.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 71EA26A924A9C05800985392;
+			remoteInfo = FormsUtilsUI;
+		};
+		71EA273724A9C80700985392 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 71EA273324A9C80600985392 /* FormsNetworkingImage.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 71EA272824A9C80600985392;
+			remoteInfo = FormsNetworkingImage;
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -264,6 +281,7 @@
 				7150CE71247FA9B100F2681B /* FormsMock.framework in Embed Frameworks */,
 				7150CE75247FA9B100F2681B /* FormsPermissions.framework in Embed Frameworks */,
 				7150CE7D247FA9B200F2681B /* FormsUtils.framework in Embed Frameworks */,
+				71EA274C24A9C8F900985392 /* FormsNetworkingImage.framework in Embed Frameworks */,
 				7150CE6D247FA9B100F2681B /* FormsInjector.framework in Embed Frameworks */,
 				719AE5B42462C49D00A39B0E /* FBSDKLoginKit.framework in Embed Frameworks */,
 				719AE5B22462C49C00A39B0E /* FBSDKCoreKit.framework in Embed Frameworks */,
@@ -294,6 +312,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		7103190124A0B83F00BFD88A /* get.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = get.json; sourceTree = "<group>"; };
 		7103EA4924609C3700A11A96 /* FormsPermissions.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = FormsPermissions.xcodeproj; path = ../FormsPermissions/FormsPermissions.xcodeproj; sourceTree = "<group>"; };
 		71228E052431CF7F00D08B20 /* FormsExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FormsExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		71228E082431CF7F00D08B20 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -338,6 +357,8 @@
 		71DB65592457729800B16145 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		71DB662D245826C900B16145 /* FormsImagePickerKit.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = FormsImagePickerKit.xcodeproj; path = ../FormsImagePicker/FormsImagePickerKit.xcodeproj; sourceTree = "<group>"; };
 		71E4452C2493609500AC38C1 /* FormsDevice.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = FormsDevice.xcodeproj; path = ../FormsDevice/FormsDevice.xcodeproj; sourceTree = "<group>"; };
+		71EA26B424A9C05800985392 /* FormsUtilsUI.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = FormsUtilsUI.xcodeproj; path = ../FormsUtilsUI/FormsUtilsUI.xcodeproj; sourceTree = "<group>"; };
+		71EA273324A9C80600985392 /* FormsNetworkingImage.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = FormsNetworkingImage.xcodeproj; path = ../FormsNetworkingImage/FormsNetworkingImage.xcodeproj; sourceTree = "<group>"; };
 		71EBA881243D02AD0045AE40 /* FormsAnchor.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = FormsAnchor.xcodeproj; path = ../FormsAnchor/FormsAnchor.xcodeproj; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -350,6 +371,7 @@
 				7150CE70247FA9B100F2681B /* FormsMock.framework in Frameworks */,
 				7150CE74247FA9B100F2681B /* FormsPermissions.framework in Frameworks */,
 				7150CE7C247FA9B200F2681B /* FormsUtils.framework in Frameworks */,
+				71EA274B24A9C8F900985392 /* FormsNetworkingImage.framework in Frameworks */,
 				7150CE6C247FA9B100F2681B /* FormsInjector.framework in Frameworks */,
 				719AE5B32462C49D00A39B0E /* FBSDKLoginKit.framework in Frameworks */,
 				719AE5B12462C49C00A39B0E /* FBSDKCoreKit.framework in Frameworks */,
@@ -379,6 +401,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		710318E624A0B82700BFD88A /* Requests */ = {
+			isa = PBXGroup;
+			children = (
+				7103190124A0B83F00BFD88A /* get.json */,
+			);
+			path = Requests;
+			sourceTree = "<group>";
+		};
 		71228DFC2431CF7F00D08B20 = {
 			isa = PBXGroup;
 			children = (
@@ -395,6 +425,7 @@
 				71BB62652445E7C5002BB31F /* FormsLogger.xcodeproj */,
 				713A75CF2473C0740067C968 /* FormsMock.xcodeproj */,
 				71BB62182445DD16002BB31F /* FormsNetworking.xcodeproj */,
+				71EA273324A9C80600985392 /* FormsNetworkingImage.xcodeproj */,
 				719AE4B0246294FC00A39B0E /* FormsNotifications.xcodeproj */,
 				7136A09624866E5E00298D3B /* FormsPagerKit.xcodeproj */,
 				7103EA4924609C3700A11A96 /* FormsPermissions.xcodeproj */,
@@ -404,6 +435,7 @@
 				71369F822486585100298D3B /* FormsToastKit.xcodeproj */,
 				715B7B3124474C4600754EDB /* FormsTransitions.xcodeproj */,
 				713B9BA1243D0696001F6E3A /* FormsUtils.xcodeproj */,
+				71EA26B424A9C05800985392 /* FormsUtilsUI.xcodeproj */,
 				713B9B55243D050E001F6E3A /* FormsValidators.xcodeproj */,
 				71946956243DA7A800CAD09B /* Forms.xcodeproj */,
 				713B9C0D243D08E0001F6E3A /* FormsDemo.xcodeproj */,
@@ -434,6 +466,7 @@
 		71228E2A2431CF9800D08B20 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				710318E624A0B82700BFD88A /* Requests */,
 				713296C22448B84D006935C0 /* Dependencies */,
 				715B7AE9244701BD00754EDB /* Templates */,
 			);
@@ -705,6 +738,22 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		71EA26B524A9C05800985392 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				71EA26B924A9C05900985392 /* FormsUtilsUI.framework */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		71EA273424A9C80600985392 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				71EA273824A9C80700985392 /* FormsNetworkingImage.framework */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		71EA6E9E2449FC1B00ACB5EE /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -823,6 +872,10 @@
 					ProjectRef = 71BB62182445DD16002BB31F /* FormsNetworking.xcodeproj */;
 				},
 				{
+					ProductGroup = 71EA273424A9C80600985392 /* Products */;
+					ProjectRef = 71EA273324A9C80600985392 /* FormsNetworkingImage.xcodeproj */;
+				},
+				{
 					ProductGroup = 7150CE34247FA75A00F2681B /* Products */;
 					ProjectRef = 719AE4B0246294FC00A39B0E /* FormsNotifications.xcodeproj */;
 				},
@@ -857,6 +910,10 @@
 				{
 					ProductGroup = 7150CE4D247FA79600F2681B /* Products */;
 					ProjectRef = 713B9BA1243D0696001F6E3A /* FormsUtils.xcodeproj */;
+				},
+				{
+					ProductGroup = 71EA26B524A9C05800985392 /* Products */;
+					ProjectRef = 71EA26B424A9C05800985392 /* FormsUtilsUI.xcodeproj */;
 				},
 				{
 					ProductGroup = 7150CE52247FA79E00F2681B /* Products */;
@@ -1053,6 +1110,20 @@
 			remoteRef = 71E445382493609600AC38C1 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
+		71EA26B924A9C05900985392 /* FormsUtilsUI.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = FormsUtilsUI.framework;
+			remoteRef = 71EA26B824A9C05900985392 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		71EA273824A9C80700985392 /* FormsNetworkingImage.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = FormsNetworkingImage.framework;
+			remoteRef = 71EA273724A9C80700985392 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
 /* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
@@ -1060,6 +1131,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7103190224A0B83F00BFD88A /* get.json in Resources */,
 				71228E2C2431CFBF00D08B20 /* LaunchScreen.storyboard in Resources */,
 				71DB655A2457729800B16145 /* GoogleService-Info.plist in Resources */,
 				71228E122431CF8100D08B20 /* Assets.xcassets in Resources */,

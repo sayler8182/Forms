@@ -27,16 +27,24 @@ public enum LogType: String, CaseIterable, LogTypeProtocol {
     case error = "_error"
 }
 
+// MARK: VoidLogger
+public class VoidLogger: Logger {
+    public init() { }
+    public init(whitelist: [LogTypeProtocol]) { }
+    
+    public func log(_ type: LogTypeProtocol, _ item: Any) { }
+}
+    
 // MARK: ConsoleLogger
 public class ConsoleLogger: Logger {
     public let whitelist: [LogTypeProtocol]
     
-    public init(whitelist: [LogTypeProtocol]) {
-        self.whitelist = whitelist
-    }
-    
     public init() {
         self.whitelist = LogType.allCases
+    }
+    
+    public init(whitelist: [LogTypeProtocol]) {
+        self.whitelist = whitelist
     }
     
     public func log(_ type: LogTypeProtocol,

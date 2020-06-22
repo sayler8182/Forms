@@ -7,7 +7,7 @@
 //
 
 import FormsInjector
-import UIKit
+import Foundation
 
 private let kDateFormatter: DateFormatter = DateFormatter()
 
@@ -119,13 +119,6 @@ extension String: FromDateFormattable, ToDateFormattable {
 
 // MARK: Int
 extension Int: FromDateFormattable, ToDateFormattable {
-    public var asDate: Date? {
-        return Date(timeIntervalSince1970: Double(self))
-    }
-}
-
-// MARK: CGFloat
-extension CGFloat: FromDateFormattable, ToDateFormattable {
     public var asDate: Date? {
         return Date(timeIntervalSince1970: Double(self))
     }

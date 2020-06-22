@@ -6,6 +6,7 @@
 //  Copyright © ___YEAR___ ___ORGANIZATIONNAME___. All rights reserved.
 //
 
+import FormsInjector
 import Foundation
 
 // MARK: ___VARIABLE_sceneName___Assembly

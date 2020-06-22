@@ -9,10 +9,10 @@
 import Foundation
 
 public enum TextFieldDelegates {
-    typealias amount = TextFieldAmountDelegate
-    typealias `default` = TextFieldDelegate
-    typealias email = TextFieldEmailDelegate
-    typealias format = TextFieldFormatDelegate
-    typealias pesel = TextFieldPeselDelegate
-    typealias phone = TextFieldPhoneDelegate
+    public typealias amount = TextFieldAmountDelegate
+    public typealias `default` = TextFieldDelegate
+    public typealias email = TextFieldEmailDelegate
+    public typealias format = TextFieldFormatDelegate
+    public typealias pesel = TextFieldPeselDelegate
+    public typealias phone = TextFieldPhoneDelegate
 }

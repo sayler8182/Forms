@@ -16,7 +16,25 @@ public protocol Resolver {
 
 // MARK: Assembly
 public protocol Assembly {
-     func assemble(injector: Injector)
+    func assemble(injector: Injector)
+}
+
+// MARK: AssemblyGroup
+public struct AssemblyGroup: Assembly {
+    public let description: String
+    public let assemblies: [Assembly]
+    
+    public init(_ description: String = "",
+                _ assemblies: [Assembly]) {
+        self.description = description
+        self.assemblies = assemblies
+    }
+    
+    public func assemble(injector: Injector) {
+        for assembly in self.assemblies {
+            assembly.assemble(injector: injector)
+        }
+    }
 }
 
 // MARK: Injector
@@ -26,6 +44,7 @@ public class Injector {
     private let parent: Injector?
     private let scope: InjectorScope
     
+    internal let lock: SpinLock
     private var currentGraph: GraphIdentifier?
     private let maxResolutionDepth: Int = 200
     private var resolutionDepth = 0
@@ -35,6 +54,7 @@ public class Injector {
                 registering: (Injector) -> Void = { _ in }) {
         self.parent = parent
         self.scope = scope
+        self.lock = parent?.lock ?? SpinLock()
         registering(self)
     }
     
@@ -149,15 +169,17 @@ extension Injector: Resolver {
     
     private func resolve<Service, Arguments>(name: String?,
                                              invoker: @escaping ((Arguments) -> Any) -> Any) -> Service! {
-        var instance: Service!
-        let key = InjectorServiceKey(
-            serviceType: Service.self,
-            argumentsType: Arguments.self,
-            name: name)
-        if let service = self.getService(for: key) {
-            instance = self.resolve(service: service, invoker: invoker)
+        return self.lock.sync {
+            var instance: Service!
+            let key = InjectorServiceKey(
+                serviceType: Service.self,
+                argumentsType: Arguments.self,
+                name: name)
+            if let service = self.getService(for: key) {
+                instance = self.resolve(service: service, invoker: invoker)
+            }
+            return instance
         }
-        return instance
     }
     
     private func resolve<Service, Factory>(service: InjectorServiceProtocol,
@@ -224,5 +246,16 @@ extension Injector {
             scope: self.scope)
         self.services[key] = entry
         return entry
+    }
+}
+
+// MARK: SpinLock
+internal class SpinLock {
+    private let lock = NSRecursiveLock()
+
+    func sync<T>(action: () -> T) -> T {
+        self.lock.lock()
+        defer { self.lock.unlock() }
+        return action()
     }
 }

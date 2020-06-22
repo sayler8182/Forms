@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		712AB488248FAEB9009C6905 /* NetworkImages.swift in Sources */ = {isa = PBXBuildFile; fileRef = 712AB487248FAEB9009C6905 /* NetworkImages.swift */; };
+		710318D624A09DE400BFD88A /* NetworkMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = 710318D524A09DE400BFD88A /* NetworkMethod.swift */; };
 		71385EF724853A6C0032BB5F /* Multipart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71385EF624853A6C0032BB5F /* Multipart.swift */; };
 		7150CE5F247FA85800F2681B /* FormsInjector.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7150CE5D247FA85800F2681B /* FormsInjector.framework */; };
 		7150CE61247FA85800F2681B /* FormsLogger.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7150CE5E247FA85800F2681B /* FormsLogger.framework */; };
@@ -21,7 +21,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		712AB487248FAEB9009C6905 /* NetworkImages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkImages.swift; sourceTree = "<group>"; };
+		710318D524A09DE400BFD88A /* NetworkMethod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkMethod.swift; sourceTree = "<group>"; };
 		71385EF624853A6C0032BB5F /* Multipart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Multipart.swift; sourceTree = "<group>"; };
 		7150CD95247FA05F00F2681B /* FormsNetworking.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = FormsNetworking.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7150CE5D247FA85800F2681B /* FormsInjector.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FormsInjector.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -81,7 +81,7 @@
 			isa = PBXGroup;
 			children = (
 				71BB628A24460437002BB31F /* NetworkCache.swift */,
-				712AB487248FAEB9009C6905 /* NetworkImages.swift */,
+				710318D524A09DE400BFD88A /* NetworkMethod.swift */,
 				71BB62372445DD62002BB31F /* NetworkParser.swift */,
 				71BB62382445DD62002BB31F /* NetworkPinning.swift */,
 				71BB62362445DD62002BB31F /* NetworkProvider.swift */,
@@ -177,8 +177,8 @@
 				71385EF724853A6C0032BB5F /* Multipart.swift in Sources */,
 				71BB62392445DD62002BB31F /* NetworkSession.swift in Sources */,
 				71BB623C2445DD62002BB31F /* NetworkParser.swift in Sources */,
-				712AB488248FAEB9009C6905 /* NetworkImages.swift in Sources */,
 				71BB628B24460437002BB31F /* NetworkCache.swift in Sources */,
+				710318D624A09DE400BFD88A /* NetworkMethod.swift in Sources */,
 				71BB623D2445DD62002BB31F /* NetworkPinning.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

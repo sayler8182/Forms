@@ -30,7 +30,7 @@ internal class WDImageCropBorderView: UIView {
     override func draw(_ rect: CGRect) {
         super.draw(rect)
         guard let context = UIGraphicsGetCurrentContext() else { return }
-        context.setStrokeColor(UIColor.white.withAlphaComponent(0.5).cgColor)
+        context.setStrokeColor(UIColor.white.with(alpha: 0.5).cgColor)
         context.setLineWidth(1.5)
         context.addRect(CGRect(
             x: self.diameter / 2,
@@ -39,7 +39,7 @@ internal class WDImageCropBorderView: UIView {
             height: rect.size.height - self.diameter))
         context.strokePath()
 
-        context.setFillColor(UIColor.white.withAlphaComponent(0.5).cgColor)
+        context.setFillColor(UIColor.white.with(alpha: 0.5).cgColor)
         let rects: [CGRect] = self.allRects()
         for rect in rects {
             context.fillEllipse(in: rect)

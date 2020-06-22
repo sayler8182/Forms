@@ -16,12 +16,12 @@ import UIKit
 // MARK: DemoLocationViewController
 class DemoLocationViewController: FormsTableViewController {
     private let locationOnceLabel = Components.label.default()
-        .with(paddingEdgeInset: UIEdgeInsets(top: 8, leading: 16, bottom: 4, trailing: 16))
+        .with(marginEdgeInset: UIEdgeInsets(top: 8, leading: 16, bottom: 4, trailing: 16))
         .with(text: "Location: ")
     private let locationOnceButton = Components.button.default()
         .with(title: "Location once")
     private let locationChangedLabel = Components.label.default()
-        .with(paddingEdgeInset: UIEdgeInsets(top: 8, leading: 16, bottom: 4, trailing: 16))
+        .with(marginEdgeInset: UIEdgeInsets(top: 8, leading: 16, bottom: 4, trailing: 16))
         .with(text: "Location: ")
     private let locationChangedStartButton = Components.button.default()
         .with(title: "Location changed start")

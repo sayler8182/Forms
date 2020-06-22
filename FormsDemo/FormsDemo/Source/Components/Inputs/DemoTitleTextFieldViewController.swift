@@ -39,7 +39,9 @@ class DemoTitleTextFieldViewController: FormsTableViewController {
         .with(info: LoremIpsum.paragraph(sentences: 2))
         .with(placeholder: "Some text")
         .with(title: "Info and error")
+    private let passwordTextField = Components.input.textField.password.default()
     private let footerTextField = Components.input.textField.default()
+        .with(isBottomDynamic: false)
         .with(text: "Some text")
         .with(title: "Footer")
     
@@ -55,7 +57,8 @@ class DemoTitleTextFieldViewController: FormsTableViewController {
             self.errorTextField,
             self.longErrorTextField,
             self.infoTextField,
-            self.infoAndErrorTextField
+            self.infoAndErrorTextField,
+            self.passwordTextField
         ], divider: self.divider)
     }
     

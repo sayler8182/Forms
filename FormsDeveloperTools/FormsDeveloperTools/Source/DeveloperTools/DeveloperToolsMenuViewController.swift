@@ -12,7 +12,7 @@ import UIKit
 extension DeveloperToolsMenuViewController {
     struct Section {
         var title: String
-        var rows: [DeveloperFeatureKey]
+        var rows: [DeveloperFeatureKeyProtocol]
     }
 }
 
@@ -111,7 +111,7 @@ extension DeveloperToolsMenuViewController: UITableViewDelegate, UITableViewData
     
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let row = self.items[indexPath.section].rows[indexPath.row]
-        if let _row = row as? DeveloperFeatureFlagKey {
+        if let _row = row as? DeveloperFeatureFlagKeyProtocol {
             let cell = tableView.dequeueReusableCell(withIdentifier: self.defaultSwitchCellIdentifier, for: indexPath) as! DeveloperToolsMenuSwitchTableViewCell
             cell.onChanged = { value in DeveloperTools[_row] = value }
             cell.fill(

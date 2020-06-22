@@ -12,44 +12,20 @@ import UIKit
 
 // MARK: State
 public extension SearchBar {
-    enum StateType {
-        case active
-        case selected
-        case disabled
-    }
-    
-    struct State<T> {
-        let active: T
-        let selected: T
-        let disabled: T
+    struct State<T>: FormsComponentStateActiveSelectedDisabled {
+        public var active: T!
+        public var selected: T!
+        public var disabled: T!
         
-        public init(_ value: T) {
-            self.active = value
-            self.selected = value
-            self.disabled = value
-        }
-        
-        public init(active: T, selected: T, disabled: T) {
-            self.active = active
-            self.selected = selected
-            self.disabled = disabled
-        }
-        
-        func value(for state: StateType) -> T {
-            switch state {
-            case .active: return self.active
-            case .selected: return self.selected
-            case .disabled: return self.disabled
-            }
-        }
+        public init() { }
     }
 }
 
 // MARK: SearchBar
 open class SearchBar: FormsComponent, FormsComponentWithMarginEdgeInset, FormsComponentWithPaddingEdgeInset {
-    private let backgroundView = UIView()
+    public let backgroundView = UIView()
         .with(width: 320, height: 44)
-    private let searchBar = UISearchBar()
+    public let searchBar = UISearchBar()
         .with(width: 320, height: 44)
     
     open var animationTime: TimeInterval = 0.2
@@ -106,6 +82,7 @@ open class SearchBar: FormsComponent, FormsComponentWithMarginEdgeInset, FormsCo
         didSet { self.updateState() }
     }
     
+    public var validateOnTextChangeAfterEndEditing: Bool = false
     public var validateOnBeginEditing: Bool = false
     public var validateOnEndEditing: Bool = false
     public var validateOnTextChange: Bool = false
@@ -118,8 +95,9 @@ open class SearchBar: FormsComponent, FormsComponentWithMarginEdgeInset, FormsCo
     public var onDidPaste: ((String?) -> Void)?
     public var onEndEditing: ((String?) -> Void)?
     public var onTextChanged: ((String?) -> Void)?
+    public var onValidate: Validable.OnValidate?
     
-    private (set) var state: StateType = StateType.active
+    private (set) var state: FormsComponentStateType = .active
     
     override open var intrinsicContentSize: CGSize {
         return UIView.layoutFittingExpandedSize
@@ -139,13 +117,11 @@ open class SearchBar: FormsComponent, FormsComponentWithMarginEdgeInset, FormsCo
     }
     
     override open func enable(animated: Bool) {
-        guard !self.isUserInteractionEnabled else { return }
         self.isUserInteractionEnabled = true
         self.setState(.active, animated: animated)
     }
     
     override open func disable(animated: Bool) {
-        guard self.isUserInteractionEnabled else { return }
         self.isUserInteractionEnabled = false
         self.setState(.disabled, animated: animated)
     }
@@ -183,6 +159,9 @@ open class SearchBar: FormsComponent, FormsComponentWithMarginEdgeInset, FormsCo
         if self.validateOnEndEditing {
             self.validate()
             self.table?.refreshTableView()
+        }
+        if self.validateOnTextChangeAfterEndEditing {
+            self.validateOnTextChange = true
         }
     }
     
@@ -236,7 +215,7 @@ open class SearchBar: FormsComponent, FormsComponentWithMarginEdgeInset, FormsCo
         self.searchBar.constraint(to: self.backgroundView, position: .trailing)?.constant = -edgeInset.trailing
     }
     
-    private func updateState(animated: Bool) {
+    public func updateState(animated: Bool) {
         if !self.isEnabled {
             self.setState(.disabled, animated: animated)
         } else if self.isFirstResponder {
@@ -246,24 +225,24 @@ open class SearchBar: FormsComponent, FormsComponentWithMarginEdgeInset, FormsCo
         }
     }
     
-    private func updateState() {
-        switch self.state {
-        case .active: self.setState(.active, animated: false, force: true)
-        case .selected: self.setState(.selected, animated: false, force: true)
-        case .disabled: self.setState(.disabled, animated: false, force: true)
-        }
+    public func updateState() {
+        self.setState(self.state, animated: false, force: true)
     }
     
-    private func setState(_ state: StateType,
+    private func setState(_ state: FormsComponentStateType,
                           animated: Bool,
                           force: Bool = false) {
         guard self.state != state || force else { return }
         self.animation(animated, duration: self.animationTime) {
-            self.backgroundView.backgroundColor = self.backgroundColors.value(for: state)
-            self.searchBar.textField.textColor = self.textColors.value(for: state)
-            self.searchBar.textField.font = self.textFonts.value(for: state)
+            self.setStateAnimation(state)
         }
         self.state = state
+    }
+    
+    open func setStateAnimation(_ state: FormsComponentStateType) {
+        self.backgroundView.backgroundColor = self.backgroundColors.value(for: state)
+        self.searchBar.textField.textColor = self.textColors.value(for: state)
+        self.searchBar.textField.font = self.textFonts.value(for: state)
     }
 }
 
@@ -348,6 +327,10 @@ public extension SearchBar {
     }
     func with(textFonts: State<UIFont>) -> Self {
         self.textFonts = textFonts
+        return self
+    }
+    func with(validateOnTextChangeAfterEndEditing: Bool) -> Self {
+        self.validateOnTextChangeAfterEndEditing = validateOnTextChangeAfterEndEditing
         return self
     }
     func with(validateOnBeginEditing: Bool) -> Self {

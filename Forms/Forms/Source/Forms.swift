@@ -10,6 +10,7 @@ import FormsInjector
 import FormsLogger
 import FormsNetworking
 import FormsUtils
+import FormsUtilsUI
 import FormsValidators
 import UIKit
 
@@ -36,6 +37,7 @@ enum Module: String {
     case formsToastKit = "FormsToastKit"
     case formsTransition = "FormsTransition"
     case formsUtils = "FormsUtils"
+    case formsUtilsUI = "FormsUtilsUI"
     case formsValidators = "FormsValidators"
 }
 
@@ -81,11 +83,13 @@ public enum Forms {
         // theme
         injector.register(ThemeColorsProtocol.self, name: ThemeType.light.key) { _ in
             ThemeColors(colors: [
+                .black: UIColor(rgba: 0x000000FF),
                 .blue: UIColor(rgba: 0x007AFFFF),
                 .gray: UIColor(rgba: 0x8E8E93FF),
                 .green: UIColor(rgba: 0x34C759FF),
                 .orange: UIColor(rgba: 0xFFA500FF),
                 .red: UIColor(rgba: 0xFF3B30FF),
+                .white: UIColor(rgba: 0xFFFFFFFF),
                 .primaryDark: UIColor(rgba: 0x000000FF),
                 .secondaryDark: UIColor(rgba: 0x3C3C4399),
                 .tertiaryDark: UIColor(rgba: 0x3C3C434D),
@@ -97,11 +101,13 @@ public enum Forms {
         .inScope(InjectorScope.container)
         injector.register(ThemeColorsProtocol.self, name: ThemeType.dark.key) { _ in
             ThemeColors(colors: [
+                .black: UIColor(rgba: 0x000000FF),
                 .blue: UIColor(rgba: 0x0A84FFFF),
                 .gray: UIColor(rgba: 0x8E8E93FF),
                 .green: UIColor(rgba: 0x30D158FF),
                 .orange: UIColor(rgba: 0xFFA500FF),
                 .red: UIColor(rgba: 0xFF375FFF),
+                .white: UIColor(rgba: 0xFFFFFFFF),
                 .primaryDark: UIColor(rgba: 0xFFFFFFFF),
                 .secondaryDark: UIColor(rgba: 0xEBEBF599),
                 .tertiaryDark: UIColor(rgba: 0xEBEBF54D),
@@ -113,8 +119,10 @@ public enum Forms {
         .inScope(InjectorScope.container)
         injector.register(ThemeFontsProtocol.self) { _ in
             ThemeFonts(fonts: [
-                .bold: { UIFont.boldSystemFont(ofSize: $0) },
-                .regular: { UIFont.systemFont(ofSize: $0) }
+                .bold: { UIFont.systemFont(ofSize: $0, weight: .bold) },
+                .light: { UIFont.systemFont(ofSize: $0, weight: .light) },
+                .medium: { UIFont.systemFont(ofSize: $0, weight: .medium) },
+                .regular: { UIFont.systemFont(ofSize: $0, weight: .regular) }
             ])
         }
         .inScope(InjectorScope.container)
@@ -134,13 +142,11 @@ public enum Forms {
     private static func configureNetworking(_ injector: Injector) {
         injector.register(NetworkProviderProtocol.self) { (r) in
             let session: NetworkSessionProtocol? = r.resolve(NetworkSessionProtocol.self)
-            return NetworkProvider(session: session)
+            return NetworkProvider()
+                .with(session: session)
         }
         injector.register(NetworkSessionProtocol.self) { _ in
             NetworkSession()
-        }
-        injector.register(NetworkImagesProtocol.self) { _ in
-            NetworkImages()
         }
     }
     

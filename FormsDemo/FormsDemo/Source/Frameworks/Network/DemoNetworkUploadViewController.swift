@@ -62,11 +62,10 @@ private class DemoProvider {
      }
     
     func getContent() {
-        let data = DemoNetworkUploadInput(
+        let content = DemoNetworkMethodsDemo.Content(
             name: "ImageName",
             image: UIImage(color: Theme.Colors.red))
-        DemoNetworkMethods.demo.get(
-            data: data,
+        DemoNetworkMethods.demo(content).call(
             onSuccess: { [weak self] (data: DemoNetworkUploadOutput) in
                 guard let `self` = self else { return }
                 DispatchQueue.main.async {
@@ -84,54 +83,48 @@ private class DemoProvider {
 
 // MARK: NetworkMethods
 private enum DemoNetworkMethods {
-    static var demo: NetworkMethodsDemo {
-        NetworkMethodsDemo()
-            .with(cache: NetworkTmpCache(ttl: 60))
-    }
+    typealias demo = DemoNetworkMethodsDemo
 }
 
-// MARK: NetworkMethodsDemo
-private class NetworkMethodsDemo: NetworkMethod {
-    @discardableResult
-    func get<T: Parseable>(data: DemoNetworkUploadInput,
-                           onSuccess: @escaping NetworkOnGenericSuccess<T>,
-                           onError: @escaping NetworkOnError,
-                           onCompletion: NetworkOnGenericCompletion<T>? = nil) -> NetworkTask {
-        let request = NetworkRequest(url: "https://httpbin.org/post".url)
-            .with(method: .POST)
-            .with(body: data.multiparts.multipartDescription)
-        return self.provider.call(
-            request: request,
-            parser: NetworkResponseParser(),
-            onSuccess: onSuccess,
-            onError: onError,
-            onCompletion: onCompletion)
-    }
-}
-
-// MARK: DemoNetworkUploadInput
-private struct DemoNetworkUploadInput: Multipartable, Codable, Parseable {
-    let name: String
-    let image: Data
-    
-    var multiparts: [MultipartItem] {
-        return [
-            MultipartItem(
-                name: "name",
-                value: self.name),
-            MultipartItem(
-                name: self.name,
-                filename: "filename.jpg",
-                type: .jpeg,
-                body: self.image)
-        ]
+// MARK: DemoNetworkMethodsDemo
+private class DemoNetworkMethodsDemo: NetworkMethod {
+    struct Content: NetworkMethodContent {
+        let name: String
+        let image: Data
+        
+        var body: Data? {
+            return self.multiparts.multipartDescription
+        }
+        var parameters: [String: Any]? {
+            return nil
+        }
+        var multiparts: [MultipartItem] {
+            return [
+                MultipartItem(
+                    name: "name",
+                    value: self.name),
+                MultipartItem(
+                    name: self.name,
+                    filename: "filename.jpg",
+                    type: .jpeg,
+                    body: self.image)
+            ]
+        }
+        
+        init(name: String,
+             image: UIImage?) {
+            self.name = name
+            self.image = image?.jpegData(compressionQuality: 0.95) ?? Data()
+        }
     }
     
-    init(name: String,
-         image: UIImage?) {
-        self.name = name
-        self.image = image?.jpegData(compressionQuality: 0.95) ?? Data()
-    }
+    var content: NetworkMethodContent
+    var method: HTTPMethod = .POST
+    var url: URL! = "https://httpbin.org/post".url
+    
+    init(_ content: Content) {
+        self.content = content
+    } 
 }
 
 // MARK: DemoNetworkUploadOutput

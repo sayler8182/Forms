@@ -18,7 +18,7 @@ public protocol ConfigurationLoaderProtocol {
 
 public extension Configuration {
     struct Loader: ConfigurationLoaderProtocol {
-        public var backgroundColor: UIColor? = Theme.Colors.primaryLight.withAlphaComponent(0.3)
+        public var backgroundColor: UIColor? = Theme.Colors.primaryLight.with(alpha: 0.3)
         public var loaderView: () -> LoaderView = { DefaultLoaderView() }
     }
 }
@@ -161,7 +161,7 @@ open class LoaderView: FormsComponent {
         return self.superview as? LoaderCoverView
     }
     
-    override public required init() {
+    public required init() {
         super.init()
     }
     

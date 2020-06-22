@@ -121,9 +121,8 @@ public extension LoremIpsum {
     }
     
     static func empty(chars: Int) -> String {
-        return String(repeating: " ", count: chars)
+        return String(repeating: "_", count: chars)
     }
-    
     static func empty(lines: Int) -> String {
         return String(repeating: "\n", count: lines)
     }

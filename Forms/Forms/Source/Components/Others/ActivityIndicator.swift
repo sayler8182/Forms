@@ -11,8 +11,8 @@ import UIKit
 
 // MARK: ActivityIndicator
 open class ActivityIndicator: FormsComponent, FormsComponentWithMarginEdgeInset, FormsComponentWithPaddingEdgeInset {
-    private let backgroundView = UIView()
-    private let activityIndicator = UIActivityIndicatorView()
+    public let backgroundView = UIView()
+    public let activityIndicator = UIActivityIndicatorView()
         .with(isUserInteractionEnabled: true)
     
     override open var backgroundColor: UIColor? {
@@ -49,21 +49,21 @@ open class ActivityIndicator: FormsComponent, FormsComponentWithMarginEdgeInset,
         return self.height
     }
     
-    private func setupBackgroundView() {
+    open func setupBackgroundView() {
         self.backgroundView.frame = self.bounds
         self.addSubview(self.backgroundView, with: [
             Anchor.to(self).fill
         ])
     }
     
-    private func setupActivityIndicator() {
+    open func setupActivityIndicator() {
         self.activityIndicator.frame = self.bounds
         self.backgroundView.addSubview(self.activityIndicator, with: [
             Anchor.to(self.backgroundView).fill
         ])
     }
     
-    private func updateMarginEdgeInset() {
+    open func updateMarginEdgeInset() {
         let edgeInset: UIEdgeInsets = self.marginEdgeInset
         self.backgroundView.frame = self.bounds.with(inset: edgeInset)
         self.backgroundView.constraint(to: self, position: .top)?.constant = edgeInset.top
@@ -72,7 +72,7 @@ open class ActivityIndicator: FormsComponent, FormsComponentWithMarginEdgeInset,
         self.backgroundView.constraint(to: self, position: .trailing)?.constant = -edgeInset.trailing
     }
     
-    private func updatePaddingEdgeInset() {
+    open func updatePaddingEdgeInset() {
         let edgeInset: UIEdgeInsets = self.paddingEdgeInset
         self.activityIndicator.frame = self.bounds.with(inset: edgeInset)
         self.activityIndicator.constraint(to: self.backgroundView, position: .top)?.constant = edgeInset.top

@@ -14,24 +14,25 @@ import UIKit
 // MARK: Keys
 extension DemoTabBarKitController {
     enum TabBarKeys: String, TabBarKey {
+        enum Main: String, TabBarItemKey, CaseIterable {
+            case first
+            case second
+        }
+        enum Other: String, TabBarItemKey, CaseIterable {
+            case first
+            case second
+            case third
+        }
+        
         case main
         case other
         
         var keys: [TabBarItemKey] {
             switch self {
-            case .main: return TabBarMainKeys.allCases
-            case .other: return TabBarOtherKeys.allCases
+            case .main: return Main.allCases
+            case .other: return Other.allCases
             }
         }
-    }
-    enum TabBarMainKeys: String, TabBarItemKey, CaseIterable {
-        case first
-        case second
-    }
-    enum TabBarOtherKeys: String, TabBarItemKey, CaseIterable {
-        case first
-        case second
-        case third
     }
 }
 
@@ -46,12 +47,12 @@ class DemoTabBarKitController: TabBarController {
         super.setupSets()
         self.addSet([
             TabBarItem(
-                itemKey: TabBarMainKeys.first,
+                itemKey: TabBarKeys.Main.first,
                 viewController: { [unowned self] in
                     let controller = ContentViewController()
                     controller.titleFirst = "Change set to other"
                     controller.onClickFirst = Unowned(self) { (_self) in
-                        _self.show(TabBarKeys.other, itemKey: TabBarOtherKeys.first)
+                        _self.show(TabBarKeys.other, itemKey: TabBarKeys.Other.first)
                     }
                     return controller.embeded
                 },
@@ -60,7 +61,7 @@ class DemoTabBarKitController: TabBarController {
                 title: "First"
             ),
             TabBarItem(
-                itemKey: TabBarMainKeys.second,
+                itemKey: TabBarKeys.Main.second,
                 viewController: { return UIViewController() },
                 image: UIImage.from(name: "heart"),
                 selectedImage: UIImage.from(name: "heart"),
@@ -70,12 +71,12 @@ class DemoTabBarKitController: TabBarController {
         ], forKey: TabBarKeys.main)
         self.addSet([
             TabBarItem(
-                itemKey: TabBarOtherKeys.first,
+                itemKey: TabBarKeys.Main.first,
                 viewController: { [unowned self] in
                     let controller = ContentViewController()
                     controller.titleFirst = "Change set to main"
                     controller.onClickFirst = Unowned(self) { (_self) in
-                        _self.show(TabBarKeys.main, itemKey: TabBarOtherKeys.first)
+                        _self.show(TabBarKeys.main, itemKey: TabBarKeys.Other.first)
                     }
                     return controller.embeded
                 },
@@ -83,7 +84,7 @@ class DemoTabBarKitController: TabBarController {
                 title: "First other"
             ),
             TabBarItem(
-                itemKey: TabBarOtherKeys.second,
+                itemKey: TabBarKeys.Other.second,
                 viewController: { [unowned self] in
                     let controller = ContentViewController()
                     controller.titleFirst = "Select third"
@@ -96,7 +97,7 @@ class DemoTabBarKitController: TabBarController {
                 title: "Second other"
             ),
             TabBarItem(
-                itemKey: TabBarOtherKeys.third,
+                itemKey: TabBarKeys.Other.third,
                 viewController: { [unowned self] in
                     let controller = ContentViewController()
                     controller.titleFirst = "Hide TabBar"
@@ -118,7 +119,7 @@ class DemoTabBarKitController: TabBarController {
     override func setupActions() {
         super.setupActions()
         self.shouldSelect = { [unowned self] (item) in
-            if item.isEqual(TabBarKeys.main, TabBarMainKeys.second) {
+            if item.isEqual(TabBarKeys.main, TabBarKeys.Main.second) {
                 UIAlertController()
                     .with(title: "Second")
                     .with(message: "Can't select")

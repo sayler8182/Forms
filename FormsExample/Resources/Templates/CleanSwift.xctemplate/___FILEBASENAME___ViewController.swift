@@ -15,17 +15,22 @@ protocol ___VARIABLE_sceneName___DisplayLogic: class {
 }
 
 // MARK: ___VARIABLE_sceneName___ViewController
-class ___VARIABLE_sceneName___ViewController: FormsViewController {
+class ___VARIABLE_sceneName___ViewController: FormsViewController, ___VARIABLE_sceneName___DisplayLogic {
     var interactor: ___VARIABLE_sceneName___BusinessLogic!
     var router: (___VARIABLE_sceneName___RoutingLogic & ___VARIABLE_sceneName___DataPassing)!
+
+    override func setupView() {
+        super.setupView()
+        self.getContent()
+    }
 
     override func setupContent() {
         super.setupContent()
     }
 }
 
-// MARK: ___VARIABLE_sceneName___DisplayLogic
-extension ___VARIABLE_sceneName___ViewController: ___VARIABLE_sceneName___DisplayLogic {
+// MARK: ___VARIABLE_sceneName___DisplayLogic - GetContent
+extension ___VARIABLE_sceneName___ViewController {
     private func getContent() {
         let request = ___VARIABLE_sceneName___.GetContent.Request()
         self.interactor.getContent(request)

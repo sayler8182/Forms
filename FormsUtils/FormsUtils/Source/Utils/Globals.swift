@@ -6,7 +6,7 @@
 //  Copyright © 2020 Limbo. All rights reserved.
 //
 
-import UIKit
+import Foundation
 
 public func delay(_ delay: Double,
                   _ action: @escaping () -> Void) {
@@ -22,11 +22,4 @@ public func delay<T: AnyObject>(_ delay: Double,
         guard let target: T = target else { return }
         action(target)
     }
-}
-
-public func performFor(osVersion range: Range<CGFloat>,
-                       action: () -> Void) {
-    guard let varsion: CGFloat = UIDevice.current.systemVersion.asCGFloat else { return }
-    guard range.contains(varsion) else { return }
-    action()
 }

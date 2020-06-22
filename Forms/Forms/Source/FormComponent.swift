@@ -7,7 +7,11 @@
 //
 
 import FormsAnchor
+import FormsUtils
+import FormsUtilsUI
 import UIKit
+
+public typealias LazyImage = (() -> UIImage?)
 
 // MARK: SeparatorView
 open class SeparatorView: UIView { }
@@ -43,7 +47,7 @@ public extension Focusable {
     func lostFocus() {
         self.lostFocus(animated: true)
     }
-}
+} 
 
 // MARK: Inputable
 public protocol Inputable: Focusable { }
@@ -60,14 +64,20 @@ public protocol Componentable: Themeable {
 open class FormsComponent: UIView, Componentable {
     public weak var table: TableProtocol?
     
+    open var isStartAutoShimmer: Bool = true
+    open var isStopAutoShimmer: Bool = true
+    open var maxHeight: CGFloat = CGFloat.greatestConstraintConstant {
+        didSet { self.updateMaxHeight() }
+    }
+    open var minHeight: CGFloat = 0.0 {
+        didSet { self.updateMinHeight() }
+    }
     public var realHeight: CGFloat {
         return self.realSize.height
     }
-    
     public var realWidth: CGFloat {
         return self.realSize.width
     }
-    
     public var realSize: CGSize {
         return self.frame.size
     }
@@ -82,7 +92,7 @@ open class FormsComponent: UIView, Componentable {
         self.setupView()
     }
     
-    public init() {
+    public required init() {
         super.init(frame: CGRect(width: 320, height: 44))
         self.setupView()
     }
@@ -99,6 +109,8 @@ open class FormsComponent: UIView, Componentable {
         self.setupActions()
         self.setTheme()
         self.setLanguage()
+        self.setupAppearance()
+        self.setupMock()
     }
     
     open func enable(animated: Bool) {
@@ -161,6 +173,31 @@ open class FormsComponent: UIView, Componentable {
         // HOOK
         return UITableView.automaticDimension
     }
+    
+    open class func componentHeight(_ source: Any,
+                                    _ superview: UIView) -> CGFloat {
+        // HOOK
+        return UITableView.automaticDimension
+    }
+    
+    open func updateMaxHeight() {
+        let maxHeight: CGFloat = self.maxHeight
+        self.constraint(position: .height, relation: .lessThanOrEqual)?.constant = maxHeight
+    }
+    
+    open func updateMinHeight() {
+         let minHeight: CGFloat = self.minHeight
+               self.constraint(position: .height, relation: .greaterThanOrEqual)?.constant = minHeight
+    }
+    
+    open func setupAppearance() {
+        // HOOK
+    }
+    
+    @objc
+    open dynamic func setupMock() {
+        // HOOK
+    }
 }
 
 // MARK: Separator
@@ -190,6 +227,27 @@ open class XibComponent: FormsComponent {
 public extension FormsComponent {
     func with(componentColor: UIColor?) -> Self {
         self.backgroundColor = componentColor
+        return self
+    }
+    func with(isAutoShimmer: Bool) -> Self {
+        self.isStartAutoShimmer = isAutoShimmer
+        self.isStopAutoShimmer = isAutoShimmer
+        return self
+    }
+    func with(isStartAutoShimmer: Bool) -> Self {
+        self.isStartAutoShimmer = isStartAutoShimmer
+        return self
+    }
+    func with(isStopAutoShimmer: Bool) -> Self {
+        self.isStopAutoShimmer = isStopAutoShimmer
+        return self
+    }
+    func with(maxHeight: CGFloat) -> Self {
+        self.maxHeight = maxHeight
+        return self
+    }
+    func with(minHeight: CGFloat) -> Self {
+        self.minHeight = minHeight
         return self
     }
 } 
@@ -229,6 +287,10 @@ public protocol FormsComponentWithMarginEdgeInset: class {
     var marginEdgeInset: UIEdgeInsets { get set }
 }
 public extension FormsComponentWithMarginEdgeInset {
+    func with(sumMarginEdgeInset: UIEdgeInsets) -> Self {
+        self.marginEdgeInset += sumMarginEdgeInset
+        return self
+    }
     func with(margin: CGFloat) -> Self {
         self.marginEdgeInset = UIEdgeInsets(margin)
         return self
@@ -243,6 +305,10 @@ public extension FormsComponentWithMarginEdgeInset {
     }
     func with(marginVertical: CGFloat) -> Self {
         self.marginEdgeInset = UIEdgeInsets(vertical: marginVertical)
+        return self
+    }
+    func with(marginVertical: CGFloat, marginHorizontal: CGFloat) -> Self {
+        self.marginEdgeInset = UIEdgeInsets(vertical: marginVertical, horizontal: marginHorizontal)
         return self
     }
     func with(marginTop: CGFloat) -> Self {
@@ -268,6 +334,10 @@ public protocol FormsComponentWithPaddingEdgeInset: class {
     var paddingEdgeInset: UIEdgeInsets { get set }
 }
 public extension FormsComponentWithPaddingEdgeInset {
+    func with(sumPaddingEdgeInset: UIEdgeInsets) -> Self {
+        self.paddingEdgeInset += sumPaddingEdgeInset
+        return self
+    }
     func with(padding: CGFloat) -> Self {
         self.paddingEdgeInset = UIEdgeInsets(padding)
         return self
@@ -317,5 +387,32 @@ public extension FormsComponentWithProgress {
     func with(progress: CGFloat) -> Self {
         self.progress = progress
         return self
+    }
+}
+
+// MARK: DataSource
+public extension FormsComponent {
+    func cast<D, V: FormsComponent>(section: TableSection,
+                                    of dataType: D.Type,
+                                    to viewType: V.Type,
+                                    success: (D, V) -> Void) {
+        self.cast(
+            section: section,
+            of: dataType,
+            to: viewType,
+            success: success,
+            fail: { })
+    }
+    
+    func cast<D, V: FormsComponent>(section: TableSection,
+                                    of dataType: D.Type,
+                                    to viewType: V.Type,
+                                    success: (D, V) -> Void,
+                                    fail: () -> Void) {
+        guard let data: D = section.data as? D,
+            let view: V = self as? V else {
+                return fail()
+        }
+        success(data, view)
     }
 }

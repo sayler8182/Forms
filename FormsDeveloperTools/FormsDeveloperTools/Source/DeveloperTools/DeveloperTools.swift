@@ -8,15 +8,15 @@
 
 import UIKit
 
-// MARK: DeveloperFeatureKey
-public protocol DeveloperFeatureKey {
+// MARK: DeveloperFeatureKeyProtocol
+public protocol DeveloperFeatureKeyProtocol {
     var rawValue: String { get }
     var rawKey: String { get }
     var title: String { get }
     var isEnabled: Bool { get }
 }
 
-public extension DeveloperFeatureKey {
+public extension DeveloperFeatureKeyProtocol {
     var rawKey: String {
         return "developer.tools" + self.rawValue
     }
@@ -25,13 +25,13 @@ public extension DeveloperFeatureKey {
     }
 }
 
-// MARK: DeveloperFeatureFlagKey
-public protocol DeveloperFeatureFlagKey: DeveloperFeatureKey { }
+// MARK: DeveloperFeatureFlagKeyProtocol
+public protocol DeveloperFeatureFlagKeyProtocol: DeveloperFeatureKeyProtocol { }
 
 // MARK: DeveloperFeatures
 public struct DeveloperFeatures {
-    public var features: [DeveloperFeatureKey] = []
-    public var featuresFlags: [DeveloperFeatureFlagKey] = []
+    public var features: [DeveloperFeatureKeyProtocol] = []
+    public var featuresFlags: [DeveloperFeatureFlagKeyProtocol] = []
 }
 
 // MARK: DeveloperToolsNotification
@@ -89,7 +89,7 @@ public class DeveloperTools: NSObject {
     }()
     public static let appVersion: DeveloperToolsAppVersion = DeveloperToolsAppVersion()
     
-    public static subscript(_ key: DeveloperFeatureFlagKey) -> Bool {
+    public static subscript(_ key: DeveloperFeatureFlagKeyProtocol) -> Bool {
         get { return (UserDefaults.standard.object(forKey: key.rawKey) as? Bool) ?? key.isEnabled }
         set {
             UserDefaults.standard.set(newValue, forKey: key.rawKey)
@@ -97,8 +97,8 @@ public class DeveloperTools: NSObject {
         }
     }
     
-    public static func configure(features: [DeveloperFeatureKey] = [],
-                                 featuresFlags: [DeveloperFeatureFlagKey] = [],
+    public static func configure(features: [DeveloperFeatureKeyProtocol] = [],
+                                 featuresFlags: [DeveloperFeatureFlagKeyProtocol] = [],
                                  viewType: (UIViewController & DeveloperToolsMenu).Type = DeveloperToolsMenuViewController.self,
                                  onSelect: DeveloperToolsMenu.OnSelect? = nil) {
         self.viewType = viewType

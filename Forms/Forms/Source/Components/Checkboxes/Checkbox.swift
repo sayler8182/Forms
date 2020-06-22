@@ -11,83 +11,41 @@ import UIKit
 
 // MARK: State
 public extension Checkbox {
-    enum StateType {
-        case active
-        case selected
-        case disabled
-        case disabledSelected
-    }
-    
-    struct State<T> {
-        let active: T
-        let selected: T
-        let disabled: T
-        let disabledSelected: T
+    struct State<T>: FormsComponentStateActiveSelectedDisabledDisabledSelected {
+        public var active: T!
+        public var selected: T!
+        public var disabled: T!
+        public var disabledSelected: T!
         
-        public init(_ value: T) {
-            self.active = value
-            self.selected = value
-            self.disabled = value
-            self.disabledSelected = value
-        }
-        
-        public init(active: T, selected: T) {
-            self.active = active
-            self.selected = selected
-            self.disabled = active
-            self.disabledSelected = selected
-        }
-        
-        public init(active: T, selected: T, disabled: T) {
-            self.active = active
-            self.selected = selected
-            self.disabled = disabled
-            self.disabledSelected = disabled
-        }
-        
-        public init(active: T, selected: T, disabled: T, disabledSelected: T) {
-            self.active = active
-            self.selected = selected
-            self.disabled = disabled
-            self.disabledSelected = disabledSelected
-        }
-        
-        func value(for state: StateType) -> T {
-            switch state {
-            case .active: return self.active
-            case .selected: return self.selected
-            case .disabled: return self.disabled
-            case .disabledSelected: return self.disabledSelected
-            }
-        }
+        public init() { }
     }
 }
 
 // MARK: Checkbox
 open class Checkbox: FormsComponent, FormsComponentWithGroup, FormsComponentWithMarginEdgeInset, FormsComponentWithPaddingEdgeInset {
-    private let backgroundView = UIView()
+    public let backgroundView = UIView()
         .with(width: 320, height: 40)
         .with(isUserInteractionEnabled: true)
-    private let imageView = UIImageView()
+    public let imageView = UIImageView()
         .with(contentHuggingPriority: .required, axis: .horizontal)
         .with(contentMode: .center)
         .with(width: 40, height: 40)
-    private let contentView = UIView()
+    public let contentView = UIView()
         .with(width: 200, height: 40)
-    private let titleLabel = UILabel()
+    public let titleLabel = UILabel()
         .with(numberOfLines: 0)
         .with(width: 200, height: 40)
-    private let valueLabel = UILabel()
+    public let valueLabel = UILabel()
         .with(numberOfLines: 0)
         .with(width: 200, height: 40)
-    private let gestureRecognizer = UITapGestureRecognizer()
+    public let gestureRecognizer = UITapGestureRecognizer()
     
-    open var animationTime: TimeInterval = 0.2
+    open var animationTime: TimeInterval = 0.1
     open var backgroundColors: State<UIColor?> = State<UIColor?>(Theme.Colors.primaryLight) {
         didSet { self.updateState() }
     }
     open var groupKey: String? = nil
-    open var images: State<(() -> UIImage?)?> = State<(() -> UIImage?)?>(nil) {
+    open var images: State<LazyImage?> = State<LazyImage?>(nil) {
         didSet { self.updateState() }
     }
     open var imageColors: State<UIColor?> = State<UIColor?>(Theme.Colors.primaryDark) {
@@ -139,7 +97,7 @@ open class Checkbox: FormsComponent, FormsComponentWithGroup, FormsComponentWith
     
     public var onValueChanged: ((Bool) -> Void)? = nil
     
-    private (set) var state: StateType = StateType.active
+    private (set) var state: FormsComponentStateType = .active
     
     override open func setupView() {
         self.setupBackgroundView()
@@ -153,7 +111,7 @@ open class Checkbox: FormsComponent, FormsComponentWithGroup, FormsComponentWith
     override open func setupActions() {
         super.setupActions()
         self.gestureRecognizer.addTarget(self, action: #selector(handleGesture))
-            self.backgroundView.addGestureRecognizer(self.gestureRecognizer)
+        self.backgroundView.addGestureRecognizer(self.gestureRecognizer)
     }
     
     @objc
@@ -163,13 +121,11 @@ open class Checkbox: FormsComponent, FormsComponentWithGroup, FormsComponentWith
     }
     
     override open func enable(animated: Bool) {
-        guard !self.isUserInteractionEnabled else { return }
         self.isUserInteractionEnabled = true
         self.setState(.active, animated: animated)
     }
     
     override open func disable(animated: Bool) {
-        guard self.isUserInteractionEnabled else { return }
         self.isUserInteractionEnabled = false
         if !self.isSelected {
             self.setState(.disabled, animated: animated)
@@ -218,7 +174,7 @@ open class Checkbox: FormsComponent, FormsComponentWithGroup, FormsComponentWith
         ])
     }
     
-    open func updateGroup() {
+    public func updateGroup() {
         let views: [UIView] = self.table?.views ?? []
         for view in views {
             guard let checkbox: Checkbox = view as? Checkbox else { continue }
@@ -229,14 +185,12 @@ open class Checkbox: FormsComponent, FormsComponentWithGroup, FormsComponentWith
         }
     }
     
-    private func updateImageSize() {
+    open func updateImageSize() {
         if let size: CGSize = self.imageSize {
             if let constant = self.imageView.constraint(to: self.imageView, position: .width) {
                 constant.constant = size.width
             } else {
-                self.imageView.anchors([
-                    Anchor.to(self.imageView).width(size.width)
-                ])
+                self.imageView.anchors([Anchor.to(self.imageView).width(size.width)])
             }
         } else {
             self.imageView.constraint(to: self.imageView, position: .width)?.isActive = false
@@ -244,7 +198,7 @@ open class Checkbox: FormsComponent, FormsComponentWithGroup, FormsComponentWith
         self.layoutIfNeeded()
     }
     
-    private func updateMarginEdgeInset() {
+    open func updateMarginEdgeInset() {
         let edgeInset: UIEdgeInsets = self.marginEdgeInset
         self.backgroundView.frame = self.bounds.with(inset: edgeInset)
         self.backgroundView.constraint(to: self, position: .top)?.constant = edgeInset.top
@@ -253,7 +207,7 @@ open class Checkbox: FormsComponent, FormsComponentWithGroup, FormsComponentWith
         self.backgroundView.constraint(to: self, position: .trailing)?.constant = -edgeInset.trailing
     }
     
-    private func updatePaddingEdgeInset() {
+    open func updatePaddingEdgeInset() {
         let edgeInset: UIEdgeInsets = self.paddingEdgeInset
         self.imageView.constraint(to: self.backgroundView, position: .top)?.constant = edgeInset.top
         self.imageView.constraint(to: self.backgroundView, position: .leading)?.constant = edgeInset.leading
@@ -262,8 +216,8 @@ open class Checkbox: FormsComponent, FormsComponentWithGroup, FormsComponentWith
         self.contentView.constraint(to: self.backgroundView, position: .trailing)?.constant = -edgeInset.trailing
         self.contentView.constraint(to: self.backgroundView, position: .bottom)?.constant = -edgeInset.bottom
     }
-     
-    private func updateState(animated: Bool) {
+    
+    public func updateState(animated: Bool) {
         if !self.isEnabled && !self.isSelected {
             self.setState(.disabled, animated: animated)
         } else if !self.isEnabled && self.isSelected {
@@ -275,29 +229,28 @@ open class Checkbox: FormsComponent, FormsComponentWithGroup, FormsComponentWith
         }
     }
     
-    private func updateState() {
-        switch self.state {
-        case .active: self.setState(.active, animated: false, force: true)
-        case .selected: self.setState(.selected, animated: false, force: true)
-        case .disabled: self.setState(.disabled, animated: false, force: true)
-        case .disabledSelected: self.setState(.disabledSelected, animated: false, force: true)
-        }
+    public func updateState() {
+        self.setState(self.state, animated: false, force: true)
     }
     
-    private func setState(_ state: StateType,
-                          animated: Bool,
-                          force: Bool = false) {
+    public func setState(_ state: FormsComponentStateType,
+                         animated: Bool,
+                         force: Bool = false) {
         guard self.state != state || force else { return }
         self.animation(animated, duration: self.animationTime) {
-            self.backgroundView.backgroundColor = self.backgroundColors.value(for: state)
-            self.imageView.image = self.images.value(for: state)?()
-            self.imageView.tintColor = self.imageColors.value(for: state)
-            self.titleLabel.textColor = self.titleColors.value(for: state)
-            self.titleLabel.font = self.titleFonts.value(for: state)
-            self.valueLabel.textColor = self.valueColors.value(for: state)
-            self.valueLabel.font = self.valueFonts.value(for: state)
+            self.setStateAnimation(state)
         }
         self.state = state
+    }
+    
+    open func setStateAnimation(_ state: FormsComponentStateType) {
+        self.backgroundView.backgroundColor = self.backgroundColors.value(for: state)
+        self.imageView.image = self.images.value(for: state)?()
+        self.imageView.tintColor = self.imageColors.value(for: state)
+        self.titleLabel.textColor = self.titleColors.value(for: state)
+        self.titleLabel.font = self.titleFonts.value(for: state)
+        self.valueLabel.textColor = self.valueColors.value(for: state)
+        self.valueLabel.font = self.valueFonts.value(for: state)
     }
 }
 
@@ -316,11 +269,11 @@ public extension Checkbox {
         self.backgroundColors = backgroundColors
         return self
     }
-    func with(image: (() -> UIImage?)?) -> Self {
-        self.images = State<(() -> UIImage?)?>(image)
+    func with(image: LazyImage?) -> Self {
+        self.images = State<LazyImage?>(image)
         return self
     }
-    func with(images: State<(() -> UIImage?)?>) -> Self {
+    func with(images: State<LazyImage?>) -> Self {
         self.images = images
         return self
     }

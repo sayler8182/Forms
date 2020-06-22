@@ -13,41 +13,13 @@ import UIKit
 
 // MARK: State
 public extension PinView {
-    enum StateType {
-        case active
-        case selected
-        case disabled
-        case error
-    }
-    
-    struct State<T> {
-        let active: T
-        let selected: T
-        let disabled: T
-        let error: T
+    struct State<T>: FormsComponentStateActiveSelectedDisabledError {
+        public var active: T!
+        public var selected: T!
+        public var disabled: T!
+        public var error: T!
         
-        public init(_ value: T) {
-            self.active = value
-            self.selected = value
-            self.disabled = value
-            self.error = value
-        }
-        
-        public init(active: T, selected: T, disabled: T, error: T) {
-            self.active = active
-            self.selected = selected
-            self.disabled = disabled
-            self.error = error
-        }
-        
-        func value(for state: StateType) -> T {
-            switch state {
-            case .active: return self.active
-            case .selected: return self.selected
-            case .disabled: return self.disabled
-            case .error: return self.error
-            }
-        }
+        public init() { }
     }
 }
 
@@ -68,12 +40,12 @@ open class PinView: FormsComponent, FormsComponentWithMarginEdgeInset, FormsComp
         .with(width: 320, height: 20)
     public let infoLabel = UILabel()
         .with(width: 320, height: 20)
-    private let gestureRecognizer = UITapGestureRecognizer()
+    public let gestureRecognizer = UITapGestureRecognizer()
     
     private var shouldSkipBeginEditing: Bool = false
     private var shouldSkipEndEditing: Bool = false
     
-    open var animationTime: TimeInterval = 0.2
+    open var animationTime: TimeInterval = 0.1
     open var autocapitalizationType: UITextAutocapitalizationType = .none {
         didSet { self.textFields.forEach { $0.autocapitalizationType = self.autocapitalizationType } }
     }
@@ -133,7 +105,7 @@ open class PinView: FormsComponent, FormsComponentWithMarginEdgeInset, FormsComp
     open var placeholder: String? {
         didSet { self.updatePlaceholder() }
     }
-    open var placeholderColors: State<UIColor?> = State<UIColor?>(Theme.Colors.primaryDark.withAlphaComponent(0.3)) {
+    open var placeholderColors: State<UIColor?> = State<UIColor?>(Theme.Colors.primaryDark.with(alpha: 0.3)) {
         didSet { self.updateState() }
     }
     open var placeholderFonts: State<UIFont> = State<UIFont>(Theme.Fonts.regular(ofSize: 32)) {
@@ -180,6 +152,7 @@ open class PinView: FormsComponent, FormsComponentWithMarginEdgeInset, FormsComp
         didSet { self.updateState() }
     }
     
+    public var validateOnTextChangeAfterEndEditing: Bool = false
     public var validateOnBeginEditing: Bool = false
     public var validateOnEndEditing: Bool = false
     public var validateOnTextChange: Bool = false
@@ -192,8 +165,9 @@ open class PinView: FormsComponent, FormsComponentWithMarginEdgeInset, FormsComp
     public var onDidPaste: ((String?, String) -> Void)?
     public var onEndEditing: ((String?) -> Void)?
     public var onTextChanged: ((String?) -> Void)?
+    public var onValidate: Validable.OnValidate?
     
-    private (set) var state: StateType = StateType.active
+    private (set) var state: FormsComponentStateType = .active
     
     override open func setupView() {
         self.setupBackgroundView()
@@ -215,13 +189,11 @@ open class PinView: FormsComponent, FormsComponentWithMarginEdgeInset, FormsComp
     private func handleGesture(recognizer: UITapGestureRecognizer) { }
     
     override open func enable(animated: Bool) {
-        guard !self.isUserInteractionEnabled else { return }
         self.isUserInteractionEnabled = true
         self.setState(.active, animated: animated)
     }
     
     override open func disable(animated: Bool) {
-        guard self.isUserInteractionEnabled else { return }
         self.isUserInteractionEnabled = false
         self.setState(.disabled, animated: animated)
     }
@@ -249,6 +221,9 @@ open class PinView: FormsComponent, FormsComponentWithMarginEdgeInset, FormsComp
         if self.validateOnEndEditing {
             self.validate()
             self.table?.refreshTableView()
+        }
+        if self.validateOnTextChangeAfterEndEditing {
+            self.validateOnTextChange = true
         }
     }
     
@@ -335,7 +310,7 @@ open class PinView: FormsComponent, FormsComponentWithMarginEdgeInset, FormsComp
         self.backgroundView.constraint(to: self, position: .trailing)?.constant = -edgeInset.trailing
     }
     
-    open func updateInput() {
+    public func updateInput() {
         self.textFieldContainer.removeArrangedSubviews()
         self.textFields.removeAll()
         self.underscoreViewContainer.removeArrangedSubviews()
@@ -388,13 +363,13 @@ open class PinView: FormsComponent, FormsComponentWithMarginEdgeInset, FormsComp
         self.infoLabel.constraint(to: self.backgroundView, position: .bottom)?.constant = -edgeInset.bottom
     }
     
-    open func updatePlaceholder() {
+    public func updatePlaceholder() {
         for (i, textField) in self.textFields.enumerated() {
             textField.placeholder = self.placeholder?[i]
         }
     }
     
-    private func updateState(animated: Bool) {
+    public func updateState(animated: Bool) {
         if self.error.isNotNilOrEmpty {
             self.setState(.error, animated: animated)
         } else if !self.isEnabled {
@@ -406,13 +381,8 @@ open class PinView: FormsComponent, FormsComponentWithMarginEdgeInset, FormsComp
         }
     }
     
-    private func updateState() {
-        switch self.state {
-        case .active: self.setState(.active, animated: false, force: true)
-        case .selected: self.setState(.selected, animated: false, force: true)
-        case .disabled: self.setState(.disabled, animated: false, force: true)
-        case .error: self.setState(.error, animated: false, force: true)
-        }
+    public func updateState() {
+        self.setState(self.state, animated: false, force: true)
     }
     
     private func setText(_ text: String?) {
@@ -421,29 +391,33 @@ open class PinView: FormsComponent, FormsComponentWithMarginEdgeInset, FormsComp
         }
     }
     
-    private func setState(_ state: StateType,
+    private func setState(_ state: FormsComponentStateType,
                           animated: Bool,
                           force: Bool = false) {
         guard self.state != state || force else { return }
         self.animation(animated, duration: self.animationTime) {
-            self.backgroundView.backgroundColor = self.backgroundColors.value(for: state)
-            self.errorLabel.textColor = self.errorColor
-            self.errorLabel.font = self.errorFont
-            self.infoLabel.textColor = self.infoColor
-            self.infoLabel.font = self.infoFont
-            self.textFields.forEach {
-                $0.textColor = self.textColors.value(for: state)
-                $0.font = self.textFonts.value(for: state)
-                $0.placeholderColor = self.placeholderColors.value(for: state)
-                $0.placeholderFont = self.placeholderFonts.value(for: state)
-            }
-            self.titleLabel.textColor = self.titleColors.value(for: state)
-            self.titleLabel.font = self.titleFonts.value(for: state)
-            self.underscoreViews.forEach {
-                $0.backgroundColor = self.underscoreColors.value(for: state)
-            }
+            self.setStateAnimation(state)
         }
         self.state = state
+    }
+    
+    open func setStateAnimation(_ state: FormsComponentStateType) {
+        self.backgroundView.backgroundColor = self.backgroundColors.value(for: state)
+        self.errorLabel.textColor = self.errorColor
+        self.errorLabel.font = self.errorFont
+        self.infoLabel.textColor = self.infoColor
+        self.infoLabel.font = self.infoFont
+        self.textFields.forEach {
+            $0.textColor = self.textColors.value(for: state)
+            $0.font = self.textFonts.value(for: state)
+            $0.placeholderColor = self.placeholderColors.value(for: state)
+            $0.placeholderFont = self.placeholderFonts.value(for: state)
+        }
+        self.titleLabel.textColor = self.titleColors.value(for: state)
+        self.titleLabel.font = self.titleFonts.value(for: state)
+        self.underscoreViews.forEach {
+            $0.backgroundColor = self.underscoreColors.value(for: state)
+        }
     }
 }
 
@@ -753,6 +727,10 @@ public extension PinView {
     }
     func with(underscoreColors: State<UIColor?>) -> Self {
         self.underscoreColors = underscoreColors
+        return self
+    }
+    func with(validateOnTextChangeAfterEndEditing: Bool) -> Self {
+        self.validateOnTextChangeAfterEndEditing = validateOnTextChangeAfterEndEditing
         return self
     }
     func with(validateOnBeginEditing: Bool) -> Self {

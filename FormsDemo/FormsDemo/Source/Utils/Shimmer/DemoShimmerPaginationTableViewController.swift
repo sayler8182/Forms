@@ -63,15 +63,15 @@ class DemoShimmerPaginationTableViewController: FormsTableViewController {
 
 // MARK: DemoProviderDelegate
 extension DemoShimmerPaginationTableViewController: DemoProviderDelegate {
-    fileprivate func loadItemsPageSuccess(_ page: Page<Int, DemoCellModel>) {
-        let rows: [TableRow] = page.data.map { TableRow(of: DemoTableViewCell.self, data: $0) }
+    fileprivate func loadItemsPageSuccess(_ page: Page<Int, [DemoCellModel]>) {
+        let rows: [TableRow] = page.data?.map { TableRow(of: DemoTableViewCell.self, data: $0) } ?? []
         self.stopShimmering()
         self.shimmerDataSource.append(rows)
         self.paginationSuccess(delay: 0.5, isLast: page.isLast)
         self.pullToRefreshFinish()
     }
     
-    fileprivate func loadItemsPageError(_ page: Page<Int, DemoCellModel>) {
+    fileprivate func loadItemsPageError(_ page: Page<Int, [DemoCellModel]>) {
         self.stopShimmering()
         Toast.new()
             .with(style: .error)
@@ -84,15 +84,15 @@ extension DemoShimmerPaginationTableViewController: DemoProviderDelegate {
 
 // MARK: DemoProviderDelegate
 private protocol DemoProviderDelegate: class {
-    func loadItemsPageSuccess(_ page: Page<Int, DemoCellModel>)
-    func loadItemsPageError(_ page: Page<Int, DemoCellModel>)
+    func loadItemsPageSuccess(_ page: Page<Int, [DemoCellModel]>)
+    func loadItemsPageError(_ page: Page<Int, [DemoCellModel]>)
 }
 
 // MARK: DemoProvider
 private class DemoProvider {
     private var wasError: Bool = false
     private let pagination = Pagination(
-        of: DemoCellModel.self,
+        of: [DemoCellModel].self,
         firstPageId: 0,
         onNextPageId: { (p, _) in p.lastPageId?.advanced(by: 1) ?? 0 })
     
@@ -160,7 +160,7 @@ private extension DemoProvider {
                 let alpha: CGFloat = CGFloat.random(in: 0...1)
                 let title: String = "Some title \(pageId * limit + i + 1)"
                 let item: DemoCellModel = DemoCellModel(
-                    color: Theme.Colors.red.withAlphaComponent(alpha),
+                    color: Theme.Colors.red.with(alpha: alpha),
                     title: title,
                     subtitle: "Some ubtitle",
                     info: LoremIpsum.paragraph(sentences: 2))

@@ -17,7 +17,7 @@ class DemoMockViewController: FormsTableViewController {
         .with(title: "Reload")
     private let mockLabel = Components.label.default()
         .with(numberOfLines: 0)
-        .with(paddingEdgeInset: UIEdgeInsets(top: 8, leading: 16, bottom: 4, trailing: 16))
+        .with(marginEdgeInset: UIEdgeInsets(top: 8, leading: 16, bottom: 4, trailing: 16))
 
     private let divider = Components.utils.divider()
         .with(height: 5.0)
@@ -88,7 +88,7 @@ private struct DemoModel: Mockable, CustomDebugStringConvertible {
             fromFormat: "yyyy-MM-dd HH:mm",
             to: "2000-12-31 23:59",
             toFormat: "yyyy-MM-dd HH:mm")
-        self.postCode = mock.postCode(format: "DD-DDD")
+        self.postCode = mock.postCode(format: "XX-XXX")
         self.phone = mock.phone(
             prefix: "+48",
             length: 9,

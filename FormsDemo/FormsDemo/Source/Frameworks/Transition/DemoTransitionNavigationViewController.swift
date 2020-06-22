@@ -42,7 +42,8 @@ class DemoTransitionNavigationViewController: FormsNavigationController, Transit
         self.view.addGestureRecognizer(self.edgePanGesture)
         self.changeButton.onClick = Unowned(self) { (_self) in
             if _self.viewControllers.count == 1 {
-                _self.pushViewController(DemoSecondController(), animated: true)
+                let controller = DemoSecondController()
+                _self.pushViewController(controller, animated: true)
             } else {
                 _self.popToRootViewController(animated: true)
             }

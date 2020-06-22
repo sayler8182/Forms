@@ -10,6 +10,8 @@ import FormsInjector
 import FormsUtils
 import Foundation
 
+internal var alphaCharacters = "a-zA-Z\\-_ ’'‘ÆÐƎƏƐƔĲŊŒẞÞǷȜæðǝəɛɣĳŋœĸſßþƿȝĄƁÇĐƊĘĦĮƘŁØƠŞȘŢȚŦŲƯY̨Ƴąɓçđɗęħįƙłøơşșţțŧųưy̨ƴÁÀÂÄǍĂĀÃÅǺĄÆǼǢƁĆĊĈČÇĎḌĐƊÐÉÈĖÊËĚĔĒĘẸƎƏƐĠĜǦĞĢƔáàâäǎăāãåǻąæǽǣɓćċĉčçďḍđɗðéèėêëěĕēęẹǝəɛġĝǧğģɣĤḤĦIÍÌİÎÏǏĬĪĨĮỊĲĴĶƘĹĻŁĽĿʼNŃN̈ŇÑŅŊÓÒÔÖǑŎŌÕŐỌØǾƠŒĥḥħıíìiîïǐĭīĩįịĳĵķƙĸĺļłľŀŉńn̈ňñņŋóòôöǒŏōõőọøǿơœŔŘŖŚŜŠŞȘṢẞŤŢṬŦÞÚÙÛÜǓŬŪŨŰŮŲỤƯẂẀŴẄǷÝỲŶŸȲỸƳŹŻŽẒŕřŗſśŝšşșṣßťţṭŧþúùûüǔŭūũűůųụưẃẁŵẅƿýỳŷÿȳỹƴźżžẓ"
+
 // MARK: Validator
 open class Validator: Equatable {
     public var dependencies: [Validator] = []
@@ -43,8 +45,11 @@ open class Validator: Equatable {
 
 // MARK: Validable
 public protocol Validable: class {
+    typealias OnValidate = ((Bool) -> Void)
+    
     var validators: [Validator] { get set }
     var validatorTriggered: Bool { get set }
+    var onValidate: OnValidate? { get set }
     
     func validatorTrigger()
     @discardableResult
@@ -74,7 +79,10 @@ public extension Validable {
         for validator in self.validators {
             result = result && self.validate(validator, isSilence)
         }
-        return true
+        if !isSilence {
+            self.onValidate?(result)
+        }
+        return result
     }
     
     func addValidator(_ validator: Validator) {
@@ -124,11 +132,13 @@ public enum ValidationErrorType: String, ValidationErrorTypeProtocol {
     case lengthMin
     case lengthMax
     case notEmpty
+    case password
     case pesel
     case peselShort
     case peselLong
     case phone
     case postCode
+    case string
     
     public var error: ValidationError {
         return ValidationError(self)
@@ -140,10 +150,12 @@ public class ValidationError {
     static var amountError = ValidationErrorType.amount.error
     static var emailError = ValidationErrorType.email.error
     static var notEmptyError = ValidationErrorType.notEmpty.error
+    static var passwordError = ValidationErrorType.password.error
     static var peselError = ValidationErrorType.pesel.error
     static var peselShortError = ValidationErrorType.peselShort.error
     static var peselLongError = ValidationErrorType.peselLong.error
     static var phoneError = ValidationErrorType.phone.error
+    static var stringError = ValidationErrorType.string.error
     
     static func amountMinError(_ minAmount: String) -> ValidationError {
         ValidationError(ValidationErrorType.amountMin, [minAmount])
@@ -205,6 +217,8 @@ open class ValidatorTranslator: ValidatorTranslatorProtocol {
             return "Incorrect email format"
         case ValidationErrorType.notEmpty.rawValue:
             return "This field is required"
+        case ValidationErrorType.password.rawValue:
+            return "Password is too weak"
         case ValidationErrorType.pesel.rawValue:
             return "Incorrect pesel format"
         case ValidationErrorType.peselShort.rawValue:
@@ -213,6 +227,8 @@ open class ValidatorTranslator: ValidatorTranslatorProtocol {
             return "Pesel number is too long"
         case ValidationErrorType.phone.rawValue:
             return "Incorrect phone number format"
+        case ValidationErrorType.string.rawValue:
+            return "Incorrect text format"
             
         case ValidationErrorType.amountMin.rawValue:
             return "Minimum allowed amount is \(parameters[safe: 0, or: ""])"

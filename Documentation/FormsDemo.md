@@ -72,5 +72,5 @@ func getRowController(row: DemoRow) -> UIViewController? {
 There is *CleanSwift.xctemplate* in [./FormsExample/Resources/Templates](./FormsExample/Resources/Templates) folder. You can copy it to 
 
 ```
-~/Library/Developer/Xcode/Template/Custom
+~/Library/Developer/Xcode/Templates/Custom
 ```

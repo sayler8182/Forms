@@ -11,9 +11,9 @@ import UIKit
 
 // MARK: ProgressBar
 open class ProgressBar: FormsComponent, FormsComponentWithProgress, FormsComponentWithMarginEdgeInset, FormsComponentWithPaddingEdgeInset {
-    private let backgroundView = UIView()
-    private let primaryView = UIView()
-    private let secondaryView = UIView()
+    public let backgroundView = UIView()
+    public let primaryView = UIView()
+    public let secondaryView = UIView()
     
     private let primaryHeightAnchor = AnchorConnection()
     
@@ -54,8 +54,8 @@ open class ProgressBar: FormsComponent, FormsComponentWithProgress, FormsCompone
         return UITableView.automaticDimension
     }
     
-    public func setProgress(_ progress: CGFloat,
-                            animated: Bool) {
+    open func setProgress(_ progress: CGFloat,
+                          animated: Bool) {
         let progress: CGFloat = progress.match(in: 0..<1)
         self.animation(
             animated,
@@ -69,14 +69,14 @@ open class ProgressBar: FormsComponent, FormsComponentWithProgress, FormsCompone
         })
     }
     
-    private func setupBackgroundView() {
+    open func setupBackgroundView() {
         self.backgroundView.frame = self.bounds
         self.addSubview(self.backgroundView, with: [
             Anchor.to(self).fill
         ])
     }
     
-    private func setupPrimaryView() {
+    open func setupPrimaryView() {
         self.primaryView.frame = self.bounds
         self.backgroundView.addSubview(self.primaryView, with: [
             Anchor.to(self.backgroundView).fill,
@@ -84,7 +84,7 @@ open class ProgressBar: FormsComponent, FormsComponentWithProgress, FormsCompone
         ])
     }
     
-    private func setupSecondaryView() {
+    open func setupSecondaryView() {
         self.secondaryView.frame = self.primaryView.frame
         self.secondaryView.frame.size.width = 0
         self.primaryView.addSubview(self.secondaryView, with: [
@@ -94,7 +94,7 @@ open class ProgressBar: FormsComponent, FormsComponentWithProgress, FormsCompone
         ])
     }
     
-    private func updateMarginEdgeInset() {
+    open func updateMarginEdgeInset() {
         let edgeInset: UIEdgeInsets = self.marginEdgeInset
         self.backgroundView.frame = self.bounds.with(inset: edgeInset)
         self.backgroundView.constraint(to: self, position: .top)?.constant = edgeInset.top
@@ -103,7 +103,7 @@ open class ProgressBar: FormsComponent, FormsComponentWithProgress, FormsCompone
         self.backgroundView.constraint(to: self, position: .trailing)?.constant = -edgeInset.trailing
     }
     
-    private func updatePaddingEdgeInset() {
+    open func updatePaddingEdgeInset() {
         let edgeInset: UIEdgeInsets = self.paddingEdgeInset
         self.primaryView.frame = self.bounds.with(inset: edgeInset)
         self.primaryView.constraint(to: self.backgroundView, position: .top)?.constant = edgeInset.top

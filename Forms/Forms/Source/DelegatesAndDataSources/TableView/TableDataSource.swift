@@ -10,13 +10,16 @@ import UIKit
 
 // MARK: TableSection
 public class TableSection {
+    public let type: FormsComponent.Type?
     public let isShimmering: Bool
     public let data: Any
     public fileprivate (set) var rows: [TableRow]
     
-    public init(isShimmering: Bool = false,
+    public init(of type: FormsComponent.Type? = nil,
+                isShimmering: Bool = false,
                 data: Any = TableDataSource.Empty,
                 rows: [TableRow]) {
+        self.type = type
         self.isShimmering = isShimmering
         self.data = data
         self.rows = rows
@@ -41,6 +44,7 @@ public class TableRow {
 
 // MARK: TableDataSourceProtocol
 public protocol TableDataSourceDelegateProtocol: class {
+    func setupSection(section: TableSection, view: FormsComponent, index: Int)
     func setupCell(row: TableRow, cell: FormsTableViewCell, indexPath: IndexPath)
     func selectCell(row: TableRow, cell: FormsTableViewCell, indexPath: IndexPath)
 }
@@ -64,6 +68,10 @@ open class TableDataSource: NSObject {
         self.setItems(sections, animated: animated)
     }
     
+    public func prepare(for tableView: UITableView) {
+        self.tableView = tableView
+    }
+                        
     public func prepare(for tableView: UITableView,
                         queue tableUpdatesQueue: DispatchQueue,
                         scrollDelegate: UIScrollViewDelegate) {
@@ -204,14 +212,31 @@ extension TableDataSource: UITableViewDelegate, UITableViewDataSource {
         self.delegate?.selectCell(row: row, cell: cell, indexPath: indexPath)
     }
     
+    public func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let index: Int = section
+        let section: TableSection = self.sections[index]
+        guard let type = section.type else { return nil }
+        let component: FormsComponent = type.init()
+        component.translatesAutoresizingMaskIntoConstraints = true
+        self.delegate?.setupSection(section: section, view: component, index: index)
+        return component
+    }
+    
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let section: TableSection = self.sections[indexPath.section]
         let row: TableRow = section.rows[indexPath.row]
         let cell = tableView.dequeueReusableCell(withIdentifier: row.identifier, for: indexPath) as! FormsTableViewCell
+        cell.tableView = tableView
         cell.selectionStyle = .none
         cell.stopShimmering()
         self.delegate?.setupCell(row: row, cell: cell, indexPath: indexPath)
         return cell
+    }
+    
+    public func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        let section: TableSection = self.sections[section]
+        guard let type = section.type else { return CGFloat.leastNormalMagnitude }
+        return type.componentHeight(section.data, tableView)
     }
     
     public func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {

@@ -13,19 +13,8 @@ import UIKit
 open class View: FormsComponent {
     open var height: CGFloat = UITableView.automaticDimension
     
-    override open func setupView() {
-        self.setupComponent()
-        super.setupView()
-    }
-    
     override open func componentHeight() -> CGFloat {
         return self.height
-    }
-    
-    private func setupComponent() {
-        self.anchors([
-            Anchor.to(self).fill
-        ])
     }
 }
 

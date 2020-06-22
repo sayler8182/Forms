@@ -12,46 +12,18 @@ import UIKit
 
 // MARK: State
 public extension TextField {
-    enum StateType {
-        case active
-        case selected
-        case disabled
-        case error
-    }
-    
-    struct State<T> {
-        let active: T
-        let selected: T
-        let disabled: T
-        let error: T
+    struct State<T>: FormsComponentStateActiveSelectedDisabledError {
+        public var active: T!
+        public var selected: T!
+        public var disabled: T!
+        public var error: T!
         
-        public init(_ value: T) {
-            self.active = value
-            self.selected = value
-            self.disabled = value
-            self.error = value
-        }
-        
-        public init(active: T, selected: T, disabled: T, error: T) {
-            self.active = active
-            self.selected = selected
-            self.disabled = disabled
-            self.error = error
-        }
-        
-        func value(for state: StateType) -> T {
-            switch state {
-            case .active: return self.active
-            case .selected: return self.selected
-            case .disabled: return self.disabled
-            case .error: return self.error
-            }
-        }
+        public init() { }
     }
 }
 
 // MARK: UITextFieldWithPlaceholder
-open class UITextFieldWithPlaceholder: UITextField {
+open class UITextFieldWithPlaceholder: UITextField, UnShimmerable {
     public typealias OnDeleteBackward = () -> Void
     
     public let placeholderLabel = UILabel()
@@ -223,17 +195,17 @@ open class TextField: FormsComponent, FormsComponentWithMarginEdgeInset, FormsCo
     public let backgroundView = UIView()
         .with(width: 320, height: 85)
         .with(isUserInteractionEnabled: true)
-    public let titleLabel = UILabel()
+    public let titleLabel = UnShimmerableLabel()
         .with(width: 320, height: 20)
     public let textField = UITextFieldWithPlaceholder()
         .with(width: 320, height: 44)
-    public let underscoreView = UIView()
+    public let underscoreView = UnShimmerableView()
         .with(width: 320, height: 1)
-    public let errorLabel = UILabel()
+    public let errorLabel = UnShimmerableLabel()
         .with(width: 320, height: 20)
-    public let infoLabel = UILabel()
+    public let infoLabel = UnShimmerableLabel()
         .with(width: 320, height: 20)
-    private let gestureRecognizer = UITapGestureRecognizer()
+    public let gestureRecognizer = UITapGestureRecognizer()
     
     open var animationTime: TimeInterval = 0.2
     open var autocapitalizationType: UITextAutocapitalizationType {
@@ -282,7 +254,7 @@ open class TextField: FormsComponent, FormsComponentWithMarginEdgeInset, FormsCo
         get { return self.textField.maskText }
         set { self.textField.maskText = newValue }
     }
-    open var maskColors: State<UIColor?> = State<UIColor?>(Theme.Colors.primaryDark.withAlphaComponent(0.3)) {
+    open var maskColors: State<UIColor?> = State<UIColor?>(Theme.Colors.primaryDark.with(alpha: 0.3)) {
         didSet { self.updateState() }
     }
     open var maskFonts: State<UIFont> = State<UIFont>(Theme.Fonts.regular(ofSize: 16)) {
@@ -298,7 +270,7 @@ open class TextField: FormsComponent, FormsComponentWithMarginEdgeInset, FormsCo
         get { return self.textField.placeholder }
         set { self.textField.placeholder = newValue }
     }
-    open var placeholderColors: State<UIColor?> = State<UIColor?>(Theme.Colors.primaryDark.withAlphaComponent(0.3)) {
+    open var placeholderColors: State<UIColor?> = State<UIColor?>(Theme.Colors.primaryDark.with(alpha: 0.3)) {
         didSet { self.updateState() }
     }
     open var placeholderFonts: State<UIFont> = State<UIFont>(Theme.Fonts.regular(ofSize: 16)) {
@@ -341,6 +313,7 @@ open class TextField: FormsComponent, FormsComponentWithMarginEdgeInset, FormsCo
         didSet { self.updateState() }
     }
     
+    public var validateOnTextChangeAfterEndEditing: Bool = false
     public var validateOnBeginEditing: Bool = false
     public var validateOnEndEditing: Bool = false
     public var validateOnTextChange: Bool = false
@@ -353,8 +326,9 @@ open class TextField: FormsComponent, FormsComponentWithMarginEdgeInset, FormsCo
     public var onDidPaste: ((String?, String) -> Void)?
     public var onEndEditing: ((String?) -> Void)?
     public var onTextChanged: ((String?) -> Void)?
+    public var onValidate: Validable.OnValidate?
     
-    private (set) var state: StateType = StateType.active
+    private (set) var state: FormsComponentStateType = .active
     
     override open func setupView() {
         self.setupBackgroundView()
@@ -372,7 +346,7 @@ open class TextField: FormsComponent, FormsComponentWithMarginEdgeInset, FormsCo
         self.textField.addTarget(self, action: #selector(handleOnEndEditing), for: .editingDidEnd)
         self.textField.addTarget(self, action: #selector(handleOnTextChanged), for: .editingChanged)
         self.gestureRecognizer.addTarget(self, action: #selector(handleGesture))
-            self.backgroundView.addGestureRecognizer(self.gestureRecognizer)
+        self.backgroundView.addGestureRecognizer(self.gestureRecognizer)
     }
     
     @objc
@@ -381,13 +355,11 @@ open class TextField: FormsComponent, FormsComponentWithMarginEdgeInset, FormsCo
     }
     
     override open func enable(animated: Bool) {
-        guard !self.isUserInteractionEnabled else { return }
         self.isUserInteractionEnabled = true
         self.setState(.active, animated: animated)
     }
     
     override open func disable(animated: Bool) {
-        guard self.isUserInteractionEnabled else { return }
         self.isUserInteractionEnabled = false
         self.setState(.disabled, animated: animated)
     }
@@ -419,6 +391,9 @@ open class TextField: FormsComponent, FormsComponentWithMarginEdgeInset, FormsCo
         if self.validateOnEndEditing {
             self.validate()
             self.table?.refreshTableView()
+        }
+        if self.validateOnTextChangeAfterEndEditing {
+            self.validateOnTextChange = true
         }
     }
     
@@ -494,7 +469,7 @@ open class TextField: FormsComponent, FormsComponentWithMarginEdgeInset, FormsCo
         // HOOK
     }
     
-    private func updateState(animated: Bool) {
+    public func updateState(animated: Bool) {
         if self.error.isNotNilOrEmpty {
             self.setState(.error, animated: animated)
         } else if !self.isEnabled {
@@ -506,36 +481,35 @@ open class TextField: FormsComponent, FormsComponentWithMarginEdgeInset, FormsCo
         }
     }
     
-    private func updateState() {
-        switch self.state {
-        case .active: self.setState(.active, animated: false, force: true)
-        case .selected: self.setState(.selected, animated: false, force: true)
-        case .disabled: self.setState(.disabled, animated: false, force: true)
-        case .error: self.setState(.error, animated: false, force: true)
-        }
+    public func updateState() {
+        self.setState(self.state, animated: false, force: true)
     }
     
-    private func setState(_ state: StateType,
+    private func setState(_ state: FormsComponentStateType,
                           animated: Bool,
                           force: Bool = false) {
         guard self.state != state || force else { return }
         self.animation(animated, duration: self.animationTime) {
-            self.backgroundView.backgroundColor = self.backgroundColors.value(for: state)
-            self.errorLabel.textColor = self.errorColor
-            self.errorLabel.font = self.errorFont
-            self.infoLabel.textColor = self.infoColor
-            self.infoLabel.font = self.infoFont
-            self.textField.textColor = self.textColors.value(for: state)
-            self.textField.font = self.textFonts.value(for: state)
-            self.textField.placeholderColor = self.placeholderColors.value(for: state)
-            self.textField.placeholderFont = self.placeholderFonts.value(for: state)
-            self.textField.maskColor = self.maskColors.value(for: state)
-            self.textField.maskFont = self.maskFonts.value(for: state)
-            self.titleLabel.textColor = self.titleColors.value(for: state)
-            self.titleLabel.font = self.titleFonts.value(for: state)
-            self.underscoreView.backgroundColor = self.underscoreColors.value(for: state)
+            self.setStateAnimation(state)
         }
         self.state = state
+    }
+    
+    open func setStateAnimation(_ state: FormsComponentStateType) {
+        self.backgroundView.backgroundColor = self.backgroundColors.value(for: state)
+        self.errorLabel.textColor = self.errorColor
+        self.errorLabel.font = self.errorFont
+        self.infoLabel.textColor = self.infoColor
+        self.infoLabel.font = self.infoFont
+        self.textField.textColor = self.textColors.value(for: state)
+        self.textField.font = self.textFonts.value(for: state)
+        self.textField.placeholderColor = self.placeholderColors.value(for: state)
+        self.textField.placeholderFont = self.placeholderFonts.value(for: state)
+        self.textField.maskColor = self.maskColors.value(for: state)
+        self.textField.maskFont = self.maskFonts.value(for: state)
+        self.titleLabel.textColor = self.titleColors.value(for: state)
+        self.titleLabel.font = self.titleFonts.value(for: state)
+        self.underscoreView.backgroundColor = self.underscoreColors.value(for: state)
     }
 }
 
@@ -716,6 +690,10 @@ public extension TextField {
     }
     func with(underscoreColors: State<UIColor?>) -> Self {
         self.underscoreColors = underscoreColors
+        return self
+    }
+    func with(validateOnTextChangeAfterEndEditing: Bool) -> Self {
+        self.validateOnTextChangeAfterEndEditing = validateOnTextChangeAfterEndEditing
         return self
     }
     func with(validateOnBeginEditing: Bool) -> Self {

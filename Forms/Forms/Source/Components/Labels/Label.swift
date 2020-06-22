@@ -8,14 +8,15 @@
 
 import FormsAnchor
 import FormsUtils
+import FormsUtilsUI
 import UIKit
 
 // MARK: Label
 open class Label: FormsComponent, Clickable, FormsComponentWithMarginEdgeInset, FormsComponentWithPaddingEdgeInset {
-    private let backgroundView = UIView()
-    private let textLabel = UILabel()
+    public let backgroundView = UIView()
+    public let textLabel = UILabel()
         .with(isUserInteractionEnabled: true)
-    private let textGestureRecognizer = UILongPressGestureRecognizer()
+    public let textGestureRecognizer = UILongPressGestureRecognizer()
     
     open var alignment: NSTextAlignment {
         get { return self.textLabel.textAlignment }
@@ -49,12 +50,6 @@ open class Label: FormsComponent, Clickable, FormsComponentWithMarginEdgeInset, 
         get { return self.textLabel.isUserInteractionEnabled }
         set { self.textLabel.isUserInteractionEnabled = newValue }
     }
-    open var maxHeight: CGFloat = CGFloat.greatestConstraintConstant {
-        didSet { self.updateMaxHeight() }
-    }
-    open var minHeight: CGFloat = 0.0 {
-        didSet { self.updateMinHeight() }
-    }
     open var numberOfLines: Int {
         get { return self.textLabel.numberOfLines }
         set { self.textLabel.numberOfLines = newValue }
@@ -87,7 +82,7 @@ open class Label: FormsComponent, Clickable, FormsComponentWithMarginEdgeInset, 
         self.textGestureRecognizer.addTarget(self, action: #selector(handleGesture))
         self.textGestureRecognizer.isEnabled = false
         self.textLabel.addGestureRecognizer(self.textGestureRecognizer)
-    }
+    } 
     
     @objc
     private func handleGesture(recognizer: UILongPressGestureRecognizer) {
@@ -110,28 +105,28 @@ open class Label: FormsComponent, Clickable, FormsComponentWithMarginEdgeInset, 
         }
     }
     
-    private func setupComponentView() {
+    open func setupComponentView() {
         self.anchors([
             Anchor.to(self).height(self.minHeight).greaterThanOrEqual,
             Anchor.to(self).height(self.maxHeight).lessThanOrEqual
         ])
     }
     
-    private func setupBackgroundView() {
+    open func setupBackgroundView() {
         self.backgroundView.frame = self.bounds
         self.addSubview(self.backgroundView, with: [
             Anchor.to(self).fill
         ])
     }
     
-    private func setupTextLabel() {
+    open func setupTextLabel() {
         self.textLabel.frame = self.backgroundView.bounds
         self.backgroundView.addSubview(self.textLabel, with: [
             Anchor.to(self.backgroundView).fill
         ])
     }
     
-    private func updateMarginEdgeInset() {
+    open func updateMarginEdgeInset() {
         let edgeInset: UIEdgeInsets = self.marginEdgeInset
         self.backgroundView.frame = self.bounds.with(inset: edgeInset)
         self.backgroundView.constraint(to: self, position: .top)?.constant = edgeInset.top
@@ -140,23 +135,13 @@ open class Label: FormsComponent, Clickable, FormsComponentWithMarginEdgeInset, 
         self.backgroundView.constraint(to: self, position: .trailing)?.constant = -edgeInset.trailing
     }
     
-    private func updatePaddingEdgeInset() {
+    open func updatePaddingEdgeInset() {
         let edgeInset: UIEdgeInsets = self.paddingEdgeInset
         self.textLabel.frame = self.bounds.with(inset: edgeInset)
         self.textLabel.constraint(to: self.backgroundView, position: .top)?.constant = edgeInset.top
         self.textLabel.constraint(to: self.backgroundView, position: .bottom)?.constant = -edgeInset.bottom
         self.textLabel.constraint(to: self.backgroundView, position: .leading)?.constant = edgeInset.leading
         self.textLabel.constraint(to: self.backgroundView, position: .trailing)?.constant = -edgeInset.trailing
-    }
-    
-    private func updateMaxHeight() {
-        let maxHeight: CGFloat = self.maxHeight
-        self.constraint(position: .height, relation: .lessThanOrEqual)?.constant = maxHeight
-    }
-    
-    private func updateMinHeight() {
-        let minHeight: CGFloat = self.minHeight
-        self.constraint(position: .height, relation: .greaterThanOrEqual)?.constant = minHeight
     }
 }
 
@@ -203,14 +188,6 @@ public extension Label {
     @objc
     override func with(isUserInteractionEnabled: Bool) -> Self {
         self.isUserInteractionEnabled = isUserInteractionEnabled
-        return self
-    }
-    func with(maxHeight: CGFloat) -> Self {
-        self.maxHeight = maxHeight
-        return self
-    }
-    func with(minHeight: CGFloat) -> Self {
-        self.minHeight = minHeight
         return self
     }
     func with(numberOfLines: Int) -> Self {

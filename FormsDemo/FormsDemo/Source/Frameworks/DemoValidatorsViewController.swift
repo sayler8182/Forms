@@ -46,7 +46,7 @@ class DemoValidatorsViewController: FormsTableViewController {
     private let formatTextField = Components.input.textField.format.default()
         .with(maskText: "DD-DD-DD")
         .with(title: "FormatValidator")
-        .with(validator: FormatValidator(format: Format("DD-DD-DD")))
+        .with(validator: FormatValidator(format: Format("DD-DD-DD", formatChars: ["D"])))
         .with(validateOnTextChange: true)
     
     private let divider = Components.utils.divider()
@@ -72,6 +72,6 @@ class DemoValidatorsViewController: FormsTableViewController {
         self.amountTextField.textFieldDelegate(of: TextFieldAmountDelegate.self)?
             .configure(currency: "PLN", maxValue: 100_000, maxFraction: 4)
         self.formatTextField.textFieldDelegate(of: TextFieldFormatDelegate.self)?
-            .configure(format: "DD-DD-DD")
-    }
+            .configure(format: "DD-DD-DD", formatChars: ["D"])
+    } 
 }

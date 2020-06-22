@@ -11,8 +11,8 @@ import UIKit
 
 // MARK: StackContainer
 open class StackContainer: FormsComponent, FormsComponentWithMarginEdgeInset, FormsComponentWithPaddingEdgeInset {
-    private let backgroundView = UIView()
-    private let stackView = UIStackView()
+    public let backgroundView = UIView()
+    public let stackView = UIStackView()
     
     private var items: [FormsComponent] = []
     
@@ -32,14 +32,18 @@ open class StackContainer: FormsComponent, FormsComponentWithMarginEdgeInset, Fo
         get { return self.stackView.distribution }
         set { self.stackView.distribution = newValue }
     }
+    open var height: CGFloat = UITableView.automaticDimension
     open var marginEdgeInset: UIEdgeInsets = UIEdgeInsets(0) {
         didSet { self.updateMarginEdgeInset() }
     }
-    open var height: CGFloat = UITableView.automaticDimension
     open var paddingEdgeInset: UIEdgeInsets = UIEdgeInsets(0) {
         didSet { self.updatePaddingEdgeInset() }
     }
-     
+    open var spacing: CGFloat {
+        get { return self.stackView.spacing }
+        set { self.stackView.spacing = newValue }
+    }
+    
     override open func setupView() {
         self.setupBackgroundView()
         self.setupStackView()
@@ -50,23 +54,24 @@ open class StackContainer: FormsComponent, FormsComponentWithMarginEdgeInset, Fo
         return self.height
     }
     
-    private func setupBackgroundView() {
+    open func setupBackgroundView() {
         self.backgroundView.frame = self.bounds
         self.addSubview(self.backgroundView, with: [
             Anchor.to(self).fill
         ])
     }
     
-    private func setupStackView() {
+    open func setupStackView() {
         self.stackView.alignment = UIStackView.Alignment.fill
         self.stackView.axis = NSLayoutConstraint.Axis.horizontal
         self.stackView.distribution = UIStackView.Distribution.fillEqually
+        self.stackView.spacing = 0
         self.backgroundView.addSubview(self.stackView, with: [
             Anchor.to(self.backgroundView).fill
         ])
     }
     
-    private func updateMarginEdgeInset() {
+    open func updateMarginEdgeInset() {
         let edgeInset: UIEdgeInsets = self.marginEdgeInset
         self.backgroundView.frame = self.bounds.with(inset: edgeInset)
         self.backgroundView.constraint(to: self, position: .top)?.constant = edgeInset.top
@@ -75,7 +80,7 @@ open class StackContainer: FormsComponent, FormsComponentWithMarginEdgeInset, Fo
         self.backgroundView.constraint(to: self, position: .trailing)?.constant = -edgeInset.trailing
     }
     
-    private func updatePaddingEdgeInset() {
+    open func updatePaddingEdgeInset() {
         let edgeInset: UIEdgeInsets = self.paddingEdgeInset
         self.stackView.frame = self.bounds.with(inset: edgeInset)
         self.stackView.constraint(to: self.backgroundView, position: .top)?.constant = edgeInset.top
@@ -90,7 +95,7 @@ open class StackContainer: FormsComponent, FormsComponentWithMarginEdgeInset, Fo
         self.stackView.addArrangedSubviews(items)
     }
 }
- 
+
 // MARK: Builder
 public extension StackContainer {
     func with(alignment: UIStackView.Alignment) -> Self {
@@ -112,6 +117,10 @@ public extension StackContainer {
     }
     func with(items: [FormsComponent]) -> Self {
         self.setItems(items)
+        return self
+    }
+    func with(spacing: CGFloat) -> Self {
+        self.spacing = spacing
         return self
     }
 }

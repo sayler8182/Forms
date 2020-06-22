@@ -56,11 +56,17 @@ public protocol FormatProtocol {
 public class Format: FormatProtocol {
     public let format: String
     public let formatChars: [String]
+    public let isNumber: Bool
+    
+    public static var defaultFormatChars: [String] = ["X"]
+    public static var dateFormatChars: [String] = ["s", "S", "h", "H", "d", "D", "m", "M", "y", "Y"]
     
     public init(_ format: String,
-                formatChars: [String] = ["D"]) {
+                formatChars: [String],
+                isNumber: Bool = false) {
         self.format = format
         self.formatChars = formatChars
+        self.isNumber = isNumber
     }
     
     public func replace(with range: NSRange,
@@ -113,7 +119,7 @@ public class Format: FormatProtocol {
             let char: String = string[i]
             let formatChar: String = self.format[i]
             guard self.isFormatChars(formatChar) else { continue }
-            if formatChar == "D" {
+            if self.isNumber {
                 guard char.isNumber else { return false }
             } 
         }

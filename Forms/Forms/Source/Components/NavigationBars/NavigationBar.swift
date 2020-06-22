@@ -55,10 +55,15 @@ private class EmptyBarItem: BackBarItem {
     override func setupView() { }
 }
 
+// MARK: NavigationBarRefreshable
+public protocol NavigationBarRefreshable {
+    func refreshNavigationBar()
+}
+
 // MARK: NavigationBar
 open class NavigationBar: FormsComponent {
-    private var navigationBar: UINavigationBar?
-    private var navigationItem: UINavigationItem?
+    public private(set) var navigationBar: UINavigationBar?
+    public private(set) var navigationItem: UINavigationItem?
     
     private var _backgroundColor: UIColor? = nil
     override open var backgroundColor: UIColor? {
@@ -68,10 +73,10 @@ open class NavigationBar: FormsComponent {
             self.navigationBar?.barTintColor = newValue
         }
     }
-    open var backImage: (() -> UIImage?)? = nil {
+    open var backImage: LazyImage? = nil {
         didSet { self.updateBackBarButton() }
     }
-    open var closeImage: (() -> UIImage?)? = nil {
+    open var closeImage: LazyImage? = nil {
         didSet { self.updateBackBarButton() }
     }
     open var isBack: Bool = true {
@@ -124,19 +129,21 @@ open class NavigationBar: FormsComponent {
     
     public func updateProgress(animated: Bool) {
         self.navigationBar?.progressBar?.setProgress(self.progress, animated: animated)
-    }
+    } 
     
     private func updateBackBarButton() {
         let items: [UIBarItem] = self.navigationItem?.leftBarButtonItems ?? []
         let hasElements: Bool = items.isNotEmpty
         let hasEmptyElement: Bool = items.count(of: BackBarItem.self).equal(1)
-        if hasEmptyElement && self.isBack {
+        let controller: UINavigationController? = self.navigationBar?.parentNavigationController
+        let canGoBack: Bool = controller?.viewControllers.count.greaterThan(1) ?? false
+        let canDismiss: Bool = controller?.presentingViewController != nil
+        let shouldOverrideBack: Bool = self.isBack && (canGoBack || canDismiss)
+        if hasEmptyElement && shouldOverrideBack {
             self.navigationItem?.leftBarButtonItems = []
-        } else if !hasElements && !self.isBack {
+        } else if !hasElements && !shouldOverrideBack {
             self.navigationItem?.leftBarButtonItems = [EmptyBarItem()]
-        } else if !hasElements && self.isBack && (self.backImage.isNotNil || self.closeImage.isNotNil) {
-            let controller: UINavigationController? = self.navigationBar?.parentNavigationController
-            let canGoBack: Bool = controller?.viewControllers.count.greaterThan(1) ?? false
+        } else if !hasElements && shouldOverrideBack {
             let image: UIImage? = canGoBack
                 ? self.backImage?()
                 : self.closeImage?()
@@ -146,7 +153,7 @@ open class NavigationBar: FormsComponent {
                     onBack()
                 } else if canGoBack {
                     _self.navigationBar?.parentNavigationController?.popViewController(animated: true)
-                } else {
+                } else if canDismiss {
                     _self.navigationBar?.parentController?.dismiss(animated: true, completion: nil)
                 }
             }
@@ -180,11 +187,11 @@ public extension NavigationBar {
         self.backgroundColor = backgroundColor
         return self
     }
-    func with(backImage: (() -> UIImage?)?) -> Self {
+    func with(backImage: LazyImage?) -> Self {
         self.backImage = backImage
         return self
     }
-    func with(closeImage: (() -> UIImage?)?) -> Self {
+    func with(closeImage: LazyImage?) -> Self {
         self.closeImage = closeImage
         return self
     }

@@ -11,12 +11,16 @@ import UIKit
 
 // MARK: TitleTextField
 open class TitleTextField: TextField {
+    open var isBottomDynamic: Bool = true {
+        didSet { self.updateIsBottomDynamic() }
+    }
+    
     override open func setupBackgroundView() {
         super.setupBackgroundView()
         self.addSubview(self.backgroundView, with: [
             Anchor.to(self).top,
             Anchor.to(self).horizontal,
-            Anchor.to(self).bottom.greaterThanOrEqual
+            Anchor.to(self).bottom.greaterThanOrEqual.priority(.defaultLow)
         ])
     }
     
@@ -63,7 +67,7 @@ open class TitleTextField: TextField {
             Anchor.to(self.errorLabel).topToBottom,
             Anchor.to(self.backgroundView).leading.offset(self.paddingEdgeInset.leading),
             Anchor.to(self.backgroundView).trailing.offset(self.paddingEdgeInset.trailing),
-            Anchor.to(self.backgroundView).bottom.offset(self.paddingEdgeInset.bottom).priority(.defaultHigh)
+            Anchor.to(self.backgroundView).bottom.offset(self.paddingEdgeInset.bottom)
         ])
     }
     
@@ -81,5 +85,26 @@ open class TitleTextField: TextField {
         self.infoLabel.constraint(to: self.backgroundView, position: .leading)?.constant = edgeInset.leading
         self.infoLabel.constraint(to: self.backgroundView, position: .trailing)?.constant = -edgeInset.trailing
         self.infoLabel.constraint(to: self.backgroundView, position: .bottom)?.constant = -edgeInset.bottom
+    }
+    
+    open func updateIsBottomDynamic() {
+        self.backgroundView.constraint(to: self, position: .bottom)?.isActive = false
+        if self.isBottomDynamic {
+            self.backgroundView.anchors([
+                Anchor.to(self).bottom.greaterThanOrEqual.priority(.defaultLow)
+            ])
+        } else if !self.isBottomDynamic {
+            self.backgroundView.anchors([
+                Anchor.to(self).bottom.greaterThanOrEqual
+            ])
+        }
+    }
+}
+
+// MARK: Builder
+public extension TitleTextField {
+    func with(isBottomDynamic: Bool) -> Self {
+        self.isBottomDynamic = isBottomDynamic
+        return self
     }
 }

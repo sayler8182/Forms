@@ -36,9 +36,9 @@ internal class WDImageCropOverlayView: UIView {
         let widthSpan: CGFloat = floor(width / 2 - self.cropSize.width / 2)
 
         // fill outer rect
-        Theme.Colors.white.withAlphaComponent(0.5).set()
+        Theme.Colors.white.with(alpha: 0.5).set()
         UIRectFill(self.bounds)
-        Theme.Colors.black.withAlphaComponent(0.5).set()
+        Theme.Colors.black.with(alpha: 0.5).set()
         UIRectFrame(CGRect(
             x: widthSpan - 2,
             y: heightSpan - 2,

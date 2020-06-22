@@ -16,7 +16,7 @@ class DemoDebouncerViewController: FormsTableViewController {
     private let inputTextField = Components.input.textField.default()
         .with(title: "Debouncer input")
     private let outputLabel = Components.label.default()
-        .with(paddingVertical: 4, paddingHorizontal: 16)
+        .with(marginVertical: 4, marginHorizontal: 16)
         .with(text: "Wait for debounce")
     
     private let divider = Components.utils.divider()

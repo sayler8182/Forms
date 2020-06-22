@@ -14,6 +14,8 @@ open class FormsCollectionViewCell: UICollectionViewCell, Componentable, Shimmer
         return "\(self)"
     }
     
+    public weak var collectionView: UICollectionView?
+    
     override public init(frame: CGRect) {
         super.init(frame: frame)
         self.setupView()
@@ -28,6 +30,7 @@ open class FormsCollectionViewCell: UICollectionViewCell, Componentable, Shimmer
         self.setupActions()
         self.setTheme()
         self.setLanguage()
+        self.setupMock()
     }
     
     // MARK: HOOKS
@@ -59,6 +62,11 @@ open class FormsCollectionViewCell: UICollectionViewCell, Componentable, Shimmer
                                    _ itemHeight: CGFloat) -> CGFloat? {
         // HOOK
         return nil
+    }
+    
+    @objc
+    open dynamic func setupMock() {
+        // HOOK
     }
 }
 

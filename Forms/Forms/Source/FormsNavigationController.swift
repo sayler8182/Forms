@@ -10,6 +10,7 @@ import FormsAnchor
 import FormsInjector
 import FormsLogger
 import FormsUtils
+import FormsUtilsUI
 import UIKit
 
 // MARK: FormsNavigationController
@@ -71,6 +72,7 @@ open class FormsNavigationController: UINavigationController, AppLifecycleable, 
         self.setupContent()
         self.setupActions()
         self.setupOther()
+        self.setupMock()
     }
     
     open func setTheme() {
@@ -115,6 +117,11 @@ open class FormsNavigationController: UINavigationController, AppLifecycleable, 
     }
     
     open func setupOther() {
+        // HOOK
+    }
+    
+    @objc
+    open dynamic func setupMock() {
         // HOOK
     }
 }

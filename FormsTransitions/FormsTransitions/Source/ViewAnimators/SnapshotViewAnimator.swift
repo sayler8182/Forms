@@ -11,9 +11,7 @@ import UIKit
 // MARK: SnapshotViewMatch
 public class SnapshotViewMatch: ViewMatch {
     public let fromAlpha: CGFloat
-    public let fromFrame: CGRect
     public let toAlpha: CGFloat
-    public let toFrame: CGRect
     
     private lazy var transitionFromView: UIView = {
         let image: UIImage? = self.fromView.snapshotImage()
@@ -27,15 +25,17 @@ public class SnapshotViewMatch: ViewMatch {
     }()
     
     public required init(fromView: UIView,
-                         toView: UIView) {
+                         fromFrame: CGRect,
+                         toView: UIView,
+                         toFrame: CGRect) {
         self.fromAlpha = fromView.alpha
-        self.fromFrame = fromView.frame
         self.toAlpha = toView.alpha
-        self.toFrame = toView.frame
         
         super.init(
             fromView: fromView,
-            toView: toView)
+            fromFrame: fromFrame,
+            toView: toView,
+            toFrame: toFrame)
     }
     
     override public func beginTransition(in container: UIView) {

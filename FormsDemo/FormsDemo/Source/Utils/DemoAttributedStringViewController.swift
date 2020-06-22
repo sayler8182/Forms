@@ -9,6 +9,7 @@
 import Forms
 import FormsToastKit
 import FormsUtils
+import FormsUtilsUI
 import UIKit
 
 // MARK: DemoAttributedStringViewController
@@ -16,12 +17,12 @@ class DemoAttributedStringViewController: FormsTableViewController {
     private lazy var attributedLabel = Components.label.default()
         .with(attributedText: self.attributedLabelString)
         .with(numberOfLines: 0)
-        .with(padding: 16)
+        .with(margin: 16)
     private lazy var clickableAttributedLabel = Components.label.default()
         .with(attributedText: self.clickableAttributedLabelString)
         .with(backgroundColor: Theme.Colors.gray)
         .with(numberOfLines: 0)
-        .with(padding: 16)
+        .with(margin: 16)
     
     private let divider = Components.utils.divider()
         .with(height: 5.0)

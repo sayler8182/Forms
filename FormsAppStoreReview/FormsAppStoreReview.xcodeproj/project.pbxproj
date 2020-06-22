@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		71369FFC248661AD00298D3B /* FormsAppStoreReview.h in Headers */ = {isa = PBXBuildFile; fileRef = 71369FFA248661AD00298D3B /* FormsAppStoreReview.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		7136A00C248661D100298D3B /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7136A00B248661D100298D3B /* StoreKit.framework */; };
 		7136A0172486627200298D3B /* AppStoreReview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7136A0162486627200298D3B /* AppStoreReview.swift */; };
 /* End PBXBuildFile section */
 
@@ -16,7 +15,6 @@
 		71369FFA248661AD00298D3B /* FormsAppStoreReview.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FormsAppStoreReview.h; sourceTree = "<group>"; };
 		71369FFB248661AD00298D3B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7136A009248661C500298D3B /* FormsAppStoreReview.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = FormsAppStoreReview.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		7136A00B248661D100298D3B /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk/System/Library/Frameworks/StoreKit.framework; sourceTree = DEVELOPER_DIR; };
 		7136A0162486627200298D3B /* AppStoreReview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppStoreReview.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -25,7 +23,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7136A00C248661D100298D3B /* StoreKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -37,7 +34,6 @@
 			children = (
 				71369FF9248661AD00298D3B /* FormsAppStoreReview */,
 				7136A009248661C500298D3B /* FormsAppStoreReview.framework */,
-				7136A00A248661D100298D3B /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -57,14 +53,6 @@
 				7136A0162486627200298D3B /* AppStoreReview.swift */,
 			);
 			path = Source;
-			sourceTree = "<group>";
-		};
-		7136A00A248661D100298D3B /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				7136A00B248661D100298D3B /* StoreKit.framework */,
-			);
-			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

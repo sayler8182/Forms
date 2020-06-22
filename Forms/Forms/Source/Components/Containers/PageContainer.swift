@@ -13,9 +13,11 @@ import UIKit
 open class PageContainer: FormsComponent, FormsComponentWithMarginEdgeInset, FormsComponentWithPaddingEdgeInset {
     public typealias OnSelect = ((_ component: FormsComponent) -> Void)
     
-    private let backgroundView = UIView()
-    private lazy var collectionView = UICollectionView(frame: CGRect.zero, collectionViewLayout: self.flowLayout)
-    private let pageControl = UIPageControl()
+    public let backgroundView = UIView()
+    public lazy var collectionView = UICollectionView(
+        frame: CGRect.zero,
+        collectionViewLayout: self.flowLayout)
+    public let pageControl = UIPageControl()
     
     private var flowLayout = PageContainerFlowLayout()
     private var items: [FormsComponent] = []
@@ -24,7 +26,7 @@ open class PageContainer: FormsComponent, FormsComponentWithMarginEdgeInset, For
     private var timer: Timer? = nil
     private var isAutomaticPaused: Bool = false
     
-    open var automaticInterval: TimeInterval = 0 {
+    open var automaticInterval: TimeInterval = 5.0 {
         didSet { self.updateAutomatic() }
     }
     override open var backgroundColor: UIColor? {
@@ -87,14 +89,14 @@ open class PageContainer: FormsComponent, FormsComponentWithMarginEdgeInset, For
         return self.height
     }
     
-    private func setupBackgroundView() {
+    open func setupBackgroundView() {
         self.backgroundView.frame = self.bounds
         self.addSubview(self.backgroundView, with: [
             Anchor.to(self).fill
         ])
     }
     
-    private func setupCollectionView() {
+    open func setupCollectionView() {
         self.collectionView.backgroundColor = Theme.Colors.clear
         self.collectionView.frame = self.backgroundView.bounds
         self.collectionView.clipsToBounds = true
@@ -113,7 +115,7 @@ open class PageContainer: FormsComponent, FormsComponentWithMarginEdgeInset, For
         ])
     }
     
-    private func setupPageControl() {
+    open func setupPageControl() {
         self.pageControl.clipsToBounds = true
         self.pageControl.isUserInteractionEnabled = false
         self.pageControl.numberOfPages = 0
@@ -123,7 +125,7 @@ open class PageContainer: FormsComponent, FormsComponentWithMarginEdgeInset, For
         ])
     }
     
-    private func updateMarginEdgeInset() {
+    open func updateMarginEdgeInset() {
         let edgeInset: UIEdgeInsets = self.marginEdgeInset
         self.backgroundView.frame = self.bounds.with(inset: edgeInset)
         self.backgroundView.constraint(to: self, position: .top)?.constant = edgeInset.top
@@ -132,7 +134,7 @@ open class PageContainer: FormsComponent, FormsComponentWithMarginEdgeInset, For
         self.backgroundView.constraint(to: self, position: .trailing)?.constant = -edgeInset.trailing
     }
     
-    private func updatePaddingEdgeInset() {
+    open func updatePaddingEdgeInset() {
         let edgeInset: UIEdgeInsets = self.paddingEdgeInset
         self.collectionView.frame = self.bounds.with(inset: edgeInset)
         self.collectionView.constraint(to: self.backgroundView, position: .top)?.constant = edgeInset.top
@@ -145,7 +147,7 @@ open class PageContainer: FormsComponent, FormsComponentWithMarginEdgeInset, For
         self.pageControl.constraint(to: self.backgroundView, position: .trailing)?.constant = -edgeInset.trailing
     }
     
-    private func updateAutomatic() {
+    public func updateAutomatic() {
         self.timer?.invalidate()
         guard self.isAutomatic else { return }
         guard !self.isAutomaticPaused else { return }
@@ -176,8 +178,8 @@ open class PageContainer: FormsComponent, FormsComponentWithMarginEdgeInset, For
         self.scrollTo(index: index, animated: animated)
     }
     
-    private func scrollTo(index: Int,
-                          animated: Bool = true) {
+    public func scrollTo(index: Int,
+                         animated: Bool = true) {
         let index: Int = index.match(from: 0, to: self.items.count - 1)
         let indexPath = IndexPath(row: index, section: 0)
         let position = self.scrollDirection == .horizontal

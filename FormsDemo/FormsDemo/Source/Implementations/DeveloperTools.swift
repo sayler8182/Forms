@@ -11,13 +11,13 @@ import UIKit
 
 // MARK: DemoDeveloperToolsManager
 public enum DemoDeveloperToolsManager {
-    public static func onSelect(_ key: DeveloperFeatureKey,
+    public static func onSelect(_ key: DeveloperFeatureKeyProtocol,
                                 _ rootController: UIViewController) {
         guard let controller = Self.controller(for: key) else { return }
         rootController.show(controller, sender: nil)
     }
     
-    private static func controller(for key: DeveloperFeatureKey) -> UIViewController? {
+    private static func controller(for key: DeveloperFeatureKeyProtocol) -> UIViewController? {
         switch key.rawKey {
         case DemoDeveloperFeatureKeys.firstFeature.rawKey:
             return DemoDeveloperToolsMenuFirstFeatureViewController()
@@ -30,7 +30,7 @@ public enum DemoDeveloperToolsManager {
 }
 
 // MARK: DemoDeveloperFeatureKeys
-public enum DemoDeveloperFeatureKeys: String, CaseIterable, DeveloperFeatureKey {
+public enum DemoDeveloperFeatureKeys: String, CaseIterable, DeveloperFeatureKeyProtocol {
     case firstFeature
     case secondFeature
     
@@ -43,7 +43,7 @@ public enum DemoDeveloperFeatureKeys: String, CaseIterable, DeveloperFeatureKey 
 }
 
 // MARK: DemoDeveloperFeatureFlagKeys
-public enum DemoDeveloperFeatureFlagKeys: String, CaseIterable, DeveloperFeatureFlagKey {
+public enum DemoDeveloperFeatureFlagKeys: String, CaseIterable, DeveloperFeatureFlagKeyProtocol {
     case firstFeatureFlag
     case secondFeatureFlag
     

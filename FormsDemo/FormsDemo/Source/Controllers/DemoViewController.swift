@@ -15,8 +15,8 @@ class DemoViewController: FormsViewController {
     private let centerView = Components.container.view()
         .with(backgroundColor: Theme.Colors.red)
         .with(height: 44)
-    private let bottomView = Components.container.view()
-        .with(backgroundColor: Theme.Colors.green)
+    private let bottomView = Components.container.gradient()
+        .with(gradientColors: [Theme.Colors.green, Theme.Colors.red])
         .with(height: 44)
     
     override func setupContent() {

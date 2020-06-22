@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		719AE4A7246294DB00A39B0E /* FormsNotifications.h in Headers */ = {isa = PBXBuildFile; fileRef = 719AE499246294DB00A39B0E /* FormsNotifications.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		719AE54A2462A50B00A39B0E /* Notifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = 719AE5492462A50B00A39B0E /* Notifications.swift */; };
-		719AE5552462B50600A39B0E /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 719AE5542462B50600A39B0E /* StoreKit.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -18,7 +17,6 @@
 		719AE499246294DB00A39B0E /* FormsNotifications.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FormsNotifications.h; sourceTree = "<group>"; };
 		719AE49A246294DB00A39B0E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		719AE5492462A50B00A39B0E /* Notifications.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Notifications.swift; sourceTree = "<group>"; };
-		719AE5542462B50600A39B0E /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk/System/Library/Frameworks/StoreKit.framework; sourceTree = DEVELOPER_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -26,7 +24,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				719AE5552462B50600A39B0E /* StoreKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -64,7 +61,6 @@
 			isa = PBXGroup;
 			children = (
 				7135DFFC248E6EB900B5807F /* FormsPermissions.framework */,
-				719AE5542462B50600A39B0E /* StoreKit.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";

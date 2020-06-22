@@ -17,7 +17,7 @@ public class DateValidator: FormatValidator {
         return .dateError(self.format)
     }
     
-    public init(format: FormatProtocol = Format("DD/DD/DDDD"),
+    public init(format: FormatProtocol = Format("dd/MM/yyyy", formatChars: Format.dateFormatChars, isNumber: true),
                 dateFormat: String = "dd/MM/yyyy",
                 isRequired: Bool = true) {
         self.dateFormat = dateFormat

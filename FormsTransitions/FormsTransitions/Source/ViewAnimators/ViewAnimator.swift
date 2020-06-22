@@ -11,12 +11,18 @@ import UIKit
 // MARK: ViewMatch
 public class ViewMatch {
     public let fromView: UIView
+    public let fromFrame: CGRect
     public let toView: UIView
+    public let toFrame: CGRect
     
     public required init(fromView: UIView,
-                         toView: UIView) {
+                         fromFrame: CGRect,
+                         toView: UIView,
+                         toFrame: CGRect) {
         self.fromView = fromView
+        self.fromFrame = fromFrame
         self.toView = toView
+        self.toFrame = toFrame
     }
     
     // HOOKS
@@ -45,15 +51,27 @@ public class ViewAnimator {
         return ViewMatch.self
     }
     
-    public lazy var fromViews: [UIView] = {
-        return self.animatedSubviews(in: self.fromView)
-    }()
-    public lazy var toViews: [UIView] = {
-        return self.animatedSubviews(in: self.toView)
-    }()
-    public lazy var matches: [ViewMatch] = {
-        return self.createMatches(of: self.matchesType)
-    }()
+    private var _fromViews: [UIView]? = nil
+    public var fromViews: [UIView] {
+        if let fromViews: [UIView] = self._fromViews { return fromViews }
+        let fromViews = self.animatedSubviews(in: self.fromView)
+        self._fromViews = fromViews
+        return fromViews
+    }
+    private var _toViews: [UIView]? = nil
+    public var toViews: [UIView] {
+        if let toViews: [UIView] = self._toViews { return toViews }
+        let toViews = self.animatedSubviews(in: self.toView)
+        self._toViews = toViews
+        return toViews
+    }
+    private var _matches: [ViewMatch]? = nil
+    public var matches: [ViewMatch] {
+        if let matches: [ViewMatch] = self._matches { return matches }
+        let matches = self.createMatches(of: self.matchesType)
+        self._matches = matches
+        return matches
+    }
     
     public init(isDynamic: Bool,
                 container: UIView,
@@ -84,7 +102,31 @@ public class ViewAnimator {
         self.transitionContainer.removeFromSuperview()
         self.matches.forEach {
             $0.endTransition(in: self.container)
-        } 
+        }
+        self.reset()
+    }
+    
+    internal func createMatches<T: ViewMatch>(of type: T.Type) -> [T] {
+        var matches: [T] = []
+        let fromViews: [UIView] = self.fromViews
+        let toViews: [UIView] = self.toViews
+        for fromView in fromViews {
+            guard let toView: UIView = toViews.first(where: { $0.viewKey == fromView.viewKey }) else { continue }
+            let fromFrame: CGRect = self.frame(for: fromView, in: self.fromView)
+            let toFrame: CGRect = self.frame(for: toView, in: self.toView)
+            let match: T = type.init(
+                fromView: fromView,
+                fromFrame: fromFrame,
+                toView: toView,
+                toFrame: toFrame)
+            matches.append(match)
+        }
+        return matches
+    }
+    
+    internal func whenDynamic(_ action: () -> Void) {
+        guard self.isDynamic else { return }
+        action()
     }
     
     private func animatedSubviews(in view: UIView) -> [UIView] {
@@ -98,22 +140,15 @@ public class ViewAnimator {
         return views
     }
     
-    internal func createMatches<T: ViewMatch>(of type: T.Type) -> [T] {
-        var matches: [T] = []
-        let fromViews: [UIView] = self.fromViews
-        let toViews: [UIView] = self.toViews
-        for fromView in fromViews {
-            guard let toView: UIView = toViews.first(where: { $0.viewKey == fromView.viewKey }) else { continue }
-            let match: T = type.init(
-                fromView: fromView,
-                toView: toView)
-            matches.append(match)
-        }
-        return matches
+    private func frame(for view: UIView, in source: UIView) -> CGRect {
+        var rect: CGRect = view.convert(view.frame, to: source.superview)
+        rect.origin.x = view.convert(view.frame, to: source).origin.x
+        return rect
     }
     
-    internal func whenDynamic(_ action: () -> Void) {
-        guard self.isDynamic else { return }
-        action()
+    private func reset() {
+        self._fromViews = []
+        self._toViews = []
+        self._matches = []
     }
 }

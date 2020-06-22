@@ -12,10 +12,7 @@ import UIKit
 public enum ComponentsOthers: ComponentsList {
     public static func activityIndicator() -> ActivityIndicator {
         let component = ActivityIndicator()
-        component.marginEdgeInset = UIEdgeInsets(0)
-        component.height = UITableView.automaticDimension
         component.isAnimating = true
-        component.paddingEdgeInset = UIEdgeInsets(0)
         component.onSetTheme = Strong(component) { (component) in
             component.backgroundColor = Theme.Colors.clear
             component.color = Theme.Colors.gray

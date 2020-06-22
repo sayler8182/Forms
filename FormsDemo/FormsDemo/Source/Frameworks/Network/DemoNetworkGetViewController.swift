@@ -63,46 +63,35 @@ private class DemoProvider {
      }
     
     func getContent() {
-        DemoNetworkMethods.demo.get(
-            onSuccess: { [weak self] (data: DemoNetworkGetOutput) in
-                guard let `self` = self else { return }
-                DispatchQueue.main.async {
-                    self.delegate?.displayContent(data)
-                }
-            },
-            onError: { [weak self] _ in
-                guard let `self` = self else { return }
-                DispatchQueue.main.async {
-                    self.delegate?.displayContentError("Some error")
-                }
-        })
+        DemoNetworkMethods.demoGet()
+            .with(logger: VoidLogger())
+            .with(cache: NetworkTmpCache(ttl: 60 * 60))
+            .call(
+                onSuccess: { [weak self] (data: DemoNetworkGetOutput) in
+                    guard let `self` = self else { return }
+                    DispatchQueue.main.async {
+                        self.delegate?.displayContent(data)
+                    }
+                },
+                onError: { [weak self] _ in
+                    guard let `self` = self else { return }
+                    DispatchQueue.main.async {
+                        self.delegate?.displayContentError("Some error")
+                    }
+            })
     }
 }
 
 // MARK: NetworkMethods
 private enum DemoNetworkMethods {
-    static var demo: NetworkMethodsDemo {
-        NetworkMethodsDemo()
-            .with(cache: NetworkTmpCache(ttl: 60 * 60))
-    }
+    typealias demoGet = DemoNetworkMethodsDemo
 }
 
-// MARK: NetworkMethodsTest
-private class NetworkMethodsDemo: NetworkMethod {
-    @discardableResult
-    func get<T: Parseable>(onSuccess: @escaping NetworkOnGenericSuccess<T>,
-                           onError: @escaping NetworkOnError,
-                           onCompletion: NetworkOnGenericCompletion<T>? = nil) -> NetworkTask {
-        let request = NetworkRequest(url: "https://postman-echo.com/get?foo1=bar1&foo2=bar2".url)
-            .with(method: .GET)
-            .with(interceptor: DemoNetworkRequestInterceptor())
-        return self.provider.call(
-            request: request,
-            parser: NetworkResponseParser(),
-            onSuccess: onSuccess,
-            onError: onError,
-            onCompletion: onCompletion)
-    }
+// MARK: DemoNetworkMethodsDemo
+private class DemoNetworkMethodsDemo: NetworkMethod {
+    var session: NetworkSessionProtocol? = FileNetworkSession()
+    var url: URL! = "https://postman-echo.com/get?foo1=bar1&foo2=bar2".url
+    var interceptor: NetworkRequestInterceptor? = DemoNetworkRequestInterceptor()
 }
 
 // MARK: DemoNetworkRequestInterceptor

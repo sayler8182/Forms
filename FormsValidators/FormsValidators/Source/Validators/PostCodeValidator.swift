@@ -14,7 +14,7 @@ public class PostCodeValidator: FormatValidator {
         return .postCodeError(self.format)
     }
     
-    override public init(format: FormatProtocol = Format("DD-DDD"),
+    override public init(format: FormatProtocol = Format("XX-XXX", formatChars: Format.defaultFormatChars, isNumber: true),
                          isRequired: Bool = true) {
         super.init(format: format, isRequired: isRequired)
     }

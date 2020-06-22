@@ -10,7 +10,7 @@ import UIKit
 
 // MARK: DeveloperToolsMenu
 public protocol DeveloperToolsMenu: class {
-    typealias OnSelect = (_ key: DeveloperFeatureKey, _ rootController: UIViewController) -> Void
+    typealias OnSelect = (_ key: DeveloperFeatureKeyProtocol, _ rootController: UIViewController) -> Void
     
     init(features: DeveloperFeatures,
          onSelect: OnSelect?) 

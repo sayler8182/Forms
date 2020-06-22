@@ -30,7 +30,10 @@ open class TabBarController: FormsViewController {
         didSet { self.updateTranslucent() }
     }
     open var tabBarBackgroundColor: UIColor? = Theme.Colors.primaryLight {
-        didSet { self.tabBar.backgroundColor = self.tabBarBackgroundColor }
+        didSet {
+            self.tabBar.backgroundColor = self.tabBarBackgroundColor
+            self.tabBar.barTintColor = self.tabBarBackgroundColor
+        }
     }
     open var tabBarImageColor: UIColor? = Theme.Colors.primaryDark {
         didSet { self.tabBar.imageColor = self.tabBarImageColor }
@@ -103,6 +106,7 @@ open class TabBarController: FormsViewController {
     }
     
     override open func setTheme() {
+        super.setTheme()
         self.backgroundColor = Theme.Colors.primaryLight
         self.tabBarBackgroundColor = Theme.Colors.primaryLight
         self.tabBarImageColor = Theme.Colors.primaryDark
@@ -111,7 +115,6 @@ open class TabBarController: FormsViewController {
         self.tabBarTitleFont = Theme.Fonts.regular(ofSize: 10)
         self.tabBarTitleSelectedColor = Theme.Colors.primaryDark
         self.tabBarTitleSelectedFont = Theme.Fonts.bold(ofSize: 10)
-        super.setTheme()
     }
     
     public func show(_ key: TabBarKey? = nil,

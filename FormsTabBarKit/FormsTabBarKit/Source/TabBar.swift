@@ -187,7 +187,7 @@ open class TabBar: UITabBar {
                 : item?.image?.asTemplate
             imageView?.tintColor = isSelected
                 ? self.imageSelectedColor
-                : self.imageSelectedColor
+                : self.imageColor
             imageView?.contentMode = .center
             let titleLabel: UILabel? = contentView?.subviews[safe: 1] as? UILabel
             titleLabel?.textAlignment = .center

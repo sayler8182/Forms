@@ -133,7 +133,8 @@ Anchor.to(view).centerYToBottom
 Anchor.to(view).topToCenterY
 Anchor.to(view).bottomToCenterY
 Anchor.to(view).width
-Anchor.to(view).height
+Anchor.to(view).widthToHeight
+Anchor.to(view).heightToWidth
 Anchor.to(view).width(width)
 Anchor.to(view).height(height)
 Anchor.to(view).size(size)

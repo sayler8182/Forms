@@ -10,15 +10,28 @@ import FormsUtils
 import UIKit
 
 public enum ComponentsContainers: ComponentsList {
+    public static func clickable() -> ClickableView {
+        let component = ClickableView()
+        component.height = 100
+        component.onSetTheme = Strong(component) { (component) in
+            component.backgroundColor = Theme.Colors.primaryLight
+        }
+        return component
+    }
+    
+    public static func gradient() -> GradientView {
+        let component = GradientView()
+        component.onSetTheme = Strong(component) { (component) in
+            component.gradientColors = [Theme.Colors.primaryLight]
+        }
+        return component
+    }
+    
     public static func scroll() -> ScrollContainer {
         let component = ScrollContainer()
-        component.bounces = true
         component.height = 100
-        component.marginEdgeInset = UIEdgeInsets(0)
-        component.paddingEdgeInset = UIEdgeInsets(0)
         component.scrollDelegate = component
         component.scrollDirection = .horizontal
-        component.scrollSteps = nil
         component.showsHorizontalScrollIndicator = false
         component.showsVerticalScrollIndicator = false
         component.spacing = 0
@@ -30,15 +43,8 @@ public enum ComponentsContainers: ComponentsList {
     
     public static func page() -> PageContainer {
         let component = PageContainer()
-        component.automaticInterval = 5.0
-        component.bounces = true
         component.height = 100
-        component.marginEdgeInset = UIEdgeInsets(0)
-        component.isAutomatic = false
         component.isPagingEnabled = true
-        component.paddingEdgeInset = UIEdgeInsets(0)
-        
-        component.pageIsHidden = false
         component.scrollDirection = .horizontal
         component.onSetTheme = Strong(component) { (component) in
             component.backgroundColor = Theme.Colors.primaryLight
@@ -52,11 +58,9 @@ public enum ComponentsContainers: ComponentsList {
     public static func stack() -> StackContainer {
         let component = StackContainer()
         component.alignment = .fill
-        component.axis = .horizontal
+        component.axis = .vertical
         component.distribution = .fillEqually
-        component.marginEdgeInset = UIEdgeInsets(0)
         component.height = 100
-        component.paddingEdgeInset = UIEdgeInsets(0)
         component.onSetTheme = Strong(component) { (component) in
             component.backgroundColor = Theme.Colors.primaryLight
         }
@@ -65,7 +69,6 @@ public enum ComponentsContainers: ComponentsList {
     
     public static func view() -> View {
         let component = View()
-        component.height = UITableView.automaticDimension
         component.onSetTheme = Strong(component) { (component) in
             component.backgroundColor = Theme.Colors.primaryLight
         }

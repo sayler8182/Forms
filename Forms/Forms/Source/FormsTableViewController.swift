@@ -35,6 +35,8 @@ open class FormsTableViewController: FormsViewController, UITableViewDelegate, U
     private var shimmerDataSource: ShimmerTableDataSource? = nil
     private var isComponentsShimmering: Bool = false
     
+    public var onValidate: Validable.OnValidate?
+    
     open var cellBackgroundColor: UIColor = Theme.Colors.clear {
         didSet { self.tableView.reloadData() }
     }
@@ -105,11 +107,12 @@ open class FormsTableViewController: FormsViewController, UITableViewDelegate, U
         self.setupFooter()
         self.setupPagination()
         self.setupPullToRefresh()
+        self.setupMock()
     }
      
     override public func startShimmering(animated: Bool = true) {
         self.isComponentsShimmering = true
-        self.reloadData()
+        self.reloadData(animated: animated)
     }
     
     public func startShimmering(_ shimmerDataSource: ShimmerTableDataSource,
@@ -126,21 +129,25 @@ open class FormsTableViewController: FormsViewController, UITableViewDelegate, U
     }
     
     override public func stopShimmering(animated: Bool = true) {
-        self.isComponentsShimmering = false
-        self.reloadData()
+        if let shimmerDataSource = self.shimmerDataSource {
+            shimmerDataSource.stopShimmering(animated: animated)
+        } else {
+            self.isComponentsShimmering = false
+            self.reloadData(animated: animated)
+        }
     }
     
-    public func stopShimmering(newDataSource: TableDataSource?,
+    public func stopShimmering(_ dataSource: TableDataSource?,
                                animated: Bool = true) {
         self.shimmerDataSource?.stopShimmering(animated: animated)
         self.shimmerDataSource = nil
-        newDataSource?.prepare(
+        dataSource?.prepare(
             for: self.tableView,
             queue: self.tableUpdatesQueue,
             scrollDelegate: self)
         self.setDataSource(
-            delegate: newDataSource,
-            dataSource: newDataSource)
+            delegate: dataSource,
+            dataSource: dataSource)
     } 
     
     public func build(_ components: [FormsComponent?],
@@ -236,6 +243,12 @@ open class FormsTableViewController: FormsViewController, UITableViewDelegate, U
     }
     
     open func setupFooter() {
+        // HOOK
+    }
+    
+    public func setupSection(section: TableSection,
+                             view: FormsComponent,
+                             index: Int) {
         // HOOK
     }
     
@@ -426,20 +439,40 @@ public extension FormsTableViewController {
 }
 
 // MARK: Validators
-public extension FormsTableViewController {
+extension FormsTableViewController {
+    @objc
+    public func triggerValidators() {
+        let items: [Validable] = self.views.compactMap { $0 as? Validable }
+        for item in items {
+            item.validatorTriggered = true
+        }
+    }
+    
+    @objc
     @discardableResult
-    func validate() -> Bool {
+    public func validateWithTrigger() -> Bool {
+        self.triggerValidators()
+        return self.validate()
+    }
+    
+    @objc
+    @discardableResult
+    public func validate() -> Bool {
         return self.validate(false)
     }
     
+    @objc
     @discardableResult
-    func validate(_ isSilence: Bool) -> Bool {
+    open func validate(_ isSilence: Bool) -> Bool {
         var result: Bool = true
         let items: [Validable] = self.views.compactMap { $0 as? Validable }
         for item in items {
-            result = result && item.validate(isSilence)
+            result = item.validate(isSilence) && result
         }
         self.refreshTableView()
+        if !isSilence {
+            self.onValidate?(result)
+        }
         return result
     }
 }
@@ -609,9 +642,12 @@ public extension FormsTableViewController {
         cell.contentView.addSubview(view, with: [
             Anchor.to(cell.contentView).fill
         ])
-        self.isComponentsShimmering
-            ? view.startShimmering()
-            : view.stopShimmering()
+        if view.isStartAutoShimmer && self.isComponentsShimmering {
+            view.startShimmering()
+        }
+        if view.isStopAutoShimmer && !self.isComponentsShimmering {
+            view.stopShimmering()
+        }
         return cell
     }
     

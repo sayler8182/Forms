@@ -18,7 +18,7 @@ public typealias NetworkOnCompletion = (_ data: Data?, _ error: NetworkError?) -
 public typealias NetworkOnGenericCompletion<T> = (T?, NetworkError?) -> Void
 
 // MARK: NetworkError
-public enum NetworkError: CustomDebugStringConvertible, Equatable {
+public enum NetworkError: Error, CustomDebugStringConvertible, Equatable {
     case cancelled
     case connectionFailure
     case emptyResponse
@@ -55,13 +55,22 @@ public enum NetworkError: CustomDebugStringConvertible, Equatable {
 
 // MARK: NetworkTask
 public class NetworkTask {
-    public let task: URLSessionDataTask?
+    public var task: URLSessionDataTask? {
+        didSet { self.updateTask() }
+    }
     
-    internal init(_ task: URLSessionDataTask?) {
-        self.task = task
+    private var _isCancelled: Bool = false
+    public var isCancelled: Bool {
+        return self._isCancelled || self.task?.state == .canceling
     }
     
     public func cancel() {
+        self._isCancelled = true
+        self.task?.cancel()
+    }
+    
+    private func updateTask() {
+        guard self._isCancelled else { return }
         self.task?.cancel()
     }
 } 
@@ -109,143 +118,67 @@ public extension NetworkRequest {
     }
 }
 
-// MARK: NetworkMethod
-open class NetworkMethod {
-    public var logger: Logger?
-    public var cache: NetworkCache?
-
-    public init() { }
-    
-    public var provider: NetworkProviderProtocol = {
-        let provider: NetworkProviderProtocol? = Injector.main.resolveOrDefault("FormsNetworking")
-        return provider ?? NetworkProvider()
-    }()
-    
-    public func with(logger: Logger?) -> Self {
-        self.logger = logger
-        return self
-    }
-    
-    public func with(cache: NetworkCache?) -> Self {
-        self.cache = cache
-        return self
-    }
-}
-
 // MARK: NetworkProviderProtocol
-public protocol NetworkProviderProtocol {
+public protocol NetworkProviderProtocol: class {
+    var session: NetworkSessionProtocol? { get set }
+    var logger: Logger? { get set }
+    var cache: NetworkCache? { get set }
+    
     @discardableResult
     func call(request: NetworkRequest,
               onProgress: NetworkOnProgress?,
-              onSuccess: @escaping NetworkOnSuccess,
-              onError: @escaping NetworkOnError,
+              onSuccess: NetworkOnSuccess?,
+              onError: NetworkOnError?,
               onCompletion: NetworkOnCompletion?) -> NetworkTask
     @discardableResult
     func call<T: Parseable>(request: NetworkRequest,
                             parser: NetworkResponseParser?,
                             onProgress: NetworkOnProgress?,
-                            onSuccess: @escaping NetworkOnGenericSuccess<T>,
-                            onError: @escaping NetworkOnError,
+                            onSuccess: NetworkOnGenericSuccess<T>?,
+                            onError: NetworkOnError?,
                             onCompletion: NetworkOnGenericCompletion<T>?) -> NetworkTask
+    func isCached(request: NetworkRequest) -> Bool
 }
+
 public extension NetworkProviderProtocol {
-    @discardableResult
-    func call(request: NetworkRequest,
-              onSuccess: @escaping NetworkOnSuccess,
-              onError: @escaping NetworkOnError,
-              onCompletion: NetworkOnCompletion?) -> NetworkTask {
-        return self.call(
-            request: request,
-            onProgress: nil,
-            onSuccess: onSuccess,
-            onError: onError,
-            onCompletion: onCompletion)
+    func with(session: NetworkSessionProtocol?) -> Self {
+        self.session = session
+        return self
     }
-    @discardableResult
-    func call(request: NetworkRequest,
-              onProgress: NetworkOnProgress?,
-              onSuccess: @escaping NetworkOnSuccess,
-              onError: @escaping NetworkOnError) -> NetworkTask {
-        return self.call(
-            request: request,
-            onProgress: onProgress,
-            onSuccess: onSuccess,
-            onError: onError,
-            onCompletion: nil)
+    func with(logger: Logger?) -> Self {
+        self.logger = logger
+        return self
     }
-    @discardableResult
-    func call<T: Parseable>(request: NetworkRequest,
-                            parser: NetworkResponseParser?,
-                            onSuccess: @escaping NetworkOnGenericSuccess<T>,
-                            onError: @escaping NetworkOnError) -> NetworkTask {
-        return self.call(
-            request: request,
-            parser: parser,
-            onProgress: nil,
-            onSuccess: onSuccess,
-            onError: onError,
-            onCompletion: nil)
-    }
-    @discardableResult
-    func call<T: Parseable>(request: NetworkRequest,
-                            parser: NetworkResponseParser?,
-                            onProgress: NetworkOnProgress?,
-                            onSuccess: @escaping NetworkOnGenericSuccess<T>,
-                            onError: @escaping NetworkOnError) -> NetworkTask {
-        return self.call(
-            request: request,
-            parser: parser,
-            onProgress: onProgress,
-            onSuccess: onSuccess,
-            onError: onError,
-            onCompletion: nil)
-    }
-    @discardableResult
-    func call<T: Parseable>(request: NetworkRequest,
-                            parser: NetworkResponseParser?,
-                            onSuccess: @escaping NetworkOnGenericSuccess<T>,
-                            onError: @escaping NetworkOnError,
-                            onCompletion: NetworkOnGenericCompletion<T>?) -> NetworkTask {
-        return self.call(
-            request: request,
-            parser: parser,
-            onProgress: nil,
-            onSuccess: onSuccess,
-            onError: onError,
-            onCompletion: onCompletion)
+    func with(cache: NetworkCache?) -> Self {
+        self.cache = cache
+        return self
     }
 }
 
 // MARK: NetworkProvider
 open class NetworkProvider: NetworkProviderProtocol {
-    private let session: NetworkSessionProtocol?
-    private let logger: Logger?
-    private let cache: NetworkCache?
+    public var session: NetworkSessionProtocol?
+    public var logger: Logger?
+    public var cache: NetworkCache?
     
     private let queue = DispatchQueue.global(qos: .background)
     
-    public init(session: NetworkSessionProtocol? = nil,
-                logger: Logger? = nil,
-                cache: NetworkCache? = nil) {
-        self.session = session
-        self.logger = logger
-        self.cache = cache
-    }
+    public init() { }
     
     @discardableResult
     public func call(request: NetworkRequest,
                      onProgress: NetworkOnProgress? = nil,
-                     onSuccess: @escaping NetworkOnSuccess,
-                     onError: @escaping NetworkOnError,
+                     onSuccess: NetworkOnSuccess? = nil,
+                     onError: NetworkOnError? = nil,
                      onCompletion: NetworkOnCompletion? = nil) -> NetworkTask {
         return self.call(
             request: request,
             onProgress: onProgress,
             onCompletion: { (data, error) in
                 if let error: NetworkError = error {
-                    onError(error)
+                    onError?(error)
                 } else if let data: Data = data {
-                    onSuccess(data)
+                    onSuccess?(data)
                 }
                 onCompletion?(data, error)
         })
@@ -253,10 +186,10 @@ open class NetworkProvider: NetworkProviderProtocol {
     
     @discardableResult
     public func call<T: Parseable>(request: NetworkRequest,
-                                   parser: NetworkResponseParser?,
+                                   parser: NetworkResponseParser? = nil,
                                    onProgress: NetworkOnProgress? = nil,
-                                   onSuccess: @escaping NetworkOnGenericSuccess<T>,
-                                   onError: @escaping NetworkOnError,
+                                   onSuccess: NetworkOnGenericSuccess<T>? = nil,
+                                   onError: NetworkOnError? = nil,
                                    onCompletion: NetworkOnGenericCompletion<T>? = nil) -> NetworkTask {
         return self.call(
             request: request,
@@ -270,6 +203,12 @@ open class NetworkProvider: NetworkProviderProtocol {
         }
     }
     
+    public func isCached(request: NetworkRequest) -> Bool {
+        let request: URLRequest = request.build()
+        let hash: Any = request.hashValue
+        return (try? self.cache?.isCached(hash: hash)) ?? false
+    }
+    
     @discardableResult
     private func call(request: NetworkRequest,
                       onProgress: NetworkOnProgress?,
@@ -278,27 +217,27 @@ open class NetworkProvider: NetworkProviderProtocol {
         let logger: Logger? = self.logger ?? Injector.main.resolveOrDefault("FormsNetworking")
         let cache: NetworkCache? = self.cache ?? Injector.main.resolveOrDefault("FormsNetworking")
         let request: URLRequest = request.build()
-        let task: URLSessionDataTask? = session?.call(
-            request: request,
-            logger: logger,
-            cache: cache,
-            onProgress: onProgress,
-            onCompletion: onCompletion)
-        return NetworkTask(task)
+        let networkTask: NetworkTask = NetworkTask()
+        DispatchQueue.global().async {
+            let task: URLSessionDataTask? = session?.call(
+                request: request,
+                logger: logger,
+                cache: cache,
+                onProgress: onProgress,
+                onCompletion: onCompletion)
+            networkTask.task = task
+        }
+        return networkTask
     }
 }
 
 // MARK: NetworkRequestInterceptor
 open class NetworkRequestInterceptor {
-    private static let queue: DispatchQueue = DispatchQueue(label: "com.Fimbo.Network")
-    
     public init() { }
     
     internal func process(request: NetworkRequest) {
-        NetworkRequestInterceptor.queue.sync {
-            self.preProcess(request)
-            self.setHeaders(request)
-        }
+        self.preProcess(request)
+        self.setHeaders(request)
     }
     
     open func preProcess(_ request: NetworkRequest) {

@@ -12,10 +12,6 @@ public enum ComponentsImageViews: ComponentsList {
     public static func `default`() -> ImageView {
         let component = ImageView()
         component.contentMode = .center
-        component.height = UITableView.automaticDimension
-        component.image = nil
-        component.marginEdgeInset = UIEdgeInsets(0)
-        component.paddingEdgeInset = UIEdgeInsets(0)
         return component
     }
 }

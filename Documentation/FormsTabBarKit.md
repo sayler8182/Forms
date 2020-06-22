@@ -20,25 +20,26 @@ TabBarController supports multiple sets
 
 ```swift
 enum TabBarKeys: String, TabBarKey {
+    enum Main: String, TabBarItemKey,CaseIterable {
+        case first
+        case second
+    }
+    enum Other: String, TabBarItemKey,CaseIterable {
+        case first
+        case second
+        case third
+    }
+
     case main
     case other
     
     var keys: [TabBarItemKey] {
         switch self {
-        case .main: return TabBarMainKeys.allCases
-        case .other: return TabBarOtherKeys.allCases
+        case .main: return TabBarKeys.Main.allCases
+        case .other: return TabBarKeys.Other.allCases
         }
     }
-}
-enum TabBarMainKeys: String, TabBarItemKey,CaseIterable {
-    case first
-    case second
-}
-enum TabBarOtherKeys: String, TabBarItemKey,CaseIterable {
-    case first
-    case second
-    case third
-}
+} 
 ```
 
 ```swift
@@ -46,14 +47,14 @@ override func setupItems() {
     super.setupItems()
     self.addSet([
             TabBarItem(
-                itemKey: TabBarMainKeys.first,
+                itemKey: TabBarKeys.Main.first,
                 viewController: { UIViewController() },
                 image: UIImage.from(name: "heart.fill"),
                 selectedImage: UIImage.from(name: "heart.fill"),
                 title: "First"
             ),
             TabBarItem(
-                itemKey: TabBarMainKeys.second,
+                itemKey: TabBarKeys.Main.second,
                 viewController: { return UIViewController() },
                 image: UIImage.from(name: "heart"),
                 selectedImage: UIImage.from(name: "heart"),
@@ -66,7 +67,7 @@ override func setupItems() {
 Select set and item
 
 ```swift
-select(TabBarKeys.main, itemKey: TabBarMainKeys.second)
+select(TabBarKeys.main, itemKey: TabBarKeys.Main.second)
 ```
 
 You can show or hide tab bar

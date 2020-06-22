@@ -20,6 +20,8 @@
 		7156F82F246485450078AA75 /* FormatValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7156F82E246485450078AA75 /* FormatValidator.swift */; };
 		71EAA0DB247EC82600B1257A /* PostCodeValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71EAA0DA247EC82600B1257A /* PostCodeValidator.swift */; };
 		71EAA0DD247EC8E500B1257A /* DateValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71EAA0DC247EC8E500B1257A /* DateValidator.swift */; };
+		71ED9D21249E79EC00FCC6AC /* StringValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71ED9D20249E79EC00FCC6AC /* StringValidator.swift */; };
+		71ED9D23249E7E0500FCC6AC /* PasswordValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71ED9D22249E7E0500FCC6AC /* PasswordValidator.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,6 +40,8 @@
 		7156F82E246485450078AA75 /* FormatValidator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormatValidator.swift; sourceTree = "<group>"; };
 		71EAA0DA247EC82600B1257A /* PostCodeValidator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostCodeValidator.swift; sourceTree = "<group>"; };
 		71EAA0DC247EC8E500B1257A /* DateValidator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateValidator.swift; sourceTree = "<group>"; };
+		71ED9D20249E79EC00FCC6AC /* StringValidator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringValidator.swift; sourceTree = "<group>"; };
+		71ED9D22249E7E0500FCC6AC /* PasswordValidator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordValidator.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -95,12 +99,14 @@
 				713B9B71243D05FA001F6E3A /* AmountValidator.swift */,
 				71EAA0DC247EC8E500B1257A /* DateValidator.swift */,
 				713B9B73243D05FA001F6E3A /* EmailValidator.swift */,
+				7156F82E246485450078AA75 /* FormatValidator.swift */,
 				713B9B74243D05FA001F6E3A /* LengthValidator.swift */,
 				713B9B72243D05FA001F6E3A /* NotEmptyValidator.swift */,
+				71ED9D22249E7E0500FCC6AC /* PasswordValidator.swift */,
 				713B9B75243D05FA001F6E3A /* PeselValidator.swift */,
 				713B9B76243D05FA001F6E3A /* PhoneValidator.swift */,
 				71EAA0DA247EC82600B1257A /* PostCodeValidator.swift */,
-				7156F82E246485450078AA75 /* FormatValidator.swift */,
+				71ED9D20249E79EC00FCC6AC /* StringValidator.swift */,
 			);
 			path = Validators;
 			sourceTree = "<group>";
@@ -201,9 +207,11 @@
 				713B9B77243D05FA001F6E3A /* AmountValidator.swift in Sources */,
 				713B9B79243D05FA001F6E3A /* EmailValidator.swift in Sources */,
 				713B9B6F243D0542001F6E3A /* Validator.swift in Sources */,
+				71ED9D23249E7E0500FCC6AC /* PasswordValidator.swift in Sources */,
 				713B9B78243D05FA001F6E3A /* NotEmptyValidator.swift in Sources */,
 				71EAA0DB247EC82600B1257A /* PostCodeValidator.swift in Sources */,
 				713B9B7C243D05FA001F6E3A /* PhoneValidator.swift in Sources */,
+				71ED9D21249E79EC00FCC6AC /* StringValidator.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

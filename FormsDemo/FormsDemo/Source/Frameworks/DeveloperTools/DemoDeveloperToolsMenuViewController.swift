@@ -15,12 +15,12 @@ class DemoDeveloperToolsMenuViewController: FormsTableViewController {
     private let appVersionLabel = Components.label.default()
         .with(alignment: .center)
         .with(numberOfLines: 0)
-        .with(paddingEdgeInset: UIEdgeInsets(top: 16, leading: 16, bottom: 4, trailing: 16))
+        .with(marginEdgeInset: UIEdgeInsets(top: 16, leading: 16, bottom: 4, trailing: 16))
         .with(text: "AppVersion:\n\(DeveloperTools.appVersion.fullVersion)")
     private let appBuildDateLabel = Components.label.default()
         .with(alignment: .center)
         .with(numberOfLines: 0)
-        .with(paddingEdgeInset: UIEdgeInsets(top: 0, leading: 16, bottom: 16, trailing: 16))
+        .with(marginEdgeInset: UIEdgeInsets(top: 0, leading: 16, bottom: 16, trailing: 16))
         .with(text: "AppBuildDate:\n\(DeveloperTools.appVersion.buildDate)")
     private let showDeveloperMenuButton = Components.button.default()
         .with(title: "Show Developer Menu")
@@ -50,7 +50,7 @@ class DemoDeveloperToolsMenuFirstFeatureViewController: FormsTableViewController
     private let titleLabel = Components.label.default()
         .with(alignment: .center)
         .with(text: "This is first feature")
-        .with(padding: 16)
+        .with(margin: 16)
     
     override func setupContent() {
         super.setupContent()
@@ -65,7 +65,7 @@ class DemoDeveloperToolsMenuSecondFeatureViewController: FormsTableViewControlle
     private let titleLabel = Components.label.default()
         .with(alignment: .center)
         .with(text: "This is second feature")
-        .with(padding: 16)
+        .with(margin: 16)
     
     override func setupContent() {
         super.setupContent()

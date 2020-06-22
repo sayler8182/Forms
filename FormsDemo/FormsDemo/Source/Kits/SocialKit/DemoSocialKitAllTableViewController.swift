@@ -24,6 +24,8 @@ class DemoSocialKitAllTableViewController: FormsTableViewController {
         .with(marginHorizontal: 16)
     private let signInWithGoogle = Components.social.signInWithGoogle()
         .with(marginHorizontal: 16)
+    private let signInWithEmail = Components.social.signInWithEmail()
+        .with(marginHorizontal: 16)
     
     private let divider = Components.utils.divider()
         .with(height: 5.0)
@@ -33,7 +35,8 @@ class DemoSocialKitAllTableViewController: FormsTableViewController {
         self.build([
             self.signInWithApple,
             self.signInWithFacebook,
-            self.signInWithGoogle
+            self.signInWithGoogle,
+            self.signInWithEmail
         ], divider: self.divider)
     }
 }

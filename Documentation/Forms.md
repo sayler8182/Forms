@@ -105,6 +105,7 @@ func setupView() {
     self.setupContent()
     self.setupActions()
     self.setupOther()
+    self.setupMock()
 }
 ```
 
@@ -145,6 +146,7 @@ override func setupView() {
     self.setupFooter()
     self.setupPagination()
     self.setupPullToRefresh()
+    self.setupMock()
 }
 ```
 

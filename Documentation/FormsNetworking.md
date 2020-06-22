@@ -30,56 +30,54 @@ NetworkReachability.isConnected
 Class should inheritance *NetworkMethod* class
 
 ```swift
-let request = NetworkRequest(url: "https://postman-echo.com".url)
-    .with(method: .GET)
-self.call(
-    request,
-    onSuccess: { (_) in },
-    onError: { (_) in },
-    onCompletion: { (_, _) in })
+class DemoNetworkMethod: NetworkMethod {
+    var url: URL! = "https://postman-echo.com/get?foo1=bar1&foo2=bar2".url
+}
+
+DemoNetworkMethod()
+    .call(
+        request,
+        onSuccess: { (_) in },
+        onError: { (_) in },
+        onCompletion: { (_, _) in })
 ```
 
-### Custom body
+### Custom body and headers
 
 ```swift
-let data = Data()
-let request = NetworkRequest(url: "https://postman-echo.com".url)
-    .with(method: .POST)
-    .with(body: data)
-self.call(
-    request,
-    onSuccess: { (_) in },
-    onError: { (_) in },
-    onCompletion: { (_, _) in })
-```
+class DemoNetworkMethod: NetworkMethod {
+    class Content: NetworkMethodContent {
+        var token: String?
 
-### Custom headers
+        var parameters: [String: Any]? {
+            var parameters: [String: Any?] = [:]
+            parameters["token"] = token
+            return parameters
+        }
+        var headers: [String: String?]? {
+            var headers: [String: String] = [:]
+            headers["language"] = "en"
+            return headers
+        }
+    }
 
-```swift
-let request = NetworkRequest(url: "https://postman-echo.com".url)
-    .with(method: .POST)
-    .with(headers: [ 
-        "Language": "en"
-    ]])
-self.call(
-    request,
-    onSuccess: { (_) in },
-    onError: { (_) in },
-    onCompletion: { (_, _) in })
+    var content: NetworkMethodContent?
+    var url: URL! = "https://postman-echo.com".url
+    var method: HTTPMethod = .POST
+
+    init(_ content: Content) {
+        self.content = content
+    }
+}
 ```
 
 ### Custom interceptor
 
 ```swift
-let request = NetworkRequest(url: "https://postman-echo.com".url)
-    .with(method: .GET)
-    .with(body: data)
-    .with(interceptor: AppNetworkRequestInterceptor())
-self.call(
-    request,
-    onSuccess: { (_) in },
-    onError: { (_) in },
-    onCompletion: { (_, _) in })
+class DemoNetworkMethod: NetworkMethod {
+    var url: URL! = "https://postman-echo.com".url
+    var interceptor: NetworkRequestInterceptor? = AppNetworkRequestInterceptor()
+} 
 ```
 
 ```swift
@@ -95,14 +93,10 @@ class AppNetworkRequestInterceptor: NetworkRequestInterceptor {
 ### Response parser
 
 ```swift
-let request = NetworkRequest(url: "https://postman-echo.com".url)
-    with(method: .GET)
-self.call(
-    request,
-    parser: AppNetworkResponseParser(),
-    onSuccess: { (_) in },
-    onError: { (_) in },
-    onCompletion: { (_, _) in })
+class DemoNetworkMethod: NetworkMethod {
+    var url: URL! = "https://postman-echo.com".url
+    var parser: NetworkResponseParser? = AppNetworkResponseParser()
+} 
 ```
 
 ```swift
@@ -114,43 +108,29 @@ class AppNetworkResponseParser: NetworkResponseParser {
 }
 ```
 
-### Cache
+### Cache and logger
 
 ```swift
-let request = NetworkRequest(url: "https://upload.wikimedia.org/wikipedia/commons/0/0f/Welsh_Corgi_Pembroke_WPR_Kamien_07_10_07.jpg".url)
-    .with(method: .GET)
-self.call(
-    request,
-    cache: NetworkTmpCache(ttl: 60 * 60),
-    onSuccess: { (_) in },
-    onError: { (_) in },
-    onCompletion: { (_, _) in })
-```
-
-### Logger 
-
-```swift
-let request = NetworkRequest(url: "https://postman-echo.com".url)
-    .with(method: .GET)
-self.call(
-    request,
-    logger: ConsoleLogger(),
-    onSuccess: { (_) in },
-    onError: { (_) in },
-    onCompletion: { (_, _) in })
+DemoNetworkMethod()
+    .with(logger: VoidLogger())
+    .with(cache: NetworkTmpCache(ttl: 60 * 60))
+    .call(
+        request,
+        onSuccess: { (_) in },
+        onError: { (_) in },
+        onCompletion: { (_, _) in })
 ```
 
 ### Cancellation
 
 
 ```swift
-let request = NetworkRequest(url: "https://postman-echo.com".url)
-    .with(method: .GET)
-let task: NetworkTask = self.call(
-    request,
-    onSuccess: { (_) in },
-    onError: { (_) in },
-    onCompletion: { (_, _) in })
+let request = DemoNetworkMethod()
+    .call(
+        request,
+        onSuccess: { (_) in },
+        onError: { (_) in },
+        onCompletion: { (_, _) in })
 ```
 
 ```swift
@@ -164,36 +144,4 @@ NetworkPinning.isEnabled = true
 NetworkPinning.certificates = [
     Bundle.main.url(forResource: "certificate", withExtension: "cer")
 ].compactMap { $0 }
-```
-
-### Images
-
-```swift
-let networkImages = NetworkImages()
-let request = NetworkImageRequest(
-    url: "https://upload.wikimedia.org/wikipedia/commons/0/0f/Welsh_Corgi_Pembroke_WPR_Kamien_07_10_07.jpg".url)
-networkImages.image(
-    request: request,
-    onProgress: { (_, _, _) in },
-    onSuccess: { _ in },
-    onError: { _ in },
-    onCompletion: { (_, _) in })
-request.cancel()
-```
-
-or
-
-```swift
-let request = NetworkImageRequest(
-    url: "https://upload.wikimedia.org/wikipedia/commons/0/0f/Welsh_Corgi_Pembroke_WPR_Kamien_07_10_07.jpg".url)
-imageView.setImage(request: request)
-request.cancel()
-```
-
-or 
-
-```swift 
-let string = "https://upload.wikimedia.org/wikipedia/commons/0/0f/Welsh_Corgi_Pembroke_WPR_Kamien_07_10_07.jpg"
-imageView.setImage(request: string)
-request.cancel()
 ```

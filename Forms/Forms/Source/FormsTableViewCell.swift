@@ -14,6 +14,8 @@ open class FormsTableViewCell: UITableViewCell, Componentable, ShimmerableViewCe
         return "\(self)"
     }
     
+    public weak var tableView: UITableView?
+    
     override public init(style: UITableViewCell.CellStyle,
                          reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -29,6 +31,7 @@ open class FormsTableViewCell: UITableViewCell, Componentable, ShimmerableViewCe
         self.setupActions()
         self.setTheme()
         self.setLanguage()
+        self.setupMock()
     } 
     
     // MARK: HOOKS
@@ -52,6 +55,11 @@ open class FormsTableViewCell: UITableViewCell, Componentable, ShimmerableViewCe
                                     _ tableView: UITableView) -> CGFloat {
         // HOOK
         return UITableView.automaticDimension
+    }
+    
+    @objc
+    open dynamic func setupMock() {
+        // HOOK
     }
 }
 

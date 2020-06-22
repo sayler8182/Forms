@@ -28,6 +28,7 @@ public class UnShimmerableView: UIView, UnShimmerable { }
 public class UnShimmerableLabel: UILabel, UnShimmerable { }
 public class UnShimmerableImageView: UIImageView, UnShimmerable { }
 public class UnShimmerableButton: UIButton, UnShimmerable { }
+extension UISegmentedControl: UnShimmerable { }
 extension UIActivityIndicatorView: UnShimmerable { }
 
 // MARK: Shimmer - UIView
@@ -40,8 +41,7 @@ public extension UIView {
     }
     
     var isShimmering: Bool {
-        if self.subviews.isEmpty,
-            self is ShimmerPlaceholderView {
+        if self is ShimmerPlaceholderView {
             return true
         }
         for view in self.subviews {
@@ -53,33 +53,31 @@ public extension UIView {
     @objc
     func startShimmering(animated: Bool = true) {
         guard self.isShimmerable else { return }
-        guard !self.isShimmering else { return }
         self.setShimmer(animated: animated)
     }
-    
+     
     @objc
     func stopShimmering(animated: Bool = true) {
-        guard self.isShimmering else { return }
         self.removeShimmer(animated: animated)
         if self is UnShimmerable { return }
         if self is ShimmerPlaceholderView { return }
-        self.isUserInteractionEnabled = true
     }
     
     private func setShimmer(animated: Bool) {
         let placeholders = self.subviews.filter({ $0 is ShimmerPlaceholderView })
         placeholders.removeFromSuperview()
         if self is UnShimmerable { return }
-        if self.subviews.isEmpty {
+        if self.shouldPutPlaceholder() {
             self.putPlaceholder(animated: animated)
-            self.isUserInteractionEnabled = true
+            return
         }
         for subview in self.subviews {
             subview.startShimmering(animated: animated)
         }
     }
     
-    private func removeShimmer(animated: Bool) {
+    private func removeShimmer(animated: Bool,
+                               force: Bool = false) {
         if self is ShimmerPlaceholderView {
             self.animation(
                 animated,
@@ -88,7 +86,7 @@ public extension UIView {
                 completion: { _ in self.removeFromSuperview() })
         }
         for subview in self.subviews {
-            subview.stopShimmering()
+            subview.stopShimmering(animated: animated)
         }
     }
     
@@ -100,15 +98,30 @@ public extension UIView {
         placeholderView.backgroundColor = .clear
         placeholderView.startShimmering(animated: animated)
     }
+    
+    private func shouldPutPlaceholder() -> Bool {
+        guard !self.subviews.isEmpty else { return true }
+        let unShimmerableCount: Int = self.subviews.filter { $0 is UnShimmerable || $0.isShimmerable == false }.count
+        let allCount: Int = self.subviews.count
+        return unShimmerableCount == allCount
+    }
+}
+
+// MARK: Builder
+public extension UIView {
+    func with(isShimmerable: Bool) -> Self {
+        self.isShimmerable = isShimmerable
+        return self
+    }
 }
 
 // MARK: ShimmerPlaceholderView
 private class ShimmerPlaceholderView: UIView {
     private let gradient = CAGradientLayer()
     private let gradientWidth: CGFloat = 0.17
-    private let backgroundFadedGray = UIColor(0x161718, 0xF6F7F8)
-    private let gradientFirstStop = UIColor(0x2D2D2D, 0xEDEDED)
-    private let gradientSecondStop = UIColor(0x3D3D3D, 0xDDDDDD)
+    private let backgroundFadedGray = UIColor(rgbDark: 0x161718, rgbLight: 0xF6F7F8)
+    private let gradientFirstStop = UIColor(rgbDark: 0x2D2D2D, rgbLight: 0xEDEDED)
+    private let gradientSecondStop = UIColor(rgbDark: 0x3D3D3D, rgbLight: 0xDDDDDD)
     
     override func layoutSubviews() {
         super.layoutSubviews()
@@ -126,7 +139,6 @@ private class ShimmerPlaceholderView: UIView {
             self.gradientFirstStop.cgColor,
             self.backgroundFadedGray.cgColor
         ]
-        
         let startLocations: [NSNumber] = [
             NSNumber(value: Double(self.gradient.startPoint.x)),
             NSNumber(value: Double(self.gradient.startPoint.x)),
@@ -200,7 +212,7 @@ open class ShimmerTableDataSource: TableDataSource, ShimmerDataSource {
         self.append(self.generators)
     }
     
-    public func stopShimmering(animated: Bool) {
+    public func stopShimmering(animated: Bool = true) {
         let sections: [TableSection] = self.sections.filter { $0.isShimmering }
         self.removeFromTable(
             sections,
@@ -225,7 +237,7 @@ open class ShimmerTableDataSource: TableDataSource, ShimmerDataSource {
         let section: TableSection = self.sections[indexPath.section]
         guard section.isShimmering else { return cell }
         cell.prepareForShimmering()
-        cell.startShimmering()
+        cell.startShimmering(animated: true)
         return cell
     }
 }

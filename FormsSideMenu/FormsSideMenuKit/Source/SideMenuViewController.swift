@@ -103,7 +103,7 @@ open class SideMenuController: FormsViewController {
     }
     
     override open func setTheme() {
-        self.overlayView.backgroundColor = Theme.Colors.tertiaryLight.withAlphaComponent(0.3)
+        self.overlayView.backgroundColor = Theme.Colors.tertiaryLight.with(alpha: 0.3)
         super.setTheme()
     }
     

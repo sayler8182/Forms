@@ -10,6 +10,7 @@ import FormsAnchor
 import FormsInjector
 import FormsLogger
 import FormsUtils
+import FormsUtilsUI
 import FormsValidators
 import UIKit
 
@@ -38,7 +39,7 @@ public extension FormsSearchController {
             self.disabled = disabled
         }
         
-        func value(for state: StateType) -> T {
+        public func value(for state: StateType) -> T {
             switch state {
             case .active: return self.active
             case .selected: return self.selected
@@ -117,6 +118,7 @@ open class FormsSearchController: UISearchController, AppLifecycleable, Themeabl
     public var onDidPaste: ((String?) -> Void)?
     public var onEndEditing: ((String?) -> Void)?
     public var onTextChanged: ((String?) -> Void)?
+    public var onValidate: Validable.OnValidate?
     
     private (set) var state: StateType = StateType.active
     
@@ -163,6 +165,7 @@ open class FormsSearchController: UISearchController, AppLifecycleable, Themeabl
         self.setupContent()
         self.setupActions()
         self.setupOther()
+        self.setupMock()
     }
     
     open func setTheme() {
@@ -210,6 +213,11 @@ open class FormsSearchController: UISearchController, AppLifecycleable, Themeabl
     }
     
     open func setupOther() {
+        // HOOK
+    }
+    
+    @objc
+    open dynamic func setupMock() {
         // HOOK
     }
 }

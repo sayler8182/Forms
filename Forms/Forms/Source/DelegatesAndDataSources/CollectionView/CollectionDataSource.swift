@@ -193,6 +193,8 @@ extension CollectionDataSource: UICollectionViewDelegate, UICollectionViewDataSo
         guard !section.isShimmering else { return }
         let item: CollectionItem = section.items[indexPath.item]
         let cell = collectionView.cellForItem(at: indexPath) as! FormsCollectionViewCell
+        cell.collectionView = collectionView
+        cell.stopShimmering()
         self.delegate?.selectCell(item: item, cell: cell, indexPath: indexPath)
     }
     

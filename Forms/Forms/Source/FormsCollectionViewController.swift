@@ -98,6 +98,7 @@ open class FormsCollectionViewController: FormsViewController, UICollectionViewD
         self.setupFooter()
         self.setupPagination()
         self.setupPullToRefresh()
+        self.setupMock()
     }
      
     override public func startShimmering(animated: Bool = true) {

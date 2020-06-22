@@ -27,7 +27,7 @@ public class Pagination<ID, D> {
         return self.pages.last(where: { $0.error.isNil })
     }
     public var data: [D] {
-        return self.pages.flatMap { $0.data }
+        return self.pages.compactMap { $0.data }
     }
     
     public init(of type: D.Type,
@@ -64,12 +64,12 @@ public class Pagination<ID, D> {
 // MARK: Page
 public class Page<ID, D> {
     public let pageId: ID?
-    public let data: [D]
+    public let data: D?
     public let isLast: Bool
     public let error: Error?
     
     public init(pageId: ID?,
-                data: [D],
+                data: D?,
                 isLast: Bool = false,
                 error: Error? = nil) {
         self.pageId = pageId

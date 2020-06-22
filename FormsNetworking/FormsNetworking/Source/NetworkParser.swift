@@ -31,26 +31,26 @@ open class NetworkResponseParser {
      
     open func parse<T: Parseable>(data: Data?,
                                   error: NetworkError?,
-                                  onSuccess: NetworkOnGenericSuccess<T>,
-                                  onError: NetworkOnError,
+                                  onSuccess: NetworkOnGenericSuccess<T>? = nil,
+                                  onError: NetworkOnError? = nil,
                                   onCompletion: NetworkOnGenericCompletion<T>? = nil) {
         guard let data: Data = data else {
             let error: NetworkError = error ?? NetworkError.incorrectResponseFormat
-            onError(error)
+            onError?(error)
             onCompletion?(nil, error)
             return
         }
         if let error = self.parseError(data: data) {
-            onError(error)
+            onError?(error)
             onCompletion?(nil, error)
         }
         guard let object: T = self.map(data: data) else {
             let error: NetworkError = NetworkError.incorrectResponseFormat
-            onError(error)
+            onError?(error)
             onCompletion?(nil, error)
             return
         }
-        onSuccess(object)
+        onSuccess?(object)
         onCompletion?(object, error)
     }
     

@@ -17,7 +17,7 @@ public protocol ConfigurationModalProtocol {
 
 public extension Configuration {
     struct Modal: ConfigurationModalProtocol {
-        public var backgroundColor: UIColor? = Theme.Colors.primaryLight.withAlphaComponent(0.3)
+        public var backgroundColor: UIColor? = Theme.Colors.primaryLight.with(alpha: 0.3)
     }
 }
 
@@ -183,7 +183,7 @@ open class ModalView: FormsComponent {
         return self.coverView?.superview
     }
     
-    override public required init() {
+    public required init() {
         super.init()
     }
     

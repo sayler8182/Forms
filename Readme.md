@@ -25,9 +25,11 @@ Forms is all in one iOS framework
 - [x] [FormsLogger](./Documentation/FormsLogger.md) - Logger data
 - [x] [FormsMock](./Documentation/FormsMock.md) - Mocking data
 - [x] [FormsNetworking](./Documentation/FormsNetworking.md) - Network layer
+- [x] [FormsNetworkingImage](./Documentation/FormsNetworking.md) - Network layer for images
 - [x] [FormsNotifications](./Documentation/FormsNotifications.md) - Firebase notifications
 - [x] [FormsPermissions](./Documentation/FormsPermissions.md) - Application permissions
 - [x] [FormsUtils](./Documentation/FormsUtils.md) - Utils and extensions
+- [x] [FormsUtilsUI](./Documentation/FormsUtilsUI.md) - Utils and extensions for UIKit
 - [x] [FormsTransitions](./Documentation/FormsTransitions.md) - UI transitions
 - [x] [FormsValidators](./Documentation/FormsValidators.md) - Data validators
 
@@ -47,7 +49,7 @@ Kits extend Forms module
 - Swift 5.2
 - Xcode 11.0+
 
-Stable version<br/>
+Last stable version<br/>
 XCode 11.5 (11E608c)
 
 ## Installation
@@ -68,6 +70,7 @@ FormsLocation.framework
 FormsLogger.framework
 FormsMock.framework
 FormsNetworking.framework
+FormsNetworkingImage.framework
 FormsNotifications.framework
 FormsPermissions.framework
 FormsPager.framework
@@ -77,6 +80,7 @@ FormsTabBarKit.framework
 FormsToastKit.framework
 FormsTransitions.framework
 FormsUtils.framework
+FormsUtilsUI.framework
 FormsValidators.framework
 ```
 
@@ -128,7 +132,7 @@ Frameworks should have consistent build settings:
 - [x] Version
 - [x] Build Active Architecture Only -> No (for Debug)
 - [x] iOS Deployment Target -> iOS 10.0
-- [x] Framework Search Path -> $(inherited) and $(PROJECT_DIR)/../Dependencies
+- [x] Framework Search Path -> $(inherited) $(PROJECT_DIR)/../Dependencies
 - [x] Other Linker Flags -> -ObjC
 - [x] Other Swift Flags -> -Xfrontend -warn-long-function-bodies=1000 -Xfrontend -warn-long-expression-type-checking=1000
 - [x] Swift Language version -> Swift 5
@@ -145,7 +149,7 @@ The Forms framework is inspired by:
 [Clean Swift](https://clean-swift.com/)
 
 - *FormsAnalytics*<br/>
-[Umbrella](https://github.com/devxoul/Umbrella),
+[Umbrella](https://github.com/devxoul/Umbrella)
 
 - *FormsDeveloperTools*<br/>
 [Gedatsu](https://github.com/bannzai/Gedatsu),
@@ -160,6 +164,21 @@ The Forms framework is inspired by:
 - *FormsInjector*<br/>
 [Swinject](https://github.com/Swinject/Swinject)
 
+## Exist integrations
+
+The Forms framework is already integrated in:
+
+[WineBook](https://github.com/sayler8182/WineBook) - project inspired by [Stanton Lab](https://www.behance.net/gallery/72627257/Mobile-app-for-Wine-book) with mocked API
+
 ## License
 
 MIT license. See the [LICENSE file](LICENSE) for details.
+
+
+## FAQ
+
+If your project doesn't compile try
+- [x] Add LocalAuthentication.framework without Signing
+- [x] Add StoreKit.framework without Embedding
+- [x] Add Google frameworks without Embedding
+- [x] "error: Couldn't IRGen expression, no additional error"  this error may be related with FBSDK version (x6.5.2 is the latest stable version)

@@ -7,7 +7,7 @@
 //
 
 import FormsInjector
-import UIKit
+import Foundation
 
 private let kNumberFormatter: NumberFormatter = NumberFormatter()
 
@@ -32,13 +32,6 @@ public struct NumberFormat: NumberFormatProtocol {
     }
 }
 
-// MARK: Constant
-public extension CGFloat {
-    static var greatestConstraintConstant: CGFloat {
-        return 100_000
-    }
-}
-
 // MARK: String
 public extension String {
     var isNumber: Bool {
@@ -48,7 +41,6 @@ public extension String {
 
 public extension String {
     var asBool: Bool? { self.asDouble?.asBool }
-    var asCGFloat: CGFloat? { self.asDouble?.asCGFloat }
     var asDecimal: Decimal? { self.asDouble?.asDecimal }
     var asDouble: Double? {
         let string: String = self
@@ -65,7 +57,6 @@ public extension String {
 
 public extension Optional where Wrapped == String {
     var asBool: Bool? { self?.asBool }
-    var asCGFloat: CGFloat? { self?.asCGFloat }
     var asDecimal: Decimal? { self?.asDecimal }
     var asDouble: Double? { self?.asDouble }
     var asFloat: Float? { self?.asDouble?.asFloat }
@@ -78,7 +69,6 @@ public extension Optional where Wrapped == String {
 // MARK: Number
 public protocol Number: Comparable {
     var asBool: Bool { get }
-    var asCGFloat: CGFloat { get }
     var asDecimal: Decimal { get }
     var asDouble: Double { get }
     var asFloat: Float { get }
@@ -89,6 +79,9 @@ public protocol Number: Comparable {
     
     var ceiled: Self { get }
     var floored: Self { get }
+    
+    var fromDegreesToRadians: Self { get }
+    var fromRadiansToDegrees: Self { get }
     
     func inRange(_ range: Range<Self>) -> Bool
     func match(in range: Range<Self>) -> Self
@@ -178,39 +171,9 @@ public extension NumberFormattable {
     }
 }
 
-// MARK: CGFloat
-extension CGFloat: Number, NumberFormattable {
-    public var asBool: Bool { self != 0.0 }
-    public var asCGFloat: CGFloat { self }
-    public var asDecimal: Decimal { self.asDouble.asDecimal }
-    public var asDouble: Double { Double(self) }
-    public var asFloat: Float { Float(self) }
-    public var asInt: Int { Int(self) }
-    public var asNumber: NSNumber { self as NSNumber }
-    public var asString: String { self.asDouble.asString }
-    public var isFractional: Bool { true }
-    
-    public var ceiled: CGFloat { self.rounded(.up) }
-    public var floored: CGFloat { self.rounded(.down) }
-    
-    public func inRange(_ range: Range<Self>) -> Bool {
-        return range.contains(self)
-    }
-    public func match(in range: Range<Self>) -> CGFloat {
-        return Swift.min(Swift.max(range.lowerBound, self), range.upperBound)
-    }
-    public func match(from: Self, to: Self) -> CGFloat {
-        return Swift.min(Swift.max(from, self), to)
-    }
-    public func reversed(progress: CGFloat) -> CGFloat {
-        return progress - self
-    }
-}
-
 // MARK: Double
 extension Double: Number, NumberFormattable {
     public var asBool: Bool { self != 0.0 }
-    public var asCGFloat: CGFloat { CGFloat(self) }
     public var asDecimal: Decimal { Decimal(self) }
     public var asDouble: Double { self }
     public var asFloat: Float { Float(self) }
@@ -221,6 +184,9 @@ extension Double: Number, NumberFormattable {
     
     public var ceiled: Double { self.rounded(.up) }
     public var floored: Double { self.rounded(.down) }
+    
+    public var fromDegreesToRadians: Double { self * .pi / 180 }
+    public var fromRadiansToDegrees: Double { self * 180 / .pi }
     
     public func inRange(_ range: Range<Self>) -> Bool {
         return range.contains(self)
@@ -239,7 +205,6 @@ extension Double: Number, NumberFormattable {
 // MARK: Int
 extension Int: Number, NumberFormattable {
     public var asBool: Bool { self != 0 }
-    public var asCGFloat: CGFloat { CGFloat(self) }
     public var asDecimal: Decimal { Decimal(self) }
     public var asDouble: Double { Double(self) }
     public var asFloat: Float { Float(self) }
@@ -250,6 +215,9 @@ extension Int: Number, NumberFormattable {
     
     public var ceiled: Int { self }
     public var floored: Int { self }
+    
+    public var fromDegreesToRadians: Int { self.asDouble.fromDegreesToRadians.asInt }
+    public var fromRadiansToDegrees: Int { self.asDouble.fromRadiansToDegrees.asInt }
     
     public func inRange(_ range: Range<Self>) -> Bool {
         return range.contains(self)

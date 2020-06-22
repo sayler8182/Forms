@@ -10,10 +10,11 @@ import FormsAnchor
 import FormsInjector
 import FormsLogger
 import FormsUtils
+import FormsUtilsUI
 import UIKit
 
 // MARK: FormsViewController
-open class FormsViewController: UIViewController, UIGestureRecognizerDelegate, AppLifecycleable, Themeable {
+open class FormsViewController: UIViewController, UIGestureRecognizerDelegate, AppLifecycleable, Themeable, NavigationBarRefreshable {
     private lazy var keyboard = Keyboard()
     private var navigationBar: NavigationBar? = nil
     private var navigationProgressBar: ProgressBar? = nil
@@ -91,6 +92,7 @@ open class FormsViewController: UIViewController, UIGestureRecognizerDelegate, A
         self.setupContent()
         self.setupActions()
         self.setupOther()
+        self.setupMock()
     }
     
     public func startShimmering(animated: Bool = true) {
@@ -159,6 +161,11 @@ open class FormsViewController: UIViewController, UIGestureRecognizerDelegate, A
     open func updateSafeArea() {
         // HOOK
     }
+    
+    @objc
+    open dynamic func setupMock() {
+        // HOOK
+    }
 }
 
 // MARK: NavigationBar
@@ -169,6 +176,11 @@ public extension FormsViewController {
         navigationBar.setNavigationBar(self.navigationController?.navigationBar)
         navigationBar.setNavigationItem(self.navigationItem)
         navigationBar.updateProgress(animated: animated)
+    }
+    
+    func refreshNavigationBar() {
+        self.navigationBar?.setNavigationBar(self.navigationController?.navigationBar)
+        self.navigationBar?.setNavigationItem(self.navigationItem)
     }
 }
 

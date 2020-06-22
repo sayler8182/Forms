@@ -11,72 +11,13 @@ import UIKit
 
 // MARK: State
 public extension SegmentControl {
-    enum StateType: Int, CaseIterable {
-        case active
-        case selected
-        case disabled
-        case disabledSelected
+    struct State<T>: FormsComponentStateActiveSelectedDisabledDisabledSelected {
+        public var active: T!
+        public var selected: T!
+        public var disabled: T!
+        public var disabledSelected: T!
         
-        var controlState: UIControl.State {
-            switch self {
-            case .active: return .normal
-            case .selected: return .selected
-            case .disabled: return .disabled
-            case .disabledSelected: return .selected
-            }
-        }
-        var isEnabled: Bool {
-            switch self {
-            case .active: return true
-            case .selected: return true
-            case .disabled: return false
-            case .disabledSelected: return false
-            }
-        }
-    }
-    
-    struct State<T> {
-        let active: T
-        let selected: T
-        let disabled: T
-        let disabledSelected: T
-        
-        public init(_ value: T) {
-            self.active = value
-            self.selected = value
-            self.disabled = value
-            self.disabledSelected = value
-        }
-        
-        public init(active: T, selected: T) {
-            self.active = active
-            self.selected = selected
-            self.disabled = active
-            self.disabledSelected = selected
-        }
-        
-        public init(active: T, selected: T, disabled: T) {
-            self.active = active
-            self.selected = selected
-            self.disabled = disabled
-            self.disabledSelected = disabled
-        }
-        
-        public init(active: T, selected: T, disabled: T, disabledSelected: T) {
-            self.active = active
-            self.selected = selected
-            self.disabled = disabled
-            self.disabledSelected = disabledSelected
-        }
-        
-        func value(for state: StateType) -> T {
-            switch state {
-            case .active: return self.active
-            case .selected: return self.selected
-            case .disabled: return self.disabled
-            case .disabledSelected: return self.disabledSelected
-            }
-        }
+        public init() { }
     }
 }
 
@@ -88,9 +29,9 @@ public protocol SegmentItem {
 
 // MARK: SegmentControl
 open class SegmentControl: FormsComponent, FormsComponentWithMarginEdgeInset, FormsComponentWithPaddingEdgeInset {
-    private let backgroundView = UIView()
+    public let backgroundView = UIView()
         .with(width: 320, height: 40)
-    private let segmentControl = UISegmentedControl()
+    public let segmentControl = UISegmentedControl()
         .with(width: 320, height: 40)
     
     open var animationTime: TimeInterval = 0.2
@@ -135,7 +76,7 @@ open class SegmentControl: FormsComponent, FormsComponentWithMarginEdgeInset, Fo
     
     public var onValueChanged: ((SegmentItem?) -> Void)? = nil
     
-    private (set) var state: StateType = StateType.active
+    private (set) var state: FormsComponentStateType = .active
     
     override open func setupView() {
         self.setupBackgroundView()
@@ -155,13 +96,11 @@ open class SegmentControl: FormsComponent, FormsComponentWithMarginEdgeInset, Fo
     }
     
     override open func enable(animated: Bool) {
-        guard !self.isUserInteractionEnabled else { return }
         self.isUserInteractionEnabled = true
         self.setState(.active, animated: animated)
     }
     
     override open func disable(animated: Bool) {
-        guard self.isUserInteractionEnabled else { return }
         self.isUserInteractionEnabled = false
         if self.selected.isNil {
             self.setState(.disabled, animated: animated)
@@ -194,7 +133,7 @@ open class SegmentControl: FormsComponent, FormsComponentWithMarginEdgeInset, Fo
         self.updateSegmentSelection(self.state)
     }
     
-    private func updateMarginEdgeInset() {
+    open func updateMarginEdgeInset() {
         let edgeInset: UIEdgeInsets = self.marginEdgeInset
         self.backgroundView.frame = self.bounds.with(inset: edgeInset)
         self.backgroundView.constraint(to: self, position: .top)?.constant = edgeInset.top
@@ -203,15 +142,15 @@ open class SegmentControl: FormsComponent, FormsComponentWithMarginEdgeInset, Fo
         self.backgroundView.constraint(to: self, position: .trailing)?.constant = -edgeInset.trailing
     }
     
-    private func updatePaddingEdgeInset() {
+    open func updatePaddingEdgeInset() {
         let edgeInset: UIEdgeInsets = self.paddingEdgeInset
         self.segmentControl.constraint(to: self.backgroundView, position: .top)?.constant = edgeInset.top
         self.segmentControl.constraint(to: self.backgroundView, position: .bottom)?.constant = -edgeInset.bottom
         self.segmentControl.constraint(to: self.backgroundView, position: .leading)?.constant = edgeInset.leading
         self.segmentControl.constraint(to: self.backgroundView, position: .trailing)?.constant = -edgeInset.trailing
     }
-     
-    private func updateState(animated: Bool) {
+    
+    public func updateState(animated: Bool) {
         if !self.isEnabled && self.selected.isNil {
             self.setState(.disabled, animated: animated)
         } else if !self.isEnabled && self.selected.isNotNil {
@@ -223,33 +162,32 @@ open class SegmentControl: FormsComponent, FormsComponentWithMarginEdgeInset, Fo
         }
     }
     
-    private func updateState() {
+    public func updateState() {
         self.updateSegmentState()
-        switch self.state {
-        case .active: self.setState(.active, animated: false, force: true)
-        case .selected: self.setState(.selected, animated: false, force: true)
-        case .disabled: self.setState(.disabled, animated: false, force: true)
-        case .disabledSelected: self.setState(.disabledSelected, animated: false, force: true)
-        }
+        self.setState(self.state, animated: false, force: true)
     }
     
-    private func setState(_ state: StateType,
-                          animated: Bool,
-                          force: Bool = false) {
+    public func setState(_ state: FormsComponentStateType,
+                         animated: Bool,
+                         force: Bool = false) {
         guard self.state != state || force else { return }
         self.animation(animated, duration: self.animationTime) {
-            self.updateSegmentSelection(state)
-            self.backgroundView.backgroundColor = self.backgroundColors.value(for: state)
-            if #available(iOS 13.0, *) {
-                self.segmentControl.selectedSegmentTintColor = self.tintColors.value(for: state)
-            }
+            self.setStateAnimation(state)
         }
         self.state = state
     }
     
+    open func setStateAnimation(_ state: FormsComponentStateType) {
+        self.updateSegmentSelection(state)
+        self.backgroundView.backgroundColor = self.backgroundColors.value(for: state)
+        if #available(iOS 13.0, *) {
+            self.segmentControl.selectedSegmentTintColor = self.tintColors.value(for: state)
+        }
+    }
+    
     private func updateSegmentState() {
         self.segmentControl.tintColor = self.textColors.value(for: .active)
-        for state in StateType.allCases {
+        for state: FormsComponentStateType in [.active, .selected, .disabled, .disabledSelected] {
             self.segmentControl.setTitleTextAttributes([
                 NSAttributedString.Key.foregroundColor: self.textColors.value(for: state),
                 NSAttributedString.Key.font: self.textFonts.value(for: state)
@@ -257,7 +195,7 @@ open class SegmentControl: FormsComponent, FormsComponentWithMarginEdgeInset, Fo
         }
     }
     
-    private func updateSegmentSelection(_ state: StateType) {
+    private func updateSegmentSelection(_ state: FormsComponentStateType) {
         for (i, item) in self.items.enumerated() {
             let isEnabled: Bool = !self.disabled.contains(where: { $0.rawValue == item.rawValue }) && state.isEnabled
             self.segmentControl.setEnabled(isEnabled, forSegmentAt: i)

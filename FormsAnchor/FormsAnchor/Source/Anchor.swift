@@ -33,7 +33,9 @@ public enum Position {
     case bottomToCenterY
     
     case width
+    case widthToHeight
     case height
+    case heightToWidth
     
     case size(Size)
     
@@ -58,7 +60,9 @@ public enum Position {
         case .topToCenterY: return (.top, .centerY)
         case .bottomToCenterY: return (.bottom, .centerY)
         case .width: return (.width, .width)
+        case .widthToHeight: return (.width, .height)
         case .height: return (.height, .height)
+        case .heightToWidth: return (.height, .width)
         case .size(let size):
             switch size {
             case .width: return (.width, .notAnAttribute)
@@ -316,9 +320,21 @@ public extension Anchor {
         return anchor
     }
     
+    var widthToHeight: Anchor {
+        var anchor: Anchor = self
+        anchor.positions.append(.widthToHeight)
+        return anchor
+    }
+    
     var height: Anchor {
         var anchor: Anchor = self
         anchor.positions.append(.height)
+        return anchor
+    }
+    
+    var heightToWidth: Anchor {
+        var anchor: Anchor = self
+        anchor.positions.append(.heightToWidth)
         return anchor
     }
     
@@ -669,8 +685,8 @@ extension UIView {
             return self.constraint(
                 from: view.trailingAnchor,
                 to: anchorLayoutGuide.leadingAnchor,
-                relation: relation,
-                constant: offset)
+                relation: relation.inverted,
+                constant: -offset)
             
         case .centerX:
             return self.constraint(
@@ -742,10 +758,24 @@ extension UIView {
                 relation: relation,
                 multiplier: multiplier,
                 constant: offset)
+        case .widthToHeight:
+            return self.constraint(
+                from: view.widthAnchor,
+                to: anchorLayoutGuide.heightAnchor,
+                relation: relation,
+                multiplier: multiplier,
+                constant: offset)
         case .height:
             return self.constraint(
                 from: view.heightAnchor,
                 to: anchorLayoutGuide.heightAnchor,
+                relation: relation,
+                multiplier: multiplier,
+                constant: offset)
+        case .heightToWidth:
+            return self.constraint(
+                from: view.heightAnchor,
+                to: anchorLayoutGuide.widthAnchor,
                 relation: relation,
                 multiplier: multiplier,
                 constant: offset)
