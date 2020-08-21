@@ -12,7 +12,8 @@ import UIKit
 
 // MARK: DemoTitleTextFieldViewController
 class DemoTitleTextFieldViewController: FormsTableViewController {
-    private let textField = Components.input.textField.default()
+    private lazy var textField = Components.input.textField.default()
+        .with(actionView: self.actionView)
         .with(placeholder: "Text")
         .with(title: "Input")
     private let disableTextField = Components.input.textField.default()
@@ -44,6 +45,9 @@ class DemoTitleTextFieldViewController: FormsTableViewController {
         .with(isBottomDynamic: false)
         .with(text: "Some text")
         .with(title: "Footer")
+    
+    private lazy var actionView: UIView = Components.image.default()
+        .with(image: UIImage.from(name: "pencil.circle"))
     
     private let divider = Components.utils.divider()
         .with(height: 5.0)

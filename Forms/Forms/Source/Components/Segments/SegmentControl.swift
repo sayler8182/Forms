@@ -203,7 +203,7 @@ open class SegmentControl: FormsComponent, FormsComponentWithMarginEdgeInset, Fo
     }
 }
 
-// MARK: Switch
+// MARK: Builder
 public extension SegmentControl {
     func with(animationTime: TimeInterval) -> Self {
         self.animationTime = animationTime

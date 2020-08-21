@@ -54,6 +54,8 @@
 		7150CE7D247FA9B200F2681B /* FormsUtils.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 7150CE51247FA79600F2681B /* FormsUtils.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		7150CE7E247FA9B200F2681B /* FormsValidators.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7150CE56247FA79E00F2681B /* FormsValidators.framework */; };
 		7150CE7F247FA9B200F2681B /* FormsValidators.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 7150CE56247FA79E00F2681B /* FormsValidators.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		715435B424EFF4AB0046F08F /* FormsUtilsUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71EA26B924A9C05900985392 /* FormsUtilsUI.framework */; };
+		715435B524EFF4AB0046F08F /* FormsUtilsUI.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 71EA26B924A9C05900985392 /* FormsUtilsUI.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		719AE5B12462C49C00A39B0E /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 719AE5692462C0F900A39B0E /* FBSDKCoreKit.framework */; };
 		719AE5B22462C49C00A39B0E /* FBSDKCoreKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 719AE5692462C0F900A39B0E /* FBSDKCoreKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		719AE5B32462C49D00A39B0E /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 719AE55C2462C0F900A39B0E /* FBSDKLoginKit.framework */; };
@@ -286,6 +288,7 @@
 				719AE5B42462C49D00A39B0E /* FBSDKLoginKit.framework in Embed Frameworks */,
 				719AE5B22462C49C00A39B0E /* FBSDKCoreKit.framework in Embed Frameworks */,
 				7150CE79247FA9B100F2681B /* FormsSocialKit.framework in Embed Frameworks */,
+				715435B524EFF4AB0046F08F /* FormsUtilsUI.framework in Embed Frameworks */,
 				7150CE73247FA9B100F2681B /* FormsNetworking.framework in Embed Frameworks */,
 				7135DFF6248E6E2300B5807F /* FormsLocation.framework in Embed Frameworks */,
 				7150CE65247FA9B100F2681B /* FormsAnalytics.framework in Embed Frameworks */,
@@ -335,6 +338,7 @@
 		713B9C0D243D08E0001F6E3A /* FormsDemo.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = FormsDemo.xcodeproj; path = ../FormsDemo/FormsDemo.xcodeproj; sourceTree = "<group>"; };
 		714848DD2448618600455560 /* FormsExample.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = FormsExample.entitlements; sourceTree = "<group>"; };
 		7150CE0B247FA6C200F2681B /* FormsAnalytics.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = FormsAnalytics.xcodeproj; path = ../FormsAnalytics/FormsAnalytics.xcodeproj; sourceTree = "<group>"; };
+		715435B024EFF3F20046F08F /* AuthenticationServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AuthenticationServices.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk/System/Library/Frameworks/AuthenticationServices.framework; sourceTree = DEVELOPER_DIR; };
 		715B7AFF244701DC00754EDB /* TemplateIcon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "TemplateIcon@2x.png"; sourceTree = "<group>"; };
 		715B7B00244701DC00754EDB /* ___FILEBASENAME___Presenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "___FILEBASENAME___Presenter.swift"; sourceTree = "<group>"; };
 		715B7B01244701DC00754EDB /* ___FILEBASENAME___Worker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "___FILEBASENAME___Worker.swift"; sourceTree = "<group>"; };
@@ -376,6 +380,7 @@
 				719AE5B32462C49D00A39B0E /* FBSDKLoginKit.framework in Frameworks */,
 				719AE5B12462C49C00A39B0E /* FBSDKCoreKit.framework in Frameworks */,
 				7150CE78247FA9B100F2681B /* FormsSocialKit.framework in Frameworks */,
+				715435B424EFF4AB0046F08F /* FormsUtilsUI.framework in Frameworks */,
 				7150CE72247FA9B100F2681B /* FormsNetworking.framework in Frameworks */,
 				7135DFF5248E6E2200B5807F /* FormsLocation.framework in Frameworks */,
 				7150CE64247FA9B100F2681B /* FormsAnalytics.framework in Frameworks */,
@@ -757,6 +762,7 @@
 		71EA6E9E2449FC1B00ACB5EE /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				715435B024EFF3F20046F08F /* AuthenticationServices.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";

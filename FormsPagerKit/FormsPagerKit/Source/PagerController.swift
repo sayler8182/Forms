@@ -223,6 +223,16 @@ open class PagerController: FormsViewController {
 
 // MARK: TopBar
 public extension PagerController {
+    func updateTopBar(isHidden: Bool,
+                      animated: Bool = true,
+                      completion: ((Bool) -> Void)? = nil) {
+        if isHidden {
+            self.hideTopBar(animated: animated, completion: completion)
+        } else {
+            self.showTopBar(animated: animated, completion: completion)
+        }
+    }
+    
     func showTopBar(animated: Bool = true,
                     completion: ((Bool) -> Void)? = nil) {
         self.collectionView.performBatchUpdates({
@@ -260,6 +270,16 @@ public extension PagerController {
 
 // MARK: Page control
 public extension PagerController {
+    func updatePageControl(isHidden: Bool,
+                           animated: Bool = true,
+                           completion: ((Bool) -> Void)? = nil) {
+        if isHidden {
+            self.hidePageControl(animated: animated, completion: completion)
+        } else {
+            self.showPageControl(animated: animated, completion: completion)
+        }
+    }
+    
     func showPageControl(animated: Bool = true,
                          completion: ((Bool) -> Void)? = nil) {
         self.collectionView.performBatchUpdates({

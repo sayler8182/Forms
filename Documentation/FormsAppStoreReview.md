@@ -19,7 +19,7 @@ StoreKit.framework
 ```swift
 let appStoreReview = AppStoreReview(
     minLaunchCount: 3, // minimum launch count
-    minPeriod: 60 * 60 * 24, // after each 1 day
+    minPeriod: 60 * 60 * 24, // after 1 day
     minPeriodInterval: 60 * 60 * 24 * 30 // each 1 month
 )
 ```

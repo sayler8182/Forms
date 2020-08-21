@@ -37,15 +37,25 @@ open class TitleTextField: TextField {
         super.setupTextField()
         self.backgroundView.addSubview(self.textField, with: [
             Anchor.to(self.titleLabel).topToBottom.offset(2),
-            Anchor.to(self.backgroundView).leading.offset(self.paddingEdgeInset.leading),
+            Anchor.to(self.backgroundView).leading.offset(self.paddingEdgeInset.leading)
+        ])
+    }
+    
+    override open func setupActionContainerView() {
+        super.setupActionContainerView()
+        self.backgroundView.addSubview(self.actionContainerView, with: [
+            Anchor.to(self.titleLabel).topToBottom.offset(2),
+            Anchor.to(self.textField).leadingToTrailing.greaterThanOrEqual,
             Anchor.to(self.backgroundView).trailing.offset(self.paddingEdgeInset.trailing)
         ])
+        self.actionContainerView.setContentCompressionResistancePriority(.required, for: .horizontal)
     }
     
     override open func setupUnderscoreView() {
         super.setupUnderscoreView()
         self.backgroundView.addSubview(self.underscoreView, with: [
             Anchor.to(self.textField).topToBottom.offset(2),
+            Anchor.to(self.actionContainerView).topToBottom.offset(2),
             Anchor.to(self.backgroundView).leading.offset(self.paddingEdgeInset.leading),
             Anchor.to(self.backgroundView).trailing.offset(self.paddingEdgeInset.trailing),
             Anchor.to(self.underscoreView).height(1.0)
@@ -77,7 +87,7 @@ open class TitleTextField: TextField {
         self.titleLabel.constraint(to: self.backgroundView, position: .leading)?.constant = edgeInset.leading
         self.titleLabel.constraint(to: self.backgroundView, position: .trailing)?.constant = -edgeInset.trailing
         self.textField.constraint(to: self.backgroundView, position: .leading)?.constant = edgeInset.leading
-        self.textField.constraint(to: self.backgroundView, position: .trailing)?.constant = -edgeInset.trailing
+        self.actionContainerView.constraint(to: self.backgroundView, position: .trailing)?.constant = -edgeInset.trailing
         self.underscoreView.constraint(to: self.backgroundView, position: .leading)?.constant = edgeInset.leading
         self.underscoreView.constraint(to: self.backgroundView, position: .trailing)?.constant = -edgeInset.trailing
         self.errorLabel.constraint(to: self.backgroundView, position: .leading)?.constant = edgeInset.leading

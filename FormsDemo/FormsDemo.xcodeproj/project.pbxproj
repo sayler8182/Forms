@@ -63,6 +63,7 @@
 		7150CE81247FA9ED00F2681B /* FormsTransitions.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7150CE80247FA9ED00F2681B /* FormsTransitions.framework */; };
 		7150CE82247FA9ED00F2681B /* FormsTransitions.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 7150CE80247FA9ED00F2681B /* FormsTransitions.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		715260682446E93900119B0A /* DemoArchitecturesCleanRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 715260672446E93900119B0A /* DemoArchitecturesCleanRouter.swift */; };
+		715435A924EFA9D10046F08F /* DemoSelectorsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 715435A824EFA9D10046F08F /* DemoSelectorsViewController.swift */; };
 		715692B9243E58E700B4613C /* DemoShimmerPaginationTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 715692B8243E58E700B4613C /* DemoShimmerPaginationTableViewController.swift */; };
 		715891122446377D003200C7 /* DemoArchitecturesCleanViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 715891112446377D003200C7 /* DemoArchitecturesCleanViewController.swift */; };
 		71589114244639F2003200C7 /* DemoArchitecturesCleanAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71589113244639F2003200C7 /* DemoArchitecturesCleanAssembly.swift */; };
@@ -128,8 +129,6 @@
 		717802BD245449E30057E848 /* DemoDeveloperToolsLifetimeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 717802BC245449E30057E848 /* DemoDeveloperToolsLifetimeViewController.swift */; };
 		717F4ACE249B59E700635106 /* DemoDebouncerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 717F4ACD249B59E700635106 /* DemoDebouncerViewController.swift */; };
 		717F4AD0249B62A900635106 /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 717F4ACF249B62A900635106 /* Logger.swift */; };
-		717F4B36249B7CFC00635106 /* LocalAuthentication.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71643A9A24955D1300688E13 /* LocalAuthentication.framework */; };
-		717F4B37249B7CFD00635106 /* LocalAuthentication.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 71643A9A24955D1300688E13 /* LocalAuthentication.framework */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		718B43202490BAA9000DBC05 /* DemoSectionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 718B431F2490BAA9000DBC05 /* DemoSectionsViewController.swift */; };
 		718B43222490BAB3000DBC05 /* DemoSegmentsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 718B43212490BAB3000DBC05 /* DemoSegmentsViewController.swift */; };
 		71929C0724499DD400AB93F1 /* DemoSocialKitGoogleTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71929C0624499DD400AB93F1 /* DemoSocialKitGoogleTableViewController.swift */; };
@@ -191,7 +190,6 @@
 				7136A0112486624100298D3B /* FormsAppStoreReview.framework in Embed Frameworks */,
 				71FCB252247F969F00A84D30 /* FormsNetworking.framework in Embed Frameworks */,
 				71E4455424937B1E00AC38C1 /* FormsDevice.framework in Embed Frameworks */,
-				717F4B37249B7CFD00635106 /* LocalAuthentication.framework in Embed Frameworks */,
 				71643A7024955A4E00688E13 /* FirebaseAnalytics.framework in Embed Frameworks */,
 				71643A9F24955D1800688E13 /* GTMAppAuth.framework in Embed Frameworks */,
 				71369FB524865E6A00298D3B /* FormsImagePickerKit.framework in Embed Frameworks */,
@@ -278,6 +276,7 @@
 		7150CD89247FA05F00F2681B /* FormsDemo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = FormsDemo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7150CE80247FA9ED00F2681B /* FormsTransitions.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FormsTransitions.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		715260672446E93900119B0A /* DemoArchitecturesCleanRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoArchitecturesCleanRouter.swift; sourceTree = "<group>"; };
+		715435A824EFA9D10046F08F /* DemoSelectorsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoSelectorsViewController.swift; sourceTree = "<group>"; };
 		715692B8243E58E700B4613C /* DemoShimmerPaginationTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoShimmerPaginationTableViewController.swift; sourceTree = "<group>"; };
 		715891112446377D003200C7 /* DemoArchitecturesCleanViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoArchitecturesCleanViewController.swift; sourceTree = "<group>"; };
 		71589113244639F2003200C7 /* DemoArchitecturesCleanAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoArchitecturesCleanAssembly.swift; sourceTree = "<group>"; };
@@ -341,6 +340,7 @@
 		71C1F0012449E8B000FFC999 /* Forms.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Forms.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		71C9369D247E513500603A6F /* DemoPinViewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoPinViewViewController.swift; sourceTree = "<group>"; };
 		71D47B49249CD567001108C5 /* DemoGradientButtonViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoGradientButtonViewController.swift; sourceTree = "<group>"; };
+		71D49FE424AC736F0076E5A8 /* LocalAuthentication.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = LocalAuthentication.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.16.sdk/System/Library/Frameworks/LocalAuthentication.framework; sourceTree = DEVELOPER_DIR; };
 		71DB5C9424575B6300B16145 /* DemoTitleSearchBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoTitleSearchBarViewController.swift; sourceTree = "<group>"; };
 		71DB5CC62457647F00B16145 /* DemoAnalyticsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoAnalyticsViewController.swift; sourceTree = "<group>"; };
 		71DB66F52458333F00B16145 /* DemoImagePickerKitSystemViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoImagePickerKitSystemViewController.swift; sourceTree = "<group>"; };
@@ -374,7 +374,6 @@
 				7136A12A24867DE200298D3B /* FormsPagerKit.framework in Frameworks */,
 				71643A7724955A5300688E13 /* FirebaseInstanceID.framework in Frameworks */,
 				71643A69249559B600688E13 /* PromisesObjC.framework in Frameworks */,
-				717F4B36249B7CFC00635106 /* LocalAuthentication.framework in Frameworks */,
 				7136A0102486624100298D3B /* FormsAppStoreReview.framework in Frameworks */,
 				71FCB251247F969F00A84D30 /* FormsNetworking.framework in Frameworks */,
 				71643A6F24955A4E00688E13 /* FirebaseAnalytics.framework in Frameworks */,
@@ -525,6 +524,7 @@
 		713B9C63243D0947001F6E3A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				71D49FE424AC736F0076E5A8 /* LocalAuthentication.framework */,
 				71EA274824A9C8ED00985392 /* FormsNetworkingImage.framework */,
 				71643A9A24955D1300688E13 /* LocalAuthentication.framework */,
 				71E4465C24939C9000AC38C1 /* FormsNotifications.framework */,
@@ -563,6 +563,7 @@
 				7103EA13246022F900A11A96 /* Progresses */,
 				718B431E2490BA98000DBC05 /* Sections */,
 				718B431D2490BA88000DBC05 /* Segments */,
+				715435A724EFA9C40046F08F /* Selectors */,
 				71090BC82488CD8C00CDB25D /* Switches */,
 				714848D824485CB600455560 /* Utils */,
 			);
@@ -661,6 +662,14 @@
 				715B7AAD2446FA7900754EDB /* DemoArchitecturesCleanWorker.swift */,
 			);
 			path = DemoArchitecturesClean;
+			sourceTree = "<group>";
+		};
+		715435A724EFA9C40046F08F /* Selectors */ = {
+			isa = PBXGroup;
+			children = (
+				715435A824EFA9D10046F08F /* DemoSelectorsViewController.swift */,
+			);
+			path = Selectors;
 			sourceTree = "<group>";
 		};
 		715B7A922446F30100754EDB /* Summary */ = {
@@ -835,7 +844,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 1140;
-				LastUpgradeCheck = 1150;
+				LastUpgradeCheck = 1160;
 				ORGANIZATIONNAME = Limbo;
 				TargetAttributes = {
 					713B9BF2243D08E0001F6E3A = {
@@ -930,6 +939,7 @@
 				71643A26249557B900688E13 /* HomeShortcuts.swift in Sources */,
 				719F8C7B24570358004F5A27 /* DemoDeveloperToolsMenuViewController.swift in Sources */,
 				71BB61EF2445C6E7002BB31F /* DemoNetworkGetViewController.swift in Sources */,
+				715435A924EFA9D10046F08F /* DemoSelectorsViewController.swift in Sources */,
 				717F4ACE249B59E700635106 /* DemoDebouncerViewController.swift in Sources */,
 				715B7AE52446FD1500754EDB /* DemoArchitecturesCleanSummaryModels.swift in Sources */,
 				713B9C8A243D0964001F6E3A /* DemoViewController.swift in Sources */,

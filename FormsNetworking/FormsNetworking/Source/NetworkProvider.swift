@@ -23,6 +23,7 @@ public enum NetworkError: Error, CustomDebugStringConvertible, Equatable {
     case connectionFailure
     case emptyResponse
     case incorrectResponseFormat
+    case incorrectRequestFormat
     case errorStatusCode(Int)
     case unknown(String)
     
@@ -36,12 +37,14 @@ public enum NetworkError: Error, CustomDebugStringConvertible, Equatable {
         case .connectionFailure: return "Connection failure"
         case .emptyResponse: return "Empty response"
         case .incorrectResponseFormat: return "Incorrect response format"
+        case .incorrectRequestFormat: return "Incorrect request format"
         case .errorStatusCode(let code): return "Error with status code \(code)"
         case .unknown(let reason): return "Unknown \(reason)"
         }
     }
     
-    internal init(_ error: Error?) {
+    public init?(_ error: Error?) {
+        guard let error: Error = error else { return nil }
         switch error {
         case let error as NSError where error.code == NSURLErrorNotConnectedToInternet:
             self = .connectionFailure
@@ -64,6 +67,8 @@ public class NetworkTask {
         return self._isCancelled || self.task?.state == .canceling
     }
     
+    public init() { }
+    
     public func cancel() {
         self._isCancelled = true
         self.task?.cancel()
@@ -79,6 +84,7 @@ public class NetworkTask {
 public class NetworkRequest {
     public let url: URL
     
+    public var networkMethod: NetworkMethod?
     public var method: HTTPMethod?
     public var headers: [String: String]?
     public var body: Data?
@@ -100,6 +106,10 @@ public class NetworkRequest {
     }
 }
 public extension NetworkRequest {
+    func with(networkMethod: NetworkMethod) -> Self {
+        self.networkMethod = networkMethod
+        return self
+    }
     func with(method: HTTPMethod?) -> Self {
         self.method = method
         return self
@@ -153,6 +163,12 @@ public extension NetworkProviderProtocol {
         self.cache = cache
         return self
     }
+    
+    func isCached(request: NetworkRequest) -> Bool {
+        let request: URLRequest = request.build()
+        let hash: Any = request.hashValue
+        return (try? self.cache?.isCached(hash: hash)) ?? false
+    }
 }
 
 // MARK: NetworkProvider
@@ -203,17 +219,11 @@ open class NetworkProvider: NetworkProviderProtocol {
         }
     }
     
-    public func isCached(request: NetworkRequest) -> Bool {
-        let request: URLRequest = request.build()
-        let hash: Any = request.hashValue
-        return (try? self.cache?.isCached(hash: hash)) ?? false
-    }
-    
     @discardableResult
     private func call(request: NetworkRequest,
                       onProgress: NetworkOnProgress?,
                       onCompletion: @escaping NetworkOnCompletion) -> NetworkTask {
-        let session: NetworkSessionProtocol? = self.session ?? Injector.main.resolveOrDefault("FormsNetworking") ?? NetworkSession()
+        let session: NetworkSessionProtocol? = (self.session?.isEnabled == true ? self.session : nil) ?? Injector.main.resolveOrDefault("FormsNetworking") ?? NetworkSession()
         let logger: Logger? = self.logger ?? Injector.main.resolveOrDefault("FormsNetworking")
         let cache: NetworkCache? = self.cache ?? Injector.main.resolveOrDefault("FormsNetworking")
         let request: URLRequest = request.build()

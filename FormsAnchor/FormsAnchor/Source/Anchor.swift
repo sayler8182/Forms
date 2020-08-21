@@ -556,7 +556,7 @@ public extension UIView {
             constraint.isActive = anchor.isActive
             constraints.append(constraint)
         }
-    }
+    } 
     
     func linkedConstraints() -> [NSLayoutConstraint] {
         var constraints: [NSLayoutConstraint] = []

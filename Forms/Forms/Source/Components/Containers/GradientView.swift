@@ -17,6 +17,9 @@ open class GradientView: View {
     open var gradientColors: [UIColor?]? = nil {
         didSet { self.setNeedsDisplay() }
     }
+    open var style: UIColor.GradientStyle = .linearHorizontal {
+        didSet { self.setNeedsDisplay() }
+    }
     
     override open func setupView() {
         self.setupBackgroundView()
@@ -28,7 +31,7 @@ open class GradientView: View {
         
         guard let colors: [UIColor?] = self.gradientColors else { return }
         let frame: CGRect = self.bounds
-        self.backgroundView.backgroundColor = UIColor(style: .linear, frame: frame, colors: colors)
+        self.backgroundView.backgroundColor = UIColor(style: self.style, frame: frame, colors: colors)
     }
     
     open func setupBackgroundView() {
@@ -42,6 +45,10 @@ open class GradientView: View {
 public extension GradientView {
     func with(gradientColors: [UIColor?]?) -> Self {
         self.gradientColors = gradientColors
+        return self
+    }
+    func with(style: UIColor.GradientStyle) -> Self {
+        self.style = style
         return self
     }
 }

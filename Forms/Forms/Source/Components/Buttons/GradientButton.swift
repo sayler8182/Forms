@@ -13,6 +13,9 @@ open class GradientButton: Button {
     open var gradientColors: Button.State<[UIColor?]>? = nil {
         didSet { self.setNeedsDisplay() }
     }
+    open var style: UIColor.GradientStyle = .linearHorizontal {
+        didSet { self.setNeedsDisplay() }
+    }
     
     override open func draw(_ rect: CGRect) {
         super.draw(rect)
@@ -20,10 +23,10 @@ open class GradientButton: Button {
         guard let colors: Button.State<[UIColor?]> = self.gradientColors else { return }
         let frame: CGRect = self.backgroundView.bounds
         self.backgroundColors = Button.State<UIColor?>()
-            .with(active: UIColor(style: .linear, frame: frame, colors: colors.value(for: .active)))
-            .with(selected: UIColor(style: .linear, frame: frame, colors: colors.value(for: .selected)))
-            .with(disabled: UIColor(style: .linear, frame: frame, colors: colors.value(for: .disabled)))
-            .with(loading: UIColor(style: .linear, frame: frame, colors: colors.value(for: .loading)))
+            .with(active: UIColor(style: self.style, frame: frame, colors: colors.value(for: .active)))
+            .with(selected: UIColor(style: self.style, frame: frame, colors: colors.value(for: .selected)))
+            .with(disabled: UIColor(style: self.style, frame: frame, colors: colors.value(for: .disabled)))
+            .with(loading: UIColor(style: self.style, frame: frame, colors: colors.value(for: .loading)))
     } 
 }
 
@@ -35,6 +38,10 @@ public extension GradientButton {
     }
     func with(gradientColors: Button.State<[UIColor?]>?) -> Self {
         self.gradientColors = gradientColors
+        return self
+    }
+    func with(style: UIColor.GradientStyle) -> Self {
+        self.style = style
         return self
     }
 }

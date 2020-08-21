@@ -249,7 +249,7 @@ open class Switch: FormsComponent, FormsComponentWithGroup, FormsComponentWithMa
     }
 }
 
-// MARK: Switch
+// MARK: Builder
 public extension Switch {
     func with(animationTime: TimeInterval) -> Self {
         self.animationTime = animationTime

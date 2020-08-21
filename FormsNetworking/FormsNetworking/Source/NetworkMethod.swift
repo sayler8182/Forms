@@ -67,6 +67,7 @@ public extension NetworkMethod {
     }
     var request: NetworkRequest {
         return NetworkRequest(url: self.url)
+            .with(networkMethod: self)
             .with(method: self.method)
             .with(headers: self.content?.headers)
             .with(body: self.content?.body)
@@ -132,5 +133,6 @@ public extension NetworkMethodContent {
         guard let parameters = self.parameters else { return nil }
         return try? JSONSerialization.data(withJSONObject: parameters, options: [])
     }
+    var parameters: [String: Any]? { nil }
     var headers: [String: String]? { nil }
 }

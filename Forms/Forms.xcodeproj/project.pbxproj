@@ -105,6 +105,9 @@
 		7150CE8A247FAC2400F2681B /* FormsValidators.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 714EF1B8247F940100AE3044 /* FormsValidators.framework */; };
 		7150CE8B247FAC2700F2681B /* FormsLogger.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 714EF1AF247F940100AE3044 /* FormsLogger.framework */; };
 		7151A16B249A4A100066A166 /* Confetti.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71D837D42497F89C00B20FE0 /* Confetti.swift */; };
+		715435AB24EFA9FB0046F08F /* ComponentsSelectors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 715435AA24EFA9FB0046F08F /* ComponentsSelectors.swift */; };
+		715435AE24EFAADE0046F08F /* SelectorControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 715435AD24EFAADE0046F08F /* SelectorControl.swift */; };
+		715435AF24EFAADE0046F08F /* SelectorControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 715435AD24EFAADE0046F08F /* SelectorControl.swift */; };
 		7156F831246486F40078AA75 /* TextFieldFormatDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7156F830246486F40078AA75 /* TextFieldFormatDelegate.swift */; };
 		718B43182490B680000DBC05 /* SegmentControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 718B43172490B680000DBC05 /* SegmentControl.swift */; };
 		718B43192490B680000DBC05 /* SegmentControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 718B43172490B680000DBC05 /* SegmentControl.swift */; };
@@ -213,6 +216,8 @@
 		7150CD82247FA05F00F2681B /* Forms.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Forms.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7150CD83247FA05F00F2681B /* Forms-Universal-Framework.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = "Forms-Universal-Framework.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
 		7150CE83247FAB5A00F2681B /* FormsTransitions.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FormsTransitions.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		715435AA24EFA9FB0046F08F /* ComponentsSelectors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComponentsSelectors.swift; sourceTree = "<group>"; };
+		715435AD24EFAADE0046F08F /* SelectorControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectorControl.swift; sourceTree = "<group>"; };
 		7156F830246486F40078AA75 /* TextFieldFormatDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldFormatDelegate.swift; sourceTree = "<group>"; };
 		718B43172490B680000DBC05 /* SegmentControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SegmentControl.swift; sourceTree = "<group>"; };
 		718B431A2490B95A000DBC05 /* ComponentsSegments.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComponentsSegments.swift; sourceTree = "<group>"; };
@@ -365,6 +370,14 @@
 			path = Others;
 			sourceTree = "<group>";
 		};
+		715435AC24EFAAD10046F08F /* Selectors */ = {
+			isa = PBXGroup;
+			children = (
+				715435AD24EFAADE0046F08F /* SelectorControl.swift */,
+			);
+			path = Selectors;
+			sourceTree = "<group>";
+		};
 		718B43162490B662000DBC05 /* Segments */ = {
 			isa = PBXGroup;
 			children = (
@@ -450,6 +463,7 @@
 				7103EA1A2460266400A11A96 /* ComponentsProgresses.swift */,
 				71E0F5F3246C3C760051F043 /* ComponentsSections.swift */,
 				718B431A2490B95A000DBC05 /* ComponentsSegments.swift */,
+				715435AA24EFA9FB0046F08F /* ComponentsSelectors.swift */,
 				71090BC52488CD1400CDB25D /* ComponentsSwitches.swift */,
 				71946965243DA7BE00CAD09B /* ComponentsUtils.swift */,
 			);
@@ -483,6 +497,7 @@
 				7103EA162460233C00A11A96 /* Progresses */,
 				71E0F5F5246C3E040051F043 /* Sections */,
 				718B43162490B662000DBC05 /* Segments */,
+				715435AC24EFAAD10046F08F /* Selectors */,
 				71090BC12488CC2C00CDB25D /* Switches */,
 				71946977243DA7BE00CAD09B /* Utils */,
 			);
@@ -745,6 +760,7 @@
 				711070E82476BF610056BBB5 /* FormsSearchController.swift in Sources */,
 				711070E92476BF610056BBB5 /* SearchBar.swift in Sources */,
 				71090BC72488CD1400CDB25D /* ComponentsSwitches.swift in Sources */,
+				715435AF24EFAADE0046F08F /* SelectorControl.swift in Sources */,
 				711070EA2476BF610056BBB5 /* NavigationBar.swift in Sources */,
 				711070EB2476BF610056BBB5 /* TextView.swift in Sources */,
 				711070EC2476BF610056BBB5 /* ComponentsInputs.swift in Sources */,
@@ -807,6 +823,7 @@
 			files = (
 				719469DC243DDB7600CAD09B /* TableDataSource.swift in Sources */,
 				71946991243DA7BE00CAD09B /* ComponentsUtils.swift in Sources */,
+				715435AB24EFA9FB0046F08F /* ComponentsSelectors.swift in Sources */,
 				719469A2243DA7BE00CAD09B /* TextField.swift in Sources */,
 				718B431B2490B95A000DBC05 /* ComponentsSegments.swift in Sources */,
 				7103EA1B2460266400A11A96 /* ComponentsProgresses.swift in Sources */,
@@ -830,6 +847,7 @@
 				71D837D52497F89C00B20FE0 /* Confetti.swift in Sources */,
 				71207CEC24877E610004B840 /* Checkbox.swift in Sources */,
 				71946997243DA7BE00CAD09B /* Theme.swift in Sources */,
+				715435AE24EFAADE0046F08F /* SelectorControl.swift in Sources */,
 				71946996243DA7BE00CAD09B /* Loader.swift in Sources */,
 				718B43182490B680000DBC05 /* SegmentControl.swift in Sources */,
 				71946999243DA7BE00CAD09B /* Configuration.swift in Sources */,

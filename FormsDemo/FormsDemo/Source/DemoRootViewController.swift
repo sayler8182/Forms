@@ -68,6 +68,7 @@ private enum Demo {
         case componentsProgresses
         case componentsSections
         case componentsSegments
+        case componentsSelectors
         case componentsSwitches
         case componentsNavigationProgressBar
         case componentsProgressBars
@@ -202,6 +203,7 @@ private enum Demo {
                     ]),
                     Row(type: RowType.componentsSections, title: "Sections"),
                     Row(type: RowType.componentsSegments, title: "Segments"),
+                    Row(type: RowType.componentsSelectors, title: "Selectors"),
                     Row(type: RowType.componentsSwitches, title: "Switches"),
                     Row(type: RowType.componentsUtils, title: "Utils")
                 ]),
@@ -585,6 +587,7 @@ private class DemoListViewController: FormsViewController {
         case .componentsOthers:                                 return DemoOthersViewController()
         case .componentsSections:                               return DemoSectionsViewController()
         case .componentsSegments:                               return DemoSegmentsViewController()
+        case .componentsSelectors:                              return DemoSelectorsViewController()
         case .componentsSwitches:                               return DemoSwitchesViewController()
         case .componentsProgressBars:                           return DemoProgressBarViewController()
         case .componentsUtils:                                  return DemoUtilsViewController()

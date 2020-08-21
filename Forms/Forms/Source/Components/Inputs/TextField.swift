@@ -154,7 +154,7 @@ open class UITextFieldWithPlaceholder: UITextField, UnShimmerable {
     private func setupMask() {
         self.addSubview(self.maskLabel, with: [
             Anchor.to(self).top,
-            Anchor.to(self).horizontal,
+            Anchor.to(self).leading,
             Anchor.to(self).bottom.offset(1.0)
         ])
     }
@@ -199,6 +199,8 @@ open class TextField: FormsComponent, FormsComponentWithMarginEdgeInset, FormsCo
         .with(width: 320, height: 20)
     public let textField = UITextFieldWithPlaceholder()
         .with(width: 320, height: 44)
+    public let actionContainerView = UIView()
+        .with(width: 0, height: 44)
     public let underscoreView = UnShimmerableView()
         .with(width: 320, height: 1)
     public let errorLabel = UnShimmerableLabel()
@@ -207,6 +209,9 @@ open class TextField: FormsComponent, FormsComponentWithMarginEdgeInset, FormsCo
         .with(width: 320, height: 20)
     public let gestureRecognizer = UITapGestureRecognizer()
     
+    open var actionView: UIView? = nil {
+        didSet { self.updateActionView() }
+    }
     open var animationTime: TimeInterval = 0.2
     open var autocapitalizationType: UITextAutocapitalizationType {
         get { return self.textField.autocapitalizationType }
@@ -334,6 +339,7 @@ open class TextField: FormsComponent, FormsComponentWithMarginEdgeInset, FormsCo
         self.setupBackgroundView()
         self.setupTitleLabel()
         self.setupTextField()
+        self.setupActionContainerView()
         self.setupUnderscoreView()
         self.setupErrorLabel()
         self.setupInfoLabel()
@@ -437,6 +443,10 @@ open class TextField: FormsComponent, FormsComponentWithMarginEdgeInset, FormsCo
         // HOOK
     }
     
+    open func setupActionContainerView() {
+        // HOOK
+    }
+    
     open func setupUnderscoreView() {
         // HOOK
     }
@@ -449,6 +459,14 @@ open class TextField: FormsComponent, FormsComponentWithMarginEdgeInset, FormsCo
     open func setupInfoLabel() {
         self.infoLabel.numberOfLines = 0
         // HOOK
+    }
+    
+    open func updateActionView() {
+        self.actionContainerView.removeSubviews()
+        guard let actionView: UIView = self.actionView else { return }
+        self.actionContainerView.addSubview(actionView, with: [
+            Anchor.to(self.actionContainerView).fill
+        ])
     }
     
     open func updateError() {
@@ -538,6 +556,10 @@ extension TextField: Inputable {
 
 // MARK: Builder
 public extension TextField {
+    func with(actionView: UIView?) -> Self {
+        self.actionView = actionView
+        return self
+    }
     func with(animationTime: TimeInterval) -> Self {
         self.animationTime = animationTime
         return self

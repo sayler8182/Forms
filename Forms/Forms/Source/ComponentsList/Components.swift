@@ -20,6 +20,7 @@ public enum Components {
     public typealias progress = ComponentsProgresses
     public typealias section = ComponentsSections
     public typealias segment = ComponentsSegments
+    public typealias selector = ComponentsSelectors
     public typealias `switch` = ComponentsSwitches
     public typealias utils = ComponentsUtils
 }

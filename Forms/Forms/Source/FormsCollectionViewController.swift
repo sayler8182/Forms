@@ -518,9 +518,11 @@ open class CollectionFlowLayout: UICollectionViewFlowLayout {
         guard let collectionView = self.collectionView else { return }
         guard let delegate = collectionView.delegate as? CollectionDelegateFlowLayout else { return }
         guard self.cache.isEmpty else { return }
-        self.scrollDirection == .vertical
-            ? self.prepareVertical(collectionView: collectionView, delegate: delegate)
-            : self.prepareHorizontal(collectionView: collectionView, delegate: delegate)
+        switch self.scrollDirection {
+        case .vertical: self.prepareVertical(collectionView: collectionView, delegate: delegate)
+        case .horizontal: self.prepareHorizontal(collectionView: collectionView, delegate: delegate)
+        @unknown default: break
+        }
     }
     
     override public func invalidateLayout() {

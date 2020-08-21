@@ -50,6 +50,8 @@ public enum HTTPMethod: String {
 
 // MARK: NetworkSessionProtocol
 public protocol NetworkSessionProtocol {
+    var isEnabled: Bool { get set }
+    
     func call(request: URLRequest,
               logger: Logger?,
               cache: NetworkCache?,
@@ -74,11 +76,14 @@ public extension NetworkSessionProtocol {
 public class FileNetworkSession: NetworkSessionProtocol {
     private let filename: String?
     private let delay: Double
+    public var isEnabled: Bool
     
     public init(filename: String? = nil,
-                delay: Double = 0.5) {
+                delay: Double = 0.5,
+                isEnabled: Bool = true) {
         self.filename = filename
         self.delay = delay
+        self.isEnabled = isEnabled
     }
     
     public func call(request: URLRequest,
@@ -108,6 +113,7 @@ public class FileNetworkSession: NetworkSessionProtocol {
 public class NetworkSession: NetworkSessionProtocol {
     private var logger: Logger?
     private var cache: NetworkCache?
+    public var isEnabled: Bool = true
     
     public init(logger: Logger? = nil,
                 cache: NetworkCache? = nil) {
@@ -195,7 +201,7 @@ internal class SessionDelegate: NSObject, URLSessionDelegate, URLSessionDataDele
         self.onProgress?(self.size, self.totalSize, 1.0)
         guard error == nil,
             let response = task.response as? HTTPURLResponse else {
-                let networkError: NetworkError = .init(error)
+                let networkError: NetworkError = NetworkError(error) ?? NetworkError.incorrectResponseFormat
                 log(task, networkError, error, self.logger)
                 self.onCompletion(nil, networkError)
                 return

@@ -84,7 +84,8 @@ public extension UIColor {
     private static var gradientImageKey: UInt8 = 0
     
     enum GradientStyle {
-        case linear
+        case linearHorizontal
+        case linearVertical
         case radial
     }
     
@@ -109,7 +110,7 @@ public extension UIColor {
         let colors: [CGColor] = colors.map { $0.cgColor }
          
         switch style {
-        case .linear:
+        case .linearHorizontal:
             defer { UIGraphicsEndImageContext() }
             layer.colors = colors
             layer.startPoint = CGPoint(x: 0.0, y: 0.5)
@@ -122,6 +123,19 @@ public extension UIColor {
             self.init(patternImage: image)
             self.gradientImage = image
         
+        case .linearVertical:
+            defer { UIGraphicsEndImageContext() }
+            layer.colors = colors
+            layer.startPoint = CGPoint(x: 0.5, y: 0.0)
+            layer.endPoint = CGPoint(x: 0.5, y: 1.0)
+            UIGraphicsBeginImageContextWithOptions(layer.bounds.size, false, UIScreen.main.scale)
+            guard let context: CGContext = UIGraphicsGetCurrentContext() else { return nil }
+            layer.render(in: context)
+            guard let image: UIImage = UIGraphicsGetImageFromCurrentImageContext() else { return nil }
+            UIGraphicsEndImageContext()
+            self.init(patternImage: image)
+            self.gradientImage = image
+            
         case .radial:
             defer { UIGraphicsEndImageContext() }
             UIGraphicsBeginImageContextWithOptions(frame.size, false, UIScreen.main.scale)
