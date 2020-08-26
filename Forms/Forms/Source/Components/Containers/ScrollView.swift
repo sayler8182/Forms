@@ -1,5 +1,5 @@
 //
-//  ScrollContainer.swift
+//  ScrollView.swift
 //  Forms
 //
 //  Created by Konrad on 4/28/20.
@@ -12,7 +12,7 @@ import FormsUtilsUI
 import UIKit
 
 // MARK: ScrollDirection
-public extension ScrollContainer {
+public extension ScrollView {
     enum ScrollDirection {
         case horizontal
         case vertical
@@ -26,8 +26,8 @@ public extension ScrollContainer {
     }
 }
 
-// MARK: ScrollContainer
-open class ScrollContainer: FormsComponent, FormsComponentWithMarginEdgeInset, FormsComponentWithPaddingEdgeInset {
+// MARK: ScrollView
+open class ScrollView: FormsComponent, FormsComponentWithMarginEdgeInset, FormsComponentWithPaddingEdgeInset {
     public typealias OnDidScroll = ((_ scrollView: UIScrollView) -> Void)
     
     public let backgroundView = UIView()
@@ -144,7 +144,7 @@ open class ScrollContainer: FormsComponent, FormsComponentWithMarginEdgeInset, F
 }
 
 // MARK: UIScrollViewDelegate
-extension ScrollContainer: UIScrollViewDelegate {
+extension ScrollView: UIScrollViewDelegate {
     public func scrollViewDidScroll(_ scrollView: UIScrollView) {
         self.scrollSteps?.update(scrollView.contentOffset)
         self.onDidScroll?(scrollView)
@@ -152,7 +152,7 @@ extension ScrollContainer: UIScrollViewDelegate {
 }
 
 // MARK: Builder
-public extension ScrollContainer {
+public extension ScrollView {
     func with(bounces: Bool) -> Self {
         self.bounces = bounces
         return self

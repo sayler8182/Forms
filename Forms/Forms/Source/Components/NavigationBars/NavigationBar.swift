@@ -95,11 +95,10 @@ open class NavigationBar: FormsComponent {
     open var rightBarButtonItems: [BarItem] = [] {
         didSet { self.updateRightBarButtonItems() }
     }
-    private var _tintColor: UIColor? = nil
     override open var tintColor: UIColor? {
-        get { return self._tintColor }
+        get { return super.tintColor }
         set {
-            self._tintColor = newValue
+            super.tintColor = newValue
             self.navigationBar?.tintColor = newValue
         }
     }

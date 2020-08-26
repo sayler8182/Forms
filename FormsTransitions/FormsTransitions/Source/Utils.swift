@@ -6,6 +6,7 @@
 //  Copyright © 2020 Limbo. All rights reserved.
 //
 
+import FormsUtils
 import UIKit
 
 // MARK: UIView
@@ -13,8 +14,8 @@ public extension UIView {
     private static var viewKey: UInt8 = 0 
     
     var viewKey: String? {
-        get { return objc_getAssociatedObject(self, &Self.viewKey) as? String }
-        set { objc_setAssociatedObject(self, &Self.viewKey, newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC) }
+        get { return getObject(self, &Self.viewKey) }
+        set { setObject(self, &Self.viewKey, newValue) }
     }
     
     func with(viewKey: String) -> Self {

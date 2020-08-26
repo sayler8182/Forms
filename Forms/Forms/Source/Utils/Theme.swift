@@ -331,10 +331,10 @@ public extension ThemeColorsProtocol {
         return self.color(.primaryDark, or: UIColor(rgba: 0x000000FF))
     }
     var secondaryDark: UIColor {
-        return self.color(.secondaryDark, or: UIColor(rgba: 0x3C3C4399))
+        return self.color(.secondaryDark, or: UIColor(rgba: 0x3C3C43FF))
     }
     var tertiaryDark: UIColor {
-        return self.color(.tertiaryDark, or: UIColor(rgba: 0x3C3C434D))
+        return self.color(.tertiaryDark, or: UIColor(rgba: 0x5C5C63FF))
     }
     
     var primaryLight: UIColor {
@@ -344,7 +344,7 @@ public extension ThemeColorsProtocol {
         return self.color(.secondaryLight, or: UIColor(rgba: 0xF2F2F7FF))
     }
     var tertiaryLight: UIColor {
-        return self.color(.tertiaryLight, or: UIColor(rgba: 0xFFFFFFFF))
+        return self.color(.tertiaryLight, or: UIColor(rgba: 0xE2E2E2FF))
     }
 }
 

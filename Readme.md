@@ -35,6 +35,7 @@ Forms is all in one iOS framework
 
 ## Kits
 Kits extend Forms module
+- [x] [FormsCalendarKit](./Documentation/FormsCalendarKit.md) - Calendar
 - [x] [FormsCardKit](./Documentation/FormsCardKit.md) - Card
 - [x] [FormsImagePickerKit](./Documentation/FormsImagePickerKit.md) - Image Picker
 - [x] [FormsPagerKit](./Documentation/FormsPagerKit.md) - Pager
@@ -61,6 +62,8 @@ Forms.framework
 FormsAnalytics.framework
 FormsAnchor.framework
 FormsAppStoreReview.framework
+FormsCalendarKit.framework
+FormsCardKit.framework
 FormsDevice.framework
 FormsDeveloperTools.framework
 FormsHomeShortcuts.framework
@@ -181,4 +184,6 @@ If your project doesn't compile try
 - [x] Add LocalAuthentication.framework without Signing
 - [x] Add StoreKit.framework without Embedding
 - [x] Add Google frameworks without Embedding
-- [x] "error: Couldn't IRGen expression, no additional error"  this error may be related with FBSDK version (x6.5.2 is the latest stable version)
+- [x] "error: Couldn't IRGen expression, no additional error" this error may be related with FBSDK version (x6.5.2 is the latest stable version)
+- [x] Add Google frameworks without Embedding
+- [x] "could not build Objective-C module" this error may be related to "Defines module" option. (should be NO)

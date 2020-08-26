@@ -1,5 +1,5 @@
 //
-//  DemoScrollContainerViewController.swift
+//  DemoScrollViewViewController.swift
 //  FormsDemo
 //
 //  Created by Konrad on 4/28/20.
@@ -10,8 +10,8 @@ import Forms
 import FormsAnchor
 import UIKit
 
-// MARK: DemoScrollContainerViewController
-class DemoScrollContainerViewController: FormsViewController {
+// MARK: DemoScrollViewViewController
+class DemoScrollViewViewController: FormsViewController {
     private let horizontalScroll = Components.container.scroll()
         .with(paddingHorizontal: 8)
         .with(scrollDirection: .horizontal)

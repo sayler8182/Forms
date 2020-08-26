@@ -93,6 +93,10 @@ public extension UIView {
     
     func setCornerRadius(corners: UIRectCorner = .allCorners,
                          radius: CGFloat) {
+        guard radius != 0 else {
+            self.layer.mask = nil
+            return
+        }
         let path: UIBezierPath = UIBezierPath(
             roundedRect: self.bounds,
             byRoundingCorners: corners,
@@ -191,6 +195,18 @@ public extension UIView {
         animated
             ? action()
             : UIView.performWithoutAnimation(action)
+    }
+    
+    func layoutIfAnimated(animated: Bool) {
+        guard animated else { return }
+        self.layoutIfNeeded()
+    }
+    
+    func layoutWithoutAnimation() {
+        UIView.setAnimationsEnabled(false)
+        self.setNeedsLayout()
+        self.layoutIfNeeded()
+        UIView.setAnimationsEnabled(true)
     }
 }
 

@@ -134,8 +134,8 @@
 		71929C0724499DD400AB93F1 /* DemoSocialKitGoogleTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71929C0624499DD400AB93F1 /* DemoSocialKitGoogleTableViewController.swift */; };
 		7193E34E2451B5B7006238C5 /* DemoAppStoreReviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7193E34D2451B5B7006238C5 /* DemoAppStoreReviewViewController.swift */; };
 		7193E3502451D258006238C5 /* DemoStorageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7193E34F2451D258006238C5 /* DemoStorageViewController.swift */; };
-		7193E3582451E051006238C5 /* DemoPageContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7193E3572451E051006238C5 /* DemoPageContainerViewController.swift */; };
-		7193E3682451F3AF006238C5 /* DemoStackContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7193E3672451F3AF006238C5 /* DemoStackContainerViewController.swift */; };
+		7193E3582451E051006238C5 /* DemoPageViewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7193E3572451E051006238C5 /* DemoPageViewViewController.swift */; };
+		7193E3682451F3AF006238C5 /* DemoStackViewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7193E3672451F3AF006238C5 /* DemoStackViewViewController.swift */; };
 		719469C4243DB01D00CAD09B /* DemoShimmerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 719469C3243DB01D00CAD09B /* DemoShimmerViewController.swift */; };
 		719469D4243DBC6800CAD09B /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 719469D3243DBC6800CAD09B /* Utils.swift */; };
 		719469D6243DC11000CAD09B /* DemoShimmerTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 719469D5243DC11000CAD09B /* DemoShimmerTableViewController.swift */; };
@@ -143,6 +143,11 @@
 		719F8C7B24570358004F5A27 /* DemoDeveloperToolsMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 719F8C7A24570358004F5A27 /* DemoDeveloperToolsMenuViewController.swift */; };
 		71BB61EF2445C6E7002BB31F /* DemoNetworkGetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71BB61EE2445C6E7002BB31F /* DemoNetworkGetViewController.swift */; };
 		71BB62812445F7C7002BB31F /* DemoNetworkImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71BB62802445F7C7002BB31F /* DemoNetworkImageViewController.swift */; };
+		71BF8AA324F25DE500D01CB9 /* DemoCalendarKitMonthController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71BF8AA224F25DE500D01CB9 /* DemoCalendarKitMonthController.swift */; };
+		71BF8B1724F2675900D01CB9 /* FormsCalendarKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71BF8B1624F2675900D01CB9 /* FormsCalendarKit.framework */; };
+		71BF8B1824F2675900D01CB9 /* FormsCalendarKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 71BF8B1624F2675900D01CB9 /* FormsCalendarKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		71BF8B2624F271A300D01CB9 /* DemoCalendarKitWeekController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71BF8B2524F271A300D01CB9 /* DemoCalendarKitWeekController.swift */; };
+		71BF8B2824F2768B00D01CB9 /* LocalAuthentication.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71BF8B2724F2768B00D01CB9 /* LocalAuthentication.framework */; };
 		71C9369E247E513500603A6F /* DemoPinViewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71C9369D247E513500603A6F /* DemoPinViewViewController.swift */; };
 		71D47B4A249CD567001108C5 /* DemoGradientButtonViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71D47B49249CD567001108C5 /* DemoGradientButtonViewController.swift */; };
 		71DB5C9524575B6300B16145 /* DemoTitleSearchBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71DB5C9424575B6300B16145 /* DemoTitleSearchBarViewController.swift */; };
@@ -150,7 +155,9 @@
 		71DB66942458299B00B16145 /* Forms.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71C1F0012449E8B000FFC999 /* Forms.framework */; };
 		71DB66952458299B00B16145 /* Forms.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 71C1F0012449E8B000FFC999 /* Forms.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		71DB66F62458333F00B16145 /* DemoImagePickerKitSystemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71DB66F52458333F00B16145 /* DemoImagePickerKitSystemViewController.swift */; };
-		71DB670224584D6700B16145 /* DemoScrollContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71DB670124584D6700B16145 /* DemoScrollContainerViewController.swift */; };
+		71DB670224584D6700B16145 /* DemoScrollViewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71DB670124584D6700B16145 /* DemoScrollViewViewController.swift */; };
+		71DBEEBA24F3BA9C0057D97B /* DemoCalendarKitMonthWithWeekController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71DBEEB924F3BA9C0057D97B /* DemoCalendarKitMonthWithWeekController.swift */; };
+		71DBEEBE24F3C8C90057D97B /* DemoCalendarKitCalendarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71DBEEBD24F3C8C90057D97B /* DemoCalendarKitCalendarController.swift */; };
 		71E0F5D0246BF0890051F043 /* DemoScrollStepsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71E0F5CF246BF0890051F043 /* DemoScrollStepsViewController.swift */; };
 		71E0F5F9246C4CAB0051F043 /* DemoThemeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71E0F5F8246C4CAB0051F043 /* DemoThemeViewController.swift */; };
 		71E0F60F246D34320051F043 /* DemoTitleTextViewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71E0F60E246D34320051F043 /* DemoTitleTextViewViewController.swift */; };
@@ -161,6 +168,7 @@
 		71E4465E24939C9000AC38C1 /* FormsNotifications.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 71E4465C24939C9000AC38C1 /* FormsNotifications.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		71EA274924A9C8ED00985392 /* FormsNetworkingImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71EA274824A9C8ED00985392 /* FormsNetworkingImage.framework */; };
 		71EA274A24A9C8EE00985392 /* FormsNetworkingImage.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 71EA274824A9C8ED00985392 /* FormsNetworkingImage.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		71EAB38724F2ED0B00F1358B /* DemoGridViewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71EAB38624F2ED0B00F1358B /* DemoGridViewViewController.swift */; };
 		71F83AA9248A385900D6B579 /* DemoSVGViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71F83AA8248A385900D6B579 /* DemoSVGViewController.swift */; };
 		71FCB249247F969F00A84D30 /* FormsAnalytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71FCB240247F969F00A84D30 /* FormsAnalytics.framework */; };
 		71FCB24A247F969F00A84D30 /* FormsAnalytics.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 71FCB240247F969F00A84D30 /* FormsAnalytics.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -197,6 +205,7 @@
 				7135DF9B248E3E6F00B5807F /* FormsHomeShortcuts.framework in Embed Frameworks */,
 				71643A6A249559B600688E13 /* PromisesObjC.framework in Embed Frameworks */,
 				71643A8E24955BD500688E13 /* GoogleSignIn.framework in Embed Frameworks */,
+				71BF8B1824F2675900D01CB9 /* FormsCalendarKit.framework in Embed Frameworks */,
 				71643A7E24955A5800688E13 /* GoogleDataTransport.framework in Embed Frameworks */,
 				7135DFF9248E6E2C00B5807F /* FormsLocation.framework in Embed Frameworks */,
 				71643A8C24955B9F00688E13 /* AppAuth.framework in Embed Frameworks */,
@@ -316,7 +325,6 @@
 		71643A53249558F000688E13 /* nanopb.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = nanopb.framework; path = ../../../Dependencies/nanopb.framework; sourceTree = "<group>"; };
 		71643A54249558F000688E13 /* FirebaseMessaging.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FirebaseMessaging.framework; path = ../../../Dependencies/FirebaseMessaging.framework; sourceTree = "<group>"; };
 		71643A55249558F000688E13 /* GoogleUtilities.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GoogleUtilities.framework; path = ../../../Dependencies/GoogleUtilities.framework; sourceTree = "<group>"; };
-		71643A9A24955D1300688E13 /* LocalAuthentication.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = LocalAuthentication.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk/System/Library/Frameworks/LocalAuthentication.framework; sourceTree = DEVELOPER_DIR; };
 		71643AA424955D6500688E13 /* FormsSocialKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FormsSocialKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		71643AA724955D7300688E13 /* SocialKit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocialKit.swift; sourceTree = "<group>"; };
 		716AACF324A1E519009C114C /* DemoNetworkListImageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoNetworkListImageViewController.swift; sourceTree = "<group>"; };
@@ -328,8 +336,8 @@
 		71929C0624499DD400AB93F1 /* DemoSocialKitGoogleTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoSocialKitGoogleTableViewController.swift; sourceTree = "<group>"; };
 		7193E34D2451B5B7006238C5 /* DemoAppStoreReviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoAppStoreReviewViewController.swift; sourceTree = "<group>"; };
 		7193E34F2451D258006238C5 /* DemoStorageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoStorageViewController.swift; sourceTree = "<group>"; };
-		7193E3572451E051006238C5 /* DemoPageContainerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoPageContainerViewController.swift; sourceTree = "<group>"; };
-		7193E3672451F3AF006238C5 /* DemoStackContainerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoStackContainerViewController.swift; sourceTree = "<group>"; };
+		7193E3572451E051006238C5 /* DemoPageViewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoPageViewViewController.swift; sourceTree = "<group>"; };
+		7193E3672451F3AF006238C5 /* DemoStackViewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoStackViewViewController.swift; sourceTree = "<group>"; };
 		719469C3243DB01D00CAD09B /* DemoShimmerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoShimmerViewController.swift; sourceTree = "<group>"; };
 		719469D3243DBC6800CAD09B /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 		719469D5243DC11000CAD09B /* DemoShimmerTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoShimmerTableViewController.swift; sourceTree = "<group>"; };
@@ -337,14 +345,19 @@
 		719F8C7A24570358004F5A27 /* DemoDeveloperToolsMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoDeveloperToolsMenuViewController.swift; sourceTree = "<group>"; };
 		71BB61EE2445C6E7002BB31F /* DemoNetworkGetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoNetworkGetViewController.swift; sourceTree = "<group>"; };
 		71BB62802445F7C7002BB31F /* DemoNetworkImageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoNetworkImageViewController.swift; sourceTree = "<group>"; };
+		71BF8AA224F25DE500D01CB9 /* DemoCalendarKitMonthController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoCalendarKitMonthController.swift; sourceTree = "<group>"; };
+		71BF8B1624F2675900D01CB9 /* FormsCalendarKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FormsCalendarKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		71BF8B2524F271A300D01CB9 /* DemoCalendarKitWeekController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoCalendarKitWeekController.swift; sourceTree = "<group>"; };
+		71BF8B2724F2768B00D01CB9 /* LocalAuthentication.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = LocalAuthentication.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk/System/Library/Frameworks/LocalAuthentication.framework; sourceTree = DEVELOPER_DIR; };
 		71C1F0012449E8B000FFC999 /* Forms.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Forms.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		71C9369D247E513500603A6F /* DemoPinViewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoPinViewViewController.swift; sourceTree = "<group>"; };
 		71D47B49249CD567001108C5 /* DemoGradientButtonViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoGradientButtonViewController.swift; sourceTree = "<group>"; };
-		71D49FE424AC736F0076E5A8 /* LocalAuthentication.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = LocalAuthentication.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.16.sdk/System/Library/Frameworks/LocalAuthentication.framework; sourceTree = DEVELOPER_DIR; };
 		71DB5C9424575B6300B16145 /* DemoTitleSearchBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoTitleSearchBarViewController.swift; sourceTree = "<group>"; };
 		71DB5CC62457647F00B16145 /* DemoAnalyticsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoAnalyticsViewController.swift; sourceTree = "<group>"; };
 		71DB66F52458333F00B16145 /* DemoImagePickerKitSystemViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoImagePickerKitSystemViewController.swift; sourceTree = "<group>"; };
-		71DB670124584D6700B16145 /* DemoScrollContainerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoScrollContainerViewController.swift; sourceTree = "<group>"; };
+		71DB670124584D6700B16145 /* DemoScrollViewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoScrollViewViewController.swift; sourceTree = "<group>"; };
+		71DBEEB924F3BA9C0057D97B /* DemoCalendarKitMonthWithWeekController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoCalendarKitMonthWithWeekController.swift; sourceTree = "<group>"; };
+		71DBEEBD24F3C8C90057D97B /* DemoCalendarKitCalendarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoCalendarKitCalendarController.swift; sourceTree = "<group>"; };
 		71E0F5CF246BF0890051F043 /* DemoScrollStepsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoScrollStepsViewController.swift; sourceTree = "<group>"; };
 		71E0F5F8246C4CAB0051F043 /* DemoThemeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoThemeViewController.swift; sourceTree = "<group>"; };
 		71E0F60E246D34320051F043 /* DemoTitleTextViewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoTitleTextViewViewController.swift; sourceTree = "<group>"; };
@@ -352,6 +365,7 @@
 		71E4455724937B6C00AC38C1 /* DemoDeviceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoDeviceViewController.swift; sourceTree = "<group>"; };
 		71E4465C24939C9000AC38C1 /* FormsNotifications.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FormsNotifications.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		71EA274824A9C8ED00985392 /* FormsNetworkingImage.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FormsNetworkingImage.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		71EAB38624F2ED0B00F1358B /* DemoGridViewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoGridViewViewController.swift; sourceTree = "<group>"; };
 		71F83AA8248A385900D6B579 /* DemoSVGViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoSVGViewController.swift; sourceTree = "<group>"; };
 		71FCB240247F969F00A84D30 /* FormsAnalytics.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FormsAnalytics.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		71FCB241247F969F00A84D30 /* FormsDeveloperTools.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FormsDeveloperTools.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -381,8 +395,10 @@
 				71369FB424865E6A00298D3B /* FormsImagePickerKit.framework in Frameworks */,
 				71643A8324955A5B00688E13 /* nanopb.framework in Frameworks */,
 				71643A9E24955D1800688E13 /* GTMAppAuth.framework in Frameworks */,
+				71BF8B1724F2675900D01CB9 /* FormsCalendarKit.framework in Frameworks */,
 				71643A8B24955B9F00688E13 /* AppAuth.framework in Frameworks */,
 				71643A8D24955BD500688E13 /* GoogleSignIn.framework in Frameworks */,
+				71BF8B2824F2768B00D01CB9 /* LocalAuthentication.framework in Frameworks */,
 				7135DF9A248E3E6F00B5807F /* FormsHomeShortcuts.framework in Frameworks */,
 				71643A7124955A4F00688E13 /* FirebaseCore.framework in Frameworks */,
 				71643AA024955D1B00688E13 /* FBSDKLoginKit.framework in Frameworks */,
@@ -458,6 +474,7 @@
 		71369FBD24865F8D00298D3B /* Kits */ = {
 			isa = PBXGroup;
 			children = (
+				71BF8AA124F25DD600D01CB9 /* CalendarKit */,
 				71DB66F42458333400B16145 /* ImagePickerKit */,
 				7132964524487EC5006935C0 /* SocialKit */,
 				711AF55924615BDB00CE8666 /* DemoCardKitController.swift */,
@@ -524,9 +541,8 @@
 		713B9C63243D0947001F6E3A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				71D49FE424AC736F0076E5A8 /* LocalAuthentication.framework */,
-				71EA274824A9C8ED00985392 /* FormsNetworkingImage.framework */,
-				71643A9A24955D1300688E13 /* LocalAuthentication.framework */,
+				71BF8B2724F2768B00D01CB9 /* LocalAuthentication.framework */,
+				71BF8B1624F2675900D01CB9 /* FormsCalendarKit.framework */,
 				71E4465C24939C9000AC38C1 /* FormsNotifications.framework */,
 				71E4455224937B1E00AC38C1 /* FormsDevice.framework */,
 				7135DFF7248E6E2C00B5807F /* FormsLocation.framework */,
@@ -537,6 +553,7 @@
 				7136A12624867DDE00298D3B /* FormsTabBarKit.framework */,
 				7136A00F2486624100298D3B /* FormsAppStoreReview.framework */,
 				71369FB324865E6A00298D3B /* FormsImagePickerKit.framework */,
+				71EA274824A9C8ED00985392 /* FormsNetworkingImage.framework */,
 				71369FB024865C5E00298D3B /* FormsSideMenuKit.framework */,
 				71C1F0012449E8B000FFC999 /* Forms.framework */,
 				71FCB240247F969F00A84D30 /* FormsAnalytics.framework */,
@@ -729,9 +746,10 @@
 		7193E3542451DF61006238C5 /* Containers */ = {
 			isa = PBXGroup;
 			children = (
-				7193E3572451E051006238C5 /* DemoPageContainerViewController.swift */,
-				71DB670124584D6700B16145 /* DemoScrollContainerViewController.swift */,
-				7193E3672451F3AF006238C5 /* DemoStackContainerViewController.swift */,
+				71EAB38624F2ED0B00F1358B /* DemoGridViewViewController.swift */,
+				7193E3572451E051006238C5 /* DemoPageViewViewController.swift */,
+				71DB670124584D6700B16145 /* DemoScrollViewViewController.swift */,
+				7193E3672451F3AF006238C5 /* DemoStackViewViewController.swift */,
 			);
 			path = Containers;
 			sourceTree = "<group>";
@@ -755,6 +773,17 @@
 				7135DF61248E194100B5807F /* DemoNetworkUploadViewController.swift */,
 			);
 			path = Network;
+			sourceTree = "<group>";
+		};
+		71BF8AA124F25DD600D01CB9 /* CalendarKit */ = {
+			isa = PBXGroup;
+			children = (
+				71DBEEBD24F3C8C90057D97B /* DemoCalendarKitCalendarController.swift */,
+				71BF8AA224F25DE500D01CB9 /* DemoCalendarKitMonthController.swift */,
+				71DBEEB924F3BA9C0057D97B /* DemoCalendarKitMonthWithWeekController.swift */,
+				71BF8B2524F271A300D01CB9 /* DemoCalendarKitWeekController.swift */,
+			);
+			path = CalendarKit;
 			sourceTree = "<group>";
 		};
 		71D39CCE244455F1006BED33 /* Shimmer */ = {
@@ -887,13 +916,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				711072022498AD65000F6EB6 /* DemoImagePickerKitWDImagePickerViewController.swift in Sources */,
-				7193E3582451E051006238C5 /* DemoPageContainerViewController.swift in Sources */,
+				7193E3582451E051006238C5 /* DemoPageViewViewController.swift in Sources */,
 				715B7AE82446FD1500754EDB /* DemoArchitecturesCleanSummaryInteractor.swift in Sources */,
+				71DBEEBA24F3BA9C0057D97B /* DemoCalendarKitMonthWithWeekController.swift in Sources */,
 				71DB5C9524575B6300B16145 /* DemoTitleSearchBarViewController.swift in Sources */,
 				71929C0724499DD400AB93F1 /* DemoSocialKitGoogleTableViewController.swift in Sources */,
 				717802BD245449E30057E848 /* DemoDeveloperToolsLifetimeViewController.swift in Sources */,
 				716AACF424A1E519009C114C /* DemoNetworkListImageViewController.swift in Sources */,
 				714848DC24485CE500455560 /* DemoUtilsViewController.swift in Sources */,
+				71BF8AA324F25DE500D01CB9 /* DemoCalendarKitMonthController.swift in Sources */,
 				71643A222495576B00688E13 /* Analytics.swift in Sources */,
 				71589114244639F2003200C7 /* DemoArchitecturesCleanAssembly.swift in Sources */,
 				713B9C84243D0964001F6E3A /* DemoModalViewController.swift in Sources */,
@@ -915,11 +946,12 @@
 				715B7AE72446FD1500754EDB /* DemoArchitecturesCleanSummaryAssembly.swift in Sources */,
 				715B7AE62446FD1500754EDB /* DemoArchitecturesCleanSummaryViewController.swift in Sources */,
 				713B9C8C243D0964001F6E3A /* DemoTableViewController.swift in Sources */,
+				71EAB38724F2ED0B00F1358B /* DemoGridViewViewController.swift in Sources */,
 				7193E3502451D258006238C5 /* DemoStorageViewController.swift in Sources */,
 				713B9C7E243D0964001F6E3A /* DemoDefaultButtonViewController.swift in Sources */,
 				719469D6243DC11000CAD09B /* DemoShimmerTableViewController.swift in Sources */,
 				7132969B2448A609006935C0 /* DemoSocialKitAllTableViewController.swift in Sources */,
-				71DB670224584D6700B16145 /* DemoScrollContainerViewController.swift in Sources */,
+				71DB670224584D6700B16145 /* DemoScrollViewViewController.swift in Sources */,
 				7158911624463B18003200C7 /* DemoArchitecturesCleanInteractor.swift in Sources */,
 				710EAD82249D33A50090D751 /* DemoTransitionNavigationTableViewController.swift in Sources */,
 				7158911824463B86003200C7 /* DemoArchitecturesCleanModels.swift in Sources */,
@@ -943,6 +975,7 @@
 				717F4ACE249B59E700635106 /* DemoDebouncerViewController.swift in Sources */,
 				715B7AE52446FD1500754EDB /* DemoArchitecturesCleanSummaryModels.swift in Sources */,
 				713B9C8A243D0964001F6E3A /* DemoViewController.swift in Sources */,
+				71BF8B2624F271A300D01CB9 /* DemoCalendarKitWeekController.swift in Sources */,
 				7138D3AD245324E500CC7345 /* DemoShimmerCollectionViewController.swift in Sources */,
 				714848DA24485CCA00455560 /* DemoOthersViewController.swift in Sources */,
 				715260682446E93900119B0A /* DemoArchitecturesCleanRouter.swift in Sources */,
@@ -963,8 +996,9 @@
 				715B7B0C2447379200754EDB /* DemoTransitionNavigationViewController.swift in Sources */,
 				718B43202490BAA9000DBC05 /* DemoSectionsViewController.swift in Sources */,
 				7135DFFB248E6EA300B5807F /* DemoLocationViewController.swift in Sources */,
-				7193E3682451F3AF006238C5 /* DemoStackContainerViewController.swift in Sources */,
+				7193E3682451F3AF006238C5 /* DemoStackViewViewController.swift in Sources */,
 				71E0F5D0246BF0890051F043 /* DemoScrollStepsViewController.swift in Sources */,
+				71DBEEBE24F3C8C90057D97B /* DemoCalendarKitCalendarController.swift in Sources */,
 				715B7AAE2446FA7900754EDB /* DemoArchitecturesCleanWorker.swift in Sources */,
 				7138D3A92452C9E300CC7345 /* DemoCollectionViewController.swift in Sources */,
 				7193E34E2451B5B7006238C5 /* DemoAppStoreReviewViewController.swift in Sources */,

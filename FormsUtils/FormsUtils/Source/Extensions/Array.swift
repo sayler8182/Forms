@@ -36,7 +36,7 @@ public extension Collection {
     }
 }
 
-extension Collection where Element: Equatable {
+public extension Collection where Element: Equatable {
     var withoutDuplicates: [Element] {
         var result: [Element] = []
         for item in self {

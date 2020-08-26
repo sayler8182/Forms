@@ -14,48 +14,52 @@ public enum ComponentsInputs: ComponentsList {
     public enum pin {
         public static func `default`() -> PinView {
             let component = PinView()
-            component.itemSpacing = 6.0
-            component.itemWidth = 30.0
-            component.keyboardType = .numberPad
-            component.marginEdgeInset = UIEdgeInsets(
-                vertical: 8,
-                horizontal: 16)
-            component.numberOfChars = 4
-            component.textAlignment = .center
-            component.onSetTheme = Strong(component) { (component) in
-                component.backgroundColors = .init(Theme.Colors.primaryLight)
-                component.errorColor = Theme.Colors.red
-                component.errorFont = Theme.Fonts.regular(ofSize: 12)
-                component.infoColor = Theme.Colors.gray
-                component.infoFont = Theme.Fonts.regular(ofSize: 12)
-                component.placeholderColors = .init(Theme.Colors.primaryDark.with(alpha: 0.3))
-                component.placeholderFonts = .init(Theme.Fonts.regular(ofSize: 32))
-                component.textColors = PinView.State<UIColor?>(Theme.Colors.primaryDark)
-                    .with(error: Theme.Colors.red)
-                component.textFonts = .init(Theme.Fonts.regular(ofSize: 32))
-                component.titleColors = PinView.State<UIColor?>(Theme.Colors.primaryDark)
-                    .with(error: Theme.Colors.red)
-                component.titleFonts = .init(Theme.Fonts.regular(ofSize: 12))
-                component.underscoreColors = PinView.State<UIColor?>(Theme.Colors.gray)
-                    .with(selected: Theme.Colors.primaryDark)
-                    .with(error: Theme.Colors.red)
+            component.batchUpdate {
+                component.itemSpacing = 6.0
+                component.itemWidth = 30.0
+                component.keyboardType = .numberPad
+                component.marginEdgeInset = UIEdgeInsets(
+                    vertical: 8,
+                    horizontal: 16)
+                component.numberOfChars = 4
+                component.textAlignment = .center
+                component.onSetTheme = Strong(component) { (component) in
+                    component.backgroundColors = .init(Theme.Colors.primaryLight)
+                    component.errorColor = Theme.Colors.red
+                    component.errorFont = Theme.Fonts.regular(ofSize: 12)
+                    component.infoColor = Theme.Colors.gray
+                    component.infoFont = Theme.Fonts.regular(ofSize: 12)
+                    component.placeholderColors = .init(Theme.Colors.primaryDark.with(alpha: 0.3))
+                    component.placeholderFonts = .init(Theme.Fonts.regular(ofSize: 32))
+                    component.textColors = PinView.State<UIColor?>(Theme.Colors.primaryDark)
+                        .with(error: Theme.Colors.red)
+                    component.textFonts = .init(Theme.Fonts.regular(ofSize: 32))
+                    component.titleColors = PinView.State<UIColor?>(Theme.Colors.primaryDark)
+                        .with(error: Theme.Colors.red)
+                    component.titleFonts = .init(Theme.Fonts.regular(ofSize: 12))
+                    component.underscoreColors = PinView.State<UIColor?>(Theme.Colors.gray)
+                        .with(selected: Theme.Colors.primaryDark)
+                        .with(error: Theme.Colors.red)
+                }
             }
             return component
         }
     }
-        
+    
     public enum searchBar {
         public static func `default`() -> SearchBar {
             let component = SearchBar()
                 .with(width: 320, height: 64)
-            component.marginEdgeInset = UIEdgeInsets(
-                vertical: 8,
-                horizontal: 16)
-            component.textFieldDelegate = TextFieldDelegates.default()
-            component.onSetTheme = Strong(component) { (component) in
-                component.backgroundColors = .init(Theme.Colors.primaryLight)
-                component.textColors = .init(Theme.Colors.primaryDark)
-                component.textFonts = .init(Theme.Fonts.regular(ofSize: 16))
+            component.batchUpdate {
+                component.marginEdgeInset = UIEdgeInsets(
+                    vertical: 8,
+                    horizontal: 16)
+                component.textFieldDelegate = TextFieldDelegates.default()
+                component.onSetTheme = Strong(component) { (component) in
+                    component.backgroundColors = .init(Theme.Colors.primaryLight)
+                    component.textColors = .init(Theme.Colors.primaryDark)
+                    component.textFonts = .init(Theme.Fonts.regular(ofSize: 16))
+                }
             }
             return component
         }
@@ -139,29 +143,31 @@ public enum ComponentsInputs: ComponentsList {
         
         public static func `default`() -> TitleTextField {
             let component = TitleTextField()
-            component.marginEdgeInset = UIEdgeInsets(
-                vertical: 8,
-                horizontal: 16)
-            component.textFieldDelegate = TextFieldDelegates.default()
-            component.onSetTheme = Strong(component) { (component) in
-                component.backgroundColors = .init(Theme.Colors.primaryLight)
-                component.errorColor = Theme.Colors.red
-                component.errorFont = Theme.Fonts.regular(ofSize: 12)
-                component.infoColor = Theme.Colors.gray
-                component.infoFont = Theme.Fonts.regular(ofSize: 12)
-                component.maskColors = .init(Theme.Colors.primaryDark.with(alpha: 0.3))
-                component.maskFonts = .init(Theme.Fonts.regular(ofSize: 16))
-                component.placeholderColors = .init(Theme.Colors.primaryDark.with(alpha: 0.3))
-                component.placeholderFonts = .init(Theme.Fonts.regular(ofSize: 16))
-                component.textColors = TextField.State<UIColor?>(Theme.Colors.primaryDark)
-                    .with(error: Theme.Colors.red)
-                component.textFonts = .init(Theme.Fonts.regular(ofSize: 16))
-                component.titleColors = TextField.State<UIColor?>(Theme.Colors.primaryDark)
-                    .with(error: Theme.Colors.red)
-                component.titleFonts = .init(Theme.Fonts.regular(ofSize: 12))
-                component.underscoreColors = TextField.State<UIColor?>(Theme.Colors.gray)
-                    .with(selected: Theme.Colors.primaryDark)
-                    .with(error: Theme.Colors.red)
+            component.batchUpdate {
+                component.marginEdgeInset = UIEdgeInsets(
+                    vertical: 8,
+                    horizontal: 16)
+                component.textFieldDelegate = TextFieldDelegates.default()
+                component.onSetTheme = Strong(component) { (component) in
+                    component.backgroundColors = .init(Theme.Colors.primaryLight)
+                    component.errorColor = Theme.Colors.red
+                    component.errorFont = Theme.Fonts.regular(ofSize: 12)
+                    component.infoColor = Theme.Colors.gray
+                    component.infoFont = Theme.Fonts.regular(ofSize: 12)
+                    component.maskColors = .init(Theme.Colors.primaryDark.with(alpha: 0.3))
+                    component.maskFonts = .init(Theme.Fonts.regular(ofSize: 16))
+                    component.placeholderColors = .init(Theme.Colors.primaryDark.with(alpha: 0.3))
+                    component.placeholderFonts = .init(Theme.Fonts.regular(ofSize: 16))
+                    component.textColors = TextField.State<UIColor?>(Theme.Colors.primaryDark)
+                        .with(error: Theme.Colors.red)
+                    component.textFonts = .init(Theme.Fonts.regular(ofSize: 16))
+                    component.titleColors = TextField.State<UIColor?>(Theme.Colors.primaryDark)
+                        .with(error: Theme.Colors.red)
+                    component.titleFonts = .init(Theme.Fonts.regular(ofSize: 12))
+                    component.underscoreColors = TextField.State<UIColor?>(Theme.Colors.gray)
+                        .with(selected: Theme.Colors.primaryDark)
+                        .with(error: Theme.Colors.red)
+                }
             }
             return component
         }
@@ -169,26 +175,28 @@ public enum ComponentsInputs: ComponentsList {
     public enum textView {
         public static func `default`() -> TitleTextView {
             let component = TitleTextView()
-            component.marginEdgeInset = UIEdgeInsets(
-                vertical: 8,
-                horizontal: 16)
-            component.onSetTheme = Strong(component) { (component) in
-                component.backgroundColors = .init(Theme.Colors.primaryLight)
-                component.errorColor = Theme.Colors.red
-                component.errorFont = Theme.Fonts.regular(ofSize: 12)
-                component.infoColor = Theme.Colors.gray
-                component.infoFont = Theme.Fonts.regular(ofSize: 12)
-                component.placeholderColors = .init(Theme.Colors.primaryDark.with(alpha: 0.3))
-                component.placeholderFonts = .init(Theme.Fonts.regular(ofSize: 16))
-                component.textColors = TextView.State<UIColor?>(Theme.Colors.primaryDark)
-                    .with(error: Theme.Colors.red)
-                component.textFonts = .init(Theme.Fonts.regular(ofSize: 16))
-                component.titleColors = TextView.State<UIColor?>(Theme.Colors.primaryDark)
-                    .with(error: Theme.Colors.red)
-                component.titleFonts = .init(Theme.Fonts.regular(ofSize: 12))
-                component.underscoreColors = TextView.State<UIColor?>(Theme.Colors.gray)
-                    .with(selected: Theme.Colors.primaryDark)
-                    .with(error: Theme.Colors.red)
+            component.batchUpdate {
+                component.marginEdgeInset = UIEdgeInsets(
+                    vertical: 8,
+                    horizontal: 16)
+                component.onSetTheme = Strong(component) { (component) in
+                    component.backgroundColors = .init(Theme.Colors.primaryLight)
+                    component.errorColor = Theme.Colors.red
+                    component.errorFont = Theme.Fonts.regular(ofSize: 12)
+                    component.infoColor = Theme.Colors.gray
+                    component.infoFont = Theme.Fonts.regular(ofSize: 12)
+                    component.placeholderColors = .init(Theme.Colors.primaryDark.with(alpha: 0.3))
+                    component.placeholderFonts = .init(Theme.Fonts.regular(ofSize: 16))
+                    component.textColors = TextView.State<UIColor?>(Theme.Colors.primaryDark)
+                        .with(error: Theme.Colors.red)
+                    component.textFonts = .init(Theme.Fonts.regular(ofSize: 16))
+                    component.titleColors = TextView.State<UIColor?>(Theme.Colors.primaryDark)
+                        .with(error: Theme.Colors.red)
+                    component.titleFonts = .init(Theme.Fonts.regular(ofSize: 12))
+                    component.underscoreColors = TextView.State<UIColor?>(Theme.Colors.gray)
+                        .with(selected: Theme.Colors.primaryDark)
+                        .with(error: Theme.Colors.red)
+                }
             }
             return component
         }

@@ -13,6 +13,7 @@ import FormsNetworking
 ```
 FormsInjector.framework
 FormsLogger.framework
+FormsUtils.framework
 ```
 
 ## Usage

@@ -216,7 +216,8 @@ open class Button: FormsComponent, Clickable, FormsComponentWithLoading, FormsCo
         }
     }
     
-    public func updateState() {
+    override public func updateState() {
+        guard !self.isBatchUpdateInProgress else { return }
         self.setState(self.state, animated: false, force: true)
     }
     

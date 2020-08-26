@@ -372,6 +372,7 @@ extension PagerController: UIScrollViewDelegate {
 // MARK: PagerFlowLayout
 private class PagerFlowLayout: UICollectionViewFlowLayout {
     override func shouldInvalidateLayout(forBoundsChange newBounds: CGRect) -> Bool {
+        guard self.collectionView?.bounds.size != newBounds.size else { return false }
         return true
     }
     

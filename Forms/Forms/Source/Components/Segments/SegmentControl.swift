@@ -162,7 +162,8 @@ open class SegmentControl: FormsComponent, FormsComponentWithMarginEdgeInset, Fo
         }
     }
     
-    public func updateState() {
+    override public func updateState() {
+        guard !self.isBatchUpdateInProgress else { return }
         self.updateSegmentState()
         self.setState(self.state, animated: false, force: true)
     }

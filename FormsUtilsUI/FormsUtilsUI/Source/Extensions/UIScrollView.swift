@@ -6,10 +6,17 @@
 //  Copyright © 2020 Limbo. All rights reserved.
 //
 
+import FormsUtils
 import UIKit
 
 // MARK: UIScrollView
 public extension UIScrollView {
+    private static var targetContentOffsetKey: UInt8 = 0
+    var targetContentOffset: CGPoint! {
+        get { return getObject(self, &Self.targetContentOffsetKey) ?? self.contentOffset }
+        set { setObject(self, &Self.targetContentOffsetKey, newValue) }
+    }
+    
     @discardableResult
     func shouldLoadNext(offset: CGFloat = 0) -> Bool {
         let contentHeight: CGFloat = self.contentSize.height

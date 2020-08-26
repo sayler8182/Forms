@@ -51,6 +51,7 @@ private enum Demo {
         case componentsButtonsGradientButton
         case componentsCheckboxes
         case componentsContainers
+        case componentsContainersGrid
         case componentsContainersPage
         case componentsContainersScroll
         case componentsContainersStack
@@ -111,6 +112,11 @@ private enum Demo {
         case frameworkTransitionsNavigationTable
         case frameworkValidators
         // Kits
+        case kitCalendarKit
+        case kitCalendarKitCalendar
+        case kitCalendarKitMonth
+        case kitCalendarKitMonthWithWeek
+        case kitCalendarKitWeek
         case kitCardKit
         case kitImagePickerKit
         case kitImagePickerKitSystem
@@ -164,9 +170,10 @@ private enum Demo {
                         title: "Containers",
                         sections: [
                             Section(rows: [
-                                Row(type: RowType.componentsContainersPage, title: "PageContainer"),
-                                Row(type: RowType.componentsContainersScroll, title: "ScrollContainer"),
-                                Row(type: RowType.componentsContainersStack, title: "StackContainer")
+                                Row(type: RowType.componentsContainersGrid, title: "GridView"),
+                                Row(type: RowType.componentsContainersPage, title: "PageView"),
+                                Row(type: RowType.componentsContainersScroll, title: "ScrollView"),
+                                Row(type: RowType.componentsContainersStack, title: "StackView")
                             ])
                     ]),
                     Row(
@@ -270,6 +277,17 @@ private enum Demo {
                     Row(type: RowType.frameworkValidators, title: "Validators")
                 ]),
                 Section(title: "Kits", rows: [
+                    Row(
+                        type: RowType.kitCalendarKit,
+                        title: "CalendarKit",
+                        sections: [
+                            Section(rows: [
+                                Row(type: RowType.kitCalendarKitCalendar, title: "Calendar"),
+                                Row(type: RowType.kitCalendarKitMonth, title: "Month"),
+                                Row(type: RowType.kitCalendarKitMonthWithWeek, title: "MonthWithWeek"),
+                                Row(type: RowType.kitCalendarKitWeek, title: "Week")
+                            ])
+                    ]),
                     Row(type: RowType.kitCardKit, title: "CardKit"),
                     Row(
                         type: RowType.kitImagePickerKit,
@@ -572,9 +590,10 @@ private class DemoListViewController: FormsViewController {
         case .componentsButtonsDefaultButton:                   return DemoDefaultButtonViewController()
         case .componentsButtonsGradientButton:                  return DemoGradientButtonViewController()
         case .componentsCheckboxes:                             return DemoCheckboxesViewController()
-        case .componentsContainersPage:                         return DemoPageContainerViewController()
-        case .componentsContainersScroll:                       return DemoScrollContainerViewController()
-        case .componentsContainersStack:                        return DemoStackContainerViewController()
+        case .componentsContainersGrid:                         return DemoGridViewViewController()
+        case .componentsContainersPage:                         return DemoPageViewViewController()
+        case .componentsContainersScroll:                       return DemoScrollViewViewController()
+        case .componentsContainersStack:                        return DemoStackViewViewController()
         case .componentsInputsPinView:                          return DemoPinViewViewController()
         case .componentsInputsSearchBar:                        return DemoSearchBarViewController()
         case .componentsInputsTitleTextField:                   return DemoTitleTextFieldViewController()
@@ -624,6 +643,10 @@ private class DemoListViewController: FormsViewController {
         case .frameworkTransitionsNavigationTable:              return DemoTransitionNavigationTableViewController()
         case .frameworkValidators:                              return DemoValidatorsViewController()
         // kits
+        case .kitCalendarKitCalendar:                           return DemoCalendarKitCalendarController()
+        case .kitCalendarKitMonth:                              return DemoCalendarKitMonthController()
+        case .kitCalendarKitMonthWithWeek:                      return DemoCalendarKitMonthWithWeekController()
+        case .kitCalendarKitWeek:                               return DemoCalendarKitWeekController()
         case .kitCardKit:                                       return DemoCardKitController()
         case .kitImagePickerKitSystem:                          return DemoImagePickerKitSystemViewController()
         case .kitImagePickerKitWDImagePicker:                   return DemoImagePickerKitWDImagePickerViewController()

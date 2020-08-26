@@ -12,12 +12,14 @@ import UIKit
 public enum ComponentsLabels: ComponentsList {
     public static func `default`() -> Label {
         let component = Label()
-        component.minHeight = 0.0
-        component.maxHeight = CGFloat.greatestConstraintConstant
-        component.onSetTheme = Strong(component) { (component) in
-            component.backgroundColor = Theme.Colors.clear
-            component.color = Theme.Colors.primaryDark
-            component.font = Theme.Fonts.regular(ofSize: 14)
+        component.batchUpdate {
+            component.minHeight = 0.0
+            component.maxHeight = CGFloat.greatestConstraintConstant
+            component.onSetTheme = Strong(component) { (component) in
+                component.backgroundColor = Theme.Colors.clear
+                component.color = Theme.Colors.primaryDark
+                component.font = Theme.Fonts.regular(ofSize: 14)
+            }
         }
         return component
     }

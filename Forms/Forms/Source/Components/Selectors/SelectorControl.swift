@@ -32,14 +32,7 @@ public extension SelectorControl {
             case .horizontal: return .horizontal
             case .vertical: return .vertical
             }
-        }
-        
-        var centeredScrollPosition: UICollectionView.ScrollPosition {
-            switch self {
-            case .horizontal: return .centeredHorizontally
-            case .vertical: return .centeredVertically
-            }
-        }
+        } 
     }
 }
 
@@ -130,13 +123,13 @@ open class SelectorControl: FormsComponent, FormsComponentWithMarginEdgeInset, F
     open var textFonts: State<UIFont> = State<UIFont>(Theme.Fonts.regular(ofSize: 12)) {
         didSet { self.updateState() }
     }
-    open var tintColors: State<UIColor?> = State<UIColor?>(Theme.Colors.primaryLight) {
+    open var tintColors: State<UIColor?> = State<UIColor?>(Theme.Colors.primaryDark) {
         didSet { self.updateState() }
     }
     
-    public var onValuePrev: ((SelectorItem?) -> Void)? = nil
-    public var onValueChanged: ((SelectorItem?) -> Void)? = nil
-    public var onValueNext: ((SelectorItem?) -> Void)? = nil
+    public var onValuePrev: ((SelectorItem) -> Void)? = nil
+    public var onValueChanged: ((SelectorItem) -> Void)? = nil
+    public var onValueNext: ((SelectorItem) -> Void)? = nil
     
     private (set) var state: FormsComponentStateType = .active
     
@@ -154,7 +147,7 @@ open class SelectorControl: FormsComponent, FormsComponentWithMarginEdgeInset, F
     
     override open func layoutSubviews() {
         super.layoutSubviews()
-        self.scrollTo(item: self._selected, animated: false)
+        self.scrollTo(item: self._selected, animated: false, notify: false)
     }
     
     override open func setupView() {
@@ -179,7 +172,7 @@ open class SelectorControl: FormsComponent, FormsComponentWithMarginEdgeInset, F
     }
     
     @objc
-    private func handleOnArrowGesture(_ recognizer: UIGestureRecognizer) {
+    private func handleOnArrowGesture(recognizer: UIGestureRecognizer) {
         guard let imageView: UIImageView = recognizer.view as? UIImageView else { return }
         switch recognizer.state {
         case .began:
@@ -232,6 +225,7 @@ open class SelectorControl: FormsComponent, FormsComponentWithMarginEdgeInset, F
         self.collectionView.clipsToBounds = true
         self.collectionView.delegate = self
         self.collectionView.dataSource = self
+        self.collectionView.scrollsToTop = false
         self.collectionView.showsHorizontalScrollIndicator = false
         self.collectionView.showsVerticalScrollIndicator = false
         self.collectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: self.defaultCellIdentifier)
@@ -393,10 +387,10 @@ open class SelectorControl: FormsComponent, FormsComponentWithMarginEdgeInset, F
     
     open func updateArrowTintColor() {
         self.arrowLeadingImageView.tintColor = self.canGoPrev
-            ? self.tintColors.value(for: state)
+            ? self.tintColors.value(for: .active)
             : self.tintColors.value(for: .disabled)
         self.arrowTrailingImageView.tintColor = self.canGoNext
-            ? self.tintColors.value(for: state)
+            ? self.tintColors.value(for: .active)
             : self.tintColors.value(for: .disabled)
     }
     
@@ -410,7 +404,8 @@ open class SelectorControl: FormsComponent, FormsComponentWithMarginEdgeInset, F
         }
     }
     
-    public func updateState() {
+    override public func updateState() {
+        guard !self.isBatchUpdateInProgress else { return }
         self.setState(self.state, animated: false, force: true)
     }
     
@@ -442,7 +437,8 @@ open class SelectorControl: FormsComponent, FormsComponentWithMarginEdgeInset, F
 
 // MARK: Scroll
 public extension SelectorControl {
-    func scrollToPrev(animated: Bool, notify: Bool = true) {
+    func scrollToPrev(animated: Bool,
+                      notify: Bool = true) {
         guard let selected: SelectorItem = self._selected ?? self.items.first else { return }
         guard let index = self.items.firstIndex(where: { $0.rawValue == selected.rawValue }) else { return }
         let prevIndex = index.advanced(by: -1)
@@ -454,7 +450,8 @@ public extension SelectorControl {
         }
     }
     
-    func scrollToNext(animated: Bool, notify: Bool = true) {
+    func scrollToNext(animated: Bool,
+                      notify: Bool = true) {
         guard let selected: SelectorItem = self._selected ?? self.items.first else { return }
         guard let index = self.items.firstIndex(where: { $0.rawValue == selected.rawValue }) else { return }
         let nextIndex = index.advanced(by: 1)
@@ -466,18 +463,20 @@ public extension SelectorControl {
         }
     }
     
-    func scrollTo(item: SelectorItem?, animated: Bool, notify: Bool = true) {
-        guard let index = self.items.firstIndex(where: { $0.rawValue == item?.rawValue }) else { return }
-        let indexPath: IndexPath = IndexPath(item: index, section: 0)
+    func scrollTo(item: SelectorItem?,
+                  animated: Bool,
+                  notify: Bool = true) {
+        guard let item: SelectorItem = item else { return }
         self._selected = item
         self.updateArrowTintColor()
-        self.reloadData()
+        self.reloadVisibleCells()
         self.selectorUpdatesQueue.async {
-            self.collectionView.layoutIfNeeded()
-            self.collectionView.scrollToItem(at: indexPath, at: self.direction.centeredScrollPosition, animated: animated)
+            guard let offset: CGPoint = self.offsetForItem(item) else { return }
+            guard self.collectionView.contentOffset != offset else { return }
+            self.collectionView.setContentOffset(offset, animated: animated)
         }
         if notify {
-            self.onValueChanged?(self.selected)
+            self.onValueChanged?(item)
         }
     }
 }
@@ -500,21 +499,18 @@ extension SelectorControl: UICollectionViewDelegate, UICollectionViewDataSource 
         guard let contentView: UIView = cell.subviews.first else { return }
         let item: SelectorItem = self.items[indexPath.row]
         let state: FormsComponentStateType = self.stateForItem(item)
-        let label: UILabel = UILabel()
+        let label: UILabel = (contentView.subviews[safe: 0] as? UILabel) ?? UILabel()
+        label.tag = indexPath.row
         label.text = self.items[indexPath.row].title
         label.textColor = self.textColors.value(for: state)
         label.textAlignment = .center
         label.font = self.textFonts.value(for: state)
+        guard label.superview.isNil else { return }
         contentView.addSubview(label, with: [
             Anchor.to(contentView).fill
         ])
     }
-    
-    public func collectionView(_ collectionView: UICollectionView, didEndDisplaying cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
-        guard let contentView: UIView = cell.subviews.first else { return }
-        contentView.removeSubviews()
-    }
-    
+     
     private func stateForItem(_ item: SelectorItem) -> FormsComponentStateType {
         let isSelected: Bool = item.rawValue == self._selected?.rawValue
         if !self.isEnabled && !isSelected {
@@ -527,12 +523,29 @@ extension SelectorControl: UICollectionViewDelegate, UICollectionViewDataSource 
             return .active
         }
     }
+    
+    private func reloadVisibleCells() {
+        self.collectionView.visibleCells
+            .map { $0.contentView.subviews[safe: 0] }
+            .compactMap { $0 as? UILabel }
+            .forEach { (label) in
+                guard let item: SelectorItem = self.items[safe: label.tag] else { return }
+                let state: FormsComponentStateType = self.stateForItem(item)
+                label.textColor = self.textColors.value(for: state)
+                label.font = self.textFonts.value(for: state)
+            }
+    }
 }
 
 // MARK: UIScrollViewDelegate
 extension SelectorControl {
+    public func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
+        guard let item: SelectorItem = self.itemForOffset(targetContentOffset.pointee) else { return }
+        scrollView.targetContentOffset = self.offsetForItem(item)
+    }
+     
     public func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
-        guard let item: SelectorItem = self.itemForOffset(scrollView.contentOffset) else { return }
+        guard let item: SelectorItem = self.itemForOffset(scrollView.targetContentOffset) else { return }
         self.scrollTo(item: item, animated: true)
     }
     
@@ -540,6 +553,12 @@ extension SelectorControl {
         guard let layout = self.collectionView.collectionViewLayout as? SelectorControlCollectionFlowLayout else { return nil }
         guard let index: Int = layout.itemForOffset(offset)?.match(in: 0..<(self.items.count - 1)) else { return nil }
         return self.items[safe: index]
+    }
+    
+    private func offsetForItem(_ item: SelectorItem) -> CGPoint? {
+        guard let layout = self.collectionView.collectionViewLayout as? SelectorControlCollectionFlowLayout else { return nil }
+        guard let index = self.items.firstIndex(where: { $0.rawValue == item.rawValue }) else { return nil }
+        return layout.offsetForIndex(index)
     }
 }
 
@@ -589,7 +608,9 @@ open class SelectorControlCollectionFlowLayout: UICollectionViewFlowLayout {
     }
     
     override public func shouldInvalidateLayout(forBoundsChange newBounds: CGRect) -> Bool {
-        return false
+        guard self.collectionView?.bounds.size != newBounds.size else { return false }
+        self.cache = []
+        return true
     }
     
     override public func prepare() {
@@ -597,18 +618,13 @@ open class SelectorControlCollectionFlowLayout: UICollectionViewFlowLayout {
         self.minimumLineSpacing = 0
         self.minimumInteritemSpacing = 0
         super.prepare()
-        guard let collectionView = self.collectionView else { return }
         guard self.cache.isEmpty else { return }
+        guard let collectionView = self.collectionView else { return }
         switch self.scrollDirection {
         case .vertical: self.prepareVertical(collectionView: collectionView)
         case .horizontal: self.prepareHorizontal(collectionView: collectionView)
         @unknown default: break
         }
-    }
-    
-    override public func invalidateLayout() {
-        super.invalidateLayout()
-        self.cache = []
     }
     
     private func prepareVertical(collectionView: UICollectionView) {
@@ -667,6 +683,24 @@ open class SelectorControlCollectionFlowLayout: UICollectionViewFlowLayout {
             return Int(round(offset.y / self.itemHeight))
         case .horizontal:
             return Int(round(offset.x / self.itemWidth))
+        @unknown default: return nil
+        }
+    }
+    
+    public func offsetForIndex(_ index: Int) -> CGPoint? {
+        switch self.scrollDirection {
+        case .vertical:
+            guard let collectionHeight: CGFloat = self.collectionView?.frame.height else { return nil }
+            guard let point: CGPoint = self.cache[safe: index]?.frame.origin else { return nil }
+            return CGPoint(
+                x: point.x,
+                y: point.y - collectionHeight / 4)
+        case .horizontal:
+            guard let collectionWidth: CGFloat = self.collectionView?.frame.width else { return nil }
+            guard let point: CGPoint = self.cache[safe: index]?.frame.origin else { return nil }
+            return CGPoint(
+                x: point.x - collectionWidth / 4,
+                y: point.y)
         @unknown default: return nil
         }
     }

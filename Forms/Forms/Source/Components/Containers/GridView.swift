@@ -1,38 +1,38 @@
 //
-//  StackContainer.swift
+//  GridView.swift
 //  Forms
 //
-//  Created by Konrad on 4/23/20.
+//  Created by Konrad on 8/23/20.
 //  Copyright © 2020 Limbo. All rights reserved.
 //
 
 import FormsAnchor
+import FormsUtilsUI
 import UIKit
 
-// MARK: StackContainer
-open class StackContainer: FormsComponent, FormsComponentWithMarginEdgeInset, FormsComponentWithPaddingEdgeInset {
+// MARK: GridView
+open class GridView: FormsComponent, FormsComponentWithMarginEdgeInset, FormsComponentWithPaddingEdgeInset {
     public let backgroundView = UIView()
     public let stackView = UIStackView()
     
-    private var items: [FormsComponent] = []
-    
-    open var alignment: UIStackView.Alignment {
-        get { return self.stackView.alignment }
-        set { self.stackView.alignment = newValue }
-    }
     open var axis: NSLayoutConstraint.Axis {
         get { return self.stackView.axis }
-        set { self.stackView.axis = newValue }
+        set {
+            self.stackView.axis = newValue
+            self.remakeView()
+        }
     }
     override open var backgroundColor: UIColor? {
         get { return self.backgroundView.backgroundColor }
         set { self.backgroundView.backgroundColor = newValue }
     }
-    open var distribution: UIStackView.Distribution {
-        get { return self.stackView.distribution }
-        set { self.stackView.distribution = newValue }
-    }
     open var height: CGFloat = UITableView.automaticDimension
+    open var items: [UIView] = [] {
+        didSet { self.remakeView() }
+    }
+    open var itemsPerSection: Int = 0 {
+        didSet { self.remakeView() }
+    }
     open var marginEdgeInset: UIEdgeInsets = UIEdgeInsets(0) {
         didSet { self.updateMarginEdgeInset() }
     }
@@ -44,11 +44,15 @@ open class StackContainer: FormsComponent, FormsComponentWithMarginEdgeInset, Fo
         set { self.stackView.spacing = newValue }
     }
     
+    public var sectionsCount: Int {
+        return self.stackView.arrangedSubviews.count
+    }
+    
     override open func setupView() {
         self.setupBackgroundView()
         self.setupStackView()
         super.setupView()
-    }
+    } 
     
     override open func componentHeight() -> CGFloat {
         return self.height
@@ -63,7 +67,7 @@ open class StackContainer: FormsComponent, FormsComponentWithMarginEdgeInset, Fo
     
     open func setupStackView() {
         self.stackView.alignment = UIStackView.Alignment.fill
-        self.stackView.axis = NSLayoutConstraint.Axis.horizontal
+        self.stackView.axis = NSLayoutConstraint.Axis.vertical
         self.stackView.distribution = UIStackView.Distribution.fillEqually
         self.stackView.spacing = 0
         self.backgroundView.addSubview(self.stackView, with: [
@@ -88,26 +92,33 @@ open class StackContainer: FormsComponent, FormsComponentWithMarginEdgeInset, Fo
         self.stackView.constraint(to: self.backgroundView, position: .leading)?.constant = edgeInset.leading
         self.stackView.constraint(to: self.backgroundView, position: .trailing)?.constant = -edgeInset.trailing
     }
-    
-    public func setItems(_ items: [FormsComponent]) {
-        self.items = items
+}
+
+// MARK: View
+public extension GridView {
+    func remakeView() {
         self.stackView.removeArrangedSubviews()
-        self.stackView.addArrangedSubviews(items)
+        guard 0 < self.itemsPerSection else { return }
+        let sections: Int = (self.items.count.asCGFloat / self.itemsPerSection.asCGFloat).ceiled.asInt
+        for section in 0..<sections {
+            let view: UIStackView = UIStackView()
+            view.alignment = UIStackView.Alignment.fill
+            view.axis = self.axis.reversed
+            view.distribution = UIStackView.Distribution.fillEqually
+            for j in 0..<self.itemsPerSection {
+                let i: Int = (section * self.itemsPerSection) + j
+                guard let item: UIView = self.items[safe: i] else { break }
+                view.addArrangedSubview(item)
+            }
+            self.stackView.addArrangedSubview(view)
+        }
     }
 }
 
 // MARK: Builder
-public extension StackContainer {
-    func with(alignment: UIStackView.Alignment) -> Self {
-        self.alignment = alignment
-        return self
-    }
+public extension GridView {
     func with(axis: NSLayoutConstraint.Axis) -> Self {
         self.axis = axis
-        return self
-    }
-    func with(distribution: UIStackView.Distribution) -> Self {
-        self.distribution = distribution
         return self
     }
     @objc
@@ -115,8 +126,12 @@ public extension StackContainer {
         self.height = height
         return self
     }
-    func with(items: [FormsComponent]) -> Self {
-        self.setItems(items)
+    func with(items: [UIView]) -> Self {
+        self.items = items
+        return self
+    }
+    func with(itemsPerSection: Int) -> Self {
+        self.itemsPerSection = itemsPerSection
         return self
     }
     func with(spacing: CGFloat) -> Self {

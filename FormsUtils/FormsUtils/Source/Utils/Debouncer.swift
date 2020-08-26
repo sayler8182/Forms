@@ -20,13 +20,18 @@ public class Debouncer {
         self.interval = interval
     }
     
-    public func debounce(_ onHandle: @escaping Debounce) {
+    public func debounce(forceNow: Bool = false,
+                         _ onHandle: @escaping Debounce) {
         self.onHandle = onHandle
-        self.debounce()
+        self.debounce(forceNow: forceNow)
     }
-        
-    public func debounce() {
+    
+    public func debounce(forceNow: Bool = false) {
         self.timer?.invalidate()
+        guard !forceNow else {
+            self.handleDebounce()
+            return
+        }
         self.timer = Timer.scheduledTimer(
             withTimeInterval: self.interval,
             repeats: false,
@@ -40,6 +45,11 @@ public class Debouncer {
     public func handleDebounce() {
         self.timer?.invalidate()
         self.onHandle?()
+        self.onHandle = nil
+    }
+    
+    public func invalidate() {
+        self.timer?.invalidate()
         self.onHandle = nil
     }
 }

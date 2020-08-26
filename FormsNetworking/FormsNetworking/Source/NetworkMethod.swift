@@ -8,6 +8,7 @@
 
 import FormsInjector
 import FormsLogger
+import FormsUtils
 import Foundation
 
 // MARK: AssociatedKeys
@@ -34,16 +35,16 @@ public protocol NetworkMethod: class {
 
 public extension NetworkMethod {
     var session: NetworkSessionProtocol? {
-        get { return objc_getAssociatedObject(self, &AssociatedKeys.sessionKey) as? NetworkSessionProtocol }
-        set { objc_setAssociatedObject(self, &AssociatedKeys.sessionKey, newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC) }
+        get { return getObject(self, &AssociatedKeys.sessionKey) }
+        set { setObject(self, &AssociatedKeys.sessionKey, newValue) }
     }
     var logger: Logger? {
-        get { return objc_getAssociatedObject(self, &AssociatedKeys.loggerKey) as? Logger }
-        set { objc_setAssociatedObject(self, &AssociatedKeys.loggerKey, newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC) }
+        get { return getObject(self, &AssociatedKeys.loggerKey) }
+        set { setObject(self, &AssociatedKeys.loggerKey, newValue) }
     }
     var cache: NetworkCache? {
-        get { return objc_getAssociatedObject(self, &AssociatedKeys.cacheKey) as? NetworkCache }
-        set { objc_setAssociatedObject(self, &AssociatedKeys.cacheKey, newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC) }
+        get { return getObject(self, &AssociatedKeys.cacheKey) }
+        set { setObject(self, &AssociatedKeys.cacheKey, newValue) }
     }
     var provider: NetworkProviderProtocol {
         let _provider: NetworkProviderProtocol? = Injector.main.resolveOrDefault("FormsNetworking")

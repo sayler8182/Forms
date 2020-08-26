@@ -1,5 +1,5 @@
 //
-//  PageContainer.swift
+//  PageView.swift
 //  Forms
 //
 //  Created by Konrad on 4/23/20.
@@ -9,8 +9,8 @@
 import FormsAnchor
 import UIKit
 
-// MARK: PageContainer
-open class PageContainer: FormsComponent, FormsComponentWithMarginEdgeInset, FormsComponentWithPaddingEdgeInset {
+// MARK: PageView
+open class PageView: FormsComponent, FormsComponentWithMarginEdgeInset, FormsComponentWithPaddingEdgeInset {
     public typealias OnSelect = ((_ component: FormsComponent) -> Void)
     
     public let backgroundView = UIView()
@@ -19,7 +19,7 @@ open class PageContainer: FormsComponent, FormsComponentWithMarginEdgeInset, For
         collectionViewLayout: self.flowLayout)
     public let pageControl = UIPageControl()
     
-    private var flowLayout = PageContainerFlowLayout()
+    private var flowLayout = PageViewFlowLayout()
     private var items: [FormsComponent] = []
     private var selectedIndex: Int? = nil
     private let defaultCellIdentifier: String = "_cell"
@@ -194,7 +194,7 @@ open class PageContainer: FormsComponent, FormsComponentWithMarginEdgeInset, For
 }
 
 // MARK: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout
-extension PageContainer: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+extension PageView: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     public func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
     }
@@ -226,13 +226,13 @@ extension PageContainer: UICollectionViewDelegate, UICollectionViewDataSource, U
 }
 
 // MARK: UIScrollViewDelegate
-extension PageContainer: UIScrollViewDelegate {
+extension PageView: UIScrollViewDelegate {
     public func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
         self.isAutomaticPaused = true
         self.updateAutomatic()
     }
     
-    public func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
+    public func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
         self.isAutomaticPaused = false
         self.updateAutomatic()
     }
@@ -255,7 +255,7 @@ extension PageContainer: UIScrollViewDelegate {
 }
 
 // MARK: Builder
-public extension PageContainer {
+public extension PageView {
     func with(automaticInterval: TimeInterval) -> Self {
         self.automaticInterval = automaticInterval
         return self
@@ -303,8 +303,8 @@ public extension PageContainer {
     }
 }
 
-// MARK: PageContainerFlowLayout
-private class PageContainerFlowLayout: UICollectionViewFlowLayout {
+// MARK: PageViewFlowLayout
+private class PageViewFlowLayout: UICollectionViewFlowLayout {
     override init() {
         super.init()
         self.scrollDirection = .horizontal
@@ -321,6 +321,7 @@ private class PageContainerFlowLayout: UICollectionViewFlowLayout {
     }
     
     override func shouldInvalidateLayout(forBoundsChange newBounds: CGRect) -> Bool {
+        guard self.collectionView?.bounds.size != newBounds.size else { return false }
         return true
     }
     

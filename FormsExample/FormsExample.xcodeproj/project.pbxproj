@@ -60,7 +60,10 @@
 		719AE5B22462C49C00A39B0E /* FBSDKCoreKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 719AE5692462C0F900A39B0E /* FBSDKCoreKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		719AE5B32462C49D00A39B0E /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 719AE55C2462C0F900A39B0E /* FBSDKLoginKit.framework */; };
 		719AE5B42462C49D00A39B0E /* FBSDKLoginKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 719AE55C2462C0F900A39B0E /* FBSDKLoginKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		71BF8B2A24F2769D00D01CB9 /* LocalAuthentication.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71BF8B2924F2769D00D01CB9 /* LocalAuthentication.framework */; };
 		71DB655A2457729800B16145 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 71DB65592457729800B16145 /* GoogleService-Info.plist */; };
+		71DBEEC024F3DBEF0057D97B /* FormsCalendarKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71BF8B0424F2663D00D01CB9 /* FormsCalendarKit.framework */; };
+		71DBEEC124F3DBEF0057D97B /* FormsCalendarKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 71BF8B0424F2663D00D01CB9 /* FormsCalendarKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		71E4455524937B2700AC38C1 /* FormsDevice.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71E445392493609600AC38C1 /* FormsDevice.framework */; };
 		71E4455624937B2700AC38C1 /* FormsDevice.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 71E445392493609600AC38C1 /* FormsDevice.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		71E4465F24939E9100AC38C1 /* FormsNotifications.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7150CE38247FA75A00F2681B /* FormsNotifications.framework */; };
@@ -249,6 +252,13 @@
 			remoteGlobalIDString = 7194693C243DA7A800CAD09B;
 			remoteInfo = Forms;
 		};
+		71BF8B0324F2663D00D01CB9 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 71BF8AFF24F2663C00D01CB9 /* FormsCalendarKit.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 71BF8AF424F2663C00D01CB9;
+			remoteInfo = FormsCalendarKit;
+		};
 		71E445382493609600AC38C1 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 71E4452C2493609500AC38C1 /* FormsDevice.xcodeproj */;
@@ -304,6 +314,7 @@
 				7136A14B2486941E00298D3B /* FormsImagePickerKit.framework in Embed Frameworks */,
 				7150CE67247FA9B100F2681B /* FormsAnchor.framework in Embed Frameworks */,
 				7136A1252486761500298D3B /* FormsSideMenuKit.framework in Embed Frameworks */,
+				71DBEEC124F3DBEF0057D97B /* FormsCalendarKit.framework in Embed Frameworks */,
 				7136A05E24866AFC00298D3B /* FormsTabBarKit.framework in Embed Frameworks */,
 				71E4466024939E9100AC38C1 /* FormsNotifications.framework in Embed Frameworks */,
 				7136A121248673F300298D3B /* FormsCardKit.framework in Embed Frameworks */,
@@ -357,6 +368,8 @@
 		719AE5692462C0F900A39B0E /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKCoreKit.framework; sourceTree = "<group>"; };
 		71BB62182445DD16002BB31F /* FormsNetworking.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = FormsNetworking.xcodeproj; path = ../FormsNetworking/FormsNetworking.xcodeproj; sourceTree = "<group>"; };
 		71BB62652445E7C5002BB31F /* FormsLogger.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = FormsLogger.xcodeproj; path = ../FormsLogger/FormsLogger.xcodeproj; sourceTree = "<group>"; };
+		71BF8AFF24F2663C00D01CB9 /* FormsCalendarKit.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = FormsCalendarKit.xcodeproj; path = ../FormsCalendarKit/FormsCalendarKit.xcodeproj; sourceTree = "<group>"; };
+		71BF8B2924F2769D00D01CB9 /* LocalAuthentication.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = LocalAuthentication.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk/System/Library/Frameworks/LocalAuthentication.framework; sourceTree = DEVELOPER_DIR; };
 		71CFF419245954B90067D13E /* FormsSideMenuKit.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = FormsSideMenuKit.xcodeproj; path = ../FormsSideMenu/FormsSideMenuKit.xcodeproj; sourceTree = "<group>"; };
 		71DB65592457729800B16145 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		71DB662D245826C900B16145 /* FormsImagePickerKit.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = FormsImagePickerKit.xcodeproj; path = ../FormsImagePicker/FormsImagePickerKit.xcodeproj; sourceTree = "<group>"; };
@@ -387,6 +400,7 @@
 				7150CE7E247FA9B200F2681B /* FormsValidators.framework in Frameworks */,
 				71FCB25F247F999500A84D30 /* FormsDemo.framework in Frameworks */,
 				7136A0BB24866ED500298D3B /* FormsPagerKit.framework in Frameworks */,
+				71DBEEC024F3DBEF0057D97B /* FormsCalendarKit.framework in Frameworks */,
 				71E4455524937B2700AC38C1 /* FormsDevice.framework in Frameworks */,
 				7150CE68247FA9B100F2681B /* FormsDeveloperTools.framework in Frameworks */,
 				7150CE6E247FA9B100F2681B /* FormsLogger.framework in Frameworks */,
@@ -399,6 +413,7 @@
 				7136A05D24866AFC00298D3B /* FormsTabBarKit.framework in Frameworks */,
 				71E4465F24939E9100AC38C1 /* FormsNotifications.framework in Frameworks */,
 				7136A120248673F300298D3B /* FormsCardKit.framework in Frameworks */,
+				71BF8B2A24F2769D00D01CB9 /* LocalAuthentication.framework in Frameworks */,
 				7135DF9C248E3E7B00B5807F /* FormsHomeShortcuts.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -420,6 +435,7 @@
 				7150CE0B247FA6C200F2681B /* FormsAnalytics.xcodeproj */,
 				71EBA881243D02AD0045AE40 /* FormsAnchor.xcodeproj */,
 				7136A002248661AD00298D3B /* FormsAppStoreReview.xcodeproj */,
+				71BF8AFF24F2663C00D01CB9 /* FormsCalendarKit.xcodeproj */,
 				7136A102248672EE00298D3B /* FormsCardKit.xcodeproj */,
 				7178026124543D2B0057E848 /* FormsDeveloperTools.xcodeproj */,
 				71E4452C2493609500AC38C1 /* FormsDevice.xcodeproj */,
@@ -735,6 +751,14 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		71BF8B0024F2663C00D01CB9 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				71BF8B0424F2663D00D01CB9 /* FormsCalendarKit.framework */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		71E4452D2493609500AC38C1 /* Products */ = {
 			isa = PBXGroup;
 			children = (
@@ -762,6 +786,7 @@
 		71EA6E9E2449FC1B00ACB5EE /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				71BF8B2924F2769D00D01CB9 /* LocalAuthentication.framework */,
 				715435B024EFF3F20046F08F /* AuthenticationServices.framework */,
 			);
 			name = Frameworks;
@@ -832,6 +857,10 @@
 				{
 					ProductGroup = 7136A003248661AD00298D3B /* Products */;
 					ProjectRef = 7136A002248661AD00298D3B /* FormsAppStoreReview.xcodeproj */;
+				},
+				{
+					ProductGroup = 71BF8B0024F2663C00D01CB9 /* Products */;
+					ProjectRef = 71BF8AFF24F2663C00D01CB9 /* FormsCalendarKit.xcodeproj */;
 				},
 				{
 					ProductGroup = 7136A103248672EE00298D3B /* Products */;
@@ -1107,6 +1136,13 @@
 			fileType = wrapper.framework;
 			path = Forms.framework;
 			remoteRef = 7194695B243DA7A900CAD09B /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		71BF8B0424F2663D00D01CB9 /* FormsCalendarKit.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = FormsCalendarKit.framework;
+			remoteRef = 71BF8B0324F2663D00D01CB9 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 		71E445392493609600AC38C1 /* FormsDevice.framework */ = {

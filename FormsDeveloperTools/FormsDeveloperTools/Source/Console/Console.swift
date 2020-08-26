@@ -99,7 +99,8 @@ public extension Console {
             "[MC] System group container for systemgroup.com.apple.configurationprofiles path is",
             "[MC] Reading from private effective user settings.",
             "[Assert] Unexpected code path for search bar hosted by navigation bar. This is a UIKit problem",
-            ": encountered error(1:53)"
+            ": encountered error(1:53)",
+            "Graph API v2.4"
         ]
     }
 }

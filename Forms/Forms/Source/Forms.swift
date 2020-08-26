@@ -92,10 +92,10 @@ public enum Forms {
                 .white: UIColor(rgba: 0xFFFFFFFF),
                 .primaryDark: UIColor(rgba: 0x000000FF),
                 .secondaryDark: UIColor(rgba: 0x3C3C4399),
-                .tertiaryDark: UIColor(rgba: 0x3C3C434D),
+                .tertiaryDark: UIColor(rgba: 0x5C5C63FF),
                 .primaryLight: UIColor(rgba: 0xFFFFFFFF),
                 .secondaryLight: UIColor(rgba: 0xF2F2F7FF),
-                .tertiaryLight: UIColor(rgba: 0xFFFFFFFF)
+                .tertiaryLight: UIColor(rgba: 0xC2C2C2FF)
             ], statusBar: .dark)
         }
         .inScope(InjectorScope.container)
@@ -109,11 +109,11 @@ public enum Forms {
                 .red: UIColor(rgba: 0xFF375FFF),
                 .white: UIColor(rgba: 0xFFFFFFFF),
                 .primaryDark: UIColor(rgba: 0xFFFFFFFF),
-                .secondaryDark: UIColor(rgba: 0xEBEBF599),
-                .tertiaryDark: UIColor(rgba: 0xEBEBF54D),
+                .secondaryDark: UIColor(rgba: 0xF2F2F7FF),
+                .tertiaryDark: UIColor(rgba: 0xC2C2C2FF),
                 .primaryLight: UIColor(rgba: 0x000000FF),
-                .secondaryLight: UIColor(rgba: 0x1C1C1EFF),
-                .tertiaryLight: UIColor(rgba: 0x2C2C2EFF)
+                .secondaryLight: UIColor(rgba: 0x3C3C4399),
+                .tertiaryLight: UIColor(rgba: 0x5C5C63FF)
             ], statusBar: .light)
         }
         .inScope(InjectorScope.container)

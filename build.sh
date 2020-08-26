@@ -38,6 +38,7 @@ frameworks=(
     FormsAnalytics 
     FormsAnchor
     FormsAppStoreReview
+    FormsCalendarKit
     FormsCardKit
     FormsDeveloperTools
     FormsDevice

@@ -26,6 +26,11 @@ open class GradientView: View {
         super.setupView()
     }
     
+    override open func layoutSubviews() {
+        super.layoutSubviews()
+        self.setNeedsDisplay()
+    }
+    
     override open func draw(_ rect: CGRect) {
         super.draw(rect)
         

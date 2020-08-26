@@ -6,6 +6,7 @@
 //  Copyright © 2020 Limbo. All rights reserved.
 //
 
+import FormsUtils
 import UIKit
 
 // MARK: UIImageView - SVG
@@ -14,14 +15,14 @@ extension UIImageView: SVGView {
     private static var svgLayerKey: UInt8 = 0
     
     private var svgLayerView: UIView? {
-        get { return objc_getAssociatedObject(self, &Self.svgLayerViewKey) as? UIView }
-        set { objc_setAssociatedObject(self, &Self.svgLayerViewKey, newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC) }
+        get { return getObject(self, &Self.svgLayerViewKey) }
+        set { setObject(self, &Self.svgLayerViewKey, newValue) }
     }
     public var svgLayer: CAShapeLayer? {
-        get { return objc_getAssociatedObject(self, &Self.svgLayerKey) as? CAShapeLayer }
+        get { return getObject(self, &Self.svgLayerKey) }
         set {
-            let oldValue: CAShapeLayer?  = self.svgLayer
-            objc_setAssociatedObject(self, &Self.svgLayerKey, newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
+            let oldValue: CAShapeLayer? = self.svgLayer
+            setObject(self, &Self.svgLayerKey, newValue)
             self.updateSVGLayer(oldLayer: oldValue, newLayer: newValue)
         }
     } 

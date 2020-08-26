@@ -12,37 +12,54 @@ import UIKit
 public enum ComponentsContainers: ComponentsList {
     public static func clickable() -> ClickableView {
         let component = ClickableView()
-        component.height = 100
-        component.onSetTheme = Strong(component) { (component) in
-            component.backgroundColor = Theme.Colors.primaryLight
+        component.batchUpdate {
+            component.height = 100
+            component.onSetTheme = Strong(component) { (component) in
+                component.backgroundColor = Theme.Colors.primaryLight
+            }
         }
         return component
     }
     
     public static func gradient() -> GradientView {
         let component = GradientView()
-        component.onSetTheme = Strong(component) { (component) in
-            component.gradientColors = [Theme.Colors.primaryLight]
+        component.batchUpdate {
+            component.onSetTheme = Strong(component) { (component) in
+                component.gradientColors = [Theme.Colors.primaryLight]
+            }
         }
         return component
     }
     
-    public static func scroll() -> ScrollContainer {
-        let component = ScrollContainer()
-        component.height = 100
-        component.scrollDelegate = component
-        component.scrollDirection = .horizontal
-        component.showsHorizontalScrollIndicator = false
-        component.showsVerticalScrollIndicator = false
-        component.spacing = 0
-        component.onSetTheme = Strong(component) { (component) in
-            component.backgroundColor = Theme.Colors.primaryLight
+    public static func grid() -> GridView {
+        let component = GridView()
+        component.batchUpdate {
+            component.axis = .vertical
+            component.onSetTheme = Strong(component) { (component) in
+                component.backgroundColor = Theme.Colors.primaryLight
+            }
         }
         return component
     }
     
-    public static func page() -> PageContainer {
-        let component = PageContainer()
+    public static func scroll() -> ScrollView {
+        let component = ScrollView()
+        component.batchUpdate {
+            component.height = 100
+            component.scrollDelegate = component
+            component.scrollDirection = .horizontal
+            component.showsHorizontalScrollIndicator = false
+            component.showsVerticalScrollIndicator = false
+            component.spacing = 0
+            component.onSetTheme = Strong(component) { (component) in
+                component.backgroundColor = Theme.Colors.primaryLight
+            }
+        }
+        return component
+    }
+    
+    public static func page() -> PageView {
+        let component = PageView()
         component.height = 100
         component.isPagingEnabled = true
         component.scrollDirection = .horizontal
@@ -55,8 +72,8 @@ public enum ComponentsContainers: ComponentsList {
         return component
     }
     
-    public static func stack() -> StackContainer {
-        let component = StackContainer()
+    public static func stack() -> StackView {
+        let component = StackView()
         component.alignment = .fill
         component.axis = .vertical
         component.distribution = .fillEqually

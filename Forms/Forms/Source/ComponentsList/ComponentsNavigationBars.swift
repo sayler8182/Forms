@@ -12,11 +12,13 @@ import UIKit
 public enum ComponentsNavigationBars: ComponentsList {
     public static func `default`() -> NavigationBar {
         let component = NavigationBar()
-        component.backImage = { UIImage.from(name: "chevron.left") }
-        component.closeImage = { UIImage.from(name: "xmark") }
-        component.onSetTheme = Strong(component) { (component) in
-            component.backgroundColor = Theme.Colors.primaryLight
-            component.tintColor = Theme.Colors.primaryDark
+        component.batchUpdate {
+            component.backImage = { UIImage.from(name: "chevron.left") }
+            component.closeImage = { UIImage.from(name: "xmark") }
+            component.onSetTheme = Strong(component) { (component) in
+                component.backgroundColor = Theme.Colors.primaryLight
+                component.tintColor = Theme.Colors.primaryDark
+            }
         }
         return component
     }

@@ -169,7 +169,8 @@ open class ClickableView: FormsComponent, Clickable, FormsComponentWithLoading, 
         }
     }
     
-    public func updateState() {
+    override public func updateState() {
+        guard !self.isBatchUpdateInProgress else { return }
         self.setState(self.state, animated: false, force: true)
     }
     

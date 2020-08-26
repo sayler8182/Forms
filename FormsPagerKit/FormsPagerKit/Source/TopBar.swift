@@ -257,7 +257,9 @@ private class TopBarFlowLayout: UICollectionViewFlowLayout {
     }
     
     override func shouldInvalidateLayout(forBoundsChange newBounds: CGRect) -> Bool {
-        return false
+        guard self.collectionView?.bounds.size != newBounds.size else { return false }
+        self.cache = []
+        return true
     }
     
     override func prepare() {
@@ -266,7 +268,6 @@ private class TopBarFlowLayout: UICollectionViewFlowLayout {
         self.minimumInteritemSpacing = 0
         guard let collectionView = self.collectionView else { return }
         guard let delegate = collectionView.superview?.superview as? TopBarDelegateFlowLayout else { return }
-        guard self.cache.isEmpty else { return }
         var offset: CGFloat = 0
         let height: CGFloat = collectionView.frame.height
         let count: Int = collectionView.numberOfItems(inSection: 0)
@@ -283,12 +284,7 @@ private class TopBarFlowLayout: UICollectionViewFlowLayout {
             totalOffset: offset,
             collectionWidth: collectionView.bounds.width)
         self.contentSize = CGSize(width: offset, height: height)
-    }
-    
-    override func invalidateLayout() {
-        super.invalidateLayout()
-        self.cache = []
-    }
+    } 
     
     override func layoutAttributesForElements(in rect: CGRect) -> [UICollectionViewLayoutAttributes]? {
         var layoutAttributes: [UICollectionViewLayoutAttributes] = []

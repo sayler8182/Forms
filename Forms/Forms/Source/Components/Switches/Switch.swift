@@ -224,7 +224,8 @@ open class Switch: FormsComponent, FormsComponentWithGroup, FormsComponentWithMa
         }
     }
     
-    public func updateState() {
+    override public func updateState() {
+        guard !self.isBatchUpdateInProgress else { return }
         self.setState(self.state, animated: false, force: true)
     }
     

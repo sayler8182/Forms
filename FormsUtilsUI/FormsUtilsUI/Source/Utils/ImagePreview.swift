@@ -6,37 +6,36 @@
 //  Copyright © 2020 Limbo. All rights reserved.
 //
 
+import FormsUtils
 import UIKit
 
 // MARK: UIImageView
 public extension UIImageView {
-    private static var gestureKey: UInt8 = 0
+    private static var isPreviewable: UInt8 = 0
     private static var isPreviewEnabledKey: UInt8 = 0
-    private static var previewViewKey: UInt8 = 0
+    private static var gestureKey: UInt8 = 0
     private static var initFrameKey: UInt8 = 0
+    private static var previewViewKey: UInt8 = 0
     
     var isPreviewable: Bool {
-        get { return (objc_getAssociatedObject(self, &Self.isPreviewEnabledKey) as? Bool) ?? false }
-        set {
-            objc_setAssociatedObject(self, &Self.isPreviewEnabledKey, newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
-            self.updateIsPreviewable()
-        }
+        get { return getObject(self, &Self.isPreviewable) ?? false }
+        set { setObject(self, &Self.isPreviewable, newValue) }
     }
     var isPreviewEnabled: Bool {
-        get { return (objc_getAssociatedObject(self, &Self.isPreviewEnabledKey) as? Bool) ?? false }
-        set { objc_setAssociatedObject(self, &Self.isPreviewEnabledKey, newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC) }
+        get { return getObject(self, &Self.isPreviewEnabledKey) ?? false }
+        set { setObject(self, &Self.isPreviewEnabledKey, newValue) }
     }
     private var gesture: UITapGestureRecognizer? {
-        get { return objc_getAssociatedObject(self, &Self.gestureKey) as? UITapGestureRecognizer }
-        set { objc_setAssociatedObject(self, &Self.gestureKey, newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC) }
-    }
-    private var previewView: UIView? {
-        get { return objc_getAssociatedObject(self, &Self.previewViewKey) as? UIView }
-        set { objc_setAssociatedObject(self, &Self.previewViewKey, newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC) }
+        get { return getObject(self, &Self.gestureKey) }
+        set { setObject(self, &Self.gestureKey, newValue) }
     }
     private var initFrame: CGRect? {
-        get { return objc_getAssociatedObject(self, &Self.initFrameKey) as? CGRect }
-        set { objc_setAssociatedObject(self, &Self.initFrameKey, newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC) }
+        get { return getObject(self, &Self.initFrameKey) }
+        set { setObject(self, &Self.initFrameKey, newValue) }
+    }
+    private var previewView: UIView? {
+        get { return getObject(self, &Self.previewViewKey) }
+        set { setObject(self, &Self.previewViewKey, newValue) }
     }
     
     func updateIsPreviewable() {

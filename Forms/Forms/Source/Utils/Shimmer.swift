@@ -7,6 +7,7 @@
 //
 
 import FormsAnchor
+import FormsUtils
 import UIKit
 
 // MARK: Shimmerable
@@ -36,8 +37,8 @@ public extension UIView {
     private static var isShimmerableKey: UInt8 = 0
     
     var isShimmerable: Bool {
-        get { return objc_getAssociatedObject(self, &Self.isShimmerableKey) as? Bool ?? true }
-        set { objc_setAssociatedObject(self, &Self.isShimmerableKey, newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC) }
+        get { return getObject(self, &Self.isShimmerableKey) ?? true }
+        set { setObject(self, &Self.isShimmerableKey, newValue) }
     }
     
     var isShimmering: Bool {

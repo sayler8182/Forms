@@ -12,12 +12,14 @@ import UIKit
 public enum ComponentsProgresses: ComponentsList {
     public static func progressBar() -> ProgressBar {
         let component = ProgressBar()
-        component.isShimmerable = false
-        component.height = 4
-        component.onSetTheme = Strong(component) { (component) in
-            component.backgroundColor = Theme.Colors.primaryLight
-            component.primaryColor = Theme.Colors.blue.with(alpha: 0.5)
-            component.secondaryColor = Theme.Colors.blue
+        component.batchUpdate {
+            component.isShimmerable = false
+            component.height = 4
+            component.onSetTheme = Strong(component) { (component) in
+                component.backgroundColor = Theme.Colors.primaryLight
+                component.primaryColor = Theme.Colors.blue.with(alpha: 0.5)
+                component.secondaryColor = Theme.Colors.blue
+            }
         }
         return component
     }

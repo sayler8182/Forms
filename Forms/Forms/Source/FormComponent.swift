@@ -61,9 +61,10 @@ public protocol Componentable: Themeable {
 }
 
 // MARK: FormsComponent
-open class FormsComponent: UIView, Componentable {
+open class FormsComponent: UIView, Componentable, BatchUpdateable {
     public weak var table: TableProtocol?
     
+    open var isBatchUpdateInProgress: Bool = false
     open var isStartAutoShimmer: Bool = true
     open var isStopAutoShimmer: Bool = true
     open var maxHeight: CGFloat = CGFloat.greatestConstraintConstant {
@@ -194,6 +195,10 @@ open class FormsComponent: UIView, Componentable {
         // HOOK
     }
     
+    open func updateState() {
+        // HOOK
+    }
+    
     @objc
     open dynamic func setupMock() {
         // HOOK
@@ -251,6 +256,30 @@ public extension FormsComponent {
         return self
     }
 } 
+
+// MARK: BatchUpdateable
+public protocol BatchUpdateable: class {
+    var isBatchUpdateInProgress: Bool { get set }
+    
+    func updateState()
+}
+public extension BatchUpdateable {
+    func batchUpdate(_ action: () -> Void) {
+        guard !self.isBatchUpdateInProgress else { return }
+        self.isBatchUpdateInProgress = true
+        action()
+        self.isBatchUpdateInProgress = false
+        self.updateState()
+    }
+    
+    func batchUpdate(_ action: () -> Void, _ finish: () -> Void) {
+        guard !self.isBatchUpdateInProgress else { return }
+        self.isBatchUpdateInProgress = true
+        action()
+        self.isBatchUpdateInProgress = false
+        finish()
+    }
+}
 
 // MARK: FormsComponentWithLoading
 public protocol FormsComponentWithLoading: class {

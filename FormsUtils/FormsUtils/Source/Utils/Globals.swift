@@ -23,3 +23,23 @@ public func delay<T: AnyObject>(_ delay: Double,
         action(target)
     }
 }
+
+public func measure(_ key: String,
+                    _ action: () -> Void) {
+    let startDate: TimeInterval = Date().timeIntervalSince1970
+    action()
+    let endDate: TimeInterval = Date().timeIntervalSince1970
+    print("Measure - \(key)", endDate - startDate)
+}
+
+public func getObject<T>(_ object: Any,
+                         _ key: UnsafeRawPointer) -> T? {
+    return objc_getAssociatedObject(object, key) as? T
+}
+
+public func setObject<T>(_ object: Any,
+                         _ key: UnsafeRawPointer,
+                         _ value: T,
+                         _ policy: objc_AssociationPolicy = .OBJC_ASSOCIATION_RETAIN_NONATOMIC) {
+    objc_setAssociatedObject(object, key, value, policy)
+}

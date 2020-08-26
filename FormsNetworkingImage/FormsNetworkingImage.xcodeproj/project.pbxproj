@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		71CC78E824F6742300A8BB3C /* FormsUtils.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71CC78E724F6742300A8BB3C /* FormsUtils.framework */; };
 		71EA272D24A9C80600985392 /* FormsNetworkingImage.h in Headers */ = {isa = PBXBuildFile; fileRef = 71EA272B24A9C80600985392 /* FormsNetworkingImage.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		71EA273B24A9C81B00985392 /* FormsInjector.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71EA273A24A9C81B00985392 /* FormsInjector.framework */; };
 		71EA273F24A9C82000985392 /* FormsLogger.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71EA273E24A9C82000985392 /* FormsLogger.framework */; };
@@ -15,6 +16,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		71CC78E724F6742300A8BB3C /* FormsUtils.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FormsUtils.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		71EA272824A9C80600985392 /* FormsNetworkingImage.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = FormsNetworkingImage.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		71EA272B24A9C80600985392 /* FormsNetworkingImage.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FormsNetworkingImage.h; sourceTree = "<group>"; };
 		71EA272C24A9C80600985392 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -29,6 +31,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				71CC78E824F6742300A8BB3C /* FormsUtils.framework in Frameworks */,
 				71EA273F24A9C82000985392 /* FormsLogger.framework in Frameworks */,
 				71EA274224A9C82D00985392 /* FormsNetworking.framework in Frameworks */,
 				71EA273B24A9C81B00985392 /* FormsInjector.framework in Frameworks */,
@@ -68,6 +71,7 @@
 		71EA273924A9C81B00985392 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				71CC78E724F6742300A8BB3C /* FormsUtils.framework */,
 				71EA274124A9C82D00985392 /* FormsNetworking.framework */,
 				71EA273E24A9C82000985392 /* FormsLogger.framework */,
 				71EA273A24A9C81B00985392 /* FormsInjector.framework */,

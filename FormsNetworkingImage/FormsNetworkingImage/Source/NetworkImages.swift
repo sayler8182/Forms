@@ -9,6 +9,7 @@
 import FormsInjector
 import FormsLogger
 import FormsNetworking
+import FormsUtils
 import UIKit
 
 public typealias NetworkImagesOnProgress = (_ size: Int64, _ totalSize: Int64, _ progress: Double) -> Void
@@ -464,12 +465,12 @@ public extension UIImageView {
     }
     
     private var request: NetworkImageRequest? {
-        get { return objc_getAssociatedObject(self, &Self.requestKey) as? NetworkImageRequest }
-        set { objc_setAssociatedObject(self, &Self.requestKey, newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC) }
+        get { return getObject(self, &Self.requestKey) }
+        set { setObject(self, &Self.requestKey, newValue) }
     }
     private var requestId: String? {
-        get { return objc_getAssociatedObject(self, &Self.requestIdKey) as? String }
-        set { objc_setAssociatedObject(self, &Self.requestIdKey, newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC) }
+        get { return getObject(self, &Self.requestIdKey) }
+        set { setObject(self, &Self.requestIdKey, newValue) }
     }
     
     func setImage(request: NetworkImageRequest,

@@ -12,10 +12,12 @@ import UIKit
 public enum ComponentsOthers: ComponentsList {
     public static func activityIndicator() -> ActivityIndicator {
         let component = ActivityIndicator()
-        component.isAnimating = true
-        component.onSetTheme = Strong(component) { (component) in
-            component.backgroundColor = Theme.Colors.clear
-            component.color = Theme.Colors.gray
+        component.batchUpdate {
+            component.isAnimating = true
+            component.onSetTheme = Strong(component) { (component) in
+                component.backgroundColor = Theme.Colors.clear
+                component.color = Theme.Colors.gray
+            }
         }
         return component
     }

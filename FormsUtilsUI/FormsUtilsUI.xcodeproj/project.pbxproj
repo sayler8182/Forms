@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		71DBEEB624F3A2050057D97B /* ResizeableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71DBEEB524F3A2050057D97B /* ResizeableView.swift */; };
 		71EA26AE24A9C05800985392 /* FormsUtilsUI.h in Headers */ = {isa = PBXBuildFile; fileRef = 71EA26AC24A9C05800985392 /* FormsUtilsUI.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		71EA26BC24A9C07D00985392 /* FormsInjector.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71EA26BB24A9C07D00985392 /* FormsInjector.framework */; };
 		71EA26C324A9C15100985392 /* FormsUtils.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71EA26C224A9C15100985392 /* FormsUtils.framework */; };
@@ -47,9 +48,11 @@
 		71EA271524A9C50700985392 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71EA271424A9C50700985392 /* String.swift */; };
 		71EA271624A9C50700985392 /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71EA271224A9C50700985392 /* Date.swift */; };
 		71EA271724A9C50700985392 /* Number.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71EA271324A9C50700985392 /* Number.swift */; };
+		71EAB38524F2D44700F1358B /* NSLayoutConstraint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71EAB38424F2D44700F1358B /* NSLayoutConstraint.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		71DBEEB524F3A2050057D97B /* ResizeableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResizeableView.swift; sourceTree = "<group>"; };
 		71EA26A924A9C05800985392 /* FormsUtilsUI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = FormsUtilsUI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		71EA26AC24A9C05800985392 /* FormsUtilsUI.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FormsUtilsUI.h; sourceTree = "<group>"; };
 		71EA26AD24A9C05800985392 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -92,6 +95,7 @@
 		71EA271224A9C50700985392 /* Date.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Date.swift; sourceTree = "<group>"; };
 		71EA271324A9C50700985392 /* Number.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Number.swift; sourceTree = "<group>"; };
 		71EA271424A9C50700985392 /* String.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
+		71EAB38424F2D44700F1358B /* NSLayoutConstraint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSLayoutConstraint.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -161,6 +165,7 @@
 				71EA26DF24A9C33F00985392 /* CGSize.swift */,
 				71EA271224A9C50700985392 /* Date.swift */,
 				71EA271324A9C50700985392 /* Number.swift */,
+				71EAB38424F2D44700F1358B /* NSLayoutConstraint.swift */,
 				71EA271424A9C50700985392 /* String.swift */,
 				71EA26EC24A9C34100985392 /* UIActivityIndicatorView.swift */,
 				71EA26E824A9C34000985392 /* UIAlertViewController.swift */,
@@ -199,6 +204,7 @@
 				71EA26D124A9C2AC00985392 /* LoremIpsum.swift */,
 				71EA26CD24A9C1CE00985392 /* ScrollSteps.swift */,
 				71EA26CF24A9C1D700985392 /* SVG.swift */,
+				71DBEEB524F3A2050057D97B /* ResizeableView.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -317,6 +323,8 @@
 				71EA26F324A9C34100985392 /* UIImage.swift in Sources */,
 				71EA26F224A9C34100985392 /* UITextField.swift in Sources */,
 				71EA271524A9C50700985392 /* String.swift in Sources */,
+				71DBEEB624F3A2050057D97B /* ResizeableView.swift in Sources */,
+				71EAB38524F2D44700F1358B /* NSLayoutConstraint.swift in Sources */,
 				71EA26FF24A9C34100985392 /* CGPoint.swift in Sources */,
 				71EA26F924A9C34100985392 /* CGSize.swift in Sources */,
 			);

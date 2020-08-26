@@ -6,6 +6,7 @@
 //  Copyright © 2020 Limbo. All rights reserved.
 //
 
+import FormsUtils
 import UIKit
 
 // MARK: UIColor
@@ -90,8 +91,8 @@ public extension UIColor {
     }
     
     private var gradientImage: UIImage? {
-        get { return objc_getAssociatedObject(self, &Self.gradientImageKey) as? UIImage }
-        set { objc_setAssociatedObject(self, &Self.gradientImageKey, newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC) }
+        get { return getObject(self, &Self.gradientImageKey) }
+        set { setObject(self, &Self.gradientImageKey, newValue) }
     }
     
     convenience init?(style: GradientStyle,

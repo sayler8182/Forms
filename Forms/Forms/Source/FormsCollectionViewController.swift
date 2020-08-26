@@ -507,7 +507,9 @@ open class CollectionFlowLayout: UICollectionViewFlowLayout {
     }
     
     override public func shouldInvalidateLayout(forBoundsChange newBounds: CGRect) -> Bool {
-        return false
+        guard self.collectionView?.bounds.size != newBounds.size else { return false }
+        self.cache = []
+        return true
     }
     
     override public func prepare() {
@@ -515,19 +517,14 @@ open class CollectionFlowLayout: UICollectionViewFlowLayout {
         self.minimumLineSpacing = 0
         self.minimumInteritemSpacing = 0
         super.prepare()
+        guard self.cache.isEmpty else { return }
         guard let collectionView = self.collectionView else { return }
         guard let delegate = collectionView.delegate as? CollectionDelegateFlowLayout else { return }
-        guard self.cache.isEmpty else { return }
         switch self.scrollDirection {
         case .vertical: self.prepareVertical(collectionView: collectionView, delegate: delegate)
         case .horizontal: self.prepareHorizontal(collectionView: collectionView, delegate: delegate)
         @unknown default: break
         }
-    }
-    
-    override public func invalidateLayout() {
-        super.invalidateLayout()
-        self.cache = []
     }
     
     private func prepareVertical(collectionView: UICollectionView,

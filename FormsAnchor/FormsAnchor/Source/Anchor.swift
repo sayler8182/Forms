@@ -105,6 +105,7 @@ extension UIView: AnchorLayoutGuide { }
 extension UILayoutGuide: AnchorLayoutGuide { }
 
 public extension UILayoutPriority {
+    static var veryHigh: UILayoutPriority = UILayoutPriority(900)
     static var veryLow: UILayoutPriority = UILayoutPriority(100)
 }
 
@@ -596,7 +597,7 @@ public extension UIView {
                     priority: Priority? = nil) -> NSLayoutConstraint? {
         let from: UIView = from ?? self
         let to: UIView? = to
-        let constrains: [NSLayoutConstraint] = self.linkedConstraints()
+        let constrains: [NSLayoutConstraint] = from.linkedConstraints()
         let constraint: NSLayoutConstraint? = constrains.first(where: {
             let attributes = position.attributes
             return ![

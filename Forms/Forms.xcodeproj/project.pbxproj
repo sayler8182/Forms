@@ -37,9 +37,9 @@
 		711070F52476BF610056BBB5 /* Loader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7194696B243DA7BE00CAD09B /* Loader.swift */; };
 		711070F72476BF610056BBB5 /* Configuration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7194696E243DA7BE00CAD09B /* Configuration.swift */; };
 		711070F82476BF610056BBB5 /* FormsNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7103EA21246043C300A11A96 /* FormsNavigationController.swift */; };
-		711070F92476BF610056BBB5 /* PageContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7193E3522451DEF7006238C5 /* PageContainer.swift */; };
+		711070F92476BF610056BBB5 /* PageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7193E3522451DEF7006238C5 /* PageView.swift */; };
 		711070FA2476BF610056BBB5 /* FormsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71946960243DA7BE00CAD09B /* FormsViewController.swift */; };
-		711070FB2476BF610056BBB5 /* ScrollContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71DB66FF2458441700B16145 /* ScrollContainer.swift */; };
+		711070FB2476BF610056BBB5 /* ScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71DB66FF2458441700B16145 /* ScrollView.swift */; };
 		711070FC2476BF610056BBB5 /* Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71946972243DA7BE00CAD09B /* Button.swift */; };
 		711070FD2476BF610056BBB5 /* View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7193E3592451E89D006238C5 /* View.swift */; };
 		711070FE2476BF610056BBB5 /* ComponentsLabels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71946964243DA7BE00CAD09B /* ComponentsLabels.swift */; };
@@ -56,7 +56,7 @@
 		7110710A2476BF610056BBB5 /* ComponentsSections.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71E0F5F3246C3C760051F043 /* ComponentsSections.swift */; };
 		7110710C2476BF610056BBB5 /* TextFieldAmountDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71946987243DA7BE00CAD09B /* TextFieldAmountDelegate.swift */; };
 		7110710D2476BF610056BBB5 /* FormsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71946981243DA7BE00CAD09B /* FormsTableViewController.swift */; };
-		7110710E2476BF610056BBB5 /* StackContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7193E3652451F1BA006238C5 /* StackContainer.swift */; };
+		7110710E2476BF610056BBB5 /* StackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7193E3652451F1BA006238C5 /* StackView.swift */; };
 		711071102476BF610056BBB5 /* FormsCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7138D3A62452C98F00CC7345 /* FormsCollectionViewController.swift */; };
 		711071122476BF610056BBB5 /* Label.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71946976243DA7BE00CAD09B /* Label.swift */; };
 		711071152476BF610056BBB5 /* ComponentsContainers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7193E3552451DF77006238C5 /* ComponentsContainers.swift */; };
@@ -113,10 +113,10 @@
 		718B43192490B680000DBC05 /* SegmentControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 718B43172490B680000DBC05 /* SegmentControl.swift */; };
 		718B431B2490B95A000DBC05 /* ComponentsSegments.swift in Sources */ = {isa = PBXBuildFile; fileRef = 718B431A2490B95A000DBC05 /* ComponentsSegments.swift */; };
 		718B431C2490B95A000DBC05 /* ComponentsSegments.swift in Sources */ = {isa = PBXBuildFile; fileRef = 718B431A2490B95A000DBC05 /* ComponentsSegments.swift */; };
-		7193E3532451DEF7006238C5 /* PageContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7193E3522451DEF7006238C5 /* PageContainer.swift */; };
+		7193E3532451DEF7006238C5 /* PageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7193E3522451DEF7006238C5 /* PageView.swift */; };
 		7193E3562451DF77006238C5 /* ComponentsContainers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7193E3552451DF77006238C5 /* ComponentsContainers.swift */; };
 		7193E35A2451E89D006238C5 /* View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7193E3592451E89D006238C5 /* View.swift */; };
-		7193E3662451F1BA006238C5 /* StackContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7193E3652451F1BA006238C5 /* StackContainer.swift */; };
+		7193E3662451F1BA006238C5 /* StackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7193E3652451F1BA006238C5 /* StackView.swift */; };
 		7193E36A24520C1C006238C5 /* CollectionDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7193E36924520C1C006238C5 /* CollectionDataSource.swift */; };
 		7193E36D24520C75006238C5 /* FormsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7193E36C24520C75006238C5 /* FormsCollectionViewCell.swift */; };
 		7194694D243DA7A800CAD09B /* Forms.h in Headers */ = {isa = PBXBuildFile; fileRef = 7194693F243DA7A800CAD09B /* Forms.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -153,6 +153,7 @@
 		71A9285224A368B300734C2B /* ClickableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71A9285024A368B300734C2B /* ClickableView.swift */; };
 		71A9285424A36C7400734C2B /* GradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71A9285324A36C7400734C2B /* GradientView.swift */; };
 		71A9285524A36C7400734C2B /* GradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71A9285324A36C7400734C2B /* GradientView.swift */; };
+		71BF8AAF24F265A900D01CB9 /* FormsCalendarKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71BF8AAE24F265A900D01CB9 /* FormsCalendarKit.framework */; };
 		71C9369B247E503700603A6F /* PinView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71C9369A247E503700603A6F /* PinView.swift */; };
 		71C9369C247E503700603A6F /* PinView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71C9369A247E503700603A6F /* PinView.swift */; };
 		71CD515D24A5D36A00DE9374 /* FormComponentState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71CD515C24A5D36A00DE9374 /* FormComponentState.swift */; };
@@ -165,7 +166,7 @@
 		71D837D52497F89C00B20FE0 /* Confetti.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71D837D42497F89C00B20FE0 /* Confetti.swift */; };
 		71DB66FC2458385400B16145 /* ImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71DB66FB2458385400B16145 /* ImageView.swift */; };
 		71DB66FE245839F400B16145 /* ComponentsImageViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71DB66FD245839F400B16145 /* ComponentsImageViews.swift */; };
-		71DB67002458441700B16145 /* ScrollContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71DB66FF2458441700B16145 /* ScrollContainer.swift */; };
+		71DB67002458441700B16145 /* ScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71DB66FF2458441700B16145 /* ScrollView.swift */; };
 		71E0F5F4246C3C760051F043 /* ComponentsSections.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71E0F5F3246C3C760051F043 /* ComponentsSections.swift */; };
 		71E0F5F7246C3E100051F043 /* SectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71E0F5F6246C3E100051F043 /* SectionView.swift */; };
 		71E0F60B246D30EC0051F043 /* TextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71E0F60A246D30EC0051F043 /* TextView.swift */; };
@@ -176,6 +177,8 @@
 		71EA275E24A9C98A00985392 /* FormsNetworkingImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71EA275D24A9C98A00985392 /* FormsNetworkingImage.framework */; };
 		71EA276124A9C98C00985392 /* FormsNetworkingImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71EA275D24A9C98A00985392 /* FormsNetworkingImage.framework */; };
 		71EA276224A9C99B00985392 /* FormsNetworking.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 714EF1B1247F940100AE3044 /* FormsNetworking.framework */; };
+		71EAB38224F2CF0B00F1358B /* GridView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71EAB38124F2CF0B00F1358B /* GridView.swift */; };
+		71EAB38324F2CF0B00F1358B /* GridView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71EAB38124F2CF0B00F1358B /* GridView.swift */; };
 		71FCB2BC247F9C4800A84D30 /* FormsPermissions.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71FCB2BB247F9C4800A84D30 /* FormsPermissions.framework */; };
 /* End PBXBuildFile section */
 
@@ -221,10 +224,10 @@
 		7156F830246486F40078AA75 /* TextFieldFormatDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldFormatDelegate.swift; sourceTree = "<group>"; };
 		718B43172490B680000DBC05 /* SegmentControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SegmentControl.swift; sourceTree = "<group>"; };
 		718B431A2490B95A000DBC05 /* ComponentsSegments.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComponentsSegments.swift; sourceTree = "<group>"; };
-		7193E3522451DEF7006238C5 /* PageContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageContainer.swift; sourceTree = "<group>"; };
+		7193E3522451DEF7006238C5 /* PageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageView.swift; sourceTree = "<group>"; };
 		7193E3552451DF77006238C5 /* ComponentsContainers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComponentsContainers.swift; sourceTree = "<group>"; };
 		7193E3592451E89D006238C5 /* View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = View.swift; sourceTree = "<group>"; };
-		7193E3652451F1BA006238C5 /* StackContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StackContainer.swift; sourceTree = "<group>"; };
+		7193E3652451F1BA006238C5 /* StackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StackView.swift; sourceTree = "<group>"; };
 		7193E36924520C1C006238C5 /* CollectionDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionDataSource.swift; sourceTree = "<group>"; };
 		7193E36C24520C75006238C5 /* FormsCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormsCollectionViewCell.swift; sourceTree = "<group>"; };
 		7194693F243DA7A800CAD09B /* Forms.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Forms.h; sourceTree = "<group>"; };
@@ -260,6 +263,7 @@
 		719469DB243DDB7600CAD09B /* TableDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableDataSource.swift; sourceTree = "<group>"; };
 		71A9285024A368B300734C2B /* ClickableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClickableView.swift; sourceTree = "<group>"; };
 		71A9285324A36C7400734C2B /* GradientView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientView.swift; sourceTree = "<group>"; };
+		71BF8AAE24F265A900D01CB9 /* FormsCalendarKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FormsCalendarKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		71C9369A247E503700603A6F /* PinView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinView.swift; sourceTree = "<group>"; };
 		71CD515C24A5D36A00DE9374 /* FormComponentState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormComponentState.swift; sourceTree = "<group>"; };
 		71CD515E24A5DF0800DE9374 /* GradientDivider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientDivider.swift; sourceTree = "<group>"; };
@@ -268,7 +272,7 @@
 		71D837D42497F89C00B20FE0 /* Confetti.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Confetti.swift; sourceTree = "<group>"; };
 		71DB66FB2458385400B16145 /* ImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageView.swift; sourceTree = "<group>"; };
 		71DB66FD245839F400B16145 /* ComponentsImageViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComponentsImageViews.swift; sourceTree = "<group>"; };
-		71DB66FF2458441700B16145 /* ScrollContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrollContainer.swift; sourceTree = "<group>"; };
+		71DB66FF2458441700B16145 /* ScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrollView.swift; sourceTree = "<group>"; };
 		71E0F5F3246C3C760051F043 /* ComponentsSections.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComponentsSections.swift; sourceTree = "<group>"; };
 		71E0F5F6246C3E100051F043 /* SectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionView.swift; sourceTree = "<group>"; };
 		71E0F60A246D30EC0051F043 /* TextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextView.swift; sourceTree = "<group>"; };
@@ -276,6 +280,7 @@
 		71E4454E2493668000AC38C1 /* FormsDevice.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FormsDevice.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		71EA270924A9C37200985392 /* FormsUtilsUI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FormsUtilsUI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		71EA275D24A9C98A00985392 /* FormsNetworkingImage.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FormsNetworkingImage.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		71EAB38124F2CF0B00F1358B /* GridView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GridView.swift; sourceTree = "<group>"; };
 		71FCB2BB247F9C4800A84D30 /* FormsPermissions.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FormsPermissions.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -303,6 +308,7 @@
 				71369FAA24865C3600298D3B /* FormsSideMenuKit.framework in Frameworks */,
 				71EA271124A9C3F700985392 /* FormsUtilsUI.framework in Frameworks */,
 				71E4454F2493668000AC38C1 /* FormsDevice.framework in Frameworks */,
+				71BF8AAF24F265A900D01CB9 /* FormsCalendarKit.framework in Frameworks */,
 				7136A0132486624E00298D3B /* FormsAppStoreReview.framework in Frameworks */,
 				7135DFF2248E6E1300B5807F /* FormsLocation.framework in Frameworks */,
 				714EF1D3247F940100AE3044 /* FormsUtils.framework in Frameworks */,
@@ -390,10 +396,11 @@
 			isa = PBXGroup;
 			children = (
 				71A9285024A368B300734C2B /* ClickableView.swift */,
+				71EAB38124F2CF0B00F1358B /* GridView.swift */,
 				71A9285324A36C7400734C2B /* GradientView.swift */,
-				7193E3522451DEF7006238C5 /* PageContainer.swift */,
-				71DB66FF2458441700B16145 /* ScrollContainer.swift */,
-				7193E3652451F1BA006238C5 /* StackContainer.swift */,
+				7193E3522451DEF7006238C5 /* PageView.swift */,
+				71DB66FF2458441700B16145 /* ScrollView.swift */,
+				7193E3652451F1BA006238C5 /* StackView.swift */,
 				7193E3592451E89D006238C5 /* View.swift */,
 			);
 			path = Containers;
@@ -566,6 +573,7 @@
 		719469AF243DA7CC00CAD09B /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				71BF8AAE24F265A900D01CB9 /* FormsCalendarKit.framework */,
 				71E4454E2493668000AC38C1 /* FormsDevice.framework */,
 				7135DFF1248E6E1300B5807F /* FormsLocation.framework */,
 				7135DF9E248E3E8200B5807F /* FormsHomeShortcuts.framework */,
@@ -757,6 +765,7 @@
 				711070E62476BF610056BBB5 /* ActivityIndicator.swift in Sources */,
 				71D47B48249CCBD0001108C5 /* GradientButton.swift in Sources */,
 				711070E72476BF610056BBB5 /* ComponentsNavigationBars.swift in Sources */,
+				71EAB38324F2CF0B00F1358B /* GridView.swift in Sources */,
 				711070E82476BF610056BBB5 /* FormsSearchController.swift in Sources */,
 				711070E92476BF610056BBB5 /* SearchBar.swift in Sources */,
 				71090BC72488CD1400CDB25D /* ComponentsSwitches.swift in Sources */,
@@ -777,9 +786,9 @@
 				718B43192490B680000DBC05 /* SegmentControl.swift in Sources */,
 				711070F72476BF610056BBB5 /* Configuration.swift in Sources */,
 				711070F82476BF610056BBB5 /* FormsNavigationController.swift in Sources */,
-				711070F92476BF610056BBB5 /* PageContainer.swift in Sources */,
+				711070F92476BF610056BBB5 /* PageView.swift in Sources */,
 				711070FA2476BF610056BBB5 /* FormsViewController.swift in Sources */,
-				711070FB2476BF610056BBB5 /* ScrollContainer.swift in Sources */,
+				711070FB2476BF610056BBB5 /* ScrollView.swift in Sources */,
 				711070FC2476BF610056BBB5 /* Button.swift in Sources */,
 				71CD516124A5FB4800DE9374 /* FormComponentState.swift in Sources */,
 				711070FD2476BF610056BBB5 /* View.swift in Sources */,
@@ -800,7 +809,7 @@
 				7110710A2476BF610056BBB5 /* ComponentsSections.swift in Sources */,
 				7110710C2476BF610056BBB5 /* TextFieldAmountDelegate.swift in Sources */,
 				7110710D2476BF610056BBB5 /* FormsTableViewController.swift in Sources */,
-				7110710E2476BF610056BBB5 /* StackContainer.swift in Sources */,
+				7110710E2476BF610056BBB5 /* StackView.swift in Sources */,
 				711071102476BF610056BBB5 /* FormsCollectionViewController.swift in Sources */,
 				71CD516024A5DF0C00DE9374 /* GradientDivider.swift in Sources */,
 				711071122476BF610056BBB5 /* Label.swift in Sources */,
@@ -825,6 +834,7 @@
 				71946991243DA7BE00CAD09B /* ComponentsUtils.swift in Sources */,
 				715435AB24EFA9FB0046F08F /* ComponentsSelectors.swift in Sources */,
 				719469A2243DA7BE00CAD09B /* TextField.swift in Sources */,
+				71EAB38224F2CF0B00F1358B /* GridView.swift in Sources */,
 				718B431B2490B95A000DBC05 /* ComponentsSegments.swift in Sources */,
 				7103EA1B2460266400A11A96 /* ComponentsProgresses.swift in Sources */,
 				7193E36A24520C1C006238C5 /* CollectionDataSource.swift in Sources */,
@@ -852,9 +862,9 @@
 				718B43182490B680000DBC05 /* SegmentControl.swift in Sources */,
 				71946999243DA7BE00CAD09B /* Configuration.swift in Sources */,
 				7103EA22246043C300A11A96 /* FormsNavigationController.swift in Sources */,
-				7193E3532451DEF7006238C5 /* PageContainer.swift in Sources */,
+				7193E3532451DEF7006238C5 /* PageView.swift in Sources */,
 				7194698C243DA7BE00CAD09B /* FormsViewController.swift in Sources */,
-				71DB67002458441700B16145 /* ScrollContainer.swift in Sources */,
+				71DB67002458441700B16145 /* ScrollView.swift in Sources */,
 				7194699B243DA7BE00CAD09B /* Button.swift in Sources */,
 				7193E35A2451E89D006238C5 /* View.swift in Sources */,
 				71CD515D24A5D36A00DE9374 /* FormComponentState.swift in Sources */,
@@ -876,7 +886,7 @@
 				719469A9243DA7BE00CAD09B /* TextFieldAmountDelegate.swift in Sources */,
 				719469A4243DA7BE00CAD09B /* FormsTableViewController.swift in Sources */,
 				71A9285124A368B300734C2B /* ClickableView.swift in Sources */,
-				7193E3662451F1BA006238C5 /* StackContainer.swift in Sources */,
+				7193E3662451F1BA006238C5 /* StackView.swift in Sources */,
 				7138D3A72452C98F00CC7345 /* FormsCollectionViewController.swift in Sources */,
 				7194699D243DA7BE00CAD09B /* Label.swift in Sources */,
 				7193E3562451DF77006238C5 /* ComponentsContainers.swift in Sources */,

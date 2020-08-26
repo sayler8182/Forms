@@ -8,6 +8,12 @@ FormsTransitions helper
 import FormsTransitions
 ```
 
+## Dependencies
+
+```
+FormsUtils.framework
+```
+
 ## Usage
 
 ### View Interpolation

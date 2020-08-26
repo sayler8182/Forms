@@ -499,7 +499,8 @@ open class TextField: FormsComponent, FormsComponentWithMarginEdgeInset, FormsCo
         }
     }
     
-    public func updateState() {
+    override public func updateState() {
+        guard !self.isBatchUpdateInProgress else { return }
         self.setState(self.state, animated: false, force: true)
     }
     
