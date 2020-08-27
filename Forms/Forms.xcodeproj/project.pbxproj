@@ -153,6 +153,8 @@
 		71A9285224A368B300734C2B /* ClickableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71A9285024A368B300734C2B /* ClickableView.swift */; };
 		71A9285424A36C7400734C2B /* GradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71A9285324A36C7400734C2B /* GradientView.swift */; };
 		71A9285524A36C7400734C2B /* GradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71A9285324A36C7400734C2B /* GradientView.swift */; };
+		71B8EE7424F7ED8700753E6D /* InactiveCover.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71B8EE7324F7ED8700753E6D /* InactiveCover.swift */; };
+		71B8EE7524F7ED8700753E6D /* InactiveCover.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71B8EE7324F7ED8700753E6D /* InactiveCover.swift */; };
 		71BF8AAF24F265A900D01CB9 /* FormsCalendarKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71BF8AAE24F265A900D01CB9 /* FormsCalendarKit.framework */; };
 		71C9369B247E503700603A6F /* PinView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71C9369A247E503700603A6F /* PinView.swift */; };
 		71C9369C247E503700603A6F /* PinView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71C9369A247E503700603A6F /* PinView.swift */; };
@@ -263,6 +265,7 @@
 		719469DB243DDB7600CAD09B /* TableDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableDataSource.swift; sourceTree = "<group>"; };
 		71A9285024A368B300734C2B /* ClickableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClickableView.swift; sourceTree = "<group>"; };
 		71A9285324A36C7400734C2B /* GradientView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientView.swift; sourceTree = "<group>"; };
+		71B8EE7324F7ED8700753E6D /* InactiveCover.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InactiveCover.swift; sourceTree = "<group>"; };
 		71BF8AAE24F265A900D01CB9 /* FormsCalendarKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FormsCalendarKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		71C9369A247E503700603A6F /* PinView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinView.swift; sourceTree = "<group>"; };
 		71CD515C24A5D36A00DE9374 /* FormComponentState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormComponentState.swift; sourceTree = "<group>"; };
@@ -482,6 +485,7 @@
 			children = (
 				7194696E243DA7BE00CAD09B /* Configuration.swift */,
 				71D3E43E246D61A1008BA211 /* Keyboard.swift */,
+				71B8EE7324F7ED8700753E6D /* InactiveCover.swift */,
 				7194696B243DA7BE00CAD09B /* Loader.swift */,
 				7194696A243DA7BE00CAD09B /* Modal.swift */,
 				719469C1243DAB6500CAD09B /* Shimmer.swift */,
@@ -822,6 +826,7 @@
 				7110711C2476BF610056BBB5 /* TextFieldFormatDelegate.swift in Sources */,
 				71A9285524A36C7400734C2B /* GradientView.swift in Sources */,
 				7110711D2476BF610056BBB5 /* Modal.swift in Sources */,
+				71B8EE7524F7ED8700753E6D /* InactiveCover.swift in Sources */,
 				7110711E2476BF610056BBB5 /* ComponentsButtons.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -833,6 +838,7 @@
 				719469DC243DDB7600CAD09B /* TableDataSource.swift in Sources */,
 				71946991243DA7BE00CAD09B /* ComponentsUtils.swift in Sources */,
 				715435AB24EFA9FB0046F08F /* ComponentsSelectors.swift in Sources */,
+				71B8EE7424F7ED8700753E6D /* InactiveCover.swift in Sources */,
 				719469A2243DA7BE00CAD09B /* TextField.swift in Sources */,
 				71EAB38224F2CF0B00F1358B /* GridView.swift in Sources */,
 				718B431B2490B95A000DBC05 /* ComponentsSegments.swift in Sources */,

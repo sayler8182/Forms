@@ -43,6 +43,10 @@ public extension String {
         return !self.isEmpty
     }
     
+    var trimmed: String {
+        return self.trimmingCharacters(in: .whitespacesAndNewlines)
+    }
+    
     var url: URL! {
         let string: String = self.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? self
         return URL(string: string)

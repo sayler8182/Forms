@@ -334,6 +334,15 @@ To handle update
 keyboard.onUpdate = { (percent: CGFloat, visibleHeight: CGFloat, animated: Bool) in }
 ```
 
+### InactiveCover
+
+InactiveCover uses AppLifecycle to present cover or blur when app is inactive
+
+```swift
+let inactiveCover = InactiveCover()
+inactiveCover.register()
+```
+
 ### Loader
 
 Loader can be shown on every UIViewController (also UINavigationController)

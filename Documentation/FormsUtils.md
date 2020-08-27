@@ -33,6 +33,7 @@ UIKit and Foundation class extensions.
 ```
 Array.swift
 Bool.swift
+Bundle.swift
 Date.swift
 Dictionary.swift
 DispatchQueue.swift

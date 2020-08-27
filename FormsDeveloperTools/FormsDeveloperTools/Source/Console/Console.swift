@@ -100,7 +100,8 @@ public extension Console {
             "[MC] Reading from private effective user settings.",
             "[Assert] Unexpected code path for search bar hosted by navigation bar. This is a UIKit problem",
             ": encountered error(1:53)",
-            "Graph API v2.4"
+            "Graph API v2.4",
+            "Metal API Validation Enabled"
         ]
     }
 }

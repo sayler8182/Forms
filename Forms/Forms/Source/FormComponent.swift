@@ -11,6 +11,7 @@ import FormsUtils
 import FormsUtilsUI
 import UIKit
 
+public typealias LazyView = (() -> UIView?)
 public typealias LazyImage = (() -> UIImage?)
 
 // MARK: SeparatorView

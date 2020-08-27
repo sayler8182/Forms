@@ -25,6 +25,8 @@ import UIKit
 class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
     
+    private var inactiveCover: InactiveCover = InactiveCover()
+    
     @OptionalInjected
     private var homeShortcuts: HomeShortcutsProtocol? // swiftlint:disable:this let_var_whitespace
     
@@ -102,6 +104,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             self.window = window
             window.makeKeyAndVisible()
         }
+        
+        // inactive cover
+        self.inactiveCover.register()
+        
         return true
     }
     

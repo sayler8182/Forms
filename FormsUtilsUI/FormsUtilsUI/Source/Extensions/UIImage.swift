@@ -44,6 +44,17 @@ public extension UIImage {
         }
     }
     
+    func blured(radius: Double) -> UIImage {
+        let context: CIContext = CIContext(options: nil)
+        guard let ciImage: CIImage = CIImage(image: self) else { return self }
+        guard let ciFilter: CIFilter = CIFilter(name: "CIGaussianBlur") else { return self }
+        ciFilter.setValue(ciImage, forKey: kCIInputImageKey)
+        ciFilter.setValue(radius, forKey: kCIInputRadiusKey)
+        guard let output: CIImage = ciFilter.outputImage else { return self }
+        guard let cgImage: CGImage = context.createCGImage(output, from: ciImage.extent) else { return self }
+        return UIImage(cgImage: cgImage, scale: self.scale, orientation: self.imageOrientation)
+    }
+    
     func circled() -> UIImage {
         var image: UIImage = self
         let radius: CGFloat = min(self.size.width, self.size.height) / 2.0

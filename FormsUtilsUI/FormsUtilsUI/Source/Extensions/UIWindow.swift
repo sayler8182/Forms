@@ -10,6 +10,15 @@ import UIKit
 
 // MARK: UIWindow
 public extension UIWindow {
+    static var new: UIWindow {
+        if #available(iOS 13.0, *) {
+            let scene: UIWindowScene! = UIApplication.shared.connectedScenes.first as? UIWindowScene
+            return UIWindow(windowScene: scene)
+        } else {
+            return UIWindow(frame: UIScreen.main.bounds)
+        }
+    } 
+    
     func show(_ controller: UIViewController?,
               animated: Bool) {
         self.transition(
