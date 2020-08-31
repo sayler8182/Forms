@@ -10,14 +10,15 @@ import Forms
 import FormsAnchor
 import FormsToastKit
 import FormsUtils
+import FormsUtilsUI
 import UIKit
 
 // MARK: DemoShimmerPaginationCollectionViewController
 class DemoShimmerPaginationCollectionViewController: FormsCollectionViewController {
     private lazy var navigationBar = Components.navigationBar.default()
-        .with(rightBarButtonItems: [self.changeDirectionBarItem])
+        .with(rightBarButtonItems: [self.changeDirectionBarButtonItem])
     
-    private lazy var changeDirectionBarItem = BarItem()
+    private lazy var changeDirectionBarButtonItem = BarButtonItem()
         .with(imageName: "arrow.clockwise")
     
     private lazy var shimmerDataSource = ShimmerCollectionDataSource()
@@ -46,7 +47,7 @@ class DemoShimmerPaginationCollectionViewController: FormsCollectionViewControll
     
     override func setupActions() {
         super.setupActions()
-        self.changeDirectionBarItem.onClick = Unowned(self) { (_self) in
+        self.changeDirectionBarButtonItem.onClick = Unowned(self) { (_self) in
             _self.collectionColumnsCount = _self.collectionScrollDirection == .vertical ? 6 : 2
             _self.collectionScrollDirection = _self.collectionScrollDirection == .vertical
                 ? UICollectionView.ScrollDirection.horizontal

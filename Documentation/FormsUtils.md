@@ -34,10 +34,13 @@ UIKit and Foundation class extensions.
 Array.swift
 Bool.swift
 Bundle.swift
+Data.swift
 Date.swift
 Dictionary.swift
 DispatchQueue.swift
 IndexPath.swift
+JSONDecoder.string
+JSONEncoder.string
 Number.swift
 Optional.swift
 String.swift
@@ -154,4 +157,13 @@ injector.register(StorageContainerProtocol.self) { _ in
 injector.register(StorageSecureContainerProtocol.self) { _ in
     StorageKeychainContainer.shared
 }
+```
+
+### Version
+
+```swift
+let oldVersion = Version("0.1.2")
+let newVersion = Version("1.0.1")
+oldVersion < newVersion
+oldVersion.isEqual(newVersion)
 ```

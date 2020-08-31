@@ -70,6 +70,32 @@ public extension String {
                 offsetBy: range.location))
         return text
     }
+    
+    func truncate(to length: Int,
+                  ellips: String? = nil) -> String  {
+        guard self.count < length else { return self }
+        let endPosition: String.Index = self.index(self.startIndex, offsetBy: length)
+        let trimmed: String = String(self[..<endPosition])
+        guard let ellips: String = ellips else { return trimmed }
+        return trimmed.appending(ellips)
+    }
+}
+
+// MARK: Encoding
+public extension String {
+    func fromBase64() -> String? {
+        guard let data: Data = Data(base64Encoded: self) else { return nil }
+        return String(data: data, encoding: .utf8)
+    }
+    
+    func toBase64() -> String {
+        return Data(self.utf8).base64EncodedString()
+    }
+    
+    func decode<T: Decodable>() -> T? {
+        let decoder: JSONDecoder = JSONDecoder()
+        return try? decoder.decode(T.self, from: self)
+    }
 }
 
 // MARK: String?
@@ -122,5 +148,25 @@ public extension String {
 public extension String.Element {
     var asString: String {
         return String(self)
+    }
+}
+
+// MARK: [String]
+public extension Collection where Element == String {
+    func joined(separator: String,
+                skipEmpty: Bool = false) -> String {
+        return self
+            .filter { $0.isNotEmpty }
+            .joined(separator: separator)
+    }
+}
+
+// MARK: [String?]
+public extension Collection where Element == String? {
+    func joined(separator: String,
+                skipEmpty: Bool = false) -> String {
+        return self
+            .compactMap { $0 }
+            .joined(separator: separator, skipEmpty: skipEmpty)
     }
 }

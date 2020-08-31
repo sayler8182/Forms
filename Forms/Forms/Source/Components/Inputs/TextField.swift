@@ -546,12 +546,28 @@ extension TextField: Validable {
 
 // MARK: Inputable
 extension TextField: Inputable {
+    override public func reloadInputViews() {
+        self.textField.reloadInputViews()
+    }
+    
     public func focus(animated: Bool) {
         self.textField.becomeFirstResponder()
     }
     
     public func lostFocus(animated: Bool) {
         self.textField.resignFirstResponder()
+    }
+}
+
+// MARK: InputViewable
+extension TextField: InputViewable {
+    public var inputableView: UIView? {
+        get { return self.textField.inputView }
+        set { self.textField.inputView = newValue }
+    }
+    public var inputableAccessoryView: UIView? {
+        get { return self.textField.inputAccessoryView }
+        set { self.textField.inputAccessoryView = newValue }
     }
 }
 

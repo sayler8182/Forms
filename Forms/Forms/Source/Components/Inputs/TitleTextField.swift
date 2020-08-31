@@ -46,7 +46,8 @@ open class TitleTextField: TextField {
         self.backgroundView.addSubview(self.actionContainerView, with: [
             Anchor.to(self.titleLabel).topToBottom.offset(2),
             Anchor.to(self.textField).leadingToTrailing.greaterThanOrEqual,
-            Anchor.to(self.backgroundView).trailing.offset(self.paddingEdgeInset.trailing)
+            Anchor.to(self.backgroundView).trailing.offset(self.paddingEdgeInset.trailing),
+            Anchor.to(self.actionContainerView).width(0).priority(1)
         ])
         self.actionContainerView.setContentCompressionResistancePriority(.required, for: .horizontal)
     }

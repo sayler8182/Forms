@@ -60,7 +60,6 @@ public enum LoremIpsum {
                 words[wordIndex] = words[wordIndex] + ","
             }
         }
-        
         return words
     }
     

@@ -313,6 +313,14 @@ var items: [Any] {
 
 ## Utils
 
+### DeviceSecurity
+
+DeviceSecurity detects Jailbreak and prevent easy detection
+
+```string
+DeviceSecurity.isSecure
+```
+
 ### Keyboard
 
 FormsViewController by default implements lazy Keyboard property that can be controlled by *isResizeOnKeyboard* property.

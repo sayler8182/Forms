@@ -162,10 +162,18 @@
 		71CD515F24A5DF0800DE9374 /* GradientDivider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71CD515E24A5DF0800DE9374 /* GradientDivider.swift */; };
 		71CD516024A5DF0C00DE9374 /* GradientDivider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71CD515E24A5DF0800DE9374 /* GradientDivider.swift */; };
 		71CD516124A5FB4800DE9374 /* FormComponentState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71CD515C24A5D36A00DE9374 /* FormComponentState.swift */; };
+		71D3433424FCD06800003928 /* DeviceSecurity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71D3433324FCD06800003928 /* DeviceSecurity.swift */; };
+		71D3433524FCD06800003928 /* DeviceSecurity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71D3433324FCD06800003928 /* DeviceSecurity.swift */; };
 		71D3E43F246D61A1008BA211 /* Keyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71D3E43E246D61A1008BA211 /* Keyboard.swift */; };
 		71D47B47249CCBCD001108C5 /* GradientButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71D47B46249CCBCD001108C5 /* GradientButton.swift */; };
 		71D47B48249CCBD0001108C5 /* GradientButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71D47B46249CCBCD001108C5 /* GradientButton.swift */; };
 		71D837D52497F89C00B20FE0 /* Confetti.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71D837D42497F89C00B20FE0 /* Confetti.swift */; };
+		71D9C6FA24F8DB8200E2E0F9 /* DatePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71D9C6F924F8DB8200E2E0F9 /* DatePicker.swift */; };
+		71D9C6FB24F8DB8200E2E0F9 /* DatePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71D9C6F924F8DB8200E2E0F9 /* DatePicker.swift */; };
+		71D9C70024F8DCEA00E2E0F9 /* ComponentsDates.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71D9C6FF24F8DCEA00E2E0F9 /* ComponentsDates.swift */; };
+		71D9C70124F8DCEA00E2E0F9 /* ComponentsDates.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71D9C6FF24F8DCEA00E2E0F9 /* ComponentsDates.swift */; };
+		71D9C70324F8E38B00E2E0F9 /* InputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71D9C70224F8E38B00E2E0F9 /* InputView.swift */; };
+		71D9C70424F8E38B00E2E0F9 /* InputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71D9C70224F8E38B00E2E0F9 /* InputView.swift */; };
 		71DB66FC2458385400B16145 /* ImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71DB66FB2458385400B16145 /* ImageView.swift */; };
 		71DB66FE245839F400B16145 /* ComponentsImageViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71DB66FD245839F400B16145 /* ComponentsImageViews.swift */; };
 		71DB67002458441700B16145 /* ScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71DB66FF2458441700B16145 /* ScrollView.swift */; };
@@ -270,9 +278,13 @@
 		71C9369A247E503700603A6F /* PinView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinView.swift; sourceTree = "<group>"; };
 		71CD515C24A5D36A00DE9374 /* FormComponentState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormComponentState.swift; sourceTree = "<group>"; };
 		71CD515E24A5DF0800DE9374 /* GradientDivider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientDivider.swift; sourceTree = "<group>"; };
+		71D3433324FCD06800003928 /* DeviceSecurity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceSecurity.swift; sourceTree = "<group>"; };
 		71D3E43E246D61A1008BA211 /* Keyboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Keyboard.swift; sourceTree = "<group>"; };
 		71D47B46249CCBCD001108C5 /* GradientButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientButton.swift; sourceTree = "<group>"; };
 		71D837D42497F89C00B20FE0 /* Confetti.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Confetti.swift; sourceTree = "<group>"; };
+		71D9C6F924F8DB8200E2E0F9 /* DatePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatePicker.swift; sourceTree = "<group>"; };
+		71D9C6FF24F8DCEA00E2E0F9 /* ComponentsDates.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComponentsDates.swift; sourceTree = "<group>"; };
+		71D9C70224F8E38B00E2E0F9 /* InputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputView.swift; sourceTree = "<group>"; };
 		71DB66FB2458385400B16145 /* ImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageView.swift; sourceTree = "<group>"; };
 		71DB66FD245839F400B16145 /* ComponentsImageViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComponentsImageViews.swift; sourceTree = "<group>"; };
 		71DB66FF2458441700B16145 /* ScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrollView.swift; sourceTree = "<group>"; };
@@ -465,6 +477,7 @@
 				71946968243DA7BE00CAD09B /* ComponentsButtons.swift */,
 				71207CEE248783B80004B840 /* ComponentsCheckboxes.swift */,
 				7193E3552451DF77006238C5 /* ComponentsContainers.swift */,
+				71D9C6FF24F8DCEA00E2E0F9 /* ComponentsDates.swift */,
 				71DB66FD245839F400B16145 /* ComponentsImageViews.swift */,
 				71946963243DA7BE00CAD09B /* ComponentsInputs.swift */,
 				71946964243DA7BE00CAD09B /* ComponentsLabels.swift */,
@@ -484,8 +497,10 @@
 			isa = PBXGroup;
 			children = (
 				7194696E243DA7BE00CAD09B /* Configuration.swift */,
+				71D3433324FCD06800003928 /* DeviceSecurity.swift */,
 				71D3E43E246D61A1008BA211 /* Keyboard.swift */,
 				71B8EE7324F7ED8700753E6D /* InactiveCover.swift */,
+				71D9C70224F8E38B00E2E0F9 /* InputView.swift */,
 				7194696B243DA7BE00CAD09B /* Loader.swift */,
 				7194696A243DA7BE00CAD09B /* Modal.swift */,
 				719469C1243DAB6500CAD09B /* Shimmer.swift */,
@@ -500,6 +515,7 @@
 				71946970243DA7BE00CAD09B /* Buttons */,
 				71207CEA24877E1E0004B840 /* Checkboxes */,
 				7193E3512451DECC006238C5 /* Containers */,
+				71D9C6F824F8DB6200E2E0F9 /* Dates */,
 				71DB66FA2458383A00B16145 /* ImageViews */,
 				7194697B243DA7BE00CAD09B /* Inputs */,
 				71946975243DA7BE00CAD09B /* Labels */,
@@ -627,6 +643,14 @@
 				719469DB243DDB7600CAD09B /* TableDataSource.swift */,
 			);
 			path = TableView;
+			sourceTree = "<group>";
+		};
+		71D9C6F824F8DB6200E2E0F9 /* Dates */ = {
+			isa = PBXGroup;
+			children = (
+				71D9C6F924F8DB8200E2E0F9 /* DatePicker.swift */,
+			);
+			path = Dates;
 			sourceTree = "<group>";
 		};
 		71DB66FA2458383A00B16145 /* ImageViews */ = {
@@ -767,6 +791,7 @@
 				711070E42476BF610056BBB5 /* ComponentsProgresses.swift in Sources */,
 				711070E52476BF610056BBB5 /* CollectionDataSource.swift in Sources */,
 				711070E62476BF610056BBB5 /* ActivityIndicator.swift in Sources */,
+				71D3433524FCD06800003928 /* DeviceSecurity.swift in Sources */,
 				71D47B48249CCBD0001108C5 /* GradientButton.swift in Sources */,
 				711070E72476BF610056BBB5 /* ComponentsNavigationBars.swift in Sources */,
 				71EAB38324F2CF0B00F1358B /* GridView.swift in Sources */,
@@ -788,6 +813,7 @@
 				711070F42476BF610056BBB5 /* Theme.swift in Sources */,
 				711070F52476BF610056BBB5 /* Loader.swift in Sources */,
 				718B43192490B680000DBC05 /* SegmentControl.swift in Sources */,
+				71D9C6FB24F8DB8200E2E0F9 /* DatePicker.swift in Sources */,
 				711070F72476BF610056BBB5 /* Configuration.swift in Sources */,
 				711070F82476BF610056BBB5 /* FormsNavigationController.swift in Sources */,
 				711070F92476BF610056BBB5 /* PageView.swift in Sources */,
@@ -808,6 +834,7 @@
 				711071062476BF610056BBB5 /* ComponentsOthers.swift in Sources */,
 				711071072476BF610056BBB5 /* ComponentsImageViews.swift in Sources */,
 				711071082476BF610056BBB5 /* SectionView.swift in Sources */,
+				71D9C70124F8DCEA00E2E0F9 /* ComponentsDates.swift in Sources */,
 				711071092476BF610056BBB5 /* FormsCollectionViewCell.swift in Sources */,
 				71C9369C247E503700603A6F /* PinView.swift in Sources */,
 				7110710A2476BF610056BBB5 /* ComponentsSections.swift in Sources */,
@@ -826,6 +853,7 @@
 				7110711C2476BF610056BBB5 /* TextFieldFormatDelegate.swift in Sources */,
 				71A9285524A36C7400734C2B /* GradientView.swift in Sources */,
 				7110711D2476BF610056BBB5 /* Modal.swift in Sources */,
+				71D9C70424F8E38B00E2E0F9 /* InputView.swift in Sources */,
 				71B8EE7524F7ED8700753E6D /* InactiveCover.swift in Sources */,
 				7110711E2476BF610056BBB5 /* ComponentsButtons.swift in Sources */,
 			);
@@ -854,9 +882,11 @@
 				7194699C243DA7BE00CAD09B /* NavigationBar.swift in Sources */,
 				71E0F60B246D30EC0051F043 /* TextView.swift in Sources */,
 				7194698F243DA7BE00CAD09B /* ComponentsInputs.swift in Sources */,
+				71D9C70324F8E38B00E2E0F9 /* InputView.swift in Sources */,
 				719469AA243DA7BE00CAD09B /* TextFieldDelegate.swift in Sources */,
 				71DB66FC2458385400B16145 /* ImageView.swift in Sources */,
 				71946993243DA7BE00CAD09B /* Components.swift in Sources */,
+				71D9C6FA24F8DB8200E2E0F9 /* DatePicker.swift in Sources */,
 				719469A0243DA7BE00CAD09B /* Divider.swift in Sources */,
 				719469C2243DAB6500CAD09B /* Shimmer.swift in Sources */,
 				7103EA182460234E00A11A96 /* ProgressBar.swift in Sources */,
@@ -865,6 +895,7 @@
 				71946997243DA7BE00CAD09B /* Theme.swift in Sources */,
 				715435AE24EFAADE0046F08F /* SelectorControl.swift in Sources */,
 				71946996243DA7BE00CAD09B /* Loader.swift in Sources */,
+				71D9C70024F8DCEA00E2E0F9 /* ComponentsDates.swift in Sources */,
 				718B43182490B680000DBC05 /* SegmentControl.swift in Sources */,
 				71946999243DA7BE00CAD09B /* Configuration.swift in Sources */,
 				7103EA22246043C300A11A96 /* FormsNavigationController.swift in Sources */,
@@ -875,6 +906,7 @@
 				7193E35A2451E89D006238C5 /* View.swift in Sources */,
 				71CD515D24A5D36A00DE9374 /* FormComponentState.swift in Sources */,
 				71946990243DA7BE00CAD09B /* ComponentsLabels.swift in Sources */,
+				71D3433424FCD06800003928 /* DeviceSecurity.swift in Sources */,
 				71278B53245AC88C00B26870 /* SearchDataSource.swift in Sources */,
 				7194698E243DA7BE00CAD09B /* Forms.swift in Sources */,
 				719469AB243DA7BE00CAD09B /* TextFieldDelegates.swift in Sources */,

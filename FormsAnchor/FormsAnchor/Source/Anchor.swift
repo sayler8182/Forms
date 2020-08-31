@@ -105,6 +105,7 @@ extension UIView: AnchorLayoutGuide { }
 extension UILayoutGuide: AnchorLayoutGuide { }
 
 public extension UILayoutPriority {
+    static var almostRequired: UILayoutPriority = UILayoutPriority(999)
     static var veryHigh: UILayoutPriority = UILayoutPriority(900)
     static var veryLow: UILayoutPriority = UILayoutPriority(100)
 }
@@ -500,10 +501,9 @@ public extension Anchor {
         return anchor
     }
     
-    func priority(_ value: Int) -> Anchor {
+    func priority(_ value: Float) -> Anchor {
         var anchor: Anchor = self
-        let priorityValue = Float(value / 1_000)
-        anchor.priority = Priority(priorityValue)
+        anchor.priority = Priority(value)
         return anchor
     }
 }

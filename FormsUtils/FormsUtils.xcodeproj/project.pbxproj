@@ -23,6 +23,11 @@
 		7176A77B24A32F33006F6BD0 /* CodeGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7176A77A24A32F33006F6BD0 /* CodeGenerator.swift */; };
 		717F4ACC249B57E000635106 /* Debouncer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 717F4ACB249B57E000635106 /* Debouncer.swift */; };
 		71B8EE7224F7EB1B00753E6D /* Bundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71B8EE7124F7EB1B00753E6D /* Bundle.swift */; };
+		71D3433724FCD49B00003928 /* Version.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71D3433624FCD49B00003928 /* Version.swift */; };
+		71D3433924FCD8C500003928 /* JSONDecoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71D3433824FCD8C500003928 /* JSONDecoder.swift */; };
+		71D3433B24FCD8E800003928 /* DateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71D3433A24FCD8E800003928 /* DateFormatter.swift */; };
+		71D3433D24FCDD0800003928 /* Data.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71D3433C24FCDD0800003928 /* Data.swift */; };
+		71D3433F24FCDD4D00003928 /* JSONEncoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71D3433E24FCDD4D00003928 /* JSONEncoder.swift */; };
 		71E446622493A8AD00AC38C1 /* Dictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71E446612493A8AD00AC38C1 /* Dictionary.swift */; };
 		71EA271B24A9C57B00985392 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71EA271824A9C57B00985392 /* String.swift */; };
 		71EA271C24A9C57B00985392 /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71EA271924A9C57B00985392 /* Date.swift */; };
@@ -48,6 +53,11 @@
 		7176A77A24A32F33006F6BD0 /* CodeGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodeGenerator.swift; sourceTree = "<group>"; };
 		717F4ACB249B57E000635106 /* Debouncer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Debouncer.swift; sourceTree = "<group>"; };
 		71B8EE7124F7EB1B00753E6D /* Bundle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bundle.swift; sourceTree = "<group>"; };
+		71D3433624FCD49B00003928 /* Version.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Version.swift; sourceTree = "<group>"; };
+		71D3433824FCD8C500003928 /* JSONDecoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONDecoder.swift; sourceTree = "<group>"; };
+		71D3433A24FCD8E800003928 /* DateFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateFormatter.swift; sourceTree = "<group>"; };
+		71D3433C24FCDD0800003928 /* Data.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Data.swift; sourceTree = "<group>"; };
+		71D3433E24FCDD4D00003928 /* JSONEncoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONEncoder.swift; sourceTree = "<group>"; };
 		71E446612493A8AD00AC38C1 /* Dictionary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dictionary.swift; sourceTree = "<group>"; };
 		71EA271824A9C57B00985392 /* String.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
 		71EA271924A9C57B00985392 /* Date.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Date.swift; sourceTree = "<group>"; };
@@ -104,6 +114,7 @@
 				71440E16248F79740090A5BD /* Pagination.swift */,
 				71440E12248F74C10090A5BD /* Reference.swift */,
 				71440E10248F74710090A5BD /* Storage.swift */,
+				71D3433624FCD49B00003928 /* Version.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -114,10 +125,14 @@
 				713B9BB0243D06C3001F6E3A /* Array.swift */,
 				713B9BB1243D06C3001F6E3A /* Bool.swift */,
 				71B8EE7124F7EB1B00753E6D /* Bundle.swift */,
+				71D3433C24FCDD0800003928 /* Data.swift */,
 				71EA271924A9C57B00985392 /* Date.swift */,
+				71D3433A24FCD8E800003928 /* DateFormatter.swift */,
 				71E446612493A8AD00AC38C1 /* Dictionary.swift */,
 				716AAD0E24A22E0F009C114C /* DispatchQueue.swift */,
 				710624F524404C9D00C267FE /* IndexPath.swift */,
+				71D3433824FCD8C500003928 /* JSONDecoder.swift */,
+				71D3433E24FCDD4D00003928 /* JSONEncoder.swift */,
 				71EA271A24A9C57B00985392 /* Number.swift */,
 				713B9BB2243D06C3001F6E3A /* Optional.swift */,
 				71EA271824A9C57B00985392 /* String.swift */,
@@ -217,6 +232,8 @@
 				716AAD0F24A22E0F009C114C /* DispatchQueue.swift in Sources */,
 				71B8EE7224F7EB1B00753E6D /* Bundle.swift in Sources */,
 				71440E11248F74710090A5BD /* Storage.swift in Sources */,
+				71D3433F24FCDD4D00003928 /* JSONEncoder.swift in Sources */,
+				71D3433B24FCD8E800003928 /* DateFormatter.swift in Sources */,
 				717F4ACC249B57E000635106 /* Debouncer.swift in Sources */,
 				71EA271C24A9C57B00985392 /* Date.swift in Sources */,
 				71E446622493A8AD00AC38C1 /* Dictionary.swift in Sources */,
@@ -226,7 +243,10 @@
 				71EA271D24A9C57B00985392 /* Number.swift in Sources */,
 				71440E13248F74C10090A5BD /* Reference.swift in Sources */,
 				713B9BB4243D06C3001F6E3A /* Array.swift in Sources */,
+				71D3433924FCD8C500003928 /* JSONDecoder.swift in Sources */,
 				715C43FE2480EE010093EBFF /* Globals.swift in Sources */,
+				71D3433D24FCDD0800003928 /* Data.swift in Sources */,
+				71D3433724FCD49B00003928 /* Version.swift in Sources */,
 				713B9BB5243D06C3001F6E3A /* Bool.swift in Sources */,
 				71440E0F248F741B0090A5BD /* UserDefaults.swift in Sources */,
 				71EA271B24A9C57B00985392 /* String.swift in Sources */,

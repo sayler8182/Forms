@@ -34,6 +34,15 @@ public extension Bundle {
         return self.info(for: "SKStoreProductParameterITunesItemIdentifier")
     }
     
+    func decode<T: Decodable>(_ type: T.Type,
+                              from filename: String,
+                              with decoder: JSONDecoder? = nil) -> T? {
+        guard let url: URL = self.url(forResource: filename, withExtension: nil) else { return nil }
+        guard let data = try? Data(contentsOf: url) else { return nil }
+        let decoder: JSONDecoder = decoder ?? JSONDecoder()
+        return try? decoder.decode(T.self, from: data)
+    }
+    
     func info(for key: String,
               or default: String = "") -> String! {
         let value: String? = self.object(forInfoDictionaryKey: key) as? String

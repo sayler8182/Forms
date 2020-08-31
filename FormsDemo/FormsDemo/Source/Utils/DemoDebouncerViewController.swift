@@ -17,18 +17,21 @@ class DemoDebouncerViewController: FormsTableViewController {
         .with(title: "Debouncer input")
     private let outputLabel = Components.label.default()
         .with(marginVertical: 4, marginHorizontal: 16)
-        .with(text: "Wait for debounce")
+        .with(text: "Waiting for debounce")
+    private let invalidateButton = Components.button.default()
+        .with(title: "Invalidate")
     
     private let divider = Components.utils.divider()
         .with(height: 5.0)
     
-    private let debouncer = Debouncer(interval: 0.5)
+    private let debouncer = Debouncer(interval: 1)
     
     override func setupContent() {
         super.setupContent()
         self.build([
             self.inputTextField,
-            self.outputLabel
+            self.outputLabel,
+            self.invalidateButton
         ], divider: self.divider)
     }
     
@@ -39,6 +42,9 @@ class DemoDebouncerViewController: FormsTableViewController {
                 guard let _self = _self else { return }
                 _self.outputLabel.text = text
             }
+        }
+        self.invalidateButton.onClick = Unowned(self) { (_self) in
+            _self.debouncer.invalidate()
         }
     }
 }

@@ -9,6 +9,7 @@
 import Forms
 import FormsAnchor
 import FormsUtils
+import FormsUtilsUI
 import UIKit
 
 // MARK: DemoNavigationBarViewController
@@ -19,13 +20,13 @@ class DemoNavigationBarViewController: FormsTableViewController {
         .with(isBack: false)
         .with(title: "Navigation bar without back")
     private lazy var navigationBarWithLeftAndRightBar = Components.navigationBar.default()
-        .with(leftBarButtonItems: [self.text1BarItem])
-        .with(rightBarButtonItems: [self.image1BarItem])
+        .with(leftBarButtonItems: [self.text1BarButtonItem])
+        .with(rightBarButtonItems: [self.image1BarButtonItem])
         .with(title: "Navigation bar with left and left bar")
     private lazy var navigationBarWithLeftAndRightBars = Components.navigationBar.default()
         .with(backgroundColor: Theme.Colors.gray)
-        .with(leftBarButtonItems: [self.text1BarItem, self.text2BarItem])
-        .with(rightBarButtonItems: [self.image1BarItem, self.image2BarItem])
+        .with(leftBarButtonItems: [self.text1BarButtonItem, self.text2BarButtonItem])
+        .with(rightBarButtonItems: [self.image1BarButtonItem, self.image2BarButtonItem])
         .with(tintColor: Theme.Colors.red)
         .with(title: "Navigation bar with left and left bars")
     private lazy var navigationBarWithTitleView = Components.navigationBar.default()
@@ -36,7 +37,7 @@ class DemoNavigationBarViewController: FormsTableViewController {
         .with(title: "Navigation bar without shadow") 
     private lazy var navigationBarWithSearchBar = Components.navigationBar.default()
         .with(titleView: self.navigationBarSearchBar)
-        .with(rightBarButtonItems: [self.cancelBarItem])
+        .with(rightBarButtonItems: [self.cancelBarButtonItem])
     
     private let defaultNavigationBarButton = Components.button.default()
         .with(title: "Default navigation bar")
@@ -53,15 +54,15 @@ class DemoNavigationBarViewController: FormsTableViewController {
     private var navigationBarWithSearchBarButton = Components.button.default()
         .with(title: "Navigation bar with search bar")
     
-    private lazy var text1BarItem = BarItem()
+    private lazy var text1BarButtonItem = BarButtonItem()
         .with(title: "Item 1")
-    private lazy var text2BarItem = BarItem()
+    private lazy var text2BarButtonItem = BarButtonItem()
         .with(title: "Item 2")
-    private lazy var image1BarItem = BarItem()
+    private lazy var image1BarButtonItem = BarButtonItem()
         .with(imageName: "heart.fill")
-    private lazy var image2BarItem = BarItem()
+    private lazy var image2BarButtonItem = BarButtonItem()
         .with(imageName: "square.and.arrow.up")
-    private lazy var cancelBarItem = BarItem()
+    private lazy var cancelBarButtonItem = BarButtonItem()
         .with(title: "Cancel")
     
     private lazy var navigationBarTitleView = Components.container.view()
@@ -115,7 +116,7 @@ class DemoNavigationBarViewController: FormsTableViewController {
                 _self.setNavigationBar(item.value)
             }
         }
-        self.cancelBarItem.onClick = Unowned(self) { (_self) in
+        self.cancelBarButtonItem.onClick = Unowned(self) { (_self) in
             _self.navigationBarSearchBar.endEditing(true)
         }
     }

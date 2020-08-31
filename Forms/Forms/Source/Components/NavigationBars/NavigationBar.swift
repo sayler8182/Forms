@@ -7,49 +7,10 @@
 //
 
 import FormsUtils
+import FormsUtilsUI
 import UIKit
 
-// MARK: BarItem
-open class BarItem: UIBarButtonItem, Clickable {
-    public var onClick: (() -> Void)? = nil
-    
-    override public init() {
-        super.init()
-        self.setupView()
-    }
-    
-    public required init?(coder: NSCoder) {
-        super.init(coder: coder)
-        self.setupView()
-    }
-    
-    open func setupView() {
-        self.target = self
-        self.action = #selector(handleOnClick)
-    }
-    
-    @objc
-    private func handleOnClick() {
-        self.onClick?()
-    }
-    
-    public func with(image: UIImage?) -> Self {
-        self.image = image
-        return self
-    }
-    
-    public func with(imageName: String) -> Self {
-        self.image = UIImage.from(name: imageName)
-        return self
-    }
-    
-    public func with(title: String?) -> Self {
-        self.title = title
-        return self
-    }
-}
-
-private class BackBarItem: BarItem { }
+private class BackBarItem: BarButtonItem, Clickable { }
 
 private class EmptyBarItem: BackBarItem {
     override func setupView() { }
@@ -88,11 +49,11 @@ open class NavigationBar: FormsComponent {
     open var isTranslucent: Bool = false {
         didSet { self.navigationBar?.isTranslucent = self.isTranslucent }
     }
-    open var leftBarButtonItems: [BarItem] = [] {
+    open var leftBarButtonItems: [BarButtonItem] = [] {
         didSet { self.updateLeftBarButtonItems() }
     }
     open var progress: CGFloat = 0.0
-    open var rightBarButtonItems: [BarItem] = [] {
+    open var rightBarButtonItems: [BarButtonItem] = [] {
         didSet { self.updateRightBarButtonItems() }
     }
     override open var tintColor: UIColor? {
@@ -146,7 +107,7 @@ open class NavigationBar: FormsComponent {
             let image: UIImage? = canGoBack
                 ? self.backImage?()
                 : self.closeImage?()
-            let item = BarItem().with(image: image)
+            let item = BarButtonItem(image: image)
             item.onClick = Unowned(self) { (_self) in
                 if let onBack = _self.onBack {
                     onBack()
@@ -206,7 +167,7 @@ public extension NavigationBar {
         self.isTranslucent = isTranslucent
         return self
     }
-    func with(leftBarButtonItems: [BarItem]) -> Self {
+    func with(leftBarButtonItems: [BarButtonItem]) -> Self {
         self.leftBarButtonItems = leftBarButtonItems
         return self
     }
@@ -220,7 +181,7 @@ public extension NavigationBar {
         self.progress = CGFloat(progressCurrent) / CGFloat(progressCount)
         return self
     }
-    func with(rightBarButtonItems: [BarItem]) -> Self {
+    func with(rightBarButtonItems: [BarButtonItem]) -> Self {
         self.rightBarButtonItems = rightBarButtonItems
         return self
     }

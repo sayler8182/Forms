@@ -55,6 +55,7 @@ private enum Demo {
         case componentsContainersPage
         case componentsContainersScroll
         case componentsContainersStack
+        case componentsDates
         case componentsInputs
         case componentsInputsPinView
         case componentsInputsSearchBar
@@ -78,6 +79,7 @@ private enum Demo {
         case utils
         case utilsAttributedString
         case utilsDebouncer
+        case utilsInputView
         case utilsLoader
         case utilsModal
         case utilsScrollSteps
@@ -176,6 +178,7 @@ private enum Demo {
                                 Row(type: RowType.componentsContainersStack, title: "StackView")
                             ])
                     ]),
+                    Row(type: RowType.componentsDates, title: "Dates"),
                     Row(
                         type: RowType.componentsInputs,
                         title: "Inputs",
@@ -217,6 +220,7 @@ private enum Demo {
                 Section(title: "Utils", rows: [
                     Row(type: RowType.utilsAttributedString, title: "AttributedString"),
                     Row(type: RowType.utilsDebouncer, title: "Debouncer"),
+                    Row(type: RowType.utilsInputView, title: "InputView"),
                     Row(type: RowType.utilsLoader, title: "Loader"),
                     Row(type: RowType.utilsModal, title: "Modal"),
                     Row(type: RowType.utilsScrollSteps, title: "ScrollSteps"),
@@ -594,6 +598,7 @@ private class DemoListViewController: FormsViewController {
         case .componentsContainersPage:                         return DemoPageViewViewController()
         case .componentsContainersScroll:                       return DemoScrollViewViewController()
         case .componentsContainersStack:                        return DemoStackViewViewController()
+        case .componentsDates:                                  return DemoDatesViewController()
         case .componentsInputsPinView:                          return DemoPinViewViewController()
         case .componentsInputsSearchBar:                        return DemoSearchBarViewController()
         case .componentsInputsTitleTextField:                   return DemoTitleTextFieldViewController()
@@ -613,6 +618,7 @@ private class DemoListViewController: FormsViewController {
         // utils
         case .utilsAttributedString:                            return DemoAttributedStringViewController()
         case .utilsDebouncer:                                   return DemoDebouncerViewController()
+        case .utilsInputView:                                   return DemoInputViewViewController()
         case .utilsLoader:                                      return DemoLoaderViewController()
         case .utilsModal:                                       return DemoModalViewController()
         case .utilsScrollSteps:                                 return DemoScrollStepsViewController()

@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		71D9C70624F8EA3700E2E0F9 /* UIToolbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71D9C70524F8EA3700E2E0F9 /* UIToolbar.swift */; };
+		71D9C70824F8EB0400E2E0F9 /* UIBarButtonItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71D9C70724F8EB0400E2E0F9 /* UIBarButtonItem.swift */; };
 		71DBEEB624F3A2050057D97B /* ResizeableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71DBEEB524F3A2050057D97B /* ResizeableView.swift */; };
 		71EA26AE24A9C05800985392 /* FormsUtilsUI.h in Headers */ = {isa = PBXBuildFile; fileRef = 71EA26AC24A9C05800985392 /* FormsUtilsUI.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		71EA26BC24A9C07D00985392 /* FormsInjector.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71EA26BB24A9C07D00985392 /* FormsInjector.framework */; };
@@ -52,6 +54,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		71D9C70524F8EA3700E2E0F9 /* UIToolbar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIToolbar.swift; sourceTree = "<group>"; };
+		71D9C70724F8EB0400E2E0F9 /* UIBarButtonItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIBarButtonItem.swift; sourceTree = "<group>"; };
 		71DBEEB524F3A2050057D97B /* ResizeableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResizeableView.swift; sourceTree = "<group>"; };
 		71EA26A924A9C05800985392 /* FormsUtilsUI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = FormsUtilsUI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		71EA26AC24A9C05800985392 /* FormsUtilsUI.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FormsUtilsUI.h; sourceTree = "<group>"; };
@@ -170,6 +174,7 @@
 				71EA26EC24A9C34100985392 /* UIActivityIndicatorView.swift */,
 				71EA26E824A9C34000985392 /* UIAlertViewController.swift */,
 				71EA26EA24A9C34100985392 /* UIBezierPath.swift */,
+				71D9C70724F8EB0400E2E0F9 /* UIBarButtonItem.swift */,
 				71EA26DB24A9C33F00985392 /* UIButton.swift */,
 				71EA26DC24A9C33F00985392 /* UICollectionView.swift */,
 				71EA26DD24A9C33F00985392 /* UIColor.swift */,
@@ -186,6 +191,7 @@
 				71EA26EE24A9C34100985392 /* UIStackView.swift */,
 				71EA26D724A9C33E00985392 /* UIStatusBarStyle.swift */,
 				71EA26D824A9C33E00985392 /* UITextField.swift */,
+				71D9C70524F8EA3700E2E0F9 /* UIToolbar.swift */,
 				71EA26EB24A9C34100985392 /* UIView.swift */,
 				71EA26E024A9C33F00985392 /* UIViewController.swift */,
 				71EA26E724A9C34000985392 /* UIWindow.swift */,
@@ -299,6 +305,7 @@
 				71EA26D224A9C2AC00985392 /* LoremIpsum.swift in Sources */,
 				71EA26FE24A9C34100985392 /* UITableView.swift in Sources */,
 				71EA26EF24A9C34100985392 /* UIScrollView.swift in Sources */,
+				71D9C70824F8EB0400E2E0F9 /* UIBarButtonItem.swift in Sources */,
 				71EA26F524A9C34100985392 /* UIButton.swift in Sources */,
 				71EA26F724A9C34100985392 /* UIColor.swift in Sources */,
 				71EA270324A9C34100985392 /* UILabel.swift in Sources */,
@@ -315,6 +322,7 @@
 				71EA26C924A9C16900985392 /* AttributedString.swift in Sources */,
 				71EA270024A9C34100985392 /* UIResponder.swift in Sources */,
 				71EA26FB24A9C34100985392 /* CGRect.swift in Sources */,
+				71D9C70624F8EA3700E2E0F9 /* UIToolbar.swift in Sources */,
 				71EA26CC24A9C1B100985392 /* ImagePreview.swift in Sources */,
 				71EA26FA24A9C34100985392 /* UIViewController.swift in Sources */,
 				71EA26C824A9C16900985392 /* AppLifecycleable.swift in Sources */,

@@ -121,7 +121,7 @@ open class PinView: FormsComponent, FormsComponentWithMarginEdgeInset, FormsComp
         }
     }
     open var text: String? {
-        get { return self.textFields.compactMap { $0.text }.joined() }
+        get { return self.textFields.compactMap({ $0.text }).joined() }
         set { self.setText(newValue) }
     }
     open var textAlignment: NSTextAlignment = .natural {

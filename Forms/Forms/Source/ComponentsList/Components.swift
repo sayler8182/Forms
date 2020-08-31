@@ -12,6 +12,7 @@ public enum Components {
     public typealias button = ComponentsButtons
     public typealias checkbox = ComponentsCheckboxes
     public typealias container = ComponentsContainers
+    public typealias dates = ComponentsDates
     public typealias image = ComponentsImageViews
     public typealias input = ComponentsInputs
     public typealias label = ComponentsLabels

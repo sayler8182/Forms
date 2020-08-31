@@ -51,7 +51,9 @@ public extension Focusable {
 } 
 
 // MARK: Inputable
-public protocol Inputable: Focusable { }
+public protocol Inputable: Focusable {
+    func reloadInputViews()
+}
 
 // MARK: Componentable
 public protocol Componentable: Themeable {
