@@ -72,7 +72,7 @@ public extension String {
     }
     
     func truncate(to length: Int,
-                  ellips: String? = nil) -> String  {
+                  ellips: String? = nil) -> String {
         guard self.count < length else { return self }
         let endPosition: String.Index = self.index(self.startIndex, offsetBy: length)
         let trimmed: String = String(self[..<endPosition])

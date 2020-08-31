@@ -21,6 +21,13 @@ import FormsSocialKit
 import GoogleSignIn
 import UIKit
 
+// MARK: Environment
+enum Environment: String, Equatable {
+    case prod = "PROD"
+    case stage = "STAGE"
+    case local = "LOCAL"
+}
+
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
@@ -32,6 +39,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     @OptionalInjected
     private var logger: Logger? // swiftlint:disable:this let_var_whitespace
+    
+    @Injected
+    private var settingsBundle: SettingsBundleProtocol // swiftlint:disable:this let_var_whitespace
     
     func application(_ application: UIApplication,
                      didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
@@ -107,6 +117,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         // inactive cover
         self.inactiveCover.register()
+        
+        // settings bundle
+        self.settingsBundle.set(
+            value: Bundle.main.appVersion,
+            forKey: DemoSettingsBundleKey.appVersion)
+        self.settingsBundle.set(
+            value: Bundle.main.buildVersion,
+            forKey: DemoSettingsBundleKey.buildVersion)
+        let environment: String = self.settingsBundle.get(forKey: DemoSettingsBundleKey.environment) ?? ""
+        self.logger?.log(LogType.info, "Environment: \(environment)")
         
         return true
     }

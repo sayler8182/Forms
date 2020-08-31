@@ -137,7 +137,7 @@
 		7193E3582451E051006238C5 /* DemoPageViewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7193E3572451E051006238C5 /* DemoPageViewViewController.swift */; };
 		7193E3682451F3AF006238C5 /* DemoStackViewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7193E3672451F3AF006238C5 /* DemoStackViewViewController.swift */; };
 		719469C4243DB01D00CAD09B /* DemoShimmerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 719469C3243DB01D00CAD09B /* DemoShimmerViewController.swift */; };
-		719469D4243DBC6800CAD09B /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 719469D3243DBC6800CAD09B /* Utils.swift */; };
+		719469D4243DBC6800CAD09B /* Assembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 719469D3243DBC6800CAD09B /* Assembly.swift */; };
 		719469D6243DC11000CAD09B /* DemoShimmerTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 719469D5243DC11000CAD09B /* DemoShimmerTableViewController.swift */; };
 		719AE5D0246308FC00A39B0E /* DemoTransitionControllerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 719AE5CF246308FC00A39B0E /* DemoTransitionControllerViewController.swift */; };
 		719F8C7B24570358004F5A27 /* DemoDeveloperToolsMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 719F8C7A24570358004F5A27 /* DemoDeveloperToolsMenuViewController.swift */; };
@@ -149,6 +149,7 @@
 		71BF8B2624F271A300D01CB9 /* DemoCalendarKitWeekController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71BF8B2524F271A300D01CB9 /* DemoCalendarKitWeekController.swift */; };
 		71BF8B2824F2768B00D01CB9 /* LocalAuthentication.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71BF8B2724F2768B00D01CB9 /* LocalAuthentication.framework */; };
 		71C9369E247E513500603A6F /* DemoPinViewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71C9369D247E513500603A6F /* DemoPinViewViewController.swift */; };
+		71D3436324FCF63C00003928 /* SettingsBundleKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71D3436224FCF63C00003928 /* SettingsBundleKey.swift */; };
 		71D47B4A249CD567001108C5 /* DemoGradientButtonViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71D47B49249CD567001108C5 /* DemoGradientButtonViewController.swift */; };
 		71D9C6FE24F8DCAC00E2E0F9 /* DemoDatesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71D9C6FD24F8DCAC00E2E0F9 /* DemoDatesViewController.swift */; };
 		71D9C70A24F8EE7900E2E0F9 /* DemoInputViewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71D9C70924F8EE7900E2E0F9 /* DemoInputViewViewController.swift */; };
@@ -341,7 +342,7 @@
 		7193E3572451E051006238C5 /* DemoPageViewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoPageViewViewController.swift; sourceTree = "<group>"; };
 		7193E3672451F3AF006238C5 /* DemoStackViewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoStackViewViewController.swift; sourceTree = "<group>"; };
 		719469C3243DB01D00CAD09B /* DemoShimmerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoShimmerViewController.swift; sourceTree = "<group>"; };
-		719469D3243DBC6800CAD09B /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
+		719469D3243DBC6800CAD09B /* Assembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Assembly.swift; sourceTree = "<group>"; };
 		719469D5243DC11000CAD09B /* DemoShimmerTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoShimmerTableViewController.swift; sourceTree = "<group>"; };
 		719AE5CF246308FC00A39B0E /* DemoTransitionControllerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoTransitionControllerViewController.swift; sourceTree = "<group>"; };
 		719F8C7A24570358004F5A27 /* DemoDeveloperToolsMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoDeveloperToolsMenuViewController.swift; sourceTree = "<group>"; };
@@ -353,6 +354,7 @@
 		71BF8B2724F2768B00D01CB9 /* LocalAuthentication.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = LocalAuthentication.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk/System/Library/Frameworks/LocalAuthentication.framework; sourceTree = DEVELOPER_DIR; };
 		71C1F0012449E8B000FFC999 /* Forms.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Forms.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		71C9369D247E513500603A6F /* DemoPinViewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoPinViewViewController.swift; sourceTree = "<group>"; };
+		71D3436224FCF63C00003928 /* SettingsBundleKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsBundleKey.swift; sourceTree = "<group>"; };
 		71D47B49249CD567001108C5 /* DemoGradientButtonViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoGradientButtonViewController.swift; sourceTree = "<group>"; };
 		71D9C6FD24F8DCAC00E2E0F9 /* DemoDatesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoDatesViewController.swift; sourceTree = "<group>"; };
 		71D9C70924F8EE7900E2E0F9 /* DemoInputViewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoInputViewViewController.swift; sourceTree = "<group>"; };
@@ -712,12 +714,13 @@
 		71643A202495574200688E13 /* Implementations */ = {
 			isa = PBXGroup;
 			children = (
-				719469D3243DBC6800CAD09B /* Utils.swift */,
 				71643A212495576B00688E13 /* Analytics.swift */,
+				719469D3243DBC6800CAD09B /* Assembly.swift */,
 				71643A232495579200688E13 /* DeveloperTools.swift */,
 				71643A25249557B900688E13 /* HomeShortcuts.swift */,
 				717F4ACF249B62A900635106 /* Logger.swift */,
 				71643A27249557D500688E13 /* Notifications.swift */,
+				71D3436224FCF63C00003928 /* SettingsBundleKey.swift */,
 				71643AA724955D7300688E13 /* SocialKit.swift */,
 			);
 			path = Implementations;
@@ -932,6 +935,7 @@
 				711072022498AD65000F6EB6 /* DemoImagePickerKitWDImagePickerViewController.swift in Sources */,
 				7193E3582451E051006238C5 /* DemoPageViewViewController.swift in Sources */,
 				715B7AE82446FD1500754EDB /* DemoArchitecturesCleanSummaryInteractor.swift in Sources */,
+				71D3436324FCF63C00003928 /* SettingsBundleKey.swift in Sources */,
 				71DBEEBA24F3BA9C0057D97B /* DemoCalendarKitMonthWithWeekController.swift in Sources */,
 				71DB5C9524575B6300B16145 /* DemoTitleSearchBarViewController.swift in Sources */,
 				71929C0724499DD400AB93F1 /* DemoSocialKitGoogleTableViewController.swift in Sources */,
@@ -977,7 +981,7 @@
 				715B7AE32446FD1500754EDB /* DemoArchitecturesCleanSummaryWorker.swift in Sources */,
 				713B9C8B243D0964001F6E3A /* DemoTabBarKitController.swift in Sources */,
 				715B7AE42446FD1500754EDB /* DemoArchitecturesCleanSummaryRouter.swift in Sources */,
-				719469D4243DBC6800CAD09B /* Utils.swift in Sources */,
+				719469D4243DBC6800CAD09B /* Assembly.swift in Sources */,
 				71D9C70A24F8EE7900E2E0F9 /* DemoInputViewViewController.swift in Sources */,
 				715891122446377D003200C7 /* DemoArchitecturesCleanViewController.swift in Sources */,
 				71DB66F62458333F00B16145 /* DemoImagePickerKitSystemViewController.swift in Sources */,

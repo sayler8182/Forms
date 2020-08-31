@@ -10,7 +10,7 @@ import Foundation
 
 // MARK: Bundle
 public extension Bundle {
-    var version: String {
+    var fullVersion: String {
         return String(format: "%@ (%@)", self.appVersion, self.buildVersion)
     }
     

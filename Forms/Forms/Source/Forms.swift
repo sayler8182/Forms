@@ -126,6 +126,11 @@ public enum Forms {
             ])
         }
         .inScope(InjectorScope.container)
+        // settings
+        injector.register(SettingsBundleProtocol.self) { _ in
+            SettingsBundle()
+        }
+        .inScope(InjectorScope.container)
     }
     
     private static func configureConfigurations(_ injector: Injector) {

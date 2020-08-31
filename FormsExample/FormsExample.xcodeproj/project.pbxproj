@@ -61,6 +61,7 @@
 		719AE5B32462C49D00A39B0E /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 719AE55C2462C0F900A39B0E /* FBSDKLoginKit.framework */; };
 		719AE5B42462C49D00A39B0E /* FBSDKLoginKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 719AE55C2462C0F900A39B0E /* FBSDKLoginKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		71BF8B2A24F2769D00D01CB9 /* LocalAuthentication.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71BF8B2924F2769D00D01CB9 /* LocalAuthentication.framework */; };
+		71D3434124FCF3B500003928 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 71D3434024FCF3B500003928 /* Settings.bundle */; };
 		71DB655A2457729800B16145 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 71DB65592457729800B16145 /* GoogleService-Info.plist */; };
 		71DBEEC024F3DBEF0057D97B /* FormsCalendarKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71BF8B0424F2663D00D01CB9 /* FormsCalendarKit.framework */; };
 		71DBEEC124F3DBEF0057D97B /* FormsCalendarKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 71BF8B0424F2663D00D01CB9 /* FormsCalendarKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -371,6 +372,7 @@
 		71BF8AFF24F2663C00D01CB9 /* FormsCalendarKit.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = FormsCalendarKit.xcodeproj; path = ../FormsCalendarKit/FormsCalendarKit.xcodeproj; sourceTree = "<group>"; };
 		71BF8B2924F2769D00D01CB9 /* LocalAuthentication.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = LocalAuthentication.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk/System/Library/Frameworks/LocalAuthentication.framework; sourceTree = DEVELOPER_DIR; };
 		71CFF419245954B90067D13E /* FormsSideMenuKit.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = FormsSideMenuKit.xcodeproj; path = ../FormsSideMenu/FormsSideMenuKit.xcodeproj; sourceTree = "<group>"; };
+		71D3434024FCF3B500003928 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
 		71DB65592457729800B16145 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		71DB662D245826C900B16145 /* FormsImagePickerKit.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = FormsImagePickerKit.xcodeproj; path = ../FormsImagePicker/FormsImagePickerKit.xcodeproj; sourceTree = "<group>"; };
 		71E4452C2493609500AC38C1 /* FormsDevice.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = FormsDevice.xcodeproj; path = ../FormsDevice/FormsDevice.xcodeproj; sourceTree = "<group>"; };
@@ -502,6 +504,7 @@
 				71228E112431CF8100D08B20 /* Assets.xcassets */,
 				71228E2B2431CFBF00D08B20 /* LaunchScreen.storyboard */,
 				71228E0A2431CF7F00D08B20 /* SceneDelegate.swift */,
+				71D3434024FCF3B500003928 /* Settings.bundle */,
 			);
 			path = SupportingFiles;
 			sourceTree = "<group>";
@@ -1175,6 +1178,7 @@
 			files = (
 				7103190224A0B83F00BFD88A /* get.json in Resources */,
 				71228E2C2431CFBF00D08B20 /* LaunchScreen.storyboard in Resources */,
+				71D3434124FCF3B500003928 /* Settings.bundle in Resources */,
 				71DB655A2457729800B16145 /* GoogleService-Info.plist in Resources */,
 				71228E122431CF8100D08B20 /* Assets.xcassets in Resources */,
 			);
