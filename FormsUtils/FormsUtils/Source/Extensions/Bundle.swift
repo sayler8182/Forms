@@ -22,6 +22,12 @@ public extension Bundle {
         return self.info(for: "CFBundleVersion", or: "1")
     }
     
+    var buildDate: Date? {
+        guard let url = Bundle.main.url(forResource: "Info", withExtension: "plist") else { return nil }
+        guard let attributes = try? FileManager.default.attributesOfItem(atPath: url.path) else { return nil }
+        return attributes[.creationDate] as? Date
+    }
+    
     var iOSBundle: String {
         return self.info(for: "CFBundleIdentifier")
     }

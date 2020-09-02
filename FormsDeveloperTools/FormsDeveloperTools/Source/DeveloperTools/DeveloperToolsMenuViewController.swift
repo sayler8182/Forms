@@ -52,6 +52,7 @@ public class DeveloperToolsMenuViewController: UIViewController, DeveloperToolsM
     }
     
     private func setupNavigationBar() {
+        self.navigationController?.navigationBar.barStyle = .black
         self.title = "DeveloperFeatures"
         self.navigationItem.leftBarButtonItem = UIBarButtonItem(
             title: "Close",
@@ -61,6 +62,7 @@ public class DeveloperToolsMenuViewController: UIViewController, DeveloperToolsM
     }
     
     private func setupTableView() {
+        self.tableView.backgroundColor = UIColor.black
         self.tableView.translatesAutoresizingMaskIntoConstraints = false
         self.tableView.delegate = self
         self.tableView.dataSource = self
@@ -152,7 +154,9 @@ class DeveloperToolsMenuHeaderView: UITableViewHeaderFooterView {
     }
     
     private func setupView() {
-        self.backgroundView?.backgroundColor = UIColor.black
+        self.backgroundView = UIView(frame: self.bounds)
+        self.backgroundView?.backgroundColor = UIColor.darkGray
+        self.titleLabel.removeFromSuperview()
         self.titleLabel.translatesAutoresizingMaskIntoConstraints = false
         self.titleLabel.font = UIFont.systemFont(ofSize: 14)
         self.titleLabel.textColor = UIColor.white
@@ -167,6 +171,7 @@ class DeveloperToolsMenuHeaderView: UITableViewHeaderFooterView {
     
     override func prepareForReuse() {
         super.prepareForReuse()
+        self.setupView()
         self.titleLabel.text = nil
     }
     
@@ -195,6 +200,8 @@ class DeveloperToolsMenuTableViewCell: UITableViewCell {
     }
     
     private func setupView() {
+        self.contentView.backgroundColor = UIColor.black
+        self.titleLabel.removeFromSuperview()
         self.titleLabel.translatesAutoresizingMaskIntoConstraints = false
         self.titleLabel.font = UIFont.systemFont(ofSize: 14)
         self.titleLabel.textColor = UIColor.white
@@ -216,6 +223,7 @@ class DeveloperToolsMenuTableViewCell: UITableViewCell {
 
     override func prepareForReuse() {
         super.prepareForReuse()
+        self.setupView()
         self.titleLabel.text = nil
     }
     
@@ -249,6 +257,8 @@ class DeveloperToolsMenuSwitchTableViewCell: UITableViewCell {
     }
     
     private func setupView() {
+        self.contentView.backgroundColor = UIColor.black
+        self.titleLabel.removeFromSuperview()
         self.titleLabel.translatesAutoresizingMaskIntoConstraints = false
         self.titleLabel.font = UIFont.systemFont(ofSize: 14)
         self.titleLabel.textColor = UIColor.white
@@ -259,6 +269,7 @@ class DeveloperToolsMenuSwitchTableViewCell: UITableViewCell {
             self.titleLabel.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -6),
             self.titleLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 16)
         ])
+        self.switchView.removeFromSuperview()
         self.switchView.translatesAutoresizingMaskIntoConstraints = false
         self.addSubview(self.switchView)
         NSLayoutConstraint.activate([
@@ -275,6 +286,7 @@ class DeveloperToolsMenuSwitchTableViewCell: UITableViewCell {
     
     override func prepareForReuse() {
         super.prepareForReuse()
+        self.setupView()
         self.titleLabel.text = nil
         self.switchView.isOn = true
     }

@@ -10,6 +10,8 @@ import FBSDKCoreKit
 import FirebaseCore
 import Forms
 import FormsAnalytics
+import FormsDatabase
+import FormsDatabaseSQLite
 import FormsDemo
 import FormsDeveloperTools
 import FormsHomeShortcuts
@@ -35,13 +37,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     private var inactiveCover: InactiveCover = InactiveCover()
     
     @OptionalInjected
+    private var database: DatabaseSQLite? // swiftlint:disable:this let_var_whitespace
+    
+    @OptionalInjected
     private var homeShortcuts: HomeShortcutsProtocol? // swiftlint:disable:this let_var_whitespace
     
     @OptionalInjected
     private var logger: Logger? // swiftlint:disable:this let_var_whitespace
     
-    @Injected
-    private var settingsBundle: SettingsBundleProtocol // swiftlint:disable:this let_var_whitespace
+    @OptionalInjected
+    private var settingsBundle: SettingsBundleProtocol? // swiftlint:disable:this let_var_whitespace
     
     func application(_ application: UIApplication,
                      didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
@@ -119,14 +124,32 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         self.inactiveCover.register()
         
         // settings bundle
-        self.settingsBundle.set(
+        self.settingsBundle?.set(
             value: Bundle.main.appVersion,
             forKey: DemoSettingsBundleKey.appVersion)
-        self.settingsBundle.set(
+        self.settingsBundle?.set(
             value: Bundle.main.buildVersion,
             forKey: DemoSettingsBundleKey.buildVersion)
-        let environment: String = self.settingsBundle.get(forKey: DemoSettingsBundleKey.environment) ?? ""
+        self.settingsBundle?.set(
+            value: Bundle.main.buildDate?.formatted(format: .full),
+            forKey: DemoSettingsBundleKey.buildDate)
+        let environment: String = self.settingsBundle?.get(forKey: DemoSettingsBundleKey.environment) ?? "PROD"
         self.logger?.log(LogType.info, "Environment: \(environment)")
+        
+        // Database
+        if self.settingsBundle?.get(forKey: DemoSettingsBundleKey.removeDatabase) ?? false {
+            self.settingsBundle?.set(
+                value: false,
+                forKey: DemoSettingsBundleKey.removeDatabase)
+            self.database?.remove()
+        }
+        self.database?.configure()
+        try? database?.connect(
+            to: DemoDatabaseSQLiteProvider.self,
+            migration: 1)
+        try? database?.create([
+            DatabaseSQLiteTableModels.self
+        ])
         
         return true
     }

@@ -39,7 +39,7 @@ class DemoDefaultButtonViewController: FormsTableViewController {
     override func setupActions() {
         super.setupActions()
         self.activeButton.onClick = Unowned(self) { (_self) in
-            UIAlertController()
+            UIAlertController(preferredStyle: .alert)
                 .with(title: "Tapped")
                 .with(message: "Active button")
                 .with(action: "Ok")

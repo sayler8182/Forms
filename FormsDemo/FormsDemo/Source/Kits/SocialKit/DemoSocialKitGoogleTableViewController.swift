@@ -44,7 +44,7 @@ extension DemoSocialKitGoogleTableViewController {
         self.signInWithGoogleProvider.authorization(
             onSuccess: { [weak self] (data) in
                 guard let `self` = self else { return }
-                UIAlertController()
+                UIAlertController(preferredStyle: .alert)
                     .with(title: "Sign in with Google")
                     .with(message: "authenticationToken: \(data.authenticationToken)")
                     .with(action: "Ok")

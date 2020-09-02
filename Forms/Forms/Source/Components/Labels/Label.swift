@@ -74,7 +74,9 @@ open class Label: FormsComponent, Clickable, FormsComponentWithMarginEdgeInset, 
     }
     
     override open func componentHeight() -> CGFloat {
-        return self.height
+        return self.text.isNotNilOrEmpty
+            ? self.height
+            : self.marginEdgeInset.vertical + self.paddingEdgeInset.vertical
     }
     
     override open func setupActions() {

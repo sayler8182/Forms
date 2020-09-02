@@ -313,6 +313,20 @@ var items: [Any] {
 
 ## Utils
 
+### BiometryAuthentication
+
+```swift
+let biometryAuthentication = BiometryAuthentication()
+biometryAuthentication.evaluate(
+    policy: .deviceOwnerAuthenticationWithBiometrics,
+    reason: "Identify yourself",
+    queue: DispatchQueue.main, 
+    onSuccess: { },
+    onError: { _ in },
+    onCancel: { },
+    onCompletion: { _ in })
+```
+
 ### DeviceSecurity
 
 DeviceSecurity detects Jailbreak and prevent easy detection

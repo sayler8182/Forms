@@ -57,6 +57,7 @@ public class InactiveCover: AppLifecycleable {
     public func present(animated: Bool = true) {
         self.dismiss(animated: false)
         let window: UIWindow = UIWindow.new
+        window.rootViewController = UIViewController()
         self.insertCover(into: window)
         window.setAlpha(
             alpha: 1.0,

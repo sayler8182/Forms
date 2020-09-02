@@ -37,6 +37,7 @@ class LifetimeTrackerListViewController: UIViewController {
     }
     
     private func setupNavigationBar() {
+        self.navigationController?.navigationBar.barStyle = .black
         self.title = "LifetimeTracker"
         self.navigationItem.leftBarButtonItem = UIBarButtonItem(
             title: "Close",
@@ -46,6 +47,7 @@ class LifetimeTrackerListViewController: UIViewController {
     }
     
     private func setupTableView() {
+        self.tableView.backgroundColor = UIColor.black
         self.tableView.translatesAutoresizingMaskIntoConstraints = false
         self.tableView.delegate = self
         self.tableView.dataSource = self
@@ -153,7 +155,9 @@ class LifetimeTrackerDashboardHeaderView: UITableViewHeaderFooterView {
     }
     
     private func setupView() {
+        self.backgroundView = UIView(frame: self.bounds)
         self.backgroundView?.backgroundColor = UIColor.black
+        self.indicatorView.removeFromSuperview()
         self.indicatorView.translatesAutoresizingMaskIntoConstraints = false
         self.indicatorView.backgroundColor = UIColor.clear
         self.addSubview(self.indicatorView)
@@ -163,6 +167,7 @@ class LifetimeTrackerDashboardHeaderView: UITableViewHeaderFooterView {
             self.indicatorView.leadingAnchor.constraint(equalTo: self.leadingAnchor),
             self.indicatorView.widthAnchor.constraint(equalToConstant: 10)
         ])
+        self.groupNameLabel.removeFromSuperview()
         self.groupNameLabel.translatesAutoresizingMaskIntoConstraints = false
         self.groupNameLabel.font = UIFont.systemFont(ofSize: 14)
         self.groupNameLabel.textColor = UIColor.white
@@ -177,6 +182,7 @@ class LifetimeTrackerDashboardHeaderView: UITableViewHeaderFooterView {
     
     override func prepareForReuse() {
         super.prepareForReuse()
+        self.setupView()
         self.indicatorView.backgroundColor = UIColor.clear
         self.groupNameLabel.text = nil
     }
@@ -205,6 +211,8 @@ class LifetimeTrackerDashboardTableViewCell: UITableViewCell {
     }
     
     private func setupView() {
+        self.contentView.backgroundColor = UIColor.black
+        self.groupIndicatorView.removeFromSuperview()
         self.groupIndicatorView.translatesAutoresizingMaskIntoConstraints = false
         self.groupIndicatorView.backgroundColor = UIColor.clear
         self.addSubview(self.groupIndicatorView)
@@ -214,6 +222,7 @@ class LifetimeTrackerDashboardTableViewCell: UITableViewCell {
             self.groupIndicatorView.leadingAnchor.constraint(equalTo: self.leadingAnchor),
             self.groupIndicatorView.widthAnchor.constraint(equalToConstant: 5)
         ])
+        self.classIndicatorView.removeFromSuperview()
         self.classIndicatorView.translatesAutoresizingMaskIntoConstraints = false
         self.classIndicatorView.backgroundColor = UIColor.clear
         self.addSubview(self.classIndicatorView)
@@ -223,9 +232,10 @@ class LifetimeTrackerDashboardTableViewCell: UITableViewCell {
             self.classIndicatorView.leadingAnchor.constraint(equalTo: self.groupIndicatorView.trailingAnchor),
             self.classIndicatorView.widthAnchor.constraint(equalToConstant: 5)
         ])
+        self.descriptionLabel.removeFromSuperview()
         self.descriptionLabel.translatesAutoresizingMaskIntoConstraints = false
         self.descriptionLabel.font = UIFont.systemFont(ofSize: 12)
-        self.descriptionLabel.textColor = UIColor.black
+        self.descriptionLabel.textColor = UIColor.white
         self.descriptionLabel.numberOfLines = 0
         self.addSubview(self.descriptionLabel)
         NSLayoutConstraint.activate([
@@ -238,6 +248,7 @@ class LifetimeTrackerDashboardTableViewCell: UITableViewCell {
     
     override func prepareForReuse() {
         super.prepareForReuse()
+        self.setupView()
         self.groupIndicatorView.backgroundColor = UIColor.clear
         self.classIndicatorView.backgroundColor = UIColor.clear
         self.descriptionLabel.text = nil

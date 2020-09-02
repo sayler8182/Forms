@@ -17,6 +17,8 @@ Forms is all in one iOS framework
 - [x] [FormsAnalytics](./Documentation/FormsAnalytics.md) - Application analytics
 - [x] [FormsAnchor](./Documentation/FormsAnchor.md) - DSL
 - [x] [FormsAppStoreReview](./Documentation/FormsAppStoreReview.md) - AppStore review helper
+- [x] [FormsDatabase](./Documentation/FormsDatabase.md) - Database
+- [x] [FormsDatabaseSQLite](./Documentation/FormsDatabaseSQLite.md) - Database SQLite
 - [x] [FormsDeveloperTools](./Documentation/FormsDeveloperTools.md) - Developer Tools
 - [x] [FormsDevice](./Documentation/FormsDeveloperTools.md) - Device info
 - [x] [FormsHomeShortcuts](./Documentation/FormsHomeShortcuts.md) - Home shortcuts
@@ -64,6 +66,8 @@ FormsAnchor.framework
 FormsAppStoreReview.framework
 FormsCalendarKit.framework
 FormsCardKit.framework
+FormsDatabase.framework
+FormsDatabaseSQLite.framework
 FormsDevice.framework
 FormsDeveloperTools.framework
 FormsHomeShortcuts.framework
@@ -139,6 +143,7 @@ Frameworks should have consistent build settings:
 - [x] Other Linker Flags -> -ObjC
 - [x] Other Swift Flags -> -Xfrontend -warn-long-function-bodies=1000 -Xfrontend -warn-long-expression-type-checking=1000
 - [x] Swift Language version -> Swift 5
+- [x] Defines module -> NO
 
 ## Contribution Guide or Questions
 

@@ -190,8 +190,8 @@ open class FormsComponent: UIView, Componentable, BatchUpdateable {
     }
     
     open func updateMinHeight() {
-         let minHeight: CGFloat = self.minHeight
-               self.constraint(position: .height, relation: .greaterThanOrEqual)?.constant = minHeight
+        let minHeight: CGFloat = self.minHeight
+        self.constraint(position: .height, relation: .greaterThanOrEqual)?.constant = minHeight
     }
     
     open func setupAppearance() {

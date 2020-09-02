@@ -60,6 +60,10 @@
 		713B9C8C243D0964001F6E3A /* DemoTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 713B9C7D243D0964001F6E3A /* DemoTableViewController.swift */; };
 		714848DA24485CCA00455560 /* DemoOthersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 714848D924485CCA00455560 /* DemoOthersViewController.swift */; };
 		714848DC24485CE500455560 /* DemoUtilsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 714848DB24485CE500455560 /* DemoUtilsViewController.swift */; };
+		714BB08C24FF8D9F000617C7 /* DatabaseSQLiteTableModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 714BB08B24FF8D9F000617C7 /* DatabaseSQLiteTableModels.swift */; };
+		714BB09124FFC3F0000617C7 /* DemoDeviceSecurityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 714BB09024FFC3F0000617C7 /* DemoDeviceSecurityViewController.swift */; };
+		714BB09324FFC3FC000617C7 /* DemoBiometryAuthenticationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 714BB09224FFC3FC000617C7 /* DemoBiometryAuthenticationViewController.swift */; };
+		714BB09524FFD3AC000617C7 /* DemoVibrationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 714BB09424FFD3AC000617C7 /* DemoVibrationViewController.swift */; };
 		7150CE81247FA9ED00F2681B /* FormsTransitions.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7150CE80247FA9ED00F2681B /* FormsTransitions.framework */; };
 		7150CE82247FA9ED00F2681B /* FormsTransitions.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 7150CE80247FA9ED00F2681B /* FormsTransitions.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		715260682446E93900119B0A /* DemoArchitecturesCleanRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 715260672446E93900119B0A /* DemoArchitecturesCleanRouter.swift */; };
@@ -150,6 +154,14 @@
 		71BF8B2824F2768B00D01CB9 /* LocalAuthentication.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71BF8B2724F2768B00D01CB9 /* LocalAuthentication.framework */; };
 		71C9369E247E513500603A6F /* DemoPinViewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71C9369D247E513500603A6F /* DemoPinViewViewController.swift */; };
 		71D3436324FCF63C00003928 /* SettingsBundleKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71D3436224FCF63C00003928 /* SettingsBundleKey.swift */; };
+		71D3673F24FE37DE00E6BFAF /* DemoDatabaseSQLiteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71D3673E24FE37DE00E6BFAF /* DemoDatabaseSQLiteViewController.swift */; };
+		71D3676D24FE390E00E6BFAF /* FormsDatabaseSQLite.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71D3676C24FE390E00E6BFAF /* FormsDatabaseSQLite.framework */; };
+		71D3676E24FE390E00E6BFAF /* FormsDatabaseSQLite.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 71D3676C24FE390E00E6BFAF /* FormsDatabaseSQLite.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		71D3677024FE391600E6BFAF /* FormsDatabase.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71D3676F24FE391600E6BFAF /* FormsDatabase.framework */; };
+		71D3677124FE391600E6BFAF /* FormsDatabase.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 71D3676F24FE391600E6BFAF /* FormsDatabase.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		71D367A124FE48C200E6BFAF /* DatabaseSQLite.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71D367A024FE48C200E6BFAF /* DatabaseSQLite.swift */; };
+		71D3680024FE65F700E6BFAF /* GRDB.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71D367FE24FE65E300E6BFAF /* GRDB.framework */; };
+		71D3680124FE65F700E6BFAF /* GRDB.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 71D367FE24FE65E300E6BFAF /* GRDB.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		71D47B4A249CD567001108C5 /* DemoGradientButtonViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71D47B49249CD567001108C5 /* DemoGradientButtonViewController.swift */; };
 		71D9C6FE24F8DCAC00E2E0F9 /* DemoDatesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71D9C6FD24F8DCAC00E2E0F9 /* DemoDatesViewController.swift */; };
 		71D9C70A24F8EE7900E2E0F9 /* DemoInputViewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71D9C70924F8EE7900E2E0F9 /* DemoInputViewViewController.swift */; };
@@ -205,6 +217,7 @@
 				71643A9F24955D1800688E13 /* GTMAppAuth.framework in Embed Frameworks */,
 				71369FB524865E6A00298D3B /* FormsImagePickerKit.framework in Embed Frameworks */,
 				71643A8424955A5B00688E13 /* nanopb.framework in Embed Frameworks */,
+				71D3676E24FE390E00E6BFAF /* FormsDatabaseSQLite.framework in Embed Frameworks */,
 				7135DF9B248E3E6F00B5807F /* FormsHomeShortcuts.framework in Embed Frameworks */,
 				71643A6A249559B600688E13 /* PromisesObjC.framework in Embed Frameworks */,
 				71643A8E24955BD500688E13 /* GoogleSignIn.framework in Embed Frameworks */,
@@ -226,11 +239,13 @@
 				71643A8624955A5E00688E13 /* Protobuf.framework in Embed Frameworks */,
 				71FCB24C247F969F00A84D30 /* FormsDeveloperTools.framework in Embed Frameworks */,
 				71643AA124955D1B00688E13 /* FBSDKLoginKit.framework in Embed Frameworks */,
+				71D3680124FE65F700E6BFAF /* GRDB.framework in Embed Frameworks */,
 				71643A7224955A4F00688E13 /* FirebaseCore.framework in Embed Frameworks */,
 				71643AA324955D1D00688E13 /* FBSDKCoreKit.framework in Embed Frameworks */,
 				71643A7424955A5000688E13 /* FirebaseCoreDiagnostics.framework in Embed Frameworks */,
 				71DB66952458299B00B16145 /* Forms.framework in Embed Frameworks */,
 				71643A8024955A5900688E13 /* GoogleDataTransportCCTSupport.framework in Embed Frameworks */,
+				71D3677124FE391600E6BFAF /* FormsDatabase.framework in Embed Frameworks */,
 				7136A12824867DDE00298D3B /* FormsTabBarKit.framework in Embed Frameworks */,
 				71643AA624955D6500688E13 /* FormsSocialKit.framework in Embed Frameworks */,
 			);
@@ -285,6 +300,10 @@
 		713B9C7D243D0964001F6E3A /* DemoTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DemoTableViewController.swift; sourceTree = "<group>"; };
 		714848D924485CCA00455560 /* DemoOthersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoOthersViewController.swift; sourceTree = "<group>"; };
 		714848DB24485CE500455560 /* DemoUtilsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoUtilsViewController.swift; sourceTree = "<group>"; };
+		714BB08B24FF8D9F000617C7 /* DatabaseSQLiteTableModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseSQLiteTableModels.swift; sourceTree = "<group>"; };
+		714BB09024FFC3F0000617C7 /* DemoDeviceSecurityViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoDeviceSecurityViewController.swift; sourceTree = "<group>"; };
+		714BB09224FFC3FC000617C7 /* DemoBiometryAuthenticationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoBiometryAuthenticationViewController.swift; sourceTree = "<group>"; };
+		714BB09424FFD3AC000617C7 /* DemoVibrationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoVibrationViewController.swift; sourceTree = "<group>"; };
 		7150CD89247FA05F00F2681B /* FormsDemo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = FormsDemo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7150CE80247FA9ED00F2681B /* FormsTransitions.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FormsTransitions.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		715260672446E93900119B0A /* DemoArchitecturesCleanRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoArchitecturesCleanRouter.swift; sourceTree = "<group>"; };
@@ -355,6 +374,11 @@
 		71C1F0012449E8B000FFC999 /* Forms.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Forms.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		71C9369D247E513500603A6F /* DemoPinViewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoPinViewViewController.swift; sourceTree = "<group>"; };
 		71D3436224FCF63C00003928 /* SettingsBundleKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsBundleKey.swift; sourceTree = "<group>"; };
+		71D3673E24FE37DE00E6BFAF /* DemoDatabaseSQLiteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoDatabaseSQLiteViewController.swift; sourceTree = "<group>"; };
+		71D3676C24FE390E00E6BFAF /* FormsDatabaseSQLite.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FormsDatabaseSQLite.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		71D3676F24FE391600E6BFAF /* FormsDatabase.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FormsDatabase.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		71D367A024FE48C200E6BFAF /* DatabaseSQLite.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseSQLite.swift; sourceTree = "<group>"; };
+		71D367FE24FE65E300E6BFAF /* GRDB.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GRDB.framework; path = ../../../Dependencies/GRDB.framework; sourceTree = "<group>"; };
 		71D47B49249CD567001108C5 /* DemoGradientButtonViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoGradientButtonViewController.swift; sourceTree = "<group>"; };
 		71D9C6FD24F8DCAC00E2E0F9 /* DemoDatesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoDatesViewController.swift; sourceTree = "<group>"; };
 		71D9C70924F8EE7900E2E0F9 /* DemoInputViewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoInputViewViewController.swift; sourceTree = "<group>"; };
@@ -395,6 +419,9 @@
 				71643A7724955A5300688E13 /* FirebaseInstanceID.framework in Frameworks */,
 				71643A69249559B600688E13 /* PromisesObjC.framework in Frameworks */,
 				7136A0102486624100298D3B /* FormsAppStoreReview.framework in Frameworks */,
+				71D3680024FE65F700E6BFAF /* GRDB.framework in Frameworks */,
+				71D3677024FE391600E6BFAF /* FormsDatabase.framework in Frameworks */,
+				71D3676D24FE390E00E6BFAF /* FormsDatabaseSQLite.framework in Frameworks */,
 				71FCB251247F969F00A84D30 /* FormsNetworking.framework in Frameworks */,
 				71643A6F24955A4E00688E13 /* FirebaseAnalytics.framework in Frameworks */,
 				71E4455324937B1E00AC38C1 /* FormsDevice.framework in Frameworks */,
@@ -495,6 +522,7 @@
 		7136A018248663BC00298D3B /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				71D3673C24FE37C900E6BFAF /* Database */,
 				717802BB245449C10057E848 /* DeveloperTools */,
 				71BB61ED2445C6DD002BB31F /* Network */,
 				719AE5CE246308E300A39B0E /* Transition */,
@@ -547,6 +575,8 @@
 		713B9C63243D0947001F6E3A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				71D3676F24FE391600E6BFAF /* FormsDatabase.framework */,
+				71D3676C24FE390E00E6BFAF /* FormsDatabaseSQLite.framework */,
 				71BF8B2724F2768B00D01CB9 /* LocalAuthentication.framework */,
 				71BF8B1624F2675900D01CB9 /* FormsCalendarKit.framework */,
 				71E4465C24939C9000AC38C1 /* FormsNotifications.framework */,
@@ -636,6 +666,8 @@
 			children = (
 				71D39CCE244455F1006BED33 /* Shimmer */,
 				713B9C77243D0964001F6E3A /* DemoAttributedStringViewController.swift */,
+				714BB09224FFC3FC000617C7 /* DemoBiometryAuthenticationViewController.swift */,
+				714BB09024FFC3F0000617C7 /* DemoDeviceSecurityViewController.swift */,
 				717F4ACD249B59E700635106 /* DemoDebouncerViewController.swift */,
 				71D9C70924F8EE7900E2E0F9 /* DemoInputViewViewController.swift */,
 				713B9C78243D0964001F6E3A /* DemoLoaderViewController.swift */,
@@ -644,6 +676,7 @@
 				7193E34F2451D258006238C5 /* DemoStorageViewController.swift */,
 				71F83AA8248A385900D6B579 /* DemoSVGViewController.swift */,
 				71E0F5F8246C4CAB0051F043 /* DemoThemeViewController.swift */,
+				714BB09424FFD3AC000617C7 /* DemoVibrationViewController.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -672,6 +705,15 @@
 				714848DB24485CE500455560 /* DemoUtilsViewController.swift */,
 			);
 			path = Utils;
+			sourceTree = "<group>";
+		};
+		714BB06C24FF8D82000617C7 /* SQLite */ = {
+			isa = PBXGroup;
+			children = (
+				714BB08B24FF8D9F000617C7 /* DatabaseSQLiteTableModels.swift */,
+				71D3673E24FE37DE00E6BFAF /* DemoDatabaseSQLiteViewController.swift */,
+			);
+			path = SQLite;
 			sourceTree = "<group>";
 		};
 		715260692446EEC100119B0A /* DemoArchitecturesClean */ = {
@@ -716,6 +758,7 @@
 			children = (
 				71643A212495576B00688E13 /* Analytics.swift */,
 				719469D3243DBC6800CAD09B /* Assembly.swift */,
+				71D367A024FE48C200E6BFAF /* DatabaseSQLite.swift */,
 				71643A232495579200688E13 /* DeveloperTools.swift */,
 				71643A25249557B900688E13 /* HomeShortcuts.swift */,
 				717F4ACF249B62A900635106 /* Logger.swift */,
@@ -795,6 +838,14 @@
 			path = CalendarKit;
 			sourceTree = "<group>";
 		};
+		71D3673C24FE37C900E6BFAF /* Database */ = {
+			isa = PBXGroup;
+			children = (
+				714BB06C24FF8D82000617C7 /* SQLite */,
+			);
+			path = Database;
+			sourceTree = "<group>";
+		};
 		71D39CCE244455F1006BED33 /* Shimmer */ = {
 			isa = PBXGroup;
 			children = (
@@ -841,6 +892,7 @@
 				71643A51249558F000688E13 /* GoogleDataTransportCCTSupport.framework */,
 				71643A4E249558F000688E13 /* GoogleSignIn.framework */,
 				71643A55249558F000688E13 /* GoogleUtilities.framework */,
+				71D367FE24FE65E300E6BFAF /* GRDB.framework */,
 				71643A4B249558EF00688E13 /* GTMAppAuth.framework */,
 				71643A46249558EF00688E13 /* GTMSessionFetcher.framework */,
 				71643A53249558F000688E13 /* nanopb.framework */,
@@ -879,6 +931,8 @@
 			dependencies = (
 			);
 			name = FormsDemo;
+			packageProductDependencies = (
+			);
 			productName = FormsDemo;
 			productReference = 7150CD89247FA05F00F2681B /* FormsDemo.framework */;
 			productType = "com.apple.product-type.framework";
@@ -908,6 +962,8 @@
 				Base,
 			);
 			mainGroup = 713B9BE9243D08E0001F6E3A;
+			packageReferences = (
+			);
 			productRefGroup = 713B9BE9243D08E0001F6E3A;
 			projectDirPath = "";
 			projectRoot = "";
@@ -944,6 +1000,7 @@
 				714848DC24485CE500455560 /* DemoUtilsViewController.swift in Sources */,
 				71BF8AA324F25DE500D01CB9 /* DemoCalendarKitMonthController.swift in Sources */,
 				71643A222495576B00688E13 /* Analytics.swift in Sources */,
+				71D3673F24FE37DE00E6BFAF /* DemoDatabaseSQLiteViewController.swift in Sources */,
 				71589114244639F2003200C7 /* DemoArchitecturesCleanAssembly.swift in Sources */,
 				713B9C84243D0964001F6E3A /* DemoModalViewController.swift in Sources */,
 				71F83AA9248A385900D6B579 /* DemoSVGViewController.swift in Sources */,
@@ -954,10 +1011,12 @@
 				71090BCA2488CD9A00CDB25D /* DemoSwitchesViewController.swift in Sources */,
 				715B7AE22446FD1500754EDB /* DemoArchitecturesCleanSummaryPresenter.swift in Sources */,
 				719469C4243DB01D00CAD09B /* DemoShimmerViewController.swift in Sources */,
+				714BB09524FFD3AC000617C7 /* DemoVibrationViewController.swift in Sources */,
 				713B9C80243D0964001F6E3A /* DemoNavigationBarViewController.swift in Sources */,
 				713B9C89243D0964001F6E3A /* DemoPagerKitController.swift in Sources */,
 				71207CF3248787260004B840 /* DemoCheckboxesViewController.swift in Sources */,
 				7132968A24489F8F006935C0 /* DemoSocialKitFacebookTableViewController.swift in Sources */,
+				714BB08C24FF8D9F000617C7 /* DatabaseSQLiteTableModels.swift in Sources */,
 				71DB5CC72457647F00B16145 /* DemoAnalyticsViewController.swift in Sources */,
 				7135DF62248E194100B5807F /* DemoNetworkUploadViewController.swift in Sources */,
 				7138D3AB2452E19300CC7345 /* DemoShimmerPaginationCollectionViewController.swift in Sources */,
@@ -981,6 +1040,7 @@
 				715B7AE32446FD1500754EDB /* DemoArchitecturesCleanSummaryWorker.swift in Sources */,
 				713B9C8B243D0964001F6E3A /* DemoTabBarKitController.swift in Sources */,
 				715B7AE42446FD1500754EDB /* DemoArchitecturesCleanSummaryRouter.swift in Sources */,
+				714BB09124FFC3F0000617C7 /* DemoDeviceSecurityViewController.swift in Sources */,
 				719469D4243DBC6800CAD09B /* Assembly.swift in Sources */,
 				71D9C70A24F8EE7900E2E0F9 /* DemoInputViewViewController.swift in Sources */,
 				715891122446377D003200C7 /* DemoArchitecturesCleanViewController.swift in Sources */,
@@ -1013,7 +1073,9 @@
 				7103EA852460A60E00A11A96 /* DemoPermissionsViewController.swift in Sources */,
 				713B9C82243D0964001F6E3A /* DemoTitleTextFieldViewController.swift in Sources */,
 				715B7B0C2447379200754EDB /* DemoTransitionNavigationViewController.swift in Sources */,
+				714BB09324FFC3FC000617C7 /* DemoBiometryAuthenticationViewController.swift in Sources */,
 				718B43202490BAA9000DBC05 /* DemoSectionsViewController.swift in Sources */,
+				71D367A124FE48C200E6BFAF /* DatabaseSQLite.swift in Sources */,
 				7135DFFB248E6EA300B5807F /* DemoLocationViewController.swift in Sources */,
 				7193E3682451F3AF006238C5 /* DemoStackViewViewController.swift in Sources */,
 				71E0F5D0246BF0890051F043 /* DemoScrollStepsViewController.swift in Sources */,
@@ -1162,6 +1224,7 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/../Dependencies",
@@ -1196,6 +1259,7 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/../Dependencies",

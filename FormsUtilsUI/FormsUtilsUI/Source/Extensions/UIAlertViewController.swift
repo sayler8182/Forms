@@ -77,7 +77,7 @@ public extension UIAlertController {
     func with(message: String?) -> Self {
         self.message = message
         return self
-    }
+    } 
     func with(title: String) -> Self {
         self.title = title
         return self

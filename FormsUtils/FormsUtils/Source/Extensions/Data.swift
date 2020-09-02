@@ -9,4 +9,10 @@
 import Foundation
 
 // MARK: Data
-public extension Data { }
+public extension Data {
+    var string: String {
+        return self
+            .map { String(format: "%02X", $0) }
+            .joined()
+    }
+}

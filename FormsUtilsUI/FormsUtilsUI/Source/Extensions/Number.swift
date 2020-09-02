@@ -34,6 +34,7 @@ extension CGFloat: Number, NumberFormattable {
     public var asFloat: Float { Float(self) }
     public var asInt: Int { Int(self) }
     public var asNumber: NSNumber { self as NSNumber }
+    public var asSize: String? { self.asDouble.asSize }
     public var asString: String { self.asDouble.asString }
     public var isFractional: Bool { true }
     

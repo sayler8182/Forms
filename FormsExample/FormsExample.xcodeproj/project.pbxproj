@@ -62,6 +62,12 @@
 		719AE5B42462C49D00A39B0E /* FBSDKLoginKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 719AE55C2462C0F900A39B0E /* FBSDKLoginKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		71BF8B2A24F2769D00D01CB9 /* LocalAuthentication.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71BF8B2924F2769D00D01CB9 /* LocalAuthentication.framework */; };
 		71D3434124FCF3B500003928 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 71D3434024FCF3B500003928 /* Settings.bundle */; };
+		71D367D224FE5E2200E6BFAF /* FormsDatabase.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71D3671E24FE346B00E6BFAF /* FormsDatabase.framework */; };
+		71D367D324FE5E2200E6BFAF /* FormsDatabase.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 71D3671E24FE346B00E6BFAF /* FormsDatabase.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		71D367D424FE5E2500E6BFAF /* FormsDatabaseSQLite.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71D3675A24FE387500E6BFAF /* FormsDatabaseSQLite.framework */; };
+		71D367D524FE5E2500E6BFAF /* FormsDatabaseSQLite.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 71D3675A24FE387500E6BFAF /* FormsDatabaseSQLite.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		71D3680424FE66DE00E6BFAF /* GRDB.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71D3680224FE66D200E6BFAF /* GRDB.framework */; };
+		71D3680524FE66DE00E6BFAF /* GRDB.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 71D3680224FE66D200E6BFAF /* GRDB.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		71DB655A2457729800B16145 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 71DB65592457729800B16145 /* GoogleService-Info.plist */; };
 		71DBEEC024F3DBEF0057D97B /* FormsCalendarKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71BF8B0424F2663D00D01CB9 /* FormsCalendarKit.framework */; };
 		71DBEEC124F3DBEF0057D97B /* FormsCalendarKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 71BF8B0424F2663D00D01CB9 /* FormsCalendarKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -260,6 +266,20 @@
 			remoteGlobalIDString = 71BF8AF424F2663C00D01CB9;
 			remoteInfo = FormsCalendarKit;
 		};
+		71D3671D24FE346B00E6BFAF /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 71D3671224FE346A00E6BFAF /* FormsDatabase.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 71D3670724FE346A00E6BFAF;
+			remoteInfo = FormsDatabase;
+		};
+		71D3675924FE387500E6BFAF /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 71D3675524FE387400E6BFAF /* FormsDatabaseSQLite.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 71D3674A24FE387400E6BFAF;
+			remoteInfo = FormsDatabaseSQLite;
+		};
 		71E445382493609600AC38C1 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 71E4452C2493609500AC38C1 /* FormsDevice.xcodeproj */;
@@ -297,7 +317,9 @@
 				71EA274C24A9C8F900985392 /* FormsNetworkingImage.framework in Embed Frameworks */,
 				7150CE6D247FA9B100F2681B /* FormsInjector.framework in Embed Frameworks */,
 				719AE5B42462C49D00A39B0E /* FBSDKLoginKit.framework in Embed Frameworks */,
+				71D367D524FE5E2500E6BFAF /* FormsDatabaseSQLite.framework in Embed Frameworks */,
 				719AE5B22462C49C00A39B0E /* FBSDKCoreKit.framework in Embed Frameworks */,
+				71D3680524FE66DE00E6BFAF /* GRDB.framework in Embed Frameworks */,
 				7150CE79247FA9B100F2681B /* FormsSocialKit.framework in Embed Frameworks */,
 				715435B524EFF4AB0046F08F /* FormsUtilsUI.framework in Embed Frameworks */,
 				7150CE73247FA9B100F2681B /* FormsNetworking.framework in Embed Frameworks */,
@@ -315,6 +337,7 @@
 				7136A14B2486941E00298D3B /* FormsImagePickerKit.framework in Embed Frameworks */,
 				7150CE67247FA9B100F2681B /* FormsAnchor.framework in Embed Frameworks */,
 				7136A1252486761500298D3B /* FormsSideMenuKit.framework in Embed Frameworks */,
+				71D367D324FE5E2200E6BFAF /* FormsDatabase.framework in Embed Frameworks */,
 				71DBEEC124F3DBEF0057D97B /* FormsCalendarKit.framework in Embed Frameworks */,
 				7136A05E24866AFC00298D3B /* FormsTabBarKit.framework in Embed Frameworks */,
 				71E4466024939E9100AC38C1 /* FormsNotifications.framework in Embed Frameworks */,
@@ -373,6 +396,9 @@
 		71BF8B2924F2769D00D01CB9 /* LocalAuthentication.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = LocalAuthentication.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk/System/Library/Frameworks/LocalAuthentication.framework; sourceTree = DEVELOPER_DIR; };
 		71CFF419245954B90067D13E /* FormsSideMenuKit.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = FormsSideMenuKit.xcodeproj; path = ../FormsSideMenu/FormsSideMenuKit.xcodeproj; sourceTree = "<group>"; };
 		71D3434024FCF3B500003928 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
+		71D3671224FE346A00E6BFAF /* FormsDatabase.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = FormsDatabase.xcodeproj; path = ../FormsDatabase/FormsDatabase.xcodeproj; sourceTree = "<group>"; };
+		71D3675524FE387400E6BFAF /* FormsDatabaseSQLite.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = FormsDatabaseSQLite.xcodeproj; path = ../FormsDatabaseSQLite/FormsDatabaseSQLite.xcodeproj; sourceTree = "<group>"; };
+		71D3680224FE66D200E6BFAF /* GRDB.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GRDB.framework; sourceTree = "<group>"; };
 		71DB65592457729800B16145 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		71DB662D245826C900B16145 /* FormsImagePickerKit.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = FormsImagePickerKit.xcodeproj; path = ../FormsImagePicker/FormsImagePickerKit.xcodeproj; sourceTree = "<group>"; };
 		71E4452C2493609500AC38C1 /* FormsDevice.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = FormsDevice.xcodeproj; path = ../FormsDevice/FormsDevice.xcodeproj; sourceTree = "<group>"; };
@@ -395,12 +421,15 @@
 				719AE5B32462C49D00A39B0E /* FBSDKLoginKit.framework in Frameworks */,
 				719AE5B12462C49C00A39B0E /* FBSDKCoreKit.framework in Frameworks */,
 				7150CE78247FA9B100F2681B /* FormsSocialKit.framework in Frameworks */,
+				71D367D424FE5E2500E6BFAF /* FormsDatabaseSQLite.framework in Frameworks */,
 				715435B424EFF4AB0046F08F /* FormsUtilsUI.framework in Frameworks */,
 				7150CE72247FA9B100F2681B /* FormsNetworking.framework in Frameworks */,
 				7135DFF5248E6E2200B5807F /* FormsLocation.framework in Frameworks */,
 				7150CE64247FA9B100F2681B /* FormsAnalytics.framework in Frameworks */,
 				7150CE7E247FA9B200F2681B /* FormsValidators.framework in Frameworks */,
 				71FCB25F247F999500A84D30 /* FormsDemo.framework in Frameworks */,
+				71D367D224FE5E2200E6BFAF /* FormsDatabase.framework in Frameworks */,
+				71D3680424FE66DE00E6BFAF /* GRDB.framework in Frameworks */,
 				7136A0BB24866ED500298D3B /* FormsPagerKit.framework in Frameworks */,
 				71DBEEC024F3DBEF0057D97B /* FormsCalendarKit.framework in Frameworks */,
 				71E4455524937B2700AC38C1 /* FormsDevice.framework in Frameworks */,
@@ -439,6 +468,8 @@
 				7136A002248661AD00298D3B /* FormsAppStoreReview.xcodeproj */,
 				71BF8AFF24F2663C00D01CB9 /* FormsCalendarKit.xcodeproj */,
 				7136A102248672EE00298D3B /* FormsCardKit.xcodeproj */,
+				71D3671224FE346A00E6BFAF /* FormsDatabase.xcodeproj */,
+				71D3675524FE387400E6BFAF /* FormsDatabaseSQLite.xcodeproj */,
 				7178026124543D2B0057E848 /* FormsDeveloperTools.xcodeproj */,
 				71E4452C2493609500AC38C1 /* FormsDevice.xcodeproj */,
 				7135DF78248E3E0100B5807F /* FormsHomeShortcuts.xcodeproj */,
@@ -529,6 +560,7 @@
 		713296C22448B84D006935C0 /* Dependencies */ = {
 			isa = PBXGroup;
 			children = (
+				71D3680224FE66D200E6BFAF /* GRDB.framework */,
 				719AE5692462C0F900A39B0E /* FBSDKCoreKit.framework */,
 				719AE55C2462C0F900A39B0E /* FBSDKLoginKit.framework */,
 			);
@@ -762,6 +794,22 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		71D3671324FE346A00E6BFAF /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				71D3671E24FE346B00E6BFAF /* FormsDatabase.framework */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		71D3675624FE387400E6BFAF /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				71D3675A24FE387500E6BFAF /* FormsDatabaseSQLite.framework */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		71E4452D2493609500AC38C1 /* Products */ = {
 			isa = PBXGroup;
 			children = (
@@ -808,6 +856,7 @@
 				716992012445A98E00A8FA79 /* Lint */,
 				71EA6EC32449FC1C00ACB5EE /* Embed Frameworks */,
 				719F8C7D245712DB004F5A27 /* CFBuildDate */,
+				714BB0B824FFDAA2000617C7 /* Trim architectures */,
 			);
 			buildRules = (
 			);
@@ -868,6 +917,14 @@
 				{
 					ProductGroup = 7136A103248672EE00298D3B /* Products */;
 					ProjectRef = 7136A102248672EE00298D3B /* FormsCardKit.xcodeproj */;
+				},
+				{
+					ProductGroup = 71D3671324FE346A00E6BFAF /* Products */;
+					ProjectRef = 71D3671224FE346A00E6BFAF /* FormsDatabase.xcodeproj */;
+				},
+				{
+					ProductGroup = 71D3675624FE387400E6BFAF /* Products */;
+					ProjectRef = 71D3675524FE387400E6BFAF /* FormsDatabaseSQLite.xcodeproj */;
 				},
 				{
 					ProductGroup = 713B9C0E243D08E0001F6E3A /* Products */;
@@ -1148,6 +1205,20 @@
 			remoteRef = 71BF8B0324F2663D00D01CB9 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
+		71D3671E24FE346B00E6BFAF /* FormsDatabase.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = FormsDatabase.framework;
+			remoteRef = 71D3671D24FE346B00E6BFAF /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		71D3675A24FE387500E6BFAF /* FormsDatabaseSQLite.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = FormsDatabaseSQLite.framework;
+			remoteRef = 71D3675924FE387500E6BFAF /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
 		71E445392493609600AC38C1 /* FormsDevice.framework */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.framework;
@@ -1187,6 +1258,24 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		714BB0B824FFDAA2000617C7 /* Trim architectures */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "Trim architectures";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if [ \"${CONFIGURATION}\" = \"Release\" ]; then\nAPP_PATH=\"${TARGET_BUILD_DIR}/${WRAPPER_NAME}\"\n\nfind \"$APP_PATH\" -name '*.framework' -type d | while read -r FRAMEWORK\ndo\nFRAMEWORK_EXECUTABLE_NAME=$(defaults read \"$FRAMEWORK/Info.plist\" CFBundleExecutable)\nFRAMEWORK_EXECUTABLE_PATH=\"$FRAMEWORK/$FRAMEWORK_EXECUTABLE_NAME\"\necho \"Trimming $FRAMEWORK_EXECUTABLE_PATH:\"\n\nEXTRACTED_ARCHS=()\n\nfor ARCH in $ARCHS\ndo\necho \" - Extracting $ARCH from $FRAMEWORK_EXECUTABLE_NAME\"\nlipo -extract \"$ARCH\" \"$FRAMEWORK_EXECUTABLE_PATH\" -o \"$FRAMEWORK_EXECUTABLE_PATH-$ARCH\"\nEXTRACTED_ARCHS+=(\"$FRAMEWORK_EXECUTABLE_PATH-$ARCH\")\ndone\n\necho \" - Merging extracted architectures: ${ARCHS}\"\nlipo -o \"$FRAMEWORK_EXECUTABLE_PATH-merged\" -create \"${EXTRACTED_ARCHS[@]}\"\nrm \"${EXTRACTED_ARCHS[@]}\"\n\necho \" - Replacing original executable with thinned version\"\nrm \"$FRAMEWORK_EXECUTABLE_PATH\"\nmv \"$FRAMEWORK_EXECUTABLE_PATH-merged\" \"$FRAMEWORK_EXECUTABLE_PATH\"\n\ndone\nfi\n";
+		};
 		716992012445A98E00A8FA79 /* Lint */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;

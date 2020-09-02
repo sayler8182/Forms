@@ -10,13 +10,20 @@ import Foundation
 
 // MARK: DispatchQueue
 public extension DispatchQueue {
+    static func async(in queue: DispatchQueue?,
+                      execute action: @escaping () -> Void) {
+        guard let queue: DispatchQueue = queue else {
+            action()
+            return
+        }
+        queue.async(execute: action)
+    }
+    
     static func asyncMainIfNeeded(_ action: @escaping () -> Void) {
         if Thread.isMainThread {
             action()
         } else {
-            DispatchQueue.main.async {
-                action()
-            }
+            DispatchQueue.main.async(execute: action)
         }
     }
 }

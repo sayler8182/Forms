@@ -13,6 +13,7 @@ public protocol Mockable {
     init(_ mock: Mock)
 }
 
+// MARK: Mockable
 public extension Mockable {
     static func mock() -> Self {
         return Self.mock(Self.self)
@@ -24,5 +25,17 @@ public extension Mockable {
     
     static func mock<T: Mockable>(_ type: T.Type) -> T {
         return type.init(Mock())
+    }
+}
+
+// MARK: [Mockable]
+public extension Array {
+    static func mock<T: Mockable>(count: Int,
+                                  of type: T.Type) -> [T] {
+        var items: [T] = []
+        for _ in 0..<count {
+            items.append(type.init(Mock()))
+        }
+        return items
     }
 }

@@ -40,7 +40,7 @@ class DemoShimmerPaginationTableViewController: FormsTableViewController {
     override func selectCell(row: TableRow, cell: FormsTableViewCell, indexPath: IndexPath) {
         super.selectCell(row: row, cell: cell, indexPath: indexPath)
         cell.cast(row: row, of: DemoCellModel.self, to: DemoTableViewCell.self) { [unowned self] (newData, _) in
-            UIAlertController()
+            UIAlertController(preferredStyle: .alert)
                 .with(title: newData.title)
                 .with(message: newData.subtitle)
                 .with(action: "Ok")

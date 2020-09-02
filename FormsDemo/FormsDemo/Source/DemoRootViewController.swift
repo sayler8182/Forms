@@ -78,6 +78,8 @@ private enum Demo {
         // Utils
         case utils
         case utilsAttributedString
+        case utilsBiometryAuthentication
+        case utilsDeviceSecurity
         case utilsDebouncer
         case utilsInputView
         case utilsLoader
@@ -92,9 +94,12 @@ private enum Demo {
         case utilsStorage
         case utilsSVG
         case utilsTheme
+        case utilsVibration
         // Frameworks
         case frameworkAnalytics
         case frameworkAppStoreReview
+        case frameworkDatabase
+        case frameworkDatabaseSQLite
         case frameworkDevice
         case frameworkDeveloperTools
         case frameworkDeveloperToolsConsole
@@ -219,6 +224,8 @@ private enum Demo {
                 ]),
                 Section(title: "Utils", rows: [
                     Row(type: RowType.utilsAttributedString, title: "AttributedString"),
+                    Row(type: RowType.utilsBiometryAuthentication, title: "BiometryAuthentication"),
+                    Row(type: RowType.utilsDeviceSecurity, title: "DeviceSecurity"),
                     Row(type: RowType.utilsDebouncer, title: "Debouncer"),
                     Row(type: RowType.utilsInputView, title: "InputView"),
                     Row(type: RowType.utilsLoader, title: "Loader"),
@@ -238,11 +245,20 @@ private enum Demo {
                     ]),
                     Row(type: RowType.utilsStorage, title: "Storage"),
                     Row(type: RowType.utilsSVG, title: "SVG"),
-                    Row(type: RowType.utilsTheme, title: "Theme")  
+                    Row(type: RowType.utilsTheme, title: "Theme"),
+                    Row(type: RowType.utilsVibration, title: "Vibration")
                 ]),
                 Section(title: "Frameworks", rows: [
                     Row(type: RowType.frameworkAnalytics, title: "Analytics"),
                     Row(type: RowType.frameworkAppStoreReview, title: "AppStoreReview"),
+                    Row(
+                        type: RowType.frameworkDatabase,
+                        title: "Database",
+                        sections: [
+                            Section(rows: [
+                                Row(type: RowType.frameworkDatabaseSQLite, title: "SQLite")
+                            ])
+                    ]),
                     Row(type: RowType.frameworkDevice, title: "Device"),
                     Row(
                         type: RowType.frameworkDeveloperTools,
@@ -422,7 +438,7 @@ public class DemoRootViewController: FormsNavigationController {
     
     override public func appLifecycleable(event: AppLifecycleEvent) {
         self.homeShortcuts?.handleIfNeeded { (item) in
-            UIAlertController()
+            UIAlertController(preferredStyle: .alert)
                 .with(message: item.localizedSubtitle)
                 .with(title: item.localizedTitle)
                 .with(action: "Ok")
@@ -617,6 +633,8 @@ private class DemoListViewController: FormsViewController {
         case .componentsUtils:                                  return DemoUtilsViewController()
         // utils
         case .utilsAttributedString:                            return DemoAttributedStringViewController()
+        case .utilsBiometryAuthentication:                      return DemoBiometryAuthenticationViewController()
+        case .utilsDeviceSecurity:                              return DemoDeviceSecurityViewController()
         case .utilsDebouncer:                                   return DemoDebouncerViewController()
         case .utilsInputView:                                   return DemoInputViewViewController()
         case .utilsLoader:                                      return DemoLoaderViewController()
@@ -630,9 +648,11 @@ private class DemoListViewController: FormsViewController {
         case .utilsStorage:                                     return DemoStorageViewController()
         case .utilsSVG:                                         return DemoSVGViewController()
         case .utilsTheme:                                       return DemoThemeViewController()
+        case .utilsVibration:                                   return DemoVibrationViewController()
         // frameworks
         case .frameworkAnalytics:                               return DemoAnalyticsViewController()
         case .frameworkAppStoreReview:                          return DemoAppStoreReviewViewController()
+        case .frameworkDatabaseSQLite:                          return DemoDatabaseSQLiteViewController()
         case .frameworkDevice:                                  return DemoDeviceViewController()
         case .frameworkDeveloperToolsConsole:                   return DemoDeveloperToolsConsoleViewController()
         case .frameworkDeveloperToolsLifetime:                  return DemoDeveloperToolsLifetimeViewController()

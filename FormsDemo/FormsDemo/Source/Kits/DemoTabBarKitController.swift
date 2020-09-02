@@ -120,7 +120,7 @@ class DemoTabBarKitController: TabBarController {
         super.setupActions()
         self.shouldSelect = { [unowned self] (item) in
             if item.isEqual(TabBarKeys.main, TabBarKeys.Main.second) {
-                UIAlertController()
+                UIAlertController(preferredStyle: .alert)
                     .with(title: "Second")
                     .with(message: "Can't select")
                     .with(action: "Ok")

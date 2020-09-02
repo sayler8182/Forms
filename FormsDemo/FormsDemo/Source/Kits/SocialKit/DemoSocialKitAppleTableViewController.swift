@@ -48,7 +48,7 @@ extension DemoSocialKitAppleTableViewController {
         self.signInWithAppleProvider.authorization(
             onSuccess: { [weak self] (data) in
                 guard let `self` = self else { return }
-                UIAlertController()
+                UIAlertController(preferredStyle: .alert)
                     .with(title: "Sign in with Apple")
                     .with(message: "uid: \(data.uid)")
                     .with(action: "Ok")

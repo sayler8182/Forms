@@ -120,6 +120,13 @@ open class FormsSearchController: UISearchController, AppLifecycleable, Themeabl
     public var onTextChanged: ((String?) -> Void)?
     public var onValidate: Validable.OnValidate?
     
+    public var onSetTheme: (() -> Void) = { } {
+        didSet { self.onSetTheme() }
+    }
+    public var onSetLanguage: (() -> Void) = { } {
+        didSet { self.onSetLanguage() }
+    }
+    
     private (set) var state: StateType = StateType.active
     
     public convenience init(_ updater: SearchUpdater) {
@@ -169,7 +176,7 @@ open class FormsSearchController: UISearchController, AppLifecycleable, Themeabl
     }
     
     open func setTheme() {
-        self.updateState()
+        self.onSetTheme()
     }
     
     open func appLifecycleable(event: AppLifecycleEvent) { }
@@ -203,7 +210,12 @@ open class FormsSearchController: UISearchController, AppLifecycleable, Themeabl
     
     open func setupSearchBar() {
         self.searchBar.backgroundImage = UIImage()
-        self.updateState()
+        self.onSetTheme = Unowned(self) { (_self) in
+            _self.backgroundColors = State<UIColor?>(Theme.Colors.clear)
+            _self.barTintColors = State<UIColor?>(Theme.Colors.primaryDark)
+            _self.textColors = State<UIColor?>(Theme.Colors.primaryDark)
+            _self.textFonts = State<UIFont>(Theme.Fonts.regular(ofSize: 14))
+        }
     }
     
     open func setupActions() {

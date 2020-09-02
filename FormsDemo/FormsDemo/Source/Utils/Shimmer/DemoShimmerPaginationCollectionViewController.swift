@@ -65,7 +65,7 @@ class DemoShimmerPaginationCollectionViewController: FormsCollectionViewControll
     override func selectCell(item: CollectionItem, cell: FormsCollectionViewCell, indexPath: IndexPath) {
         super.selectCell(item: item, cell: cell, indexPath: indexPath)
         cell.cast(item: item, of: DemoCellModel.self, to: DemoCollectionViewCell.self) { [unowned self] (newData, _) in
-            UIAlertController()
+            UIAlertController(preferredStyle: .alert)
                 .with(title: newData.title)
                 .with(message: newData.subtitle)
                 .with(action: "Ok")

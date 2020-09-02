@@ -12,8 +12,16 @@ import Foundation
 public struct Version: Equatable, Comparable {
     private var version: String
     
+    public var description: String {
+        return self.version
+    }
+    
     public init?(_ version: String?) {
         guard let version: String = version else { return nil }
+        self.init(version)
+    }
+    
+    public init(_ version: String) {
         self.version = version
     }
     

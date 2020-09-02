@@ -40,6 +40,8 @@ frameworks=(
     FormsAppStoreReview
     FormsCalendarKit
     FormsCardKit
+    FormsDatabase
+    FormsDatabaseSQLite
     FormsDeveloperTools
     FormsDevice
     FormsHomeShortcuts

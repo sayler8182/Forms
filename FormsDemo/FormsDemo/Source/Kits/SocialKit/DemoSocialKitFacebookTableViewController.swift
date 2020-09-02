@@ -44,7 +44,7 @@ extension DemoSocialKitFacebookTableViewController {
         self.signInWithFacebookProvider.authorization(
             onSuccess: { [weak self] (data) in
                 guard let `self` = self else { return }
-                UIAlertController()
+                UIAlertController(preferredStyle: .alert)
                     .with(title: "Sign in with Facebook")
                     .with(message: "data: \(data)")
                     .with(action: "Ok")

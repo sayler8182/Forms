@@ -50,7 +50,7 @@ class DemoLabelsViewController: FormsTableViewController {
     override func setupActions() {
         super.setupActions()
         self.clickableLabel.onClick = Unowned(self) { (_self) in
-            UIAlertController()
+            UIAlertController(preferredStyle: .alert)
                 .with(title: "Tapped")
                 .with(message: "Clickable label")
                 .with(action: "Ok")

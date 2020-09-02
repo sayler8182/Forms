@@ -20,7 +20,10 @@ enum Module: String {
     case formsAnalytics = "FormsAnalytics"
     case formsAnchor = "FormsAnchor"
     case formsAppStoreReview = "FormsAppStoreReview"
+    case formsCalendarKit = "FormsCalendarKit"
     case formsCardKit = "FormsCardKit"
+    case formsDatabase = "FormsDatabase"
+    case formsDatabaseSQLite = "FormsDatabaseSQLite"
     case formsDeveloperTools = "FormsDeveloperTools"
     case formsHomeShortcuts = "FormsHomeShortcuts"
     case formsImagePicker = "FormsImagePicker"
@@ -126,7 +129,15 @@ public enum Forms {
             ])
         }
         .inScope(InjectorScope.container)
-        // settings
+        // utils
+        injector.register(BiometryAuthenticationProtocol.self) { _ in
+            BiometryAuthentication()
+        }
+        .inScope(InjectorScope.container)
+        injector.register(DeviceSecurityProtocol.self) { _ in
+            DeviceSecurity()
+        }
+        .inScope(InjectorScope.container)
         injector.register(SettingsBundleProtocol.self) { _ in
             SettingsBundle()
         }

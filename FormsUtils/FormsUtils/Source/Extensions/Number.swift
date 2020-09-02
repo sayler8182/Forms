@@ -51,6 +51,7 @@ public extension String {
     var asFloat: Float? { self.asDouble?.asFloat }
     var asInt: Int? { self.asDouble?.asInt }
     var asNumber: NSNumber? { self.asDouble?.asNumber }
+    var asSize: String? { self.asDouble?.asSize }
     var asString: String { self }
     var isFractional: Bool { self.contains(".") }
 }
@@ -62,6 +63,7 @@ public extension Optional where Wrapped == String {
     var asFloat: Float? { self?.asDouble?.asFloat }
     var asInt: Int? { self?.asInt }
     var asNumber: NSNumber? { self?.asNumber }
+    var asSize: String? { self?.asDouble?.asSize }
     var asString: String? { self?.asString }
     var isFractional: Bool? { self?.isFractional }
 }
@@ -75,6 +77,7 @@ public protocol Number: Comparable {
     var asInt: Int { get }
     var asNumber: NSNumber { get }
     var asString: String { get }
+    var asSize: String? { get }
     var isFractional: Bool { get }
     
     var ceiled: Self { get }
@@ -180,6 +183,22 @@ extension Double: Number, NumberFormattable {
     public var asInt: Int { Int(self) }
     public var asNumber: NSNumber { self as NSNumber }
     public var asString: String { String(self) }
+    public var asSize: String? {
+        let scale: Double = 1_024.0
+        if self < scale {
+            return String(format: "%3.2f B", self)
+        } else if self < scale * scale {
+            return String(format: "%3.2f kB", self / scale)
+        } else if self < scale * scale * scale {
+            return String(format: "%3.2f MB", self / (scale * scale))
+        } else if self < scale * scale * scale * scale {
+            return String(format: "%3.2f GB", self / (scale * scale * scale))
+        } else if self < scale * scale * scale * scale * scale {
+            return String(format: "%3.2f TB", self / (scale * scale * scale * scale))
+        } else {
+            return nil
+        }
+    }
     public var isFractional: Bool { true }
     
     public var ceiled: Double { self.rounded(.up) }
@@ -210,6 +229,7 @@ extension Int: Number, NumberFormattable {
     public var asFloat: Float { Float(self) }
     public var asInt: Int { self }
     public var asNumber: NSNumber { self as NSNumber }
+    public var asSize: String? { self.asDouble.asSize }
     public var asString: String { String(self) }
     public var isFractional: Bool { false }
     
