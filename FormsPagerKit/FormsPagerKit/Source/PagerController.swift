@@ -8,6 +8,7 @@
 
 import Forms
 import FormsAnchor
+import FormsUtils
 import UIKit
 
 // MARK: PagerItem
@@ -128,8 +129,8 @@ open class PagerController: FormsViewController {
                 .connect(self.topBarHeightAnchor)
                 .isActive(false)
         ])
-        self.topBar.onSelect = { [unowned self] (item) in
-            self.showPage(at: item.index)
+        self.topBar.onSelect = Unowned(self) { (_self, item) in
+            _self.showPage(at: item.index)
         }
     }
     

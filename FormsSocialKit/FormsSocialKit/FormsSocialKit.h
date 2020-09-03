@@ -14,6 +14,6 @@ FOUNDATION_EXPORT double FormsSocialKitVersionNumber;
 //! Project version string for FormsSocialKit.
 FOUNDATION_EXPORT const unsigned char FormsSocialKitVersionString[];
 
-// In this header, you should import all the public headers of your framework using statements like #import <SocialKit/PublicHeader.h>
+// In this header, you should import all the public headers of your framework using statements like #import <FormsSocialKit/PublicHeader.h>
 
 

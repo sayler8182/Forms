@@ -138,6 +138,10 @@ public enum Forms {
             DeviceSecurity()
         }
         .inScope(InjectorScope.container)
+        injector.register(LaunchOptionsProtocol.self) { _ in
+            LaunchOptions()
+        }
+        .inScope(InjectorScope.container)
         injector.register(SettingsBundleProtocol.self) { _ in
             SettingsBundle()
         }

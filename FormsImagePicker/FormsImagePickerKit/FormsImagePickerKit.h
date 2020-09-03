@@ -14,6 +14,6 @@ FOUNDATION_EXPORT double FormsImagePickerKitVersionNumber;
 //! Project version string for FormsImagePickerKit.
 FOUNDATION_EXPORT const unsigned char FormsImagePickerKitVersionString[];
 
-// In this header, you should import all the public headers of your framework using statements like #import <ImagePicker/PublicHeader.h>
+// In this header, you should import all the public headers of your framework using statements like #import <FormsImagePickerKit/PublicHeader.h>
 
 

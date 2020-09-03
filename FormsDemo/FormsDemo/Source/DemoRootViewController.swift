@@ -85,6 +85,7 @@ private enum Demo {
         case utilsLoader
         case utilsModal
         case utilsScrollSteps
+        case utilsSharedContainer
         case utilsShimmer
         case utilsShimmerPaginationCollection
         case utilsShimmerPaginationTable
@@ -231,6 +232,7 @@ private enum Demo {
                     Row(type: RowType.utilsLoader, title: "Loader"),
                     Row(type: RowType.utilsModal, title: "Modal"),
                     Row(type: RowType.utilsScrollSteps, title: "ScrollSteps"),
+                    Row(type: RowType.utilsSharedContainer, title: "SharedContainer"),
                     Row(
                         type: RowType.utilsShimmer,
                         title: "Shimmer",
@@ -393,6 +395,9 @@ public class DemoRootViewController: FormsNavigationController {
     @OptionalInjected
     private var homeShortcuts: HomeShortcutsProtocol?  // swiftlint:disable:this let_var_whitespace
     
+    @OptionalInjected
+    private var launchOptions: LaunchOptionsProtocol?  // swiftlint:disable:this let_var_whitespace
+    
     private var sections: [DemoSection] = []
     private var getRowController: GetRowController
     
@@ -430,17 +435,28 @@ public class DemoRootViewController: FormsNavigationController {
     override public func setupView() {
         super.setupView()
         self.autoroute(to: nil)
-        self.homeShortcuts?.handleIfNeeded { (item) in
+        self.homeShortcuts?.handleIfNeeded { (item: UIApplicationShortcutItem) in
             guard let controller = self.rootViewController(of: DemoListViewController.self) else { return }
             controller.searchController.text = item.localizedTitle
+        }
+        self.launchOptions?.handleIfNeeded { (_: URL, parameters: [String: Any]) in
+            guard let controller = self.rootViewController(of: DemoListViewController.self) else { return }
+            controller.searchController.text = parameters["search_text"] as? String
         }
     }
     
     override public func appLifecycleable(event: AppLifecycleEvent) {
-        self.homeShortcuts?.handleIfNeeded { (item) in
+        self.homeShortcuts?.handleIfNeeded { (item: UIApplicationShortcutItem) in
             UIAlertController(preferredStyle: .alert)
                 .with(message: item.localizedSubtitle)
                 .with(title: item.localizedTitle)
+                .with(action: "Ok")
+                .present(on: self)
+        }
+        self.launchOptions?.handleIfNeeded { (_: URL, parameters: [String: Any]) in
+            UIAlertController(preferredStyle: .alert)
+                .with(message: "URL has been captured")
+                .with(title: parameters["search_text"] as? String)
                 .with(action: "Ok")
                 .present(on: self)
         }
@@ -640,6 +656,7 @@ private class DemoListViewController: FormsViewController {
         case .utilsLoader:                                      return DemoLoaderViewController()
         case .utilsModal:                                       return DemoModalViewController()
         case .utilsScrollSteps:                                 return DemoScrollStepsViewController()
+        case .utilsSharedContainer:                             return DemoSharedContainerViewController()
         case .utilsShimmerPaginationCollection:                 return DemoShimmerPaginationCollectionViewController()
         case .utilsShimmerPaginationTable:                      return DemoShimmerPaginationTableViewController()
         case .utilsShimmerCollection:                           return DemoShimmerCollectionViewController()

@@ -21,6 +21,9 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     @OptionalInjected
     private var homeShortcuts: HomeShortcutsProtocol? // swiftlint:disable:this let_var_whitespace
     
+    @OptionalInjected
+    private var launchOptions: LaunchOptionsProtocol? // swiftlint:disable:this let_var_whitespace
+    
     func scene(_ scene: UIScene,
                willConnectTo session: UISceneSession,
                options connectionOptions: UIScene.ConnectionOptions) {
@@ -28,6 +31,9 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         // HomeShortcuts
         self.homeShortcuts?.launch(connectionOptions.shortcutItem)
+        
+        // LaunchOptions
+        self.launchOptions?.launch(connectionOptions.urlContexts)
         
         // Root
         let window: UIWindow = UIWindow(windowScene: windowScene)
@@ -37,8 +43,10 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         window.makeKeyAndVisible()
     }
     
-    func scene(_ scene: UIScene, openURLContexts URLContexts: Set<UIOpenURLContext>) {
+    func scene(_ scene: UIScene,
+               openURLContexts URLContexts: Set<UIOpenURLContext>) {
         guard let url: URL = URLContexts.first?.url else { return }
+        self.launchOptions?.launch(URLContexts)
         ApplicationDelegate.shared.application(
             UIApplication.shared,
             open: url,

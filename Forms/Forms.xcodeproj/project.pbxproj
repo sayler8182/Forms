@@ -196,6 +196,13 @@
 		71EA276224A9C99B00985392 /* FormsNetworking.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 714EF1B1247F940100AE3044 /* FormsNetworking.framework */; };
 		71EAB38224F2CF0B00F1358B /* GridView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71EAB38124F2CF0B00F1358B /* GridView.swift */; };
 		71EAB38324F2CF0B00F1358B /* GridView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71EAB38124F2CF0B00F1358B /* GridView.swift */; };
+		71EF0EEB2500EC5D002DABFA /* LaunchOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71EF0EEA2500EC5D002DABFA /* LaunchOptions.swift */; };
+		71EF0EEC2500EC5D002DABFA /* LaunchOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71EF0EEA2500EC5D002DABFA /* LaunchOptions.swift */; };
+		71F4E299250100BE00CCAA09 /* SharedContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71F4E298250100BE00CCAA09 /* SharedContainer.swift */; };
+		71F4E29A250100BE00CCAA09 /* SharedContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71F4E298250100BE00CCAA09 /* SharedContainer.swift */; };
+		71F4E2DF25011E6C00CCAA09 /* ComponentsSelectors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 715435AA24EFA9FB0046F08F /* ComponentsSelectors.swift */; };
+		71F4E2E025011E8100CCAA09 /* Vibration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71D366F624FE28D000E6BFAF /* Vibration.swift */; };
+		71F4E2E225011F6100CCAA09 /* FormsTodayExtensionKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71F4E2E125011F6100CCAA09 /* FormsTodayExtensionKit.framework */; };
 		71FCB2BC247F9C4800A84D30 /* FormsPermissions.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71FCB2BB247F9C4800A84D30 /* FormsPermissions.framework */; };
 /* End PBXBuildFile section */
 
@@ -308,6 +315,9 @@
 		71EA270924A9C37200985392 /* FormsUtilsUI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FormsUtilsUI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		71EA275D24A9C98A00985392 /* FormsNetworkingImage.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FormsNetworkingImage.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		71EAB38124F2CF0B00F1358B /* GridView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GridView.swift; sourceTree = "<group>"; };
+		71EF0EEA2500EC5D002DABFA /* LaunchOptions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchOptions.swift; sourceTree = "<group>"; };
+		71F4E298250100BE00CCAA09 /* SharedContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharedContainer.swift; sourceTree = "<group>"; };
+		71F4E2E125011F6100CCAA09 /* FormsTodayExtensionKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FormsTodayExtensionKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		71FCB2BB247F9C4800A84D30 /* FormsPermissions.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FormsPermissions.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -328,6 +338,7 @@
 				714EF1BD247F940100AE3044 /* FormsDeveloperTools.framework in Frameworks */,
 				714EF1C9247F940100AE3044 /* FormsNotifications.framework in Frameworks */,
 				71EA276124A9C98C00985392 /* FormsNetworkingImage.framework in Frameworks */,
+				71F4E2E225011F6100CCAA09 /* FormsTodayExtensionKit.framework in Frameworks */,
 				7135DF9F248E3E8200B5807F /* FormsHomeShortcuts.framework in Frameworks */,
 				714EF1D5247F940100AE3044 /* FormsValidators.framework in Frameworks */,
 				7150CE84247FAB5A00F2681B /* FormsTransitions.framework in Frameworks */,
@@ -516,9 +527,11 @@
 				71D3E43E246D61A1008BA211 /* Keyboard.swift */,
 				71B8EE7324F7ED8700753E6D /* InactiveCover.swift */,
 				71D9C70224F8E38B00E2E0F9 /* InputView.swift */,
+				71EF0EEA2500EC5D002DABFA /* LaunchOptions.swift */,
 				7194696B243DA7BE00CAD09B /* Loader.swift */,
 				7194696A243DA7BE00CAD09B /* Modal.swift */,
 				71D3435F24FCF47400003928 /* SettingsBundle.swift */,
+				71F4E298250100BE00CCAA09 /* SharedContainer.swift */,
 				719469C1243DAB6500CAD09B /* Shimmer.swift */,
 				7194696C243DA7BE00CAD09B /* Theme.swift */,
 				71D366F624FE28D000E6BFAF /* Vibration.swift */,
@@ -610,6 +623,7 @@
 		719469AF243DA7CC00CAD09B /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				71F4E2E125011F6100CCAA09 /* FormsTodayExtensionKit.framework */,
 				71D3677224FE391D00E6BFAF /* FormsDatabaseSQLite.framework */,
 				71D3673824FE376700E6BFAF /* FormsDatabase.framework */,
 				71BF8AAE24F265A900D01CB9 /* FormsCalendarKit.framework */,
@@ -807,9 +821,11 @@
 				711070E22476BF610056BBB5 /* TextField.swift in Sources */,
 				714BB08F24FFBDFF000617C7 /* BiometryAuthentication.swift in Sources */,
 				71A9285224A368B300734C2B /* ClickableView.swift in Sources */,
+				71EF0EEC2500EC5D002DABFA /* LaunchOptions.swift in Sources */,
 				718B431C2490B95A000DBC05 /* ComponentsSegments.swift in Sources */,
 				711070E42476BF610056BBB5 /* ComponentsProgresses.swift in Sources */,
 				711070E52476BF610056BBB5 /* CollectionDataSource.swift in Sources */,
+				71F4E2E025011E8100CCAA09 /* Vibration.swift in Sources */,
 				711070E62476BF610056BBB5 /* ActivityIndicator.swift in Sources */,
 				71D3433524FCD06800003928 /* DeviceSecurity.swift in Sources */,
 				71D47B48249CCBD0001108C5 /* GradientButton.swift in Sources */,
@@ -834,6 +850,7 @@
 				711070F52476BF610056BBB5 /* Loader.swift in Sources */,
 				718B43192490B680000DBC05 /* SegmentControl.swift in Sources */,
 				71D9C6FB24F8DB8200E2E0F9 /* DatePicker.swift in Sources */,
+				71F4E29A250100BE00CCAA09 /* SharedContainer.swift in Sources */,
 				711070F72476BF610056BBB5 /* Configuration.swift in Sources */,
 				711070F82476BF610056BBB5 /* FormsNavigationController.swift in Sources */,
 				711070F92476BF610056BBB5 /* PageView.swift in Sources */,
@@ -844,6 +861,7 @@
 				711070FD2476BF610056BBB5 /* View.swift in Sources */,
 				711070FE2476BF610056BBB5 /* ComponentsLabels.swift in Sources */,
 				711070FF2476BF610056BBB5 /* SearchDataSource.swift in Sources */,
+				71F4E2DF25011E6C00CCAA09 /* ComponentsSelectors.swift in Sources */,
 				711071002476BF610056BBB5 /* Forms.swift in Sources */,
 				711071012476BF610056BBB5 /* TextFieldDelegates.swift in Sources */,
 				71090BC42488CC4800CDB25D /* Switch.swift in Sources */,
@@ -903,6 +921,7 @@
 				71090BC62488CD1400CDB25D /* ComponentsSwitches.swift in Sources */,
 				7194699C243DA7BE00CAD09B /* NavigationBar.swift in Sources */,
 				71E0F60B246D30EC0051F043 /* TextView.swift in Sources */,
+				71F4E299250100BE00CCAA09 /* SharedContainer.swift in Sources */,
 				7194698F243DA7BE00CAD09B /* ComponentsInputs.swift in Sources */,
 				71D9C70324F8E38B00E2E0F9 /* InputView.swift in Sources */,
 				719469AA243DA7BE00CAD09B /* TextFieldDelegate.swift in Sources */,
@@ -913,6 +932,7 @@
 				719469C2243DAB6500CAD09B /* Shimmer.swift in Sources */,
 				7103EA182460234E00A11A96 /* ProgressBar.swift in Sources */,
 				71D837D52497F89C00B20FE0 /* Confetti.swift in Sources */,
+				71EF0EEB2500EC5D002DABFA /* LaunchOptions.swift in Sources */,
 				71D3436024FCF47400003928 /* SettingsBundle.swift in Sources */,
 				71207CEC24877E610004B840 /* Checkbox.swift in Sources */,
 				71946997243DA7BE00CAD09B /* Theme.swift in Sources */,

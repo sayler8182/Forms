@@ -44,7 +44,8 @@ Kits extend Forms module
 - [x] [FormsSideMenuKit](./Documentation/FormsSideMenuKit.md) - Side menu
 - [x] [FormsSocialKit](./Documentation/FormsSocialKit.md) - Sign in with external services
 - [x] [FormsTabBarKit](./Documentation/FormsSideMenuKit.md) - TabBar
-- [x] [FormsToastKit](./Documentation/ToastKit.md) - Toast
+- [x] [FormsToastKit](./Documentation/FormsToastKit.md) - Toast
+- [x] [FormsTodayExtensionKit](./Documentation/FormsTodayExtensionKit.md) - Today extension
 
 ## Requirements
 
@@ -144,6 +145,7 @@ Frameworks should have consistent build settings:
 - [x] Other Swift Flags -> -Xfrontend -warn-long-function-bodies=1000 -Xfrontend -warn-long-expression-type-checking=1000
 - [x] Swift Language version -> Swift 5
 - [x] Defines module -> NO
+- [x] Add to Forms-Universal-Framework and build.sh
 
 ## Contribution Guide or Questions
 
@@ -171,6 +173,20 @@ The Forms framework is inspired by:
 
 - *FormsInjector*<br/>
 [Swinject](https://github.com/Swinject/Swinject)
+
+## Integration
+
+1. Remove storyboard file and key from Info.plist
+2. Add Config subfolder for each target
+3. Configure Forms and Assemblies in AppDelegate
+4. Configure external dependencies
+5. Configure Forms frameworks
+6. Add group identifier
+7. Add URL Type in Info.plist
+8. Add Settings.bundle
+9. Add HomeShortcuts
+
+NOTICE: Remember about AppDelegate and SceneDelegate settings
 
 ## Exist integrations
 

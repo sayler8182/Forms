@@ -149,7 +149,7 @@ private extension DemoProvider {
             let mock = Mock()
             for _ in 0..<limit {
                 let item: DemoCellModel = DemoCellModel(
-                    image: mock.imageUrl([.quality(.high)]))
+                    image: mock.imageURL([.quality(.high)]))
                 items.append(item)
             }
             success(items)

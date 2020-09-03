@@ -460,7 +460,7 @@ public extension UIImageView {
     private static var requestIdKey: UInt8 = 0
     
     private var networkImages: NetworkImagesProtocol {
-        let networkImages: NetworkImagesProtocol? = Injector.main.resolve()
+        let networkImages: NetworkImagesProtocol? = Injector.main.resolveOrDefault("FormsNetworkingImage")
         return networkImages ?? NetworkImages()
     }
     

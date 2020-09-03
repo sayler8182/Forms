@@ -30,6 +30,7 @@ FormsSideMenuKit.framework
 FormsSocialKit.framework
 FormsTabBarKit.framework
 FormsToastKit.framework
+FormsTodayExtensionKit.framework
 ```
 
 ## Usage
@@ -356,6 +357,49 @@ To handle update
 keyboard.onUpdate = { (percent: CGFloat, visibleHeight: CGFloat, animated: Bool) in }
 ```
 
+### LaunchOptions
+
+In AppDelegate didFinishLaunchingWithOptions
+
+```swift
+let launchOptions: LaunchOptions = LaunchOptions()
+launchOptions.launch(launchOptions)
+```
+
+and
+
+```swift
+func application(_ app: UIApplication,
+                 open url: URL,
+                 options: [UIApplication.OpenURLOptionsKey: Any] = [:]) -> Bool {
+    launchOptions?.launch(url)
+    return true
+}
+```
+
+In SceneDelegate connectionOptions
+
+```swift
+launchOptions.launch(connectionOptions.urlContexts)
+```
+
+and
+
+```swift
+func scene(_ scene: UIScene, 
+           openURLContexts URLContexts: Set<UIOpenURLContext>) {
+    guard let url: URL = URLContexts.first?.url else { return }
+    launchOptions?.launch(URLContexts)
+}
+```
+
+Handle with permission
+
+```swift
+launchOptions.handleIfNeeded { (url: URL, parameters: [String: Any]) in }
+launchOptions.handleIfNeeded { (url: URL, parameters: Decodable) in }
+```
+
 ### InactiveCover
 
 InactiveCover uses AppLifecycle to present cover or blur when app is inactive
@@ -363,6 +407,32 @@ InactiveCover uses AppLifecycle to present cover or blur when app is inactive
 ```swift
 let inactiveCover = InactiveCover()
 inactiveCover.register()
+```
+
+### InputView
+
+For TextField, TextView and SearchBar
+
+```swift
+textField.setInputView(
+    input: InputView(
+        Components.dates.date.default()
+    ),
+    accessory: ToolbarAccessoryView([
+        BarButtonItem(title: "Cancel"),
+        BarButtonItem.flexible,
+        BarButtonItem(title: "Done")
+            .with(lostFocusOnClick: false)
+    ]))
+```
+
+For custom view should implement InputViewable
+
+```swift
+protocol InputViewable: class, Inputable {
+    var inputableView: UIView? { get set }
+    var inputableAccessoryView: UIView? { get set }
+}
 ```
 
 ### Loader
@@ -527,6 +597,63 @@ let dataSource = CollectionDataSource()
     .with(generators: [ShimmerItemGenerator(type: ShimmerCollectionViewCell.self, count: 3)]
     .with(delegate: self)
 
+```
+
+### SharedContainer
+
+Identifier is a group type identifier
+
+```swift
+let sharedContainer = SharedContainer(identifier)
+```
+
+Shared json file
+
+```swift
+sharedContainer.jsonData = someJsonData
+/* ... */
+someJsonData = sharedContainer.jsonData
+```
+
+Other file
+
+```swift
+func write(data: Data,
+           to fileName: String,
+           extension _extension: String?)
+func read(from fileName: String,
+          extension _extension: String?) -> Data?
+```
+
+### SettingsBundle
+
+Manages Settings.bundle
+
+Keys definition
+
+```swift
+enum DemoSettingsBundleKey: String, SettingsBundleKey {
+    case removeDatabase = "settings_remove_database"
+    case environment = "settings_environment"
+    case appVersion = "settings_app_version"
+    case buildVersion = "settings_build_version"
+    case buildDate = "settings_build_date"
+}
+```
+
+Set settings
+
+```swift
+let settingsBundle = SettingsBundle()
+settingsBundle.set(
+    value: Bundle.main.appVersion,
+    forKey: DemoSettingsBundleKey.appVersion)
+```
+
+Get Value
+
+```swift
+let environment: String? = self.settingsBundle?.get(forKey: DemoSettingsBundleKey.environment)
 ```
 
 ### Shimmer

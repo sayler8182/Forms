@@ -271,7 +271,7 @@ public extension Mock {
 
 // MARK: Mock - URL
 public extension Mock {
-    func imageUrl(_ options: [MockOptions] = [.none]) -> URL! {
+    func imageURL(_ options: [MockOptions] = [.none]) -> URL! {
         guard !self.isNull(options) else { return nil }
         let quality: MockOptions.Quality = options.quality ?? .random
         let key: String = self.random(0..<1_000).description

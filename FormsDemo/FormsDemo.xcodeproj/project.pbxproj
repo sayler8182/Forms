@@ -184,6 +184,7 @@
 		71EA274924A9C8ED00985392 /* FormsNetworkingImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71EA274824A9C8ED00985392 /* FormsNetworkingImage.framework */; };
 		71EA274A24A9C8EE00985392 /* FormsNetworkingImage.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 71EA274824A9C8ED00985392 /* FormsNetworkingImage.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		71EAB38724F2ED0B00F1358B /* DemoGridViewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71EAB38624F2ED0B00F1358B /* DemoGridViewViewController.swift */; };
+		71F4E2BF250108AD00CCAA09 /* DemoSharedContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71F4E2BE250108AD00CCAA09 /* DemoSharedContainerViewController.swift */; };
 		71F83AA9248A385900D6B579 /* DemoSVGViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71F83AA8248A385900D6B579 /* DemoSVGViewController.swift */; };
 		71FCB249247F969F00A84D30 /* FormsAnalytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71FCB240247F969F00A84D30 /* FormsAnalytics.framework */; };
 		71FCB24A247F969F00A84D30 /* FormsAnalytics.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 71FCB240247F969F00A84D30 /* FormsAnalytics.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -396,6 +397,7 @@
 		71E4465C24939C9000AC38C1 /* FormsNotifications.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FormsNotifications.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		71EA274824A9C8ED00985392 /* FormsNetworkingImage.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FormsNetworkingImage.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		71EAB38624F2ED0B00F1358B /* DemoGridViewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoGridViewViewController.swift; sourceTree = "<group>"; };
+		71F4E2BE250108AD00CCAA09 /* DemoSharedContainerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoSharedContainerViewController.swift; sourceTree = "<group>"; };
 		71F83AA8248A385900D6B579 /* DemoSVGViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoSVGViewController.swift; sourceTree = "<group>"; };
 		71FCB240247F969F00A84D30 /* FormsAnalytics.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FormsAnalytics.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		71FCB241247F969F00A84D30 /* FormsDeveloperTools.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FormsDeveloperTools.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -673,6 +675,7 @@
 				713B9C78243D0964001F6E3A /* DemoLoaderViewController.swift */,
 				713B9C74243D0964001F6E3A /* DemoModalViewController.swift */,
 				71E0F5CF246BF0890051F043 /* DemoScrollStepsViewController.swift */,
+				71F4E2BE250108AD00CCAA09 /* DemoSharedContainerViewController.swift */,
 				7193E34F2451D258006238C5 /* DemoStorageViewController.swift */,
 				71F83AA8248A385900D6B579 /* DemoSVGViewController.swift */,
 				71E0F5F8246C4CAB0051F043 /* DemoThemeViewController.swift */,
@@ -1084,6 +1087,7 @@
 				7138D3A92452C9E300CC7345 /* DemoCollectionViewController.swift in Sources */,
 				71D9C6FE24F8DCAC00E2E0F9 /* DemoDatesViewController.swift in Sources */,
 				7193E34E2451B5B7006238C5 /* DemoAppStoreReviewViewController.swift in Sources */,
+				71F4E2BF250108AD00CCAA09 /* DemoSharedContainerViewController.swift in Sources */,
 				713B9C83243D0964001F6E3A /* DemoRootViewController.swift in Sources */,
 				71643AA824955D7300688E13 /* SocialKit.swift in Sources */,
 				717F4AD0249B62A900635106 /* Logger.swift in Sources */,

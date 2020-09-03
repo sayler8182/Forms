@@ -102,7 +102,8 @@ public extension Console {
             ": encountered error(1:53)",
             "Graph API v2.4",
             "Metal API Validation Enabled",
-            "-canOpenURL: failed for URL: \"-"
+            "-canOpenURL: failed for URL: \"-",
+            "Failed to inherit CoreMedia permissions from"
         ]
     }
 }

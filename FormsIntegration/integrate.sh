@@ -1,1 +1,0 @@
-cp -R ../build/Debug-Universal/. FormsIntegration/Dependencies

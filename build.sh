@@ -18,6 +18,7 @@ then
         -scheme "Forms-Universal-Framework" \
         -destination generic/platform=iOS \
         -destination "platform=iOS Simulator,name=iPhone 11,OS=latest" \
+        -showBuildTimingSummary \
         SYMROOT=$(PWD)/build/
 else
     mkdir -p "${BUILD_DIR}"
@@ -29,6 +30,7 @@ else
         -scheme "$FRAMEWORK" \
         -destination generic/platform=iOS \
         -destination "platform=iOS Simulator,name=iPhone 11,OS=latest" \
+        -showBuildTimingSummary \
         SYMROOT=$(PWD)/build/
 fi
 
@@ -59,6 +61,7 @@ frameworks=(
     FormsSocialKit
     FormsTabBarKit
     FormsToastKit
+    FormsTodayExtensionKit
     FormsTransitions
     FormsUtils
     FormsUtilsUI

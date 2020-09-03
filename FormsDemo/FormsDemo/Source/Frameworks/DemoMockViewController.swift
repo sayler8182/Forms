@@ -95,7 +95,7 @@ private struct DemoModel: Mockable, CustomDebugStringConvertible {
             groupingSeparator: " ")
         self.isActive = mock.bool()
         self.status = mock.item(from: DemoModelStatus.allCases)
-        self.avatar = mock.imageUrl()
+        self.avatar = mock.imageURL()
         self.subitems = mock.array(of: mock.number(0..<10), count: 10)
     }
     

@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>CFBuildDate</key>
-	<string>Wed Sep  2 20:04:24 CEST 2020</string>
+	<string>Thu Sep  3 14:47:38 CEST 2020</string>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
 	<key>CFBundleDisplayName</key>
@@ -36,6 +36,16 @@
 			<key>CFBundleURLSchemes</key>
 			<array>
 				<string>com.googleusercontent.apps.513688149579-fhj79mgkeq2rp689dpmfnn7nlkadnf31</string>
+			</array>
+		</dict>
+		<dict>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
+			<key>CFBundleURLName</key>
+			<string>com.limbo.FormsExample</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>forms-example</string>
 			</array>
 		</dict>
 	</array>

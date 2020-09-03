@@ -14,10 +14,10 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "71DB656B2458023700B16145"
-               BuildableName = "FormsIntegration.app"
-               BlueprintName = "FormsIntegration"
-               ReferencedContainer = "container:FormsIntegration.xcodeproj">
+               BlueprintIdentifier = "71EF0E1D2500C97B002DABFA"
+               BuildableName = "FormsTodayExtensionKit.framework"
+               BlueprintName = "FormsTodayExtensionKit"
+               ReferencedContainer = "container:FormsTodayExtensionKit.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -40,16 +40,6 @@
       debugDocumentVersioning = "YES"
       debugServiceExtension = "internal"
       allowLocationSimulation = "YES">
-      <BuildableProductRunnable
-         runnableDebuggingMode = "0">
-         <BuildableReference
-            BuildableIdentifier = "primary"
-            BlueprintIdentifier = "71DB656B2458023700B16145"
-            BuildableName = "FormsIntegration.app"
-            BlueprintName = "FormsIntegration"
-            ReferencedContainer = "container:FormsIntegration.xcodeproj">
-         </BuildableReference>
-      </BuildableProductRunnable>
    </LaunchAction>
    <ProfileAction
       buildConfiguration = "Release"
@@ -57,16 +47,15 @@
       savedToolIdentifier = ""
       useCustomWorkingDirectory = "NO"
       debugDocumentVersioning = "YES">
-      <BuildableProductRunnable
-         runnableDebuggingMode = "0">
+      <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "71DB656B2458023700B16145"
-            BuildableName = "FormsIntegration.app"
-            BlueprintName = "FormsIntegration"
-            ReferencedContainer = "container:FormsIntegration.xcodeproj">
+            BlueprintIdentifier = "71EF0E1D2500C97B002DABFA"
+            BuildableName = "FormsTodayExtensionKit.framework"
+            BlueprintName = "FormsTodayExtensionKit"
+            ReferencedContainer = "container:FormsTodayExtensionKit.xcodeproj">
          </BuildableReference>
-      </BuildableProductRunnable>
+      </MacroExpansion>
    </ProfileAction>
    <AnalyzeAction
       buildConfiguration = "Debug">

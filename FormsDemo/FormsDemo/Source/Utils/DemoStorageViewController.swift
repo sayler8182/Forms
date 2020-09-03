@@ -33,6 +33,9 @@ class DemoStorageViewController: FormsTableViewController {
     private let clearButton = Components.button.default()
         .with(title: "Clear")
     
+    private let divider = Components.utils.divider()
+        .with(height: 5.0)
+    
     @Storage(StorageKeys.name)
     private var storageName: String? // swiftlint:disable:this let_var_whitespace
     
@@ -44,9 +47,6 @@ class DemoStorageViewController: FormsTableViewController {
     
     @StorageSecureWithDefault(StorageKeys.email, "example@email.com")
     private var storageSecureEmail: String // swiftlint:disable:this let_var_whitespace
-    
-    private let divider = Components.utils.divider()
-        .with(height: 5.0)
     
     override func setupContent() {
         super.setupContent()
@@ -61,24 +61,24 @@ class DemoStorageViewController: FormsTableViewController {
     
     override func setupActions() {
         super.setupActions()
-        self.storageNameTextField.onEndEditing = { [unowned self] (text) in
-            self.storageName = text
+        self.storageNameTextField.onEndEditing = Unowned(self) { (_self, text) in
+            _self.storageName = text
         }
-        self.storageEmailTextField.onEndEditing = { [unowned self] (text) in
-            self.storageEmail = text ?? ""
+        self.storageEmailTextField.onEndEditing = Unowned(self) { (_self, text) in
+            _self.storageEmail = text ?? ""
         }
-        self.storageSecureNameTextField.onEndEditing = { [unowned self] (text) in
-            self.storageSecureName = text
+        self.storageSecureNameTextField.onEndEditing = Unowned(self) { (_self, text) in
+            _self.storageSecureName = text
         }
-        self.storageSecureEmailTextField.onEndEditing = { [unowned self] (text) in
-            self.storageSecureEmail = text ?? ""
+        self.storageSecureEmailTextField.onEndEditing = Unowned(self) { (_self, text) in
+            _self.storageSecureEmail = text ?? ""
         }
-        self.clearButton.onClick = { [unowned self] () in
-            self._storageName.remove()
-            self._storageEmail.remove()
-            self._storageSecureName.remove()
-            self._storageSecureEmail.remove()
-            self.navigationController?.popViewController(animated: true)
+        self.clearButton.onClick = Unowned(self) { (_self) in
+            _self._storageName.remove()
+            _self._storageEmail.remove()
+            _self._storageSecureName.remove()
+            _self._storageSecureEmail.remove()
+            _self.navigationController?.popViewController(animated: true)
         }
     }
 }

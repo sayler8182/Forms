@@ -57,14 +57,14 @@ class DemoScrollStepsViewController: FormsViewController {
     
     override func setupActions() {
         super.setupActions() 
-        self.scrollSteps.onUpdateVertical = { [unowned self] (step, progress) in
+        self.scrollSteps.onUpdateVertical = Unowned(self) { (_self, step, progress) in
             switch step {
-            case self.scrollTopSteps:
-                self.topViewTopAnchor.constant = -self.topView.realHeight * progress
-                self.topView.isHidden = progress.floored.asBool
-            case self.scrollBottomSteps:
-                self.bottomViewBottomAnchor.constant = self.bottomView.realHeight * progress
-                self.bottomView.isHidden = progress.floored.asBool
+            case _self.scrollTopSteps:
+                _self.topViewTopAnchor.constant = -_self.topView.realHeight * progress
+                _self.topView.isHidden = progress.floored.asBool
+            case _self.scrollBottomSteps:
+                _self.bottomViewBottomAnchor.constant = _self.bottomView.realHeight * progress
+                _self.bottomView.isHidden = progress.floored.asBool
             default: break
             }
         }

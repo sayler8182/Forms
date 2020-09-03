@@ -14,6 +14,6 @@ FOUNDATION_EXPORT double FormsToastKitVersionNumber;
 //! Project version string for FormsToastKit.
 FOUNDATION_EXPORT const unsigned char FormsToastKitVersionString[];
 
-// In this header, you should import all the public headers of your framework using statements like #import <FormsToast/PublicHeader.h>
+// In this header, you should import all the public headers of your framework using statements like #import <FormsToastKit/PublicHeader.h>
 
 

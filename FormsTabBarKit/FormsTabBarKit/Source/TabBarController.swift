@@ -8,6 +8,7 @@
 
 import Forms
 import FormsAnchor
+import FormsUtils
 import UIKit
 
 // MARK: TabBarController
@@ -99,9 +100,9 @@ open class TabBarController: FormsViewController {
     
     override open func setupActions() {
         super.setupActions()
-        self.tabBar.onSelect = { [unowned self] (item) in
-            guard self.shouldSelect(item) else { return }
-            self.showContentController(index: item.index)
+        self.tabBar.onSelect = Unowned(self) { (_self, item) in
+            guard _self.shouldSelect(item) else { return }
+            _self.showContentController(index: item.index)
         }
     }
     

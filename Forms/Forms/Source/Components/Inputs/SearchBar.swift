@@ -266,6 +266,18 @@ extension SearchBar: Inputable {
     }
 }
 
+// MARK: InputViewable
+extension SearchBar: InputViewable {
+    public var inputableView: UIView? {
+        get { return self.searchBar.textField?.inputView }
+        set { self.searchBar.textField?.inputView = newValue }
+    }
+    public var inputableAccessoryView: UIView? {
+        get { return self.searchBar.textField?.inputAccessoryView }
+        set { self.searchBar.textField?.inputAccessoryView = newValue }
+    }
+}
+
 // MARK: Builder
 public extension SearchBar {
     func with(animationTime: TimeInterval) -> Self {

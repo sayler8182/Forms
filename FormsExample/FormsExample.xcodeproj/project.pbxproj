@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -77,6 +77,24 @@
 		71E4466024939E9100AC38C1 /* FormsNotifications.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 7150CE38247FA75A00F2681B /* FormsNotifications.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		71EA274B24A9C8F900985392 /* FormsNetworkingImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71EA273824A9C80700985392 /* FormsNetworkingImage.framework */; };
 		71EA274C24A9C8F900985392 /* FormsNetworkingImage.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 71EA273824A9C80700985392 /* FormsNetworkingImage.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		71EF0DC52500C643002DABFA /* NotificationCenter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71EF0DC42500C643002DABFA /* NotificationCenter.framework */; };
+		71EF0DC82500C643002DABFA /* TodayExtensionRootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71EF0DC72500C643002DABFA /* TodayExtensionRootViewController.swift */; };
+		71EF0DCF2500C643002DABFA /* FormsExampleTodayExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 71EF0DC32500C643002DABFA /* FormsExampleTodayExtension.appex */; platformFilter = ios; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		71EF0E452500CAA0002DABFA /* FormsAnchor.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7150CE15247FA71100F2681B /* FormsAnchor.framework */; };
+		71EF0E462500CAA0002DABFA /* FormsAnchor.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 7150CE15247FA71100F2681B /* FormsAnchor.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		71EF0E482500CAA3002DABFA /* FormsInjector.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7150CE24247FA72D00F2681B /* FormsInjector.framework */; };
+		71EF0E492500CAA3002DABFA /* FormsInjector.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 7150CE24247FA72D00F2681B /* FormsInjector.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		71EF0E4A2500CAAA002DABFA /* FormsLogger.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7150CE29247FA73300F2681B /* FormsLogger.framework */; };
+		71EF0E4B2500CAAA002DABFA /* FormsLogger.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 7150CE29247FA73300F2681B /* FormsLogger.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		71EF0E4C2500CAAD002DABFA /* FormsUtils.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7150CE51247FA79600F2681B /* FormsUtils.framework */; };
+		71EF0E4D2500CAAD002DABFA /* FormsUtils.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 7150CE51247FA79600F2681B /* FormsUtils.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		71EF0E4E2500CAB2002DABFA /* FormsUtilsUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71EA26B924A9C05900985392 /* FormsUtilsUI.framework */; };
+		71EF0E4F2500CAB2002DABFA /* FormsUtilsUI.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 71EA26B924A9C05900985392 /* FormsUtilsUI.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		71EF0E732500CD75002DABFA /* Forms.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7194695C243DA7A900CAD09B /* Forms.framework */; };
+		71EF0E742500CD75002DABFA /* Forms.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 7194695C243DA7A900CAD09B /* Forms.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		71EF0E9D2500CF4F002DABFA /* FormsTodayExtensionKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71EF0E982500CE98002DABFA /* FormsTodayExtensionKit.framework */; };
+		71EF0E9E2500CF4F002DABFA /* FormsTodayExtensionKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 71EF0E982500CE98002DABFA /* FormsTodayExtensionKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		71EF0EA02500D37D002DABFA /* TodayExtensionRoot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71EF0E9F2500D37D002DABFA /* TodayExtensionRoot.swift */; };
 		71FCB25F247F999500A84D30 /* FormsDemo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 713B9C13243D08E1001F6E3A /* FormsDemo.framework */; };
 		71FCB260247F999500A84D30 /* FormsDemo.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 713B9C13243D08E1001F6E3A /* FormsDemo.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		71FCB279247F9A1800A84D30 /* Forms.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7194695C243DA7A900CAD09B /* Forms.framework */; };
@@ -301,6 +319,20 @@
 			remoteGlobalIDString = 71EA272824A9C80600985392;
 			remoteInfo = FormsNetworkingImage;
 		};
+		71EF0DCD2500C643002DABFA /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 71228DFD2431CF7F00D08B20 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 71EF0DC22500C643002DABFA;
+			remoteInfo = FormsExampleTodayExtension;
+		};
+		71EF0E972500CE98002DABFA /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 71EF0E932500CE98002DABFA /* FormsTodayExtensionKit.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 71EF0E1E2500C97B002DABFA;
+			remoteInfo = FormsTodayExtensionKit;
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -343,6 +375,34 @@
 				71E4466024939E9100AC38C1 /* FormsNotifications.framework in Embed Frameworks */,
 				7136A121248673F300298D3B /* FormsCardKit.framework in Embed Frameworks */,
 				7135DF9D248E3E7B00B5807F /* FormsHomeShortcuts.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		71EF0DD02500C643002DABFA /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				71EF0DCF2500C643002DABFA /* FormsExampleTodayExtension.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		71EF0E472500CAA0002DABFA /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				71EF0E4D2500CAAD002DABFA /* FormsUtils.framework in Embed Frameworks */,
+				71EF0E4B2500CAAA002DABFA /* FormsLogger.framework in Embed Frameworks */,
+				71EF0E492500CAA3002DABFA /* FormsInjector.framework in Embed Frameworks */,
+				71EF0E462500CAA0002DABFA /* FormsAnchor.framework in Embed Frameworks */,
+				71EF0E742500CD75002DABFA /* Forms.framework in Embed Frameworks */,
+				71EF0E4F2500CAB2002DABFA /* FormsUtilsUI.framework in Embed Frameworks */,
+				71EF0E9E2500CF4F002DABFA /* FormsTodayExtensionKit.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -405,6 +465,13 @@
 		71EA26B424A9C05800985392 /* FormsUtilsUI.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = FormsUtilsUI.xcodeproj; path = ../FormsUtilsUI/FormsUtilsUI.xcodeproj; sourceTree = "<group>"; };
 		71EA273324A9C80600985392 /* FormsNetworkingImage.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = FormsNetworkingImage.xcodeproj; path = ../FormsNetworkingImage/FormsNetworkingImage.xcodeproj; sourceTree = "<group>"; };
 		71EBA881243D02AD0045AE40 /* FormsAnchor.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = FormsAnchor.xcodeproj; path = ../FormsAnchor/FormsAnchor.xcodeproj; sourceTree = "<group>"; };
+		71EF0DC32500C643002DABFA /* FormsExampleTodayExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = FormsExampleTodayExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		71EF0DC42500C643002DABFA /* NotificationCenter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NotificationCenter.framework; path = System/Library/Frameworks/NotificationCenter.framework; sourceTree = SDKROOT; };
+		71EF0DC72500C643002DABFA /* TodayExtensionRootViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayExtensionRootViewController.swift; sourceTree = "<group>"; };
+		71EF0DCC2500C643002DABFA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		71EF0E932500CE98002DABFA /* FormsTodayExtensionKit.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = FormsTodayExtensionKit.xcodeproj; path = ../FormsTodayExtensionKit/FormsTodayExtensionKit.xcodeproj; sourceTree = "<group>"; };
+		71EF0E9F2500D37D002DABFA /* TodayExtensionRoot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayExtensionRoot.swift; sourceTree = "<group>"; };
+		71F4E2BD250102CD00CCAA09 /* FormsExampleTodayExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = FormsExampleTodayExtension.entitlements; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -449,6 +516,21 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		71EF0DC02500C643002DABFA /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				71EF0E4C2500CAAD002DABFA /* FormsUtils.framework in Frameworks */,
+				71EF0E4A2500CAAA002DABFA /* FormsLogger.framework in Frameworks */,
+				71EF0E9D2500CF4F002DABFA /* FormsTodayExtensionKit.framework in Frameworks */,
+				71EF0E732500CD75002DABFA /* Forms.framework in Frameworks */,
+				71EF0E482500CAA3002DABFA /* FormsInjector.framework in Frameworks */,
+				71EF0DC52500C643002DABFA /* NotificationCenter.framework in Frameworks */,
+				71EF0E4E2500CAB2002DABFA /* FormsUtilsUI.framework in Frameworks */,
+				71EF0E452500CAA0002DABFA /* FormsAnchor.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -487,6 +569,7 @@
 				7132962724487AC2006935C0 /* FormsSocialKit.xcodeproj */,
 				7136A04124866AE200298D3B /* FormsTabBarKit.xcodeproj */,
 				71369F822486585100298D3B /* FormsToastKit.xcodeproj */,
+				71EF0E932500CE98002DABFA /* FormsTodayExtensionKit.xcodeproj */,
 				715B7B3124474C4600754EDB /* FormsTransitions.xcodeproj */,
 				713B9BA1243D0696001F6E3A /* FormsUtils.xcodeproj */,
 				71EA26B424A9C05800985392 /* FormsUtilsUI.xcodeproj */,
@@ -494,6 +577,7 @@
 				71946956243DA7A800CAD09B /* Forms.xcodeproj */,
 				713B9C0D243D08E0001F6E3A /* FormsDemo.xcodeproj */,
 				71228E072431CF7F00D08B20 /* FormsExample */,
+				71EF0DC62500C643002DABFA /* FormsExampleTodayExtension */,
 				71228E2A2431CF9800D08B20 /* Resources */,
 				71228E062431CF7F00D08B20 /* Products */,
 				71EA6E9E2449FC1B00ACB5EE /* Frameworks */,
@@ -504,6 +588,7 @@
 			isa = PBXGroup;
 			children = (
 				71228E052431CF7F00D08B20 /* FormsExample.app */,
+				71EF0DC32500C643002DABFA /* FormsExampleTodayExtension.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -839,8 +924,52 @@
 			children = (
 				71BF8B2924F2769D00D01CB9 /* LocalAuthentication.framework */,
 				715435B024EFF3F20046F08F /* AuthenticationServices.framework */,
+				71EF0DC42500C643002DABFA /* NotificationCenter.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		71EF0DC62500C643002DABFA /* FormsExampleTodayExtension */ = {
+			isa = PBXGroup;
+			children = (
+				71EF0DF32500C6D4002DABFA /* Source */,
+				71EF0DF42500C6DC002DABFA /* SupportingFiles */,
+			);
+			path = FormsExampleTodayExtension;
+			sourceTree = "<group>";
+		};
+		71EF0DF32500C6D4002DABFA /* Source */ = {
+			isa = PBXGroup;
+			children = (
+				71EF0DC72500C643002DABFA /* TodayExtensionRootViewController.swift */,
+			);
+			path = Source;
+			sourceTree = "<group>";
+		};
+		71EF0DF42500C6DC002DABFA /* SupportingFiles */ = {
+			isa = PBXGroup;
+			children = (
+				71EF0DF52500C79C002DABFA /* Config */,
+				71EF0E9F2500D37D002DABFA /* TodayExtensionRoot.swift */,
+			);
+			path = SupportingFiles;
+			sourceTree = "<group>";
+		};
+		71EF0DF52500C79C002DABFA /* Config */ = {
+			isa = PBXGroup;
+			children = (
+				71F4E2BD250102CD00CCAA09 /* FormsExampleTodayExtension.entitlements */,
+				71EF0DCC2500C643002DABFA /* Info.plist */,
+			);
+			path = Config;
+			sourceTree = "<group>";
+		};
+		71EF0E942500CE98002DABFA /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				71EF0E982500CE98002DABFA /* FormsTodayExtensionKit.framework */,
+			);
+			name = Products;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -855,17 +984,37 @@
 				71228E032431CF7F00D08B20 /* Resources */,
 				716992012445A98E00A8FA79 /* Lint */,
 				71EA6EC32449FC1C00ACB5EE /* Embed Frameworks */,
+				71EF0DD02500C643002DABFA /* Embed App Extensions */,
 				719F8C7D245712DB004F5A27 /* CFBuildDate */,
 				714BB0B824FFDAA2000617C7 /* Trim architectures */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				71EF0DCE2500C643002DABFA /* PBXTargetDependency */,
 			);
 			name = FormsExample;
 			productName = FormsExample;
 			productReference = 71228E052431CF7F00D08B20 /* FormsExample.app */;
 			productType = "com.apple.product-type.application";
+		};
+		71EF0DC22500C643002DABFA /* FormsExampleTodayExtension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 71EF0DF22500C644002DABFA /* Build configuration list for PBXNativeTarget "FormsExampleTodayExtension" */;
+			buildPhases = (
+				71EF0DBF2500C643002DABFA /* Sources */,
+				71EF0DC02500C643002DABFA /* Frameworks */,
+				71EF0DC12500C643002DABFA /* Resources */,
+				71EF0E472500CAA0002DABFA /* Embed Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = FormsExampleTodayExtension;
+			productName = FormsExampleTodayExtension;
+			productReference = 71EF0DC32500C643002DABFA /* FormsExampleTodayExtension.appex */;
+			productType = "com.apple.product-type.app-extension";
 		};
 /* End PBXNativeTarget section */
 
@@ -873,12 +1022,15 @@
 		71228DFD2431CF7F00D08B20 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 1140;
+				LastSwiftUpdateCheck = 1160;
 				LastUpgradeCheck = 1140;
 				ORGANIZATIONNAME = Limbo;
 				TargetAttributes = {
 					71228E042431CF7F00D08B20 = {
 						CreatedOnToolsVersion = 11.4;
+					};
+					71EF0DC22500C643002DABFA = {
+						CreatedOnToolsVersion = 11.6;
 					};
 				};
 			};
@@ -999,6 +1151,10 @@
 					ProjectRef = 71369F822486585100298D3B /* FormsToastKit.xcodeproj */;
 				},
 				{
+					ProductGroup = 71EF0E942500CE98002DABFA /* Products */;
+					ProjectRef = 71EF0E932500CE98002DABFA /* FormsTodayExtensionKit.xcodeproj */;
+				},
+				{
 					ProductGroup = 7150CE48247FA79000F2681B /* Products */;
 					ProjectRef = 715B7B3124474C4600754EDB /* FormsTransitions.xcodeproj */;
 				},
@@ -1018,6 +1174,7 @@
 			projectRoot = "";
 			targets = (
 				71228E042431CF7F00D08B20 /* FormsExample */,
+				71EF0DC22500C643002DABFA /* FormsExampleTodayExtension */,
 			);
 		};
 /* End PBXProject section */
@@ -1240,6 +1397,13 @@
 			remoteRef = 71EA273724A9C80700985392 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
+		71EF0E982500CE98002DABFA /* FormsTodayExtensionKit.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = FormsTodayExtensionKit.framework;
+			remoteRef = 71EF0E972500CE98002DABFA /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
 /* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
@@ -1252,6 +1416,13 @@
 				71D3434124FCF3B500003928 /* Settings.bundle in Resources */,
 				71DB655A2457729800B16145 /* GoogleService-Info.plist in Resources */,
 				71228E122431CF8100D08B20 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		71EF0DC12500C643002DABFA /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1324,7 +1495,24 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		71EF0DBF2500C643002DABFA /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				71EF0DC82500C643002DABFA /* TodayExtensionRootViewController.swift in Sources */,
+				71EF0EA02500D37D002DABFA /* TodayExtensionRoot.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		71EF0DCE2500C643002DABFA /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 71EF0DC22500C643002DABFA /* FormsExampleTodayExtension */;
+			targetProxy = 71EF0DCD2500C643002DABFA /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		71228E222431CF8200D08B20 /* Debug */ = {
@@ -1444,6 +1632,7 @@
 		71228E252431CF8200D08B20 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = FormsExample/SupportingFiles/Config/FormsExample.entitlements;
 				CODE_SIGN_STYLE = Automatic;
@@ -1462,8 +1651,7 @@
 				);
 				MARKETING_VERSION = 0.0.0;
 				ONLY_ACTIVE_ARCH = NO;
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "-ObjC";
+				OTHER_LDFLAGS = "-ObjC";
 				OTHER_SWIFT_FLAGS = "-Xfrontend -warn-long-function-bodies=1000 -Xfrontend -warn-long-expression-type-checking=50";
 				PRODUCT_BUNDLE_IDENTIFIER = com.limbo.FormsExample;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1476,6 +1664,7 @@
 		71228E262431CF8200D08B20 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = FormsExample/SupportingFiles/Config/FormsExample.entitlements;
 				CODE_SIGN_STYLE = Automatic;
@@ -1492,12 +1681,68 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 0.0.0;
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "-ObjC";
+				OTHER_LDFLAGS = "-ObjC";
 				OTHER_SWIFT_FLAGS = "";
 				PRODUCT_BUNDLE_IDENTIFIER = com.limbo.FormsExample;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTS_MACCATALYST = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		71EF0DD12500C643002DABFA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = FormsExampleTodayExtension/SupportingFiles/Config/FormsExampleTodayExtension.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = KB85VH6WG5;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/../Dependencies",
+				);
+				INFOPLIST_FILE = FormsExampleTodayExtension/SupportingFiles/Config/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 0.0.0;
+				ONLY_ACTIVE_ARCH = NO;
+				OTHER_LDFLAGS = "-ObjC";
+				OTHER_SWIFT_FLAGS = "-Xfrontend -warn-long-function-bodies=1000 -Xfrontend -warn-long-expression-type-checking=1000";
+				PRODUCT_BUNDLE_IDENTIFIER = com.limbo.FormsExample.FormsExampleTodayExtension;
+				PRODUCT_NAME = FormsExampleTodayExtension;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		71EF0DD22500C643002DABFA /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = FormsExampleTodayExtension/SupportingFiles/Config/FormsExampleTodayExtension.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = KB85VH6WG5;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/../Dependencies",
+				);
+				INFOPLIST_FILE = FormsExampleTodayExtension/SupportingFiles/Config/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 0.0.0;
+				OTHER_LDFLAGS = "-ObjC";
+				OTHER_SWIFT_FLAGS = "-Xfrontend -warn-long-function-bodies=1000 -Xfrontend -warn-long-expression-type-checking=1000";
+				PRODUCT_BUNDLE_IDENTIFIER = com.limbo.FormsExample.FormsExampleTodayExtension;
+				PRODUCT_NAME = FormsExampleTodayExtension;
+				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -1520,6 +1765,15 @@
 			buildConfigurations = (
 				71228E252431CF8200D08B20 /* Debug */,
 				71228E262431CF8200D08B20 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		71EF0DF22500C644002DABFA /* Build configuration list for PBXNativeTarget "FormsExampleTodayExtension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				71EF0DD12500C643002DABFA /* Debug */,
+				71EF0DD22500C643002DABFA /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

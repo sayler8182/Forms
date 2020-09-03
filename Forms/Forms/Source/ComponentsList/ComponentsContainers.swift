@@ -24,9 +24,7 @@ public enum ComponentsContainers: ComponentsList {
     public static func gradient() -> GradientView {
         let component = GradientView()
         component.batchUpdate {
-            component.onSetTheme = Strong(component) { (component) in
-                component.gradientColors = [Theme.Colors.primaryLight]
-            }
+            component.onSetTheme = Strong(component) { (_) in }
         }
         return component
     }

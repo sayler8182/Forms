@@ -74,13 +74,13 @@ class DemoNetworkImageViewController: FormsTableViewController {
         }
         self.imageViewButton.onClick = Unowned(self) { (_self) in
             let request = NetworkImageRequest(
-                url: Mock().imageUrl([.quality(.high)]))
+                url: Mock().imageURL([.quality(.high)]))
                 .with(isAutoShimmer: true)
             _self.imageView.setImage(request: request)
         }
         self.imageViewAndCancelButton.onClick = Unowned(self) { (_self) in
             let request = NetworkImageRequest(
-                url: Mock().imageUrl([.quality(.high)]))
+                url: Mock().imageURL([.quality(.high)]))
                 .with(isAutoShimmer: true)
             _self.imageView.setImage(request: request, cache: NetworkTmpCache(ttl: 60 * 60))
             delay(0.1) {
@@ -151,7 +151,7 @@ private class DemoProvider {
     }
     
     func getContent() {
-        let url = Mock().imageUrl([.quality(.high)])
+        let url = Mock().imageURL([.quality(.high)])
         self.contentTask = DemoNetworkMethods.image(url: url).call(
             onProgress: { [weak self] (_, _, progress: Double) in
                 guard let `self` = self else { return }
@@ -175,7 +175,7 @@ private class DemoProvider {
     }
     
     func getContentFromNetworkImages() {
-        let url = Mock().imageUrl([.quality(.high)])
+        let url = Mock().imageURL([.quality(.high)])
         let request = NetworkImageRequest(url: url)
         self.networkImages.image(
             request: request,

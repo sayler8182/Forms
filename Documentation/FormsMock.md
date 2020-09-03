@@ -52,7 +52,7 @@ func password(_ options: [MockOptions] = [.none]) -> String!
 func phone(prefix: String? = nil, length: Int = 9, groupingSeparator: String? = " ", options: [MockOptions] = [.none]) -> String!
 func postCode(format: String = "XX-XXX", options: [MockOptions] = [.none]) -> String!
 func string(_ options: [MockOptions] = [.none]) -> String!
-func imageUrl(_ options: [MockOptions] = [.none]) -> URL!
+func imageURL(_ options: [MockOptions] = [.none]) -> URL!
 func uuid(_ options: [MockOptions] = [.none]) -> String!
 ```
 

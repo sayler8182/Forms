@@ -43,6 +43,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     private var homeShortcuts: HomeShortcutsProtocol? // swiftlint:disable:this let_var_whitespace
     
     @OptionalInjected
+    private var launchOptions: LaunchOptionsProtocol? // swiftlint:disable:this let_var_whitespace
+    
+    @OptionalInjected
     private var logger: Logger? // swiftlint:disable:this let_var_whitespace
     
     @OptionalInjected
@@ -89,6 +92,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // HomeShortcuts
         self.homeShortcuts?.add(keys: DemoHomeShortcutsKeys.allCases)
         self.homeShortcuts?.launch(launchOptions)
+        
+        // LaunchOptions
+        self.launchOptions?.launch(launchOptions)
         
         // Notifications
         Notifications.configure(
@@ -157,6 +163,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ app: UIApplication,
                      open url: URL,
                      options: [UIApplication.OpenURLOptionsKey: Any] = [:]) -> Bool {
+        self.launchOptions?.launch(url)
         return ApplicationDelegate.shared.application(
             app,
             open: url,

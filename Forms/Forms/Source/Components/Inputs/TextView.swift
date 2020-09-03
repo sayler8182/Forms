@@ -447,6 +447,18 @@ extension TextView: Inputable {
     }
 }
 
+// MARK: InputViewable
+extension TextView: InputViewable {
+    public var inputableView: UIView? {
+        get { return self.textView.inputView }
+        set { self.textView.inputView = newValue }
+    }
+    public var inputableAccessoryView: UIView? {
+        get { return self.textView.inputAccessoryView }
+        set { self.textView.inputAccessoryView = newValue }
+    }
+}
+
 // MARK: Builder
 public extension TextView {
     func with(animationTime: TimeInterval) -> Self {

@@ -32,6 +32,7 @@
 		71EA271B24A9C57B00985392 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71EA271824A9C57B00985392 /* String.swift */; };
 		71EA271C24A9C57B00985392 /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71EA271924A9C57B00985392 /* Date.swift */; };
 		71EA271D24A9C57B00985392 /* Number.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71EA271A24A9C57B00985392 /* Number.swift */; };
+		71EF0EE52500E49B002DABFA /* URLCoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71EF0EE42500E49B002DABFA /* URLCoder.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -62,6 +63,7 @@
 		71EA271824A9C57B00985392 /* String.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
 		71EA271924A9C57B00985392 /* Date.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Date.swift; sourceTree = "<group>"; };
 		71EA271A24A9C57B00985392 /* Number.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Number.swift; sourceTree = "<group>"; };
+		71EF0EE42500E49B002DABFA /* URLCoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLCoder.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -114,6 +116,7 @@
 				71440E16248F79740090A5BD /* Pagination.swift */,
 				71440E12248F74C10090A5BD /* Reference.swift */,
 				71440E10248F74710090A5BD /* Storage.swift */,
+				71EF0EE42500E49B002DABFA /* URLCoder.swift */,
 				71D3433624FCD49B00003928 /* Version.swift */,
 			);
 			path = Utils;
@@ -230,6 +233,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				716AAD0F24A22E0F009C114C /* DispatchQueue.swift in Sources */,
+				71EF0EE52500E49B002DABFA /* URLCoder.swift in Sources */,
 				71B8EE7224F7EB1B00753E6D /* Bundle.swift in Sources */,
 				71440E11248F74710090A5BD /* Storage.swift in Sources */,
 				71D3433F24FCDD4D00003928 /* JSONEncoder.swift in Sources */,
