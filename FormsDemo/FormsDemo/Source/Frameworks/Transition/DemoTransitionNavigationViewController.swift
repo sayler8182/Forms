@@ -58,7 +58,7 @@ class DemoTransitionNavigationViewController: FormsNavigationController, Transit
 
 // MARK: DemoFirstController
 private class DemoFirstController: FormsViewController {
-    private let progressBar = Components.progress.progressBar()
+    private let progressBar = Components.progress.default()
         .with(progress: 1.0 / 2.0)
         .with(viewKey: "progressBar")
     private let contentView = Components.container.view()
@@ -96,7 +96,7 @@ private class DemoFirstController: FormsViewController {
 
 // MARK: DemoSecondController
 private class DemoSecondController: FormsViewController {
-    private let progressBar = Components.progress.progressBar()
+    private let progressBar = Components.progress.default()
         .with(progress: 2.0 / 2.0)
         .with(viewKey: "progressBar")
     private let contentView = Components.container.view()

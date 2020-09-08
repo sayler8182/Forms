@@ -10,7 +10,25 @@ import FormsUtils
 import UIKit
 
 public enum ComponentsProgresses: ComponentsList {
-    public static func progressBar() -> ProgressBar {
+    public static func action() -> ActionProgressView {
+        let component = ActionProgressView()
+        component.batchUpdate {
+            component.isShimmerable = false
+            component.separatorView = {
+                return UIImageView()
+                    .with(contentMode: .center)
+                    .with(image: ActionProgressItem.separator)
+            }
+            component.onSetTheme = Strong(component) { (component) in
+                component.backgroundColors = .init(Theme.Colors.primaryLight)
+                component.tintColors = ActionProgressView.State<UIColor?>(Theme.Colors.primaryDark)
+                    .with(selected: Theme.Colors.tertiaryDark)
+            }
+        }
+        return component
+    }
+    
+    public static func `default`() -> ProgressBar {
         let component = ProgressBar()
         component.batchUpdate {
             component.isShimmerable = false

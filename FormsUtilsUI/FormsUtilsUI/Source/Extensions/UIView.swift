@@ -212,6 +212,17 @@ public extension UIView {
 
 // MARK: [UIView]
 public extension Array where Element == UIView {
+    func separated(by separator: (() -> UIView?)?) -> [UIView] {
+        let count: Int = self.count
+        var views: [UIView] = []
+        for (i, view) in self.enumerated() {
+            views.append(view)
+            guard i < count - 1 else { continue }
+            guard let _separator: UIView = separator?() else { continue }
+            views.append(_separator)
+        }
+        return views
+    }
     func removeFromSuperview() {
         for view in self {
             view.removeFromSuperview()

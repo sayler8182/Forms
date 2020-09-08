@@ -56,6 +56,9 @@
 		7150CE7F247FA9B200F2681B /* FormsValidators.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 7150CE56247FA79E00F2681B /* FormsValidators.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		715435B424EFF4AB0046F08F /* FormsUtilsUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71EA26B924A9C05900985392 /* FormsUtilsUI.framework */; };
 		715435B524EFF4AB0046F08F /* FormsUtilsUI.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 71EA26B924A9C05900985392 /* FormsUtilsUI.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		715FE7B02507608000713AC9 /* Font-Ion.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 715FE7AD2507608000713AC9 /* Font-Ion.ttf */; };
+		715FE7B12507608000713AC9 /* Font-Material.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 715FE7AE2507608000713AC9 /* Font-Material.ttf */; };
+		715FE7B22507608000713AC9 /* Font-Awesome.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 715FE7AF2507608000713AC9 /* Font-Awesome.ttf */; };
 		719AE5B12462C49C00A39B0E /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 719AE5692462C0F900A39B0E /* FBSDKCoreKit.framework */; };
 		719AE5B22462C49C00A39B0E /* FBSDKCoreKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 719AE5692462C0F900A39B0E /* FBSDKCoreKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		719AE5B32462C49D00A39B0E /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 719AE55C2462C0F900A39B0E /* FBSDKLoginKit.framework */; };
@@ -445,6 +448,9 @@
 		715B7B07244701DC00754EDB /* TemplateIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = TemplateIcon.png; sourceTree = "<group>"; };
 		715B7B08244701DC00754EDB /* TemplateInfo.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = TemplateInfo.plist; sourceTree = "<group>"; };
 		715B7B3124474C4600754EDB /* FormsTransitions.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = FormsTransitions.xcodeproj; path = ../FormsTransitions/FormsTransitions.xcodeproj; sourceTree = "<group>"; };
+		715FE7AD2507608000713AC9 /* Font-Ion.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Font-Ion.ttf"; sourceTree = "<group>"; };
+		715FE7AE2507608000713AC9 /* Font-Material.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Font-Material.ttf"; sourceTree = "<group>"; };
+		715FE7AF2507608000713AC9 /* Font-Awesome.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Font-Awesome.ttf"; sourceTree = "<group>"; };
 		7178026124543D2B0057E848 /* FormsDeveloperTools.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = FormsDeveloperTools.xcodeproj; path = ../FormsDeveloperTools/FormsDeveloperTools.xcodeproj; sourceTree = "<group>"; };
 		71946956243DA7A800CAD09B /* Forms.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Forms.xcodeproj; path = ../Forms/Forms.xcodeproj; sourceTree = "<group>"; };
 		719AE4B0246294FC00A39B0E /* FormsNotifications.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = FormsNotifications.xcodeproj; path = ../FormsNotifications/FormsNotifications.xcodeproj; sourceTree = "<group>"; };
@@ -605,6 +611,7 @@
 		71228E2A2431CF9800D08B20 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				715FE78C2507606D00713AC9 /* Fonts */,
 				710318E624A0B82700BFD88A /* Requests */,
 				713296C22448B84D006935C0 /* Dependencies */,
 				715B7AE9244701BD00754EDB /* Templates */,
@@ -860,6 +867,16 @@
 				715B7B08244701DC00754EDB /* TemplateInfo.plist */,
 			);
 			path = CleanSwift.xctemplate;
+			sourceTree = "<group>";
+		};
+		715FE78C2507606D00713AC9 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				715FE7AF2507608000713AC9 /* Font-Awesome.ttf */,
+				715FE7AD2507608000713AC9 /* Font-Ion.ttf */,
+				715FE7AE2507608000713AC9 /* Font-Material.ttf */,
+			);
+			path = Fonts;
 			sourceTree = "<group>";
 		};
 		71946957243DA7A800CAD09B /* Products */ = {
@@ -1412,10 +1429,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				7103190224A0B83F00BFD88A /* get.json in Resources */,
+				715FE7B22507608000713AC9 /* Font-Awesome.ttf in Resources */,
 				71228E2C2431CFBF00D08B20 /* LaunchScreen.storyboard in Resources */,
 				71D3434124FCF3B500003928 /* Settings.bundle in Resources */,
+				715FE7B02507608000713AC9 /* Font-Ion.ttf in Resources */,
 				71DB655A2457729800B16145 /* GoogleService-Info.plist in Resources */,
 				71228E122431CF8100D08B20 /* Assets.xcassets in Resources */,
+				715FE7B12507608000713AC9 /* Font-Material.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1694,6 +1714,7 @@
 		71EF0DD12500C643002DABFA /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				APPLICATION_EXTENSION_API_ONLY = NO;
 				CODE_SIGN_ENTITLEMENTS = FormsExampleTodayExtension/SupportingFiles/Config/FormsExampleTodayExtension.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = KB85VH6WG5;
@@ -1723,6 +1744,7 @@
 		71EF0DD22500C643002DABFA /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				APPLICATION_EXTENSION_API_ONLY = NO;
 				CODE_SIGN_ENTITLEMENTS = FormsExampleTodayExtension/SupportingFiles/Config/FormsExampleTodayExtension.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = KB85VH6WG5;

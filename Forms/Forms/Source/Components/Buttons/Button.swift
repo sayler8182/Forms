@@ -91,7 +91,6 @@ open class Button: FormsComponent, Clickable, FormsComponentWithLoading, FormsCo
         self.setupBackgroundView()
         self.setupBorderView()
         self.setupTitleLabel()
-        self.updateState()
         super.setupView()
     }
     

@@ -1,5 +1,5 @@
 //
-//  DemoNavigationProgressBarViewController.swift
+//  DemoProgressesProgressBarNavigationViewController.swift
 //  FormsDemo
 //
 //  Created by Konrad on 5/4/20.
@@ -10,9 +10,9 @@ import Forms
 import FormsUtils
 import UIKit
 
-// MARK: DemoNavigationProgressBarViewController
-class DemoNavigationProgressBarViewController: FormsNavigationController {
-    private let navigationProgressBar = Components.progress.progressBar()
+// MARK: DemoProgressesProgressBarNavigationViewController
+class DemoProgressesProgressBarNavigationViewController: FormsNavigationController {
+    private let navigationProgressBar = Components.progress.default()
         .with(progress: 1.0 / 3.0)
     
     override func postInit() {

@@ -13,7 +13,7 @@ import UIKit
 
 // MARRK: DemoCardKitController
 class DemoCardKitController: FormsTableViewController {
-    private let progerssBar = Components.progress.progressBar()
+    private let progerssBar = Components.progress.default()
         .with(progress: 0.0)
     private let openButton = Components.button.default()
         .with(title: "Open")

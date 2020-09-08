@@ -68,12 +68,13 @@ private enum Demo {
         case componentsNavigationBarsNavigationBarWithClose
         case componentsOthers
         case componentsProgresses
+        case componentsProgressesActionProgressView
+        case componentsProgressesProgressBar
+        case componentsProgressesProgressBarNavigation
         case componentsSections
         case componentsSegments
         case componentsSelectors
         case componentsSwitches
-        case componentsNavigationProgressBar
-        case componentsProgressBars
         case componentsUtils
         // Utils
         case utils
@@ -81,6 +82,7 @@ private enum Demo {
         case utilsBiometryAuthentication
         case utilsDeviceSecurity
         case utilsDebouncer
+        case utilsFonts
         case utilsInputView
         case utilsLoader
         case utilsModal
@@ -213,8 +215,10 @@ private enum Demo {
                         title: "Progresses",
                         sections: [
                             Section(rows: [
-                                Row(type: RowType.componentsNavigationProgressBar, title: "NavigationProgress", shouldPresent: true),
-                                Row(type: RowType.componentsProgressBars, title: "ProgressBar")
+                                Row(type: RowType.componentsProgressesActionProgressView, title:
+                                "ActionProgressView"),
+                                Row(type: RowType.componentsProgressesProgressBar, title: "ProgressBar"),
+                                Row(type: RowType.componentsProgressesProgressBarNavigation, title: "ProgressBarNavigation", shouldPresent: true)
                             ])
                     ]),
                     Row(type: RowType.componentsSections, title: "Sections"),
@@ -228,6 +232,7 @@ private enum Demo {
                     Row(type: RowType.utilsBiometryAuthentication, title: "BiometryAuthentication"),
                     Row(type: RowType.utilsDeviceSecurity, title: "DeviceSecurity"),
                     Row(type: RowType.utilsDebouncer, title: "Debouncer"),
+                    Row(type: RowType.utilsFonts, title: "Fonts"),
                     Row(type: RowType.utilsInputView, title: "InputView"),
                     Row(type: RowType.utilsLoader, title: "Loader"),
                     Row(type: RowType.utilsModal, title: "Modal"),
@@ -639,19 +644,21 @@ private class DemoListViewController: FormsViewController {
         case .componentsNavigationBarsNavigationBar:            return DemoNavigationBarViewController()
         case .componentsNavigationBarsNavigationBarWithBack:    return DemoNavigationBarWithBackOrCloseViewController()
         case .componentsNavigationBarsNavigationBarWithClose:   return DemoNavigationBarWithBackOrCloseViewController().embeded
-        case .componentsNavigationProgressBar:                  return DemoNavigationProgressBarViewController()
         case .componentsOthers:                                 return DemoOthersViewController()
         case .componentsSections:                               return DemoSectionsViewController()
         case .componentsSegments:                               return DemoSegmentsViewController()
         case .componentsSelectors:                              return DemoSelectorsViewController()
         case .componentsSwitches:                               return DemoSwitchesViewController()
-        case .componentsProgressBars:                           return DemoProgressBarViewController()
+        case .componentsProgressesActionProgressView:           return DemoProgressesActionProgressViewViewController()
+        case .componentsProgressesProgressBar:                  return DemoProgressesProgressBarViewController()
+        case .componentsProgressesProgressBarNavigation:        return DemoProgressesProgressBarNavigationViewController()
         case .componentsUtils:                                  return DemoUtilsViewController()
         // utils
         case .utilsAttributedString:                            return DemoAttributedStringViewController()
         case .utilsBiometryAuthentication:                      return DemoBiometryAuthenticationViewController()
         case .utilsDeviceSecurity:                              return DemoDeviceSecurityViewController()
         case .utilsDebouncer:                                   return DemoDebouncerViewController()
+        case .utilsFonts:                                       return DemoFontsViewController()
         case .utilsInputView:                                   return DemoInputViewViewController()
         case .utilsLoader:                                      return DemoLoaderViewController()
         case .utilsModal:                                       return DemoModalViewController()

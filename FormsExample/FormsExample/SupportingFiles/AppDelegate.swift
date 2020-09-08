@@ -126,6 +126,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             window.makeKeyAndVisible()
         }
         
+        // fonts
+        try? Font.register([
+            .awesome,
+            .ion,
+            .material
+        ], in: Bundle.main)
+        
         // inactive cover
         self.inactiveCover.register()
         

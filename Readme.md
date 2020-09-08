@@ -181,10 +181,11 @@ The Forms framework is inspired by:
 3. Configure Forms and Assemblies in AppDelegate
 4. Configure external dependencies
 5. Configure Forms frameworks
-6. Add group identifier
-7. Add URL Type in Info.plist
-8. Add Settings.bundle
-9. Add HomeShortcuts
+6. Add trimming architectures script
+7. Add group identifier
+8. Add URL Type in Info.plist
+9. Add Settings.bundle
+10. Add HomeShortcuts
 
 NOTICE: Remember about AppDelegate and SceneDelegate settings
 

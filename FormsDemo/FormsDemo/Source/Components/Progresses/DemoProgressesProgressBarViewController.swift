@@ -1,5 +1,5 @@
 //
-//  DemoProgressBarViewController.swift
+//  DemoProgressesProgressBarViewController.swift
 //  FormsDemo
 //
 //  Created by Konrad on 5/4/20.
@@ -9,11 +9,11 @@
 import Forms
 import UIKit
 
-// MARK: DemoProgressBarViewController
-class DemoProgressBarViewController: FormsTableViewController {
-    private lazy var navigationProgressBar = Components.progress.progressBar()
+// MARK: DemoProgressesProgressBarViewController
+class DemoProgressesProgressBarViewController: FormsTableViewController {
+    private lazy var navigationProgressBar = Components.progress.default()
         .with(progress: self.progress)
-     private lazy var progressBar = Components.progress.progressBar()
+     private lazy var progressBar = Components.progress.default()
         .with(marginTop: 5.0)
         .with(progress: self.progress)
     

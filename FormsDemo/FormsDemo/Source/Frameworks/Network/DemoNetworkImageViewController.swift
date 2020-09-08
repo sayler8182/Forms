@@ -19,7 +19,7 @@ import UIKit
 
 // MARK: DemoNetworkImageViewController
 class DemoNetworkImageViewController: FormsTableViewController {
-    private let progressBar = Components.progress.progressBar()
+    private let progressBar = Components.progress.default()
     private let imageView = Components.image.default()
         .with(contentMode: .scaleAspectFit)
         .with(height: 400.0)

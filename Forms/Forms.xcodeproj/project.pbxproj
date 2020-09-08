@@ -87,6 +87,8 @@
 		71458F6624571FAD001B774B /* SearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71458F6524571FAD001B774B /* SearchBar.swift */; };
 		714848D3244858FF00455560 /* ComponentsOthers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 714848D2244858FF00455560 /* ComponentsOthers.swift */; };
 		714848D62448598600455560 /* ActivityIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 714848D52448598600455560 /* ActivityIndicator.swift */; };
+		714AC0252506495B00571400 /* ActionProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 714AC0242506495B00571400 /* ActionProgressView.swift */; };
+		714AC0262506495B00571400 /* ActionProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 714AC0242506495B00571400 /* ActionProgressView.swift */; };
 		714BB08E24FFBDFF000617C7 /* BiometryAuthentication.swift in Sources */ = {isa = PBXBuildFile; fileRef = 714BB08D24FFBDFF000617C7 /* BiometryAuthentication.swift */; };
 		714BB08F24FFBDFF000617C7 /* BiometryAuthentication.swift in Sources */ = {isa = PBXBuildFile; fileRef = 714BB08D24FFBDFF000617C7 /* BiometryAuthentication.swift */; };
 		714EF1B9247F940100AE3044 /* FormsAnalytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 714EF1AA247F940100AE3044 /* FormsAnalytics.framework */; };
@@ -111,6 +113,8 @@
 		715435AE24EFAADE0046F08F /* SelectorControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 715435AD24EFAADE0046F08F /* SelectorControl.swift */; };
 		715435AF24EFAADE0046F08F /* SelectorControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 715435AD24EFAADE0046F08F /* SelectorControl.swift */; };
 		7156F831246486F40078AA75 /* TextFieldFormatDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7156F830246486F40078AA75 /* TextFieldFormatDelegate.swift */; };
+		715FE7B62507609B00713AC9 /* Fonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 715FE7B32507609B00713AC9 /* Fonts.swift */; };
+		715FE7B72507609B00713AC9 /* Fonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 715FE7B32507609B00713AC9 /* Fonts.swift */; };
 		718B43182490B680000DBC05 /* SegmentControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 718B43172490B680000DBC05 /* SegmentControl.swift */; };
 		718B43192490B680000DBC05 /* SegmentControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 718B43172490B680000DBC05 /* SegmentControl.swift */; };
 		718B431B2490B95A000DBC05 /* ComponentsSegments.swift in Sources */ = {isa = PBXBuildFile; fileRef = 718B431A2490B95A000DBC05 /* ComponentsSegments.swift */; };
@@ -229,6 +233,7 @@
 		71458F6524571FAD001B774B /* SearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBar.swift; sourceTree = "<group>"; };
 		714848D2244858FF00455560 /* ComponentsOthers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComponentsOthers.swift; sourceTree = "<group>"; };
 		714848D52448598600455560 /* ActivityIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityIndicator.swift; sourceTree = "<group>"; };
+		714AC0242506495B00571400 /* ActionProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionProgressView.swift; sourceTree = "<group>"; };
 		714BB08D24FFBDFF000617C7 /* BiometryAuthentication.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BiometryAuthentication.swift; sourceTree = "<group>"; };
 		714EF1AA247F940100AE3044 /* FormsAnalytics.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FormsAnalytics.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		714EF1AB247F940100AE3044 /* FormsAnchor.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FormsAnchor.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -247,6 +252,7 @@
 		715435AA24EFA9FB0046F08F /* ComponentsSelectors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComponentsSelectors.swift; sourceTree = "<group>"; };
 		715435AD24EFAADE0046F08F /* SelectorControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectorControl.swift; sourceTree = "<group>"; };
 		7156F830246486F40078AA75 /* TextFieldFormatDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldFormatDelegate.swift; sourceTree = "<group>"; };
+		715FE7B32507609B00713AC9 /* Fonts.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Fonts.swift; sourceTree = "<group>"; };
 		718B43172490B680000DBC05 /* SegmentControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SegmentControl.swift; sourceTree = "<group>"; };
 		718B431A2490B95A000DBC05 /* ComponentsSegments.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComponentsSegments.swift; sourceTree = "<group>"; };
 		7193E3522451DEF7006238C5 /* PageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageView.swift; sourceTree = "<group>"; };
@@ -379,6 +385,7 @@
 		7103EA162460233C00A11A96 /* Progresses */ = {
 			isa = PBXGroup;
 			children = (
+				714AC0242506495B00571400 /* ActionProgressView.swift */,
 				7103EA172460234E00A11A96 /* ProgressBar.swift */,
 			);
 			path = Progresses;
@@ -524,6 +531,7 @@
 				714BB08D24FFBDFF000617C7 /* BiometryAuthentication.swift */,
 				7194696E243DA7BE00CAD09B /* Configuration.swift */,
 				71D3433324FCD06800003928 /* DeviceSecurity.swift */,
+				715FE7B32507609B00713AC9 /* Fonts.swift */,
 				71D3E43E246D61A1008BA211 /* Keyboard.swift */,
 				71B8EE7324F7ED8700753E6D /* InactiveCover.swift */,
 				71D9C70224F8E38B00E2E0F9 /* InputView.swift */,
@@ -834,6 +842,7 @@
 				711070E82476BF610056BBB5 /* FormsSearchController.swift in Sources */,
 				711070E92476BF610056BBB5 /* SearchBar.swift in Sources */,
 				71090BC72488CD1400CDB25D /* ComponentsSwitches.swift in Sources */,
+				715FE7B72507609B00713AC9 /* Fonts.swift in Sources */,
 				715435AF24EFAADE0046F08F /* SelectorControl.swift in Sources */,
 				711070EA2476BF610056BBB5 /* NavigationBar.swift in Sources */,
 				711070EB2476BF610056BBB5 /* TextView.swift in Sources */,
@@ -881,6 +890,7 @@
 				7110710D2476BF610056BBB5 /* FormsTableViewController.swift in Sources */,
 				7110710E2476BF610056BBB5 /* StackView.swift in Sources */,
 				711071102476BF610056BBB5 /* FormsCollectionViewController.swift in Sources */,
+				714AC0262506495B00571400 /* ActionProgressView.swift in Sources */,
 				71CD516024A5DF0C00DE9374 /* GradientDivider.swift in Sources */,
 				711071122476BF610056BBB5 /* Label.swift in Sources */,
 				711071152476BF610056BBB5 /* ComponentsContainers.swift in Sources */,
@@ -920,6 +930,7 @@
 				71CD515F24A5DF0800DE9374 /* GradientDivider.swift in Sources */,
 				71090BC62488CD1400CDB25D /* ComponentsSwitches.swift in Sources */,
 				7194699C243DA7BE00CAD09B /* NavigationBar.swift in Sources */,
+				715FE7B62507609B00713AC9 /* Fonts.swift in Sources */,
 				71E0F60B246D30EC0051F043 /* TextView.swift in Sources */,
 				71F4E299250100BE00CCAA09 /* SharedContainer.swift in Sources */,
 				7194698F243DA7BE00CAD09B /* ComponentsInputs.swift in Sources */,
@@ -967,6 +978,7 @@
 				719469A9243DA7BE00CAD09B /* TextFieldAmountDelegate.swift in Sources */,
 				719469A4243DA7BE00CAD09B /* FormsTableViewController.swift in Sources */,
 				71A9285124A368B300734C2B /* ClickableView.swift in Sources */,
+				714AC0252506495B00571400 /* ActionProgressView.swift in Sources */,
 				7193E3662451F1BA006238C5 /* StackView.swift in Sources */,
 				7138D3A72452C98F00CC7345 /* FormsCollectionViewController.swift in Sources */,
 				7194699D243DA7BE00CAD09B /* Label.swift in Sources */,
