@@ -120,6 +120,7 @@ private enum Demo {
         case frameworkTransitionsController
         case frameworkTransitionsNavigation
         case frameworkTransitionsNavigationTable
+        case frameworkUpdates
         case frameworkValidators
         // Kits
         case kitCalendarKit
@@ -301,6 +302,7 @@ private enum Demo {
                                 Row(type: RowType.frameworkTransitionsNavigationTable, title: "Transitions Navigation Table", shouldPresent: true)
                             ])
                     ]),
+                    Row(type: RowType.frameworkUpdates, title: "Updates"),
                     Row(type: RowType.frameworkValidators, title: "Validators")
                 ]),
                 Section(title: "Kits", rows: [
@@ -691,6 +693,7 @@ private class DemoListViewController: FormsViewController {
         case .frameworkTransitionsController:                   return DemoTransitionControllerViewController()
         case .frameworkTransitionsNavigation:                   return DemoTransitionNavigationViewController()
         case .frameworkTransitionsNavigationTable:              return DemoTransitionNavigationTableViewController()
+        case .frameworkUpdates:                                 return DemoUpdatesViewController()
         case .frameworkValidators:                              return DemoValidatorsViewController()
         // kits
         case .kitCalendarKitCalendar:                           return DemoCalendarKitCalendarController()

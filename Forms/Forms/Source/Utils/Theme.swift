@@ -58,6 +58,13 @@ public protocol ThemeProtocol {
     static func setTheme(_ theme: ThemeType?)
 }
 
+// MARK: StorageKey
+public extension Theme {
+    enum StorageKeys: String {
+        case type = "ThemeType"
+    }
+}
+
 // MARK: Theme
 public class Theme: ThemeProtocol {
     fileprivate static var observers: [ThemeObserver] = []
@@ -65,15 +72,15 @@ public class Theme: ThemeProtocol {
     
     fileprivate static var theme: ThemeType? {
         get {
-            let themeKey: String? = UserDefaults.standard.object(forKey: "FormsThemeTypeKey") as? String
+            let themeKey: String? = UserDefaults.standard.object(forKey: StorageKeys.type.rawValue) as? String
             return ThemeType(themeKey)
         }
         set {
             if let themeKey: String = newValue?.key {
-                UserDefaults.standard.set(themeKey, forKey: "FormsThemeTypeKey")
+                UserDefaults.standard.set(themeKey, forKey: StorageKeys.type.rawValue)
                 UserDefaults.standard.synchronize()
             } else {
-                UserDefaults.standard.removeObject(forKey: "FormsThemeTypeKey")
+                UserDefaults.standard.removeObject(forKey: StorageKeys.type.rawValue)
                 UserDefaults.standard.synchronize()
             }
         }

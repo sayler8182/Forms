@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "1160"
+   LastUpgradeVersion = "1170"
    version = "1.3">
    <BuildAction
       parallelizeBuildables = "YES"
@@ -14,10 +14,10 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "71228E042431CF7F00D08B20"
-               BuildableName = "FormsExample.app"
-               BlueprintName = "FormsExample"
-               ReferencedContainer = "container:FormsExample.xcodeproj">
+               BlueprintIdentifier = "71A14C992508B0E5001A6773"
+               BuildableName = "FormsUpdates.framework"
+               BlueprintName = "FormsUpdates"
+               ReferencedContainer = "container:FormsUpdates.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -40,28 +40,6 @@
       debugDocumentVersioning = "YES"
       debugServiceExtension = "internal"
       allowLocationSimulation = "YES">
-      <BuildableProductRunnable
-         runnableDebuggingMode = "0">
-         <BuildableReference
-            BuildableIdentifier = "primary"
-            BlueprintIdentifier = "71228E042431CF7F00D08B20"
-            BuildableName = "FormsExample.app"
-            BlueprintName = "FormsExample"
-            ReferencedContainer = "container:FormsExample.xcodeproj">
-         </BuildableReference>
-      </BuildableProductRunnable>
-      <EnvironmentVariables>
-         <EnvironmentVariable
-            key = "OS_ACTIVITY_MODE"
-            value = "disable"
-            isEnabled = "NO">
-         </EnvironmentVariable>
-         <EnvironmentVariable
-            key = "DYLD_PRINT_STATISTICS"
-            value = "1"
-            isEnabled = "NO">
-         </EnvironmentVariable>
-      </EnvironmentVariables>
    </LaunchAction>
    <ProfileAction
       buildConfiguration = "Release"
@@ -69,16 +47,15 @@
       savedToolIdentifier = ""
       useCustomWorkingDirectory = "NO"
       debugDocumentVersioning = "YES">
-      <BuildableProductRunnable
-         runnableDebuggingMode = "0">
+      <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "71228E042431CF7F00D08B20"
-            BuildableName = "FormsExample.app"
-            BlueprintName = "FormsExample"
-            ReferencedContainer = "container:FormsExample.xcodeproj">
+            BlueprintIdentifier = "71A14C992508B0E5001A6773"
+            BuildableName = "FormsUpdates.framework"
+            BlueprintName = "FormsUpdates"
+            ReferencedContainer = "container:FormsUpdates.xcodeproj">
          </BuildableReference>
-      </BuildableProductRunnable>
+      </MacroExpansion>
    </ProfileAction>
    <AnalyzeAction
       buildConfiguration = "Debug">

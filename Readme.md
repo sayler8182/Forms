@@ -30,6 +30,7 @@ Forms is all in one iOS framework
 - [x] [FormsNetworkingImage](./Documentation/FormsNetworking.md) - Network layer for images
 - [x] [FormsNotifications](./Documentation/FormsNotifications.md) - Firebase notifications
 - [x] [FormsPermissions](./Documentation/FormsPermissions.md) - Application permissions
+- [x] [FormsUpdates](./Documentation/FormsUpdates.md) - Check app update
 - [x] [FormsUtils](./Documentation/FormsUtils.md) - Utils and extensions
 - [x] [FormsUtilsUI](./Documentation/FormsUtilsUI.md) - Utils and extensions for UIKit
 - [x] [FormsTransitions](./Documentation/FormsTransitions.md) - UI transitions
@@ -137,15 +138,16 @@ FormsDemo contains demo implementations for some providers etc. Just check [Form
 
 Frameworks should have consistent build settings:
 
-- [x] Version
-- [x] Build Active Architecture Only -> No (for Debug)
-- [x] iOS Deployment Target -> iOS 10.0
-- [x] Framework Search Path -> $(inherited) $(PROJECT_DIR)/../Dependencies
-- [x] Other Linker Flags -> -ObjC
-- [x] Other Swift Flags -> -Xfrontend -warn-long-function-bodies=1000 -Xfrontend -warn-long-expression-type-checking=1000
-- [x] Swift Language version -> Swift 5
-- [x] Defines module -> NO
-- [x] Add to Forms-Universal-Framework and build.sh
+- [x] Proper version
+- [x] Build Active Architecture Only -> `No (for Debug)`
+- [x] iOS Deployment Target -> `iOS 10.0`
+- [x] Framework Search Path -> `$(inherited) $(PROJECT_DIR)/../Dependencies`
+- [x] Other Linker Flags -> `-ObjC`
+- [x] Other Swift Flags -> `-Xfrontend -warn-long-function-bodies=1000 -Xfrontend -warn-long-expression-type-checking=1000`
+- [x] Swift Language version -> `Swift 5`
+- [x] Defines module -> `NO`
+- [x] Add to `Forms-Universal-Framework`
+- [x] Add to `build.sh` and `build_incremental.sh`
 
 ## Contribution Guide or Questions
 

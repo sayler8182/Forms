@@ -155,6 +155,7 @@
 		719469C2243DAB6500CAD09B /* Shimmer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 719469C1243DAB6500CAD09B /* Shimmer.swift */; };
 		719469D8243DD04700CAD09B /* FormsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 719469D7243DD04700CAD09B /* FormsTableViewCell.swift */; };
 		719469DC243DDB7600CAD09B /* TableDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 719469DB243DDB7600CAD09B /* TableDataSource.swift */; };
+		71A14CCF2508B1E2001A6773 /* FormsUpdates.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71A14CCE2508B1E2001A6773 /* FormsUpdates.framework */; };
 		71A9285124A368B300734C2B /* ClickableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71A9285024A368B300734C2B /* ClickableView.swift */; };
 		71A9285224A368B300734C2B /* ClickableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71A9285024A368B300734C2B /* ClickableView.swift */; };
 		71A9285424A36C7400734C2B /* GradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71A9285324A36C7400734C2B /* GradientView.swift */; };
@@ -292,6 +293,7 @@
 		719469C1243DAB6500CAD09B /* Shimmer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Shimmer.swift; sourceTree = "<group>"; };
 		719469D7243DD04700CAD09B /* FormsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormsTableViewCell.swift; sourceTree = "<group>"; };
 		719469DB243DDB7600CAD09B /* TableDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableDataSource.swift; sourceTree = "<group>"; };
+		71A14CCE2508B1E2001A6773 /* FormsUpdates.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FormsUpdates.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		71A9285024A368B300734C2B /* ClickableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClickableView.swift; sourceTree = "<group>"; };
 		71A9285324A36C7400734C2B /* GradientView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientView.swift; sourceTree = "<group>"; };
 		71B8EE7324F7ED8700753E6D /* InactiveCover.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InactiveCover.swift; sourceTree = "<group>"; };
@@ -357,6 +359,7 @@
 				7136A0132486624E00298D3B /* FormsAppStoreReview.framework in Frameworks */,
 				7135DFF2248E6E1300B5807F /* FormsLocation.framework in Frameworks */,
 				71D3677324FE391D00E6BFAF /* FormsDatabaseSQLite.framework in Frameworks */,
+				71A14CCF2508B1E2001A6773 /* FormsUpdates.framework in Frameworks */,
 				714EF1D3247F940100AE3044 /* FormsUtils.framework in Frameworks */,
 				714EF1BB247F940100AE3044 /* FormsAnchor.framework in Frameworks */,
 				7136A06024866B0500298D3B /* FormsTabBarKit.framework in Frameworks */,
@@ -631,6 +634,7 @@
 		719469AF243DA7CC00CAD09B /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				71A14CCE2508B1E2001A6773 /* FormsUpdates.framework */,
 				71F4E2E125011F6100CCAA09 /* FormsTodayExtensionKit.framework */,
 				71D3677224FE391D00E6BFAF /* FormsDatabaseSQLite.framework */,
 				71D3673824FE376700E6BFAF /* FormsDatabase.framework */,

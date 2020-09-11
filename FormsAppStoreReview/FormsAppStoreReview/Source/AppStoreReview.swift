@@ -10,16 +10,26 @@ import Foundation
 import StoreKit
 
 // MARK: StorageKey
-private extension AppStoreReview {
+public extension AppStoreReview {
     enum StorageKeys: String {
-        case firstLaunchDate = "StoreReviewFirstLaunchDate"
-        case launchCount = "StoreReviewLaunchCount"
-        case lastReviewDate = "StoreReviewLastReviewDate"
+        case firstLaunchDate = "AppStoreReviewFirstLaunchDate"
+        case launchCount = "AppStoreReviewLaunchCount"
+        case lastReviewDate = "AppStoreReviewLastReviewDate"
     }
 }
 
+// MARK: AppStoreReviewProtocol
+public protocol AppStoreReviewProtocol {
+    @discardableResult
+    func initFirstLaunchIfNeeded() -> Bool
+    @discardableResult
+    func launch() -> Bool
+    @discardableResult
+    func showIfNeeded() -> Bool
+}
+
 // MARK: AppStoreReview
-public class AppStoreReview {
+public class AppStoreReview: AppStoreReviewProtocol {
     private let userDefaults = UserDefaults.standard
     private let minLaunchCount: Int
     private let minPeriod: TimeInterval

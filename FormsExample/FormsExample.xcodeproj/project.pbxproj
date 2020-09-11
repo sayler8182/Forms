@@ -63,6 +63,8 @@
 		719AE5B22462C49C00A39B0E /* FBSDKCoreKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 719AE5692462C0F900A39B0E /* FBSDKCoreKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		719AE5B32462C49D00A39B0E /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 719AE55C2462C0F900A39B0E /* FBSDKLoginKit.framework */; };
 		719AE5B42462C49D00A39B0E /* FBSDKLoginKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 719AE55C2462C0F900A39B0E /* FBSDKLoginKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		71A14CD52508B328001A6773 /* FormsUpdates.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71A14CC72508B0E6001A6773 /* FormsUpdates.framework */; };
+		71A14CD62508B328001A6773 /* FormsUpdates.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 71A14CC72508B0E6001A6773 /* FormsUpdates.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		71BF8B2A24F2769D00D01CB9 /* LocalAuthentication.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71BF8B2924F2769D00D01CB9 /* LocalAuthentication.framework */; };
 		71D3434124FCF3B500003928 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 71D3434024FCF3B500003928 /* Settings.bundle */; };
 		71D367D224FE5E2200E6BFAF /* FormsDatabase.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71D3671E24FE346B00E6BFAF /* FormsDatabase.framework */; };
@@ -280,6 +282,13 @@
 			remoteGlobalIDString = 7194693C243DA7A800CAD09B;
 			remoteInfo = Forms;
 		};
+		71A14CC62508B0E6001A6773 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 71A14CA52508B0E5001A6773 /* FormsUpdates.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 71A14C9A2508B0E5001A6773;
+			remoteInfo = FormsUpdates;
+		};
 		71BF8B0324F2663D00D01CB9 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 71BF8AFF24F2663C00D01CB9 /* FormsCalendarKit.xcodeproj */;
@@ -368,6 +377,7 @@
 				7150CE6F247FA9B100F2681B /* FormsLogger.framework in Embed Frameworks */,
 				7136A123248674FB00298D3B /* FormsToastKit.framework in Embed Frameworks */,
 				7150CE7B247FA9B100F2681B /* FormsTransitions.framework in Embed Frameworks */,
+				71A14CD62508B328001A6773 /* FormsUpdates.framework in Embed Frameworks */,
 				71FCB27A247F9A1800A84D30 /* Forms.framework in Embed Frameworks */,
 				7136A14B2486941E00298D3B /* FormsImagePickerKit.framework in Embed Frameworks */,
 				7150CE67247FA9B100F2681B /* FormsAnchor.framework in Embed Frameworks */,
@@ -456,6 +466,7 @@
 		719AE4B0246294FC00A39B0E /* FormsNotifications.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = FormsNotifications.xcodeproj; path = ../FormsNotifications/FormsNotifications.xcodeproj; sourceTree = "<group>"; };
 		719AE55C2462C0F900A39B0E /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKLoginKit.framework; sourceTree = "<group>"; };
 		719AE5692462C0F900A39B0E /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKCoreKit.framework; sourceTree = "<group>"; };
+		71A14CA52508B0E5001A6773 /* FormsUpdates.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = FormsUpdates.xcodeproj; path = ../FormsUpdates/FormsUpdates.xcodeproj; sourceTree = "<group>"; };
 		71BB62182445DD16002BB31F /* FormsNetworking.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = FormsNetworking.xcodeproj; path = ../FormsNetworking/FormsNetworking.xcodeproj; sourceTree = "<group>"; };
 		71BB62652445E7C5002BB31F /* FormsLogger.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = FormsLogger.xcodeproj; path = ../FormsLogger/FormsLogger.xcodeproj; sourceTree = "<group>"; };
 		71BF8AFF24F2663C00D01CB9 /* FormsCalendarKit.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = FormsCalendarKit.xcodeproj; path = ../FormsCalendarKit/FormsCalendarKit.xcodeproj; sourceTree = "<group>"; };
@@ -515,6 +526,7 @@
 				7150CE66247FA9B100F2681B /* FormsAnchor.framework in Frameworks */,
 				7136A1242486761500298D3B /* FormsSideMenuKit.framework in Frameworks */,
 				7136A05D24866AFC00298D3B /* FormsTabBarKit.framework in Frameworks */,
+				71A14CD52508B328001A6773 /* FormsUpdates.framework in Frameworks */,
 				71E4465F24939E9100AC38C1 /* FormsNotifications.framework in Frameworks */,
 				7136A120248673F300298D3B /* FormsCardKit.framework in Frameworks */,
 				71BF8B2A24F2769D00D01CB9 /* LocalAuthentication.framework in Frameworks */,
@@ -577,6 +589,7 @@
 				71369F822486585100298D3B /* FormsToastKit.xcodeproj */,
 				71EF0E932500CE98002DABFA /* FormsTodayExtensionKit.xcodeproj */,
 				715B7B3124474C4600754EDB /* FormsTransitions.xcodeproj */,
+				71A14CA52508B0E5001A6773 /* FormsUpdates.xcodeproj */,
 				713B9BA1243D0696001F6E3A /* FormsUtils.xcodeproj */,
 				71EA26B424A9C05800985392 /* FormsUtilsUI.xcodeproj */,
 				713B9B55243D050E001F6E3A /* FormsValidators.xcodeproj */,
@@ -888,6 +901,14 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		71A14CA62508B0E5001A6773 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				71A14CC72508B0E6001A6773 /* FormsUpdates.framework */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		71BF8B0024F2663C00D01CB9 /* Products */ = {
 			isa = PBXGroup;
 			children = (
@@ -1176,6 +1197,10 @@
 					ProjectRef = 715B7B3124474C4600754EDB /* FormsTransitions.xcodeproj */;
 				},
 				{
+					ProductGroup = 71A14CA62508B0E5001A6773 /* Products */;
+					ProjectRef = 71A14CA52508B0E5001A6773 /* FormsUpdates.xcodeproj */;
+				},
+				{
 					ProductGroup = 7150CE4D247FA79600F2681B /* Products */;
 					ProjectRef = 713B9BA1243D0696001F6E3A /* FormsUtils.xcodeproj */;
 				},
@@ -1372,6 +1397,13 @@
 			remoteRef = 7194695B243DA7A900CAD09B /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
+		71A14CC72508B0E6001A6773 /* FormsUpdates.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = FormsUpdates.framework;
+			remoteRef = 71A14CC62508B0E6001A6773 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
 		71BF8B0424F2663D00D01CB9 /* FormsCalendarKit.framework */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.framework;
@@ -1501,7 +1533,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "date=`date`\n/usr/libexec/PlistBuddy -c \"Remove :CFBuildDate\" ${INFOPLIST_FILE}\n/usr/libexec/PlistBuddy -c \"Add :CFBuildDate string ${date}\" ${INFOPLIST_FILE}\n";
+			shellScript = "date=`date +\"%Y-%m-%d %H:%M\"`\n/usr/libexec/PlistBuddy -c \"Remove :CFBuildDate\" ${INFOPLIST_FILE}\n/usr/libexec/PlistBuddy -c \"Add :CFBuildDate string ${date}\" ${INFOPLIST_FILE}\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 

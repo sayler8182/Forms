@@ -7,17 +7,21 @@
 //
 
 import Forms
-import FormsAnchor
 import FormsAppStoreReview
+import FormsInjector
 import FormsUtils
 import UIKit
 
 // MARK: DemoAppStoreReviewViewController
-class DemoAppStoreReviewViewController: FormsViewController {
+class DemoAppStoreReviewViewController: FormsTableViewController {
     private let updateLaunchButton = Components.button.default()
         .with(title: "Update launch")
     
-    private let appStoreReview = AppStoreReview()
+    @Injected
+    private var appStoreReview: AppStoreReviewProtocol // swiftlint:disable:this let_var_whitespace
+    
+    private let divider = Components.utils.divider()
+        .with(height: 5.0)
     
     override func postInit() {
         super.postInit()
@@ -26,10 +30,9 @@ class DemoAppStoreReviewViewController: FormsViewController {
     
     override func setupContent() {
         super.setupContent()
-        self.view.addSubview(self.updateLaunchButton, with: [
-            Anchor.to(self.view).top.safeArea,
-            Anchor.to(self.view).horizontal
-        ])
+        self.build([
+            self.updateLaunchButton
+        ], divider: self.divider)
     }
     
     override func setupActions() {

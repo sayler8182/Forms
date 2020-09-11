@@ -28,7 +28,7 @@ public extension Bundle {
         return attributes[.creationDate] as? Date
     }
     
-    var iOSBundle: String {
+    var bundleId: String {
         return self.info(for: "CFBundleIdentifier")
     }
     

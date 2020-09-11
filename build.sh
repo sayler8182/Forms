@@ -63,6 +63,7 @@ frameworks=(
     FormsToastKit
     FormsTodayExtensionKit
     FormsTransitions
+    FormsUpdates
     FormsUtils
     FormsUtilsUI
     FormsValidators

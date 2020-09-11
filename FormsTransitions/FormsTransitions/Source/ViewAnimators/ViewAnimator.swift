@@ -141,8 +141,11 @@ public class ViewAnimator {
     }
     
     private func frame(for view: UIView, in source: UIView) -> CGRect {
-        var rect: CGRect = view.convert(view.frame, to: source.superview)
-        rect.origin.x = view.convert(view.frame, to: source).origin.x
+        var rect: CGRect = view.convert(view.bounds, to: source.superview)
+        let yDiff: CGFloat = source.frame.height - source.superview.or(source).frame.height
+        let xDiff: CGFloat = source.frame.width - source.superview.or(source).frame.width
+        rect.origin.y = view.convert(view.bounds, to: source).origin.y - yDiff
+        rect.origin.x = view.convert(view.bounds, to: source).origin.x - xDiff
         return rect
     }
     

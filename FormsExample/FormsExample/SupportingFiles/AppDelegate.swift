@@ -53,6 +53,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func application(_ application: UIApplication,
                      didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+        // Exception
+        NSSetUncaughtExceptionHandler { (exception) in
+            print(exception)
+        }
+        
         // DeveloperTools - Console
         Console.configure()
         

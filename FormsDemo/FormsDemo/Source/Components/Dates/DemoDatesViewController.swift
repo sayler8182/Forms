@@ -12,8 +12,11 @@ import UIKit
 // MARK: DemoDatesViewController
 class DemoDatesViewController: FormsTableViewController {
     private let datePicker = Components.dates.date.default()
+        .with(marginHorizontal: 16)
     private let timePicker = Components.dates.time.default()
+        .with(marginHorizontal: 16)
     private let dateAndTimePicker = Components.dates.dateAndTime.default()
+        .with(marginHorizontal: 16)
     
     private let divider = Components.utils.divider()
         .with(height: 5.0)

@@ -34,7 +34,10 @@ frameworks=(
     FormsAnalytics 
     FormsAnchor
     FormsAppStoreReview
+    FormsCalendarKit
     FormsCardKit
+    FormsDatabase
+    FormsDatabaseSQLite
     FormsDeveloperTools
     FormsDevice
     FormsHomeShortcuts
@@ -52,7 +55,9 @@ frameworks=(
     FormsSocialKit
     FormsTabBarKit
     FormsToastKit
+    FormsTodayExtensionKit
     FormsTransitions
+    FormsUpdates
     FormsUtils
     FormsUtilsUI
     FormsValidators
