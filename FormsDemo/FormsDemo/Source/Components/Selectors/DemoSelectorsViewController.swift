@@ -50,13 +50,13 @@ class DemoSelectorsViewController: FormsTableViewController {
     override func setupActions() {
         super.setupActions()
         self.horizontalSegment.onValuePrev = Unowned(self) { (_, item) in
-            print("Value prev:", item?.title ?? "")
+            print("Value prev:", item.title)
         }
         self.horizontalSegment.onValueChanged = Unowned(self) { (_, item) in
-            print("Value change:", item?.title ?? "")
+            print("Value change:", item.title)
         }
         self.horizontalSegment.onValueNext = Unowned(self) { (_, item) in
-            print("Value next:", item?.title ?? "")
+            print("Value next:", item.title)
         }
     }
 }

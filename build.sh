@@ -1,4 +1,4 @@
-FRAMEWORK=$1;
+FRAMEWORK=$1
 BUILD_DIR="build"
 OUTPUT="${BUILD_DIR}/Debug-Universal" 
 
@@ -9,7 +9,6 @@ then
     rm -rf ~/Library/Developer/Xcode/DerivedData
     rm -rf "${BUILD_DIR}"
     mkdir -p "${BUILD_DIR}" 
-    mkdir -p "${BUILD_DIR}/Debug-Universal" 
     rm -rf "${OUTPUT}"
     mkdir -p "${OUTPUT}" 
     xcodebuild \
@@ -22,7 +21,6 @@ then
         SYMROOT=$(PWD)/build/
 else
     mkdir -p "${BUILD_DIR}"
-    mkdir -p "${BUILD_DIR}/Debug-Universal"
     mkdir -p "${OUTPUT}"
     xcodebuild \
         -quiet \

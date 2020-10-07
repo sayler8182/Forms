@@ -23,7 +23,8 @@ GRDB.swift.framework
 
 ## Integration
 
-SQLite - GRBB.swift or FMDB - framework should be integrated in main project
+SQLite - GRDB.swift or FMDB - framework should be integrated in main project. 
+To install GRDB You should download GRDB main project, run GRDBiOS Target for simulator and generic devices and run merge_architectures script.
 
 ## Usage
 
