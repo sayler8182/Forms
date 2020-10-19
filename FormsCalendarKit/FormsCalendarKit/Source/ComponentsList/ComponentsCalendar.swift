@@ -15,7 +15,7 @@ public enum ComponentsCalendar: ComponentsList {
         let component = CalendarView()
         component.batchUpdate({
             component.onSetTheme = Unowned(component) { (component) in
-                component.backgroundColors = .init(Theme.Colors.primaryLight)
+                component.backgroundColors = .init(Theme.Colors.clear)
                 component.dayColors = CalendarMonthView.State<UIColor?>(Theme.Colors.primaryDark)
                     .with(disabled: Theme.Colors.tertiaryDark)
                 component.dayFonts = CalendarMonthView.State<UIFont>(Theme.Fonts.regular(ofSize: 12))
@@ -36,7 +36,7 @@ public enum ComponentsCalendar: ComponentsList {
         let component = CalendarMonthView()
         component.batchUpdate({
             component.onSetTheme = Unowned(component) { (component) in
-                component.backgroundColors = .init(Theme.Colors.primaryLight)
+                component.backgroundColors = .init(Theme.Colors.clear)
                 component.tintColors = CalendarMonthView.State<UIColor?>(Theme.Colors.tertiaryLight)
                     .with(disabled: Theme.Colors.tertiaryDark.with(alpha: 0.7))
                 component.titleColors = CalendarMonthView.State<UIColor?>(Theme.Colors.primaryDark)
@@ -53,7 +53,7 @@ public enum ComponentsCalendar: ComponentsList {
         let component = CalendarWeekView()
         component.batchUpdate({
             component.onSetTheme = Unowned(component) { (component) in
-                component.backgroundColor = Theme.Colors.primaryLight
+                component.backgroundColor = Theme.Colors.clear
                 component.titleColor = Theme.Colors.tertiaryDark
                 component.titleFont = Theme.Fonts.regular(ofSize: 12)
             }
@@ -65,7 +65,7 @@ public enum ComponentsCalendar: ComponentsList {
         let component = CalendarMonthWithWeekView()
         component.batchUpdate({
             component.onSetTheme = Unowned(component) { (component) in
-                component.backgroundColors = .init(Theme.Colors.primaryLight)
+                component.backgroundColors = .init(Theme.Colors.clear)
                 component.tintColors = CalendarMonthView.State<UIColor?>(Theme.Colors.tertiaryLight)
                     .with(disabled: Theme.Colors.tertiaryDark.with(alpha: 0.7))
                 component.titleColors = CalendarMonthView.State<UIColor?>(Theme.Colors.primaryDark)

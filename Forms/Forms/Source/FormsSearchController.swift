@@ -109,6 +109,7 @@ open class FormsSearchController: UISearchController, AppLifecycleable, Themeabl
     public var validateOnBeginEditing: Bool = false
     public var validateOnEndEditing: Bool = false
     public var validateOnTextChange: Bool = false
+    public var validateOnSearch: Bool = false
     public var validators: [Validator] = []
     public var validatorTriggered: Bool = false
     
@@ -118,6 +119,8 @@ open class FormsSearchController: UISearchController, AppLifecycleable, Themeabl
     public var onDidPaste: ((String?) -> Void)?
     public var onEndEditing: ((String?) -> Void)?
     public var onTextChanged: ((String?) -> Void)?
+    public var onCancel: (() -> Void)?
+    public var onSearch: ((String?) -> Void)?
     public var onValidate: Validable.OnValidate?
     
     public var onSetTheme: (() -> Void) = { } {
@@ -210,6 +213,7 @@ open class FormsSearchController: UISearchController, AppLifecycleable, Themeabl
     
     open func setupSearchBar() {
         self.searchBar.backgroundImage = UIImage()
+        self.searchBar.delegate = self
         self.onSetTheme = Unowned(self) { (_self) in
             _self.backgroundColors = State<UIColor?>(Theme.Colors.clear)
             _self.barTintColors = State<UIColor?>(Theme.Colors.primaryDark)
@@ -304,6 +308,27 @@ extension FormsSearchController {
         self.validatorTrigger()
         self.onTextChanged?(sender.text)
         if self.validateOnTextChange {
+            self.validate()
+        }
+    }
+}
+
+// MARK: UISearchBarDelegate
+extension FormsSearchController: UISearchBarDelegate {
+    public func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        self.searchBar.text = nil
+        self.validatorTrigger()
+        self.onTextChanged?("")
+        if self.validateOnTextChange {
+            self.validate()
+        }
+        self.onCancel?()
+    }
+    
+    public func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        self.validatorTrigger()
+        self.onSearch?(searchBar.text)
+        if self.validateOnSearch {
             self.validate()
         }
     }
@@ -410,6 +435,10 @@ public extension FormsSearchController {
     }
     func with(validateOnTextChange: Bool) -> Self {
         self.validateOnTextChange = validateOnTextChange
+        return self
+    }
+    func with(validateOnSearch: Bool) -> Self {
+        self.validateOnSearch = validateOnSearch
         return self
     }
     func with(validator: Validator) -> Self {

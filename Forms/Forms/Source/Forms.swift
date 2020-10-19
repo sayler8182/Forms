@@ -15,33 +15,35 @@ import FormsValidators
 import UIKit
 
 // MARK: Module
-enum Module: String {
-    case forms = "Forms"
-    case formsAnalytics = "FormsAnalytics"
-    case formsAnchor = "FormsAnchor"
-    case formsAppStoreReview = "FormsAppStoreReview"
-    case formsCalendarKit = "FormsCalendarKit"
-    case formsCardKit = "FormsCardKit"
-    case formsDatabase = "FormsDatabase"
-    case formsDatabaseSQLite = "FormsDatabaseSQLite"
-    case formsDeveloperTools = "FormsDeveloperTools"
-    case formsHomeShortcuts = "FormsHomeShortcuts"
-    case formsImagePicker = "FormsImagePicker"
-    case formsInjector = "FormsInjector"
-    case formsLocation = "FormsLocation"
-    case formsLogger = "FormsLogger"
-    case formsMock = "FormsMock"
-    case formsNetworking = "FormsNetworking"
-    case formsNotifications = "FormsNotifications"
-    case formsPagerKit = "FormsPagerKit"
-    case formsPermissions = "FormsPermissions"
-    case formsSideMenu = "FormsSideMenu"
-    case formsTabBarKit = "FormsTabBarKit"
-    case formsToastKit = "FormsToastKit"
-    case formsTransition = "FormsTransition"
-    case formsUtils = "FormsUtils"
-    case formsUtilsUI = "FormsUtilsUI"
-    case formsValidators = "FormsValidators"
+public extension Forms {
+    enum Module: String {
+        case forms = "Forms"
+        case formsAnalytics = "FormsAnalytics"
+        case formsAnchor = "FormsAnchor"
+        case formsAppStoreReview = "FormsAppStoreReview"
+        case formsCalendarKit = "FormsCalendarKit"
+        case formsCardKit = "FormsCardKit"
+        case formsDatabase = "FormsDatabase"
+        case formsDatabaseSQLite = "FormsDatabaseSQLite"
+        case formsDeveloperTools = "FormsDeveloperTools"
+        case formsHomeShortcuts = "FormsHomeShortcuts"
+        case formsImagePicker = "FormsImagePicker"
+        case formsInjector = "FormsInjector"
+        case formsLocation = "FormsLocation"
+        case formsLogger = "FormsLogger"
+        case formsMock = "FormsMock"
+        case formsNetworking = "FormsNetworking"
+        case formsNotifications = "FormsNotifications"
+        case formsPagerKit = "FormsPagerKit"
+        case formsPermissions = "FormsPermissions"
+        case formsSideMenu = "FormsSideMenu"
+        case formsTabBarKit = "FormsTabBarKit"
+        case formsToastKit = "FormsToastKit"
+        case formsTransition = "FormsTransition"
+        case formsUtils = "FormsUtils"
+        case formsUtilsUI = "FormsUtilsUI"
+        case formsValidators = "FormsValidators"
+    }
 }
 
 // MARK: Forms
@@ -50,11 +52,11 @@ public enum Forms {
     
     public static func configure(_ injector: Injector = Injector.main,
                                  _ assemblies: [Assembly] = []) {
-        Forms.injector = injector
-        Forms.configureBase(injector)
-        Forms.configureConfigurations(injector)
-        Forms.configureNetworking(injector)
-        Forms.configureAssemblies(injector, assemblies)
+        Self.injector = injector
+        Self.configureBase(injector)
+        Self.configureConfigurations(injector)
+        Self.configureNetworking(injector)
+        Self.configureAssemblies(injector, assemblies)
     }
     
     private static func configureBase(_ injector: Injector) {
@@ -63,18 +65,24 @@ public enum Forms {
             ConsoleLogger()
         }
         injector.register(Logger.self, module: Module.formsNetworking.rawValue) { _ in
-            ConsoleLogger()
+            NetworkConsoleLogger()
         }
+        // events
+        injector.register(EventBusProtocol.self) { _ in
+            EventBus()
+        }
+        .inScope(InjectorScope.container)
         // validators
-        injector.register(ValidatorTranslatorProtocol.self) { _ in
-            ValidatorTranslator()
+        injector.register(FormsValidatorTranslatorProtocol.self) { _ in
+            FormsValidatorTranslator()
         }
         // date format
         injector.register(DateFormatProtocol.self) { _ in
             DateFormat(
                 dateFormat: "yyyy-MM-dd",
                 timeFormat: "HH:mm",
-                fullFormat: "yyyy-MM-dd HH:mm")
+                fullFormat: "yyyy-MM-dd HH:mm",
+                iso8601: "yyyy-MM-dd'T'HH:mm:ss.SSSXXXXX")
         }
         // number format
         injector.register(NumberFormatProtocol.self) { _ in

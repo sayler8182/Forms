@@ -36,10 +36,10 @@ enum SideMenuState {
 
 // MARK: SideMenuController
 open class SideMenuController: FormsViewController {
-    internal var leftSide: UIViewController = UIViewController()
-    internal var rightSide: UIViewController = UIViewController()
-    internal var content: UIViewController = UIViewController()
-    internal var overlayView: UIView = UIView()
+    public internal (set) var leftSide: UIViewController = UIViewController()
+    public internal (set) var rightSide: UIViewController = UIViewController()
+    public internal (set) var content: UIViewController = UIViewController()
+    public internal (set) var overlayView: UIView = UIView()
     private let panGestureRecognizer = UIPanGestureRecognizer()
     
     private lazy var animator: SideMenuAnimator = self.animationType.animator
@@ -93,6 +93,11 @@ open class SideMenuController: FormsViewController {
         self.configureAnimator()
     }
     
+    override open func setTheme() {
+        self.overlayView.backgroundColor = Theme.Colors.tertiaryLight.with(alpha: 0.3)
+        super.setTheme()
+    }
+    
     override open func setupActions() {
         super.setupActions()
         self.overlayView.isUserInteractionEnabled = true
@@ -100,11 +105,6 @@ open class SideMenuController: FormsViewController {
         self.overlayView.addGestureRecognizer(tapGestureRecognizer)
         self.panGestureRecognizer.addTarget(self, action: #selector(handlePanOverlay))
         self.overlayView.addGestureRecognizer(self.panGestureRecognizer)
-    }
-    
-    override open func setTheme() {
-        self.overlayView.backgroundColor = Theme.Colors.tertiaryLight.with(alpha: 0.3)
-        super.setTheme()
     }
     
     public func setLeftSide(_ controller: UIViewController) {
@@ -189,5 +189,15 @@ public extension UIViewController {
             controller = controller?.parent
         }
         return controller as? SideMenuController
+    }
+    
+    var sideMenuLeftSideController: UIViewController? {
+        return self.sideMenuController?.leftSide
+    }
+    var sideMenuContentController: UIViewController? {
+        return self.sideMenuController?.content
+    }
+    var sideMenuRightSideController: UIViewController? {
+        return self.sideMenuController?.rightSide
     }
 }

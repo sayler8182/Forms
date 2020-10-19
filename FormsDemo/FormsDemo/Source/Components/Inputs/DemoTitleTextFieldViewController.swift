@@ -41,8 +41,9 @@ class DemoTitleTextFieldViewController: FormsTableViewController {
         .with(placeholder: "Some text")
         .with(title: "Info and error")
     private let passwordTextField = Components.input.textField.password.default()
+        .with(text: "Some password")
     private let footerTextField = Components.input.textField.default()
-        .with(isBottomDynamic: false)
+        .with(isDynamic: false)
         .with(text: "Some text")
         .with(title: "Footer")
     

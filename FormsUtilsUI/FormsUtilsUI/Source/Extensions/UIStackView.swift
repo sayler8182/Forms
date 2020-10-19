@@ -16,6 +16,13 @@ public extension UIStackView {
         }
     }
     
+    func removeArrangedSubviews(_ views: [UIView]) {
+        for view in views {
+            self.removeArrangedSubview(view)
+            view.removeFromSuperview()
+        }
+    }
+    
     func removeArrangedSubviews() {
         self.arrangedSubviews.forEach {
             self.removeArrangedSubview($0)

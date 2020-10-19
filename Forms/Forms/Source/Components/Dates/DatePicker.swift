@@ -27,10 +27,9 @@ open class DatePicker: FormsComponent, FormsComponentWithMarginEdgeInset, FormsC
         get { return self.pickerView.datePickerMode }
         set { self.pickerView.datePickerMode = newValue }
     }
-    @available(iOS 13.4, *)
-    open var preferredDatePickerStyle: UIDatePickerStyle {
-        get { return self.pickerView.preferredDatePickerStyle }
-        set { self.pickerView.preferredDatePickerStyle = newValue }
+    open var locale: Locale? {
+        get { return self.pickerView.locale }
+        set { self.pickerView.locale = newValue }
     }
     open var height: CGFloat = 216
     open var marginEdgeInset: UIEdgeInsets = UIEdgeInsets(0) {
@@ -50,6 +49,15 @@ open class DatePicker: FormsComponent, FormsComponentWithMarginEdgeInset, FormsC
     }
     open var paddingEdgeInset: UIEdgeInsets = UIEdgeInsets(0) {
         didSet { self.updatePaddingEdgeInset() }
+    }
+    @available(iOS 13.4, *)
+    open var preferredDatePickerStyle: UIDatePickerStyle {
+        get { return self.pickerView.preferredDatePickerStyle }
+        set { self.pickerView.preferredDatePickerStyle = newValue }
+    }
+    override open var tintColor: UIColor? {
+        get { return self.pickerView.tintColor }
+        set { self.pickerView.tintColor = newValue }
     }
     
     open var onValueChanged: ((Date) -> Void)?
@@ -122,9 +130,8 @@ public extension DatePicker {
         self.height = height
         return self
     }
-    @available(iOS 13.4, *)
-    func with(preferredDatePickerStyle: UIDatePickerStyle) -> Self {
-        self.preferredDatePickerStyle = preferredDatePickerStyle
+    func with(locale: Locale?) -> Self {
+        self.locale = locale
         return self
     }
     func with(minimumDate: Date?) -> Self {
@@ -137,6 +144,15 @@ public extension DatePicker {
     }
     func with(maximumDate: Date?) -> Self {
         self.maximumDate = maximumDate
+        return self
+    }
+    @available(iOS 13.4, *)
+    func with(preferredDatePickerStyle: UIDatePickerStyle) -> Self {
+        self.preferredDatePickerStyle = preferredDatePickerStyle
+        return self
+    }
+    func with(tintColor: UIColor?) -> Self {
+        self.tintColor = tintColor
         return self
     }
 }

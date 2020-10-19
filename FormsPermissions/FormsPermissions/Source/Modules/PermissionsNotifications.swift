@@ -66,6 +66,7 @@ public extension UNAuthorizationStatus {
         case .denied: return .denied
         case .authorized: return .authorized
         case .provisional: return .provisional
+        case .ephemeral: return .ephemeral
         @unknown default: return .unknown
         }
     }

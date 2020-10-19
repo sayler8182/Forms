@@ -13,7 +13,9 @@ import Security
 // MARK: StorageContainerProtocol
 public protocol StorageContainerProtocol {
     func get<T: Any>(forKey key: StorageKey) -> T?
+    func getCodable<T: Decodable>(forKey key: StorageKey) -> T?
     func set<T: Any>(value: T?, forKey key: StorageKey)
+    func setCodable<T: Encodable>(value: T?, forKey key: StorageKey)
     func remove(forKey key: StorageKey)
 }
 
@@ -28,7 +30,7 @@ public class StorageUserDefaultsContainer: StorageContainerProtocol, StorageSecu
         return self.userDefaults.object(forKey: key.rawValue) as? T
     }
     
-    public func get<T: Decodable>(forKey key: StorageKey) -> T? {
+    public func getCodable<T: Decodable>(forKey key: StorageKey) -> T? {
         return self.userDefaults.decodable(forKey: key.rawValue, of: T.self)
     }
     
@@ -37,7 +39,7 @@ public class StorageUserDefaultsContainer: StorageContainerProtocol, StorageSecu
         self.userDefaults.synchronize()
     }
     
-    public func set<T: Encodable>(value: T?, forKey key: StorageKey) {
+    public func setCodable<T: Encodable>(value: T?, forKey key: StorageKey) {
         self.userDefaults.encodable(value, forKey: key.rawValue)
         self.userDefaults.synchronize()
     }
@@ -210,6 +212,65 @@ public struct StorageWithDefault<T>: StorageProvider {
     public var wrappedValue: T {
         get { return self.container.get(forKey: self.key) ?? self.defaultValue }
         set { self.container.set(value: newValue, forKey: self.key) }
+    }
+    
+    public func remove() {
+        self.container.remove(forKey: self.key)
+    }
+}
+
+// MARK: StorageCodable
+@propertyWrapper
+public struct StorageCodable<T: Codable>: StorageProvider {
+    private let container: StorageContainerProtocol = {
+        let container: StorageContainerProtocol? = Injector.main.resolveOrDefault("Forms")
+        return container ?? StorageUserDefaultsContainer.shared
+    }()
+    private let key: StorageKey
+    
+    public init(_ key: StorageKey) {
+        self.key = key
+    }
+    
+    public var value: T? {
+        get { return self.wrappedValue }
+        set { self.wrappedValue = newValue }
+    }
+    
+    public var wrappedValue: T? {
+        get { return self.container.getCodable(forKey: self.key) }
+        set { self.container.setCodable(value: newValue, forKey: self.key) }
+    }
+    
+    public func remove() {
+        self.container.remove(forKey: self.key)
+    }
+}
+
+// MARK: StorageCodableWithDefault
+@propertyWrapper
+public struct StorageCodableWithDefault<T: Codable>: StorageProvider {
+    private let container: StorageContainerProtocol = {
+        let container: StorageContainerProtocol? = Injector.main.resolveOrDefault("Forms")
+        return container ?? StorageUserDefaultsContainer.shared
+    }()
+    private let key: StorageKey
+    private let defaultValue: T
+    
+    public init(_ key: StorageKey,
+                _ defaultValue: T) {
+        self.key = key
+        self.defaultValue = defaultValue
+    }
+    
+    public var value: T {
+        get { return self.wrappedValue }
+        set { self.wrappedValue = newValue }
+    }
+    
+    public var wrappedValue: T {
+        get { return self.container.getCodable(forKey: self.key) ?? self.defaultValue }
+        set { self.container.setCodable(value: newValue, forKey: self.key) }
     }
     
     public func remove() {

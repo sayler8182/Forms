@@ -41,6 +41,7 @@ Kits extend Forms module
 - [x] [FormsCalendarKit](./Documentation/FormsCalendarKit.md) - Calendar
 - [x] [FormsCardKit](./Documentation/FormsCardKit.md) - Card
 - [x] [FormsImagePickerKit](./Documentation/FormsImagePickerKit.md) - Image Picker
+- [x] [FormsMapKit](./Documentation/FormsMapKit.md) - Map
 - [x] [FormsPagerKit](./Documentation/FormsPagerKit.md) - Pager
 - [x] [FormsSideMenuKit](./Documentation/FormsSideMenuKit.md) - Side menu
 - [x] [FormsSocialKit](./Documentation/FormsSocialKit.md) - Sign in with external services
@@ -77,6 +78,7 @@ FormsImagePickerKit.framework
 FormsInjector.framework
 FormsLocation.framework
 FormsLogger.framework
+FormsMapKit.framework
 FormsMock.framework
 FormsNetworking.framework
 FormsNetworkingImage.framework
@@ -104,6 +106,7 @@ FBSDKLoginKit.framework
 FirebaseAnalytics.framework
 FirebaseCore.framework
 FirebaseCoreDiagnostics.framework
+FirebaseCrashlytics.framework
 FirebaseInstallations.framework
 FirebaseInstanceID.framework
 FirebaseMessaging.framework
@@ -188,6 +191,9 @@ The Forms framework is inspired by:
 8. Add URL Type in Info.plist
 9. Add Settings.bundle
 10. Add HomeShortcuts
+11. Add Crashlytics configuration
+12. Add Lint
+13. Add R.swift
 
 NOTICE: Remember about AppDelegate and SceneDelegate settings
 
@@ -208,6 +214,19 @@ If your project doesn't compile try
 - [x] Add LocalAuthentication.framework without Signing
 - [x] Add StoreKit.framework without Embedding
 - [x] Add Google frameworks without Embedding
+- [x] Add `-Objc` in Other linker flags
+- [x] Add `-lc++` in Other linker flags - eg. for Crashlytics
 - [x] "error: Couldn't IRGen expression, no additional error" this error may be related with FBSDK version (x6.5.2 is the latest stable version)
 - [x] Add Google frameworks without Embedding
 - [x] "could not build Objective-C module" this error may be related to "Defines module" option. (should be NO)
+
+## FAQ dependencies
+
+If dependency doesn't compile, try build it manually
+- [x] Disable bitcode 
+- [x] set `Build Active Architecture` Only to `No`
+- [x] Add `-ObjC` other linker flag
+- [x] Build for `Simulator` and `Generic Device`
+- [x] Copy `lipo.sh` script to `Products` directory
+- [x] Run `lipo.sh` to merge architectures
+- [x] Copy fat framework to Your project

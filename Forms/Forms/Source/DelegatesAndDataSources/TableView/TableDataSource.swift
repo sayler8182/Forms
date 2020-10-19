@@ -113,12 +113,26 @@ open class TableDataSource: NSObject {
         self.setItems([section], animated: animated)
     }
     
+    public func appendAsync(_ sections: [TableSection],
+                            animated: UITableView.RowAnimation = .top) {
+        DispatchQueue.main.async {
+            self.append(sections, animated: animated)
+        }
+    }
+    
     public func append(_ sections: [TableSection],
                        animated: UITableView.RowAnimation = .none) {
         self.prepareDataSource(sections)
         self.appendToTable(sections, animated: animated)
     }
     
+    public func appendAsync(_ rows: [TableRow],
+                            animated: UITableView.RowAnimation = .top) {
+        DispatchQueue.main.async {
+            self.append(rows, animated: animated)
+        }
+    }
+        
     public func append(_ rows: [TableRow],
                        animated: UITableView.RowAnimation = .top) {
         let sections: [TableSection] = self.sections.filter { !$0.isShimmering }
@@ -196,15 +210,15 @@ extension TableDataSource {
 
 // MARK: UITableViewDelegate, UITableViewDataSource
 extension TableDataSource: UITableViewDelegate, UITableViewDataSource {
-    public func numberOfSections(in tableView: UITableView) -> Int {
+    open func numberOfSections(in tableView: UITableView) -> Int {
         return self.sections.count
     }
     
-    public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    open func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.sections[section].rows.count
     }
     
-    public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    open func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let section: TableSection = self.sections[indexPath.section]
         guard !section.isShimmering else { return }
         let row: TableRow = section.rows[indexPath.row]
@@ -212,34 +226,38 @@ extension TableDataSource: UITableViewDelegate, UITableViewDataSource {
         self.delegate?.selectCell(row: row, cell: cell, indexPath: indexPath)
     }
     
-    public func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+    open func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let index: Int = section
         let section: TableSection = self.sections[index]
         guard let type = section.type else { return nil }
         let component: FormsComponent = type.init()
         component.translatesAutoresizingMaskIntoConstraints = true
-        self.delegate?.setupSection(section: section, view: component, index: index)
+        self.tableUpdatesQueue.async {
+            self.delegate?.setupSection(section: section, view: component, index: index)
+        }
         return component
     }
     
-    public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    open func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let section: TableSection = self.sections[indexPath.section]
         let row: TableRow = section.rows[indexPath.row]
         let cell = tableView.dequeueReusableCell(withIdentifier: row.identifier, for: indexPath) as! FormsTableViewCell
         cell.tableView = tableView
         cell.selectionStyle = .none
         cell.stopShimmering()
-        self.delegate?.setupCell(row: row, cell: cell, indexPath: indexPath)
+        self.tableUpdatesQueue.async {
+            self.delegate?.setupCell(row: row, cell: cell, indexPath: indexPath)
+        }
         return cell
     }
     
-    public func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+    open func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         let section: TableSection = self.sections[section]
         guard let type = section.type else { return CGFloat.leastNormalMagnitude }
         return type.componentHeight(section.data, tableView)
     }
     
-    public func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+    open func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         let section: TableSection = self.sections[indexPath.section]
         let row: TableRow = section.rows[indexPath.row]
         guard let type = row.type as? FormsTableViewCell.Type else { return UITableView.automaticDimension }

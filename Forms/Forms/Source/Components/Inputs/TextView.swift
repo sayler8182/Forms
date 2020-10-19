@@ -240,6 +240,11 @@ open class TextView: FormsComponent, FormsComponentWithMarginEdgeInset, FormsCom
     
     private (set) var state: FormsComponentStateType = .active
     
+    override open func layoutSubviews() {
+        super.layoutSubviews()
+        self.updateScroll()
+    }
+    
     override open func setupView() {
         self.setupBackgroundView()
         self.setupTitleLabel()
@@ -414,12 +419,23 @@ extension TextView: UITextViewDelegate {
     }
     
     public func textViewDidChange(_ textView: UITextView) {
+        self.updateScroll()
         self.table?.refreshTableView()
         self.validatorTrigger()
         self.onTextChanged?(textView.text)
         if self.validateOnTextChange {
             self.validate()
             self.table?.refreshTableView()
+        }
+    }
+    
+    private func updateScroll() {
+        DispatchQueue.main.async {
+            self.superview?.layoutIfNeeded()
+            let viewHeight: CGFloat = self.textView.bounds.height.ceiled
+            let contentHeight = self.textView.sizeThatFits(
+                CGSize(width: self.textView.frame.width, height: CGFloat.greatestFiniteMagnitude)).height
+            self.textView.isScrollEnabled = viewHeight < contentHeight
         }
     }
 }

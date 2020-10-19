@@ -47,6 +47,9 @@ extension CGFloat: Number, NumberFormattable {
     public func inRange(_ range: Range<Self>) -> Bool {
         return range.contains(self)
     }
+    public func inRange(_ range: ClosedRange<Self>) -> Bool {
+        return range.contains(self)
+    }
     public func match(in range: Range<Self>) -> CGFloat {
         return Swift.min(Swift.max(range.lowerBound, self), range.upperBound)
     }
@@ -56,10 +59,27 @@ extension CGFloat: Number, NumberFormattable {
     public func reversed(progress: CGFloat) -> CGFloat {
         return progress - self
     }
+    public func multiplication(_ value: CGFloat) -> CGFloat {
+        return self * value
+    }
+    public func division(_ value: CGFloat) -> CGFloat {
+        return self / value
+    }
+    public func addition(_ value: CGFloat) -> CGFloat {
+        return self + value
+    }
+    public func subtraction(_ value: CGFloat) -> CGFloat {
+        return self - value
+    }
 }
 
 // MARK: Double
 public extension Double {
+    var asCGFloat: CGFloat { CGFloat(self) }
+}
+
+// MARK: Float
+public extension Float {
     var asCGFloat: CGFloat { CGFloat(self) }
 }
 

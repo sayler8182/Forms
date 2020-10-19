@@ -61,7 +61,7 @@ public extension UIColor {
             red: Int((rgba >> 24) & 0xFF),
             green: Int((rgba >> 16) & 0xFF),
             blue: Int((rgba >> 8) & 0xFF),
-            alpha: Int(rgba & 0xFF))
+            alpha: Int((Double(rgba & 0xFF) / 255) * 100))
     }
     
     private convenience init(red: Int,

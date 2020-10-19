@@ -17,6 +17,7 @@ public protocol LocationProtocol {
     var lastLocation: CLLocation? { get }
     var onStatusChanged: Location.OnStatusChanged? { get set }
     var onLocationChanged: Location.OnLocationChanged? { get set }
+    var onLocationOnce: Location.OnLocationChanged? { get set }
     
     func startUpdatingLocation()
     func stopUpdatingLocation()
@@ -42,7 +43,7 @@ public class Location: NSObject, LocationProtocol {
     
     public var onStatusChanged: OnStatusChanged? = nil
     public var onLocationChanged: OnLocationChanged? = nil
-    fileprivate var onLocationOnce: OnLocationChanged? = nil
+    public var onLocationOnce: OnLocationChanged? = nil
     
     override public init() {
         super.init()

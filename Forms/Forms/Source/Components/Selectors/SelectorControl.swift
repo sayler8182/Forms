@@ -165,9 +165,11 @@ open class SelectorControl: FormsComponent, FormsComponentWithMarginEdgeInset, F
         super.setupActions()
         let leadingGesture = UILongPressGestureRecognizer(target: self, action: #selector(handleOnArrowGesture))
         leadingGesture.minimumPressDuration = 0.0
+        leadingGesture.delegate = self
         self.arrowLeadingImageView.addGestureRecognizer(leadingGesture)
         let trailingGesture = UILongPressGestureRecognizer(target: self, action: #selector(handleOnArrowGesture))
         trailingGesture.minimumPressDuration = 0.0
+        trailingGesture.delegate = self
         self.arrowTrailingImageView.addGestureRecognizer(trailingGesture)
     }
     

@@ -87,9 +87,14 @@ public protocol Number: Comparable {
     var fromRadiansToDegrees: Self { get }
     
     func inRange(_ range: Range<Self>) -> Bool
+    func inRange(_ range: ClosedRange<Self>) -> Bool
     func match(in range: Range<Self>) -> Self
     func match(from: Self, to: Self) -> Self
     func reversed(progress: Self) -> Self
+    func multiplication(_ value: Self) -> Self
+    func division(_ value: Self) -> Self
+    func addition(_ value: Self) -> Self
+    func subtraction(_ value: Self) -> Self
 }
 
 public extension Number {
@@ -154,7 +159,7 @@ public extension NumberFormattable {
                    groupingSeparator: String? = nil,
                    decimalSeparator: String? = nil) -> String {
         let numberFormat: NumberFormatProtocol? = Injector.main.resolveOrDefault("FormsUtils")
-        kNumberFormatter.groupingSeparator = groupingSeparator ?? numberFormat?.groupingSeparator ?? ","
+        kNumberFormatter.groupingSeparator = groupingSeparator ?? numberFormat?.groupingSeparator ?? " "
         kNumberFormatter.decimalSeparator = decimalSeparator ?? numberFormat?.decimalSeparator ?? ","
         kNumberFormatter.numberStyle = .decimal
         kNumberFormatter.minimumFractionDigits = self.isFractional
@@ -210,6 +215,9 @@ extension Double: Number, NumberFormattable {
     public func inRange(_ range: Range<Self>) -> Bool {
         return range.contains(self)
     }
+    public func inRange(_ range: ClosedRange<Self>) -> Bool {
+        return range.contains(self)
+    }
     public func match(in range: Range<Self>) -> Double {
         return Swift.min(Swift.max(range.lowerBound, self), range.upperBound)
     }
@@ -218,6 +226,65 @@ extension Double: Number, NumberFormattable {
     }
     public func reversed(progress: Double) -> Double {
         return progress - self
+    }
+    public func multiplication(_ value: Double) -> Double {
+        return self * value
+    }
+    public func division(_ value: Double) -> Double {
+        return self / value
+    }
+    public func addition(_ value: Double) -> Double {
+        return self + value
+    }
+    public func subtraction(_ value: Double) -> Double {
+        return self - value
+    }
+}
+
+// MARK: Float
+extension Float: Number, NumberFormattable {
+    public var asBool: Bool { self != 0 }
+    public var asDecimal: Decimal { Decimal(self.asDouble) }
+    public var asDouble: Double { Double(self) }
+    public var asFloat: Float { self }
+    public var asInt: Int { Int(self) }
+    public var asNumber: NSNumber { self as NSNumber }
+    public var asSize: String? { self.asDouble.asSize }
+    public var asString: String { String(self) }
+    public var isFractional: Bool { false }
+    
+    public var ceiled: Float { self.asDouble.rounded(.up).asFloat }
+    public var floored: Float { self.asDouble.rounded(.down).asFloat }
+    
+    public var fromDegreesToRadians: Float { self.asDouble.fromDegreesToRadians.asFloat }
+    public var fromRadiansToDegrees: Float { self.asDouble.fromRadiansToDegrees.asFloat }
+    
+    public func inRange(_ range: Range<Self>) -> Bool {
+        return range.contains(self)
+    }
+    public func inRange(_ range: ClosedRange<Self>) -> Bool {
+        return range.contains(self)
+    }
+    public func match(in range: Range<Self>) -> Float {
+        return Swift.min(Swift.max(range.lowerBound, self), range.upperBound)
+    }
+    public func match(from: Self, to: Self) -> Float {
+        return Swift.min(Swift.max(from, self), to)
+    }
+    public func reversed(progress: Float) -> Float {
+        return progress - self
+    }
+    public func multiplication(_ value: Float) -> Float {
+        return self * value
+    }
+    public func division(_ value: Float) -> Float {
+        return self / value
+    }
+    public func addition(_ value: Float) -> Float {
+        return self + value
+    }
+    public func subtraction(_ value: Float) -> Float {
+        return self - value
     }
 }
 
@@ -242,6 +309,9 @@ extension Int: Number, NumberFormattable {
     public func inRange(_ range: Range<Self>) -> Bool {
         return range.contains(self)
     }
+    public func inRange(_ range: ClosedRange<Self>) -> Bool {
+        return range.contains(self)
+    }
     public func match(in range: Range<Self>) -> Int {
         return Swift.min(Swift.max(range.lowerBound, self), range.upperBound)
     }
@@ -250,5 +320,17 @@ extension Int: Number, NumberFormattable {
     }
     public func reversed(progress: Int) -> Int {
         return progress - self
+    }
+    public func multiplication(_ value: Int) -> Int {
+        return self * value
+    }
+    public func division(_ value: Int) -> Int {
+        return self / value
+    }
+    public func addition(_ value: Int) -> Int {
+        return self + value
+    }
+    public func subtraction(_ value: Int) -> Int {
+        return self - value
     }
 }

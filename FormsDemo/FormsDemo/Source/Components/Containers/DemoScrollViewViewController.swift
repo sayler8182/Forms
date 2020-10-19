@@ -48,7 +48,7 @@ class DemoScrollViewViewController: FormsViewController {
                     Anchor.to($0).height(100)
                     ]})
         }
-        self.horizontalScroll.setItems(items)
+        self.horizontalScroll.items = items
     }
     
     private func setupVerticalItems(count: Int) {
@@ -60,6 +60,6 @@ class DemoScrollViewViewController: FormsViewController {
                     Anchor.to($0).height(100)
                     ]})
         }
-        self.verticalScroll.setItems(items)
+        self.verticalScroll.items = items
     }
 }

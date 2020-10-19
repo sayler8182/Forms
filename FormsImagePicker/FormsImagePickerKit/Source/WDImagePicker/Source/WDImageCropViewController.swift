@@ -57,7 +57,6 @@ internal class WDImageCropViewController: UIViewController, Themeable {
     
     private func setupContent() {
         Theme.register(self)
-        self.automaticallyAdjustsScrollViewInsets = false
     }
     
     func setTheme() {

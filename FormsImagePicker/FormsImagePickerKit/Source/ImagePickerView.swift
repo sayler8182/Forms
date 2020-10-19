@@ -34,6 +34,23 @@ private struct ImagePickerActionItem {
     let action: ImagePickerView.Action
 }
 
+// MARK: ImagePickerViewTranslation
+public protocol ImagePickerViewTranslation {
+    var chooseSource: String { get }
+    var cancel: String { get }
+    var camera: String { get }
+    var photoLibrary: String { get }
+    var savedPhotosAlbum: String { get }
+}
+
+public struct DefaultImagePickerViewTranslation: ImagePickerViewTranslation {
+    public let chooseSource: String = "Choose source"
+    public let cancel: String = "Cancel"
+    public let camera: String = "Camera"
+    public let photoLibrary: String = "Photo library"
+    public let savedPhotosAlbum: String = "Saved photos album"
+}
+
 extension ImagePickerView {
     fileprivate typealias Action = (ImagePickerViewController.Type, UIViewController, ImagePickerRequest, ImagePicker.OnSelect?, ImagePicker.OnFail?, ImagePicker.OnCancel?) -> Void
     
@@ -43,14 +60,15 @@ extension ImagePickerView {
                                           onSelect: ImagePicker.OnSelect?,
                                           onFail: ImagePicker.OnFail?,
                                           onCancel: ImagePicker.OnCancel?) {
-        let actions: [ImagePickerActionItem] = self.actions(request: request)
+        let translations: ImagePickerViewTranslation = request.userInfo[.translations] as? ImagePickerViewTranslation ?? DefaultImagePickerViewTranslation()
+        let actions: [ImagePickerActionItem] = self.actions(request: request, translations: translations)
         guard !actions.isEmpty else { return }
         guard actions.count > 1 else {
             actions[0].action(picker, controller, request, onSelect, onFail, onCancel)
             return
         }
         let alert: UIAlertController = UIAlertController(
-            title: "Choose source",
+            title: translations.chooseSource,
             message: nil,
             preferredStyle: .actionSheet)
         for action in actions {
@@ -62,27 +80,28 @@ extension ImagePickerView {
             }))
         }
         alert.addAction(UIAlertAction(
-            title: "Cancel",
-            style: .destructive,
+            title: translations.cancel,
+            style: .cancel,
             handler: { _ in }))
         controller.present(alert, animated: true)
     }
     
-    private static func actions(request: ImagePickerRequest) -> [ImagePickerActionItem] {
+    private static func actions(request: ImagePickerRequest,
+                                translations: ImagePickerViewTranslation) -> [ImagePickerActionItem] {
         var actions: [ImagePickerActionItem] = []
         if request.source.contains(.camera) {
             actions.append(ImagePickerActionItem(
-                title: "Camera",
+                title: translations.camera,
                 action: Self.presentCamera))
         }
         if request.source.contains(.photoLibrary) {
             actions.append(ImagePickerActionItem(
-                title: "Photo library",
+                title: translations.photoLibrary,
                 action: Self.presentPhotoLibrary))
         }
         if request.source.contains(.savedPhotosAlbum) {
             actions.append(ImagePickerActionItem(
-                title: "Photo library",
+                title: translations.savedPhotosAlbum,
                 action: Self.presentSavedPhotosAlbum))
         }
         return actions
@@ -174,6 +193,11 @@ public extension ImagePickerView {
     }
 }
 
+// MARK: ImagePickerUserInfoKey
+public enum ImagePickerUserInfoKey: String {
+    case translations
+}
+
 // MARK: ImagePickerRequest
 public class ImagePickerRequest {
     public var allowsEditing: Bool = false
@@ -181,6 +205,7 @@ public class ImagePickerRequest {
     public var mediaTypes: [ImagePickerMediaType] = []
     public var resizableCropArea: Bool = false
     public var source: [UIImagePickerController.SourceType] = [.camera, .photoLibrary]
+    public var userInfo: [ImagePickerUserInfoKey: Any] = [:]
     
     public init() { }
 }
@@ -203,6 +228,14 @@ public extension ImagePickerRequest {
     }
     func with(source: [UIImagePickerController.SourceType]) -> Self {
         self.source = source
+        return self
+    }
+    func with(userInfo: [ImagePickerUserInfoKey: Any]) -> Self {
+        self.userInfo = userInfo
+        return self
+    }
+    func with(translations: ImagePickerViewTranslation?) -> Self {
+        self.userInfo[.translations] = translations
         return self
     }
 }

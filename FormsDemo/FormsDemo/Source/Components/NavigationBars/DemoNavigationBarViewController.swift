@@ -38,6 +38,12 @@ class DemoNavigationBarViewController: FormsTableViewController {
     private lazy var navigationBarWithSearchBar = Components.navigationBar.default()
         .with(titleView: self.navigationBarSearchBar)
         .with(rightBarButtonItems: [self.cancelBarButtonItem])
+    private lazy var navigationBarWithoutBackgroundBar = Components.navigationBar.default()
+        .with(title: nil)
+        .with(leftBarButtonItems: [])
+        .with(rightBarButtonItems: [])
+        .with(backgroundImage: UIImage())
+        .with(isTranslucent: true)
     
     private let defaultNavigationBarButton = Components.button.default()
         .with(title: "Default navigation bar")
@@ -53,6 +59,8 @@ class DemoNavigationBarViewController: FormsTableViewController {
         .with(title: "Navigation bar without shadow")
     private var navigationBarWithSearchBarButton = Components.button.default()
         .with(title: "Navigation bar with search bar")
+    private var navigationBarWithoutBackgroundBarButton = Components.button.default()
+        .with(title: "Navigation bar without background")
     
     private lazy var text1BarButtonItem = BarButtonItem()
         .with(title: "Item 1")
@@ -92,7 +100,8 @@ class DemoNavigationBarViewController: FormsTableViewController {
             self.navigationBarWithLeftAndRightBarsButton,
             self.navigationBarWithTitleViewButton,
             self.navigationBarWithoutShadowButton,
-            self.navigationBarWithSearchBarButton
+            self.navigationBarWithSearchBarButton,
+            navigationBarWithoutBackgroundBarButton
         ], divider: self.divider)
         
         self.navigationBarTitleView.anchors([
@@ -109,7 +118,8 @@ class DemoNavigationBarViewController: FormsTableViewController {
             self.navigationBarWithLeftAndRightBarsButton: self.navigationBarWithLeftAndRightBars,
             self.navigationBarWithTitleViewButton: self.navigationBarWithTitleView,
             self.navigationBarWithoutShadowButton: self.navigationBarWithoutShadow,
-            self.navigationBarWithSearchBarButton: self.navigationBarWithSearchBar
+            self.navigationBarWithSearchBarButton: self.navigationBarWithSearchBar,
+            self.navigationBarWithoutBackgroundBarButton: self.navigationBarWithoutBackgroundBar
         ]
         for item in map {
             item.key.onClick = Unowned(self) { (_self) in

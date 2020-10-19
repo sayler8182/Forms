@@ -39,5 +39,6 @@ appStoreReview.launch()
 When your app is ready to display review information you can show modal 
 
 ```swift
+appStoreReview.show()
 appStoreReview.showIfNeeded()
 ```

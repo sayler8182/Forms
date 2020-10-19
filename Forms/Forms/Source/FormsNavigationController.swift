@@ -23,6 +23,8 @@ open class FormsNavigationController: UINavigationController, AppLifecycleable, 
         return []
     }
     
+    private var backgroundImageView: ImageView? = nil
+    
     public init() {
         super.init(nibName: nil, bundle: nil)
         self.postInit()
@@ -123,6 +125,18 @@ open class FormsNavigationController: UINavigationController, AppLifecycleable, 
     @objc
     open dynamic func setupMock() {
         // HOOK
+    }
+}
+
+// MARK: BackgroundImage
+public extension FormsNavigationController {
+    func setNavigationBackgroundImage(_ imageView: ImageView?) {
+        self.backgroundImageView?.removeFromSuperview()
+        guard let imageView = imageView else { return }
+        self.view.insertSubview(imageView, at: 0)
+        imageView.anchors([
+            Anchor.to(self.view).fill
+        ])
     }
 }
 

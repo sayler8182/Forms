@@ -59,6 +59,7 @@ open class PagerController: FormsViewController {
     open var pageBackgroundColor: UIColor? = nil {
         didSet { self.pageControl.backgroundColor = self.pageBackgroundColor }
     }
+    open var pageIsToSafeArea: Bool = true
     open var pageIndicatorTintColor: UIColor? = Theme.Colors.gray {
         didSet { self.pageControl.pageIndicatorTintColor = self.pageIndicatorTintColor }
     }
@@ -74,6 +75,7 @@ open class PagerController: FormsViewController {
     open var topBarIsSeparator: Bool = true {
         didSet { self.topBar.isSeparator = self.topBarIsSeparator }
     }
+    open var topBarIsToSafeArea: Bool = true
     open var topBarIsUnderlineRounded: Bool = false {
         didSet { self.topBar.isUnderlineRounded = self.topBarIsUnderlineRounded }
     }
@@ -122,7 +124,7 @@ open class PagerController: FormsViewController {
         self.topBar.titleSelectedFont = self.topBarTitleSelectedFont
         self.topBar.underlineColor = self.topBarUnderlineColor
         self.view.addSubview(self.topBar, with: [
-            Anchor.to(self.view).top.safeArea,
+            Anchor.to(self.view).top.layoutGuide(self.topBarIsToSafeArea ? .safeArea : .normal),
             Anchor.to(self.view).horizontal,
             Anchor.to(self.topBar)
                 .height(0.0)
@@ -172,7 +174,7 @@ open class PagerController: FormsViewController {
                 .connect(self.collectionToPageBottomAnchor)
                 .priority(.defaultHigh),
             Anchor.to(self.view).horizontal,
-            Anchor.to(self.view).bottom.safeArea,
+            Anchor.to(self.view).bottom.safeArea.layoutGuide(self.pageIsToSafeArea ? .safeArea : .normal),
             Anchor.to(self.pageControl).height(0).connect(self.pageControlHeightAnchor)
         ])
     }

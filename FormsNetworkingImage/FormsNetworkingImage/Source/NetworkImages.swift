@@ -13,9 +13,29 @@ import FormsUtils
 import UIKit
 
 public typealias NetworkImagesOnProgress = (_ size: Int64, _ totalSize: Int64, _ progress: Double) -> Void
-public typealias NetworkImagesOnSuccess = (_ image: UIImage) -> Void
+public typealias NetworkImagesOnSuccess = (_ image: NetworkImage) -> Void
 public typealias NetworkImagesOnError = (_ error: NetworkError) -> Void
-public typealias NetworkImagesOnCompletion = (_ image: UIImage?, _ error: NetworkError?) -> Void
+public typealias NetworkImagesOnCompletion = (_ image: NetworkImage?, _ error: NetworkError?) -> Void
+
+// MARK: NetworkImageType
+public enum NetworkImageType {
+    case cache
+    case network
+    case placeholder
+}
+
+// MARK: NetworkImageType
+public class NetworkImage {
+    public var image: UIImage
+    public let type: NetworkImageType
+    
+    init?(_ image: UIImage?,
+          _ type: NetworkImageType) {
+        guard let image: UIImage = image else { return nil }
+        self.image = image
+        self.type = type
+    }
+}
 
 // MARK: NetworkImageRequest
 public class NetworkImageRequest: ExpressibleByStringLiteral {
@@ -29,6 +49,8 @@ public class NetworkImageRequest: ExpressibleByStringLiteral {
     public var scale: CGFloat
     public var isStartAutoShimmer: Bool?
     public var isStopAutoShimmer: Bool?
+    public var isTransformCache: Bool?
+    public var isTransformPlaceholder: Bool?
     
     public var cornerRadius: CGFloat?
     public var filter: String?
@@ -41,6 +63,10 @@ public class NetworkImageRequest: ExpressibleByStringLiteral {
     private var _isCancelled: Bool = false
     public var isCancelled: Bool {
         return self._isCancelled || self.task?.isCancelled == true
+    }
+    
+    public var isCached: Bool {
+        return self.cache != nil
     }
     
     public required convenience init(stringLiteral value: StringLiteralType) {
@@ -95,6 +121,14 @@ public extension NetworkImageRequest {
     }
     func with(isStopAutoShimmer: Bool) -> Self {
         self.isStopAutoShimmer = isStopAutoShimmer
+        return self
+    }
+    func with(isTransformCache: Bool) -> Self {
+        self.isTransformCache = isTransformCache
+        return self
+    }
+    func with(isTransformPlaceholder: Bool) -> Self {
+        self.isTransformPlaceholder = isTransformPlaceholder
         return self
     }
     func with(isRounded: Bool?) -> Self {
@@ -203,7 +237,8 @@ extension NetworkImages {
                             onSuccess: NetworkImagesOnSuccess?,
                             onError: NetworkImagesOnError?,
                             onCompletion: NetworkImagesOnCompletion?) {
-        if let image: UIImage = request.cache {
+        if let image = NetworkImage(request.cache, .cache) {
+            image.transform(request, request.isTransformCache)
             request.dispatchQueue.async {
                 onSuccess?(image)
                 onCompletion?(image, nil)
@@ -217,7 +252,8 @@ extension NetworkImages {
                 onError: onError,
                 onCompletion: onCompletion)
             request.task = task
-        } else if let image: UIImage = request.placeholder {
+        } else if let image = NetworkImage(request.placeholder, .placeholder) {
+            image.transform(request, request.isTransformPlaceholder)
             request.dispatchQueue.async {
                 onSuccess?(image)
                 onCompletion?(image, nil)
@@ -236,6 +272,7 @@ extension NetworkImages {
                             onSuccess: NetworkImagesOnSuccess?,
                             onError: NetworkImagesOnError?,
                             onCompletion: NetworkImagesOnCompletion?) -> NetworkTask {
+        let isCached = self.isCached(request)
         let method = NetworkImagesMethod(url: url)
             .with(logger: self.logger)
             .with(cache: self.cache)
@@ -246,44 +283,52 @@ extension NetworkImages {
                 request.dispatchProgressQueue.async {
                     onProgress(size, totalSize, progress)
                 }
-        }, onSuccess: { (data: Data) in
-            guard self.isValid(request) else { return }
-            if var image: UIImage = UIImage(data: data, scale: request.scale) {
-                image = image.transform(request)
-                if let onSuccess = onSuccess {
+            }, onSuccess: { (data: Data) in
+                guard self.isValid(request) else { return }
+                let type: NetworkImageType = isCached ? .cache : .network
+                if let image = NetworkImage(UIImage(data: data, scale: request.scale), type) {
+                    image.transform(request, true)
+                    if let onSuccess = onSuccess {
+                        request.dispatchQueue.async {
+                            onSuccess(image)
+                        }
+                    }
+                } else if let onError = onError {
                     request.dispatchQueue.async {
-                        onSuccess(image)
+                        onError(.incorrectResponseFormat)
                     }
                 }
-            } else if let onError = onError {
+            }, onError: { (error: NetworkError) in
+                guard let onError = onError else { return }
+                guard self.isValid(request, onError: onError) else { return }
                 request.dispatchQueue.async {
-                    onError(.incorrectResponseFormat)
+                    onError(error)
                 }
-            }
-        }, onError: { (error: NetworkError) in
-            guard let onError = onError else { return }
-            guard self.isValid(request, onError: onError) else { return }
-            request.dispatchQueue.async {
-                onError(error)
-            }
-        }, onCompletion: { (data: Data?, error: NetworkError?) in
-            guard let onCompletion = onCompletion else { return }
-            guard self.isValid(request, onCompletion: onCompletion) else { return }
-            if let data: Data = data {
-                if var image: UIImage = UIImage(data: data, scale: request.scale) {
-                    image = image.transform(request)
-                    request.dispatchQueue.async {
-                        onCompletion(image, nil)
+            }, onCompletion: { (data: Data?, error: NetworkError?) in
+                guard let onCompletion = onCompletion else { return }
+                guard self.isValid(request, onCompletion: onCompletion) else { return }
+                if let data: Data = data {
+                    let type: NetworkImageType = isCached ? .cache : .network
+                    if let image = NetworkImage(UIImage(data: data, scale: request.scale), type) {
+                        image.transform(request, true)
+                        request.dispatchQueue.async {
+                            onCompletion(image, nil)
+                        }
+                    } else {
+                        let image = NetworkImage(request.placeholder, .placeholder)
+                        image?.transform(request, request.isTransformPlaceholder)
+                        request.dispatchQueue.async {
+                            onCompletion(image, .incorrectResponseFormat)
+                        }
                     }
                 } else {
-                    onCompletion(nil, .incorrectResponseFormat)
+                    let image = NetworkImage(request.placeholder, .placeholder)
+                    image?.transform(request, request.isTransformPlaceholder)
+                    request.dispatchQueue.async {
+                        onCompletion(image, error)
+                    }
                 }
-            } else {
-                request.dispatchQueue.async {
-                    onCompletion(nil, error)
-                }
-            }
-        })
+            })
         return task
     }
     
@@ -314,21 +359,32 @@ private class NetworkImagesMethod: NetworkMethod {
     } 
 }
 
+// MARK: NetworkImage - Transform
+fileprivate extension NetworkImage {
+    func transform(_ request: NetworkImageRequest,
+                   _ shouldTransform: Bool?) {
+        guard shouldTransform == true else { return }
+        self.image = self.image.transform(request, true)
+    }
+}
+
 // MARK: UIImage - Transform
 extension UIImage {
-    fileprivate func transform(_ request: NetworkImageRequest) -> UIImage {
+    fileprivate func transform(_ request: NetworkImageRequest,
+                               _ shouldTransform: Bool?) -> UIImage {
         var image: UIImage = self
-        image = self.transformScale(request)
-        image = self.transformRadius(request)
-        image = self.transformFilter(request)
+        guard shouldTransform == true else { return image }
+        image = image.transformScale(request)
+        image = image.transformRadius(request)
+        image = image.transformFilter(request)
         return image
     }
     
     private func transformScale(_ request: NetworkImageRequest) -> UIImage {
         if let scale: CGSize = request.scaleToFit {
-            return self.scaled(toFit: scale)
+            return self.scaled(toFit: scale, scale: request.scale)
         } else if let scale: CGSize = request.scaleToFill {
-            return self.scaled(toFill: scale)
+            return self.scaled(toFill: scale, scale: request.scale)
         } else {
             return self
         }
@@ -336,10 +392,10 @@ extension UIImage {
     
     private func transformRadius(_ request: NetworkImageRequest) -> UIImage {
         if let isRounded: Bool = request.isRounded,
-            isRounded == true {
-            return self.circled()
+           isRounded == true {
+            return self.circled(scale: request.scale)
         } else if let radius: CGFloat = request.cornerRadius {
-            return self.rounded(radius: radius)
+            return self.rounded(radius: radius, scale: request.scale)
         } else {
             return self
         }
@@ -363,18 +419,18 @@ private extension UIImage {
             CGImageAlphaInfo.last,
             CGImageAlphaInfo.premultipliedFirst,
             CGImageAlphaInfo.premultipliedLast
-            ].contains(self.cgImage?.alphaInfo)
+        ].contains(self.cgImage?.alphaInfo)
     }
     
-    func circled() -> UIImage {
+    func circled(scale: CGFloat) -> UIImage {
         var image: UIImage = self
         let radius: CGFloat = min(self.size.width, self.size.height) / 2.0
         if self.size.width != self.size.height {
             let size: CGFloat = min(self.size.width, self.size.height)
-            image = image.scaled(toFill: CGSize(width: size, height: size))
+            image = image.scaled(toFill: CGSize(width: size, height: size), scale: scale)
         }
         
-        UIGraphicsBeginImageContextWithOptions(image.size, self.isOpaque, self.scale)
+        UIGraphicsBeginImageContextWithOptions(image.size, false, scale)
         let path = UIBezierPath(
             roundedRect: CGRect(origin: CGPoint.zero, size: image.size),
             cornerRadius: radius)
@@ -401,8 +457,9 @@ private extension UIImage {
         return UIImage(cgImage: cgImage, scale: self.scale, orientation: self.imageOrientation)
     }
     
-    func rounded(radius: CGFloat) -> UIImage {
-        UIGraphicsBeginImageContextWithOptions(self.size, self.isOpaque, self.scale)
+    func rounded(radius: CGFloat,
+                 scale: CGFloat) -> UIImage {
+        UIGraphicsBeginImageContextWithOptions(self.size, self.isOpaque, scale)
         let path = UIBezierPath(
             roundedRect: CGRect(origin: CGPoint.zero, size: self.size),
             cornerRadius: radius)
@@ -413,7 +470,8 @@ private extension UIImage {
         return image
     }
     
-    func scaled(toFit size: CGSize) -> UIImage {
+    func scaled(toFit size: CGSize,
+                scale: CGFloat) -> UIImage {
         guard size.width > 0 && size.height > 0 else { return self }
         let oldRatio: CGFloat = self.size.width / self.size.height
         let newRatio: CGFloat = size.width / size.height
@@ -426,14 +484,15 @@ private extension UIImage {
         let newOrigin = CGPoint(
             x: (size.width - newSize.width) / 2.0,
             y: (size.height - newSize.height) / 2.0)
-        UIGraphicsBeginImageContextWithOptions(size, self.isOpaque, self.scale)
+        UIGraphicsBeginImageContextWithOptions(size, self.isOpaque, scale)
         self.draw(in: CGRect(origin: newOrigin, size: newSize))
         let newImage: UIImage = UIGraphicsGetImageFromCurrentImageContext() ?? self
         UIGraphicsEndImageContext()
         return newImage
     }
     
-    func scaled(toFill size: CGSize) -> UIImage {
+    func scaled(toFill size: CGSize,
+                scale: CGFloat) -> UIImage {
         guard size.width > 0 && size.height > 0 else { return self }
         let oldRatio: CGFloat = self.size.width / self.size.height
         let newRatio: CGFloat = size.width / size.height
@@ -446,7 +505,7 @@ private extension UIImage {
         let newOrigin = CGPoint(
             x: (size.width - newSize.width) / 2.0,
             y: (size.height - newSize.height) / 2.0)
-        UIGraphicsBeginImageContextWithOptions(size, self.isOpaque, self.scale)
+        UIGraphicsBeginImageContextWithOptions(size, self.isOpaque, scale)
         self.draw(in: CGRect(origin: newOrigin, size: newSize))
         let newImage: UIImage = UIGraphicsGetImageFromCurrentImageContext() ?? self
         UIGraphicsEndImageContext()
@@ -482,20 +541,24 @@ public extension UIImageView {
                   onCompletion: NetworkImagesOnCompletion? = nil) {
         self.requestId = UUID().uuidString
         request.id = self.requestId
-        request.dispatchQueue = .main
-        DispatchQueue.global().async {
-            let networkImages: NetworkImagesProtocol = self.networkImages
-            let logger: Logger? = logger ?? networkImages.logger
-            let cache: NetworkCache? = cache ?? networkImages.cache
-            networkImages
-                .with(logger: logger)
-                .with(cache: cache)
-                .image(
-                    request: request,
-                    onProgress: onProgress,
-                    onSuccess: onSuccess,
-                    onError: onError,
-                    onCompletion: onCompletion)
+        if let image = NetworkImage(request.cache, .cache) {
+            onSuccess?(image)
+            onCompletion?(image, nil)
+        } else {
+            DispatchQueue.global().async {
+                let networkImages: NetworkImagesProtocol = self.networkImages
+                let logger: Logger? = logger ?? networkImages.logger
+                let cache: NetworkCache? = cache ?? networkImages.cache
+                networkImages
+                    .with(logger: logger)
+                    .with(cache: cache)
+                    .image(
+                        request: request,
+                        onProgress: onProgress,
+                        onSuccess: onSuccess,
+                        onError: onError,
+                        onCompletion: onCompletion)
+            }
         }
         self.request = request
     }

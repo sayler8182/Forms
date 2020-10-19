@@ -34,6 +34,26 @@ public extension UIViewController {
     func dismissKeyboard() {
         self.view.endEditing(true)
     }
+    
+    func disable() {
+        if let view = self.tabBarController?.view {
+            view.isUserInteractionEnabled = false
+        } else if let view = self.navigationController?.view {
+            view.isUserInteractionEnabled = false
+        } else if let view = self.view {
+            view.isUserInteractionEnabled = false
+        }
+    }
+    
+    func enable() {
+        if let view = self.tabBarController?.view {
+            view.isUserInteractionEnabled = true
+        } else if let view = self.navigationController?.view {
+            view.isUserInteractionEnabled = true
+        } else if let view = self.view {
+            view.isUserInteractionEnabled = true
+        }
+    }
 }
 
 // MARK: Builder

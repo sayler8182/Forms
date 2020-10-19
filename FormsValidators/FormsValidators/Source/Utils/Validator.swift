@@ -116,11 +116,11 @@ public struct ValidationResult {
 }
 
 // MARK: ValidationError
-public protocol ValidationErrorTypeProtocol {
+public protocol FormsValidationErrorTypeProtocol {
     var rawValue: String { get }
     var error: ValidationError { get }
 }
-public enum ValidationErrorType: String, ValidationErrorTypeProtocol {
+public enum FormsValidationErrorType: String, FormsValidationErrorTypeProtocol {
     case unknown
     case amount
     case amountMin
@@ -146,50 +146,50 @@ public enum ValidationErrorType: String, ValidationErrorTypeProtocol {
 }
 
 public class ValidationError {
-    static var unknownError = ValidationErrorType.unknown.error
-    static var amountError = ValidationErrorType.amount.error
-    static var emailError = ValidationErrorType.email.error
-    static var notEmptyError = ValidationErrorType.notEmpty.error
-    static var passwordError = ValidationErrorType.password.error
-    static var peselError = ValidationErrorType.pesel.error
-    static var peselShortError = ValidationErrorType.peselShort.error
-    static var peselLongError = ValidationErrorType.peselLong.error
-    static var phoneError = ValidationErrorType.phone.error
-    static var stringError = ValidationErrorType.string.error
+    static var unknownError = FormsValidationErrorType.unknown.error
+    static var amountError = FormsValidationErrorType.amount.error
+    static var emailError = FormsValidationErrorType.email.error
+    static var notEmptyError = FormsValidationErrorType.notEmpty.error
+    static var passwordError = FormsValidationErrorType.password.error
+    static var peselError = FormsValidationErrorType.pesel.error
+    static var peselShortError = FormsValidationErrorType.peselShort.error
+    static var peselLongError = FormsValidationErrorType.peselLong.error
+    static var phoneError = FormsValidationErrorType.phone.error
+    static var stringError = FormsValidationErrorType.string.error
     
     static func amountMinError(_ minAmount: String) -> ValidationError {
-        ValidationError(ValidationErrorType.amountMin, [minAmount])
+        ValidationError(FormsValidationErrorType.amountMin, [minAmount])
     }
     static func amountMaxError(_ maxAmount: String) -> ValidationError {
-        ValidationError(ValidationErrorType.amountMax, [maxAmount])
+        ValidationError(FormsValidationErrorType.amountMax, [maxAmount])
     }
     static func dateError(_ format: FormatProtocol) -> ValidationError {
-        ValidationError(ValidationErrorType.date, [format.format])
+        ValidationError(FormsValidationErrorType.date, [format.format])
     }
     static func formatError(_ format: FormatProtocol) -> ValidationError {
-        ValidationError(ValidationErrorType.format, [format.format])
+        ValidationError(FormsValidationErrorType.format, [format.format])
     }
     static func lengthError(_ length: String) -> ValidationError {
-        ValidationError(ValidationErrorType.length, [length])
+        ValidationError(FormsValidationErrorType.length, [length])
     }
     static func lengthMinError(_ minLength: String) -> ValidationError {
-        ValidationError(ValidationErrorType.lengthMin, [minLength])
+        ValidationError(FormsValidationErrorType.lengthMin, [minLength])
     }
     static func lengthMaxError(_ maxLength: String) -> ValidationError {
-        ValidationError(ValidationErrorType.lengthMax, [maxLength])
+        ValidationError(FormsValidationErrorType.lengthMax, [maxLength])
     }
     static func postCodeError(_ format: FormatProtocol) -> ValidationError {
-        ValidationError(ValidationErrorType.postCode, [format.format])
+        ValidationError(FormsValidationErrorType.postCode, [format.format])
     }
     
-    private let type: ValidationErrorTypeProtocol
+    private let type: FormsValidationErrorTypeProtocol
     private let parameters: [Any]
-    private lazy var translator: ValidatorTranslatorProtocol = {
-        let translator: ValidatorTranslatorProtocol? = Injector.main.resolveOrDefault("FormsValidators")
-        return translator ?? ValidatorTranslator()
+    private lazy var translator: FormsValidatorTranslatorProtocol = {
+        let translator: FormsValidatorTranslatorProtocol? = Injector.main.resolveOrDefault("FormsValidators")
+        return translator ?? FormsValidatorTranslator()
     }()
     
-    public init(_ type: ValidationErrorTypeProtocol,
+    public init(_ type: FormsValidationErrorTypeProtocol,
                 _ parameters: [Any] = []) {
         self.type = type
         self.parameters = parameters
@@ -200,51 +200,51 @@ public class ValidationError {
     }
 }
 
-public protocol ValidatorTranslatorProtocol {
-    func translate(_ type: ValidationErrorTypeProtocol,
+public protocol FormsValidatorTranslatorProtocol {
+    func translate(_ type: FormsValidationErrorTypeProtocol,
                    _ parameters: [Any]) -> String?
 }
-open class ValidatorTranslator: ValidatorTranslatorProtocol {
+open class FormsValidatorTranslator: FormsValidatorTranslatorProtocol {
     public init() { }
-    open func translate(_ type: ValidationErrorTypeProtocol,
+    open func translate(_ type: FormsValidationErrorTypeProtocol,
                         _ parameters: [Any]) -> String? {
         switch type.rawValue {
-        case ValidationErrorType.unknown.rawValue:
+        case FormsValidationErrorType.unknown.rawValue:
             return "Validator internal error"
-        case ValidationErrorType.amount.rawValue:
+        case FormsValidationErrorType.amount.rawValue:
             return "Incorrect amount format"
-        case ValidationErrorType.email.rawValue:
+        case FormsValidationErrorType.email.rawValue:
             return "Incorrect email format"
-        case ValidationErrorType.notEmpty.rawValue:
+        case FormsValidationErrorType.notEmpty.rawValue:
             return "This field is required"
-        case ValidationErrorType.password.rawValue:
+        case FormsValidationErrorType.password.rawValue:
             return "Password is too weak"
-        case ValidationErrorType.pesel.rawValue:
+        case FormsValidationErrorType.pesel.rawValue:
             return "Incorrect pesel format"
-        case ValidationErrorType.peselShort.rawValue:
+        case FormsValidationErrorType.peselShort.rawValue:
             return "Pesel number is too short"
-        case ValidationErrorType.peselLong.rawValue:
+        case FormsValidationErrorType.peselLong.rawValue:
             return "Pesel number is too long"
-        case ValidationErrorType.phone.rawValue:
+        case FormsValidationErrorType.phone.rawValue:
             return "Incorrect phone number format"
-        case ValidationErrorType.string.rawValue:
+        case FormsValidationErrorType.string.rawValue:
             return "Incorrect text format"
             
-        case ValidationErrorType.amountMin.rawValue:
+        case FormsValidationErrorType.amountMin.rawValue:
             return "Minimum allowed amount is \(parameters[safe: 0, or: ""])"
-        case ValidationErrorType.amountMax.rawValue:
+        case FormsValidationErrorType.amountMax.rawValue:
             return "Maximum allowed amount is \(parameters[safe: 0, or: ""])"
-        case ValidationErrorType.date.rawValue:
+        case FormsValidationErrorType.date.rawValue:
             return "Incorrect date format (\(parameters[safe: 0, or: ""]))"
-        case ValidationErrorType.format.rawValue:
+        case FormsValidationErrorType.format.rawValue:
             return "Incorrect format (\(parameters[safe: 0, or: ""]))"
-        case ValidationErrorType.length.rawValue:
+        case FormsValidationErrorType.length.rawValue:
             return "Allowed length is \(parameters[safe: 0, or: ""]) characters"
-        case ValidationErrorType.lengthMin.rawValue:
+        case FormsValidationErrorType.lengthMin.rawValue:
             return "Minimum allowed length is \(parameters[safe: 0, or: ""]) characters"
-        case ValidationErrorType.lengthMax.rawValue:
+        case FormsValidationErrorType.lengthMax.rawValue:
             return "Maximum allowed length is \(parameters[safe: 0, or: ""]) characters"
-        case ValidationErrorType.postCode.rawValue:
+        case FormsValidationErrorType.postCode.rawValue:
             return "Incorrect post code format (\(parameters[safe: 0, or: ""]))"
             
         default:

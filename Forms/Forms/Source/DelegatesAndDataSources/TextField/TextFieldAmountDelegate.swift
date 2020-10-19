@@ -52,13 +52,13 @@ public class TextFieldAmountDelegate: TextFieldDelegate {
     public func textFieldDidEndEditing(_ textField: UITextField) {
         var amount: Double = textField.text.asDouble.or(0)
         amount = self.normalizeValue(double: amount)
-        textField.text = amount.formatted(suffix: self.currency)
+        textField.text = amount.formatted(suffix: self.currency, maxFractionDigits: maxFraction)
     }
     
     private func validateFormat(text: String) -> Bool {
         let text = text.replacingOccurrences(of: ",", with: ".")
         let parts: [String] = text.components(separatedBy: ".")
-        if parts.count > self.maxFraction { return false }
+        if parts.isEmpty { return false }
         if parts[0].count > self.maxDecimal { return false }
         if parts.count > 1 && parts[1].count > self.maxFraction { return false }
         return true
@@ -71,8 +71,9 @@ public class TextFieldAmountDelegate: TextFieldDelegate {
             text.hasSuffix(currency) {
             text.removeLast(currency.count)
         }
-        if text.hasSuffix(".00") {
-            text.removeLast(3)
+        let sufix: String = "." + String(repeating: "0", count: self.maxFraction)
+        if text.hasSuffix(sufix) {
+            text.removeLast(sufix.count)
         }
         return text
     }

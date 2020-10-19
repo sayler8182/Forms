@@ -46,6 +46,7 @@ public enum HTTPMethod: String {
     case POST = "POST"
     case PUT = "PUT"
     case DELETE = "DELETE"
+    case PATCH = "PATCH"
 }
 
 // MARK: NetworkSessionProtocol
@@ -56,13 +57,13 @@ public protocol NetworkSessionProtocol {
               logger: Logger?,
               cache: NetworkCache?,
               onProgress: NetworkOnProgress?,
-              onCompletion: @escaping NetworkOnGenericCompletion<Data>) -> URLSessionDataTask?
+              onCompletion: @escaping (_ response: URLResponse?, _ data: Data?, _ error: NetworkError?) -> Void) -> URLSessionDataTask?
 }
 
 public extension NetworkSessionProtocol {
     func call(request: URLRequest,
               onProgress: NetworkOnProgress?,
-              onCompletion: @escaping NetworkOnGenericCompletion<Data>) -> URLSessionDataTask? {
+              onCompletion: @escaping (_ response: URLResponse?, _ data: Data?, _ error: NetworkError?) -> Void) -> URLSessionDataTask? {
         self.call(
             request: request,
             logger: nil,
@@ -90,20 +91,20 @@ public class FileNetworkSession: NetworkSessionProtocol {
                      logger: Logger?,
                      cache: NetworkCache?,
                      onProgress: NetworkOnProgress?,
-                     onCompletion: @escaping NetworkOnGenericCompletion<Data>) -> URLSessionDataTask? {
+                     onCompletion: @escaping (_ response: URLResponse?, _ data: Data?, _ error: NetworkError?) -> Void) -> URLSessionDataTask? {
         log(request, logger)
         DispatchQueue.global().asyncAfter(deadline: DispatchTime.now() + self.delay) {
             let _filename: String? = self.filename ?? request.url?.lastPathComponent
             guard let filename: String = _filename,
-                let url: URL = Bundle.main.url(forResource: filename, withExtension: "json"),
-                let data: Data = try? Data(contentsOf: url) else {
-                    let networkError: NetworkError = .connectionFailure
-                    log(request, networkError, logger)
-                    onCompletion(nil, networkError)
-                    return
+                  let url: URL = Bundle.main.url(forResource: filename, withExtension: "json"),
+                  let data: Data = try? Data(contentsOf: url) else {
+                let networkError: NetworkError = .connectionFailure
+                log(request, networkError, logger)
+                onCompletion(nil, nil, networkError)
+                return
             }
             log(request, data, logger)
-            onCompletion(data, nil)
+            onCompletion(nil, data, nil)
         }
         return nil
     }
@@ -125,22 +126,22 @@ public class NetworkSession: NetworkSessionProtocol {
                      logger: Logger?,
                      cache: NetworkCache?,
                      onProgress: NetworkOnProgress?,
-                     onCompletion: @escaping NetworkOnGenericCompletion<Data>) -> URLSessionDataTask? {
+                     onCompletion: @escaping (_ response: URLResponse?, _ data: Data?, _ error: NetworkError?) -> Void) -> URLSessionDataTask? {
         let logger: Logger? = logger ?? self.logger
         let cache: NetworkCache? = cache ?? self.cache
         let hash: Any = request.hashValue
         log(request, logger)
         if let cache: NetworkCache = cache,
-            let data: Data = try? cache.read(hash: hash, logger: logger) {
+           let data: Data = try? cache.read(hash: hash, logger: logger) {
             log(request, data, logger)
-            onCompletion(data, nil)
+            onCompletion(nil, data, nil)
             return nil
         }
         
         guard NetworkReachability.isConnected else {
             let networkError: NetworkError = .connectionFailure
             log(request, networkError, logger)
-            onCompletion(nil, networkError)
+            onCompletion(nil, nil, networkError)
             return nil
         }
         
@@ -168,7 +169,7 @@ internal class SessionDelegate: NSObject, URLSessionDelegate, URLSessionDataDele
     private var data: Data
     private let successStatusCode: Range<Int>
     private let onProgress: NetworkOnProgress?
-    private let onCompletion: NetworkOnGenericCompletion<Data>
+    private let onCompletion: (_ response: URLResponse?, _ data: Data?, _ error: NetworkError?) -> Void
     
     private var totalSize: Int64 = 0
     private var size: Int64 {
@@ -184,7 +185,7 @@ internal class SessionDelegate: NSObject, URLSessionDelegate, URLSessionDataDele
          _ logger: Logger?,
          _ cache: NetworkCache?,
          _ onProgress: NetworkOnProgress?,
-         _ onCompletion: @escaping NetworkOnGenericCompletion<Data>) {
+         _ onCompletion: @escaping (_ response: URLResponse?, _ data: Data?, _ error: NetworkError?) -> Void) {
         self.requestHash = requestHash
         self.logger = logger
         self.cache = cache
@@ -200,23 +201,23 @@ internal class SessionDelegate: NSObject, URLSessionDelegate, URLSessionDataDele
                     didCompleteWithError error: Error?) {
         self.onProgress?(self.size, self.totalSize, 1.0)
         guard error == nil,
-            let response = task.response as? HTTPURLResponse else {
-                let networkError: NetworkError = NetworkError(error) ?? NetworkError.incorrectResponseFormat
-                log(task, networkError, error, self.logger)
-                self.onCompletion(nil, networkError)
-                return
+              let response = task.response as? HTTPURLResponse else {
+            let networkError: NetworkError = NetworkError(error) ?? NetworkError.incorrectResponseFormat
+            log(task, networkError, error, self.logger)
+            self.onCompletion(task.response, self.data, networkError)
+            return
         }
         
         guard self.successStatusCode ~= response.statusCode else {
             let networkError: NetworkError = .errorStatusCode(response.statusCode)
             log(response, networkError, self.logger)
-            self.onCompletion(nil, networkError)
+            self.onCompletion(response, self.data, networkError)
             return
         }
         
         log(response, self.data, self.logger)
         try? self.cache?.write(hash: self.requestHash, data: self.data, logger: self.logger)
-        self.onCompletion(self.data, nil)
+        self.onCompletion(response, self.data, nil)
     }
     
     func urlSession(_ session: URLSession,
@@ -248,19 +249,21 @@ internal class SessionDelegate: NSObject, URLSessionDelegate, URLSessionDataDele
 
 private func log(_ request: URLRequest,
                  _ logger: Logger?) {
-    guard let logger: Logger = logger else { return }
+    guard let logger = logger as? NetworkConsoleLogger else { return }
+    guard !logger.skipRequest else { return }
     var string: String = ""
-    string += "\nREQUEST"
+    string += "\nREQUEST - \(request.httpMethod ?? "GET")"
     string += "\n" + (request.url?.absoluteString ?? "")
     if let headers = request.allHTTPHeaderFields,
-        !headers.isEmpty {
+       !headers.isEmpty,
+       !logger.skipHeaders {
         string += "\n\t" + "HEADERS:"
         for header in headers {
             string += "\n\t\t" + header.key + ": " + header.value
         }
     }
     if let body = request.httpBody,
-        !body.isEmpty {
+       !body.isEmpty {
         string += "\n\t" + "BODY:"
         string += "" + dataToString(body).replacingOccurrences(of: "\n", with: "\n\t")
     }
@@ -270,12 +273,14 @@ private func log(_ request: URLRequest,
 private func log(_ response: HTTPURLResponse,
                  _ body: Data,
                  _ logger: Logger?) {
-    guard let logger: Logger = logger else { return }
+    guard let logger = logger as? NetworkConsoleLogger else { return }
+    guard !logger.skipResponse else { return }
     var string: String = ""
     string += "\nRESPONSE"
     string += "\n" + (response.url?.absoluteString ?? "")
     let headers = response.allHeaderFields
-    if !headers.isEmpty {
+    if !headers.isEmpty,
+       !logger.skipHeaders {
         string += "\n\t" + "HEADERS:"
         for header in headers {
             string += "\n\t\t" + header.key.description + ": " + "\(header.value)"
@@ -291,12 +296,14 @@ private func log(_ response: HTTPURLResponse,
 private func log(_ request: URLRequest,
                  _ body: Data,
                  _ logger: Logger?) {
-    guard let logger: Logger = logger else { return }
+    guard let logger = logger as? NetworkConsoleLogger else { return }
+    guard !logger.skipCache else { return }
     var string: String = ""
     string += "\nCACHE"
     string += "\n" + (request.url?.absoluteString ?? "")
     if let headers = request.allHTTPHeaderFields,
-        !headers.isEmpty {
+       !headers.isEmpty,
+       !logger.skipHeaders {
         string += "\n\t" + "HEADERS:"
         for header in headers {
             string += "\n\t\t" + header.key + ": " + header.value
@@ -312,7 +319,7 @@ private func log(_ request: URLRequest,
 private func log(_ request: URLRequest,
                  _ networkError: NetworkError,
                  _ logger: Logger?) {
-    guard let logger: Logger = logger else { return }
+    guard let logger = logger as? NetworkConsoleLogger else { return }
     var string: String = ""
     string += "\nERROR: \(networkError.debugDescription)"
     string += "\n" + (request.url?.absoluteString ?? "")
@@ -323,7 +330,7 @@ private func log(_ task: URLSessionTask,
                  _ networkError: NetworkError,
                  _ error: Error?,
                  _ logger: Logger?) {
-    guard let logger: Logger = logger else { return }
+    guard let logger = logger as? NetworkConsoleLogger else { return }
     var string: String = ""
     if networkError.isCancelled {
         string += "\nCANCELLED"
@@ -342,7 +349,7 @@ private func log(_ task: URLSessionTask,
 private func log(_ response: HTTPURLResponse,
                  _ networkError: NetworkError,
                  _ logger: Logger?) {
-    guard let logger: Logger = logger else { return }
+    guard let logger = logger as? NetworkConsoleLogger else { return }
     var string: String = ""
     string += "\nERROR: \(networkError.debugDescription)"
     string += "\n" + (response.url?.absoluteString ?? "")
@@ -353,7 +360,9 @@ private func log(_ size: Int64,
                  _ totalSize: Int64,
                  _ progress: Double,
                  _ logger: Logger?) {
-    guard let logger: Logger = logger else { return }
+    guard let logger = logger as? NetworkConsoleLogger else { return }
+    guard !logger.skipProgress else { return }
+    guard totalSize >= 0 else { return }
     var string: String = ""
     string += size == 0 ? "\n" : ""
     string += "PROGRESS: \(size) / \(totalSize) - \(Int(progress * 100))%"

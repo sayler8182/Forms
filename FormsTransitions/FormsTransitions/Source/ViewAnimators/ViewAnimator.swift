@@ -111,15 +111,42 @@ public class ViewAnimator {
         let fromViews: [UIView] = self.fromViews
         let toViews: [UIView] = self.toViews
         for fromView in fromViews {
-            guard let toView: UIView = toViews.first(where: { $0.viewKey == fromView.viewKey }) else { continue }
-            let fromFrame: CGRect = self.frame(for: fromView, in: self.fromView)
-            let toFrame: CGRect = self.frame(for: toView, in: self.toView)
-            let match: T = type.init(
-                fromView: fromView,
-                fromFrame: fromFrame,
-                toView: toView,
-                toFrame: toFrame)
-            matches.append(match)
+            if let toView: UIView = toViews.last(where: { $0.viewKey == fromView.viewKey }) {
+                let fromFrame: CGRect = self.frame(for: fromView, in: self.fromView)
+                let toFrame: CGRect = self.frame(for: toView, in: self.toView)
+                let match: T = type.init(
+                    fromView: fromView,
+                    fromFrame: fromFrame,
+                    toView: toView,
+                    toFrame: toFrame)
+                matches.append(match)
+            } else if fromView.viewOptions.contains(.forceMatch) {
+                let toView = UIView(frame: fromView.frame)
+                toView.backgroundColor = UIColor.clear
+                let fromFrame: CGRect = self.frame(for: fromView, in: self.fromView)
+                let toFrame: CGRect = fromFrame
+                let match: T = type.init(
+                    fromView: fromView,
+                    fromFrame: fromFrame,
+                    toView: toView,
+                    toFrame: toFrame)
+                matches.append(match)
+            }
+        }
+        for toView in toViews {
+            if let _: UIView = fromViews.last(where: { $0.viewKey == toView.viewKey }) {
+            } else if toView.viewOptions.contains(.forceMatch) {
+                let fromView = UIView(frame: toView.frame)
+                fromView.backgroundColor = UIColor.clear
+                let toFrame: CGRect = self.frame(for: toView, in: self.toView)
+                let fromFrame: CGRect = toFrame
+                let match: T = type.init(
+                    fromView: fromView,
+                    fromFrame: fromFrame,
+                    toView: toView,
+                    toFrame: toFrame)
+                matches.append(match)
+            }
         }
         return matches
     }
@@ -130,9 +157,18 @@ public class ViewAnimator {
     }
     
     private func animatedSubviews(in view: UIView) -> [UIView] {
+        guard !view.viewIsCustomSnapshot else { return [] }
         var views: [UIView] = []
-        if view.viewKey != nil {
-            views.append(view)
+        if view.viewKey != nil || !view.viewOptions.isEmpty {
+            if let snapshot: CustomSnapshotView = view as? CustomSnapshotView {
+                snapshot.customSnapshot.viewKey = view.viewKey
+                snapshot.customSnapshot.viewOptions = view.viewOptions
+                snapshot.customSnapshot.viewContentMode = view.viewContentMode
+                snapshot.customSnapshot.viewIsCustomSnapshot = true
+                views.append(snapshot.customSnapshot)
+            } else {
+                views.append(view)
+            }
         }
         let subviews: [UIView] = view.subviews
             .flatMap { self.animatedSubviews(in: $0) }

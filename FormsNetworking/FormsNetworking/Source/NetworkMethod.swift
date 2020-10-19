@@ -27,7 +27,8 @@ public protocol NetworkMethod: class {
     var content: NetworkMethodContent? { get }
     var method: HTTPMethod { get }
     var url: URL! { get }
-    var interceptor: NetworkRequestInterceptor? { get }
+    var requestInterceptor: NetworkRequestInterceptor? { get }
+    var responseInterceptor: NetworkResponseInterceptor? { get }
     var parser: NetworkResponseParser? { get }
     var request: NetworkRequest { get }
     var isCached: Bool { get }
@@ -60,7 +61,10 @@ public extension NetworkMethod {
     var method: HTTPMethod {
         return .GET
     }
-    var interceptor: NetworkRequestInterceptor? {
+    var requestInterceptor: NetworkRequestInterceptor? {
+        return nil
+    }
+    var responseInterceptor: NetworkResponseInterceptor? {
         return nil
     }
     var parser: NetworkResponseParser? {
@@ -72,7 +76,8 @@ public extension NetworkMethod {
             .with(method: self.method)
             .with(headers: self.content?.headers)
             .with(body: self.content?.body)
-            .with(interceptor: self.interceptor)
+            .with(requestInterceptor: self.requestInterceptor)
+            .with(responseInterceptor: self.responseInterceptor)
     }
     var isCached: Bool {
         self.provider.isCached(request: self.request)

@@ -46,6 +46,7 @@ public extension PHAuthorizationStatus {
         case .denied: return .denied
         case .authorized: return .authorized
         case .restricted: return .restricted
+        case .limited: return .limited
         @unknown default: return .unknown
         }
     }

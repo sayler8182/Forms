@@ -11,8 +11,8 @@ import UIKit
 
 // MARK: TitleTextView
 open class TitleTextView: TextView {
-    open var isBottomDynamic: Bool = true {
-        didSet { self.updateIsBottomDynamic() }
+    open var isDynamic: Bool = true {
+        didSet { self.updateIsDynamic() }
     }
     
     override open func setupBackgroundView() {
@@ -87,24 +87,19 @@ open class TitleTextView: TextView {
         self.infoLabel.constraint(to: self.backgroundView, position: .bottom)?.constant = -edgeInset.bottom
     }
 
-    open func updateIsBottomDynamic() {
+    open func updateIsDynamic() {
         self.backgroundView.constraint(to: self, position: .bottom)?.isActive = false
-        if self.isBottomDynamic {
-            self.backgroundView.anchors([
-                Anchor.to(self).bottom.greaterThanOrEqual.priority(.defaultLow)
-            ])
-        } else if !self.isBottomDynamic {
-            self.backgroundView.anchors([
-                Anchor.to(self).bottom.greaterThanOrEqual
-            ])
-        }
+        let priority: UILayoutPriority = self.isDynamic ? .defaultLow : .required
+        self.backgroundView.anchors([
+            Anchor.to(self).bottom.greaterThanOrEqual.priority(priority)
+        ])
     }
 }
 
 // MARK: Builder
 public extension TitleTextView {
-    func with(isBottomDynamic: Bool) -> Self {
-        self.isBottomDynamic = isBottomDynamic
+    func with(isDynamic: Bool) -> Self {
+        self.isDynamic = isDynamic
         return self
     }
 }

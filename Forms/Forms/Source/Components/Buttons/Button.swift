@@ -7,35 +7,15 @@
 //
 
 import FormsAnchor
+import FormsUtilsUI
 import UIKit
 
-// MARK: State
-public extension Button {
-    struct State<T>: FormsComponentStateActiveSelectedDisabledLoading {
-        public var active: T!
-        public var selected: T!
-        public var disabled: T!
-        public var loading: T!
-        
-        public init() { }
-    }
-}
-
 // MARK: Button
-open class Button: FormsComponent, Clickable, FormsComponentWithLoading, FormsComponentWithMarginEdgeInset, FormsComponentWithPaddingEdgeInset {
-    public let backgroundView = UIView()
-        .with(isUserInteractionEnabled: true)
-        .with(clipsToBounds: true)
+open class Button: ClickableView {
+    public let clickableView = UnShimmerableView()
     public let borderView = UnShimmerableView()
     public let titleLabel = UnShimmerableLabel()
-    public lazy var loaderView = UIActivityIndicatorView()
-        .with(hidesWhenStopped: true)
-    public let gestureRecognizer = UILongPressGestureRecognizer()
     
-    open var animationTime: TimeInterval = 0.1
-    open var backgroundColors: State<UIColor?> = State<UIColor?>(Theme.Colors.primaryLight) {
-        didSet { self.updateState() }
-    }
     open var borderColors: State<UIColor?> = State<UIColor?>(UIColor.clear) {
         didSet { self.updateState() }
     }
@@ -50,22 +30,27 @@ open class Button: FormsComponent, Clickable, FormsComponentWithLoading, FormsCo
             self.borderView.layer.cornerRadius = newValue
         }
     }
-    open var height: CGFloat = UITableView.automaticDimension
-    open var isEnabled: Bool = true {
-        didSet { self.updateGesture() }
+    open var image: UIImage? = nil {
+        didSet { self.updateImage() }
     }
-    open var isLoading: Bool = false {
-        didSet { self.updateGesture() }
+    open var imageSize: CGSize? = nil {
+        didSet { self.updateImage() }
     }
-    open var marginEdgeInset: UIEdgeInsets = UIEdgeInsets(0) {
-        didSet { self.updateMarginEdgeInset() }
+    open var lineBreakMode: NSLineBreakMode {
+        get { return self.titleLabel.lineBreakMode }
+        set { self.titleLabel.lineBreakMode = newValue }
     }
-    open var paddingEdgeInset: UIEdgeInsets = UIEdgeInsets(0) {
-        didSet { self.updatePaddingEdgeInset() }
+    open var lineBreakStrategy: NSParagraphStyle.LineBreakStrategy {
+        get { return self.titleLabel.lineBreakStrategy }
+        set { self.titleLabel.lineBreakStrategy = newValue }
     }
     open var title: String? {
         get { return self.titleLabel.text }
         set { self.titleLabel.text = newValue }
+    }
+    open var titleAttributed: NSAttributedString? {
+        get { return self.titleLabel.attributedText }
+        set { self.titleLabel.attributedText = newValue }
     }
     open var titleColors: State<UIColor?> = State<UIColor?>(Theme.Colors.primaryDark) {
         didSet { self.updateState() }
@@ -82,200 +67,91 @@ open class Button: FormsComponent, Clickable, FormsComponentWithLoading, FormsCo
         set { self.titleLabel.textAlignment = newValue }
     }
     
-    public var onClick: (() -> Void)? = nil
-    
-    private (set) var state: FormsComponentStateType = .active
-    
     override open func setupView() {
-        self.setupComponentView()
-        self.setupBackgroundView()
+        self.setupClickableView()
         self.setupBorderView()
         self.setupTitleLabel()
         super.setupView()
-    }
-    
-    override open func enable(animated: Bool) {
-        if !self.isEnabled {
-            self.isEnabled = true
-        }
-        self.setState(.active, animated: animated)
-    }
-    
-    override open func disable(animated: Bool) {
-        if self.isEnabled {
-            self.isEnabled = false
-        }
-        self.setState(.disabled, animated: animated)
-    }
-    
-    open func startLoading(animated: Bool = true) {
-        guard !self.isLoading else { return }
-        self.isLoading = true
-        self.setState(.loading, animated: animated)
-        self.addLoader(animated: animated)
-    }
-    
-    open func stopLoading(animated: Bool = true) {
-        guard self.isLoading else { return }
-        self.isLoading = false
-        self.setState(.active, animated: animated)
-        self.removeLoader(animated: animated)
     }
     
     override open func componentHeight() -> CGFloat {
         return self.height
     }
     
-    override open func setupActions() {
-        super.setupActions()
-        self.gestureRecognizer.minimumPressDuration = 0.0
-        self.gestureRecognizer.addTarget(self, action: #selector(handleGesture))
-        self.backgroundView.addGestureRecognizer(self.gestureRecognizer)
-    }
-    
-    @objc
-    private func handleGesture(recognizer: UILongPressGestureRecognizer) {
-        switch recognizer.state {
-        case .began:
-            self.setState(.selected, animated: true) 
-        case .changed:
-            let point: CGPoint = recognizer.location(in: self.backgroundView)
-            if self.backgroundView.bounds.contains(point) {
-                self.setState(.selected, animated: true)
-            } else {
-                self.setState(.active, animated: true)
-            }
-        case .ended:
-            self.setState(.active, animated: true)
-            let point: CGPoint = recognizer.location(in: self.backgroundView)
-            if self.backgroundView.bounds.contains(point) {
-                self.onClick?()
-            }
-        default:
-            self.setState(.active, animated: true)
-        }
-    }
-    
-    open func setupComponentView() {
-        self.anchors([
-            Anchor.to(self).height(self.minHeight).greaterThanOrEqual,
-            Anchor.to(self).height(self.maxHeight).lessThanOrEqual
-        ])
-    }
-    
-    open func setupBackgroundView() {
-        self.backgroundView.frame = self.bounds
-        self.addSubview(self.backgroundView, with: [
-            Anchor.to(self).fill
-        ])
+    open func setupClickableView() {
+        self.content = self.clickableView
     }
     
     open func setupBorderView() {
-        self.borderView.frame = self.backgroundView.bounds
-        self.backgroundView.addSubview(self.borderView, with: [
-            Anchor.to(self.backgroundView).fill
+        self.borderView.frame = self.clickableView.bounds
+        self.clickableView.addSubview(self.borderView, with: [
+            Anchor.to(self.clickableView).fill
         ])
     }
     
     open func setupTitleLabel() {
-        self.titleLabel.frame = self.backgroundView.bounds
-        self.backgroundView.addSubview(self.titleLabel, with: [
-            Anchor.to(self.backgroundView).fill
+        self.titleLabel.frame = self.clickableView.bounds
+        self.clickableView.addSubview(self.titleLabel, with: [
+            Anchor.to(self.clickableView).fill
         ])
     }
     
-    open func updateMarginEdgeInset() {
-        let edgeInset: UIEdgeInsets = self.marginEdgeInset
-        self.backgroundView.frame = self.bounds.with(inset: edgeInset)
-        self.backgroundView.constraint(to: self, position: .top)?.constant = edgeInset.top
-        self.backgroundView.constraint(to: self, position: .bottom)?.constant = -edgeInset.bottom
-        self.backgroundView.constraint(to: self, position: .leading)?.constant = edgeInset.leading
-        self.backgroundView.constraint(to: self, position: .trailing)?.constant = -edgeInset.trailing
+    open func updateImage() {
+        guard let image: UIImage = self.image else { return }
+        guard let imageSize: CGSize = self.imageSize else { return }
+        self.titleAttributed = NSAttributedString(
+            attachment: NSTextAttachment(
+                image: image,
+                bounds: CGRect(
+                    origin: CGPoint.zero,
+                    size: imageSize)))
     }
     
-    open func updatePaddingEdgeInset() {
+    override open func updatePaddingEdgeInset() {
         let edgeInset: UIEdgeInsets = self.paddingEdgeInset
-        self.titleLabel.frame = self.backgroundView.bounds.with(inset: edgeInset)
-        self.titleLabel.constraint(to: self.backgroundView, position: .top)?.constant = edgeInset.top
-        self.titleLabel.constraint(to: self.backgroundView, position: .bottom)?.constant = -edgeInset.bottom
-        self.titleLabel.constraint(to: self.backgroundView, position: .leading)?.constant = edgeInset.leading
-        self.titleLabel.constraint(to: self.backgroundView, position: .trailing)?.constant = -edgeInset.trailing
+        self.titleLabel.frame = self.clickableView.bounds.with(inset: edgeInset)
+        self.titleLabel.constraint(to: self.clickableView, position: .top)?.constant = edgeInset.top
+        self.titleLabel.constraint(to: self.clickableView, position: .bottom)?.constant = -edgeInset.bottom
+        self.titleLabel.constraint(to: self.clickableView, position: .leading)?.constant = edgeInset.leading
+        self.titleLabel.constraint(to: self.clickableView, position: .trailing)?.constant = -edgeInset.trailing
     }
     
-    open func updateGesture() {
-        self.gestureRecognizer.isEnabled = self.isEnabled && !self.isLoading
-        if self.isEnabled && !self.isLoading {
-            self.enable(animated: false)
-        } else if !self.isEnabled && !self.isLoading {
-            self.disable(animated: false)
-        } else if self.isLoading {
-            self.startLoading(animated: false)
-        } else if !self.isLoading {
-            self.stopLoading(animated: false)
-        }
-    }
-    
-    override public func updateState() {
-        guard !self.isBatchUpdateInProgress else { return }
-        self.setState(self.state, animated: false, force: true)
-    }
-    
-    public func setState(_ state: FormsComponentStateType,
-                         animated: Bool,
-                         force: Bool = false) {
-        guard self.state != state || force else { return }
-        self.animation(animated, duration: self.animationTime) {
-            self.setStateAnimation(state)
-        }
-        self.state = state
-    }
-    
-    open func setStateAnimation(_ state: FormsComponentStateType) {
-        self.backgroundView.backgroundColor = self.backgroundColors.value(for: state)
+    override open func setStateAnimation(_ state: FormsComponentStateType) {
+        super.setStateAnimation(state)
         self.borderView.layer.borderColor = self.borderColors.value(for: state)?.cgColor
         self.titleLabel.textColor = self.titleColors.value(for: state)
         self.titleLabel.font = self.titleFonts.value(for: state)
         self.loaderView.color = self.titleColors.value(for: state)
     }
     
-    open func addLoader(animated: Bool) {
-        self.loaderView.startAnimating()
-        self.loaderView.center = self.backgroundView.center
-        self.backgroundView.addSubview(self.loaderView, with: [
-            Anchor.to(self.backgroundView).center
-        ])
-        self.animation(
-            animated,
-            duration: self.animationTime * 3,
+    override open func addLoader(animated: Bool,
+                                 animations: (() -> Void)? = nil,
+                                 completion: ((Bool) -> Void)? = nil) {
+        super.addLoader(
+            animated: animated,
             animations: {
                 self.titleLabel.alpha = 0
-                self.loaderView.alpha = 1
-        }, completion: { status in
-            self.titleLabel.isHidden = status
-        })
+            },
+            completion: { status in
+                self.titleLabel.isHidden = status
+            })
     }
     
-    open func removeLoader(animated: Bool) {
+    override open func removeLoader(animated: Bool,
+                                    animations: (() -> Void)? = nil,
+                                    completion: ((Bool) -> Void)? = nil) {
         self.titleLabel.isHidden = false
-        self.animation(
-            animated,
-            duration: self.animationTime * 3,
+        super.removeLoader(
+            animated: animated,
             animations: {
                 self.titleLabel.alpha = 1
-                self.loaderView.alpha = 0
-        }, completion: { _ in
-            self.loaderView.stopAnimating()
-            self.loaderView.removeFromSuperview()
-        })
+            },
+            completion: { _ in })
     }
 }
 
 // MARK: Builder
 public extension Button {
-    func with(animationTime: TimeInterval) -> Self {
-        self.animationTime = animationTime
-        return self
-    }
     @objc
     override func with(borderColor: UIColor?) -> Self {
         self.borderColors = State<UIColor?>(borderColor)
@@ -286,25 +162,36 @@ public extension Button {
         return self
     }
     @objc
-    override func with(backgroundColor: UIColor?) -> Self {
-        self.backgroundColors = State<UIColor?>(backgroundColor)
-        return self
-    }
-    func with(backgroundColors: State<UIColor?>) -> Self {
-        self.backgroundColors = backgroundColors
-        return self
-    }
-    @objc
     override func with(height: CGFloat) -> Self {
         self.height = height
         return self
     }
-    func with(isEnabled: Bool) -> Self {
-        self.isEnabled = isEnabled
+    func with(image: UIImage?) -> Self {
+        self.image = image
         return self
-    } 
+    }
+    func with(imageSize: CGSize?) -> Self {
+        self.imageSize = imageSize
+        return self
+    }
+    func with(lineBreakMode: NSLineBreakMode) -> Self {
+        self.lineBreakMode = lineBreakMode
+        return self
+    }
+    func with(lineBreakStrategy: NSParagraphStyle.LineBreakStrategy) -> Self {
+        self.lineBreakStrategy = lineBreakStrategy
+        return self
+    }
     func with(title: String?) -> Self {
         self.title = title
+        return self
+    }
+    func with(titleAttributed: AttributedString?) -> Self {
+        self.titleAttributed = titleAttributed?.string
+        return self
+    }
+    func with(titleAttributed: NSAttributedString?) -> Self {
+        self.titleAttributed = titleAttributed
         return self
     }
     func with(titleColor: UIColor?) -> Self {

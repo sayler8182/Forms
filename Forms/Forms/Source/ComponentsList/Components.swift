@@ -18,10 +18,12 @@ public enum Components {
     public typealias label = ComponentsLabels
     public typealias navigationBar = ComponentsNavigationBars
     public typealias other = ComponentsOthers
+    public typealias pickers = ComponentsPickers
     public typealias progress = ComponentsProgresses
     public typealias section = ComponentsSections
     public typealias segment = ComponentsSegments
     public typealias selector = ComponentsSelectors
+    public typealias sliders = ComponentsSliders
     public typealias `switch` = ComponentsSwitches
     public typealias utils = ComponentsUtils
 }

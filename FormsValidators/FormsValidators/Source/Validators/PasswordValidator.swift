@@ -22,6 +22,7 @@ public class PasswordValidator: Validator {
                 isRequired: Bool = true) {
         self.strength = strength
         super.init(isRequired: isRequired)
+        self.dependencies = [NotEmptyValidator(isRequired: isRequired)]
     }
     
     override public init(isRequired: Bool = true) {

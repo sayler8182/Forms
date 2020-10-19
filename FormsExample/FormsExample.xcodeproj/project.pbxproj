@@ -59,13 +59,15 @@
 		715FE7B02507608000713AC9 /* Font-Ion.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 715FE7AD2507608000713AC9 /* Font-Ion.ttf */; };
 		715FE7B12507608000713AC9 /* Font-Material.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 715FE7AE2507608000713AC9 /* Font-Material.ttf */; };
 		715FE7B22507608000713AC9 /* Font-Awesome.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 715FE7AF2507608000713AC9 /* Font-Awesome.ttf */; };
-		719AE5B12462C49C00A39B0E /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 719AE5692462C0F900A39B0E /* FBSDKCoreKit.framework */; };
-		719AE5B22462C49C00A39B0E /* FBSDKCoreKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 719AE5692462C0F900A39B0E /* FBSDKCoreKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		719AE5B32462C49D00A39B0E /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 719AE55C2462C0F900A39B0E /* FBSDKLoginKit.framework */; };
-		719AE5B42462C49D00A39B0E /* FBSDKLoginKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 719AE55C2462C0F900A39B0E /* FBSDKLoginKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		71A14CD52508B328001A6773 /* FormsUpdates.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71A14CC72508B0E6001A6773 /* FormsUpdates.framework */; };
 		71A14CD62508B328001A6773 /* FormsUpdates.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 71A14CC72508B0E6001A6773 /* FormsUpdates.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		71B9B70925559E0D0028F468 /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 719AE5692462C0F900A39B0E /* FBSDKCoreKit.framework */; };
+		71B9B70A25559E0D0028F468 /* FBSDKCoreKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 719AE5692462C0F900A39B0E /* FBSDKCoreKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		71B9B70B25559E100028F468 /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 719AE55C2462C0F900A39B0E /* FBSDKLoginKit.framework */; };
+		71B9B70C25559E100028F468 /* FBSDKLoginKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 719AE55C2462C0F900A39B0E /* FBSDKLoginKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		71BF8B2A24F2769D00D01CB9 /* LocalAuthentication.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71BF8B2924F2769D00D01CB9 /* LocalAuthentication.framework */; };
+		71CF56032546EECB001F162A /* FormsMapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71CF56022546EECB001F162A /* FormsMapKit.framework */; };
+		71CF56042546EECC001F162A /* FormsMapKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 71CF56022546EECB001F162A /* FormsMapKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		71D3434124FCF3B500003928 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 71D3434024FCF3B500003928 /* Settings.bundle */; };
 		71D367D224FE5E2200E6BFAF /* FormsDatabase.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71D3671E24FE346B00E6BFAF /* FormsDatabase.framework */; };
 		71D367D324FE5E2200E6BFAF /* FormsDatabase.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 71D3671E24FE346B00E6BFAF /* FormsDatabase.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -296,6 +298,13 @@
 			remoteGlobalIDString = 71BF8AF424F2663C00D01CB9;
 			remoteInfo = FormsCalendarKit;
 		};
+		71CF57502546F78C001F162A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 71CF574C2546F78C001F162A /* FormsMapKit.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 71CF55B82546ECA8001F162A;
+			remoteInfo = FormsMapKit;
+		};
 		71D3671D24FE346B00E6BFAF /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 71D3671224FE346A00E6BFAF /* FormsDatabase.xcodeproj */;
@@ -360,9 +369,8 @@
 				7150CE7D247FA9B200F2681B /* FormsUtils.framework in Embed Frameworks */,
 				71EA274C24A9C8F900985392 /* FormsNetworkingImage.framework in Embed Frameworks */,
 				7150CE6D247FA9B100F2681B /* FormsInjector.framework in Embed Frameworks */,
-				719AE5B42462C49D00A39B0E /* FBSDKLoginKit.framework in Embed Frameworks */,
 				71D367D524FE5E2500E6BFAF /* FormsDatabaseSQLite.framework in Embed Frameworks */,
-				719AE5B22462C49C00A39B0E /* FBSDKCoreKit.framework in Embed Frameworks */,
+				71CF56042546EECC001F162A /* FormsMapKit.framework in Embed Frameworks */,
 				71D3680524FE66DE00E6BFAF /* GRDB.framework in Embed Frameworks */,
 				7150CE79247FA9B100F2681B /* FormsSocialKit.framework in Embed Frameworks */,
 				715435B524EFF4AB0046F08F /* FormsUtilsUI.framework in Embed Frameworks */,
@@ -374,6 +382,7 @@
 				7136A0BC24866ED500298D3B /* FormsPagerKit.framework in Embed Frameworks */,
 				71E4455624937B2700AC38C1 /* FormsDevice.framework in Embed Frameworks */,
 				7150CE69247FA9B100F2681B /* FormsDeveloperTools.framework in Embed Frameworks */,
+				71B9B70A25559E0D0028F468 /* FBSDKCoreKit.framework in Embed Frameworks */,
 				7150CE6F247FA9B100F2681B /* FormsLogger.framework in Embed Frameworks */,
 				7136A123248674FB00298D3B /* FormsToastKit.framework in Embed Frameworks */,
 				7150CE7B247FA9B100F2681B /* FormsTransitions.framework in Embed Frameworks */,
@@ -386,6 +395,7 @@
 				71DBEEC124F3DBEF0057D97B /* FormsCalendarKit.framework in Embed Frameworks */,
 				7136A05E24866AFC00298D3B /* FormsTabBarKit.framework in Embed Frameworks */,
 				71E4466024939E9100AC38C1 /* FormsNotifications.framework in Embed Frameworks */,
+				71B9B70C25559E100028F468 /* FBSDKLoginKit.framework in Embed Frameworks */,
 				7136A121248673F300298D3B /* FormsCardKit.framework in Embed Frameworks */,
 				7135DF9D248E3E7B00B5807F /* FormsHomeShortcuts.framework in Embed Frameworks */,
 			);
@@ -471,6 +481,8 @@
 		71BB62652445E7C5002BB31F /* FormsLogger.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = FormsLogger.xcodeproj; path = ../FormsLogger/FormsLogger.xcodeproj; sourceTree = "<group>"; };
 		71BF8AFF24F2663C00D01CB9 /* FormsCalendarKit.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = FormsCalendarKit.xcodeproj; path = ../FormsCalendarKit/FormsCalendarKit.xcodeproj; sourceTree = "<group>"; };
 		71BF8B2924F2769D00D01CB9 /* LocalAuthentication.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = LocalAuthentication.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk/System/Library/Frameworks/LocalAuthentication.framework; sourceTree = DEVELOPER_DIR; };
+		71CF56022546EECB001F162A /* FormsMapKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FormsMapKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		71CF574C2546F78C001F162A /* FormsMapKit.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = FormsMapKit.xcodeproj; path = ../FormsMap/FormsMapKit.xcodeproj; sourceTree = "<group>"; };
 		71CFF419245954B90067D13E /* FormsSideMenuKit.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = FormsSideMenuKit.xcodeproj; path = ../FormsSideMenu/FormsSideMenuKit.xcodeproj; sourceTree = "<group>"; };
 		71D3434024FCF3B500003928 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
 		71D3671224FE346A00E6BFAF /* FormsDatabase.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = FormsDatabase.xcodeproj; path = ../FormsDatabase/FormsDatabase.xcodeproj; sourceTree = "<group>"; };
@@ -498,12 +510,11 @@
 			files = (
 				7136A00D2486623100298D3B /* FormsAppStoreReview.framework in Frameworks */,
 				7150CE70247FA9B100F2681B /* FormsMock.framework in Frameworks */,
+				71B9B70B25559E100028F468 /* FBSDKLoginKit.framework in Frameworks */,
 				7150CE74247FA9B100F2681B /* FormsPermissions.framework in Frameworks */,
 				7150CE7C247FA9B200F2681B /* FormsUtils.framework in Frameworks */,
 				71EA274B24A9C8F900985392 /* FormsNetworkingImage.framework in Frameworks */,
 				7150CE6C247FA9B100F2681B /* FormsInjector.framework in Frameworks */,
-				719AE5B32462C49D00A39B0E /* FBSDKLoginKit.framework in Frameworks */,
-				719AE5B12462C49C00A39B0E /* FBSDKCoreKit.framework in Frameworks */,
 				7150CE78247FA9B100F2681B /* FormsSocialKit.framework in Frameworks */,
 				71D367D424FE5E2500E6BFAF /* FormsDatabaseSQLite.framework in Frameworks */,
 				715435B424EFF4AB0046F08F /* FormsUtilsUI.framework in Frameworks */,
@@ -522,6 +533,8 @@
 				7136A122248674FB00298D3B /* FormsToastKit.framework in Frameworks */,
 				7150CE7A247FA9B100F2681B /* FormsTransitions.framework in Frameworks */,
 				71FCB279247F9A1800A84D30 /* Forms.framework in Frameworks */,
+				71CF56032546EECB001F162A /* FormsMapKit.framework in Frameworks */,
+				71B9B70925559E0D0028F468 /* FBSDKCoreKit.framework in Frameworks */,
 				7136A14A2486941E00298D3B /* FormsImagePickerKit.framework in Frameworks */,
 				7150CE66247FA9B100F2681B /* FormsAnchor.framework in Frameworks */,
 				7136A1242486761500298D3B /* FormsSideMenuKit.framework in Frameworks */,
@@ -577,6 +590,7 @@
 				713B9B11243D0416001F6E3A /* FormsInjector.xcodeproj */,
 				7135DFE8248E6CF300B5807F /* FormsLocation.xcodeproj */,
 				71BB62652445E7C5002BB31F /* FormsLogger.xcodeproj */,
+				71CF574C2546F78C001F162A /* FormsMapKit.xcodeproj */,
 				713A75CF2473C0740067C968 /* FormsMock.xcodeproj */,
 				71BB62182445DD16002BB31F /* FormsNetworking.xcodeproj */,
 				71EA273324A9C80600985392 /* FormsNetworkingImage.xcodeproj */,
@@ -917,6 +931,14 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		71CF574D2546F78C001F162A /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				71CF57512546F78C001F162A /* FormsMapKit.framework */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		71D3671324FE346A00E6BFAF /* Products */ = {
 			isa = PBXGroup;
 			children = (
@@ -960,6 +982,7 @@
 		71EA6E9E2449FC1B00ACB5EE /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				71CF56022546EECB001F162A /* FormsMapKit.framework */,
 				71BF8B2924F2769D00D01CB9 /* LocalAuthentication.framework */,
 				715435B024EFF3F20046F08F /* AuthenticationServices.framework */,
 				71EF0DC42500C643002DABFA /* NotificationCenter.framework */,
@@ -1061,7 +1084,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 1160;
-				LastUpgradeCheck = 1140;
+				LastUpgradeCheck = 1210;
 				ORGANIZATIONNAME = Limbo;
 				TargetAttributes = {
 					71228E042431CF7F00D08B20 = {
@@ -1147,6 +1170,10 @@
 				{
 					ProductGroup = 7150CE25247FA73300F2681B /* Products */;
 					ProjectRef = 71BB62652445E7C5002BB31F /* FormsLogger.xcodeproj */;
+				},
+				{
+					ProductGroup = 71CF574D2546F78C001F162A /* Products */;
+					ProjectRef = 71CF574C2546F78C001F162A /* FormsMapKit.xcodeproj */;
 				},
 				{
 					ProductGroup = 7150CE2A247FA73900F2681B /* Products */;
@@ -1411,6 +1438,13 @@
 			remoteRef = 71BF8B0324F2663D00D01CB9 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
+		71CF57512546F78C001F162A /* FormsMapKit.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = FormsMapKit.framework;
+			remoteRef = 71CF57502546F78C001F162A /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
 		71D3671E24FE346B00E6BFAF /* FormsDatabase.framework */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.framework;
@@ -1593,6 +1627,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -1617,7 +1652,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -1653,6 +1688,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -1671,7 +1707,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -1696,7 +1732,7 @@
 				);
 				INFOPLIST_EXPAND_BUILD_SETTINGS = YES;
 				INFOPLIST_FILE = FormsExample/SupportingFiles/Config/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1727,7 +1763,7 @@
 					"$(PROJECT_DIR)/../Dependencies",
 				);
 				INFOPLIST_FILE = FormsExample/SupportingFiles/Config/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1755,7 +1791,7 @@
 					"$(PROJECT_DIR)/../Dependencies",
 				);
 				INFOPLIST_FILE = FormsExampleTodayExtension/SupportingFiles/Config/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1785,7 +1821,7 @@
 					"$(PROJECT_DIR)/../Dependencies",
 				);
 				INFOPLIST_FILE = FormsExampleTodayExtension/SupportingFiles/Config/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

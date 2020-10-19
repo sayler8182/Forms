@@ -213,9 +213,9 @@ extension TopBar: UICollectionViewDelegate, UICollectionViewDataSource, TopBarDe
         cell.contentView.subviews.removeFromSuperview()
         cell.contentView.addSubview(view, with: [
             Anchor.to(cell.contentView).top.offset(self.titleEdgeInset.top),
-            Anchor.to(cell.contentView).bottom.offset(self.titleEdgeInset.bottom),
+            Anchor.to(cell.contentView).bottom.offset(self.titleEdgeInset.bottom).priority(.veryHigh),
             Anchor.to(cell.contentView).leading.offset(self.titleEdgeInset.leading),
-            Anchor.to(cell.contentView).trailing.offset(self.titleEdgeInset.trailing)
+            Anchor.to(cell.contentView).trailing.offset(self.titleEdgeInset.trailing).priority(.veryHigh)
         ])
     }
     

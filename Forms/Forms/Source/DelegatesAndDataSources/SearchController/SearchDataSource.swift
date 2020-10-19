@@ -31,6 +31,11 @@ open class SearchDataSource<T>: NSObject, SearchUpdater {
     
     open var onFilter: (([T], String) -> [T])? = nil
     
+    public init(_ controller: FormsTableViewController?) {
+        super.init()
+        self.tableView = controller?.tableView
+    }
+    
     public init(_ tableView: UITableView?) {
         super.init()
         self.tableView = tableView

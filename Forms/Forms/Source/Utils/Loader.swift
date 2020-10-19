@@ -18,8 +18,14 @@ public protocol ConfigurationLoaderProtocol {
 
 public extension Configuration {
     struct Loader: ConfigurationLoaderProtocol {
-        public var backgroundColor: UIColor? = Theme.Colors.primaryLight.with(alpha: 0.3)
-        public var loaderView: () -> LoaderView = { DefaultLoaderView() }
+        public let backgroundColor: UIColor?
+        public let loaderView: () -> LoaderView
+        
+        public init(backgroundColor: UIColor? = Theme.Colors.primaryLight.with(alpha: 0.3),
+                    loaderView: (() -> LoaderView)? = nil) {
+            self.backgroundColor = backgroundColor
+            self.loaderView = loaderView ?? { DefaultLoaderView() }
+        }
     }
 }
 
@@ -131,6 +137,11 @@ public enum Loader {
 public class LoaderCoverView: FormsComponent {
     public let backgroundView: UIView = UIView()
     public weak var loaderView: LoaderView?
+    
+    override public var backgroundColor: UIColor? {
+        get { return self.backgroundView.backgroundColor }
+        set { self.backgroundView.backgroundColor = newValue }
+    }
     
     override public func setupView() {
         super.setupView()

@@ -78,7 +78,10 @@ public extension Console {
             "Simulator user has requested new graphics quality",
             "[BoringSSL]",
             "[] tcp_input",
+            "[tcp] tcp_input",
             "[] tcp_output",
+            "[tcp] tcp_output",
+            "dlopen libquic failed",
             "Domain=AKAuthenticationError Code=-7003",
             "[] nw_read_request_report",
             "[TableView] Warning once only",
@@ -103,7 +106,16 @@ public extension Console {
             "Graph API v2.4",
             "Metal API Validation Enabled",
             "-canOpenURL: failed for URL: \"-",
-            "Failed to inherit CoreMedia permissions from"
+            "Failed to inherit CoreMedia permissions from",
+            "[VKDefault] Style Z is",
+            "fopen failed for data file: errno",
+            "Errors found! Invalidating cache...",
+            " WF: ",
+            "API error: <_UIKBCompatInputView:",
+            "remote notifications are not supported in the simulator",
+            "[Firebase/Crashlytics] Version",
+            "Connection 30: unable to determine interface type without",
+            "[ShareSheet] connection invalidated"
         ]
     }
 }

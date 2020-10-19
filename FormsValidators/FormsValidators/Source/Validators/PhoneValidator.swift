@@ -10,7 +10,17 @@ import Foundation
 
 // MARK: PhoneValidator
 public class PhoneValidator: Validator {
+    private let withPrefix: Bool
+    
+    public init(withPrefix: Bool,
+                isRequired: Bool = true) {
+        self.withPrefix = withPrefix
+        super.init(isRequired: isRequired)
+        self.dependencies = [NotEmptyValidator(isRequired: isRequired)]
+    }
+    
     override public init(isRequired: Bool = true) {
+        self.withPrefix = true
         super.init(isRequired: isRequired)
         self.dependencies = [NotEmptyValidator(isRequired: isRequired)]
     }
@@ -22,7 +32,9 @@ public class PhoneValidator: Validator {
         }
         
         guard self.shouldValidate(value) else { return ValidationResult() }
-        let regex: String = "^\\+[1-9][0-9]{7,15}"
+        let regex: String = self.withPrefix
+            ? "^\\+[1-9][0-9]{7,15}"
+            : "[0-9]{7,15}"
         guard NSPredicate(format: "SELF MATCHES %@", regex).evaluate(with: value) else {
             return ValidationResult(error: .phoneError)
         }

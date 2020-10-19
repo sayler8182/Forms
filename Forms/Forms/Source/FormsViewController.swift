@@ -11,6 +11,7 @@ import FormsInjector
 import FormsLogger
 import FormsUtils
 import FormsUtilsUI
+import FormsValidators
 import UIKit
 
 // MARK: FormsViewController
@@ -18,9 +19,13 @@ open class FormsViewController: UIViewController, UIGestureRecognizerDelegate, A
     private lazy var keyboard = Keyboard()
     private var navigationBar: NavigationBar? = nil
     private var navigationProgressBar: ProgressBar? = nil
+    private var backgroundView: UIView? = nil
     private var searchController: UISearchController? = nil
     
+    public var onValidate: Validable.OnValidate?
+    
     open var bottomAnchor: AnchorConnection = AnchorConnection()
+    open var centerYAnchor: AnchorConnection = AnchorConnection()
     open var isResizeOnKeyboard: Bool = true
     open var isShimmering: Bool {
         return self.view.isShimmering
@@ -28,7 +33,6 @@ open class FormsViewController: UIViewController, UIGestureRecognizerDelegate, A
     open var isThemeAutoRegister: Bool {
         return true
     }
-    
     open var appLifecycleableEvents: [AppLifecycleEvent] {
         return []
     }
@@ -103,6 +107,18 @@ open class FormsViewController: UIViewController, UIGestureRecognizerDelegate, A
         self.view.stopShimmering(animated: animated)
     }
     
+    public func startLoading(_ view: Loadingable,
+                             animated: Bool = true) {
+        self.disable()
+        view.startLoading(animated: animated)
+    }
+    
+    public func stopLoading(_ view: Loadingable,
+                            animated: Bool = true) {
+        view.stopLoading(animated: animated)
+        self.enable()
+    }
+    
     open func setTheme() {
         self.setNeedsStatusBarAppearanceUpdate()
         self.view.backgroundColor = Theme.Colors.primaryLight  
@@ -168,6 +184,57 @@ open class FormsViewController: UIViewController, UIGestureRecognizerDelegate, A
     }
 }
 
+// MARK: Validators
+extension FormsViewController {
+    @objc
+    public func triggerValidators() {
+        let items: [Validable] = self.view.flatSubviews.compactMap { $0 as? Validable }
+        for item in items {
+            item.validatorTriggered = true
+        }
+    }
+    
+    @objc
+    @discardableResult
+    public func validateWithTrigger() -> Bool {
+        self.triggerValidators()
+        return self.validate()
+    }
+    
+    @objc
+    @discardableResult
+    public func validate() -> Bool {
+        return self.validate(false)
+    }
+    
+    @objc
+    @discardableResult
+    open func validate(_ isSilence: Bool) -> Bool {
+        var result: Bool = true
+        let items: [Validable] = self.view.flatSubviews.compactMap { $0 as? Validable }
+        for item in items {
+            result = item.validate(isSilence) && result
+        }
+        if !isSilence {
+            self.onValidate?(result)
+        }
+        return result
+    }
+}
+
+// MARK: BackgroundView
+public extension FormsViewController {
+    func setBackgroundView(_ view: UIView?) {
+        self.backgroundView?.removeFromSuperview()
+        guard let view: UIView = view else { return }
+        self.view.insertSubview(view, at: 0)
+        view.anchors([
+            Anchor.to(self.view).fill
+        ])
+        self.backgroundView = view
+    }
+}
+
 // MARK: NavigationBar
 public extension FormsViewController {
     func setNavigationBar(_ navigationBar: NavigationBar,
@@ -199,6 +266,11 @@ public extension FormsViewController {
 // MARK: SearchBar
 public extension FormsViewController {
     @objc
+    func setSearchController(_ searchController: FormsSearchController) {
+        self.setSearchBar(searchController)
+        searchController.setTheme()
+    }
+    @objc
     func setSearchBar(_ searchController: UISearchController) {
         if #available(iOS 11.0, *) {
             self.navigationItem.hidesSearchBarWhenScrolling = false
@@ -220,14 +292,20 @@ public extension FormsViewController {
     func updateKeyboard(_ percent: CGFloat,
                         _ visibleHeight: CGFloat,
                         _ animated: Bool) {
-        guard let constraint: NSLayoutConstraint = self.bottomAnchor.constraint else { return }
+        guard self.bottomAnchor.constraint.isNotNil || self.centerYAnchor.constraint.isNotNil else { return }
         let viewHeight: CGFloat = self.view.frame.height
         let screenHeight: CGFloat = UIScreen.main.bounds.height
         let safeAreaInset: CGFloat = UIView.safeArea.bottom
         let time: CGFloat = (visibleHeight - screenHeight + viewHeight - safeAreaInset) / visibleHeight * 0.2
-        constraint.constant = visibleHeight != 0.0
-            ? -visibleHeight + safeAreaInset
-            : -visibleHeight
+        if let constraint: NSLayoutConstraint = self.bottomAnchor.constraint {
+            constraint.constant = visibleHeight != 0.0
+                ? -visibleHeight + safeAreaInset
+                : -visibleHeight
+        } else if let constraint: NSLayoutConstraint = self.centerYAnchor.constraint {
+            constraint.constant = visibleHeight != 0.0
+                ? (-visibleHeight + safeAreaInset) / 2
+                : (-visibleHeight) / 2
+        }
         self.view.animation(
             animated,
             duration: time.asDouble,
@@ -240,9 +318,5 @@ public extension FormsViewController {
     func setupSlideToPop() {
         self.navigationController?.interactivePopGestureRecognizer?.isEnabled = true
         self.navigationController?.interactivePopGestureRecognizer?.delegate = self
-    }
-    
-    func gestureRecognizerShouldBegin(_ gestureRecognizer: UIGestureRecognizer) -> Bool {
-        return true
     }
 }

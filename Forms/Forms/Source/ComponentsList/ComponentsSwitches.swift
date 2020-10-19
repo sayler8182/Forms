@@ -17,7 +17,7 @@ public enum ComponentsSwitches: ComponentsList {
                 vertical: 8,
                 horizontal: 16)
             component.onSetTheme = Strong(component) { (component) in
-                component.backgroundColors = .init(Theme.Colors.primaryLight)
+                component.backgroundColors = .init(Theme.Colors.clear)
                 component.switchColors = .init(Theme.Colors.blue)
                 component.switchThumbColors = Switch.State<UIColor?>(Theme.Colors.primaryDark)
                     .with(disabled: Theme.Colors.tertiaryDark)

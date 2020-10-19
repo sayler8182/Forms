@@ -24,6 +24,12 @@ public func delay<T: AnyObject>(_ delay: Double,
     }
 }
 
+public func mutate<T>(_ object: T,
+                      _ action: ((inout T) -> Void)) {
+    var object: T = object
+    action(&object)
+}
+
 public func measure(_ key: String,
                     _ action: () -> Void) {
     let startDate: TimeInterval = Date().timeIntervalSince1970

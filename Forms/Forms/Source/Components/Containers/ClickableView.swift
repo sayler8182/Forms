@@ -11,24 +11,28 @@ import UIKit
 
 // MARK: State
 public extension ClickableView {
-    struct State<T>: FormsComponentStateActiveSelectedDisabled {
+    struct State<T>: FormsComponentStateActiveSelectedDisabledLoading {
         public var active: T!
         public var selected: T!
         public var disabled: T!
+        public var loading: T!
         
         public init() { }
     }
 }
 
 // MARK: ClickableView
-open class ClickableView: FormsComponent, Clickable, FormsComponentWithLoading, FormsComponentWithMarginEdgeInset, FormsComponentWithPaddingEdgeInset {
+open class ClickableView: FormsComponent, Loadingable, Clickable, FormsComponentWithLoading, FormsComponentWithMarginEdgeInset, FormsComponentWithPaddingEdgeInset {
     public let backgroundView = UnShimmerableView()
-        .with(isUserInteractionEnabled: true)
+        .with(width: 320, height: 40)
     public let contentView = UnShimmerableView()
-    public let gestureRecognizer = UILongPressGestureRecognizer()
+        .with(width: 320, height: 40)
+    public lazy var loaderView = UIActivityIndicatorView()
+        .with(hidesWhenStopped: true)
+    public let button = UIButton()
     
     open var animationTime: TimeInterval = 0.2
-    open var backgroundColors: State<UIColor?> = State<UIColor?>(Theme.Colors.primaryLight) {
+    open var backgroundColors: State<UIColor?> = State<UIColor?>(Theme.Colors.clear) {
         didSet { self.updateState() }
     }
     open var content: UIView? = nil {
@@ -74,38 +78,46 @@ open class ClickableView: FormsComponent, Clickable, FormsComponentWithLoading, 
         self.setState(.disabled, animated: animated)
     }
     
+    open func startLoading(animated: Bool = true) {
+        guard !self.isLoading else { return }
+        self.isLoading = true
+        self.setState(.loading, animated: animated)
+        self.addLoader(animated: animated)
+    }
+    
+    open func stopLoading(animated: Bool = true) {
+        guard self.isLoading else { return }
+        self.isLoading = false
+        self.setState(.active, animated: animated)
+        self.removeLoader(animated: animated)
+    }
+    
     override open func componentHeight() -> CGFloat {
         return self.height
     }
     
     override open func setupActions() {
         super.setupActions()
-        self.gestureRecognizer.minimumPressDuration = 0.0
-        self.gestureRecognizer.addTarget(self, action: #selector(handleGesture))
-        self.backgroundView.addGestureRecognizer(self.gestureRecognizer)
+        self.button.isExclusiveTouch = true
+        self.button.addTarget(self, action: #selector(handleTouchSelected), for: [.touchDown, .touchDragEnter])
+        self.button.addTarget(self, action: #selector(handleTouchActive), for: [.touchCancel, .touchDragExit, .touchUpOutside])
+        self.button.addTarget(self, action: #selector(handleTouchClick), for: .touchUpInside)
     }
     
     @objc
-    private func handleGesture(recognizer: UILongPressGestureRecognizer) {
-        switch recognizer.state {
-        case .began:
-            self.setState(.selected, animated: true)
-        case .changed:
-            let point: CGPoint = recognizer.location(in: self.backgroundView)
-            if self.backgroundView.bounds.contains(point) {
-                self.setState(.selected, animated: true)
-            } else {
-                self.setState(.active, animated: true)
-            }
-        case .ended:
-            self.setState(.active, animated: true)
-            let point: CGPoint = recognizer.location(in: self.backgroundView)
-            if self.backgroundView.bounds.contains(point) {
-                self.onClick?()
-            }
-        default:
-            self.setState(.active, animated: true)
-        }
+    private func handleTouchSelected(sender: UIButton) {
+        self.setState(.selected, animated: true)
+    }
+    
+    @objc
+    private func handleTouchActive(sender: UIButton) {
+        self.setState(.active, animated: true)
+    }
+    
+    @objc
+    private func handleTouchClick(sender: UIButton) {
+        self.setState(.active, animated: true)
+        self.onClick?()
     }
     
     open func setupComponentView() {
@@ -154,10 +166,14 @@ open class ClickableView: FormsComponent, Clickable, FormsComponentWithLoading, 
         self.contentView.addSubview(content, with: [
             Anchor.to(self.contentView).fill
         ])
+        self.button.frame = self.contentView.bounds
+        self.contentView.addSubview(self.button, with: [
+            Anchor.to(self.contentView).fill
+        ])
     }
     
     public func updateGesture() {
-        self.gestureRecognizer.isEnabled = self.isEnabled && !self.isLoading
+        self.button.isEnabled = self.isEnabled && !self.isLoading
         if self.isEnabled && !self.isLoading {
             self.enable(animated: false)
         } else if !self.isEnabled && !self.isLoading {
@@ -186,6 +202,41 @@ open class ClickableView: FormsComponent, Clickable, FormsComponentWithLoading, 
     
     open func setStateAnimation(_ state: FormsComponentStateType) {
         self.backgroundView.backgroundColor = self.backgroundColors.value(for: state)
+    }
+    
+    open func addLoader(animated: Bool,
+                        animations: (() -> Void)? = nil,
+                        completion: ((Bool) -> Void)? = nil) {
+        self.loaderView.startAnimating()
+        self.loaderView.center = self.backgroundView.center
+        self.backgroundView.addSubview(self.loaderView, with: [
+            Anchor.to(self.backgroundView).center
+        ])
+        self.animation(
+            animated,
+            duration: self.animationTime * 3,
+            animations: {
+                animations?()
+                self.loaderView.alpha = 1
+        }, completion: { (status) in
+            completion?(status)
+        })
+    }
+    
+    open func removeLoader(animated: Bool,
+                           animations: (() -> Void)? = nil,
+                           completion: ((Bool) -> Void)? = nil) {
+        self.animation(
+            animated,
+            duration: self.animationTime * 3,
+            animations: {
+                animations?()
+                self.loaderView.alpha = 0
+        }, completion: { (status) in
+            completion?(status)
+            self.loaderView.stopAnimating()
+            self.loaderView.removeFromSuperview()
+        })
     }
 }
 

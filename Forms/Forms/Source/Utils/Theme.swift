@@ -52,9 +52,10 @@ public enum ThemeType {
 // MARK: ThemeProtocol
 public protocol ThemeProtocol {
     static var Colors: ThemeColorsProtocol { get }
+    static var Fonts: ThemeFontsProtocol { get }
     
     @available(iOS 12.0, *)
-    static func setUserInterfaceStyle(_ userInterfaceStryle: UIUserInterfaceStyle)
+    static func setUserInterfaceStyle(_ userInterfaceStyle: UIUserInterfaceStyle)
     static func setTheme(_ theme: ThemeType?)
 }
 
@@ -316,7 +317,7 @@ public extension ThemeColorsProtocol {
         return self.color(.blue, or: UIColor(rgba: 0x007AFFFF))
     }
     var clear: UIColor {
-        return self.color(.clear, or: UIColor(rgba: 0xFFFFFF00))
+        return self.color(.clear, or: UIColor.clear)
     }
     var gray: UIColor {
         return self.color(.gray, or: UIColor(rgba: 0x8E8E93FF))
@@ -360,8 +361,25 @@ public extension ThemeFontsProtocol {
     func bold(ofSize size: CGFloat) -> UIFont {
         return self.font(.bold, ofSize: size, or: UIFont.boldSystemFont(ofSize: size))
     }
+    func light(ofSize size: CGFloat) -> UIFont {
+        return self.font(.light, ofSize: size, or: UIFont.systemFont(ofSize: size, weight: UIFont.Weight.light))
+    }
+    func medium(ofSize size: CGFloat) -> UIFont {
+        return self.font(.medium, ofSize: size, or: UIFont.systemFont(ofSize: size, weight: UIFont.Weight.medium))
+    }
     func regular(ofSize size: CGFloat) -> UIFont {
         return self.font(.regular, ofSize: size, or: UIFont.systemFont(ofSize: size))
+    }
+}
+
+// MARK: UIWindow
+extension UIWindow: Themeable {
+    public func setTheme() {
+        if #available(iOS 13.0, *) {
+            let styleValue: Int = Theme.theme?.style ?? Theme.systemTheme.style
+            guard let style: UIUserInterfaceStyle = UIUserInterfaceStyle(rawValue: styleValue) else { return }
+            self.overrideUserInterfaceStyle = style
+        }
     }
 }
 

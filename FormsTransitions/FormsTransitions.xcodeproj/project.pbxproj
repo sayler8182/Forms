@@ -24,6 +24,7 @@
 		719AE5E224631E6B00A39B0E /* TransitionControllerSlideVerticalAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 719AE5E124631E6B00A39B0E /* TransitionControllerSlideVerticalAnimator.swift */; };
 		71C578C024474FAE008BFEB3 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71C578BF24474FAE008BFEB3 /* Utils.swift */; };
 		71C578C2244752F8008BFEB3 /* TransitionNavigationSlideVerticalAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71C578C1244752F8008BFEB3 /* TransitionNavigationSlideVerticalAnimator.swift */; };
+		71E1CAA72542EEFF00C5BFCB /* TransitionNavigationFadeAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71E1CAA62542EEFF00C5BFCB /* TransitionNavigationFadeAnimator.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -59,6 +60,7 @@
 		719AE5E124631E6B00A39B0E /* TransitionControllerSlideVerticalAnimator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransitionControllerSlideVerticalAnimator.swift; sourceTree = "<group>"; };
 		71C578BF24474FAE008BFEB3 /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 		71C578C1244752F8008BFEB3 /* TransitionNavigationSlideVerticalAnimator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransitionNavigationSlideVerticalAnimator.swift; sourceTree = "<group>"; };
+		71E1CAA62542EEFF00C5BFCB /* TransitionNavigationFadeAnimator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransitionNavigationFadeAnimator.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -121,6 +123,7 @@
 				715B7B4524474DE100754EDB /* TransitionNavigationAnimator.swift */,
 				715B7B4724474E2100754EDB /* TransitionNavigationSlideHorizontalAnimator.swift */,
 				71C578C1244752F8008BFEB3 /* TransitionNavigationSlideVerticalAnimator.swift */,
+				71E1CAA62542EEFF00C5BFCB /* TransitionNavigationFadeAnimator.swift */,
 			);
 			path = TransitionNavigation;
 			sourceTree = "<group>";
@@ -185,7 +188,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 1140;
-				LastUpgradeCheck = 1140;
+				LastUpgradeCheck = 1210;
 				ORGANIZATIONNAME = Limbo;
 				TargetAttributes = {
 					715B7B1624474C4600754EDB = {
@@ -236,6 +239,7 @@
 				715B7B4824474E2100754EDB /* TransitionNavigationSlideHorizontalAnimator.swift in Sources */,
 				715B7B4624474DE100754EDB /* TransitionNavigationAnimator.swift in Sources */,
 				719AE5CB246306D500A39B0E /* TransitionableController.swift in Sources */,
+				71E1CAA72542EEFF00C5BFCB /* TransitionNavigationFadeAnimator.swift in Sources */,
 				719AE5CD2463080300A39B0E /* TransitionControllerSlideHorizontalAnimator.swift in Sources */,
 				719AE5C7246305AA00A39B0E /* TransitionControllerAnimator.swift in Sources */,
 				719AE5C92463065200A39B0E /* TransitionControllerCoordinator.swift in Sources */,
@@ -272,6 +276,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -297,7 +302,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -335,6 +340,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -354,7 +360,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -380,7 +386,7 @@
 				);
 				INFOPLIST_FILE = FormsTransitions/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -412,7 +418,7 @@
 				);
 				INFOPLIST_FILE = FormsTransitions/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

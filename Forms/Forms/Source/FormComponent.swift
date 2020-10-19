@@ -33,6 +33,12 @@ public protocol Clickable {
     var onClick: (() -> Void)? { get set }
 }
 
+// MARK: Loadingable
+public protocol Loadingable {
+    func startLoading(animated: Bool)
+    func stopLoading(animated: Bool)
+}
+
 // MARK: Focusable
 public protocol Focusable {
     func focus()
@@ -64,7 +70,7 @@ public protocol Componentable: Themeable {
 }
 
 // MARK: FormsComponent
-open class FormsComponent: UIView, Componentable, BatchUpdateable {
+open class FormsComponent: UIView, Componentable, BatchUpdateable, UIGestureRecognizerDelegate {
     public weak var table: TableProtocol?
     
     open var isBatchUpdateInProgress: Bool = false

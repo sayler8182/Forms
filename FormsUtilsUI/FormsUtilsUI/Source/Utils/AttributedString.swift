@@ -30,6 +30,7 @@ public extension AttributedString {
         var font: UIFont? = nil
         var lineHeightMultiple: CGFloat? = nil
         var lineSpacing: CGFloat? = nil
+        var lineBreakMode: NSLineBreakMode? = nil
         var underlineStyle: NSUnderlineStyle? = nil
         
         public func copy(with zone: NSZone? = nil) -> Any {
@@ -40,6 +41,7 @@ public extension AttributedString {
             copy.font = self.font
             copy.lineHeightMultiple = self.lineHeightMultiple
             copy.lineSpacing = self.lineSpacing
+            copy.lineBreakMode = self.lineBreakMode
             copy.underlineStyle = self.underlineStyle
             return copy
         }
@@ -98,6 +100,7 @@ public class AttributedString {
             .with(font: style.font)
             .with(lineHeightMultiple: style.lineHeightMultiple)
             .with(lineSpacing: style.lineSpacing)
+            .with(lineBreakMode: style.lineBreakMode)
             .with(underlineStyle: style.underlineStyle)
         return self.with(string: attributedString, onClick: onClick)
     }
@@ -156,6 +159,12 @@ public class AttributedString {
     public func with(lineSpacing: CGFloat?) -> AttributedString {
         let style: Style = self.nextStyle ?? self.style
         style.lineSpacing = lineSpacing
+        return self
+    }
+    
+    public func with(lineBreakMode: NSLineBreakMode?) -> AttributedString {
+        let style: Style = self.nextStyle ?? self.style
+        style.lineBreakMode = lineBreakMode
         return self
     }
        
@@ -286,6 +295,16 @@ public extension NSAttributedString {
             key: .paragraphStyle,
             of: NSMutableParagraphStyle.self) ?? NSMutableParagraphStyle()
         paragraph.lineHeightMultiple = lineSpacing ?? 0.0
+        return self
+            .with(key: .paragraphStyle, value: paragraph)
+    }
+    
+    @discardableResult
+    func with(lineBreakMode: NSLineBreakMode?) -> NSMutableAttributedString {
+        let paragraph: NSMutableParagraphStyle = self.attribute(
+            key: .paragraphStyle,
+            of: NSMutableParagraphStyle.self) ?? NSMutableParagraphStyle()
+        paragraph.lineBreakMode = lineBreakMode ?? .byTruncatingTail
         return self
             .with(key: .paragraphStyle, value: paragraph)
     }

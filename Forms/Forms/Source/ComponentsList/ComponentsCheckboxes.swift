@@ -21,7 +21,7 @@ public enum ComponentsCheckboxes: ComponentsList {
                 vertical: 8,
                 horizontal: 16)
             component.onSetTheme = Strong(component) { (component) in
-                component.backgroundColors = .init(Theme.Colors.primaryLight)
+                component.backgroundColors = .init(Theme.Colors.clear)
                 component.imageColors = Checkbox.State<UIColor?>(Theme.Colors.primaryDark)
                     .with(disabled: Theme.Colors.tertiaryDark)
                     .with(disabledSelected: Theme.Colors.tertiaryDark)
@@ -50,7 +50,7 @@ public enum ComponentsCheckboxes: ComponentsList {
                 vertical: 8,
                 horizontal: 16)
             component.onSetTheme = Strong(component) { (component) in
-                component.backgroundColors = .init(Theme.Colors.primaryLight)
+                component.backgroundColors = .init(Theme.Colors.clear)
                 component.imageColors = Checkbox.State<UIColor?>(Theme.Colors.primaryDark)
                     .with(disabled: Theme.Colors.tertiaryDark)
                     .with(disabledSelected: Theme.Colors.tertiaryDark)

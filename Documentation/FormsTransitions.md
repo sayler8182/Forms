@@ -18,10 +18,27 @@ FormsUtils.framework
 
 ### View Interpolation
 
-All views has additional *viewKey* property. View can be interpolated between screens.
+All views has additional *viewKey*, *viewOptions* and *viewContentMode* properties. View can be interpolated between screens.
 
 ```swift
 view.viewKey = "contentView"
+view.viewOptions = []
+view.viewContentMode = .scaleToFill
+```
+### View options
+
+```swift
+enum TransitionOption {
+    case leaveRootInSource
+    case leaveRootInDestination
+    case leaveRoot
+    case skipInSource
+    case skipInDestination
+    case skip
+    case moveSource
+    case moveDestination
+    case forceMatch
+}
 ```
 
 ### ViewController
@@ -73,6 +90,7 @@ Animators
 ```swift
 TransitionNavigationSlideHorizontalAnimator
 TransitionNavigationSlideVerticalAnimator
+TransitionNavigationFadeAnimator
 ```
 
 Handle swipe to back interactively

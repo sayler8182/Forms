@@ -7,6 +7,7 @@
 //
 
 import Forms
+import FormsAnchor
 import FormsUtils
 import UIKit
 
@@ -38,7 +39,8 @@ class DemoTitleTextViewViewController: FormsTableViewController {
         .with(placeholder: "Some text")
         .with(title: "Info and error")
     private let footerTextView = Components.input.textView.default()
-        .with(isBottomDynamic: false)
+        .with(isDynamic: false)
+        .with(anchors: { [Anchor.to($0).height(200).lessThanOrEqual] })
         .with(text: "Some text")
         .with(title: "Footer")
     

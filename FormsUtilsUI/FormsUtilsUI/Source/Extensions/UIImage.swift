@@ -169,7 +169,8 @@ public extension UIImage {
         return newImage
     }
     
-    func tinted(_ color: UIColor) -> UIImage {
+    func tinted(_ color: UIColor?) -> UIImage {
+        guard let color: UIColor = color else { return self }
         var image: UIImage = self.withRenderingMode(.alwaysTemplate)
         UIGraphicsBeginImageContextWithOptions(self.size, false, self.scale)
         color.set()
@@ -179,8 +180,9 @@ public extension UIImage {
         return image
     }
     
-    func tinted(_ color: UIColor,
+    func tinted(_ color: UIColor?,
                 blend: CGBlendMode) -> UIImage {
+        guard let color: UIColor = color else { return self }
         let imageColored: UIImage = self.tinted(color)
         let rect: CGRect = CGRect(origin: CGPoint.zero, size: self.size)
         defer { UIGraphicsEndImageContext() }

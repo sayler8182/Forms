@@ -20,7 +20,7 @@ public enum ComponentsProgresses: ComponentsList {
                     .with(image: ActionProgressItem.separator)
             }
             component.onSetTheme = Strong(component) { (component) in
-                component.backgroundColors = .init(Theme.Colors.primaryLight)
+                component.backgroundColors = .init(Theme.Colors.clear)
                 component.tintColors = ActionProgressView.State<UIColor?>(Theme.Colors.primaryDark)
                     .with(selected: Theme.Colors.tertiaryDark)
             }
@@ -34,7 +34,7 @@ public enum ComponentsProgresses: ComponentsList {
             component.isShimmerable = false
             component.height = 4
             component.onSetTheme = Strong(component) { (component) in
-                component.backgroundColor = Theme.Colors.primaryLight
+                component.backgroundColor = Theme.Colors.clear
                 component.primaryColor = Theme.Colors.blue.with(alpha: 0.5)
                 component.secondaryColor = Theme.Colors.blue
             }

@@ -34,6 +34,7 @@ UIKit and Foundation class extensions.
 Array.swift
 Bool.swift
 Bundle.swift
+CLLocationCoordinate2D.swift
 Data.swift
 Date.swift
 Dictionary.swift

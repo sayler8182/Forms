@@ -45,7 +45,7 @@ public extension Bundle {
                               with decoder: JSONDecoder? = nil) -> T? {
         guard let url: URL = self.url(forResource: filename, withExtension: nil) else { return nil }
         guard let data = try? Data(contentsOf: url) else { return nil }
-        let decoder: JSONDecoder = decoder ?? JSONDecoder()
+        let decoder: JSONDecoder = decoder ?? JSONDecoder.iso8601
         return try? decoder.decode(T.self, from: data)
     }
     

@@ -12,11 +12,15 @@ import Foundation
 public class Debouncer {
     public typealias Debounce = () -> Void
     
-    private let interval: TimeInterval
+    private var interval: TimeInterval
     private var timer: Timer?
     private (set) var onHandle: Debounce?
     
     public init(interval: TimeInterval) {
+        self.interval = interval
+    }
+    
+    public func setInterval(_ interval: TimeInterval) {
         self.interval = interval
     }
     

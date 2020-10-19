@@ -16,7 +16,7 @@ open class Label: FormsComponent, Clickable, FormsComponentWithMarginEdgeInset, 
     public let backgroundView = UIView()
     public let textLabel = UILabel()
         .with(isUserInteractionEnabled: true)
-    public let textGestureRecognizer = UILongPressGestureRecognizer()
+    public let gestureRecognizer = UILongPressGestureRecognizer()
     
     open var alignment: NSTextAlignment {
         get { return self.textLabel.textAlignment }
@@ -27,7 +27,7 @@ open class Label: FormsComponent, Clickable, FormsComponentWithMarginEdgeInset, 
         didSet {
             self.attributedText?.label = self.textLabel
             self.textLabel.attributedText = self.attributedText?.string
-            self.textGestureRecognizer.isEnabled = self.attributedText.isNotNil
+            self.gestureRecognizer.isEnabled = self.attributedText.isNotNil
         }
     }
     override open var backgroundColor: UIColor? {
@@ -40,6 +40,13 @@ open class Label: FormsComponent, Clickable, FormsComponentWithMarginEdgeInset, 
     }
     open var marginEdgeInset: UIEdgeInsets = UIEdgeInsets(0) {
         didSet { self.updateMarginEdgeInset() }
+    }
+    open var minimumScaleFactor: CGFloat? {
+        get { return self.textLabel.minimumScaleFactor }
+        set {
+            self.textLabel.minimumScaleFactor = newValue ?? 1
+            self.textLabel.adjustsFontSizeToFitWidth = self.textLabel.minimumScaleFactor != 1.0
+        }
     }
     open var font: UIFont? {
         get { return self.textLabel.font }
@@ -63,7 +70,7 @@ open class Label: FormsComponent, Clickable, FormsComponentWithMarginEdgeInset, 
     }
     
     public var onClick: (() -> Void)? = nil {
-        didSet { self.textGestureRecognizer.isEnabled = self.onClick.isNotNil }
+        didSet { self.gestureRecognizer.isEnabled = self.onClick.isNotNil }
     }
     
     override open func setupView() {
@@ -80,11 +87,17 @@ open class Label: FormsComponent, Clickable, FormsComponentWithMarginEdgeInset, 
     }
     
     override open func setupActions() {
-        self.textGestureRecognizer.minimumPressDuration = 0.0
-        self.textGestureRecognizer.addTarget(self, action: #selector(handleGesture))
-        self.textGestureRecognizer.isEnabled = false
-        self.textLabel.addGestureRecognizer(self.textGestureRecognizer)
-    } 
+        self.gestureRecognizer.delegate = self
+        self.gestureRecognizer.minimumPressDuration = 0.0
+        self.gestureRecognizer.addTarget(self, action: #selector(handleGesture))
+        self.gestureRecognizer.isEnabled = false
+        self.textLabel.addGestureRecognizer(self.gestureRecognizer)
+    }
+    
+    override open func gestureRecognizerShouldBegin(_ gestureRecognizer: UIGestureRecognizer) -> Bool {
+        let attributedStringPart = self.attributedText?.attributedStringPart(recognizer: gestureRecognizer)
+        return attributedStringPart.isNotNil || self.onClick.isNotNil
+    }
     
     @objc
     private func handleGesture(recognizer: UILongPressGestureRecognizer) {
@@ -98,7 +111,7 @@ open class Label: FormsComponent, Clickable, FormsComponentWithMarginEdgeInset, 
             self.textLabel.setAlpha(alpha: alpha, duration: self.animationTime)
         case .ended:
             self.textLabel.setAlpha(alpha: 1, duration: self.animationTime)
-            let point: CGPoint = recognizer.location(in: self.textLabel)
+            let point: CGPoint = recognizer.location(in: recognizer.view)
             if self.textLabel.bounds.contains(point) {
                 onClick?()
             }
@@ -190,6 +203,10 @@ public extension Label {
     @objc
     override func with(isUserInteractionEnabled: Bool) -> Self {
         self.isUserInteractionEnabled = isUserInteractionEnabled
+        return self
+    }
+    func with(minimumScaleFactor: CGFloat?) -> Self {
+        self.minimumScaleFactor = minimumScaleFactor
         return self
     }
     func with(numberOfLines: Int) -> Self {

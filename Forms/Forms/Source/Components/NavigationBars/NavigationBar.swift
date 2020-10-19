@@ -34,6 +34,14 @@ open class NavigationBar: FormsComponent {
             self.navigationBar?.barTintColor = newValue
         }
     }
+    private var _backgroundImage: UIImage? = nil
+    open var backgroundImage: UIImage? {
+        get { return self._backgroundImage }
+        set {
+            self._backgroundImage = newValue
+            self.navigationBar?.setBackgroundImage(newValue, for: .default)
+        }
+    }
     open var backImage: LazyImage? = nil {
         didSet { self.updateBackBarButton() }
     }
@@ -64,10 +72,13 @@ open class NavigationBar: FormsComponent {
         }
     }
     open var title: String? = nil {
-        didSet { self.updateTitle() }
+        didSet { self.navigationItem?.title = self.title }
+    }
+    open var titleAttributes: [NSAttributedString.Key: Any]? = nil {
+        didSet { self.navigationBar?.titleTextAttributes = self.titleAttributes }
     }
     open var titleView: UIView? = nil {
-        didSet { self.updateTitle() }
+        didSet { self.navigationItem?.titleView = self.titleView }
     }
     
     public var onBack: (() -> Void)? = nil 
@@ -76,8 +87,10 @@ open class NavigationBar: FormsComponent {
         self.navigationBar = navigationBar
         self.updateShadow()
         navigationBar?.isTranslucent = self.isTranslucent
+        navigationBar?.titleTextAttributes = self.titleAttributes
         navigationBar?.barTintColor = self.backgroundColor
         navigationBar?.tintColor = self.tintColor
+        navigationBar?.setBackgroundImage(self.backgroundImage, for: .default)
     }
     
     public func setNavigationItem(_ navigationItem: UINavigationItem?) {
@@ -95,7 +108,7 @@ open class NavigationBar: FormsComponent {
         let items: [UIBarItem] = self.navigationItem?.leftBarButtonItems ?? []
         let hasElements: Bool = items.isNotEmpty
         let hasEmptyElement: Bool = items.count(of: BackBarItem.self).equal(1)
-        let controller: UINavigationController? = self.navigationBar?.parentNavigationController
+        let controller: UINavigationController? = nil//self.navigationBar?.parentNavigationController
         let canGoBack: Bool = controller?.viewControllers.count.greaterThan(1) ?? false
         let canDismiss: Bool = controller?.presentingViewController != nil
         let shouldOverrideBack: Bool = self.isBack && (canGoBack || canDismiss)
@@ -131,8 +144,13 @@ open class NavigationBar: FormsComponent {
     }
     
     private func updateTitle() {
-        self.navigationItem?.title = self.title
-        self.navigationItem?.titleView = self.titleView
+        self.navigationItem?.title = nil
+        if let title: String = self.title {
+            self.navigationItem?.title = title
+        }
+        if let titleView: UIView = self.titleView {
+            self.navigationItem?.titleView = titleView
+        }
     }
     
     private func updateShadow() {
@@ -145,6 +163,11 @@ public extension NavigationBar {
     @objc
     override func with(backgroundColor: UIColor?) -> Self {
         self.backgroundColor = backgroundColor
+        return self
+    }
+    @objc
+    func with(backgroundImage: UIImage?) -> Self {
+        self.backgroundImage = backgroundImage
         return self
     }
     func with(backImage: LazyImage?) -> Self {

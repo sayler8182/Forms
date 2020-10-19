@@ -203,10 +203,18 @@ public extension UIView {
     }
     
     func layoutWithoutAnimation() {
+        let areAnimationsEnabled = UIView.areAnimationsEnabled
         UIView.setAnimationsEnabled(false)
         self.setNeedsLayout()
         self.layoutIfNeeded()
-        UIView.setAnimationsEnabled(true)
+        UIView.setAnimationsEnabled(areAnimationsEnabled)
+    }
+    
+    func withoutAnimation(_ layout: () -> Void) {
+        let areAnimationsEnabled = UIView.areAnimationsEnabled
+        UIView.setAnimationsEnabled(false)
+        layout()
+        UIView.setAnimationsEnabled(areAnimationsEnabled)
     }
 }
 
@@ -240,6 +248,12 @@ extension UIView {
     } 
     
     @objc
+    open func with(alpha: CGFloat) -> Self {
+        self.alpha = alpha
+        return self
+    }
+    
+    @objc
     open func with(borderColor: UIColor?) -> Self {
         self.layer.borderColor = borderColor?.cgColor
         return self
@@ -254,6 +268,12 @@ extension UIView {
     @objc
     open func with(borderWidth: CGFloat) -> Self {
         self.layer.borderWidth = borderWidth
+        return self
+    }
+    
+    @objc
+    open func with(bounds: CGRect) -> Self {
+        self.bounds = bounds
         return self
     }
     
@@ -292,8 +312,20 @@ extension UIView {
     }
     
     @objc
+    open func with(frame: CGRect) -> Self {
+        self.frame = frame
+        return self
+    }
+    
+    @objc
     open func with(height: CGFloat) -> Self {
         return self.with(width: self.frame.size.width, height: height)
+    }
+    
+    @objc
+    open func with(isHidden: Bool) -> Self {
+        self.isHidden = isHidden
+        return self
     }
     
     @objc

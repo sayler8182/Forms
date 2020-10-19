@@ -18,6 +18,8 @@ public enum PermissionsStatus: String {
     case notDetermined = "notDetermined"
     case provisional = "provisional"
     case restricted = "restricted"
+    case limited = "limited"
+    case ephemeral = "ephemeral"
     case unknown = "unknown"
     
     public var isRestricted: Bool {
@@ -25,6 +27,7 @@ public enum PermissionsStatus: String {
         case .denied: return true
         case .provisional: return true
         case .restricted: return true
+        case .limited: return true
         case .unknown: return true
         default: return false
         }
@@ -35,6 +38,7 @@ public enum PermissionsStatus: String {
         case .authorized: return true
         case .authorizedAlways: return true
         case .authorizedWhenInUse: return true
+        case .ephemeral: return true
         default: return false
         }
     }

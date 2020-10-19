@@ -32,6 +32,7 @@ public class StringValidator: Validator {
                 isRequired: Bool = true) {
         self.set = set
         super.init(isRequired: isRequired)
+        self.dependencies = [NotEmptyValidator(isRequired: isRequired)]
     }
     
     override public init(isRequired: Bool = true) {

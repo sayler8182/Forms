@@ -24,7 +24,7 @@ public enum ComponentsInputs: ComponentsList {
                 component.numberOfChars = 4
                 component.textAlignment = .center
                 component.onSetTheme = Strong(component) { (component) in
-                    component.backgroundColors = .init(Theme.Colors.primaryLight)
+                    component.backgroundColors = .init(Theme.Colors.clear)
                     component.errorColor = Theme.Colors.red
                     component.errorFont = Theme.Fonts.regular(ofSize: 12)
                     component.infoColor = Theme.Colors.gray
@@ -56,7 +56,7 @@ public enum ComponentsInputs: ComponentsList {
                     horizontal: 16)
                 component.textFieldDelegate = TextFieldDelegates.default()
                 component.onSetTheme = Strong(component) { (component) in
-                    component.backgroundColors = .init(Theme.Colors.primaryLight)
+                    component.backgroundColors = .init(Theme.Colors.clear)
                     component.textColors = .init(Theme.Colors.primaryDark)
                     component.textFonts = .init(Theme.Fonts.regular(ofSize: 16))
                 }
@@ -149,7 +149,7 @@ public enum ComponentsInputs: ComponentsList {
                     horizontal: 16)
                 component.textFieldDelegate = TextFieldDelegates.default()
                 component.onSetTheme = Strong(component) { (component) in
-                    component.backgroundColors = .init(Theme.Colors.primaryLight)
+                    component.backgroundColors = .init(Theme.Colors.clear)
                     component.errorColor = Theme.Colors.red
                     component.errorFont = Theme.Fonts.regular(ofSize: 12)
                     component.infoColor = Theme.Colors.gray
@@ -180,7 +180,7 @@ public enum ComponentsInputs: ComponentsList {
                     vertical: 8,
                     horizontal: 16)
                 component.onSetTheme = Strong(component) { (component) in
-                    component.backgroundColors = .init(Theme.Colors.primaryLight)
+                    component.backgroundColors = .init(Theme.Colors.clear)
                     component.errorColor = Theme.Colors.red
                     component.errorFont = Theme.Fonts.regular(ofSize: 12)
                     component.infoColor = Theme.Colors.gray

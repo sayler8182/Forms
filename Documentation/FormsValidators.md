@@ -47,7 +47,7 @@ print(result.isValid, result.error)
 ### Custom ValidationError translations
 
 ```swift 
-enum AppValidationErrorType: String, ValidationErrorTypeProtocol {
+enum ValidationErrorType: String, FormsValidationErrorTypeProtocol {
     case myCustom
     
     var error: ValidationError {
@@ -55,17 +55,17 @@ enum AppValidationErrorType: String, ValidationErrorTypeProtocol {
     }
 }
 
-extension ValidationError {
+extension FormsValidationError {
     static var myCustomError = AppValidationErrorType.myCustom.error
 }
 
-class AppValidatorTranslator: ValidatorTranslator {
-    override func translate(_ type: ValidationErrorTypeProtocol,
+class ValidatorTranslator: FormsValidatorTranslator {
+    override func translate(_ type: FormsValidationErrorTypeProtocol,
                             _ parameters: [Any]) -> String? {
         switch type.rawValue {
-        case AppValidationErrorType.myCustom.rawValue:
+        case ValidationErrorType.myCustom.rawValue:
             return "My custom error"
-        case ValidationErrorType.email.rawValue:
+        case FormsValidationErrorType.email.rawValue:
             return "My custom Incorrect email format error"
         default:
             return super.translate(type, parameters)
@@ -73,7 +73,7 @@ class AppValidatorTranslator: ValidatorTranslator {
     }
 }
 
-injector.register(ValidatorTranslatorProtocol.self) { _ in
-    AppValidatorTranslator()
+injector.register(FormsValidatorTranslatorProtocol.self) { _ in
+    ValidatorTranslator()
 }
 ```

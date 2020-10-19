@@ -180,15 +180,15 @@ extension CollectionDataSource {
 
 // MARK: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout
 extension CollectionDataSource: UICollectionViewDelegate, UICollectionViewDataSource, CollectionDelegateFlowLayout {
-    public func numberOfSections(in collectionView: UICollectionView) -> Int {
+    open func numberOfSections(in collectionView: UICollectionView) -> Int {
         return self.sections.count
     }
     
-    public func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    open func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return self.sections[section].items.count
     }
     
-    public func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+    open func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let section: CollectionSection = self.sections[indexPath.section]
         guard !section.isShimmering else { return }
         let item: CollectionItem = section.items[indexPath.item]
@@ -198,16 +198,18 @@ extension CollectionDataSource: UICollectionViewDelegate, UICollectionViewDataSo
         self.delegate?.selectCell(item: item, cell: cell, indexPath: indexPath)
     }
     
-    public func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+    open func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let section: CollectionSection = self.sections[indexPath.section]
         let item: CollectionItem = section.items[indexPath.item]
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: item.identifier, for: indexPath) as! FormsCollectionViewCell
         cell.stopShimmering()
-        self.delegate?.setupCell(item: item, cell: cell, indexPath: indexPath)
+        self.collectionUpdatesQueue.async {
+            self.delegate?.setupCell(item: item, cell: cell, indexPath: indexPath)
+        }
         return cell
     }
     
-    public func collectionView(_ collectionView: UICollectionView, heightForItemAt indexPath: IndexPath) -> CGFloat? {
+    open func collectionView(_ collectionView: UICollectionView, heightForItemAt indexPath: IndexPath) -> CGFloat? {
         let section: CollectionSection = self.sections[indexPath.section]
         let item: CollectionItem = section.items[indexPath.item]
         guard let type = item.type as? FormsCollectionViewCell.Type,
@@ -215,7 +217,7 @@ extension CollectionDataSource: UICollectionViewDelegate, UICollectionViewDataSo
         return type.componentHeight(item.data, collectionView, flowLayout.itemWidth)
     }
     
-    public func collectionView(_ collectionView: UICollectionView, widthForItemAt indexPath: IndexPath) -> CGFloat? {
+    open func collectionView(_ collectionView: UICollectionView, widthForItemAt indexPath: IndexPath) -> CGFloat? {
         let section: CollectionSection = self.sections[indexPath.section]
         let item: CollectionItem = section.items[indexPath.item]
         guard let type = item.type as? FormsCollectionViewCell.Type,

@@ -14,11 +14,11 @@ import UIKit
 // MARK: Keys
 extension DemoTabBarKitController {
     enum TabBarKeys: String, TabBarKey {
-        enum Main: String, TabBarItemKey, CaseIterable {
+        enum Main: Int, TabBarItemKey, CaseIterable {
             case first
             case second
         }
-        enum Other: String, TabBarItemKey, CaseIterable {
+        enum Other: Int, TabBarItemKey, CaseIterable {
             case first
             case second
             case third

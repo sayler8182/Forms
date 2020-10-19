@@ -13,7 +13,9 @@ public extension Bool {
     var not: Bool {
         return !self
     }
-    
+    var asDouble: Double {
+        return self ? 1 : 0
+    }
     var asInt: Int {
         return self ? 1 : 0
     }

@@ -48,6 +48,7 @@ public protocol HomeShortcutsProtocol {
     func launch(_ launchOptions: [UIApplication.LaunchOptionsKey: Any]?)
     func launch(_ shortcutItem: UIApplicationShortcutItem?)
     func handleIfNeeded(_ handle: (UIApplicationShortcutItem) -> Void)
+    func dispose()
     func add(keys: [HomeShortcutsKeysProtocol])
     func add(key: HomeShortcutsKeysProtocol)
     func add(items: [HomeShortcutItem])
@@ -78,8 +79,12 @@ public class HomeShortcuts: HomeShortcutsProtocol {
     
     public func handleIfNeeded(_ handle: (UIApplicationShortcutItem) -> Void) {
         guard let shortcutItem: UIApplicationShortcutItem = Self.launchedShortcutItem else { return }
-        Self.launchedShortcutItem = nil
+        self.dispose()
         handle(shortcutItem)
+    }
+    
+    public func dispose() {
+        Self.launchedShortcutItem = nil
     }
 }
 
@@ -127,5 +132,12 @@ public extension HomeShortcuts {
     func contains(code: String) -> Bool {
         let items: [UIApplicationShortcutItem] = UIApplication.shared.shortcutItems ?? []
         return items.contains { $0.type.hasSuffix(".\(code)") }
+    }
+}
+
+// MARK: UIApplicationShortcutItem
+public extension UIApplicationShortcutItem {
+    var code: String? {
+        return self.type.components(separatedBy: ".").last
     }
 }

@@ -49,6 +49,7 @@ frameworks=(
     FormsInjector
     FormsLocation
     FormsLogger
+    FormsMapKit
     FormsMock
     FormsNetworking
     FormsNetworkingImage
@@ -72,6 +73,7 @@ for framework in "${frameworks[@]}"
 do 
     if [ -z "$FRAMEWORK" ] || [ $framework = $FRAMEWORK ]
     then
+        lipo -remove arm64 "${BUILD_DIR}/Debug-iphonesimulator/${framework}.framework/${framework}" -o "${BUILD_DIR}/Debug-iphonesimulator/${framework}.framework/${framework}"
         cp -R "${BUILD_DIR}/Debug-iphoneos/${framework}.framework" "${OUTPUT}/"
         lipo -create -output "${OUTPUT}/${framework}.framework/${framework}" "${BUILD_DIR}/Debug-iphoneos/${framework}.framework/${framework}" "${BUILD_DIR}/Debug-iphonesimulator/${framework}.framework/${framework}"
         cp -r "${BUILD_DIR}/Debug-iphonesimulator/${framework}.framework/Modules/${framework}.swiftmodule/" "${OUTPUT}/${framework}.framework/Modules/${framework}.swiftmodule"

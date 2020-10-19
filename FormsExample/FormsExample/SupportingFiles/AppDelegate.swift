@@ -131,17 +131,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             window.makeKeyAndVisible()
         }
         
-        // fonts
+        // Fonts
         try? Font.register([
             .awesome,
             .ion,
             .material
         ], in: Bundle.main)
         
-        // inactive cover
+        // Inactive cover
         self.inactiveCover.register()
         
-        // settings bundle
+        // Settings bundle
         self.settingsBundle?.set(
             value: Bundle.main.appVersion,
             forKey: DemoSettingsBundleKey.appVersion)

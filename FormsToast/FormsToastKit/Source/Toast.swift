@@ -14,25 +14,37 @@ import UIKit
 // MARK: Configuration
 public protocol ConfigurationToastProtocol {
     var lifeTime: TimeInterval { get }
-    var backgroundColor: ToastStyle<UIColor> { get }
-    var titleColor: ToastStyle<UIColor> { get }
+    var backgroundColor: ToastStyle<UIColor?> { get }
+    var titleColor: ToastStyle<UIColor?> { get }
     var titleFont: ToastStyle<UIFont> { get }
     var toastView: () -> ToastView { get }
 }
 
 public extension Configuration {
     struct Toast: ConfigurationToastProtocol {
-        public var lifeTime: TimeInterval = 3
-        public var backgroundColor = ToastStyle(
-            info: Theme.Colors.primaryLight,
-            success: Theme.Colors.green,
-            error: Theme.Colors.red)
-        public var titleColor = ToastStyle(
-            info: Theme.Colors.primaryDark,
-            success: Theme.Colors.black,
-            error: Theme.Colors.white)
-        public var titleFont = ToastStyle(Theme.Fonts.bold(ofSize: 14))
-        public var toastView: () -> ToastView = { ToastView() }
+        public let lifeTime: TimeInterval
+        public let backgroundColor: ToastStyle<UIColor?>
+        public let titleColor: ToastStyle<UIColor?>
+        public let titleFont: ToastStyle<UIFont>
+        public let toastView: () -> ToastView
+        
+        public init(lifeTime: TimeInterval = 3,
+                    backgroundColor: ToastStyle<UIColor?>? = nil,
+                    titleColor: ToastStyle<UIColor?>? = nil,
+                    titleFont: ToastStyle<UIFont>? = nil,
+                    toastView: (() -> ToastView)? = nil) {
+            self.lifeTime = lifeTime
+            self.backgroundColor = backgroundColor ?? ToastStyle(
+                info: Theme.Colors.primaryLight,
+                success: Theme.Colors.green,
+                error: Theme.Colors.red)
+            self.titleColor = titleColor ?? ToastStyle(
+                info: Theme.Colors.primaryDark,
+                success: Theme.Colors.black,
+                error: Theme.Colors.white)
+            self.titleFont = titleFont ?? ToastStyle(Theme.Fonts.bold(ofSize: 14))
+            self.toastView = toastView ?? { ToastView() }
+        }
     }
 }
 
@@ -172,7 +184,7 @@ open class ToastView: FormsComponent {
                 Anchor.to(parent).horizontal
             ])
             self.addSubview(self.contentView, with: [
-                Anchor.to(self).top.offset(max(20, UIView.safeArea.top)),
+                Anchor.to(self).top.offset(max(28, UIView.safeArea.top)),
                 Anchor.to(self).horizontal.offset(16),
                 Anchor.to(self).bottom.offset(16)
             ])

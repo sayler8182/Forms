@@ -37,7 +37,7 @@ open class SignInWithFacebookProviderBase: NSObject {
     public var onCancel: (() -> Void)? = nil
     public var onCompletion: ((SignInWithFacebookData?, Error?) -> Void)? = nil
     
-    public init(context: UIViewController) {
+    public init(context: UIViewController!) {
         self.context = context
     }
     

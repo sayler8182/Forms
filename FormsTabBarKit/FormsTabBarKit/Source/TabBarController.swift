@@ -13,16 +13,17 @@ import UIKit
 
 // MARK: TabBarController
 open class TabBarController: FormsViewController {
-    private let container = UIView(width: 320, height: 400)
-    private let tabBar = TabBar(width: 320, height: 72)
+    public let container = UIView(width: 320, height: 400)
+    public let tabBar = TabBar(width: 320, height: 72)
     
-    private let containerBottomAnchor = AnchorConnection()
-    private let containerToTabBarBottomAnchor = AnchorConnection()
-    private let tabBarBottomAnchor = AnchorConnection()
+    public let containerBottomAnchor = AnchorConnection()
+    public let containerToTabBarBottomAnchor = AnchorConnection()
+    public let tabBarBottomAnchor = AnchorConnection()
     
-    private var items: [String: [TabBarItem]] = [:]
-    private var selectedIndex: Int = 0
-    private var selectedKey: TabBarKey? = nil
+    public private (set) var items: [String: [TabBarItem]] = [:]
+    public private (set) var selectedIndex: Int = 0
+    public private (set) var selectedKey: TabBarKey? = nil
+    public private (set) weak var selectedController: UIViewController? = nil
     
     open var backgroundColor: UIColor? = Theme.Colors.primaryLight {
         didSet { self.container.backgroundColor = self.backgroundColor }
@@ -68,7 +69,7 @@ open class TabBarController: FormsViewController {
     open func setupContainer() {
         self.container.backgroundColor = self.backgroundColor
         self.view.addSubview(self.container, with: [
-            Anchor.to(self.view).top.safeArea,
+            Anchor.to(self.view).top,
             Anchor.to(self.view).horizontal,
             Anchor.to(self.view).bottom
                 .connect(self.containerBottomAnchor)
@@ -168,6 +169,7 @@ open class TabBarController: FormsViewController {
     }
     
     private func showContentController(_ content: UIViewController) {
+        self.selectedController = content
         self.addChild(content)
         content.view.frame = self.container.bounds
         self.container.addSubview(content.view, with: [
@@ -177,6 +179,7 @@ open class TabBarController: FormsViewController {
     }
     
     private func hideContentController(_ content: UIViewController) {
+        self.selectedController = nil
         content.willMove(toParent: nil)
         content.view.removeFromSuperview()
         content.removeFromParent()

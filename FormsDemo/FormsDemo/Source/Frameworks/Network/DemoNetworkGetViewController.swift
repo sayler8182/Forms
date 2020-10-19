@@ -91,14 +91,28 @@ private enum DemoNetworkMethods {
 private class DemoNetworkMethodsDemo: NetworkMethod {
     var session: NetworkSessionProtocol? = FileNetworkSession()
     var url: URL! = "https://postman-echo.com/get?foo1=bar1&foo2=bar2".url
-    var interceptor: NetworkRequestInterceptor? = DemoNetworkRequestInterceptor()
+    var requestInterceptor: NetworkRequestInterceptor? = DemoNetworkRequestInterceptor()
+    var responseInterceptor: NetworkResponseInterceptor? = DemoNetworkResponseInterceptor()
 }
 
 // MARK: DemoNetworkRequestInterceptor
 private class DemoNetworkRequestInterceptor: NetworkRequestInterceptor {
     override func setHeaders(_ request: NetworkRequest) {
-        let headers = request.headers
-        request.request?.allHTTPHeaderFields = headers
+        var urlRequest = request.request
+        var headers: [String: String] = request.headers ?? [:]
+        headers["Authorization"] = "Bearer token"
+        urlRequest?.allHTTPHeaderFields = headers
+        request.request = urlRequest
+    }
+}
+
+// MARK: DemoNetworkResponseInterceptor
+private class DemoNetworkResponseInterceptor: NetworkResponseInterceptor {
+    override func postProcess(response: URLResponse?,
+                              data: Data?,
+                              error: NetworkError?,
+                              onCompletion: @escaping NetworkOnCompletion) {
+        onCompletion(data, error)
     }
 }
 

@@ -34,7 +34,29 @@ public class VoidLogger: Logger {
     
     public func log(_ type: LogTypeProtocol, _ item: Any) { }
 }
+
+// MARK: NetworkConsoleLogger
+public class NetworkConsoleLogger: ConsoleLogger {
+    public let skipRequest: Bool
+    public let skipProgress: Bool
+    public let skipResponse: Bool
+    public let skipCache: Bool
+    public let skipHeaders: Bool
     
+    public init(skipRequest: Bool = false,
+                skipProgress: Bool = false,
+                skipResponse: Bool = false,
+                skipCache: Bool = false,
+                skipHeaders: Bool = false) {
+        self.skipRequest = skipRequest
+        self.skipProgress = skipProgress
+        self.skipResponse = skipResponse
+        self.skipCache = skipCache
+        self.skipHeaders = skipHeaders
+        super.init()
+    }
+}
+
 // MARK: ConsoleLogger
 public class ConsoleLogger: Logger {
     public let whitelist: [LogTypeProtocol]

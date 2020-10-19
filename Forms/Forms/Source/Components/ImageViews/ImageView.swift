@@ -201,12 +201,14 @@ public extension ImageView {
     
     func setImage(request: NetworkImageRequest,
                   logger: Logger? = nil,
-                  cache: NetworkCache? = nil,
+                  cache: NetworkCache? = NetworkTmpCache(ttl: 60 * 60 * 24 * 30),
+                  animated: Bool = true,
                   onProgress: NetworkImagesOnProgress? = nil,
                   onSuccess: NetworkImagesOnSuccess? = nil,
                   onError: NetworkImagesOnError? = nil,
                   onCompletion: NetworkImagesOnCompletion? = nil) {
-        if request.isStartAutoShimmer == true {
+        let isCached = request.isCached
+        if !isCached && request.isStartAutoShimmer == true {
             self.startShimmering(animated: false)
         }
         self.imageView.setImage(
@@ -216,12 +218,19 @@ public extension ImageView {
             onProgress: onProgress,
             onSuccess: onSuccess,
             onError: onError,
-            onCompletion: { [weak self] (image, _) in
+            onCompletion: { [weak self] (image, error) in
                 guard let `self` = self else { return }
                 guard self.imageView.isValid(request) else { return }
-                self.image = image
+                defer { onCompletion?(image, error) }
+                let animated = animated && !isCached
+                self.transition(
+                    animated,
+                    duration: 0.3,
+                    animations: {
+                        self.image = image?.image
+                    })
                 if request.isStopAutoShimmer == true {
-                    self.stopShimmering(animated: true)
+                    self.stopShimmering(animated: animated)
                 }
         })
     }

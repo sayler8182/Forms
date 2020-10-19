@@ -10,7 +10,6 @@ import FormsDatabase
 import FormsLogger
 import FormsUtils
 import Foundation
-import GRDB
 
 // MARK: DatabaseSQLite
 public class DatabaseSQLite: DatabaseProtocol {

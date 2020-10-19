@@ -43,6 +43,18 @@ public class Pagination<ID, D> {
         self.onNextPageId = onNextPageId
     }
     
+    public convenience init(firstPageId: ID? = nil,
+                            limit: Int = 20,
+                            pages: [Page<ID, D>] = [],
+                            onNextPageId: OnNextPageId? = nil) {
+        self.init(
+            of: D.self,
+            firstPageId: firstPageId,
+            limit: limit,
+            pages: pages,
+            onNextPageId: onNextPageId)
+    }
+    
     public func startLoading() -> ID? {
         self.isLoading = true
         let nextPage: ID? = self.onNextPageId?(self, self.lastPage)

@@ -67,6 +67,8 @@ private enum Demo {
         case componentsNavigationBarsNavigationBarWithBack
         case componentsNavigationBarsNavigationBarWithClose
         case componentsOthers
+        case componentsPickers
+        case componentsPickersSinglePicker
         case componentsProgresses
         case componentsProgressesActionProgressView
         case componentsProgressesProgressBar
@@ -74,6 +76,7 @@ private enum Demo {
         case componentsSections
         case componentsSegments
         case componentsSelectors
+        case componentsSliders
         case componentsSwitches
         case componentsUtils
         // Utils
@@ -132,6 +135,8 @@ private enum Demo {
         case kitImagePickerKit
         case kitImagePickerKitSystem
         case kitImagePickerKitWDImagePicker
+        case kitMapKit
+        case kitMapKitMapApple
         case kitPagerKit
         case kitSideMenuKit
         case kitSocialKit
@@ -212,6 +217,15 @@ private enum Demo {
                     ]),
                     Row(type: RowType.componentsOthers, title: "Others"),
                     Row(
+                        type: RowType.componentsPickers,
+                        title: "Pickers",
+                        sections: [
+                            Section(rows: [
+                                Row(type: RowType.componentsPickersSinglePicker, title:
+                                "SinglePicker")
+                            ])
+                    ]),
+                    Row(
                         type: RowType.componentsProgresses,
                         title: "Progresses",
                         sections: [
@@ -225,6 +239,7 @@ private enum Demo {
                     Row(type: RowType.componentsSections, title: "Sections"),
                     Row(type: RowType.componentsSegments, title: "Segments"),
                     Row(type: RowType.componentsSelectors, title: "Selectors"),
+                    Row(type: RowType.componentsSliders, title: "Sliders"),
                     Row(type: RowType.componentsSwitches, title: "Switches"),
                     Row(type: RowType.componentsUtils, title: "Utils")
                 ]),
@@ -325,6 +340,14 @@ private enum Demo {
                             Section(rows: [
                                 Row(type: RowType.kitImagePickerKitSystem, title: "System"),
                                 Row(type: RowType.kitImagePickerKitWDImagePicker, title: "WDImagePicker")
+                            ])
+                    ]),
+                    Row(
+                        type: RowType.kitMapKit,
+                        title: "MapKit",
+                        sections: [
+                            Section(rows: [
+                                Row(type: RowType.kitMapKitMapApple, title: "MapKit Apple")
                             ])
                     ]),
                     Row(type: RowType.kitPagerKit, title: "PagerKit"),
@@ -532,14 +555,14 @@ private class DemoListViewController: FormsViewController {
     
     init(_ items: [DemoSection],
          _ getRowController: @escaping GetRowController) {
-        self.getRowController = { _ in nil }
+        self.getRowController = getRowController
         super.init(nibName: nil, bundle: nil)
         self.items = items
     }
     
     init(_ row: DemoRow,
          _ getRowController: @escaping GetRowController) {
-        self.getRowController = { _ in nil }
+        self.getRowController = getRowController
         super.init(nibName: nil, bundle: nil)
         self.title = row.title
         self.items = row.sections
@@ -650,7 +673,9 @@ private class DemoListViewController: FormsViewController {
         case .componentsSections:                               return DemoSectionsViewController()
         case .componentsSegments:                               return DemoSegmentsViewController()
         case .componentsSelectors:                              return DemoSelectorsViewController()
+        case .componentsSliders:                                return DemoSlidersViewController()
         case .componentsSwitches:                               return DemoSwitchesViewController()
+        case .componentsPickersSinglePicker:                    return DemoPickersSinglePickerViewController()
         case .componentsProgressesActionProgressView:           return DemoProgressesActionProgressViewViewController()
         case .componentsProgressesProgressBar:                  return DemoProgressesProgressBarViewController()
         case .componentsProgressesProgressBarNavigation:        return DemoProgressesProgressBarNavigationViewController()
@@ -703,6 +728,7 @@ private class DemoListViewController: FormsViewController {
         case .kitCardKit:                                       return DemoCardKitController()
         case .kitImagePickerKitSystem:                          return DemoImagePickerKitSystemViewController()
         case .kitImagePickerKitWDImagePicker:                   return DemoImagePickerKitWDImagePickerViewController()
+        case .kitMapKitMapApple:                                return DemoMapKitMapAppleController()
         case .kitPagerKit:                                      return DemoPagerKitController()
         case .kitSideMenuKit:                                   return DemoSideMenuKitController()
         case .kitSocialKitAll:                                  return DemoSocialKitAllTableViewController()

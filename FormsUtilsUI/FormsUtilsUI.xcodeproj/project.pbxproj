@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		71D9C70624F8EA3700E2E0F9 /* UIToolbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71D9C70524F8EA3700E2E0F9 /* UIToolbar.swift */; };
 		71D9C70824F8EB0400E2E0F9 /* UIBarButtonItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71D9C70724F8EB0400E2E0F9 /* UIBarButtonItem.swift */; };
+		71D9EF4125400D9D001B44EB /* Bool.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71D9EF4025400D9D001B44EB /* Bool.swift */; };
 		71DBEEB624F3A2050057D97B /* ResizeableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71DBEEB524F3A2050057D97B /* ResizeableView.swift */; };
 		71EA26AE24A9C05800985392 /* FormsUtilsUI.h in Headers */ = {isa = PBXBuildFile; fileRef = 71EA26AC24A9C05800985392 /* FormsUtilsUI.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		71EA26BC24A9C07D00985392 /* FormsInjector.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71EA26BB24A9C07D00985392 /* FormsInjector.framework */; };
@@ -40,7 +41,7 @@
 		71EA26FF24A9C34100985392 /* CGPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71EA26E524A9C34000985392 /* CGPoint.swift */; };
 		71EA270024A9C34100985392 /* UIResponder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71EA26E624A9C34000985392 /* UIResponder.swift */; };
 		71EA270124A9C34100985392 /* UIWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71EA26E724A9C34000985392 /* UIWindow.swift */; };
-		71EA270224A9C34100985392 /* UIAlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71EA26E824A9C34000985392 /* UIAlertViewController.swift */; };
+		71EA270224A9C34100985392 /* UIAlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71EA26E824A9C34000985392 /* UIAlertController.swift */; };
 		71EA270324A9C34100985392 /* UILabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71EA26E924A9C34000985392 /* UILabel.swift */; };
 		71EA270424A9C34100985392 /* UIBezierPath.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71EA26EA24A9C34100985392 /* UIBezierPath.swift */; };
 		71EA270524A9C34100985392 /* UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71EA26EB24A9C34100985392 /* UIView.swift */; };
@@ -56,6 +57,7 @@
 /* Begin PBXFileReference section */
 		71D9C70524F8EA3700E2E0F9 /* UIToolbar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIToolbar.swift; sourceTree = "<group>"; };
 		71D9C70724F8EB0400E2E0F9 /* UIBarButtonItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIBarButtonItem.swift; sourceTree = "<group>"; };
+		71D9EF4025400D9D001B44EB /* Bool.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bool.swift; sourceTree = "<group>"; };
 		71DBEEB524F3A2050057D97B /* ResizeableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResizeableView.swift; sourceTree = "<group>"; };
 		71EA26A924A9C05800985392 /* FormsUtilsUI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = FormsUtilsUI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		71EA26AC24A9C05800985392 /* FormsUtilsUI.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FormsUtilsUI.h; sourceTree = "<group>"; };
@@ -89,7 +91,7 @@
 		71EA26E524A9C34000985392 /* CGPoint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CGPoint.swift; sourceTree = "<group>"; };
 		71EA26E624A9C34000985392 /* UIResponder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIResponder.swift; sourceTree = "<group>"; };
 		71EA26E724A9C34000985392 /* UIWindow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIWindow.swift; sourceTree = "<group>"; };
-		71EA26E824A9C34000985392 /* UIAlertViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIAlertViewController.swift; sourceTree = "<group>"; };
+		71EA26E824A9C34000985392 /* UIAlertController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIAlertController.swift; sourceTree = "<group>"; };
 		71EA26E924A9C34000985392 /* UILabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UILabel.swift; sourceTree = "<group>"; };
 		71EA26EA24A9C34100985392 /* UIBezierPath.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIBezierPath.swift; sourceTree = "<group>"; };
 		71EA26EB24A9C34100985392 /* UIView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIView.swift; sourceTree = "<group>"; };
@@ -163,6 +165,7 @@
 		71EA26C024A9C14100985392 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				71D9EF4025400D9D001B44EB /* Bool.swift */,
 				71EA26ED24A9C34100985392 /* Bundle.swift */,
 				71EA26E524A9C34000985392 /* CGPoint.swift */,
 				71EA26E124A9C33F00985392 /* CGRect.swift */,
@@ -172,7 +175,7 @@
 				71EAB38424F2D44700F1358B /* NSLayoutConstraint.swift */,
 				71EA271424A9C50700985392 /* String.swift */,
 				71EA26EC24A9C34100985392 /* UIActivityIndicatorView.swift */,
-				71EA26E824A9C34000985392 /* UIAlertViewController.swift */,
+				71EA26E824A9C34000985392 /* UIAlertController.swift */,
 				71EA26EA24A9C34100985392 /* UIBezierPath.swift */,
 				71D9C70724F8EB0400E2E0F9 /* UIBarButtonItem.swift */,
 				71EA26DB24A9C33F00985392 /* UIButton.swift */,
@@ -253,7 +256,7 @@
 		71EA26A024A9C05800985392 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 1150;
+				LastUpgradeCheck = 1210;
 				ORGANIZATIONNAME = Limbo;
 				TargetAttributes = {
 					71EA26A824A9C05800985392 = {
@@ -298,7 +301,7 @@
 				71EA26F124A9C34100985392 /* UIStatusBarStyle.swift in Sources */,
 				71EA26D024A9C1D700985392 /* SVG.swift in Sources */,
 				71EA270424A9C34100985392 /* UIBezierPath.swift in Sources */,
-				71EA270224A9C34100985392 /* UIAlertViewController.swift in Sources */,
+				71EA270224A9C34100985392 /* UIAlertController.swift in Sources */,
 				71EA26FD24A9C34100985392 /* UIEdgeInset.swift in Sources */,
 				71EA26CE24A9C1CE00985392 /* ScrollSteps.swift in Sources */,
 				71EA271624A9C50700985392 /* Date.swift in Sources */,
@@ -335,6 +338,7 @@
 				71EAB38524F2D44700F1358B /* NSLayoutConstraint.swift in Sources */,
 				71EA26FF24A9C34100985392 /* CGPoint.swift in Sources */,
 				71EA26F924A9C34100985392 /* CGSize.swift in Sources */,
+				71D9EF4125400D9D001B44EB /* Bool.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -367,6 +371,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -392,7 +397,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -430,6 +435,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -449,7 +455,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -476,7 +482,7 @@
 				);
 				INFOPLIST_FILE = FormsUtilsUI/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -509,7 +515,7 @@
 				);
 				INFOPLIST_FILE = FormsUtilsUI/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

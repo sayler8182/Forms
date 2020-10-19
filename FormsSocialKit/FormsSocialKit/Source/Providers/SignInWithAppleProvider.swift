@@ -43,7 +43,7 @@ open class SignInWithAppleProviderBase: NSObject {
     public var onCancel: (() -> Void)? = nil
     public var onCompletion: ((SignInWithAppleData?, Error?) -> Void)? = nil
     
-    public init(context: UIViewController) {
+    public init(context: UIViewController!) {
         self.context = context
     }
     

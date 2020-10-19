@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7103DDCE253F2798008081E3 /* DemoPickersSinglePickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7103DDCD253F2798008081E3 /* DemoPickersSinglePickerViewController.swift */; };
 		7103EA152460231100A11A96 /* DemoProgressesProgressBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7103EA142460231100A11A96 /* DemoProgressesProgressBarViewController.swift */; };
 		7103EA202460382300A11A96 /* DemoProgressesProgressBarNavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7103EA1F2460382300A11A96 /* DemoProgressesProgressBarNavigationViewController.swift */; };
 		7103EA852460A60E00A11A96 /* DemoPermissionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7103EA842460A60E00A11A96 /* DemoPermissionsViewController.swift */; };
@@ -15,6 +16,7 @@
 		711072022498AD65000F6EB6 /* DemoImagePickerKitWDImagePickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 711072012498AD65000F6EB6 /* DemoImagePickerKitWDImagePickerViewController.swift */; };
 		711AF55A24615BDB00CE8666 /* DemoCardKitController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 711AF55924615BDB00CE8666 /* DemoCardKitController.swift */; };
 		71207CF3248787260004B840 /* DemoCheckboxesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71207CF2248787260004B840 /* DemoCheckboxesViewController.swift */; };
+		7131749D2541B47A0072B459 /* DemoSlidersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7131749C2541B47A0072B459 /* DemoSlidersViewController.swift */; };
 		7132964724487ED0006935C0 /* DemoSocialKitAppleTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7132964624487ED0006935C0 /* DemoSocialKitAppleTableViewController.swift */; };
 		7132968A24489F8F006935C0 /* DemoSocialKitFacebookTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7132968924489F8F006935C0 /* DemoSocialKitFacebookTableViewController.swift */; };
 		7132969B2448A609006935C0 /* DemoSocialKitAllTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7132969A2448A609006935C0 /* DemoSocialKitAllTableViewController.swift */; };
@@ -124,10 +126,6 @@
 		71643A9024955BD600688E13 /* GTMSessionFetcher.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 71643A46249558EF00688E13 /* GTMSessionFetcher.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		71643A9E24955D1800688E13 /* GTMAppAuth.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71643A4B249558EF00688E13 /* GTMAppAuth.framework */; };
 		71643A9F24955D1800688E13 /* GTMAppAuth.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 71643A4B249558EF00688E13 /* GTMAppAuth.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		71643AA024955D1B00688E13 /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71643A4F249558F000688E13 /* FBSDKLoginKit.framework */; };
-		71643AA124955D1B00688E13 /* FBSDKLoginKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 71643A4F249558F000688E13 /* FBSDKLoginKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		71643AA224955D1D00688E13 /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71643A4A249558EF00688E13 /* FBSDKCoreKit.framework */; };
-		71643AA324955D1D00688E13 /* FBSDKCoreKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 71643A4A249558EF00688E13 /* FBSDKCoreKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		71643AA524955D6500688E13 /* FormsSocialKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71643AA424955D6500688E13 /* FormsSocialKit.framework */; };
 		71643AA624955D6500688E13 /* FormsSocialKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 71643AA424955D6500688E13 /* FormsSocialKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		71643AA824955D7300688E13 /* SocialKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71643AA724955D7300688E13 /* SocialKit.swift */; };
@@ -150,6 +148,10 @@
 		71A14CD32508B316001A6773 /* FormsUpdates.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71A14CD22508B316001A6773 /* FormsUpdates.framework */; };
 		71A14CD42508B316001A6773 /* FormsUpdates.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 71A14CD22508B316001A6773 /* FormsUpdates.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		71A14CDD2508C75C001A6773 /* DemoUpdatesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71A14CDC2508C75C001A6773 /* DemoUpdatesViewController.swift */; };
+		71B9B55C255597790028F468 /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71643A4A249558EF00688E13 /* FBSDKCoreKit.framework */; };
+		71B9B55D255597790028F468 /* FBSDKCoreKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 71643A4A249558EF00688E13 /* FBSDKCoreKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		71B9B55E255597790028F468 /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71643A4F249558F000688E13 /* FBSDKLoginKit.framework */; };
+		71B9B55F255597790028F468 /* FBSDKLoginKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 71643A4F249558F000688E13 /* FBSDKLoginKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		71BB61EF2445C6E7002BB31F /* DemoNetworkGetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71BB61EE2445C6E7002BB31F /* DemoNetworkGetViewController.swift */; };
 		71BB62812445F7C7002BB31F /* DemoNetworkImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71BB62802445F7C7002BB31F /* DemoNetworkImageViewController.swift */; };
 		71BF8AA324F25DE500D01CB9 /* DemoCalendarKitMonthController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71BF8AA224F25DE500D01CB9 /* DemoCalendarKitMonthController.swift */; };
@@ -158,6 +160,9 @@
 		71BF8B2624F271A300D01CB9 /* DemoCalendarKitWeekController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71BF8B2524F271A300D01CB9 /* DemoCalendarKitWeekController.swift */; };
 		71BF8B2824F2768B00D01CB9 /* LocalAuthentication.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71BF8B2724F2768B00D01CB9 /* LocalAuthentication.framework */; };
 		71C9369E247E513500603A6F /* DemoPinViewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71C9369D247E513500603A6F /* DemoPinViewViewController.swift */; };
+		71CF55FF2546EEB7001F162A /* FormsMapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71CF55FE2546EEB7001F162A /* FormsMapKit.framework */; };
+		71CF56002546EEB7001F162A /* FormsMapKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 71CF55FE2546EEB7001F162A /* FormsMapKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		71CF56BB2546F360001F162A /* DemoMapKitMapAppleController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71CF56BA2546F360001F162A /* DemoMapKitMapAppleController.swift */; };
 		71D3436324FCF63C00003928 /* SettingsBundleKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71D3436224FCF63C00003928 /* SettingsBundleKey.swift */; };
 		71D3673F24FE37DE00E6BFAF /* DemoDatabaseSQLiteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71D3673E24FE37DE00E6BFAF /* DemoDatabaseSQLiteViewController.swift */; };
 		71D3676D24FE390E00E6BFAF /* FormsDatabaseSQLite.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71D3676C24FE390E00E6BFAF /* FormsDatabaseSQLite.framework */; };
@@ -213,6 +218,7 @@
 			files = (
 				71FCB250247F969F00A84D30 /* FormsMock.framework in Embed Frameworks */,
 				7136A12E24867DE800298D3B /* FormsToastKit.framework in Embed Frameworks */,
+				71B9B55F255597790028F468 /* FBSDKLoginKit.framework in Embed Frameworks */,
 				71369FB224865C5E00298D3B /* FormsSideMenuKit.framework in Embed Frameworks */,
 				7136A12B24867DE200298D3B /* FormsPagerKit.framework in Embed Frameworks */,
 				71EA274A24A9C8EE00985392 /* FormsNetworkingImage.framework in Embed Frameworks */,
@@ -236,6 +242,7 @@
 				7136A13124867E5C00298D3B /* FormsCardKit.framework in Embed Frameworks */,
 				71A14CD42508B316001A6773 /* FormsUpdates.framework in Embed Frameworks */,
 				71643A7624955A5200688E13 /* FirebaseInstallations.framework in Embed Frameworks */,
+				71B9B55D255597790028F468 /* FBSDKCoreKit.framework in Embed Frameworks */,
 				71643A7C24955A5700688E13 /* GoogleAppMeasurement.framework in Embed Frameworks */,
 				71643A7824955A5300688E13 /* FirebaseInstanceID.framework in Embed Frameworks */,
 				71643A8224955A5A00688E13 /* GoogleUtilities.framework in Embed Frameworks */,
@@ -245,16 +252,15 @@
 				71643A9024955BD600688E13 /* GTMSessionFetcher.framework in Embed Frameworks */,
 				71643A8624955A5E00688E13 /* Protobuf.framework in Embed Frameworks */,
 				71FCB24C247F969F00A84D30 /* FormsDeveloperTools.framework in Embed Frameworks */,
-				71643AA124955D1B00688E13 /* FBSDKLoginKit.framework in Embed Frameworks */,
 				71D3680124FE65F700E6BFAF /* GRDB.framework in Embed Frameworks */,
 				71643A7224955A4F00688E13 /* FirebaseCore.framework in Embed Frameworks */,
-				71643AA324955D1D00688E13 /* FBSDKCoreKit.framework in Embed Frameworks */,
 				71643A7424955A5000688E13 /* FirebaseCoreDiagnostics.framework in Embed Frameworks */,
 				71DB66952458299B00B16145 /* Forms.framework in Embed Frameworks */,
 				71643A8024955A5900688E13 /* GoogleDataTransportCCTSupport.framework in Embed Frameworks */,
 				71D3677124FE391600E6BFAF /* FormsDatabase.framework in Embed Frameworks */,
 				7136A12824867DDE00298D3B /* FormsTabBarKit.framework in Embed Frameworks */,
 				71643AA624955D6500688E13 /* FormsSocialKit.framework in Embed Frameworks */,
+				71CF56002546EEB7001F162A /* FormsMapKit.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -262,6 +268,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		7103DDCD253F2798008081E3 /* DemoPickersSinglePickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoPickersSinglePickerViewController.swift; sourceTree = "<group>"; };
 		7103EA142460231100A11A96 /* DemoProgressesProgressBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoProgressesProgressBarViewController.swift; sourceTree = "<group>"; };
 		7103EA1F2460382300A11A96 /* DemoProgressesProgressBarNavigationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoProgressesProgressBarNavigationViewController.swift; sourceTree = "<group>"; };
 		7103EA842460A60E00A11A96 /* DemoPermissionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoPermissionsViewController.swift; sourceTree = "<group>"; };
@@ -270,6 +277,7 @@
 		711072012498AD65000F6EB6 /* DemoImagePickerKitWDImagePickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoImagePickerKitWDImagePickerViewController.swift; sourceTree = "<group>"; };
 		711AF55924615BDB00CE8666 /* DemoCardKitController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoCardKitController.swift; sourceTree = "<group>"; };
 		71207CF2248787260004B840 /* DemoCheckboxesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoCheckboxesViewController.swift; sourceTree = "<group>"; };
+		7131749C2541B47A0072B459 /* DemoSlidersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoSlidersViewController.swift; sourceTree = "<group>"; };
 		7132964624487ED0006935C0 /* DemoSocialKitAppleTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoSocialKitAppleTableViewController.swift; sourceTree = "<group>"; };
 		7132968924489F8F006935C0 /* DemoSocialKitFacebookTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoSocialKitFacebookTableViewController.swift; sourceTree = "<group>"; };
 		7132969A2448A609006935C0 /* DemoSocialKitAllTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoSocialKitAllTableViewController.swift; sourceTree = "<group>"; };
@@ -384,6 +392,8 @@
 		71BF8B2724F2768B00D01CB9 /* LocalAuthentication.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = LocalAuthentication.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk/System/Library/Frameworks/LocalAuthentication.framework; sourceTree = DEVELOPER_DIR; };
 		71C1F0012449E8B000FFC999 /* Forms.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Forms.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		71C9369D247E513500603A6F /* DemoPinViewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoPinViewViewController.swift; sourceTree = "<group>"; };
+		71CF55FE2546EEB7001F162A /* FormsMapKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FormsMapKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		71CF56BA2546F360001F162A /* DemoMapKitMapAppleController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoMapKitMapAppleController.swift; sourceTree = "<group>"; };
 		71D3436224FCF63C00003928 /* SettingsBundleKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsBundleKey.swift; sourceTree = "<group>"; };
 		71D3673E24FE37DE00E6BFAF /* DemoDatabaseSQLiteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoDatabaseSQLiteViewController.swift; sourceTree = "<group>"; };
 		71D3676C24FE390E00E6BFAF /* FormsDatabaseSQLite.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FormsDatabaseSQLite.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -446,10 +456,11 @@
 				71BF8B2824F2768B00D01CB9 /* LocalAuthentication.framework in Frameworks */,
 				7135DF9A248E3E6F00B5807F /* FormsHomeShortcuts.framework in Frameworks */,
 				71643A7124955A4F00688E13 /* FirebaseCore.framework in Frameworks */,
-				71643AA024955D1B00688E13 /* FBSDKLoginKit.framework in Frameworks */,
 				7135DFF8248E6E2C00B5807F /* FormsLocation.framework in Frameworks */,
+				71B9B55C255597790028F468 /* FBSDKCoreKit.framework in Frameworks */,
 				71643A7524955A5200688E13 /* FirebaseInstallations.framework in Frameworks */,
 				71643A7324955A5000688E13 /* FirebaseCoreDiagnostics.framework in Frameworks */,
+				71B9B55E255597790028F468 /* FBSDKLoginKit.framework in Frameworks */,
 				71643A7924955A5400688E13 /* FirebaseMessaging.framework in Frameworks */,
 				71643A8124955A5A00688E13 /* GoogleUtilities.framework in Frameworks */,
 				71FCB2C0247F9C6400A84D30 /* FormsPermissions.framework in Frameworks */,
@@ -458,9 +469,9 @@
 				71643A8F24955BD600688E13 /* GTMSessionFetcher.framework in Frameworks */,
 				7136A13024867E5C00298D3B /* FormsCardKit.framework in Frameworks */,
 				71FCB249247F969F00A84D30 /* FormsAnalytics.framework in Frameworks */,
+				71CF55FF2546EEB7001F162A /* FormsMapKit.framework in Frameworks */,
 				71643A8524955A5E00688E13 /* Protobuf.framework in Frameworks */,
 				71DB66942458299B00B16145 /* Forms.framework in Frameworks */,
-				71643AA224955D1D00688E13 /* FBSDKCoreKit.framework in Frameworks */,
 				7150CE81247FA9ED00F2681B /* FormsTransitions.framework in Frameworks */,
 				71A14CD32508B316001A6773 /* FormsUpdates.framework in Frameworks */,
 				71FCB24B247F969F00A84D30 /* FormsDeveloperTools.framework in Frameworks */,
@@ -479,6 +490,14 @@
 				715260692446EEC100119B0A /* DemoArchitecturesClean */,
 			);
 			path = Architectuers;
+			sourceTree = "<group>";
+		};
+		7103DDCC253F278C008081E3 /* Pickers */ = {
+			isa = PBXGroup;
+			children = (
+				7103DDCD253F2798008081E3 /* DemoPickersSinglePickerViewController.swift */,
+			);
+			path = Pickers;
 			sourceTree = "<group>";
 		};
 		7103EA13246022F900A11A96 /* Progresses */ = {
@@ -507,6 +526,14 @@
 			path = Checkboxes;
 			sourceTree = "<group>";
 		};
+		7131749B2541B46B0072B459 /* Sliders */ = {
+			isa = PBXGroup;
+			children = (
+				7131749C2541B47A0072B459 /* DemoSlidersViewController.swift */,
+			);
+			path = Sliders;
+			sourceTree = "<group>";
+		};
 		7132964524487EC5006935C0 /* SocialKit */ = {
 			isa = PBXGroup;
 			children = (
@@ -523,6 +550,7 @@
 			children = (
 				71BF8AA124F25DD600D01CB9 /* CalendarKit */,
 				71DB66F42458333400B16145 /* ImagePickerKit */,
+				71CF56B92546F354001F162A /* MapKit */,
 				7132964524487EC5006935C0 /* SocialKit */,
 				711AF55924615BDB00CE8666 /* DemoCardKitController.swift */,
 				713B9C7A243D0964001F6E3A /* DemoPagerKitController.swift */,
@@ -590,6 +618,7 @@
 		713B9C63243D0947001F6E3A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				71CF55FE2546EEB7001F162A /* FormsMapKit.framework */,
 				71A14CD22508B316001A6773 /* FormsUpdates.framework */,
 				71D3676F24FE391600E6BFAF /* FormsDatabase.framework */,
 				71D3676C24FE390E00E6BFAF /* FormsDatabaseSQLite.framework */,
@@ -630,10 +659,12 @@
 				713B9C6E243D0964001F6E3A /* Labels */,
 				713B9C6B243D0964001F6E3A /* NavigationBars */,
 				714848D724485C9E00455560 /* Others */,
+				7103DDCC253F278C008081E3 /* Pickers */,
 				7103EA13246022F900A11A96 /* Progresses */,
 				718B431E2490BA98000DBC05 /* Sections */,
 				718B431D2490BA88000DBC05 /* Segments */,
 				715435A724EFA9C40046F08F /* Selectors */,
+				7131749B2541B46B0072B459 /* Sliders */,
 				71090BC82488CD8C00CDB25D /* Switches */,
 				714848D824485CB600455560 /* Utils */,
 			);
@@ -856,6 +887,14 @@
 			path = CalendarKit;
 			sourceTree = "<group>";
 		};
+		71CF56B92546F354001F162A /* MapKit */ = {
+			isa = PBXGroup;
+			children = (
+				71CF56BA2546F360001F162A /* DemoMapKitMapAppleController.swift */,
+			);
+			path = MapKit;
+			sourceTree = "<group>";
+		};
 		71D3673C24FE37C900E6BFAF /* Database */ = {
 			isa = PBXGroup;
 			children = (
@@ -962,7 +1001,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 1140;
-				LastUpgradeCheck = 1160;
+				LastUpgradeCheck = 1210;
 				ORGANIZATIONNAME = Limbo;
 				TargetAttributes = {
 					713B9BF2243D08E0001F6E3A = {
@@ -1053,6 +1092,7 @@
 				710EAD82249D33A50090D751 /* DemoTransitionNavigationTableViewController.swift in Sources */,
 				7158911824463B86003200C7 /* DemoArchitecturesCleanModels.swift in Sources */,
 				713A76062473DB290067C968 /* DemoMockViewController.swift in Sources */,
+				7103DDCE253F2798008081E3 /* DemoPickersSinglePickerViewController.swift in Sources */,
 				7158CB96246A88D900797B83 /* DemoDeveloperToolsConsoleViewController.swift in Sources */,
 				71BB62812445F7C7002BB31F /* DemoNetworkImageViewController.swift in Sources */,
 				711AF55A24615BDB00CE8666 /* DemoCardKitController.swift in Sources */,
@@ -1073,6 +1113,7 @@
 				715435A924EFA9D10046F08F /* DemoSelectorsViewController.swift in Sources */,
 				717F4ACE249B59E700635106 /* DemoDebouncerViewController.swift in Sources */,
 				715B7AE52446FD1500754EDB /* DemoArchitecturesCleanSummaryModels.swift in Sources */,
+				71CF56BB2546F360001F162A /* DemoMapKitMapAppleController.swift in Sources */,
 				713B9C8A243D0964001F6E3A /* DemoViewController.swift in Sources */,
 				71BF8B2624F271A300D01CB9 /* DemoCalendarKitWeekController.swift in Sources */,
 				7138D3AD245324E500CC7345 /* DemoShimmerCollectionViewController.swift in Sources */,
@@ -1102,6 +1143,7 @@
 				71DBEEBE24F3C8C90057D97B /* DemoCalendarKitCalendarController.swift in Sources */,
 				715B7AAE2446FA7900754EDB /* DemoArchitecturesCleanWorker.swift in Sources */,
 				7138D3A92452C9E300CC7345 /* DemoCollectionViewController.swift in Sources */,
+				7131749D2541B47A0072B459 /* DemoSlidersViewController.swift in Sources */,
 				714AC02825064C1C00571400 /* DemoProgressesActionProgressViewViewController.swift in Sources */,
 				71D9C6FE24F8DCAC00E2E0F9 /* DemoDatesViewController.swift in Sources */,
 				7193E34E2451B5B7006238C5 /* DemoAppStoreReviewViewController.swift in Sources */,
@@ -1143,6 +1185,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -1168,7 +1211,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -1206,6 +1249,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -1225,7 +1269,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -1253,7 +1297,7 @@
 				);
 				INFOPLIST_FILE = FormsDemo/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1288,7 +1332,7 @@
 				);
 				INFOPLIST_FILE = FormsDemo/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

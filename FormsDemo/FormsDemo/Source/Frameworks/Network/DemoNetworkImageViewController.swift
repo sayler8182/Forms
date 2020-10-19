@@ -185,10 +185,10 @@ private class DemoProvider {
                     self.delegate?.displayContentProgress(progress)
                 }
             },
-            onSuccess: { [weak self] (image: UIImage) in
+            onSuccess: { [weak self] (image: NetworkImage) in
                 guard let `self` = self else { return }
                 DispatchQueue.main.async {
-                    self.delegate?.displayContent(image)
+                    self.delegate?.displayContent(image.image)
                 }
             },
             onError: { [weak self] (error: NetworkError) in

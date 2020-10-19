@@ -13,9 +13,9 @@ import UIKit
 
 // MARK: DemoSideMenuKitController
 class DemoSideMenuKitController: SideMenuController {
-    private let leftSide = DemoMenuViewController()
-    private let rightSide = DemoMenuViewController()
-    private let content = DemoContentViewController()
+    private let _leftSide = DemoMenuViewController()
+    private let _rightSide = DemoMenuViewController()
+    private let _content = DemoContentViewController()
     
     override func setupConfiguration() {
         super.setupConfiguration()
@@ -24,9 +24,9 @@ class DemoSideMenuKitController: SideMenuController {
     
     override func setupContent() {
         super.setupContent()
-        self.setLeftSide(self.leftSide.embeded)
-        self.setRightSide(self.rightSide.embeded)
-        self.setContent(self.content.embeded)
+        self.setLeftSide(self._leftSide.embeded)
+        self.setRightSide(self._rightSide.embeded)
+        self.setContent(self._content.embeded)
     }
 }
 

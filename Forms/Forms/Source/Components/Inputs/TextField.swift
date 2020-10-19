@@ -96,6 +96,20 @@ open class UITextFieldWithPlaceholder: UITextField, UnShimmerable {
     
     public var onDeleteBackward: OnDeleteBackward?
     
+    override open var intrinsicContentSize: CGSize {
+        let size: CGSize = super.intrinsicContentSize
+        guard self.isSecureTextEntry else { return size }
+        guard let text: String = self.text else { return size }
+        guard let font: UIFont = self.font else { return size }
+        var width: CGFloat = size.width
+        let length: CGFloat = text.count.asCGFloat
+        width = "•".width(for: CGFloat.greatestFiniteMagnitude, font: font) * length
+        if length > 1 {
+            width += (length - 1).asCGFloat * 4.5
+        }
+        return CGSize(width: width, height: size.height)
+    }
+    
     override public init(frame: CGRect) {
         super.init(frame: frame)
         self.setupView()
@@ -211,6 +225,9 @@ open class TextField: FormsComponent, FormsComponentWithMarginEdgeInset, FormsCo
     
     open var actionView: UIView? = nil {
         didSet { self.updateActionView() }
+    }
+    open var alignment: NSTextAlignment = .natural {
+        didSet { self.updateState() }
     }
     open var animationTime: TimeInterval = 0.2
     open var autocapitalizationType: UITextAutocapitalizationType {
@@ -516,16 +533,20 @@ open class TextField: FormsComponent, FormsComponentWithMarginEdgeInset, FormsCo
     
     open func setStateAnimation(_ state: FormsComponentStateType) {
         self.backgroundView.backgroundColor = self.backgroundColors.value(for: state)
+        self.errorLabel.textAlignment = self.alignment
         self.errorLabel.textColor = self.errorColor
         self.errorLabel.font = self.errorFont
+        self.infoLabel.textAlignment = self.alignment
         self.infoLabel.textColor = self.infoColor
         self.infoLabel.font = self.infoFont
+        self.textField.textAlignment = self.alignment
         self.textField.textColor = self.textColors.value(for: state)
         self.textField.font = self.textFonts.value(for: state)
         self.textField.placeholderColor = self.placeholderColors.value(for: state)
         self.textField.placeholderFont = self.placeholderFonts.value(for: state)
         self.textField.maskColor = self.maskColors.value(for: state)
         self.textField.maskFont = self.maskFonts.value(for: state)
+        self.titleLabel.textAlignment = self.alignment
         self.titleLabel.textColor = self.titleColors.value(for: state)
         self.titleLabel.font = self.titleFonts.value(for: state)
         self.underscoreView.backgroundColor = self.underscoreColors.value(for: state)
@@ -575,6 +596,10 @@ extension TextField: InputViewable {
 public extension TextField {
     func with(actionView: UIView?) -> Self {
         self.actionView = actionView
+        return self
+    }
+    func with(alignment: NSTextAlignment) -> Self {
+        self.alignment = alignment
         return self
     }
     func with(animationTime: TimeInterval) -> Self {

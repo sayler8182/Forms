@@ -8,6 +8,7 @@
 
 import FormsInjector
 import FormsLogger
+import FormsUtils
 import Foundation
 
 public typealias NetworkOnProgress = (_ size: Int64, _ totalSize: Int64, _ progress: Double) -> Void
@@ -15,7 +16,7 @@ public typealias NetworkOnSuccess = (_ data: Data) -> Void
 public typealias NetworkOnGenericSuccess<T> = (T) -> Void
 public typealias NetworkOnError = (_ error: NetworkError) -> Void
 public typealias NetworkOnCompletion = (_ data: Data?, _ error: NetworkError?) -> Void
-public typealias NetworkOnGenericCompletion<T> = (T?, NetworkError?) -> Void
+public typealias NetworkOnGenericCompletion<T> = (T?, _ error: NetworkError?) -> Void
 
 // MARK: NetworkError
 public enum NetworkError: Error, CustomDebugStringConvertible, Equatable {
@@ -25,6 +26,7 @@ public enum NetworkError: Error, CustomDebugStringConvertible, Equatable {
     case incorrectResponseFormat
     case incorrectRequestFormat
     case errorStatusCode(Int)
+    case error(String)
     case unknown(String)
     
     public var isCancelled: Bool {
@@ -39,6 +41,7 @@ public enum NetworkError: Error, CustomDebugStringConvertible, Equatable {
         case .incorrectResponseFormat: return "Incorrect response format"
         case .incorrectRequestFormat: return "Incorrect request format"
         case .errorStatusCode(let code): return "Error with status code \(code)"
+        case .error(let reason): return reason
         case .unknown(let reason): return "Unknown \(reason)"
         }
     }
@@ -58,25 +61,33 @@ public enum NetworkError: Error, CustomDebugStringConvertible, Equatable {
 
 // MARK: NetworkTask
 public class NetworkTask {
+    private let queue: DispatchQueue = DispatchQueue.global()
+    
+    private var _task: URLSessionDataTask? = nil
     public var task: URLSessionDataTask? {
-        didSet { self.updateTask() }
+        get { return self.queue.sync { self._task } }
+        set { self.queue.sync {
+            self._task = newValue
+            if self._isCancelled {
+                self._task?.cancel()
+            }
+        } }
     }
     
     private var _isCancelled: Bool = false
     public var isCancelled: Bool {
-        return self._isCancelled || self.task?.state == .canceling
+        return self.queue.sync {
+            return self._isCancelled || self.task?.state == .canceling
+        }
     }
     
     public init() { }
     
     public func cancel() {
-        self._isCancelled = true
-        self.task?.cancel()
-    }
-    
-    private func updateTask() {
-        guard self._isCancelled else { return }
-        self.task?.cancel()
+        self.queue.sync {
+            self._isCancelled = true
+            self.task?.cancel()
+        }
     }
 } 
 
@@ -88,21 +99,22 @@ public class NetworkRequest {
     public var method: HTTPMethod?
     public var headers: [String: String]?
     public var body: Data?
-    public var interceptor: NetworkRequestInterceptor?
+    public var requestInterceptor: NetworkRequestInterceptor?
+    public var responseInterceptor: NetworkResponseInterceptor?
     public var request: URLRequest?
     
     public init(url: URL) {
         self.url = url
     }
     
-    public func build() -> URLRequest {
-        var request = URLRequest(url: url)
-        request.allHTTPHeaderFields = headers
+    public func build() -> URLRequest! {
+        var request = URLRequest(url: self.url)
+        request.allHTTPHeaderFields = self.headers
         request.httpMethod = self.method?.rawValue
         request.httpBody = self.body
-        self.interceptor?.process(request: self)
         self.request = request
-        return request
+        self.requestInterceptor?.process(request: self)
+        return self.request
     }
 }
 public extension NetworkRequest {
@@ -122,8 +134,12 @@ public extension NetworkRequest {
         self.body = body
         return self
     }
-    func with(interceptor: NetworkRequestInterceptor?) -> Self {
-        self.interceptor = interceptor
+    func with(requestInterceptor: NetworkRequestInterceptor?) -> Self {
+        self.requestInterceptor = requestInterceptor
+        return self
+    }
+    func with(responseInterceptor: NetworkResponseInterceptor?) -> Self {
+        self.responseInterceptor = responseInterceptor
         return self
     }
 }
@@ -197,7 +213,7 @@ open class NetworkProvider: NetworkProviderProtocol {
                     onSuccess?(data)
                 }
                 onCompletion?(data, error)
-        })
+            })
     }
     
     @discardableResult
@@ -210,12 +226,12 @@ open class NetworkProvider: NetworkProviderProtocol {
         return self.call(
             request: request,
             onProgress: onProgress) { (data: Data?, error: NetworkError?) in
-                parser?.parse(
-                    data: data,
-                    error: error,
-                    onSuccess: onSuccess,
-                    onError: onError,
-                    onCompletion: onCompletion)
+            parser?.parse(
+                data: data,
+                error: error,
+                onSuccess: onSuccess,
+                onError: onError,
+                onCompletion: onCompletion)
         }
     }
     
@@ -226,15 +242,25 @@ open class NetworkProvider: NetworkProviderProtocol {
         let session: NetworkSessionProtocol? = (self.session?.isEnabled == true ? self.session : nil) ?? Injector.main.resolveOrDefault("FormsNetworking") ?? NetworkSession()
         let logger: Logger? = self.logger ?? Injector.main.resolveOrDefault("FormsNetworking")
         let cache: NetworkCache? = self.cache ?? Injector.main.resolveOrDefault("FormsNetworking")
-        let request: URLRequest = request.build()
+        let urlRequest: URLRequest = request.build()
         let networkTask: NetworkTask = NetworkTask()
         DispatchQueue.global().async {
             let task: URLSessionDataTask? = session?.call(
-                request: request,
+                request: urlRequest,
                 logger: logger,
                 cache: cache,
                 onProgress: onProgress,
-                onCompletion: onCompletion)
+                onCompletion: { (response: URLResponse?, data: Data?, error: NetworkError?) in
+                    guard let interceptor: NetworkResponseInterceptor = request.responseInterceptor else {
+                        onCompletion(data, error)
+                        return
+                    }
+                    interceptor.postProcess(
+                        response: response,
+                        data: data,
+                        error: error,
+                        onCompletion: onCompletion)
+                })
             networkTask.task = task
         }
         return networkTask
@@ -255,6 +281,18 @@ open class NetworkRequestInterceptor {
     }
     
     open func setHeaders(_ request: NetworkRequest) {
-        // HOOK
+        // HOOK 
+    }
+}
+
+// MARK: NetworkResponseInterceptor
+open class NetworkResponseInterceptor {
+    public init() { }
+    
+    open func postProcess(response: URLResponse?,
+                          data: Data?,
+                          error: NetworkError?,
+                          onCompletion: @escaping NetworkOnCompletion) {
+        onCompletion(data, error)
     }
 }

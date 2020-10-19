@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7103DDC1253F2591008081E3 /* SinglePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7103DDC0253F2591008081E3 /* SinglePicker.swift */; };
+		7103DDC2253F2591008081E3 /* SinglePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7103DDC0253F2591008081E3 /* SinglePicker.swift */; };
+		7103DDC8253F270E008081E3 /* ComponentsPickers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7103DDC7253F270E008081E3 /* ComponentsPickers.swift */; };
+		7103DDC9253F270E008081E3 /* ComponentsPickers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7103DDC7253F270E008081E3 /* ComponentsPickers.swift */; };
 		7103EA182460234E00A11A96 /* ProgressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7103EA172460234E00A11A96 /* ProgressBar.swift */; };
 		7103EA1B2460266400A11A96 /* ComponentsProgresses.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7103EA1A2460266400A11A96 /* ComponentsProgresses.swift */; };
 		7103EA22246043C300A11A96 /* FormsNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7103EA21246043C300A11A96 /* FormsNavigationController.swift */; };
@@ -74,6 +78,12 @@
 		71207CF0248783B80004B840 /* ComponentsCheckboxes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71207CEE248783B80004B840 /* ComponentsCheckboxes.swift */; };
 		7121ABE7245AABFD00F6BEF5 /* FormsSearchController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7121ABE6245AABFC00F6BEF5 /* FormsSearchController.swift */; };
 		71278B53245AC88C00B26870 /* SearchDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71278B52245AC88C00B26870 /* SearchDataSource.swift */; };
+		713174852541A42E0072B459 /* DateRangePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 713174842541A42E0072B459 /* DateRangePicker.swift */; };
+		713174862541A42E0072B459 /* DateRangePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 713174842541A42E0072B459 /* DateRangePicker.swift */; };
+		7131748E2541B0950072B459 /* Slider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7131748D2541B0950072B459 /* Slider.swift */; };
+		7131748F2541B0950072B459 /* Slider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7131748D2541B0950072B459 /* Slider.swift */; };
+		713174952541B3350072B459 /* ComponentsSliders.swift in Sources */ = {isa = PBXBuildFile; fileRef = 713174942541B3350072B459 /* ComponentsSliders.swift */; };
+		713174962541B3350072B459 /* ComponentsSliders.swift in Sources */ = {isa = PBXBuildFile; fileRef = 713174942541B3350072B459 /* ComponentsSliders.swift */; };
 		7135DF9F248E3E8200B5807F /* FormsHomeShortcuts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7135DF9E248E3E8200B5807F /* FormsHomeShortcuts.framework */; };
 		7135DFF2248E6E1300B5807F /* FormsLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7135DFF1248E6E1300B5807F /* FormsLocation.framework */; };
 		71369F9B24865A9C00298D3B /* FormsToastKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71369F9A24865A9C00298D3B /* FormsToastKit.framework */; };
@@ -169,6 +179,7 @@
 		71CD515F24A5DF0800DE9374 /* GradientDivider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71CD515E24A5DF0800DE9374 /* GradientDivider.swift */; };
 		71CD516024A5DF0C00DE9374 /* GradientDivider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71CD515E24A5DF0800DE9374 /* GradientDivider.swift */; };
 		71CD516124A5FB4800DE9374 /* FormComponentState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71CD515C24A5D36A00DE9374 /* FormComponentState.swift */; };
+		71CF55F32546EE15001F162A /* FormsMapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71CF55F22546EE15001F162A /* FormsMapKit.framework */; };
 		71D3433424FCD06800003928 /* DeviceSecurity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71D3433324FCD06800003928 /* DeviceSecurity.swift */; };
 		71D3433524FCD06800003928 /* DeviceSecurity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71D3433324FCD06800003928 /* DeviceSecurity.swift */; };
 		71D3436024FCF47400003928 /* SettingsBundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71D3435F24FCF47400003928 /* SettingsBundle.swift */; };
@@ -212,6 +223,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		7103DDC0253F2591008081E3 /* SinglePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SinglePicker.swift; sourceTree = "<group>"; };
+		7103DDC7253F270E008081E3 /* ComponentsPickers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComponentsPickers.swift; sourceTree = "<group>"; };
 		7103EA172460234E00A11A96 /* ProgressBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressBar.swift; sourceTree = "<group>"; };
 		7103EA1A2460266400A11A96 /* ComponentsProgresses.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComponentsProgresses.swift; sourceTree = "<group>"; };
 		7103EA21246043C300A11A96 /* FormsNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormsNavigationController.swift; sourceTree = "<group>"; };
@@ -221,6 +234,9 @@
 		71207CEE248783B80004B840 /* ComponentsCheckboxes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComponentsCheckboxes.swift; sourceTree = "<group>"; };
 		7121ABE6245AABFC00F6BEF5 /* FormsSearchController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormsSearchController.swift; sourceTree = "<group>"; };
 		71278B52245AC88C00B26870 /* SearchDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchDataSource.swift; sourceTree = "<group>"; };
+		713174842541A42E0072B459 /* DateRangePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateRangePicker.swift; sourceTree = "<group>"; };
+		7131748D2541B0950072B459 /* Slider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Slider.swift; sourceTree = "<group>"; };
+		713174942541B3350072B459 /* ComponentsSliders.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComponentsSliders.swift; sourceTree = "<group>"; };
 		7135DF9E248E3E8200B5807F /* FormsHomeShortcuts.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FormsHomeShortcuts.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7135DFF1248E6E1300B5807F /* FormsLocation.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FormsLocation.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		71369F9A24865A9C00298D3B /* FormsToastKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FormsToastKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -301,6 +317,7 @@
 		71C9369A247E503700603A6F /* PinView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinView.swift; sourceTree = "<group>"; };
 		71CD515C24A5D36A00DE9374 /* FormComponentState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormComponentState.swift; sourceTree = "<group>"; };
 		71CD515E24A5DF0800DE9374 /* GradientDivider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientDivider.swift; sourceTree = "<group>"; };
+		71CF55F22546EE15001F162A /* FormsMapKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FormsMapKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		71D3433324FCD06800003928 /* DeviceSecurity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceSecurity.swift; sourceTree = "<group>"; };
 		71D3435F24FCF47400003928 /* SettingsBundle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsBundle.swift; sourceTree = "<group>"; };
 		71D366F624FE28D000E6BFAF /* Vibration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Vibration.swift; sourceTree = "<group>"; };
@@ -348,6 +365,7 @@
 				71EA276124A9C98C00985392 /* FormsNetworkingImage.framework in Frameworks */,
 				71F4E2E225011F6100CCAA09 /* FormsTodayExtensionKit.framework in Frameworks */,
 				7135DF9F248E3E8200B5807F /* FormsHomeShortcuts.framework in Frameworks */,
+				71CF55F32546EE15001F162A /* FormsMapKit.framework in Frameworks */,
 				714EF1D5247F940100AE3044 /* FormsValidators.framework in Frameworks */,
 				7150CE84247FAB5A00F2681B /* FormsTransitions.framework in Frameworks */,
 				71369F9B24865A9C00298D3B /* FormsToastKit.framework in Frameworks */,
@@ -385,6 +403,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		7103DDBF253F2579008081E3 /* Pickers */ = {
+			isa = PBXGroup;
+			children = (
+				7103DDC0253F2591008081E3 /* SinglePicker.swift */,
+			);
+			path = Pickers;
+			sourceTree = "<group>";
+		};
 		7103EA162460233C00A11A96 /* Progresses */ = {
 			isa = PBXGroup;
 			children = (
@@ -416,6 +442,14 @@
 				71278B52245AC88C00B26870 /* SearchDataSource.swift */,
 			);
 			path = SearchController;
+			sourceTree = "<group>";
+		};
+		7131748C2541B0860072B459 /* Slider */ = {
+			isa = PBXGroup;
+			children = (
+				7131748D2541B0950072B459 /* Slider.swift */,
+			);
+			path = Slider;
 			sourceTree = "<group>";
 		};
 		714848D42448597B00455560 /* Others */ = {
@@ -518,10 +552,12 @@
 				71946964243DA7BE00CAD09B /* ComponentsLabels.swift */,
 				71946966243DA7BE00CAD09B /* ComponentsNavigationBars.swift */,
 				714848D2244858FF00455560 /* ComponentsOthers.swift */,
+				7103DDC7253F270E008081E3 /* ComponentsPickers.swift */,
 				7103EA1A2460266400A11A96 /* ComponentsProgresses.swift */,
 				71E0F5F3246C3C760051F043 /* ComponentsSections.swift */,
 				718B431A2490B95A000DBC05 /* ComponentsSegments.swift */,
 				715435AA24EFA9FB0046F08F /* ComponentsSelectors.swift */,
+				713174942541B3350072B459 /* ComponentsSliders.swift */,
 				71090BC52488CD1400CDB25D /* ComponentsSwitches.swift */,
 				71946965243DA7BE00CAD09B /* ComponentsUtils.swift */,
 			);
@@ -562,10 +598,12 @@
 				71946975243DA7BE00CAD09B /* Labels */,
 				71946973243DA7BE00CAD09B /* NavigationBars */,
 				714848D42448597B00455560 /* Others */,
+				7103DDBF253F2579008081E3 /* Pickers */,
 				7103EA162460233C00A11A96 /* Progresses */,
 				71E0F5F5246C3E040051F043 /* Sections */,
 				718B43162490B662000DBC05 /* Segments */,
 				715435AC24EFAAD10046F08F /* Selectors */,
+				7131748C2541B0860072B459 /* Slider */,
 				71090BC12488CC2C00CDB25D /* Switches */,
 				71946977243DA7BE00CAD09B /* Utils */,
 			);
@@ -634,6 +672,7 @@
 		719469AF243DA7CC00CAD09B /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				71CF55F22546EE15001F162A /* FormsMapKit.framework */,
 				71A14CCE2508B1E2001A6773 /* FormsUpdates.framework */,
 				71F4E2E125011F6100CCAA09 /* FormsTodayExtensionKit.framework */,
 				71D3677224FE391D00E6BFAF /* FormsDatabaseSQLite.framework */,
@@ -694,6 +733,7 @@
 			isa = PBXGroup;
 			children = (
 				71D9C6F924F8DB8200E2E0F9 /* DatePicker.swift */,
+				713174842541A42E0072B459 /* DateRangePicker.swift */,
 			);
 			path = Dates;
 			sourceTree = "<group>";
@@ -779,7 +819,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 1140;
-				LastUpgradeCheck = 1140;
+				LastUpgradeCheck = 1210;
 				ORGANIZATIONNAME = Limbo;
 				TargetAttributes = {
 					7194693B243DA7A800CAD09B = {
@@ -849,6 +889,7 @@
 				715FE7B72507609B00713AC9 /* Fonts.swift in Sources */,
 				715435AF24EFAADE0046F08F /* SelectorControl.swift in Sources */,
 				711070EA2476BF610056BBB5 /* NavigationBar.swift in Sources */,
+				7103DDC9253F270E008081E3 /* ComponentsPickers.swift in Sources */,
 				711070EB2476BF610056BBB5 /* TextView.swift in Sources */,
 				711070EC2476BF610056BBB5 /* ComponentsInputs.swift in Sources */,
 				711070ED2476BF610056BBB5 /* TextFieldDelegate.swift in Sources */,
@@ -891,8 +932,12 @@
 				71C9369C247E503700603A6F /* PinView.swift in Sources */,
 				7110710A2476BF610056BBB5 /* ComponentsSections.swift in Sources */,
 				7110710C2476BF610056BBB5 /* TextFieldAmountDelegate.swift in Sources */,
+				713174962541B3350072B459 /* ComponentsSliders.swift in Sources */,
+				7131748F2541B0950072B459 /* Slider.swift in Sources */,
 				7110710D2476BF610056BBB5 /* FormsTableViewController.swift in Sources */,
+				713174862541A42E0072B459 /* DateRangePicker.swift in Sources */,
 				7110710E2476BF610056BBB5 /* StackView.swift in Sources */,
+				7103DDC2253F2591008081E3 /* SinglePicker.swift in Sources */,
 				711071102476BF610056BBB5 /* FormsCollectionViewController.swift in Sources */,
 				714AC0262506495B00571400 /* ActionProgressView.swift in Sources */,
 				71CD516024A5DF0C00DE9374 /* GradientDivider.swift in Sources */,
@@ -937,6 +982,7 @@
 				715FE7B62507609B00713AC9 /* Fonts.swift in Sources */,
 				71E0F60B246D30EC0051F043 /* TextView.swift in Sources */,
 				71F4E299250100BE00CCAA09 /* SharedContainer.swift in Sources */,
+				7103DDC8253F270E008081E3 /* ComponentsPickers.swift in Sources */,
 				7194698F243DA7BE00CAD09B /* ComponentsInputs.swift in Sources */,
 				71D9C70324F8E38B00E2E0F9 /* InputView.swift in Sources */,
 				719469AA243DA7BE00CAD09B /* TextFieldDelegate.swift in Sources */,
@@ -979,8 +1025,12 @@
 				7193E36D24520C75006238C5 /* FormsCollectionViewCell.swift in Sources */,
 				71C9369B247E503700603A6F /* PinView.swift in Sources */,
 				71E0F5F4246C3C760051F043 /* ComponentsSections.swift in Sources */,
+				713174952541B3350072B459 /* ComponentsSliders.swift in Sources */,
+				7131748E2541B0950072B459 /* Slider.swift in Sources */,
 				719469A9243DA7BE00CAD09B /* TextFieldAmountDelegate.swift in Sources */,
+				713174852541A42E0072B459 /* DateRangePicker.swift in Sources */,
 				719469A4243DA7BE00CAD09B /* FormsTableViewController.swift in Sources */,
+				7103DDC1253F2591008081E3 /* SinglePicker.swift in Sources */,
 				71A9285124A368B300734C2B /* ClickableView.swift in Sources */,
 				714AC0252506495B00571400 /* ActionProgressView.swift in Sources */,
 				7193E3662451F1BA006238C5 /* StackView.swift in Sources */,
@@ -1018,7 +1068,7 @@
 				);
 				INFOPLIST_FILE = Forms/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1050,7 +1100,7 @@
 				);
 				INFOPLIST_FILE = Forms/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1092,6 +1142,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -1117,7 +1168,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -1155,6 +1206,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -1174,7 +1226,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -1200,7 +1252,7 @@
 				);
 				INFOPLIST_FILE = Forms/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1232,7 +1284,7 @@
 				);
 				INFOPLIST_FILE = Forms/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

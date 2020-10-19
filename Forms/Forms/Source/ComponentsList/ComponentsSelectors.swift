@@ -17,7 +17,7 @@ public enum ComponentsSelectors: ComponentsList {
                 vertical: 8,
                 horizontal: 16)
             component.onSetTheme = Strong(component) { (component) in
-                component.backgroundColors = .init(Theme.Colors.primaryLight)
+                component.backgroundColors = .init(Theme.Colors.tertiaryLight)
                 component.textColors = SelectorControl.State<UIColor>(Theme.Colors.primaryDark)
                     .with(disabled: Theme.Colors.tertiaryDark)
                 component.textFonts = SelectorControl.State<UIFont>(Theme.Fonts.regular(ofSize: 12))

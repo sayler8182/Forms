@@ -35,7 +35,7 @@ public class DemoSignInWithAppleProvider: SignInWithAppleProviderBase, ASAuthori
     }
     
     public func presentationAnchor(for controller: ASAuthorizationController) -> ASPresentationAnchor {
-        return self.context.view.window ?? ASPresentationAnchor()
+        return self.context?.view.window ?? ASPresentationAnchor()
     }
     
     public func authorizationController(controller: ASAuthorizationController,

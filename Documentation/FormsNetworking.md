@@ -72,12 +72,12 @@ class DemoNetworkMethod: NetworkMethod {
 }
 ```
 
-### Custom interceptor
+### Custom request interceptor
 
 ```swift
 class DemoNetworkMethod: NetworkMethod {
     var url: URL! = "https://postman-echo.com".url
-    var interceptor: NetworkRequestInterceptor? = AppNetworkRequestInterceptor()
+    var requestInterceptor: NetworkRequestInterceptor? = AppNetworkRequestInterceptor()
 } 
 ```
 
@@ -87,6 +87,22 @@ class AppNetworkRequestInterceptor: NetworkRequestInterceptor {
         let headers = request.headers
         /* set additional headers */
         request.request.allHTTPHeaderFields = headers
+    }
+}
+```
+
+### Custom response interceptor
+
+```swift
+class DemoNetworkMethod: NetworkMethod {
+    var url: URL! = "https://postman-echo.com".url
+    var responseInterceptor: NetworkResponseInterceptor? = AppNetworkResponseInterceptor()
+} 
+```
+
+```swift
+class AppNetworkResponseInterceptor: NetworkResponseInterceptor {
+    override func postProcess(_ response: URLResponse?) {
     }
 }
 ```

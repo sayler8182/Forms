@@ -233,7 +233,7 @@ open class ShimmerTableDataSource: TableDataSource, ShimmerDataSource {
         self.append(sections)
     }
     
-    override public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    override open func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = super.tableView(tableView, cellForRowAt: indexPath) as! FormsTableViewCell
         let section: TableSection = self.sections[indexPath.section]
         guard section.isShimmering else { return cell }
@@ -280,7 +280,7 @@ open class ShimmerCollectionDataSource: CollectionDataSource, ShimmerDataSource 
         self.append(sections)
     }
     
-    override public func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+    override open func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = super.collectionView(collectionView, cellForItemAt: indexPath) as! FormsCollectionViewCell
         let section: CollectionSection = self.sections[indexPath.section]
         guard section.isShimmering else { return cell }

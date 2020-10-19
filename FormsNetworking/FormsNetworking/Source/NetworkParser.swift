@@ -6,6 +6,7 @@
 //  Copyright © 2020 Limbo. All rights reserved.
 //
 
+import FormsUtils
 import Foundation
 
 // MARK: Parseable
@@ -15,13 +16,13 @@ public protocol Parseable {
 
 public extension Parseable where Self: Codable {
     func asData() -> Data? {
-        return try? JSONEncoder().encode(self)
+        return try? JSONEncoder.iso8601.encode(self)
     }
 }
 
 public extension Parseable where Self: Decodable {
     init(with data: Data) throws {
-        self = try JSONDecoder().decode(Self.self, from: data)
+        self = try JSONDecoder.iso8601.decode(Self.self, from: data)
     }
 }
 
@@ -43,6 +44,12 @@ open class NetworkResponseParser {
         if let error = self.parseError(data: data) {
             onError?(error)
             onCompletion?(nil, error)
+            return
+        }
+        if let error = error {
+            onError?(error)
+            onCompletion?(nil, error)
+            return
         }
         guard let object: T = self.map(data: data) else {
             let error: NetworkError = NetworkError.incorrectResponseFormat

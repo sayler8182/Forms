@@ -45,8 +45,8 @@ internal class SideMenuAnimator {
                        animated: Bool = true,
                        completion: ((Bool) -> Void)? = nil) {
         switch direction {
-        case .left: self.openLeft(animated: animated)
-        case .right: self.openRight(animated: animated)
+        case .left: self.openLeft(animated: animated, completion: completion)
+        case .right: self.openRight(animated: animated, completion: completion)
         }
     }
     
@@ -64,8 +64,8 @@ internal class SideMenuAnimator {
                         animated: Bool = true,
                         completion: ((Bool) -> Void)? = nil) {
         switch direction {
-        case .left: self.closeLeft(animated: animated)
-        case .right: self.closeRight(animated: animated)
+        case .left: self.closeLeft(animated: animated, completion: completion)
+        case .right: self.closeRight(animated: animated, completion: completion)
         }
     }
     

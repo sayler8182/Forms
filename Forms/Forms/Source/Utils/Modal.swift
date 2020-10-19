@@ -17,7 +17,11 @@ public protocol ConfigurationModalProtocol {
 
 public extension Configuration {
     struct Modal: ConfigurationModalProtocol {
-        public var backgroundColor: UIColor? = Theme.Colors.primaryLight.with(alpha: 0.3)
+        public let backgroundColor: UIColor?
+        
+        public init(backgroundColor: UIColor? = Theme.Colors.primaryLight.with(alpha: 0.3)) {
+            self.backgroundColor = backgroundColor
+        }
     }
 }
 

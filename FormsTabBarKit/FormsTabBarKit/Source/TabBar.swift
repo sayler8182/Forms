@@ -17,7 +17,7 @@ public protocol TabBarKey {
 }
 
 public protocol TabBarItemKey {
-    var rawValue: String { get }
+    var rawValue: Int { get }
 }
 
 private enum TabBarDefaultKey: String, TabBarKey {
@@ -169,7 +169,7 @@ open class TabBar: UITabBar {
         ])
         let titleLabel = UILabel()
         contentView.addSubview(titleLabel, with: [
-            Anchor.to(imageView).topToBottom,
+            Anchor.to(imageView).topToBottom.offset(2),
             Anchor.to(contentView).bottom.horizontal
         ])
         return view

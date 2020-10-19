@@ -79,7 +79,7 @@ public extension String {
         guard let ellips: String = ellips else { return trimmed }
         return trimmed.appending(ellips)
     }
-}
+} 
 
 // MARK: Encoding
 public extension String {
@@ -93,7 +93,7 @@ public extension String {
     }
     
     func decode<T: Decodable>() -> T? {
-        let decoder: JSONDecoder = JSONDecoder()
+        let decoder: JSONDecoder = JSONDecoder.iso8601
         return try? decoder.decode(T.self, from: self)
     }
 }
@@ -168,5 +168,12 @@ public extension Collection where Element == String? {
         return self
             .compactMap { $0 }
             .joined(separator: separator, skipEmpty: skipEmpty)
+    }
+}
+
+// MARK: Substring
+public extension Substring {
+    var asString: String {
+        return "\(self)"
     }
 }

@@ -16,19 +16,23 @@ public protocol DateFormatProtocol {
     var dateFormat: String { get }
     var timeFormat: String { get }
     var fullFormat: String { get }
+    var iso8601: String { get }
 }
 
 public struct DateFormat: DateFormatProtocol {
     public var dateFormat: String
     public var timeFormat: String
     public var fullFormat: String
+    public var iso8601: String
     
     public init(dateFormat: String,
                 timeFormat: String,
-                fullFormat: String) {
+                fullFormat: String,
+                iso8601: String) {
         self.dateFormat = dateFormat
         self.timeFormat = timeFormat
         self.fullFormat = fullFormat
+        self.iso8601 = iso8601
     }
 }
 
@@ -37,6 +41,7 @@ public enum DateFormatType: CaseIterable {
     case date
     case time
     case full
+    case iso8601
     
     var format: String {
         let dateFormat: DateFormatProtocol? = Injector.main.resolveOrDefault("FormsUtils")
@@ -44,6 +49,7 @@ public enum DateFormatType: CaseIterable {
         case .date: return dateFormat?.dateFormat ?? "yyyy-MM-dd"
         case .time: return dateFormat?.timeFormat ?? "HH:mm"
         case .full: return dateFormat?.fullFormat ?? "yyyy-MM-dd HH:mm"
+        case .iso8601: return dateFormat?.iso8601 ?? "yyyy-MM-dd'T'HH:mm:ss.SSSXXXXX"
         }
     }
 }
@@ -60,18 +66,24 @@ public extension FromDateFormattable {
     
     func formatted(prefix: String? = nil,
                    suffix: String? = nil,
+                   timeZone: TimeZone? = nil,
                    format formatType: DateFormatType) -> String? {
         return self.formatted(
             prefix: prefix,
             suffix: suffix,
+            timeZone: timeZone,
             format: formatType.format)
     }
     
     func formatted(prefix: String? = nil,
                    suffix: String? = nil,
+                   timeZone: TimeZone? = nil,
                    format: String) -> String? {
         guard let date: Date = self.asDate else { return nil }
         kDateFormatter.dateFormat = format
+        if let timeZone: TimeZone = timeZone {
+            kDateFormatter.timeZone = timeZone
+        }
         var string: String = kDateFormatter.string(from: date)
         if let prefix: String = prefix {
             string.insert(contentsOf: prefix, at: string.startIndex)
@@ -93,8 +105,12 @@ public extension ToDateFormattable {
         return self.asDate(format: formatType.format)
     }
     
-    func asDate(format: String) -> Date? {
+    func asDate(format: String,
+                timeZone: TimeZone? = nil) -> Date? {
         kDateFormatter.dateFormat = format
+        if let timeZone: TimeZone = timeZone {
+            kDateFormatter.timeZone = timeZone
+        }
         return kDateFormatter.date(from: self.asString)
     }
 }
@@ -426,10 +442,14 @@ public enum Weekday: Int, CaseIterable, Equatable, Comparable {
         self.init(rawValue: order - 1)
     }
     
-    public func title(for format: String) -> String {
+    public func title(for format: String,
+                      timeZone: TimeZone? = nil) -> String {
         let date: Date = Date.unixStartDate
             .adding(.day, value: self.rawValue - 3)
         kDateFormatter.dateFormat = format
+        if let timeZone: TimeZone = timeZone {
+            kDateFormatter.timeZone = timeZone
+        }
         return kDateFormatter.string(from: date)
     }
     
@@ -461,10 +481,14 @@ public enum Month: Int, CaseIterable, Equatable, Comparable {
         self.init(rawValue: order - 1)
     }
     
-    public func title(for format: String) -> String {
+    public func title(for format: String,
+                      timeZone: TimeZone? = nil) -> String {
         let date: Date = Date.unixStartDate
             .adding(.month, value: self.rawValue)
         kDateFormatter.dateFormat = format
+        if let timeZone: TimeZone = timeZone {
+            kDateFormatter.timeZone = timeZone
+        }
         return kDateFormatter.string(from: date)
     }
     

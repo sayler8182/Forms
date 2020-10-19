@@ -25,6 +25,8 @@ public protocol AppStoreReviewProtocol {
     @discardableResult
     func launch() -> Bool
     @discardableResult
+    func show() -> Bool
+    @discardableResult
     func showIfNeeded() -> Bool
 }
 
@@ -92,6 +94,16 @@ public class AppStoreReview: AppStoreReviewProtocol {
     public func launch() -> Bool {
         self.launchCount += 1
         return true
+    }
+    
+    @discardableResult
+    public func show() -> Bool {
+        if #available(iOS 10.3, *) {
+            SKStoreReviewController.requestReview()
+            self.lastReviewDate = Date()
+            return true
+        }
+        return false
     }
     
     @discardableResult

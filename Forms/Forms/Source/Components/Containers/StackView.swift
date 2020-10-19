@@ -31,8 +31,13 @@ open class StackView: FormsComponent, FormsComponentWithMarginEdgeInset, FormsCo
         set { self.stackView.distribution = newValue }
     }
     open var height: CGFloat = UITableView.automaticDimension
-    open var items: [UIView] = [] {
-        didSet { self.remakeView() }
+    private var _items: [UIView] = []
+    open var items: [UIView] {
+        get { return self._items }
+        set {
+            self._items = newValue
+            self.remakeView()
+        }
     }
     open var marginEdgeInset: UIEdgeInsets = UIEdgeInsets(0) {
         didSet { self.updateMarginEdgeInset() }
@@ -94,8 +99,68 @@ open class StackView: FormsComponent, FormsComponentWithMarginEdgeInset, FormsCo
 // MARK: UIView
 private extension StackView {
     func remakeView() {
+        self.items.forEach { $0.layoutIfNeeded() }
         self.stackView.removeArrangedSubviews()
+        self.stackView.addArrangedSubviews(self.items)
+    }
+}
+
+// MARK: UIView
+public extension StackView {
+    func setItems(_ items: [UIView],
+                  layout: Bool = false) {
+        defer { self.items = items }
+        guard layout else { return }
+        self.withoutAnimation {
+            for (i, item) in items.enumerated() {
+                self.layoutIfNeeded(view: item, after: items[safe: i - 1])
+            }
+        }
+    }
+    
+    func removeItems() {
+        self._items = []
+        self.stackView.removeArrangedSubviews()
+    }
+    
+    func removeItems(_ items: [UIView]) {
+        self._items = self.items.filter { !items.contains($0) }
+        self.stackView.removeArrangedSubviews(items)
+    }
+    
+    func addItems(_ items: [UIView]) {
+        self._items.append(contentsOf: items)
         self.stackView.addArrangedSubviews(items)
+    }
+    
+    func layoutIfAnimated(animated: Bool, view: UIView, after: UIView? = nil) {
+        guard animated else { return }
+        self.layoutIfNeeded(view: view, after: after)
+    }
+    
+    func layoutIfNeeded(view: UIView, after: UIView? = nil) {
+        switch self.axis {
+        case .vertical:
+            let y: CGFloat = after != nil ? after!.frame.origin.y + after!.frame.height + self.spacing : 0 // swiftlint:disable:this force_unwrapping
+            view.layoutIfNeeded()
+            view.frame = CGRect(
+                origin: CGPoint(x: 0, y: y),
+                size: CGSize(width: self.frame.width, height: view.frame.height))
+            guard view.superview.isNil else { return }
+            let superview = UIView(frame: view.frame)
+            superview.anchors([
+                Anchor.to(superview).height(superview.frame.height),
+                Anchor.to(superview).width(superview.frame.width)
+            ])
+            superview.addSubview(view, with: [
+                Anchor.to(superview).fill
+            ])
+            superview.layoutIfNeeded()
+            view.removeFromSuperview()
+            view.frame.origin.y = superview.frame.origin.y
+        case .horizontal: break
+        @unknown default: break
+        }
     }
 }
 

@@ -34,8 +34,6 @@ open class ScrollView: FormsComponent, FormsComponentWithMarginEdgeInset, FormsC
     public let scrollView = UIScrollView(frame: CGRect.zero)
     public let stackView = UIStackView()
     
-    private var items: [FormsComponent] = []
-    
     override open var backgroundColor: UIColor? {
         get { return self.backgroundView.backgroundColor }
         set { self.backgroundView.backgroundColor = newValue }
@@ -45,6 +43,14 @@ open class ScrollView: FormsComponent, FormsComponentWithMarginEdgeInset, FormsC
         set { self.scrollView.bounces = newValue }
     }
     open var height: CGFloat = UITableView.automaticDimension
+    private var _items: [UIView] = []
+    open var items: [UIView] {
+        get { return self._items }
+        set {
+            self._items = newValue
+            self.remakeView()
+        }
+    }
     open var marginEdgeInset: UIEdgeInsets = UIEdgeInsets(0) {
         didSet { self.updateMarginEdgeInset() }
     }
@@ -136,10 +142,14 @@ open class ScrollView: FormsComponent, FormsComponentWithMarginEdgeInset, FormsC
     public func updateScrollDirection() {
         self.stackView.axis = self.scrollDirection.axis
     }
-    
-    public func setItems(_ items: [FormsComponent]) {
-        self.items = items
-        self.stackView.addArrangedSubviews(items)
+}
+
+// MARK: UIView
+private extension ScrollView {
+    func remakeView() {
+        self.items.forEach { $0.layoutIfNeeded() }
+        self.stackView.removeArrangedSubviews()
+        self.stackView.addArrangedSubviews(self.items)
     }
 }
 
@@ -162,8 +172,8 @@ public extension ScrollView {
         self.height = height
         return self
     }
-    func with(items: [FormsComponent]) -> Self {
-        self.setItems(items)
+    func with(items: [UIView]) -> Self {
+        self.items = items
         return self
     }
     func with(onDidScroll: @escaping OnDidScroll) -> Self {

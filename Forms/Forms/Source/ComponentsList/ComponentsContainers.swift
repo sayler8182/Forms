@@ -15,7 +15,7 @@ public enum ComponentsContainers: ComponentsList {
         component.batchUpdate {
             component.height = 100
             component.onSetTheme = Strong(component) { (component) in
-                component.backgroundColor = Theme.Colors.primaryLight
+                component.backgroundColor = Theme.Colors.clear
             }
         }
         return component
@@ -34,7 +34,7 @@ public enum ComponentsContainers: ComponentsList {
         component.batchUpdate {
             component.axis = .vertical
             component.onSetTheme = Strong(component) { (component) in
-                component.backgroundColor = Theme.Colors.primaryLight
+                component.backgroundColor = Theme.Colors.clear
             }
         }
         return component
@@ -50,7 +50,7 @@ public enum ComponentsContainers: ComponentsList {
             component.showsVerticalScrollIndicator = false
             component.spacing = 0
             component.onSetTheme = Strong(component) { (component) in
-                component.backgroundColor = Theme.Colors.primaryLight
+                component.backgroundColor = Theme.Colors.clear
             }
         }
         return component
@@ -62,7 +62,7 @@ public enum ComponentsContainers: ComponentsList {
         component.isPagingEnabled = true
         component.scrollDirection = .horizontal
         component.onSetTheme = Strong(component) { (component) in
-            component.backgroundColor = Theme.Colors.primaryLight
+            component.backgroundColor = Theme.Colors.clear
             component.pageBackgroundColor = Theme.Colors.clear
             component.pageCurrentPageIndicatorTintColor = Theme.Colors.primaryDark
             component.pageIndicatorTintColor = Theme.Colors.gray
@@ -77,7 +77,7 @@ public enum ComponentsContainers: ComponentsList {
         component.distribution = .fillEqually
         component.height = 100
         component.onSetTheme = Strong(component) { (component) in
-            component.backgroundColor = Theme.Colors.primaryLight
+            component.backgroundColor = Theme.Colors.clear
         }
         return component
     }
@@ -85,7 +85,7 @@ public enum ComponentsContainers: ComponentsList {
     public static func view() -> View {
         let component = View()
         component.onSetTheme = Strong(component) { (component) in
-            component.backgroundColor = Theme.Colors.primaryLight
+            component.backgroundColor = Theme.Colors.clear
         }
         return component
     }

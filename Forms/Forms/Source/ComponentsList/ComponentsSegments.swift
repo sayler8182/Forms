@@ -17,8 +17,12 @@ public enum ComponentsSegments: ComponentsList {
                 vertical: 8,
                 horizontal: 16)
             component.onSetTheme = Strong(component) { (component) in
-                component.backgroundColors = .init(Theme.Colors.primaryLight)
-                component.textColors = SegmentControl.State<UIColor>(Theme.Colors.primaryDark)
+                component.backgroundColors = .init(Theme.Colors.clear)
+                component.selectedTintColors = SegmentControl.State<UIColor?>(Theme.Colors.primaryLight)
+                    .with(selected: Theme.Colors.primaryDark)
+                    .with(disabled: Theme.Colors.tertiaryLight)
+                    .with(disabledSelected: Theme.Colors.tertiaryDark)
+                component.textColors = SegmentControl.State<UIColor?>(Theme.Colors.primaryDark)
                     .with(selected: Theme.Colors.primaryLight)
                     .with(disabled: Theme.Colors.tertiaryDark)
                     .with(disabledSelected: Theme.Colors.tertiaryLight)

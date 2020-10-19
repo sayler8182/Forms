@@ -28,14 +28,12 @@ open class FormsTableViewController: FormsViewController, UITableViewDelegate, U
     private let defaultCellIdentifier: String = "_cell"
     
     public private (set) var views: [FormsComponent] = []
-    private let tableView: UITableView = UITableView(
+    public let tableView: UITableView = UITableView(
         frame: CGRect(width: 320, height: 44),
         style: .plain)
     private var refreshControl: UIRefreshControl? = nil
     private var shimmerDataSource: ShimmerTableDataSource? = nil
     private var isComponentsShimmering: Bool = false
-    
-    public var onValidate: Validable.OnValidate?
     
     open var cellBackgroundColor: UIColor = Theme.Colors.clear {
         didSet { self.tableView.reloadData() }
@@ -74,7 +72,7 @@ open class FormsTableViewController: FormsViewController, UITableViewDelegate, U
     open var tableContentInset: UIEdgeInsets = UIEdgeInsets(0) {
         didSet { self.tableView.contentInset = self.tableContentInset }
     }
-    open var tableEstimatedRowHeight: CGFloat = 44.0 {
+    open var tableEstimatedRowHeight: CGFloat = UITableView.automaticDimension {
         didSet { self.tableView.estimatedRowHeight = self.tableEstimatedRowHeight }
     }
     open var tableRowHeight: CGFloat = UITableView.automaticDimension {
@@ -190,7 +188,6 @@ open class FormsTableViewController: FormsViewController, UITableViewDelegate, U
         self.tableView.delegate = self
         self.tableView.dataSource = self
         self.tableView.keyboardDismissMode = self.keyboardDismissMode
-        self.tableView.estimatedRowHeight = self.tableEstimatedRowHeight
         self.tableView.rowHeight = self.tableRowHeight
         self.tableView.backgroundColor = self.tableBackgroundColor
         self.tableView.separatorStyle = UITableViewCell.SeparatorStyle.none
@@ -293,9 +290,10 @@ open class FormsTableViewController: FormsViewController, UITableViewDelegate, U
 
 // MARK: Header
 public extension FormsTableViewController {
-    func setHeader(_ view: UIView,
+    func setHeader(_ view: UIView?,
                    height: CGFloat? = nil) {
-        self.headerView.subviews.removeFromSuperview()
+        self.headerView.removeSubviews()
+        guard let view: UIView = view else { return }
         if let height: CGFloat = height {
             self.headerView.addSubview(view, with: [
                 Anchor.to(self.headerView).fill,
@@ -313,50 +311,69 @@ public extension FormsTableViewController {
 public extension FormsTableViewController {
     func add(_ components: [FormsComponent],
              animated: UITableView.RowAnimation = .automatic) {
-        for component in components {
-            self.add(component, animated: animated)
+        self.tableUpdatesQueue.async {
+            for component in components {
+                let index: Int = self.views.count
+                self.insertSync(component, at: index, animated: animated)
+            }
         }
     }
     
     func add(_ component: FormsComponent,
              animated: UITableView.RowAnimation = .automatic) {
-        let index: Int = self.views.count
-        self.insert(component, at: index, animated: animated)
+        self.tableUpdatesQueue.async {
+            let index: Int = self.views.count
+            self.insertSync(component, at: index, animated: animated)
+        }
     }
     
     func insert(_ component: FormsComponent,
                 after: FormsComponent,
                 animated: UITableView.RowAnimation = .automatic) {
-        guard let index: Int = self.views.firstIndex(of: after) else { return }
-        self.insert(component, at: index + 1, animated: animated)
+        self.tableUpdatesQueue.async {
+            guard let index: Int = self.views.firstIndex(of: after) else { return }
+            self.insertSync(component, at: index + 1, animated: animated)
+        }
     }
     
     func insert(_ components: [FormsComponent],
                 after: FormsComponent,
                 animated: UITableView.RowAnimation = .automatic) {
-        guard let index: Int = self.views.firstIndex(of: after) else { return }
-        self.insert(components, at: index, animated: animated)
+        self.tableUpdatesQueue.async {
+            guard let index: Int = self.views.firstIndex(of: after) else { return }
+            for (i, component) in components.enumerated() {
+                self.insertSync(component, at: index + i, animated: animated)
+            }
+        }
     }
     
     func insert(_ component: FormsComponent,
                 before: FormsComponent,
                 animated: UITableView.RowAnimation = .automatic) {
-        guard let index: Int = self.views.firstIndex(of: before) else { return }
-        self.insert(component, at: index, animated: animated)
+        self.tableUpdatesQueue.async {
+            guard let index: Int = self.views.firstIndex(of: before) else { return }
+            self.insertSync(component, at: index, animated: animated)
+        }
     }
     
     func insert(_ components: [FormsComponent],
                 before: FormsComponent,
                 animated: UITableView.RowAnimation = .automatic) {
-        guard let index: Int = self.views.firstIndex(of: before) else { return }
-        self.insert(components, at: index, animated: animated)
+        self.tableUpdatesQueue.async {
+            guard let index: Int = self.views.firstIndex(of: before) else { return }
+            for component in components {
+                self.insertSync(component, at: index, animated: animated)
+            }
+        }
     }
     
     func insert(_ components: [FormsComponent],
                 at index: Int,
                 animated: UITableView.RowAnimation = .automatic) {
-        for (i, component) in components.enumerated() {
-            self.insert(component, at: index + i, animated: animated)
+        self.tableUpdatesQueue.async {
+            for (i, component) in components.enumerated() {
+                self.insertSync(component, at: index + i, animated: animated)
+            }
         }
     }
     
@@ -364,30 +381,44 @@ public extension FormsTableViewController {
                 at index: Int,
                 animated animation: UITableView.RowAnimation = .automatic) {
         self.tableUpdatesQueue.async {
-            self.views.insert(component, at: index)
-            let indexPath: IndexPath = IndexPath(row: index, section: 0)
-            self.tableView.animated(animation) {
-                self.tableView.insertRows(at: [indexPath], with: animation)
-            }
+            self.insertSync(component, at: index, animated: animation)
+        }
+    }
+    
+    private func insertSync(_ component: FormsComponent,
+                            at index: Int,
+                            animated animation: UITableView.RowAnimation = .automatic) {
+        guard !self.views.contains(component) else { return }
+        self.views.insert(component, at: index)
+        let indexPath: IndexPath = IndexPath(row: index, section: 0)
+        self.tableView.animated(animation) {
+            self.tableView.insertRows(at: [indexPath], with: animation)
         }
     }
     
     func remove(_ components: [FormsComponent],
                 animated: UITableView.RowAnimation = .automatic) {
-        for component in components {
-            self.remove(component, animated: animated)
+        self.tableUpdatesQueue.async {
+            for component in components {
+                self.removeSync(component, animated: animated)
+            }
         }
     }
     
     func remove(_ component: FormsComponent,
                 animated animation: UITableView.RowAnimation = .automatic) {
         self.tableUpdatesQueue.async {
-            guard let index: Int = self.views.firstIndex(of: component) else { return }
-            self.views.remove(at: index)
-            let indexPath: IndexPath = IndexPath(row: index, section: 0)
-            self.tableView.animated(animation) {
-                self.tableView.deleteRows(at: [indexPath], with: animation)
-            }
+            self.removeSync(component, animated: animation)
+        }
+    }
+    
+    private func removeSync(_ component: FormsComponent,
+                            animated animation: UITableView.RowAnimation = .automatic) {
+        guard let index: Int = self.views.firstIndex(of: component) else { return }
+        self.views.remove(at: index)
+        let indexPath: IndexPath = IndexPath(row: index, section: 0)
+        self.tableView.animated(animation) {
+            self.tableView.deleteRows(at: [indexPath], with: animation)
         }
     }
 }
@@ -441,31 +472,10 @@ public extension FormsTableViewController {
 // MARK: Validators
 extension FormsTableViewController {
     @objc
-    public func triggerValidators() {
-        let items: [Validable] = self.views.compactMap { $0 as? Validable }
-        for item in items {
-            item.validatorTriggered = true
-        }
-    }
-    
-    @objc
     @discardableResult
-    public func validateWithTrigger() -> Bool {
-        self.triggerValidators()
-        return self.validate()
-    }
-    
-    @objc
-    @discardableResult
-    public func validate() -> Bool {
-        return self.validate(false)
-    }
-    
-    @objc
-    @discardableResult
-    open func validate(_ isSilence: Bool) -> Bool {
+    override open func validate(_ isSilence: Bool) -> Bool {
         var result: Bool = true
-        let items: [Validable] = self.views.compactMap { $0 as? Validable }
+        let items: [Validable] = self.view.flatSubviews.compactMap { $0 as? Validable }
         for item in items {
             result = item.validate(isSilence) && result
         }
@@ -559,11 +569,18 @@ public extension FormsTableViewController {
         self.paginationDelayExpiration = Date().timeIntervalSince1970 + delay
     }
     
-    private func paginationShouldLoadNext(_ scrollView: UIScrollView) -> Bool {
+    func paginationShouldLoadNext(_ scrollView: UIScrollView) -> Bool {
         return scrollView.shouldLoadNext(offset: self.paginationOffset)
     }
     
-    private func paginationRaise() {
+    func paginationReset() {
+        guard self.paginationIsEnabled else { return }
+        self.paginationIsFinished = false
+        self.paginationIsLoading = true
+        self.paginationNext()
+    }
+    
+    func paginationRaise() {
         guard self.paginationIsEnabled else { return }
         guard !self.paginationIsFinished else { return }
         guard !self.paginationIsLoading else { return }
@@ -596,6 +613,13 @@ public extension FormsTableViewController {
         self.refreshControl = refreshControl
         self.pullToRefreshConfigure(refreshControl)
         self.tableView.refreshControl = refreshControl
+    }
+    
+    func pullToRefreshStart() {
+        guard self.pullToRefreshIsLoading else { return }
+        self.tableView.setContentOffset(CGPoint(x: 0, y: -44), animated: true)
+        self.refreshControl?.beginRefreshing()
+        self.pullToRefreshIsLoading = true
     }
     
     func pullToRefreshFinish() {

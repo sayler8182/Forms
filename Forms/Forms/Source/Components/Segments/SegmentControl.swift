@@ -64,7 +64,10 @@ open class SegmentControl: FormsComponent, FormsComponentWithMarginEdgeInset, Fo
             self.segmentControl.selectedSegmentIndex = newValue?.rawValue ?? -1
         }
     }
-    open var textColors: State<UIColor> = State<UIColor>(Theme.Colors.primaryDark) {
+    open var selectedTintColors: State<UIColor?> = State<UIColor?>(Theme.Colors.primaryLight) {
+        didSet { self.updateState() }
+    }
+    open var textColors: State<UIColor?> = State<UIColor?>(Theme.Colors.primaryDark) {
         didSet { self.updateState() }
     }
     open var textFonts: State<UIFont> = State<UIFont>(Theme.Fonts.regular(ofSize: 12)) {
@@ -182,15 +185,16 @@ open class SegmentControl: FormsComponent, FormsComponentWithMarginEdgeInset, Fo
         self.updateSegmentSelection(state)
         self.backgroundView.backgroundColor = self.backgroundColors.value(for: state)
         if #available(iOS 13.0, *) {
-            self.segmentControl.selectedSegmentTintColor = self.tintColors.value(for: state)
+            self.segmentControl.selectedSegmentTintColor = self.selectedTintColors.value(for: state)
+            self.segmentControl.backgroundColor = self.tintColors.value(for: state)
         }
     }
     
     private func updateSegmentState() {
         self.segmentControl.tintColor = self.textColors.value(for: .active)
-        for state: FormsComponentStateType in [.active, .selected, .disabled, .disabledSelected] {
+        for state: FormsComponentStateType in [.active, .selected, .disabled] {
             self.segmentControl.setTitleTextAttributes([
-                NSAttributedString.Key.foregroundColor: self.textColors.value(for: state),
+                NSAttributedString.Key.foregroundColor: self.textColors.value(for: state) ?? UIColor.clear,
                 NSAttributedString.Key.font: self.textFonts.value(for: state)
             ], for: state.controlState)
         }
@@ -235,11 +239,19 @@ public extension SegmentControl {
         self.selected = selected
         return self
     }
-    func with(textColor: UIColor) -> Self {
-        self.textColors = State<UIColor>(textColor)
+    func with(selectedTintColor: UIColor?) -> Self {
+        self.selectedTintColors = State<UIColor?>(selectedTintColor)
         return self
     }
-    func with(textColors: State<UIColor>) -> Self {
+    func with(selectedTintColors: State<UIColor?>) -> Self {
+        self.selectedTintColors = selectedTintColors
+        return self
+    }
+    func with(textColor: UIColor?) -> Self {
+        self.textColors = State<UIColor?>(textColor)
+        return self
+    }
+    func with(textColors: State<UIColor?>) -> Self {
         self.textColors = textColors
         return self
     }

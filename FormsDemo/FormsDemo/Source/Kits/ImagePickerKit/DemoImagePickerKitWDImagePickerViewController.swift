@@ -91,11 +91,11 @@ class DemoImagePickerKitWDImagePickerViewController: FormsTableViewController {
                 .with(image: image.image)
             items.append(item)
         }
-        self.itemsScroll.setItems(items)
+        self.itemsScroll.items = items
     }
     
     private func updateVideos(_ data: ImagePickerData) {
-        self.itemsScroll.setItems([])
+        self.itemsScroll.items = []
         Toast.success()
             .with(title: "Videos picked: \(data.videos.count)")
             .show(in: self.navigationController)
