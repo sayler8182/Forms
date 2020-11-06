@@ -108,7 +108,7 @@ open class NavigationBar: FormsComponent {
         let items: [UIBarItem] = self.navigationItem?.leftBarButtonItems ?? []
         let hasElements: Bool = items.isNotEmpty
         let hasEmptyElement: Bool = items.count(of: BackBarItem.self).equal(1)
-        let controller: UINavigationController? = nil//self.navigationBar?.parentNavigationController
+        let controller: UINavigationController? = self.navigationBar?.parentNavigationController
         let canGoBack: Bool = controller?.viewControllers.count.greaterThan(1) ?? false
         let canDismiss: Bool = controller?.presentingViewController != nil
         let shouldOverrideBack: Bool = self.isBack && (canGoBack || canDismiss)
