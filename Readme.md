@@ -216,9 +216,10 @@ If your project doesn't compile try
 - [x] Add Google frameworks without Embedding
 - [x] Add `-Objc` in Other linker flags
 - [x] Add `-lc++` in Other linker flags - eg. for Crashlytics
-- [x] "error: Couldn't IRGen expression, no additional error" this error may be related with FBSDK version (x6.5.2 is the latest stable version)
+- [x] `error: Couldn't IRGen expression, no additional error` this error may be related with FBSDK version (x6.5.2 is the latest stable version)
 - [x] Add Google frameworks without Embedding
-- [x] "could not build Objective-C module" this error may be related to "Defines module" option. (should be NO)
+- [x] `could not build Objective-C module` this error may be related to `Defines module` option. (should be `NO`)
+- [x] `CFBundleIdentifier Collision Error` - in Embed Frameworks set `Code Sign On Copy` to `TRUE`
 
 ## FAQ dependencies
 

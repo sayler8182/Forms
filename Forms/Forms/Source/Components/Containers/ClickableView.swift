@@ -96,6 +96,13 @@ open class ClickableView: FormsComponent, Loadingable, Clickable, FormsComponent
         return self.height
     }
     
+    open func setupComponentView() {
+        self.anchors([
+            Anchor.to(self).height(self.minHeight).greaterThanOrEqual,
+            Anchor.to(self).height(self.maxHeight).lessThanOrEqual
+        ])
+    }
+    
     override open func setupActions() {
         super.setupActions()
         self.button.isExclusiveTouch = true
@@ -118,13 +125,6 @@ open class ClickableView: FormsComponent, Loadingable, Clickable, FormsComponent
     private func handleTouchClick(sender: UIButton) {
         self.setState(.active, animated: true)
         self.onClick?()
-    }
-    
-    open func setupComponentView() {
-        self.anchors([
-            Anchor.to(self).height(self.minHeight).greaterThanOrEqual,
-            Anchor.to(self).height(self.maxHeight).lessThanOrEqual
-        ])
     }
     
     open func setupBackgroundView() {
@@ -167,6 +167,7 @@ open class ClickableView: FormsComponent, Loadingable, Clickable, FormsComponent
             Anchor.to(self.contentView).fill
         ])
         self.button.frame = self.contentView.bounds
+        self.button.setContentCompressionResistancePriority(.veryLow, for: .vertical)
         self.contentView.addSubview(self.button, with: [
             Anchor.to(self.contentView).fill
         ])

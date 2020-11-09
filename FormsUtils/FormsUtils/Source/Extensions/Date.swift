@@ -10,6 +10,7 @@ import FormsInjector
 import Foundation
 
 private let kDateFormatter: DateFormatter = DateFormatter()
+private let kTimeZone: TimeZone = kDateFormatter.timeZone
 
 // MARK: DateFormatProtocol
 public protocol DateFormatProtocol {
@@ -81,9 +82,7 @@ public extension FromDateFormattable {
                    format: String) -> String? {
         guard let date: Date = self.asDate else { return nil }
         kDateFormatter.dateFormat = format
-        if let timeZone: TimeZone = timeZone {
-            kDateFormatter.timeZone = timeZone
-        }
+        kDateFormatter.timeZone = timeZone ?? kTimeZone
         var string: String = kDateFormatter.string(from: date)
         if let prefix: String = prefix {
             string.insert(contentsOf: prefix, at: string.startIndex)
@@ -105,14 +104,12 @@ public extension ToDateFormattable {
         return self.asDate(format: formatType.format)
     }
     
-    func asDate(format: String,
-                timeZone: TimeZone? = nil) -> Date? {
+    func asDate(timeZone: TimeZone? = nil,
+                format: String) -> Date? {
         kDateFormatter.dateFormat = format
-        if let timeZone: TimeZone = timeZone {
-            kDateFormatter.timeZone = timeZone
-        }
+        kDateFormatter.timeZone = timeZone ?? kTimeZone
         return kDateFormatter.date(from: self.asString)
-    }
+    } 
 }
 
 // MARK: Date
@@ -442,14 +439,12 @@ public enum Weekday: Int, CaseIterable, Equatable, Comparable {
         self.init(rawValue: order - 1)
     }
     
-    public func title(for format: String,
-                      timeZone: TimeZone? = nil) -> String {
+    public func title(timeZone: TimeZone? = nil,
+                      for format: String) -> String {
         let date: Date = Date.unixStartDate
             .adding(.day, value: self.rawValue - 3)
         kDateFormatter.dateFormat = format
-        if let timeZone: TimeZone = timeZone {
-            kDateFormatter.timeZone = timeZone
-        }
+        kDateFormatter.timeZone = timeZone ?? kTimeZone
         return kDateFormatter.string(from: date)
     }
     
@@ -481,14 +476,12 @@ public enum Month: Int, CaseIterable, Equatable, Comparable {
         self.init(rawValue: order - 1)
     }
     
-    public func title(for format: String,
-                      timeZone: TimeZone? = nil) -> String {
+    public func title(timeZone: TimeZone? = nil,
+                      for format: String) -> String {
         let date: Date = Date.unixStartDate
             .adding(.month, value: self.rawValue)
         kDateFormatter.dateFormat = format
-        if let timeZone: TimeZone = timeZone {
-            kDateFormatter.timeZone = timeZone
-        }
+        kDateFormatter.timeZone = timeZone ?? kTimeZone
         return kDateFormatter.string(from: date)
     }
     

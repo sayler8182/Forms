@@ -104,11 +104,11 @@ open class DateRangePicker: FormsComponent, FormsComponentWithMarginEdgeInset, F
     
     open func setupPickersView() {
         self.pickerFromView.frame = self.bounds
-        self.pickerToView.frame = self.bounds
         self.backgroundView.addSubview(self.pickerFromView, with: [
             Anchor.to(self.backgroundView).vertical,
             Anchor.to(self.backgroundView).leading
         ])
+        self.pickerToView.frame = self.bounds
         self.backgroundView.addSubview(self.pickerToView, with: [
             Anchor.to(self.pickerFromView).leadingToTrailing.offset(self.space),
             Anchor.to(self.backgroundView).vertical,

@@ -13,7 +13,7 @@ public enum ComponentsButtons: ComponentsList {
     public static func `default`() -> Button {
         let component = Button()
         component.batchUpdate {
-            component.minHeight = 44.0
+            component.minHeight = 44.0 
             component.maxHeight = CGFloat.greatestConstraintConstant
             component.paddingEdgeInset = UIEdgeInsets(
                 vertical: 6,

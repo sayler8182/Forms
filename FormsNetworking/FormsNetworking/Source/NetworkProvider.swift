@@ -182,7 +182,7 @@ public extension NetworkProviderProtocol {
     
     func isCached(request: NetworkRequest) -> Bool {
         let request: URLRequest = request.build()
-        let hash: Any = request.hashValue
+        let hash: Any = request.cacheHash
         return (try? self.cache?.isCached(hash: hash)) ?? false
     }
 }
@@ -294,5 +294,19 @@ open class NetworkResponseInterceptor {
                           error: NetworkError?,
                           onCompletion: @escaping NetworkOnCompletion) {
         onCompletion(data, error)
+    }
+}
+
+// MARK: URLRequest
+extension URLRequest {
+    var cacheHash: Any {
+        let data: Data = [
+            self.url?.dataRepresentation,
+            self.httpBody,
+            self.httpMethod?.data
+        ]
+        .compactMap { $0 }
+        .reduce(into: Data(), { $0 += $1 })
+        return SHA1.hexString(from: data.string)?.trimmed ?? data.string
     }
 }

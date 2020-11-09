@@ -129,7 +129,7 @@ public class NetworkSession: NetworkSessionProtocol {
                      onCompletion: @escaping (_ response: URLResponse?, _ data: Data?, _ error: NetworkError?) -> Void) -> URLSessionDataTask? {
         let logger: Logger? = logger ?? self.logger
         let cache: NetworkCache? = cache ?? self.cache
-        let hash: Any = request.hashValue
+        let hash: Any = request.cacheHash
         log(request, logger)
         if let cache: NetworkCache = cache,
            let data: Data = try? cache.read(hash: hash, logger: logger) {

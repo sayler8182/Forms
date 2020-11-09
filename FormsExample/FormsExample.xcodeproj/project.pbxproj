@@ -66,6 +66,8 @@
 		71B9B70B25559E100028F468 /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 719AE55C2462C0F900A39B0E /* FBSDKLoginKit.framework */; };
 		71B9B70C25559E100028F468 /* FBSDKLoginKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 719AE55C2462C0F900A39B0E /* FBSDKLoginKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		71BF8B2A24F2769D00D01CB9 /* LocalAuthentication.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71BF8B2924F2769D00D01CB9 /* LocalAuthentication.framework */; };
+		71C849C22559BB81000AF263 /* FormsTodayExtensionKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71C8499B2559BB74000AF263 /* FormsTodayExtensionKit.framework */; };
+		71C849C32559BB81000AF263 /* FormsTodayExtensionKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 71C8499B2559BB74000AF263 /* FormsTodayExtensionKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		71CF56032546EECB001F162A /* FormsMapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71CF56022546EECB001F162A /* FormsMapKit.framework */; };
 		71CF56042546EECC001F162A /* FormsMapKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 71CF56022546EECB001F162A /* FormsMapKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		71D3434124FCF3B500003928 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 71D3434024FCF3B500003928 /* Settings.bundle */; };
@@ -99,8 +101,6 @@
 		71EF0E4F2500CAB2002DABFA /* FormsUtilsUI.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 71EA26B924A9C05900985392 /* FormsUtilsUI.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		71EF0E732500CD75002DABFA /* Forms.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7194695C243DA7A900CAD09B /* Forms.framework */; };
 		71EF0E742500CD75002DABFA /* Forms.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 7194695C243DA7A900CAD09B /* Forms.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		71EF0E9D2500CF4F002DABFA /* FormsTodayExtensionKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71EF0E982500CE98002DABFA /* FormsTodayExtensionKit.framework */; };
-		71EF0E9E2500CF4F002DABFA /* FormsTodayExtensionKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 71EF0E982500CE98002DABFA /* FormsTodayExtensionKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		71EF0EA02500D37D002DABFA /* TodayExtensionRoot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71EF0E9F2500D37D002DABFA /* TodayExtensionRoot.swift */; };
 		71FCB25F247F999500A84D30 /* FormsDemo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 713B9C13243D08E1001F6E3A /* FormsDemo.framework */; };
 		71FCB260247F999500A84D30 /* FormsDemo.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 713B9C13243D08E1001F6E3A /* FormsDemo.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -298,6 +298,20 @@
 			remoteGlobalIDString = 71BF8AF424F2663C00D01CB9;
 			remoteInfo = FormsCalendarKit;
 		};
+		71C8497D2559BB74000AF263 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 71946956243DA7A800CAD09B /* Forms.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 7119495F255941B8008FCD04;
+			remoteInfo = "Forms-Universal-Framework-Static";
+		};
+		71C8499A2559BB74000AF263 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 71EF0E932500CE98002DABFA /* FormsTodayExtensionKit.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 71C849372559BB32000AF263;
+			remoteInfo = FormsTodayExtensionKit;
+		};
 		71CF57502546F78C001F162A /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 71CF574C2546F78C001F162A /* FormsMapKit.xcodeproj */;
@@ -346,13 +360,6 @@
 			proxyType = 1;
 			remoteGlobalIDString = 71EF0DC22500C643002DABFA;
 			remoteInfo = FormsExampleTodayExtension;
-		};
-		71EF0E972500CE98002DABFA /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 71EF0E932500CE98002DABFA /* FormsTodayExtensionKit.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 71EF0E1E2500C97B002DABFA;
-			remoteInfo = FormsTodayExtensionKit;
 		};
 /* End PBXContainerItemProxy section */
 
@@ -425,7 +432,7 @@
 				71EF0E462500CAA0002DABFA /* FormsAnchor.framework in Embed Frameworks */,
 				71EF0E742500CD75002DABFA /* Forms.framework in Embed Frameworks */,
 				71EF0E4F2500CAB2002DABFA /* FormsUtilsUI.framework in Embed Frameworks */,
-				71EF0E9E2500CF4F002DABFA /* FormsTodayExtensionKit.framework in Embed Frameworks */,
+				71C849C32559BB81000AF263 /* FormsTodayExtensionKit.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -553,7 +560,7 @@
 			files = (
 				71EF0E4C2500CAAD002DABFA /* FormsUtils.framework in Frameworks */,
 				71EF0E4A2500CAAA002DABFA /* FormsLogger.framework in Frameworks */,
-				71EF0E9D2500CF4F002DABFA /* FormsTodayExtensionKit.framework in Frameworks */,
+				71C849C22559BB81000AF263 /* FormsTodayExtensionKit.framework in Frameworks */,
 				71EF0E732500CD75002DABFA /* Forms.framework in Frameworks */,
 				71EF0E482500CAA3002DABFA /* FormsInjector.framework in Frameworks */,
 				71EF0DC52500C643002DABFA /* NotificationCenter.framework in Frameworks */,
@@ -910,7 +917,8 @@
 			isa = PBXGroup;
 			children = (
 				7194695C243DA7A900CAD09B /* Forms.framework */,
-				7150CDAC247FA05F00F2681B /* Forms-Universal-Framework.framework */,
+				7150CDAC247FA05F00F2681B /* FormsUniversal.framework */,
+				71C8497E2559BB74000AF263 /* FormsUniversal.framework */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -1028,7 +1036,7 @@
 		71EF0E942500CE98002DABFA /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				71EF0E982500CE98002DABFA /* FormsTodayExtensionKit.framework */,
+				71C8499B2559BB74000AF263 /* FormsTodayExtensionKit.framework */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -1319,10 +1327,10 @@
 			remoteRef = 713B9C12243D08E1001F6E3A /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		7150CDAC247FA05F00F2681B /* Forms-Universal-Framework.framework */ = {
+		7150CDAC247FA05F00F2681B /* FormsUniversal.framework */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.framework;
-			path = "Forms-Universal-Framework.framework";
+			path = FormsUniversal.framework;
 			remoteRef = 7150CDAB247FA05F00F2681B /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
@@ -1438,6 +1446,20 @@
 			remoteRef = 71BF8B0324F2663D00D01CB9 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
+		71C8497E2559BB74000AF263 /* FormsUniversal.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = FormsUniversal.framework;
+			remoteRef = 71C8497D2559BB74000AF263 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		71C8499B2559BB74000AF263 /* FormsTodayExtensionKit.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = FormsTodayExtensionKit.framework;
+			remoteRef = 71C8499A2559BB74000AF263 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
 		71CF57512546F78C001F162A /* FormsMapKit.framework */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.framework;
@@ -1478,13 +1500,6 @@
 			fileType = wrapper.framework;
 			path = FormsNetworkingImage.framework;
 			remoteRef = 71EA273724A9C80700985392 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		71EF0E982500CE98002DABFA /* FormsTodayExtensionKit.framework */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.framework;
-			path = FormsTodayExtensionKit.framework;
-			remoteRef = 71EF0E972500CE98002DABFA /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 /* End PBXReferenceProxy section */

@@ -44,7 +44,9 @@ public extension String {
     }
     
     var trimmed: String {
-        return self.trimmingCharacters(in: .whitespacesAndNewlines)
+        return self
+            .trimmingCharacters(in: .whitespacesAndNewlines)
+            .replacingOccurrences(of: " ", with: "")
     }
     
     var url: URL! {

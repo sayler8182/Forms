@@ -16,7 +16,7 @@ import UIKit
 
 // MARK: FormsViewController
 open class FormsViewController: UIViewController, UIGestureRecognizerDelegate, AppLifecycleable, Themeable, NavigationBarRefreshable {
-    private lazy var keyboard = Keyboard()
+    public lazy var keyboard = Keyboard()
     private var navigationBar: NavigationBar? = nil
     private var navigationProgressBar: ProgressBar? = nil
     private var backgroundView: UIView? = nil

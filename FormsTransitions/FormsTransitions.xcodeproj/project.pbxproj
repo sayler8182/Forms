@@ -7,8 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		7114DD2624F68B0600CEBDA8 /* FormsUtils.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7114DD2524F68B0600CEBDA8 /* FormsUtils.framework */; };
-		7114DD2724F68B0600CEBDA8 /* FormsUtils.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 7114DD2524F68B0600CEBDA8 /* FormsUtils.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		7150CEDC247FCC4E00F2681B /* TransitionControllerCircleAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7150CEDB247FCC4E00F2681B /* TransitionControllerCircleAnimator.swift */; };
 		715B7B2824474C4600754EDB /* FormsTransitions.h in Headers */ = {isa = PBXBuildFile; fileRef = 715B7B1A24474C4600754EDB /* FormsTransitions.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		715B7B3C24474C6900754EDB /* TransitionNavigationCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 715B7B3B24474C6800754EDB /* TransitionNavigationCoordinator.swift */; };
@@ -24,26 +22,11 @@
 		719AE5E224631E6B00A39B0E /* TransitionControllerSlideVerticalAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 719AE5E124631E6B00A39B0E /* TransitionControllerSlideVerticalAnimator.swift */; };
 		71C578C024474FAE008BFEB3 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71C578BF24474FAE008BFEB3 /* Utils.swift */; };
 		71C578C2244752F8008BFEB3 /* TransitionNavigationSlideVerticalAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71C578C1244752F8008BFEB3 /* TransitionNavigationSlideVerticalAnimator.swift */; };
+		71CA20332559766300C45739 /* FormsUtils.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71CA20322559766300C45739 /* FormsUtils.framework */; };
 		71E1CAA72542EEFF00C5BFCB /* TransitionNavigationFadeAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71E1CAA62542EEFF00C5BFCB /* TransitionNavigationFadeAnimator.swift */; };
 /* End PBXBuildFile section */
 
-/* Begin PBXCopyFilesBuildPhase section */
-		7114DD2824F68B0600CEBDA8 /* Embed Frameworks */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 10;
-			files = (
-				7114DD2724F68B0600CEBDA8 /* FormsUtils.framework in Embed Frameworks */,
-			);
-			name = "Embed Frameworks";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXCopyFilesBuildPhase section */
-
 /* Begin PBXFileReference section */
-		7114DD2524F68B0600CEBDA8 /* FormsUtils.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FormsUtils.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		7150CDA3247FA05F00F2681B /* FormsTransitions.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = FormsTransitions.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7150CEDB247FCC4E00F2681B /* TransitionControllerCircleAnimator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransitionControllerCircleAnimator.swift; sourceTree = "<group>"; };
 		715B7B1A24474C4600754EDB /* FormsTransitions.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FormsTransitions.h; sourceTree = "<group>"; };
 		715B7B1B24474C4600754EDB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -60,6 +43,8 @@
 		719AE5E124631E6B00A39B0E /* TransitionControllerSlideVerticalAnimator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransitionControllerSlideVerticalAnimator.swift; sourceTree = "<group>"; };
 		71C578BF24474FAE008BFEB3 /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 		71C578C1244752F8008BFEB3 /* TransitionNavigationSlideVerticalAnimator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransitionNavigationSlideVerticalAnimator.swift; sourceTree = "<group>"; };
+		71CA20322559766300C45739 /* FormsUtils.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FormsUtils.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		71CA20352559766300C45739 /* FormsTransitions.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = FormsTransitions.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		71E1CAA62542EEFF00C5BFCB /* TransitionNavigationFadeAnimator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransitionNavigationFadeAnimator.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -68,7 +53,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7114DD2624F68B0600CEBDA8 /* FormsUtils.framework in Frameworks */,
+				71CA20332559766300C45739 /* FormsUtils.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -78,7 +63,7 @@
 		7114DD2424F68B0600CEBDA8 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				7114DD2524F68B0600CEBDA8 /* FormsUtils.framework */,
+				71CA20322559766300C45739 /* FormsUtils.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -87,8 +72,8 @@
 			isa = PBXGroup;
 			children = (
 				715B7B1924474C4600754EDB /* FormsTransitions */,
-				7150CDA3247FA05F00F2681B /* FormsTransitions.framework */,
 				7114DD2424F68B0600CEBDA8 /* Frameworks */,
+				71CA20352559766300C45739 /* FormsTransitions.framework */,
 			);
 			sourceTree = "<group>";
 		};
@@ -170,7 +155,6 @@
 				715B7B1324474C4600754EDB /* Sources */,
 				715B7B1424474C4600754EDB /* Frameworks */,
 				715B7B1524474C4600754EDB /* Resources */,
-				7114DD2824F68B0600CEBDA8 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -178,7 +162,7 @@
 			);
 			name = FormsTransitions;
 			productName = Transition;
-			productReference = 7150CDA3247FA05F00F2681B /* FormsTransitions.framework */;
+			productReference = 71CA20352559766300C45739 /* FormsTransitions.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 /* End PBXNativeTarget section */

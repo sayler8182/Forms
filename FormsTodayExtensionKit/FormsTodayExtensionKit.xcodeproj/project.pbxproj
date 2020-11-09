@@ -21,7 +21,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		71EF0E1E2500C97B002DABFA /* FormsTodayExtensionKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = FormsTodayExtensionKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		71EF0E1E2500C97B002DABFA /* FormsTodayExtensionKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = FormsTodayExtensionKit.framework; path = "/Users/konrad/Documents/Forms/FormsTodayExtensionKit/build/Debug-iphoneos/FormsTodayExtensionKit.framework"; sourceTree = "<absolute>"; };
 		71EF0E212500C97B002DABFA /* FormsTodayExtensionKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FormsTodayExtensionKit.h; sourceTree = "<group>"; };
 		71EF0E222500C97B002DABFA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		71EF0E302500C99F002DABFA /* FormsTodayExtensionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormsTodayExtensionViewController.swift; sourceTree = "<group>"; };
@@ -58,17 +58,8 @@
 			isa = PBXGroup;
 			children = (
 				71EF0E202500C97B002DABFA /* FormsTodayExtensionKit */,
-				71EF0E1F2500C97B002DABFA /* Products */,
 				71EF0E322500CA1A002DABFA /* Frameworks */,
 			);
-			sourceTree = "<group>";
-		};
-		71EF0E1F2500C97B002DABFA /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				71EF0E1E2500C97B002DABFA /* FormsTodayExtensionKit.framework */,
-			);
-			name = Products;
 			sourceTree = "<group>";
 		};
 		71EF0E202500C97B002DABFA /* FormsTodayExtensionKit */ = {
@@ -161,7 +152,7 @@
 				Base,
 			);
 			mainGroup = 71EF0E142500C97B002DABFA;
-			productRefGroup = 71EF0E1F2500C97B002DABFA /* Products */;
+			productRefGroup = 71EF0E142500C97B002DABFA;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (

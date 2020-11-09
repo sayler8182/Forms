@@ -663,6 +663,8 @@ public extension FormsTableViewController {
         cell.backgroundColor = self.cellBackgroundColor
         cell.contentView.subviews.removeFromSuperview()
         let view: FormsComponent = self.views[indexPath.row]
+        cell.frame = view.bounds
+        cell.contentView.frame = view.bounds
         cell.contentView.addSubview(view, with: [
             Anchor.to(cell.contentView).fill
         ])

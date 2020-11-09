@@ -14,9 +14,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "711070DC2476BF610056BBB5"
+               BlueprintIdentifier = "711948DC2559419D008FCD04"
                BuildableName = "FormsUniversal.framework"
-               BlueprintName = "Forms-Universal-Framework"
+               BlueprintName = "Forms-Universal-Framework-Static"
                ReferencedContainer = "container:Forms.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -50,9 +50,9 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "711070DC2476BF610056BBB5"
+            BlueprintIdentifier = "711948DC2559419D008FCD04"
             BuildableName = "FormsUniversal.framework"
-            BlueprintName = "Forms-Universal-Framework"
+            BlueprintName = "Forms-Universal-Framework-Static"
             ReferencedContainer = "container:Forms.xcodeproj">
          </BuildableReference>
       </MacroExpansion>

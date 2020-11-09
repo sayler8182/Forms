@@ -18,6 +18,7 @@
 		71BB623C2445DD62002BB31F /* NetworkParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71BB62372445DD62002BB31F /* NetworkParser.swift */; };
 		71BB623D2445DD62002BB31F /* NetworkPinning.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71BB62382445DD62002BB31F /* NetworkPinning.swift */; };
 		71BB628B24460437002BB31F /* NetworkCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71BB628A24460437002BB31F /* NetworkCache.swift */; };
+		71C849E72559CD2D000AF263 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71C849E62559CD2D000AF263 /* Utils.swift */; };
 		71CC78E424F6741B00A8BB3C /* FormsUtils.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71CC78E324F6741B00A8BB3C /* FormsUtils.framework */; };
 /* End PBXBuildFile section */
 
@@ -35,6 +36,7 @@
 		71BB62372445DD62002BB31F /* NetworkParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkParser.swift; sourceTree = "<group>"; };
 		71BB62382445DD62002BB31F /* NetworkPinning.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkPinning.swift; sourceTree = "<group>"; };
 		71BB628A24460437002BB31F /* NetworkCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkCache.swift; sourceTree = "<group>"; };
+		71C849E62559CD2D000AF263 /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 		71CC78E324F6741B00A8BB3C /* FormsUtils.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FormsUtils.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -92,6 +94,7 @@
 				71BB62352445DD62002BB31F /* NetworkReachability.swift */,
 				71BB62342445DD62002BB31F /* NetworkSession.swift */,
 				71385EF624853A6C0032BB5F /* Multipart.swift */,
+				71C849E62559CD2D000AF263 /* Utils.swift */,
 			);
 			path = Source;
 			sourceTree = "<group>";
@@ -178,6 +181,7 @@
 			files = (
 				71BB623A2445DD62002BB31F /* NetworkReachability.swift in Sources */,
 				71BB623B2445DD62002BB31F /* NetworkProvider.swift in Sources */,
+				71C849E72559CD2D000AF263 /* Utils.swift in Sources */,
 				71385EF724853A6C0032BB5F /* Multipart.swift in Sources */,
 				71BB62392445DD62002BB31F /* NetworkSession.swift in Sources */,
 				71BB623C2445DD62002BB31F /* NetworkParser.swift in Sources */,

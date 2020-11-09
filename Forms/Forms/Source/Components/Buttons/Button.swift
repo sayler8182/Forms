@@ -74,10 +74,6 @@ open class Button: ClickableView {
         super.setupView()
     }
     
-    override open func componentHeight() -> CGFloat {
-        return self.height
-    }
-    
     open func setupClickableView() {
         self.content = self.clickableView
     }
@@ -105,15 +101,6 @@ open class Button: ClickableView {
                 bounds: CGRect(
                     origin: CGPoint.zero,
                     size: imageSize)))
-    }
-    
-    override open func updatePaddingEdgeInset() {
-        let edgeInset: UIEdgeInsets = self.paddingEdgeInset
-        self.titleLabel.frame = self.clickableView.bounds.with(inset: edgeInset)
-        self.titleLabel.constraint(to: self.clickableView, position: .top)?.constant = edgeInset.top
-        self.titleLabel.constraint(to: self.clickableView, position: .bottom)?.constant = -edgeInset.bottom
-        self.titleLabel.constraint(to: self.clickableView, position: .leading)?.constant = edgeInset.leading
-        self.titleLabel.constraint(to: self.clickableView, position: .trailing)?.constant = -edgeInset.trailing
     }
     
     override open func setStateAnimation(_ state: FormsComponentStateType) {
@@ -160,12 +147,7 @@ public extension Button {
     func with(borderColors: State<UIColor?>) -> Self {
         self.borderColors = borderColors
         return self
-    }
-    @objc
-    override func with(height: CGFloat) -> Self {
-        self.height = height
-        return self
-    }
+    } 
     func with(image: UIImage?) -> Self {
         self.image = image
         return self

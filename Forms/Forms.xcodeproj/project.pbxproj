@@ -72,6 +72,155 @@
 		7110711C2476BF610056BBB5 /* TextFieldFormatDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7156F830246486F40078AA75 /* TextFieldFormatDelegate.swift */; };
 		7110711D2476BF610056BBB5 /* Modal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7194696A243DA7BE00CAD09B /* Modal.swift */; };
 		7110711E2476BF610056BBB5 /* ComponentsButtons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71946968243DA7BE00CAD09B /* ComponentsButtons.swift */; };
+		711948DE2559419D008FCD04 /* Forms.h in Headers */ = {isa = PBXBuildFile; fileRef = 7194693F243DA7A800CAD09B /* Forms.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		711948E02559419D008FCD04 /* TableDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 719469DB243DDB7600CAD09B /* TableDataSource.swift */; };
+		711948E12559419D008FCD04 /* ComponentsUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71946965243DA7BE00CAD09B /* ComponentsUtils.swift */; };
+		711948E22559419D008FCD04 /* TextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7194697D243DA7BE00CAD09B /* TextField.swift */; };
+		711948E32559419D008FCD04 /* BiometryAuthentication.swift in Sources */ = {isa = PBXBuildFile; fileRef = 714BB08D24FFBDFF000617C7 /* BiometryAuthentication.swift */; };
+		711948E42559419D008FCD04 /* ClickableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71A9285024A368B300734C2B /* ClickableView.swift */; };
+		711948E52559419D008FCD04 /* LaunchOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71EF0EEA2500EC5D002DABFA /* LaunchOptions.swift */; };
+		711948E62559419D008FCD04 /* ComponentsSegments.swift in Sources */ = {isa = PBXBuildFile; fileRef = 718B431A2490B95A000DBC05 /* ComponentsSegments.swift */; };
+		711948E72559419D008FCD04 /* ComponentsProgresses.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7103EA1A2460266400A11A96 /* ComponentsProgresses.swift */; };
+		711948E82559419D008FCD04 /* CollectionDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7193E36924520C1C006238C5 /* CollectionDataSource.swift */; };
+		711948E92559419D008FCD04 /* Vibration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71D366F624FE28D000E6BFAF /* Vibration.swift */; };
+		711948EA2559419D008FCD04 /* ActivityIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 714848D52448598600455560 /* ActivityIndicator.swift */; };
+		711948EB2559419D008FCD04 /* DeviceSecurity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71D3433324FCD06800003928 /* DeviceSecurity.swift */; };
+		711948EC2559419D008FCD04 /* GradientButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71D47B46249CCBCD001108C5 /* GradientButton.swift */; };
+		711948ED2559419D008FCD04 /* ComponentsNavigationBars.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71946966243DA7BE00CAD09B /* ComponentsNavigationBars.swift */; };
+		711948EE2559419D008FCD04 /* GridView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71EAB38124F2CF0B00F1358B /* GridView.swift */; };
+		711948EF2559419D008FCD04 /* FormsSearchController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7121ABE6245AABFC00F6BEF5 /* FormsSearchController.swift */; };
+		711948F02559419D008FCD04 /* SearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71458F6524571FAD001B774B /* SearchBar.swift */; };
+		711948F12559419D008FCD04 /* ComponentsSwitches.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71090BC52488CD1400CDB25D /* ComponentsSwitches.swift */; };
+		711948F22559419D008FCD04 /* Fonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 715FE7B32507609B00713AC9 /* Fonts.swift */; };
+		711948F32559419D008FCD04 /* SelectorControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 715435AD24EFAADE0046F08F /* SelectorControl.swift */; };
+		711948F42559419D008FCD04 /* NavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71946974243DA7BE00CAD09B /* NavigationBar.swift */; };
+		711948F52559419D008FCD04 /* ComponentsPickers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7103DDC7253F270E008081E3 /* ComponentsPickers.swift */; };
+		711948F62559419D008FCD04 /* TextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71E0F60A246D30EC0051F043 /* TextView.swift */; };
+		711948F72559419D008FCD04 /* ComponentsInputs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71946963243DA7BE00CAD09B /* ComponentsInputs.swift */; };
+		711948F82559419D008FCD04 /* TextFieldDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71946988243DA7BE00CAD09B /* TextFieldDelegate.swift */; };
+		711948F92559419D008FCD04 /* ImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71DB66FB2458385400B16145 /* ImageView.swift */; };
+		711948FA2559419D008FCD04 /* Components.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71946967243DA7BE00CAD09B /* Components.swift */; };
+		711948FB2559419D008FCD04 /* Divider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7194697A243DA7BE00CAD09B /* Divider.swift */; };
+		711948FC2559419D008FCD04 /* Shimmer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 719469C1243DAB6500CAD09B /* Shimmer.swift */; };
+		711948FD2559419D008FCD04 /* ProgressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7103EA172460234E00A11A96 /* ProgressBar.swift */; };
+		711948FE2559419D008FCD04 /* Confetti.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71D837D42497F89C00B20FE0 /* Confetti.swift */; };
+		711948FF2559419D008FCD04 /* Checkbox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71207CEB24877E610004B840 /* Checkbox.swift */; };
+		711949002559419D008FCD04 /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7194696C243DA7BE00CAD09B /* Theme.swift */; };
+		711949012559419D008FCD04 /* Loader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7194696B243DA7BE00CAD09B /* Loader.swift */; };
+		711949022559419D008FCD04 /* SegmentControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 718B43172490B680000DBC05 /* SegmentControl.swift */; };
+		711949032559419D008FCD04 /* DatePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71D9C6F924F8DB8200E2E0F9 /* DatePicker.swift */; };
+		711949042559419D008FCD04 /* SharedContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71F4E298250100BE00CCAA09 /* SharedContainer.swift */; };
+		711949052559419D008FCD04 /* Configuration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7194696E243DA7BE00CAD09B /* Configuration.swift */; };
+		711949062559419D008FCD04 /* FormsNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7103EA21246043C300A11A96 /* FormsNavigationController.swift */; };
+		711949072559419D008FCD04 /* PageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7193E3522451DEF7006238C5 /* PageView.swift */; };
+		711949082559419D008FCD04 /* FormsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71946960243DA7BE00CAD09B /* FormsViewController.swift */; };
+		711949092559419D008FCD04 /* ScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71DB66FF2458441700B16145 /* ScrollView.swift */; };
+		7119490A2559419D008FCD04 /* Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71946972243DA7BE00CAD09B /* Button.swift */; };
+		7119490B2559419D008FCD04 /* FormComponentState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71CD515C24A5D36A00DE9374 /* FormComponentState.swift */; };
+		7119490C2559419D008FCD04 /* View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7193E3592451E89D006238C5 /* View.swift */; };
+		7119490D2559419D008FCD04 /* ComponentsLabels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71946964243DA7BE00CAD09B /* ComponentsLabels.swift */; };
+		7119490E2559419D008FCD04 /* SearchDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71278B52245AC88C00B26870 /* SearchDataSource.swift */; };
+		7119490F2559419D008FCD04 /* ComponentsSelectors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 715435AA24EFA9FB0046F08F /* ComponentsSelectors.swift */; };
+		711949102559419D008FCD04 /* Forms.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71946961243DA7BE00CAD09B /* Forms.swift */; };
+		711949112559419D008FCD04 /* TextFieldDelegates.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71946989243DA7BE00CAD09B /* TextFieldDelegates.swift */; };
+		711949122559419D008FCD04 /* Switch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71090BC22488CC4800CDB25D /* Switch.swift */; };
+		711949132559419D008FCD04 /* TextFieldPhoneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7194698A243DA7BE00CAD09B /* TextFieldPhoneDelegate.swift */; };
+		711949142559419D008FCD04 /* FormComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71946983243DA7BE00CAD09B /* FormComponent.swift */; };
+		711949152559419D008FCD04 /* ComponentsCheckboxes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71207CEE248783B80004B840 /* ComponentsCheckboxes.swift */; };
+		711949162559419D008FCD04 /* TextFieldEmailDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71946985243DA7BE00CAD09B /* TextFieldEmailDelegate.swift */; };
+		711949172559419D008FCD04 /* ComponentsOthers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 714848D2244858FF00455560 /* ComponentsOthers.swift */; };
+		711949182559419D008FCD04 /* ComponentsImageViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71DB66FD245839F400B16145 /* ComponentsImageViews.swift */; };
+		711949192559419D008FCD04 /* SectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71E0F5F6246C3E100051F043 /* SectionView.swift */; };
+		7119491A2559419D008FCD04 /* ComponentsDates.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71D9C6FF24F8DCEA00E2E0F9 /* ComponentsDates.swift */; };
+		7119491B2559419D008FCD04 /* SettingsBundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71D3435F24FCF47400003928 /* SettingsBundle.swift */; };
+		7119491C2559419D008FCD04 /* FormsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7193E36C24520C75006238C5 /* FormsCollectionViewCell.swift */; };
+		7119491D2559419D008FCD04 /* PinView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71C9369A247E503700603A6F /* PinView.swift */; };
+		7119491E2559419D008FCD04 /* ComponentsSections.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71E0F5F3246C3C760051F043 /* ComponentsSections.swift */; };
+		7119491F2559419D008FCD04 /* TextFieldAmountDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71946987243DA7BE00CAD09B /* TextFieldAmountDelegate.swift */; };
+		711949202559419D008FCD04 /* ComponentsSliders.swift in Sources */ = {isa = PBXBuildFile; fileRef = 713174942541B3350072B459 /* ComponentsSliders.swift */; };
+		711949212559419D008FCD04 /* Slider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7131748D2541B0950072B459 /* Slider.swift */; };
+		711949222559419D008FCD04 /* FormsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71946981243DA7BE00CAD09B /* FormsTableViewController.swift */; };
+		711949232559419D008FCD04 /* DateRangePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 713174842541A42E0072B459 /* DateRangePicker.swift */; };
+		711949242559419D008FCD04 /* StackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7193E3652451F1BA006238C5 /* StackView.swift */; };
+		711949252559419D008FCD04 /* SinglePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7103DDC0253F2591008081E3 /* SinglePicker.swift */; };
+		711949262559419D008FCD04 /* FormsCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7138D3A62452C98F00CC7345 /* FormsCollectionViewController.swift */; };
+		711949272559419D008FCD04 /* ActionProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 714AC0242506495B00571400 /* ActionProgressView.swift */; };
+		711949282559419D008FCD04 /* GradientDivider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71CD515E24A5DF0800DE9374 /* GradientDivider.swift */; };
+		711949292559419D008FCD04 /* Label.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71946976243DA7BE00CAD09B /* Label.swift */; };
+		7119492A2559419D008FCD04 /* ComponentsContainers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7193E3552451DF77006238C5 /* ComponentsContainers.swift */; };
+		7119492B2559419D008FCD04 /* TextFieldPeselDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71946986243DA7BE00CAD09B /* TextFieldPeselDelegate.swift */; };
+		7119492C2559419D008FCD04 /* TitleTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7194697C243DA7BE00CAD09B /* TitleTextField.swift */; };
+		7119492D2559419D008FCD04 /* FormsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 719469D7243DD04700CAD09B /* FormsTableViewCell.swift */; };
+		7119492E2559419D008FCD04 /* Keyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71D3E43E246D61A1008BA211 /* Keyboard.swift */; };
+		7119492F2559419D008FCD04 /* TitleTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71E0F60C246D32EC0051F043 /* TitleTextView.swift */; };
+		711949302559419D008FCD04 /* TextFieldFormatDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7156F830246486F40078AA75 /* TextFieldFormatDelegate.swift */; };
+		711949312559419D008FCD04 /* GradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71A9285324A36C7400734C2B /* GradientView.swift */; };
+		711949322559419D008FCD04 /* Modal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7194696A243DA7BE00CAD09B /* Modal.swift */; };
+		711949332559419D008FCD04 /* InputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71D9C70224F8E38B00E2E0F9 /* InputView.swift */; };
+		711949342559419D008FCD04 /* InactiveCover.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71B8EE7324F7ED8700753E6D /* InactiveCover.swift */; };
+		711949352559419D008FCD04 /* ComponentsButtons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71946968243DA7BE00CAD09B /* ComponentsButtons.swift */; };
+		71194A35255947BF008FCD04 /* FormsAnalytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 714EF1AA247F940100AE3044 /* FormsAnalytics.framework */; };
+		71194A36255947BF008FCD04 /* FormsAnalytics.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 714EF1AA247F940100AE3044 /* FormsAnalytics.framework */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		71194A38255947C2008FCD04 /* FormsAnchor.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 714EF1AB247F940100AE3044 /* FormsAnchor.framework */; };
+		71194A39255947C2008FCD04 /* FormsAnchor.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 714EF1AB247F940100AE3044 /* FormsAnchor.framework */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		71194A3A255947C7008FCD04 /* FormsToastKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71369F9A24865A9C00298D3B /* FormsToastKit.framework */; };
+		71194A3B255947C7008FCD04 /* FormsToastKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 71369F9A24865A9C00298D3B /* FormsToastKit.framework */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		71194A5E255948CA008FCD04 /* FormsValidators.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 714EF1B8247F940100AE3044 /* FormsValidators.framework */; };
+		71194A5F255948CA008FCD04 /* FormsValidators.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 714EF1B8247F940100AE3044 /* FormsValidators.framework */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		71194A60255948CB008FCD04 /* FormsUtilsUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71EA270924A9C37200985392 /* FormsUtilsUI.framework */; };
+		71194A61255948CB008FCD04 /* FormsUtilsUI.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 71EA270924A9C37200985392 /* FormsUtilsUI.framework */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		71194A62255948CD008FCD04 /* FormsUtils.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 714EF1B7247F940100AE3044 /* FormsUtils.framework */; };
+		71194A63255948CD008FCD04 /* FormsUtils.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 714EF1B7247F940100AE3044 /* FormsUtils.framework */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		71194A64255948CE008FCD04 /* FormsUpdates.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71A14CCE2508B1E2001A6773 /* FormsUpdates.framework */; };
+		71194A65255948CE008FCD04 /* FormsUpdates.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 71A14CCE2508B1E2001A6773 /* FormsUpdates.framework */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		71194A66255948D0008FCD04 /* FormsTransitions.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7150CE83247FAB5A00F2681B /* FormsTransitions.framework */; };
+		71194A67255948D0008FCD04 /* FormsTransitions.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 7150CE83247FAB5A00F2681B /* FormsTransitions.framework */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		71194A68255948D1008FCD04 /* FormsTodayExtensionKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71F4E2E125011F6100CCAA09 /* FormsTodayExtensionKit.framework */; };
+		71194A69255948D1008FCD04 /* FormsTodayExtensionKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 71F4E2E125011F6100CCAA09 /* FormsTodayExtensionKit.framework */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		71194A6A255948D3008FCD04 /* FormsTabBarKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7136A05F24866B0500298D3B /* FormsTabBarKit.framework */; };
+		71194A6B255948D3008FCD04 /* FormsTabBarKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 7136A05F24866B0500298D3B /* FormsTabBarKit.framework */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		71194A6C255948D4008FCD04 /* FormsSocialKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 714EF1B5247F940100AE3044 /* FormsSocialKit.framework */; };
+		71194A6D255948D4008FCD04 /* FormsSocialKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 714EF1B5247F940100AE3044 /* FormsSocialKit.framework */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		71194A6E255948D6008FCD04 /* FormsSideMenuKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71369FA924865C3600298D3B /* FormsSideMenuKit.framework */; };
+		71194A6F255948D6008FCD04 /* FormsSideMenuKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 71369FA924865C3600298D3B /* FormsSideMenuKit.framework */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		71194A70255948D7008FCD04 /* FormsPermissions.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71FCB2BB247F9C4800A84D30 /* FormsPermissions.framework */; };
+		71194A71255948D7008FCD04 /* FormsPermissions.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 71FCB2BB247F9C4800A84D30 /* FormsPermissions.framework */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		71194A72255948D9008FCD04 /* FormsPagerKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7136A0B724866ECC00298D3B /* FormsPagerKit.framework */; };
+		71194A73255948D9008FCD04 /* FormsPagerKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 7136A0B724866ECC00298D3B /* FormsPagerKit.framework */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		71194A74255948DA008FCD04 /* FormsNotifications.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 714EF1B2247F940100AE3044 /* FormsNotifications.framework */; };
+		71194A75255948DB008FCD04 /* FormsNotifications.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 714EF1B2247F940100AE3044 /* FormsNotifications.framework */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		71194A76255948DC008FCD04 /* FormsNetworkingImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71EA275D24A9C98A00985392 /* FormsNetworkingImage.framework */; };
+		71194A77255948DC008FCD04 /* FormsNetworkingImage.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 71EA275D24A9C98A00985392 /* FormsNetworkingImage.framework */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		71194A78255948DD008FCD04 /* FormsNetworking.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 714EF1B1247F940100AE3044 /* FormsNetworking.framework */; };
+		71194A79255948DD008FCD04 /* FormsNetworking.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 714EF1B1247F940100AE3044 /* FormsNetworking.framework */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		71194A7A255948E0008FCD04 /* FormsMock.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 714EF1B0247F940100AE3044 /* FormsMock.framework */; };
+		71194A7B255948E0008FCD04 /* FormsMock.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 714EF1B0247F940100AE3044 /* FormsMock.framework */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		71194A7C255948E1008FCD04 /* FormsMapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71CF55F22546EE15001F162A /* FormsMapKit.framework */; };
+		71194A7D255948E1008FCD04 /* FormsMapKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 71CF55F22546EE15001F162A /* FormsMapKit.framework */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		71194A7E255948E2008FCD04 /* FormsLogger.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 714EF1AF247F940100AE3044 /* FormsLogger.framework */; };
+		71194A7F255948E3008FCD04 /* FormsLogger.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 714EF1AF247F940100AE3044 /* FormsLogger.framework */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		71194A80255948E4008FCD04 /* FormsLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7135DFF1248E6E1300B5807F /* FormsLocation.framework */; };
+		71194A81255948E4008FCD04 /* FormsLocation.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 7135DFF1248E6E1300B5807F /* FormsLocation.framework */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		71194A82255948E5008FCD04 /* FormsInjector.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 714EF1AE247F940100AE3044 /* FormsInjector.framework */; };
+		71194A83255948E5008FCD04 /* FormsInjector.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 714EF1AE247F940100AE3044 /* FormsInjector.framework */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		71194A84255948E7008FCD04 /* FormsImagePickerKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71369FB924865E8100298D3B /* FormsImagePickerKit.framework */; };
+		71194A85255948E7008FCD04 /* FormsImagePickerKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 71369FB924865E8100298D3B /* FormsImagePickerKit.framework */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		71194A86255948E8008FCD04 /* FormsHomeShortcuts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7135DF9E248E3E8200B5807F /* FormsHomeShortcuts.framework */; };
+		71194A87255948E8008FCD04 /* FormsHomeShortcuts.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 7135DF9E248E3E8200B5807F /* FormsHomeShortcuts.framework */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		71194A88255948E9008FCD04 /* FormsDevice.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71E4454E2493668000AC38C1 /* FormsDevice.framework */; };
+		71194A89255948EA008FCD04 /* FormsDevice.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 71E4454E2493668000AC38C1 /* FormsDevice.framework */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		71194A8A255948EB008FCD04 /* FormsDeveloperTools.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 714EF1AC247F940100AE3044 /* FormsDeveloperTools.framework */; };
+		71194A8B255948EB008FCD04 /* FormsDeveloperTools.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 714EF1AC247F940100AE3044 /* FormsDeveloperTools.framework */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		71194A8C255948EC008FCD04 /* FormsDatabaseSQLite.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71D3677224FE391D00E6BFAF /* FormsDatabaseSQLite.framework */; };
+		71194A8D255948EC008FCD04 /* FormsDatabaseSQLite.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 71D3677224FE391D00E6BFAF /* FormsDatabaseSQLite.framework */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		71194A8E255948EE008FCD04 /* FormsDatabase.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71D3673824FE376700E6BFAF /* FormsDatabase.framework */; };
+		71194A8F255948EE008FCD04 /* FormsDatabase.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 71D3673824FE376700E6BFAF /* FormsDatabase.framework */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		71194A90255948F1008FCD04 /* FormsCardKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7136A11C248673DF00298D3B /* FormsCardKit.framework */; };
+		71194A91255948F1008FCD04 /* FormsCardKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 7136A11C248673DF00298D3B /* FormsCardKit.framework */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		71194A92255948F2008FCD04 /* FormsCalendarKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71BF8AAE24F265A900D01CB9 /* FormsCalendarKit.framework */; };
+		71194A93255948F2008FCD04 /* FormsCalendarKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 71BF8AAE24F265A900D01CB9 /* FormsCalendarKit.framework */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		71194A94255948F4008FCD04 /* FormsAppStoreReview.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7136A0122486624E00298D3B /* FormsAppStoreReview.framework */; };
+		71194A95255948F4008FCD04 /* FormsAppStoreReview.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 7136A0122486624E00298D3B /* FormsAppStoreReview.framework */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		71207CEC24877E610004B840 /* Checkbox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71207CEB24877E610004B840 /* Checkbox.swift */; };
 		71207CED24877E610004B840 /* Checkbox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71207CEB24877E610004B840 /* Checkbox.swift */; };
 		71207CEF248783B80004B840 /* ComponentsCheckboxes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71207CEE248783B80004B840 /* ComponentsCheckboxes.swift */; };
@@ -222,6 +371,50 @@
 		71FCB2BC247F9C4800A84D30 /* FormsPermissions.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71FCB2BB247F9C4800A84D30 /* FormsPermissions.framework */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		71194A37255947BF008FCD04 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				71194A79255948DD008FCD04 /* FormsNetworking.framework in Embed Frameworks */,
+				71194A6D255948D4008FCD04 /* FormsSocialKit.framework in Embed Frameworks */,
+				71194A71255948D7008FCD04 /* FormsPermissions.framework in Embed Frameworks */,
+				71194A3B255947C7008FCD04 /* FormsToastKit.framework in Embed Frameworks */,
+				71194A5F255948CA008FCD04 /* FormsValidators.framework in Embed Frameworks */,
+				71194A65255948CE008FCD04 /* FormsUpdates.framework in Embed Frameworks */,
+				71194A7B255948E0008FCD04 /* FormsMock.framework in Embed Frameworks */,
+				71194A89255948EA008FCD04 /* FormsDevice.framework in Embed Frameworks */,
+				71194A81255948E4008FCD04 /* FormsLocation.framework in Embed Frameworks */,
+				71194A67255948D0008FCD04 /* FormsTransitions.framework in Embed Frameworks */,
+				71194A36255947BF008FCD04 /* FormsAnalytics.framework in Embed Frameworks */,
+				71194A8F255948EE008FCD04 /* FormsDatabase.framework in Embed Frameworks */,
+				71194A6B255948D3008FCD04 /* FormsTabBarKit.framework in Embed Frameworks */,
+				71194A69255948D1008FCD04 /* FormsTodayExtensionKit.framework in Embed Frameworks */,
+				71194A75255948DB008FCD04 /* FormsNotifications.framework in Embed Frameworks */,
+				71194A91255948F1008FCD04 /* FormsCardKit.framework in Embed Frameworks */,
+				71194A39255947C2008FCD04 /* FormsAnchor.framework in Embed Frameworks */,
+				71194A8D255948EC008FCD04 /* FormsDatabaseSQLite.framework in Embed Frameworks */,
+				71194A83255948E5008FCD04 /* FormsInjector.framework in Embed Frameworks */,
+				71194A63255948CD008FCD04 /* FormsUtils.framework in Embed Frameworks */,
+				71194A77255948DC008FCD04 /* FormsNetworkingImage.framework in Embed Frameworks */,
+				71194A61255948CB008FCD04 /* FormsUtilsUI.framework in Embed Frameworks */,
+				71194A85255948E7008FCD04 /* FormsImagePickerKit.framework in Embed Frameworks */,
+				71194A7F255948E3008FCD04 /* FormsLogger.framework in Embed Frameworks */,
+				71194A8B255948EB008FCD04 /* FormsDeveloperTools.framework in Embed Frameworks */,
+				71194A93255948F2008FCD04 /* FormsCalendarKit.framework in Embed Frameworks */,
+				71194A95255948F4008FCD04 /* FormsAppStoreReview.framework in Embed Frameworks */,
+				71194A6F255948D6008FCD04 /* FormsSideMenuKit.framework in Embed Frameworks */,
+				71194A7D255948E1008FCD04 /* FormsMapKit.framework in Embed Frameworks */,
+				71194A73255948D9008FCD04 /* FormsPagerKit.framework in Embed Frameworks */,
+				71194A87255948E8008FCD04 /* FormsHomeShortcuts.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		7103DDC0253F2591008081E3 /* SinglePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SinglePicker.swift; sourceTree = "<group>"; };
 		7103DDC7253F270E008081E3 /* ComponentsPickers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComponentsPickers.swift; sourceTree = "<group>"; };
@@ -230,6 +423,7 @@
 		7103EA21246043C300A11A96 /* FormsNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormsNavigationController.swift; sourceTree = "<group>"; };
 		71090BC22488CC4800CDB25D /* Switch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Switch.swift; sourceTree = "<group>"; };
 		71090BC52488CD1400CDB25D /* ComponentsSwitches.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComponentsSwitches.swift; sourceTree = "<group>"; };
+		7119495F255941B8008FCD04 /* FormsUniversal.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = FormsUniversal.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		71207CEB24877E610004B840 /* Checkbox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Checkbox.swift; sourceTree = "<group>"; };
 		71207CEE248783B80004B840 /* ComponentsCheckboxes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComponentsCheckboxes.swift; sourceTree = "<group>"; };
 		7121ABE6245AABFC00F6BEF5 /* FormsSearchController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormsSearchController.swift; sourceTree = "<group>"; };
@@ -264,7 +458,7 @@
 		714EF1B7247F940100AE3044 /* FormsUtils.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FormsUtils.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		714EF1B8247F940100AE3044 /* FormsValidators.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FormsValidators.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7150CD82247FA05F00F2681B /* Forms.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Forms.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		7150CD83247FA05F00F2681B /* Forms-Universal-Framework.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = "Forms-Universal-Framework.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		7150CD83247FA05F00F2681B /* FormsUniversal.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = FormsUniversal.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7150CE83247FAB5A00F2681B /* FormsTransitions.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FormsTransitions.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		715435AA24EFA9FB0046F08F /* ComponentsSelectors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComponentsSelectors.swift; sourceTree = "<group>"; };
 		715435AD24EFAADE0046F08F /* SelectorControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectorControl.swift; sourceTree = "<group>"; };
@@ -382,6 +576,44 @@
 				714EF1BB247F940100AE3044 /* FormsAnchor.framework in Frameworks */,
 				7136A06024866B0500298D3B /* FormsTabBarKit.framework in Frameworks */,
 				7136A11D248673DF00298D3B /* FormsCardKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		711949362559419D008FCD04 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				71194A8A255948EB008FCD04 /* FormsDeveloperTools.framework in Frameworks */,
+				71194A86255948E8008FCD04 /* FormsHomeShortcuts.framework in Frameworks */,
+				71194A76255948DC008FCD04 /* FormsNetworkingImage.framework in Frameworks */,
+				71194A3A255947C7008FCD04 /* FormsToastKit.framework in Frameworks */,
+				71194A60255948CB008FCD04 /* FormsUtilsUI.framework in Frameworks */,
+				71194A68255948D1008FCD04 /* FormsTodayExtensionKit.framework in Frameworks */,
+				71194A66255948D0008FCD04 /* FormsTransitions.framework in Frameworks */,
+				71194A70255948D7008FCD04 /* FormsPermissions.framework in Frameworks */,
+				71194A8C255948EC008FCD04 /* FormsDatabaseSQLite.framework in Frameworks */,
+				71194A78255948DD008FCD04 /* FormsNetworking.framework in Frameworks */,
+				71194A80255948E4008FCD04 /* FormsLocation.framework in Frameworks */,
+				71194A62255948CD008FCD04 /* FormsUtils.framework in Frameworks */,
+				71194A90255948F1008FCD04 /* FormsCardKit.framework in Frameworks */,
+				71194A6A255948D3008FCD04 /* FormsTabBarKit.framework in Frameworks */,
+				71194A6E255948D6008FCD04 /* FormsSideMenuKit.framework in Frameworks */,
+				71194A7C255948E1008FCD04 /* FormsMapKit.framework in Frameworks */,
+				71194A92255948F2008FCD04 /* FormsCalendarKit.framework in Frameworks */,
+				71194A84255948E7008FCD04 /* FormsImagePickerKit.framework in Frameworks */,
+				71194A38255947C2008FCD04 /* FormsAnchor.framework in Frameworks */,
+				71194A5E255948CA008FCD04 /* FormsValidators.framework in Frameworks */,
+				71194A6C255948D4008FCD04 /* FormsSocialKit.framework in Frameworks */,
+				71194A88255948E9008FCD04 /* FormsDevice.framework in Frameworks */,
+				71194A74255948DA008FCD04 /* FormsNotifications.framework in Frameworks */,
+				71194A72255948D9008FCD04 /* FormsPagerKit.framework in Frameworks */,
+				71194A64255948CE008FCD04 /* FormsUpdates.framework in Frameworks */,
+				71194A8E255948EE008FCD04 /* FormsDatabase.framework in Frameworks */,
+				71194A94255948F4008FCD04 /* FormsAppStoreReview.framework in Frameworks */,
+				71194A7A255948E0008FCD04 /* FormsMock.framework in Frameworks */,
+				71194A35255947BF008FCD04 /* FormsAnalytics.framework in Frameworks */,
+				71194A82255948E5008FCD04 /* FormsInjector.framework in Frameworks */,
+				71194A7E255948E2008FCD04 /* FormsLogger.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -504,7 +736,8 @@
 				7194693E243DA7A800CAD09B /* Forms */,
 				719469AF243DA7CC00CAD09B /* Frameworks */,
 				7150CD82247FA05F00F2681B /* Forms.framework */,
-				7150CD83247FA05F00F2681B /* Forms-Universal-Framework.framework */,
+				7150CD83247FA05F00F2681B /* FormsUniversal.framework */,
+				7119495F255941B8008FCD04 /* FormsUniversal.framework */,
 			);
 			sourceTree = "<group>";
 		};
@@ -765,6 +998,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		711948DD2559419D008FCD04 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				711948DE2559419D008FCD04 /* Forms.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		71946937243DA7A800CAD09B /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
@@ -791,7 +1032,26 @@
 			);
 			name = "Forms-Universal-Framework";
 			productName = Forms;
-			productReference = 7150CD83247FA05F00F2681B /* Forms-Universal-Framework.framework */;
+			productReference = 7150CD83247FA05F00F2681B /* FormsUniversal.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		711948DC2559419D008FCD04 /* Forms-Universal-Framework-Static */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 711949572559419D008FCD04 /* Build configuration list for PBXNativeTarget "Forms-Universal-Framework-Static" */;
+			buildPhases = (
+				711948DD2559419D008FCD04 /* Headers */,
+				711948DF2559419D008FCD04 /* Sources */,
+				711949362559419D008FCD04 /* Frameworks */,
+				711949562559419D008FCD04 /* Resources */,
+				71194A37255947BF008FCD04 /* Embed Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Forms-Universal-Framework-Static";
+			productName = Forms;
+			productReference = 7119495F255941B8008FCD04 /* FormsUniversal.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 		7194693B243DA7A800CAD09B /* Forms */ = {
@@ -842,12 +1102,20 @@
 			targets = (
 				7194693B243DA7A800CAD09B /* Forms */,
 				711070DC2476BF610056BBB5 /* Forms-Universal-Framework */,
+				711948DC2559419D008FCD04 /* Forms-Universal-Framework-Static */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
 		711071272476BF610056BBB5 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		711949562559419D008FCD04 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -954,6 +1222,99 @@
 				71D9C70424F8E38B00E2E0F9 /* InputView.swift in Sources */,
 				71B8EE7524F7ED8700753E6D /* InactiveCover.swift in Sources */,
 				7110711E2476BF610056BBB5 /* ComponentsButtons.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		711948DF2559419D008FCD04 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				711948E02559419D008FCD04 /* TableDataSource.swift in Sources */,
+				711948E12559419D008FCD04 /* ComponentsUtils.swift in Sources */,
+				711948E22559419D008FCD04 /* TextField.swift in Sources */,
+				711948E32559419D008FCD04 /* BiometryAuthentication.swift in Sources */,
+				711948E42559419D008FCD04 /* ClickableView.swift in Sources */,
+				711948E52559419D008FCD04 /* LaunchOptions.swift in Sources */,
+				711948E62559419D008FCD04 /* ComponentsSegments.swift in Sources */,
+				711948E72559419D008FCD04 /* ComponentsProgresses.swift in Sources */,
+				711948E82559419D008FCD04 /* CollectionDataSource.swift in Sources */,
+				711948E92559419D008FCD04 /* Vibration.swift in Sources */,
+				711948EA2559419D008FCD04 /* ActivityIndicator.swift in Sources */,
+				711948EB2559419D008FCD04 /* DeviceSecurity.swift in Sources */,
+				711948EC2559419D008FCD04 /* GradientButton.swift in Sources */,
+				711948ED2559419D008FCD04 /* ComponentsNavigationBars.swift in Sources */,
+				711948EE2559419D008FCD04 /* GridView.swift in Sources */,
+				711948EF2559419D008FCD04 /* FormsSearchController.swift in Sources */,
+				711948F02559419D008FCD04 /* SearchBar.swift in Sources */,
+				711948F12559419D008FCD04 /* ComponentsSwitches.swift in Sources */,
+				711948F22559419D008FCD04 /* Fonts.swift in Sources */,
+				711948F32559419D008FCD04 /* SelectorControl.swift in Sources */,
+				711948F42559419D008FCD04 /* NavigationBar.swift in Sources */,
+				711948F52559419D008FCD04 /* ComponentsPickers.swift in Sources */,
+				711948F62559419D008FCD04 /* TextView.swift in Sources */,
+				711948F72559419D008FCD04 /* ComponentsInputs.swift in Sources */,
+				711948F82559419D008FCD04 /* TextFieldDelegate.swift in Sources */,
+				711948F92559419D008FCD04 /* ImageView.swift in Sources */,
+				711948FA2559419D008FCD04 /* Components.swift in Sources */,
+				711948FB2559419D008FCD04 /* Divider.swift in Sources */,
+				711948FC2559419D008FCD04 /* Shimmer.swift in Sources */,
+				711948FD2559419D008FCD04 /* ProgressBar.swift in Sources */,
+				711948FE2559419D008FCD04 /* Confetti.swift in Sources */,
+				711948FF2559419D008FCD04 /* Checkbox.swift in Sources */,
+				711949002559419D008FCD04 /* Theme.swift in Sources */,
+				711949012559419D008FCD04 /* Loader.swift in Sources */,
+				711949022559419D008FCD04 /* SegmentControl.swift in Sources */,
+				711949032559419D008FCD04 /* DatePicker.swift in Sources */,
+				711949042559419D008FCD04 /* SharedContainer.swift in Sources */,
+				711949052559419D008FCD04 /* Configuration.swift in Sources */,
+				711949062559419D008FCD04 /* FormsNavigationController.swift in Sources */,
+				711949072559419D008FCD04 /* PageView.swift in Sources */,
+				711949082559419D008FCD04 /* FormsViewController.swift in Sources */,
+				711949092559419D008FCD04 /* ScrollView.swift in Sources */,
+				7119490A2559419D008FCD04 /* Button.swift in Sources */,
+				7119490B2559419D008FCD04 /* FormComponentState.swift in Sources */,
+				7119490C2559419D008FCD04 /* View.swift in Sources */,
+				7119490D2559419D008FCD04 /* ComponentsLabels.swift in Sources */,
+				7119490E2559419D008FCD04 /* SearchDataSource.swift in Sources */,
+				7119490F2559419D008FCD04 /* ComponentsSelectors.swift in Sources */,
+				711949102559419D008FCD04 /* Forms.swift in Sources */,
+				711949112559419D008FCD04 /* TextFieldDelegates.swift in Sources */,
+				711949122559419D008FCD04 /* Switch.swift in Sources */,
+				711949132559419D008FCD04 /* TextFieldPhoneDelegate.swift in Sources */,
+				711949142559419D008FCD04 /* FormComponent.swift in Sources */,
+				711949152559419D008FCD04 /* ComponentsCheckboxes.swift in Sources */,
+				711949162559419D008FCD04 /* TextFieldEmailDelegate.swift in Sources */,
+				711949172559419D008FCD04 /* ComponentsOthers.swift in Sources */,
+				711949182559419D008FCD04 /* ComponentsImageViews.swift in Sources */,
+				711949192559419D008FCD04 /* SectionView.swift in Sources */,
+				7119491A2559419D008FCD04 /* ComponentsDates.swift in Sources */,
+				7119491B2559419D008FCD04 /* SettingsBundle.swift in Sources */,
+				7119491C2559419D008FCD04 /* FormsCollectionViewCell.swift in Sources */,
+				7119491D2559419D008FCD04 /* PinView.swift in Sources */,
+				7119491E2559419D008FCD04 /* ComponentsSections.swift in Sources */,
+				7119491F2559419D008FCD04 /* TextFieldAmountDelegate.swift in Sources */,
+				711949202559419D008FCD04 /* ComponentsSliders.swift in Sources */,
+				711949212559419D008FCD04 /* Slider.swift in Sources */,
+				711949222559419D008FCD04 /* FormsTableViewController.swift in Sources */,
+				711949232559419D008FCD04 /* DateRangePicker.swift in Sources */,
+				711949242559419D008FCD04 /* StackView.swift in Sources */,
+				711949252559419D008FCD04 /* SinglePicker.swift in Sources */,
+				711949262559419D008FCD04 /* FormsCollectionViewController.swift in Sources */,
+				711949272559419D008FCD04 /* ActionProgressView.swift in Sources */,
+				711949282559419D008FCD04 /* GradientDivider.swift in Sources */,
+				711949292559419D008FCD04 /* Label.swift in Sources */,
+				7119492A2559419D008FCD04 /* ComponentsContainers.swift in Sources */,
+				7119492B2559419D008FCD04 /* TextFieldPeselDelegate.swift in Sources */,
+				7119492C2559419D008FCD04 /* TitleTextField.swift in Sources */,
+				7119492D2559419D008FCD04 /* FormsTableViewCell.swift in Sources */,
+				7119492E2559419D008FCD04 /* Keyboard.swift in Sources */,
+				7119492F2559419D008FCD04 /* TitleTextView.swift in Sources */,
+				711949302559419D008FCD04 /* TextFieldFormatDelegate.swift in Sources */,
+				711949312559419D008FCD04 /* GradientView.swift in Sources */,
+				711949322559419D008FCD04 /* Modal.swift in Sources */,
+				711949332559419D008FCD04 /* InputView.swift in Sources */,
+				711949342559419D008FCD04 /* InactiveCover.swift in Sources */,
+				711949352559419D008FCD04 /* ComponentsButtons.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1078,7 +1439,7 @@
 				ONLY_ACTIVE_ARCH = NO;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = com.limbo.Forms;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = FormsUniversal;
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -1109,7 +1470,72 @@
 				MARKETING_VERSION = 0.0.0;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = com.limbo.Forms;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = FormsUniversal;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		711949582559419D008FCD04 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = KB85VH6WG5;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/../Dependencies",
+				);
+				INFOPLIST_FILE = Forms/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MACH_O_TYPE = staticlib;
+				MARKETING_VERSION = 0.0.0;
+				ONLY_ACTIVE_ARCH = NO;
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_BUNDLE_IDENTIFIER = com.limbo.Forms;
+				PRODUCT_NAME = FormsUniversal;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		711949592559419D008FCD04 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = KB85VH6WG5;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/../Dependencies",
+				);
+				INFOPLIST_FILE = Forms/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MACH_O_TYPE = staticlib;
+				MARKETING_VERSION = 0.0.0;
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_BUNDLE_IDENTIFIER = com.limbo.Forms;
+				PRODUCT_NAME = FormsUniversal;
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -1309,6 +1735,15 @@
 			buildConfigurations = (
 				711071292476BF610056BBB5 /* Debug */,
 				7110712A2476BF610056BBB5 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		711949572559419D008FCD04 /* Build configuration list for PBXNativeTarget "Forms-Universal-Framework-Static" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				711949582559419D008FCD04 /* Debug */,
+				711949592559419D008FCD04 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

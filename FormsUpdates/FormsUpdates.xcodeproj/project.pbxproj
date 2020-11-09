@@ -287,7 +287,6 @@
 		71A14CA32508B0E5001A6773 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = KB85VH6WG5;
 				DYLIB_COMPATIBILITY_VERSION = 1;
@@ -312,7 +311,6 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.limbo.FormsUpdates;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -321,7 +319,6 @@
 		71A14CA42508B0E5001A6773 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = KB85VH6WG5;
 				DYLIB_COMPATIBILITY_VERSION = 1;

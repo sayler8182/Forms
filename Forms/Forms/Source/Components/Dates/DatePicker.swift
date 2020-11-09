@@ -55,6 +55,10 @@ open class DatePicker: FormsComponent, FormsComponentWithMarginEdgeInset, FormsC
         get { return self.pickerView.preferredDatePickerStyle }
         set { self.pickerView.preferredDatePickerStyle = newValue }
     }
+    open var timeZone: TimeZone! {
+        get { return self.pickerView.timeZone }
+        set { self.pickerView.timeZone = newValue }
+    }
     override open var tintColor: UIColor? {
         get { return self.pickerView.tintColor }
         set { self.pickerView.tintColor = newValue }
@@ -149,6 +153,10 @@ public extension DatePicker {
     @available(iOS 13.4, *)
     func with(preferredDatePickerStyle: UIDatePickerStyle) -> Self {
         self.preferredDatePickerStyle = preferredDatePickerStyle
+        return self
+    }
+    func with(timeZone: TimeZone?) -> Self {
+        self.timeZone = timeZone
         return self
     }
     func with(tintColor: UIColor?) -> Self {
